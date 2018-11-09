@@ -90,10 +90,8 @@ Web开发
 - chapter7-3-1：springboot 集成 ElasticSearch  使用 JestClient 操作
 - chapter7-4-1：springboot 集成 ElasticSearch  使用 SpringData 操作
 - chapter8-0-1：springboot 集成 Guava
-
 - chapter8-0-5：springboot 集成 Lua
 - chapter8-0-8：springboot 集成 Kotlin
-
 - chapter8-1-1：springboot 集成 Oss  使用阿里云存储
 - chapter8-1-2：springboot 集成 Java调用 Lua脚本  通过LuaJava
 - chapter8-3-0：springboot 集成 RabbitMQ
@@ -103,9 +101,7 @@ Web开发
 - chapter9-3-2：springboot 集成 HessianClient
 - chapter9-4-1：springboot 集成 Docker
 - chapter9-5-1：springboot 集成23种设计模式
-  
-
+ 
 测试功能
-
 - chapter9-9-6：springboot 集成 TestNG
 - chapter9-9-9：提供测试代码 编写
