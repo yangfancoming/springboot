@@ -1,8 +1,9 @@
 package com.goat.domain.s;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
@@ -13,8 +14,9 @@ import javax.persistence.Id;
 @Entity
 public class Message {
 
+    // UUID时无需创建序列，在字段使用注解标记即可：
     @Id
-    @GeneratedValue
+    @GenericGenerator(name="idGenerator", strategy="uuid") //这个是hibernate的注解/生成32位UUID
     private Long id;
 
     @Column(nullable = false)

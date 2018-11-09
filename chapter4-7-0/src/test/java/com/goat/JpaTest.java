@@ -2,7 +2,6 @@ package com.goat;
 
 
 import com.goat.domain.p.User;
-import com.goat.domain.p.UserDao;
 import com.goat.domain.p.UserRepository;
 import com.goat.domain.p.UserService;
 import com.goat.domain.s.Message;
@@ -17,7 +16,7 @@ import org.testng.Assert;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Test3 {
+public class JpaTest {
 
     @Autowired
     private UserRepository userRepository;
@@ -27,8 +26,7 @@ public class Test3 {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private UserDao userDao;
+    //  JPA  测试
     @Test
     public void save() {
 
@@ -54,9 +52,5 @@ public class Test3 {
     }
 
 
-    @Test
-    public void create() {
-        userDao.create("test",111);
-    }
 
 }

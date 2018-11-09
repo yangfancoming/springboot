@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.IDENTITY) // 主键自增为1，并且在MySQL时，不用序列，直接指定GenerationType.IDENTITY 即可。
     private Long id;
 
     @Column(nullable = false)
