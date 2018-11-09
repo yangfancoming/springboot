@@ -48,7 +48,17 @@ public class PrimaryConfig {
                 .build();
     }
 
+//
 
+    /**
+     * springboot  2.0.x版本与1.5.x版本的主要区别在于getVerdorProperties这个方法，原来的getHibernateProperties是传参数DataSource，现在是传参数HibernateSettings，
+     * HibernateSettings类其实就是配置列名生成策略的，我们已经在yml里配置过了，这里直接new 一个空类过去就行了。
+     *
+     * 下面是 1.5.x版本的 实现方式
+     private Map<String, String> getVendorProperties(DataSource dataSource) {
+        return jpaProperties.getHibernateProperties(dataSource);
+     }
+     * */
 
     private Map<String, Object> getVendorProperties() {
         return jpaProperties.getHibernateProperties(new HibernateSettings());

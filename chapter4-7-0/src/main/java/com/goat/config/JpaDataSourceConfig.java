@@ -9,13 +9,12 @@ import org.springframework.context.annotation.Primary;
 import javax.sql.DataSource;
 
 /**
- * @author 程序猿DD
- * @version 1.0.0
- * @date 16/3/26 下午9:11.
- * @blog http://blog.didispace.com
- */
+     * @Description:  多数据源配置
+     * @author: 杨帆
+     * @Date:   2018/11/9
+*/
 @Configuration
-public class DataSourceConfig {
+public class JpaDataSourceConfig {
 
     /**
      * 第一个数据源

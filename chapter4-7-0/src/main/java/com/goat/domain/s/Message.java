@@ -6,10 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
- * @author 程序猿DD
- * @version 1.0.0
- * @date 16/3/21 下午3:35.
- * @blog http://blog.didispace.com
+ * @Description:  JPA 映射类
+ * @author: 杨帆
+ * @Date:   2018/11/9
  */
 @Entity
 public class Message {

@@ -1,21 +1,18 @@
 package com.goat.domain.p;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 
 /**
- * @author 程序猿DD
- * @version 1.0.0
- * @date 16/3/21 下午3:35.
- * @blog http://blog.didispace.com
- */
+     * @Description:  JPA 映射类
+     * @author: 杨帆
+     * @Date:   2018/11/9
+*/
 @Entity
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
