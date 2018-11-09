@@ -4,6 +4,7 @@ import com.goat.bean.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * 客户数据接口
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public interface CustomerRepository extends MongoRepository<User, String> {
 
+     Optional<User> findById(String id);
      User findByName(String name);
      List<User> findByNameLike(String nam);
-
 }

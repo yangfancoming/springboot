@@ -16,5 +16,11 @@ public class DeleteTest extends CommonTest {
         repository.deleteAll();
     }
 
+
+    @Test
+    public void delete() { // 按主键id 进行删除
+        repository.deleteById("1");
+    }
+
 }
 
