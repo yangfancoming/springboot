@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
 
@@ -36,15 +37,13 @@ public class OpsForValue extends RedisCommon {
     @Test
     public void test1(){
         stringRedisTemplate.opsForValue().set("fuck","tom"); // 这里插入的是 tom
-        Object name = stringRedisTemplate.opsForValue().get("fuck");
-        System.out.println(name);
+        Assert.assertEquals("tom", stringRedisTemplate.opsForValue().get("fuck")); // OK
     }
 
     @Test
     public void test2(){
         redisTemplate.opsForValue().set("fuck","tom"); // 这里插入的是 "tom"
-        Object name = stringRedisTemplate.opsForValue().get("fuck");
-        System.out.println(name);
+        Assert.assertEquals("tom", stringRedisTemplate.opsForValue().get("fuck")); // 报错 did not expect to find ["tom"] but found [tom]
     }
 
     @Test
