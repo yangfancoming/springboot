@@ -24,6 +24,7 @@ public class ApplicationTests {
 
     @Autowired
     private JavaMailSender mailSender;
+
     @Autowired
     private VelocityEngine velocityEngine;
     @Test
@@ -31,8 +32,8 @@ public class ApplicationTests {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
 
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
-        helper.setFrom("dyc87112@qq.com");
-        helper.setTo("dyc87112@qq.com");
+        helper.setFrom("642744551@qq.com");
+        helper.setTo("1286031921@qq.com");
         helper.setSubject("主题：模板邮件");
 
         Map<String, Object> model = new HashedMap();
