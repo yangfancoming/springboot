@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goat.dao.BaseDao">
+
+    <!--&lt;!&ndash; 通过主键 查询单条记录 &ndash;&gt;-->
+    <!--<select id="findForObject" parameterType="java.util.Map" resultType="java.util.Map">-->
+        <!--SELECT * FROM ${tableName} WHERE  1=1-->
+        <!--<if test="columnName != null and columnName != ''"> and ${columnName} = #{columnName} </if>-->
+        <!--<if test="ID != null and ID != ''"> and ID = #{ID} </if>-->
+    <!--</select>-->
+
+
+    <!--返回 Map -->
+    <select id="findMapById" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT * FROM emp WHERE EMPNO = #{id}
+    </select>
+
+
+    <!--返回 实体 -->
+    <select id="findObjectById" parameterType="java.util.Map" resultType="Emp">
+        SELECT * FROM emp WHERE EMPNO = #{id}
+    </select>
+
+
+    <!--返回 Map -->
+    <insert id="saveMap" parameterType="java.util.Map">
+        insert into emp (EMPNO, ENAME) values(#{EMPNO},#{ENAME})
+    </insert>
+
+    <!--返回 实体 -->
+    <insert id="saveObject" parameterType="Emp" >
+        insert into emp (EMPNO, ENAME) values(#{EMPNO},#{ENAME})
+    </insert>
+
+
+    <delete id="deleteById" >
+        DELETE FROM emp WHERE EMPNO = #{id}
+    </delete>
+
+    <!--返回 Map -->
+    <update id="updateMapById" parameterType="java.util.Map">
+        UPDATE emp SET ENAME = #{ENAME} WHERE EMPNO = #{id}
+    </update>
+
+    <!--返回 实体 -->
+    <update id="updateObjectById" parameterType="Emp">
+        UPDATE emp SET ENAME = #{ENAME} WHERE EMPNO = #{EMPNO}
+    </update>
+</mapper>

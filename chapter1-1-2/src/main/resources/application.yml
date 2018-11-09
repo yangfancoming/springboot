@@ -1,0 +1,5 @@
+server:
+  port: 8112
+quartz:
+  enabled: true
+

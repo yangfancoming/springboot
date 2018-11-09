@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goat.dao.Test2Dao">
+
+    <select id="findObject1" resultType="Emp">
+        SELECT * FROM emp WHERE EMPNO = #{EMPNO} AND ENAME = #{ENAME}
+    </select>
+
+    <select id="findObject2" resultType="Emp">
+        SELECT * FROM emp WHERE EMPNO = #{param1} AND ENAME = #{param2}
+    </select>
+
+    <select id="findObject3" resultType="Emp">
+        SELECT * FROM emp WHERE EMPNO = #{EMPNO} AND ENAME = #{ENAME}
+    </select>
+
+    <select id="findObject" parameterType="Emp" resultType="Emp">
+        SELECT * FROM emp WHERE EMPNO = #{EMPNO} AND ENAME = #{ENAME}
+    </select>
+
+    <select id="findMap" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT * FROM emp WHERE EMPNO = #{EMPNO} AND ENAME = #{ENAME}
+    </select>
+
+</mapper>

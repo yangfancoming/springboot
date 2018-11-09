@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!-- parallel="methods" 表示 方法级别  thread-count 最大并发线程数为2个  xml 配置方式不能指定线程池 只有在方法上才能指定线程池-->
+
+<!--
+parallel="methods" 表示 方法级别  所有的用例  都可以在不同的线程中执行
+parallel="tests " 表示 不同的test标签下的用例 可以在不同的线程中执行
+                       相同的 test 标签下的用例 只能在同一个线程中去执行
+
+  parallel="Classes" 表示 方法级别  所有的用例  都可以在不同的线程中执行
+ -->
+
+<!--
+运行后 可以发现   有两个线程 执行  id 为 12和13
+TestOnXml......test2..........13
+TestOnXml......test1..........12
+TestOnXml......test3..........13
+ -->
+<suite name = "tes324tmy" parallel="methods" thread-count="2">
+    <test name = "thread">
+
+        <classes>
+            <class name = "testng.multithread.TestOnXml"></class>
+        </classes>
+    </test>
+
+</suite>

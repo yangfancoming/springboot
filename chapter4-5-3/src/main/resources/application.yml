@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      host: 172.16.163.135
+      port: 27017
+#      database: fuck   doit  mongodb  授权方式 登录 我是真的搞不定啊！！！！
+#      username: fuck
+#      password: 12345
+

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name = "tes324tmy">
+    <test name = "pa234rams">
+
+        <!--这里的name和age 分别对应 类中的注解     @Parameters({"name","age"})-->
+        <parameter name="name" value="fuck"></parameter>
+        <parameter name="age" value="123"></parameter>
+
+        <classes>
+            <class name = "testng.params.ParamTest"></class>
+        </classes>
+    </test>
+
+</suite>

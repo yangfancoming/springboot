@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>springboot</artifactId>
+        <groupId>com.goat.springboot.learing</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>chapter7-3-1</artifactId>
+
+
+    <dependencies>
+
+
+        <!--ctrl + alt + shfit + n 输入 JestAutoConfiguration 可以发现jar包中有红色报错 说明 该配置并没有启用 但是引入一下jest依赖后 再看就不红了，说明就启用了该配置-->
+
+        <!--在Maven 仓库中  输入 jest 进行查询  jest的版本必须符合  elasticsearch 的版本  要么都是5.x 要么都是 3.x-->
+        <dependency>
+            <groupId>io.searchbox</groupId>
+            <artifactId>jest</artifactId>
+            <version>6.3.0</version>
+        </dependency>
+
+        <dependency><groupId>junit</groupId><artifactId>junit</artifactId><version>4.12</version></dependency>
+        <dependency><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-test</artifactId><scope>test</scope></dependency>
+    </dependencies>
+</project>

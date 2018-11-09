@@ -1,0 +1,7 @@
+spring:
+  thymeleaf:
+    cache: false #关闭缓存
+    prefix: classpath:/views/ #添加路径前缀  配置后 则 templates 路径下的 html 无法访问
+
+
+

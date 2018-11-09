@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name = "123123">
+    <!--<test name = "ruall">-->
+        <!--<classes>-->
+            <!--<class name = "com.example.goat.testng.groups.GroupOnClass1"></class>-->
+            <!--<class name = "com.example.goat.testng.groups.GroupOnClass2"></class>-->
+            <!--<class name = "com.example.goat.testng.groups.GroupOnClass3"></class>-->
+        <!--</classes>-->
+    <!--</test>-->
+
+
+    <test name = "rual234l">
+        <groups>
+            <run>
+                <!--表示只运行 stu 组的 类中的方法  name 对应 @Test(groups = "stu") -->
+                <include name="stu"></include>
+                <!--表示只运行除了 stu 组以为 的 类中的方法  name 对应 @Test(groups = "stu") -->
+                <!--<exclude name="stu"></exclude>-->
+            </run>
+        </groups>
+
+        <classes>
+            <class name = "testng.groups.GroupOnClass1"></class>
+            <class name = "testng.groups.GroupOnClass2"></class>
+            <class name = "testng.groups.GroupOnClass3"></class>
+        </classes>
+    </test>
+</suite>

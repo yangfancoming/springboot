@@ -1,0 +1,17 @@
+2018-08-25 17:55:30.883  INFO 17160 --- [main] com.goat.DeleteTest                : Starting ApplicationTests on DESKTOP-2NM366J with PID 17160 (started by 64274 in E:\Code\J2EE_code\MySpringBoot\springboot\chapter1-2-1)
+2018-08-25 17:55:30.885 DEBUG 17160 --- [main] com.goat.DeleteTest                : Running with Spring Boot v2.0.4.RELEASE, Spring v5.0.8.RELEASE
+2018-08-25 17:55:30.888  INFO 17160 --- [main] com.goat.DeleteTest                : No active profile set, falling back to default profiles: default
+2018-08-25 17:55:30.934  INFO 17160 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@7ce026d3: startup date [Sat Aug 25 17:55:30 CST 2018]; root of context hierarchy
+2018-08-25 17:55:32.234  INFO 17160 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-25 17:55:32.435  INFO 17160 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@7ce026d3: startup date [Sat Aug 25 17:55:30 CST 2018]; root of context hierarchy
+2018-08-25 17:55:32.523  INFO 17160 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-08-25 17:55:32.524  INFO 17160 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-08-25 17:55:32.550  INFO 17160 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-25 17:55:32.550  INFO 17160 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-08-25 17:55:33.060  INFO 17160 --- [main] com.goat.DeleteTest                : Started ApplicationTests in 2.825 seconds (JVM running for 3.984)
+2018-08-25 17:55:33.173 TRACE 17160 --- [main] com.goat.DeleteTest                : 这是  trace.................
+2018-08-25 17:55:33.173 DEBUG 17160 --- [main] com.goat.DeleteTest                : 这是  debug.................
+2018-08-25 17:55:33.173  INFO 17160 --- [main] com.goat.DeleteTest                : 这是  info.................
+2018-08-25 17:55:33.173  WARN 17160 --- [main] com.goat.DeleteTest                : 这是  warn.................
+2018-08-25 17:55:33.173 ERROR 17160 --- [main] com.goat.DeleteTest                : 这是  error.................
+2018-08-25 17:55:33.178  INFO 17160 --- [Thread-2] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@7ce026d3: startup date [Sat Aug 25 17:55:30 CST 2018]; root of context hierarchy

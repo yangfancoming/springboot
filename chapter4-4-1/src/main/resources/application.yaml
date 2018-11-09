@@ -1,0 +1,17 @@
+
+mybatis:
+  # 指定mybatis全局配置文件位置
+  config-location: classpath:mybatis/mybatis-config.xml
+  # 指定mybatis sql映射文件位置
+  mapper-locations: classpath:mybatis/mapper/*.xml
+server:
+  port: 8441
+
+
+
+
+
+
+
+
+

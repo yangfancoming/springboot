@@ -1,0 +1,27 @@
+
+person:
+    lastname: 山羊
+    age: 15
+    boss: false
+#    birth: 2017-12-11  sos 这种时间格式 会报错！
+    birth: 2017/12/11
+    maps: {k1: v1,k2: v2}
+    lists: [lisi,wangwu,zhaoliu]
+    pet: {nickName: 童童,age: 11}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

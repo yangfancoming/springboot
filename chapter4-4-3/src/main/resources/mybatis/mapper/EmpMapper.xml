@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!--
+ 将 interface 文件  与 xml 映射文件 进行绑定
+ interface中的函数名 对应 xml 中的 id
+ xml 可以理解为 interface 的实现类！！！
+-->
+<mapper namespace="com.goat.dao.EmpDao">
+
+
+<!--
+id: 唯一标识  在多个 xml 中 可以重复  但是在调用时 需要指定 namespace
+
+
+-->
+
+    <select id="findMapById" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT * FROM emp WHERE EMPNO = #{id}
+    </select>
+
+    <select id="findObjectById" parameterType="java.util.Map" resultType="Emp">
+        SELECT * FROM emp WHERE EMPNO = #{id}
+    </select>
+
+
+    <!--useGeneratedKeys 开启自增主键获取值策略，keyProperty 指定插入记录后 将主键信息设置在哪个属性中 返回-->
+    <insert id="saveMap" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="id" >
+        insert into emp (EMPNO, ENAME) values(#{EMPNO},#{ENAME})
+    </insert>
+
+
+
+    <insert id="saveObject" parameterType="Emp" >
+        insert into emp (EMPNO, ENAME) values(#{EMPNO},#{ENAME})
+    </insert>
+
+
+
+
+    <delete id="deleteById" >
+        DELETE FROM emp WHERE EMPNO = #{id}
+    </delete>
+
+
+
+    <update id="updateMapById" parameterType="java.util.Map">
+        UPDATE emp SET ENAME = #{ENAME} WHERE EMPNO = #{id}
+    </update>
+
+    <update id="updateObjectById" parameterType="Emp">
+        UPDATE emp SET ENAME = #{ENAME} WHERE EMPNO = #{EMPNO}
+    </update>
+
+
+</mapper>

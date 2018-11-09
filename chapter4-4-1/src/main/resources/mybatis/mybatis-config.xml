@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<configuration>
+
+    <settings>
+        <!-- 驼峰命名法 eg: javabean中的属性 lastName  数据库表中的字段 last_name 则 last_name 会被映射为 lastName -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="cacheEnabled" value="true" /> <!-- 全局映射器启用缓存 -->
+        <setting name="useGeneratedKeys" value="true" />
+        <setting name="defaultExecutorType" value="REUSE" />
+
+        <!--当结果集中含有Null 值时是否执行映射对象的 setter或者 Map 对象的 put方法。此设置对于原始类型如int,boolean 等无效。-->
+        <setting name="callSettersOnNulls" value="true"/>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+
+    <!--类型别名是为 Java 类型命名一个短的名字。 它只和 XML 配置有关, 只用来减少类完全 限定名的多余部分-->
+    <typeAliases>
+        <typeAlias alias="Emp" type="com.goat.model.Emp"/>
+    </typeAliases>
+
+</configuration>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.goat.springboot.learing</groupId>
+	<artifactId>springboot</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>chapter0-0-0</module>
+        <module>chapter0-1-0</module>
+
+
+        <module>chapter1-1-1</module>
+        <module>chapter1-1-2</module>
+        <module>chapter1-2-1</module>
+
+        <module>chapter2-0-2</module>
+        <module>chapter2-0-3</module>
+        <module>chapter2-0-5</module>
+        <module>chapter2-0-7</module>
+        <module>chapter2-1-8</module>
+        <module>chapter2-1-4</module>
+        <module>chapter2-1-5</module>
+        <module>chapter2-2-1</module>
+        <module>chapter2-2-5</module>
+        <module>chapter2-3-1</module>
+        <module>chapter2-4-1</module>
+        <module>chapter2-6-0</module>
+        <module>chapter2-6-1</module>
+        <module>chapter2-6-5</module>
+        <module>chapter2-7-1</module>
+        <module>chapter2-8-0</module>
+        <module>chapter2-8-2</module>
+        <module>chapter2-9-0</module>
+
+
+
+        <module>chapter3-1-1</module>
+        <module>chapter3-3-1</module>
+        <module>chapter3-4-1</module>
+        <module>chapter3-5-4</module>
+        <module>chapter3-5-1</module>
+
+
+        <module>chapter4-0-0</module>
+        <module>chapter4-1-1</module>
+        <module>chapter4-2-1</module>
+        <module>chapter4-2-2</module>
+        <module>chapter4-4-1</module>
+        <module>chapter4-4-2</module>
+        <module>chapter4-4-3</module>
+        <module>chapter4-5-2</module>
+        <module>chapter4-5-3</module>
+        <module>chapter4-6-0</module>
+
+
+
+        <module>chapter5-1-1</module>
+        <module>chapter5-1-5</module>
+        <module>chapter5-2-1</module>
+        <module>chapter5-3-1</module>
+        <module>chapter5-3-2</module>
+
+
+        <module>chapter6-1-1</module>
+        <module>chapter6-2-1</module>
+        <module>chapter6-3-1</module>
+        <module>chapter6-4-1</module>
+        <module>chapter6-5-1</module>
+
+
+
+        <module>chapter7-3-1</module>
+        <module>chapter7-4-1</module>
+
+
+
+        <module>chapter8-0-1</module>
+        <module>chapter8-0-8</module>
+        <module>chapter8-1-1</module>
+        <module>chapter8-1-2</module>
+        <module>chapter8-3-0</module>
+
+
+
+        <module>chapter9-1-2</module>
+        <module>chapter9-3-1</module>
+        <module>chapter9-3-2</module>
+        <module>chapter9-5-1</module>
+        <module>chapter9-9-6</module>
+        <module>chapter9-9-9</module>
+
+
+    </modules>
+    <packaging>pom</packaging>
+
+	<name>springboot</name>
+	<description>Demo project for Spring Boot</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.4.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+        <!--&lt;!&ndash;加入子模块 配置依赖&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>com.goat.springboot.learing</groupId>-->
+            <!--<artifactId>chapter1-1-2</artifactId>-->
+            <!--<version>0.0.1-SNAPSHOT</version>-->
+        <!--</dependency>-->
+
+
+
+        <!--导入配置文件处理器，配置文件进行绑定就会有提示-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+
+        <!--引入 TestNg -->
+        <dependency><groupId>org.testng</groupId><artifactId>testng</artifactId><version>RELEASE</version></dependency>
+
+
+
+        <!--<dependency><groupId>junit</groupId><artifactId>junit</artifactId><version>4.12</version></dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!--  log4j -->
+        <dependency> <groupId>log4j</groupId> <artifactId>log4j</artifactId> <version>1.2.17</version> </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.0.4.RELEASE</version>
+        </dependency>
+    </dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>

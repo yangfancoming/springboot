@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goat.dao.Test3Dao">
+
+
+
+    <select id="findForListObject" resultType="Emp">
+        SELECT * FROM emp
+    </select>
+
+    <select id="findForListMap" resultType="java.util.Map">
+        SELECT * FROM emp
+    </select>
+
+    <select id="findForListMap1" resultType="Emp">
+        SELECT * FROM emp
+    </select>
+</mapper>

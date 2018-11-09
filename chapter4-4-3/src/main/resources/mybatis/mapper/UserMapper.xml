@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="com.goat.dao.UserDao">
+
+
+    <select id="findObjectById" parameterType="java.util.Map" resultType="haha">
+        SELECT * FROM user WHERE id = #{id}
+    </select>
+
+
+    <!--返回 List<User> resultType 还是写 单个 pojo 对象  (User)  -->
+    <select id="findList"  resultType="haha">
+        SELECT * FROM user
+    </select>
+
+</mapper>

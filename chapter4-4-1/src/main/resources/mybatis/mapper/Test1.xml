@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goat.dao.Test1Dao">
+
+    <!--useGeneratedKeys 开启自增主键获取值策略，keyProperty 指定插入记录后 将主键信息设置在哪个属性中 返回-->
+    <insert id="saveMap" parameterType="java.util.Map" useGeneratedKeys="true" keyProperty="id">
+        insert into emp ( ENAME) values(#{ENAME})
+    </insert>
+
+    <insert id="saveObject" parameterType="Emp" useGeneratedKeys="true" keyProperty="COMM">
+        insert into emp ( ENAME) values(#{ENAME})
+    </insert>
+
+</mapper>

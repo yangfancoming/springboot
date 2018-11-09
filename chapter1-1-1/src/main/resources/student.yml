@@ -1,0 +1,32 @@
+
+
+student:
+  name: shanyang
+  age: 23
+  sex: true
+  bir: 2019/02/12
+  location: {pro: 陕西,city: 西安,area: 雁塔区}
+  hobbies:
+    - 足球
+    - 篮球
+  skills:
+    - 打架
+    - 杀人
+    - 放火
+  pet:
+    nickName: 童童
+    age: 11
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="com.goat.dao.DeptDao">
+
+
+    <select id="findObjectById" parameterType="java.util.Map" resultType="dept">
+        SELECT * FROM dept WHERE DEPTNO = #{id}
+    </select>
+
+
+    <select id="findObjectBy2"  resultType="dept">
+        SELECT * FROM dept WHERE DEPTNO = #{param1} AND DNAME = #{param2}
+    </select>
+
+    <select id="findObjectBy22"  resultType="dept">
+        SELECT * FROM dept WHERE DEPTNO = #{id} AND DNAME = #{dname}
+    </select>
+
+
+    <select id="findObjectBy222"  resultType="dept">
+        SELECT * FROM dept WHERE DEPTNO = ${id} AND DNAME = #{dname}
+    </select>
+
+
+
+    <!-- 通过ID 查询单条或多条记录 -->
+    <select id="dynamic1" parameterType="java.util.Map" resultType="java.util.Map">
+        SELECT * FROM ${tableName} WHERE ${columnName} = #{ID}
+    </select>
+
+    <!-- 通过主键删除单条记录 -->
+    <delete id="dynamic2" parameterType="java.util.Map">
+        DELETE FROM ${tableName} WHERE ${columnName} = #{ID}
+    </delete>
+</mapper>
