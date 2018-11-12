@@ -24,7 +24,7 @@ import java.util.List;
 */
 
 @SpringBootApplication
-@ServletComponentScan   //(FirstServlet 使用)启动器启动时，扫描本目录以及子目录带有的webservlet注解的类  并对其进行实例化
+@ServletComponentScan   //(FirstServlet 使用)启动器启动时，扫描本目录以及子目录带有的 webservlet 注解的类  并对其进行实例化
 public class FirstServletApplication {
 
     public static void main(String[] args) {

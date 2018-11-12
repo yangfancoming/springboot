@@ -13,10 +13,10 @@ import java.io.IOException;
  * Created by 64274 on 2018/10/23.
  *
  * @author 山羊来了
- * @Description: TODO
+ * @Description: 自定义 Filter  第一种实现方式
  * @date 2018/10/23---11:03
  *
-<!-- 编码过滤器 -->
+<!-- 对应xml配置 ： 编码过滤器 -->
 <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -30,6 +30,10 @@ import java.io.IOException;
     <filter-name>encodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
 </filter-mapping>
+
+测试地址：
+http://localhost:8203/first
+
  */
 
 @WebFilter(filterName = "FirstFilter", urlPatterns = { "/first" })

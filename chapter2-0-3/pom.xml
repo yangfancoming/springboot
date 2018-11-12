@@ -12,11 +12,11 @@
     <artifactId>chapter2-0-3</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>com.goat.springboot.learing</groupId>
-            <artifactId>chapter1-1-2</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.goat.springboot.learing</groupId>-->
+            <!--<artifactId>chapter1-1-2</artifactId>-->
+            <!--<version>0.0.1-SNAPSHOT</version>-->
+        <!--</dependency>-->
     </dependencies>
 
 </project>
