@@ -12,4 +12,25 @@
     <artifactId>chapter4-4-4</artifactId>
 
 
+    <dependencies>
+
+        <dependency>
+            <groupId>com.goat.springboot.learing</groupId>
+            <artifactId>chapter1-1-2</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>com.goat.springboot.learing</groupId>-->
+            <!--<artifactId>chapter0-0-0</artifactId>-->
+            <!--<version>0.0.1-SNAPSHOT</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.0-RC3</version>
+        </dependency>
+    </dependencies>
+
 </project>
