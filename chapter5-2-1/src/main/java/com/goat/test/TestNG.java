@@ -2,6 +2,7 @@ package com.goat.test;
 
 
 import com.goat.Application;
+import com.goat.bean.Person;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.BeforeMethod;
@@ -48,7 +49,6 @@ public class TestNG extends AbstractTestNGSpringContextTests {
     public void test2() throws ExecutionException { // 缓存获取
         CacheDemo.put("man", new Person("hopg", 123));
         System.out.println(CacheDemo.get("man"));
-        System.out.println(CacheDemo.get("man"));
     }
 
 
@@ -61,7 +61,6 @@ public class TestNG extends AbstractTestNGSpringContextTests {
     public void test4() throws ExecutionException { // 缓存获取
         CacheDemo.put("person", person);
         System.out.println(CacheDemo.get("person").toString());
-        System.out.println(CacheDemo.get("person").toString());
     }
 
     @Test
@@ -72,7 +71,6 @@ public class TestNG extends AbstractTestNGSpringContextTests {
     @Test
     public void test6() throws ExecutionException { // 缓存获取
         CacheDemo.put("women", new Person("google", 666));
-        System.out.println(CacheDemo.get("women"));
         System.out.println(CacheDemo.get("women"));
         System.out.println(CacheDemo.get("man")); // 如果没有值,就执行其他方式去获取值
     }

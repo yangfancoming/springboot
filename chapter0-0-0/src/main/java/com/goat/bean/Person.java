@@ -1,4 +1,4 @@
-package com.goat.test;
+package com.goat.bean;
 
 /**
  * Created by 64274 on 2018/9/10.
