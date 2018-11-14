@@ -1,5 +1,7 @@
 package com.goat.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by 64274 on 2018/10/16.
  *
@@ -7,7 +9,7 @@ package com.goat.bean;
  * @Description: TODO
  * @date 2018/10/16---20:34
  */
-public class User {
+public class User implements Serializable {
     private String id;
     private String name;
     private Integer age;
@@ -24,6 +26,11 @@ public class User {
     public User(String id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public User(Integer age, String username) {
+        this.age = age;
+        this.username = username;
     }
 
     public Integer getAge() {

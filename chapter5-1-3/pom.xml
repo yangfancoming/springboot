@@ -9,36 +9,21 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>chapter5-1-1</artifactId>
-
+    <artifactId>chapter5-1-3</artifactId>
 
     <dependencies>
-        <!-- Spring Boot Redis 依赖 -->
 
-        <!--fuck 使用该依赖会报错 Consider defining a bean of type 'org.springframework.data.redis.connection.RedisConnectionFactory' in your configuration-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.data</groupId>-->
-            <!--<artifactId>spring-data-redis</artifactId>-->
-            <!--<version>1.6.1.RELEASE</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>com.goat.springboot.learing</groupId>
             <artifactId>chapter1-1-2</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-data-redis</artifactId>-->
-            <!--<version>2.0.4.RELEASE</version>-->
-        <!--</dependency>-->
-
         <dependency>
             <groupId>com.goat.springboot.learing</groupId>
             <artifactId>chapter0-0-0</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
 
     </dependencies>
 </project>

@@ -32,6 +32,7 @@ public class RedisConfig extends CachingConfigurerSupport {
          * @Date:   2018/8/12
     */
 
+    //缓存管理器
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
         RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
@@ -49,10 +50,13 @@ public class RedisConfig extends CachingConfigurerSupport {
         om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
         j2.setObjectMapper(om);
-        //使用StringRedisSerializer来序列化和反序列化redis的key值
-        template.setValueSerializer(j2);
-        template.setKeySerializer(new StringRedisSerializer()); // 这里貌似使用了 使用Jackson2JsonRedisSerializer序列化value之后  也会自动序列化key值 所以不必在设置了
 
+        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
+        // 这里貌似使用了 使用Jackson2JsonRedisSerializer序列化value之后  也会自动序列化key值 所以不必在设置了
+        template.setKeySerializer(stringRedisSerializer); // key采用String的序列化方式
+        template.setHashKeySerializer(stringRedisSerializer); // hash的key也采用String的序列化方式
+        template.setValueSerializer(j2);  // value序列化方式采用jackson
+        template.setHashValueSerializer(j2); // hash的value序列化方式采用jackson
         template.afterPropertiesSet();
         return template;
     }
