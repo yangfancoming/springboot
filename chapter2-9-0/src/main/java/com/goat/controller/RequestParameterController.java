@@ -1,7 +1,5 @@
 package com.goat.controller;
 
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -84,7 +82,6 @@ public class RequestParameterController {
     }
 
     // =================== @RequestBody =============================
-
     /**
      * @RequestBody: 获取请求的内容
      *	请求内容为JSON  测试方法在：查找 public void test2() throws Exception
