@@ -20,17 +20,31 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     // @Cacheable缓存key为name的数据到缓存usercache中
-    @Cacheable(value = "usercache", key = "#p0")
+    @Cacheable(value = "usercache", key = "#name")
     public User findUser(String name) {
-        System.out.println("无缓存时执行下面代码，获取zhangsan,Time：" );
-        return new User(1, name);// 模拟从持久层获取数据
+        System.out.println("无缓存1.............." );
+        return new User(1, name);
     }
 
-    @Cacheable(value = "usercache", key = "#p0")
+    @Cacheable(value = "usercache2", key = "#p0")
     public User findUser2(String name) {
-        System.out.println("无缓存时执行下面代码，获取lisi,Time：" );
-        return new User(2, "lisi");// 模拟从持久层获取数据
+        System.out.println("无缓存2.............." );
+        return new User(1, name);
     }
+
+    /***
+     *  如果设置sync=true，
+     *  如果缓存中没有数据，多个线程同时访问这个方法，则只有一个方法会执行到方法，其它方法需要等待
+     *  如果缓存中已经有数据，则多个线程可以同时从缓存中获取数据
+     * @param name
+     * @return
+     */
+    @Cacheable(value = "usercache3", sync=true)
+    public User findUser3(String name) {
+        System.out.println("无缓存3.............." );
+        return new User(1, name);
+    }
+
 
     // @CacheEvict从缓存usercache中删除key为name的数据
     @CacheEvict(value = "usercache", key = "#p0")
@@ -38,12 +52,53 @@ public class UserService {
         System.out.println("删除数据" + name + "，同时清除对应的缓存");
     }
 
-    // @CachePut缓存新增的数据到缓存usercache中
+    // allEntries = true: 清空 usercache 里的所有缓存
+    @CacheEvict(cacheNames="usercache", allEntries=true)
+    public void clearAll(){
+        System.out.println("清空usercache 中的所有缓存数据哦");
+    }
+
+    /**
+     * 每次执行都会执行方法，无论缓存里是否有值，同时使用新的返回值的替换缓存中的值
+     * 	这里不同于@Cacheable：@Cacheable如果缓存没有值，从则执行方法并缓存数据，如果缓存有值，则从缓存中获取值
+     * 	@CachePut缓存新增的数据到缓存usercache中
+     */
     @CachePut(value = "usercache", key = "#p0")
-    public User save(String name, int id) {
+    public User save(int age,String name) {
         System.out.println("添加lisi用户");
-        return new User(2, "lisi");
+        return new User(age, name);
+    }
+
+    /**
+         condition和unless 只满足特定条件才进行缓存：
+         condition ： 在执行方法前，condition的值为true，则缓存数据
+         unless ：在执行方法后，判断unless ，如果值为true，则不缓存数据
+         conditon和unless可以同时使用，则此时只缓存同时满足两者的记录
+     * 条件缓存：
+     * 只有满足condition的请求才可以进行缓存，如果不满足条件，则跟方法没有@Cacheable注解的方法一样
+     * 	如下面只有id < 3才进行缓存
+     */
+    @Cacheable(cacheNames="MyUser", condition="T(java.lang.Integer).parseInt(#id) < 33 ")
+    public User condition(String id) {
+        System.out.println("无缓存。。。。。。。。。。。。。。");
+        return new User(id, "temp");
+    }
+
+    /**
+     * 条件缓存：
+     * 对不满足unless的记录，才进行缓存
+     */
+    @Cacheable(cacheNames="MyUser", unless="T(java.lang.Integer).parseInt(#id) < 33 ")
+    public User unless(String id) {
+        System.out.println("无缓存。。。。。。。。。。。。。。");
+        return new User(id, "temp");
     }
 
 
+    //
+    @Cacheable(cacheNames="MyUser", unless="T(java.lang.Integer).parseInt(#id) < 33 ")
+    public User unl1ess(String id) {
+        System.out.println("无缓存。。。。。。。。。。。。。。");
+        return new User(id, "temp");
+    }
 }
