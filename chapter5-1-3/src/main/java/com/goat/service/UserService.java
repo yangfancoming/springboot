@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    // @Cacheable缓存key为name的数据到缓存usercache中  doit 为什么缓存的key 没问题但是  value 却是乱码呢？
+    // @Cacheable缓存key为name的数据到缓存usercache中
     @Cacheable(value = "usercache", key = "#p0")
     public User findUser(String name) {
         System.out.println("无缓存时执行下面代码，获取zhangsan,Time：" );

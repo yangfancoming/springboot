@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class PersonServiceImpl implements PersonService {
 
 
-    // 缓存名称 people   数据的key是 person的 id
+    // 缓存名称 people   数据的key是 person的 id  如果没有指定key属性 那么方法参数作为key保存到缓存中
     @Override
     @CachePut(value = "people", key = "#p.id")
     public Person save(Person p) {
