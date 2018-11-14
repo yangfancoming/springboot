@@ -1,6 +1,7 @@
 package com.goat.service;
 
 import com.goat.bean.User;
+import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -14,9 +15,11 @@ import org.springframework.stereotype.Service;
  * @date 2018/11/14---9:58
  *
  * 使用方法参数时我们可以直接使用“#参数名”或者“#p参数index”
+ * @CacheConfig: 类级别的注解：如果我们在此类中定义cacheNames，则此类中的所有方法上 @Cacheable的cacheNames默认都是此值。当然@Cacheable也可以覆盖定义cacheNames的值
  */
 
 @Service
+@CacheConfig(cacheNames="booksAll")
 public class UserService {
 
     // @Cacheable缓存key为name的数据到缓存usercache中
@@ -95,10 +98,10 @@ public class UserService {
     }
 
 
-    //
-    @Cacheable(cacheNames="MyUser", unless="T(java.lang.Integer).parseInt(#id) < 33 ")
-    public User unl1ess(String id) {
+    // cacheNames默认都是此值 booksAll  key 默认值是 参数名 wahaha  redis中的保存结果： booksAll::321
+    @Cacheable
+    public User booksAll(String wahaha) {
         System.out.println("无缓存。。。。。。。。。。。。。。");
-        return new User(id, "temp");
+        return new User(wahaha, "temp");
     }
 }

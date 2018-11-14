@@ -51,4 +51,9 @@ public class ApplicationTests {
 //        userService.unless("32"); //  满足条件  不会保存到缓存
     }
 
+    @Test
+    public void booksAll(){
+        userService.booksAll("321");
+    }
+
 }
