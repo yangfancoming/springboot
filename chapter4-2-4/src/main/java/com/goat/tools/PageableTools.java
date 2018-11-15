@@ -20,6 +20,8 @@ public class PageableTools {
     public static Pageable myPage(Integer page) {
         return basicPage(page, 0, new SortDto("desc", "id"));
     }
+
+
     public static Pageable myPage(Integer page ,Integer size) {
         return basicPage(page, size, new SortDto("desc", "id"));
     }
