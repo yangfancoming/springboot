@@ -5,13 +5,13 @@
 - chapter1-1-1 springboot 读取配置文件
 - chapter1-1-2 springboot  javaconfig配置集合(其他模块共享该配置)
 - chapter1-2-1 springboot  与 日志
-- 
+  
 
 Web开发
 
-- ==chapter2-0-0 springboot  中的SpringMVC  相关操作总结 ==
+- hapter2-0-0 springboot  中的SpringMVC  相关操作总结
 - chapter2-0-2 springboot  打jar包方式的静态资源映射规则(webjars)
-- chapter2-0-3 springboot  集成  servlet、Filter、 Listener 的两种方式
+- chapter2-0-3 springboot  集成  servlet、Filter、 Listener、interceptor 的两种方式
 - chapter2-0-5 springboot  中的SpringMVC   返回各种数据类型总结 JPA
 - chapter2-0-7 springboot  中的SpringMVC 扩展与接管
 - ==chapter2-1-0 springboot  中使用 JavaScript ==
@@ -50,20 +50,23 @@ Web开发
 
 
 
-安全
+安全管理
 
 - chapter3-5-1：springboot  集成  Shiro +  Thymeleaf
 - chapter3-5-4：springboot  集成  SpringSecurity +  Thymeleaf
+- chapter3-6-3：springboot  集成  oauth2
 
 数据访问
 
 - chapter4-0-0：springboot 集成  Druid连接池及监控界面
-- chapter4-1-1：springboot 集成 JDBC   
+- chapter4-1-1：springboot 中使用 JDBC   
 - chapter4-2-1：springboot 集成 JPA  
-- chapter4-2-2：springboot 集成 JPA  复杂条件查询  
+- ==chapter4-2-2：springboot 集成 JPA  复杂条件查询 ==  
+- chapter4-2-4：springboot 集成 JPA 分页查询 JSP + DataTable  
 - chapter4-4-1：springboot 集成 mybatis   Dao接口 + sqlxml 实现 
 - chapter4-4-2：springboot 集成 mybatis   Dao接口 +  注解 实现
 - chapter4-4-3：springboot 集成 mybatis 
+- chapter4-4-4：springboot 集成 mybatis + mybatisplus 
 - chapter4-5-2：springboot 集成 MongoDB  使用 MongoTemplate
 - chapter4-5-3：springboot 集成 MongoDB  使用 MongoRepository
 - chapter4-6-0：springboot 集成 Oracle
@@ -74,7 +77,8 @@ Web开发
 
 - chapter5-1-1：springboot 集成 redis     使用redisTemplate
 - chapter5-1-2：springboot 集成 redis     使用 jedis 列举 五大数据类型的 常用指令
-- chapter5-1-5：springboot 集成 redis     使用 RedisTemplate和 jedis 调用Lua脚本   
+- chapter5-1-3：springboot 集成 redis     使用redisTemplate 注解版
+- chapter5-1-5：springboot 集成 redis     使用 RedisTemplate 和 jedis 调用Lua脚本   
 - chapter5-2-1：springboot 集成  guava cache
 - ==chapter5-3-0：springboot 集成 Dubbo consumer/ product ==
 - ==chapter5-3-1：springboot 集成 Dubbo api / consumer/ product ==
@@ -93,7 +97,7 @@ Web开发
 - chapter8-0-5：springboot 集成 Lua
 - chapter8-0-8：springboot 集成 Kotlin
 - chapter8-1-1：springboot 集成 Oss  使用阿里云存储
-- chapter8-1-2：springboot 集成 Java调用 Lua脚本  通过LuaJava
+- chapter8-1-2：springboot 集成  Java调用 Lua脚本  通过LuaJava
 - chapter8-3-0：springboot 集成 RabbitMQ
 - chapter9-1-1：Mysql 积累和总结
 - chapter9-1-2：Mysql  各种配置
@@ -101,7 +105,10 @@ Web开发
 - chapter9-3-2：springboot 集成 HessianClient
 - chapter9-4-1：springboot 集成 Docker
 - chapter9-5-1：springboot 集成23种设计模式
- 
+- chapter9-6-1：springboot 集成 微信订阅号
+  
+
 测试功能
+
 - chapter9-9-6：springboot 集成 TestNG
 - chapter9-9-9：提供测试代码 编写
