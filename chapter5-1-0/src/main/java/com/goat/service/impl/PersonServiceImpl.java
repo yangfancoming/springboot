@@ -24,7 +24,6 @@ public class PersonServiceImpl implements PersonService {
     @CacheEvict(value = "people")//2
     public void remove(Long id) {
         System.out.println("删除了id、key为" + id + "的数据缓存");
-        //这里不做实际删除操作
     }
 
     @Override
