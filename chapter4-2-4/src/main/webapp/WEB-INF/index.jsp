@@ -6,7 +6,7 @@
 %>
 <html>
 <head>
-    <title>前后台交互总结</title>
+    <title>JPA + JSP + DataTable分页总结</title>
     <meta charset="utf-8">
     <script type="text/javascript" charset="utf8" src="dataTable/js/jquery-3.2.1.js"></script>
     <link rel="stylesheet" type="text/css" href="dataTable/css/jquery.dataTables.css">
@@ -95,11 +95,10 @@
             $.ajax({
                 url: sSource,                              //这个就是请求地址对应sAjaxSource
                 data: {"aoData": JSON.stringify(aoData)},   //这个是把datatable的一些基本数据传给后台,比如起始位置,每页显示的行数 ,分页,排序,查询等的值
-                type: 'GET',
-                dataType: 'json',
-                async: false,
+                type: 'GET',dataType: 'json', async: false,
                 success: function (result) {
-                    fnCallback(result);                     //把返回的数据传给这个方法就可以了,datatable会自动绑定数据的
+                    console.log(result,111111111111);// doit
+                    fnCallback(result);                     //把返回的数据传给这个方法就可以了,datatable 会自动绑定数据的
                 },
                 error: function (msg) {
                     alert("初始化信息失败" + msg);

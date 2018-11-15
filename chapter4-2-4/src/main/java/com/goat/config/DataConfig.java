@@ -23,8 +23,9 @@ public class DataConfig {
         DruidDataSource ds = new DruidDataSource();
         ds.setDriverClassName("com.mysql.jdbc.Driver");
         ds.setUrl("jdbc:mysql://172.16.163.135:3306/jpaTest?Unicode=true&amp;characterEncoding=utf8&useSSL=false");
-        ds.setUsername("root");
-        ds.setPassword("12345");
+//        ds.setUrl("jdbc:mysql://192.168.235.182/wms?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull"); // wms
+        ds.setUsername("test_sim");
+        ds.setPassword("sim@sim");
         ds.setInitialSize(5);
         ds.setMinIdle(5);
         ds.setMaxActive(10);
