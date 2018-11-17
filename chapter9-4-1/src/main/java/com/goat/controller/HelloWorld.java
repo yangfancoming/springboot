@@ -11,6 +11,8 @@ import java.io.IOException;
  */
 @Controller
 public class HelloWorld {
+
+    // http://localhost:8941/hello
     @GetMapping("/hello")
     public void helloworld(HttpServletResponse response) throws IOException {
         response.getWriter().write("Hello Spring-boot 2018年10月13日14:01:46");

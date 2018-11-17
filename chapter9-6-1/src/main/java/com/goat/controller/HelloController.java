@@ -52,7 +52,6 @@ public class HelloController {
     @RequestMapping(value = "test1",method=RequestMethod.POST)
     public void dopost(HttpServletRequest request,HttpServletResponse response){
         System.out.println("111111111111111111");
-
     }
 
 }
