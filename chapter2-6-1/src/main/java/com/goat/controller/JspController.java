@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class JspController {
 
+    //    http://localhost:8261/hello
     @RequestMapping("/hello")
     @ResponseBody
     public String hello() {

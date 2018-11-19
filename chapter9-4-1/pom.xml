@@ -75,11 +75,11 @@
 
                     <!--指定远程 docker api地址-->
                     <!--本地虚拟机-->
-                    <!--<dockerHost>http://172.16.163.135:2376</dockerHost>-->
+                    <dockerHost>http://172.16.163.135:2376</dockerHost>
                     <!--腾讯云-->
                     <!--<dockerHost>http://132.232.71.245:2376</dockerHost>-->
                     <!--阿里云-->
-                    <dockerHost>http://47.98.148.84:2376</dockerHost>
+                    <!--<dockerHost>http://47.98.148.84:2376</dockerHost>-->
                     <!-- 这里是复制 jar 包到 docker 容器指定目录配置 -->
                     <resources>
                         <resource>

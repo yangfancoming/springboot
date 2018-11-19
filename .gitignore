@@ -10,11 +10,8 @@ target
 /chapter9-1-2/*
 /chapter6-2-1/src/main/resources/application.properties
 /chapter2-6-4/src/main/resources/application.properties
-/chapter4-2-4/src/test/java/com/goat/wms/*
 aliyun-oss.properties
 security.properties
-daemon.json
-zoo.cfg
 banner.txt
 
 gen

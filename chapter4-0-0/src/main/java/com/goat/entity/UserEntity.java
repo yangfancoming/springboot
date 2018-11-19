@@ -14,9 +14,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "t_user")
-public class UserEntity implements Serializable
-{
-
+public class UserEntity implements Serializable{
     @Id
     @GeneratedValue
     @Column(name = "t_id")
