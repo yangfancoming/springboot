@@ -43,8 +43,7 @@
     }
     //断开连接
     function disconnect(){
-        if(stompClient!=null)
-        {
+        if(stompClient!=null){
             stompClient.disconnect();
         }
         setConnected(false);
@@ -56,8 +55,8 @@
         stompClient.send("/api/v1/socket/req/message",{},JSON.stringify({'message':name}));
     }
     //显示socket返回消息内容
-    function showResponse(message)
-    {
+    function showResponse(message){
+
         $("#response").html(message);
     }
 </script>
