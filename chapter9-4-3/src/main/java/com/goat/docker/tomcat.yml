@@ -1,0 +1,12 @@
+version: '3'
+services:
+  tomcat:
+    restart: always
+    image: 'tomcat:8.5'
+    container_name: mytom85
+    ports:
+      - "8034:8080"
+    volumes:
+      - /usr/local/docker/tomcat/webapps/test:/usr/local/tomcat/webapps/test
+    environment:
+      TZ: Asia/Shanghai
