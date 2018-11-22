@@ -4,7 +4,6 @@ version: '3'
 services:
     web:
       image: 'twang2218/gitlab-ce-zh:10.5'
-#      restart: always
       restart: always
       hostname: '172.16.163.135'
       environment:

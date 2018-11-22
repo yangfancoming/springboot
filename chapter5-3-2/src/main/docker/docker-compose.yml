@@ -3,7 +3,7 @@ version: '3.1'
 services:
     zoo1:
         image: docker.io/zookeeper
-        restart: no
+        restart: always
         hostname: zoo1
         ports:
             - 2181:2181
@@ -13,7 +13,7 @@ services:
 
     zoo2:
         image: docker.io/zookeeper
-        restart: no
+        restart: always
         hostname: zoo2
         ports:
             - 2182:2181
@@ -23,7 +23,7 @@ services:
 
     zoo3:
         image: docker.io/zookeeper
-        restart: no
+        restart: always
         hostname: zoo3
         ports:
             - 2183:2181
