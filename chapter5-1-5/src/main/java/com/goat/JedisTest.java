@@ -30,7 +30,6 @@ public class JedisTest {
         /*
             * 其中 "return {KEYS[1],KEYS[2],ARGV[1],ARGV[2]}" 是被求值的 Lua 脚本，数字 2 指定了键名参数的数量，
             * key1 和 key2 是键名参数，分别使用 KEYS[1] 和 KEYS[2] 访问，而最后的 first 和 second 则是附加参数，可以通过 ARGV[1] 和 ARGV[2] 访问它们。
-            *
             * 注意，这里一些操作不适用于redis-cluster，主要还是因为不同的key被分配到了不同的slot中
         */
         Object eval = jedis.eval("return {KEYS[1],ARGV[1],ARGV[2]}", 1, "lua", "key1", "dd");

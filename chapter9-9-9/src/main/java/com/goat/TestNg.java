@@ -22,6 +22,9 @@ public class TestNg {
     @Test
     public void test(){
 
+        if("YYM%".indexOf("%")>-1){
+            System.out.println(111);
+        }
     }
 
 }

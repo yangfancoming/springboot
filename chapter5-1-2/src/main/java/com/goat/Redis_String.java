@@ -2,6 +2,8 @@ package com.goat;
 
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
+
 /**
      * @Description: 功能描述： redis 字符串操作
      * @author: 杨帆
@@ -9,10 +11,16 @@ import org.testng.annotations.Test;
 */
 public class Redis_String extends Redis_Common {
 
-
+//     stringRedisTemplate.opsForValue().set("timeOutValue","timeOut",5, TimeUnit.SECONDS);
     @Test
     public void set(){
         String temp = jedis.set("fuck","gaga"); // 设置 键值对   对应命令 set fuck1 gaga
+        System.out.println(temp); // 返回 OK
+    }
+    // 设置过期时间  对应  stringRedisTemplate.opsForValue().set("timeOutValue","timeOut",5, TimeUnit.SECONDS);
+    @Test
+    public void set1(){ /*seconds*/
+        String temp = jedis.set("key","1111", "111", "EX", 60);
         System.out.println(temp); // 返回 OK
     }
     @Test
@@ -61,8 +69,8 @@ public class Redis_String extends Redis_Common {
         System.out.println(temp);
     }
     @Test
-    public void setnx(){ // set if no exist
-        Long temp = jedis.setnx("what","foo"); // 如何key不存在则设置   存在则忽略本次操作
+    public void setnx(){ // set if no exist 常用于  加锁机制
+        Long temp = jedis.setnx("what","foo"); // 如何key不存在则设置返回1   存在则忽略本次操作 返回0
         System.out.println(temp);
     }
     @Test
