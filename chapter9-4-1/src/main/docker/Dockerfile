@@ -17,27 +17,29 @@
 
 # DockerFile ##############################################################################################
 
-##拉取 指定镜像
-#FROM tomcat:8.5
-## 切换到指定工作目录
-#WORKDIR /usr/local/tomcat/webapps/ROOT/
-## 删除 指定工作目录下所有内容
-##RUN rm -fr *
-#RUN rm -f index.jsp
-#RUN echo "hello my Docker!" > /usr/local/tomcat/webapps/ROOT/index.html
+# 制作一个  自定义 的 tomcat 镜像
+#拉取 指定镜像
+FROM tomcat:8.5
+# 切换到指定工作目录
+WORKDIR /usr/local/tomcat/webapps/ROOT/
+# 删除 指定工作目录下所有内容  会报错 rm: cannot remove 'WEB-INF': Directory not empty
+#RUN rm -fr *
+# 单个 index.jsp 可以删除 但是 命令行界面 不会刷新显示
+RUN rm -f index.jsp
+RUN echo "hello my Docker!" > /usr/local/tomcat/webapps/ROOT/index.html
 
 # DockerFile ##############################################################################################
 
-#
+## 制作一个  自带 vim 的 tomcat 镜像
+##拉取 指定镜像
+#FROM tomcat:8.5
+## 在命令依次运行一下命令   更改配置 使得 可以从国内镜像 下载安装 vim  否则 从国外下载会很慢很慢！！！
+#RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
+#RUN   echo "deb http://mirrors.163.com/debian/ jessie main non-free contrib" >/etc/apt/sources.list
+#RUN   echo "deb http://mirrors.163.com/debian/ jessie-proposed-updates main non-free contrib" >>/etc/apt/sources.list
+#RUN   echo "deb-src http://mirrors.163.com/debian/ jessie main non-free contrib" >>/etc/apt/sources.list
+#RUN   echo "deb-src http://mirrors.163.com/debian/ jessie-proposed-updates main non-free contrib" >>/etc/apt/sources.list
+#RUN apt-get update
+#RUN apt-get install -y vim
 
-#拉取 指定镜像
-FROM tomcat:8.5
-# 在命令依次运行一下命令   更改配置 使得 可以从国内镜像 下载安装 vim  否则 从国外下载会很慢很慢！！！
-RUN mv /etc/apt/sources.list /etc/apt/sources.list.bak
-RUN   echo "deb http://mirrors.163.com/debian/ jessie main non-free contrib" >/etc/apt/sources.list
-RUN   echo "deb http://mirrors.163.com/debian/ jessie-proposed-updates main non-free contrib" >>/etc/apt/sources.list
-RUN   echo "deb-src http://mirrors.163.com/debian/ jessie main non-free contrib" >>/etc/apt/sources.list
-RUN   echo "deb-src http://mirrors.163.com/debian/ jessie-proposed-updates main non-free contrib" >>/etc/apt/sources.list
-RUN apt-get update
-RUN apt-get install -y vim
 # DockerFile ##############################################################################################

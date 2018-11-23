@@ -1,8 +1,8 @@
 package com.goat.controller;
 
+import com.goat.bean.User;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -83,14 +83,24 @@ public class RequestParameterController {
 
     // =================== @RequestBody =============================
     /**
-     * @RequestBody: 获取请求的内容
-     *	请求内容为JSON  测试方法在：查找 public void test2() throws Exception
+     * @RequestBody: 请求内容为JSON  字符串
+     *	  测试方法在：查找 public void requestBodyString() throws Exception
      * @param body
-     * @throws IOException
      */
-    @RequestMapping(value = "/requestBody", method = RequestMethod.POST)
-    public Object requestBody(@RequestBody String body){
+    @RequestMapping(value = "/requestBodyString", method = RequestMethod.POST)
+    public Object requestBodyString(@RequestBody String body){
         return body;
+    }
+
+
+    /**
+     * @RequestBody: 请求内容为JSON  javaBean
+     *	  测试方法在：查找 public void requestBodyBean() throws Exception
+     * @param user
+     */
+    @RequestMapping(value = "/requestBodyBean", method = RequestMethod.POST)
+    public User requestBodyBean(@RequestBody User user){
+        return user;
     }
 
 }

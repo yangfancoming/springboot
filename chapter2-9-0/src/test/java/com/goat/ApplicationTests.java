@@ -32,11 +32,21 @@ public class ApplicationTests {
     private MockMvc mockMvc; //注入 MockMvc
 
     @Test
-    public void test2() throws Exception {
+    public void requestBodyString() throws Exception {
         User user = new User("111","2222");
         String requestJson = JSONObject.toJSONString(user);
         //请求方式： post   请求url： /request/requestBody    contentType需要设置成MediaType.APPLICATION_JSON，即声明是发送“application/json”格式的数据
-        String responseString = mockMvc.perform(post("/request/requestBody").contentType(MediaType.APPLICATION_JSON).content(requestJson))
+        String responseString = mockMvc.perform(post("/request/requestBodyString").contentType(MediaType.APPLICATION_JSON).content(requestJson))
+                .andDo(print()) //打印效果
+                .andExpect(status().isOk())  //预期状态
+                .andReturn().getResponse().getContentAsString();
+        System.out.println(responseString);
+    }
+
+    @Test
+    public void requestBodyBean() throws Exception {
+        String user = "{\"id\":\"17051801\",\"name\":\"lucy\"}";
+        String responseString = mockMvc.perform(post("/request/requestBodyBean").contentType(MediaType.APPLICATION_JSON).content(user))
                 .andDo(print()) //打印效果
                 .andExpect(status().isOk())  //预期状态
                 .andReturn().getResponse().getContentAsString();
