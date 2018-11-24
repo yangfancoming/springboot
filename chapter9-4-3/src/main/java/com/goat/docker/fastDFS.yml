@@ -1,0 +1,10 @@
+#基于 Docker 来安装 FastDFS
+version: '3.1'
+services:
+  fastdfs:
+    build: environment
+    restart: always
+    container_name: fastdfs
+    volumes:
+      - ./storage:/fastdfs/storage
+    network_mode: host
