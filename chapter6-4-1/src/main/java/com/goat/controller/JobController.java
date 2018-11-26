@@ -3,8 +3,6 @@ package com.goat.controller;
 
 import com.goat.job.BaseJob;
 import org.quartz.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +24,15 @@ public class JobController
 	private Scheduler scheduler;
 	
 
+	/**
+	     * @Description: 功能描述：(这里用一句话描述这个方法的作用)
+	     * @author: 杨帆
+         * @param jobClassName  com.goat.job.HelloJob   这里必须是 全限定类名
+         * @param jobGroupName  组名 可以随意填写
+         * @param cronExpression  cron 表达式 0/1 * * * * ?
+	     * @Return:
+	     * @Date:   2018/11/26
+	*/
 	@PostMapping(value="/addjob")
 	public void addjob(@RequestParam(value="jobClassName")String jobClassName,
 			@RequestParam(value="jobGroupName")String jobGroupName,
@@ -76,24 +83,16 @@ public class JobController
 	}
 	
 	public void jobreschedule(String jobClassName, String jobGroupName, String cronExpression) throws Exception {
-		try {
-			TriggerKey triggerKey = TriggerKey.triggerKey(jobClassName, jobGroupName);
-			// 表达式调度构建器
-			CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(cronExpression);
-
-			CronTrigger trigger = (CronTrigger) scheduler.getTrigger(triggerKey);
-
-			// 按新的cronExpression表达式重新构建trigger
-			trigger = trigger.getTriggerBuilder().withIdentity(triggerKey).withSchedule(scheduleBuilder).build();
-
-			// 按新的trigger重新设置job执行
-			scheduler.rescheduleJob(triggerKey, trigger);
-		} catch (SchedulerException e) {
-			System.out.println("更新定时任务失败"+e);
-			throw new Exception("更新定时任务失败");
-		}
+        TriggerKey triggerKey = TriggerKey.triggerKey(jobClassName, jobGroupName);
+        // 表达式调度构建器
+        CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(cronExpression);
+        CronTrigger trigger = (CronTrigger) scheduler.getTrigger(triggerKey);
+        // 按新的cronExpression表达式重新构建trigger
+        trigger = trigger.getTriggerBuilder().withIdentity(triggerKey).withSchedule(scheduleBuilder).build();
+        // 按新的trigger重新设置job执行
+        scheduler.rescheduleJob(triggerKey, trigger);
 	}
-	
+
 	
 	@PostMapping(value="/deletejob")
 	public void deletejob(@RequestParam(value="jobClassName")String jobClassName, @RequestParam(value="jobGroupName")String jobGroupName) throws Exception {
@@ -106,7 +105,7 @@ public class JobController
 		scheduler.deleteJob(JobKey.jobKey(jobClassName, jobGroupName));				
 	}
 
-	
+
 	public static BaseJob getClass(String classname) throws Exception {
 		Class<?> class1 = Class.forName(classname);
 		return (BaseJob)class1.newInstance();
