@@ -1,7 +1,7 @@
 package com.goat.test;
 
 
-import com.goat.Application;
+import com.goat.GuavaCacheApplication;
 import com.goat.bean.Person;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -30,7 +30,7 @@ put 方法 使用cache.put(key, value)方法可以直接向缓存中插入值
      * @Date:   2018/9/10
 */
 
-@ContextConfiguration(classes= Application.class)
+@ContextConfiguration(classes= GuavaCacheApplication.class)
 public class TestNG extends AbstractTestNGSpringContextTests {
     Person person = new Person();
 

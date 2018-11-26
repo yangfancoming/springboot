@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
  *
  */
 
-@ContextConfiguration(classes= Application.class)
+@ContextConfiguration(classes= GuavaCacheApplication.class)
 public class TestNG extends AbstractTestNGSpringContextTests {
 
     @Autowired
