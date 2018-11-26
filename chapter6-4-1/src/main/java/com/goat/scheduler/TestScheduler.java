@@ -11,6 +11,12 @@ import java.util.concurrent.TimeUnit;
 
 
 
+/**
+     * @Description: SimpleTrigger 触发器
+     * @author: 杨帆
+     * @Date:   2018/11/26
+*/
+
 public class TestScheduler {
 
     public static void main(String[] args) throws SchedulerException, InterruptedException {
@@ -28,7 +34,7 @@ public class TestScheduler {
         System.out.println("组名称"+ detail.getKey().getGroup()); // 组名称group1
         System.out.println("任务类"+ detail.getJobClass()); // 任务类class com.goat.job.TestJob
         * */
-        //3. 获取触发器
+        //3. 获取触发器  (SimpleTrigger)
         SimpleTrigger trigger = TriggerBuilder.newTrigger()
                 .withIdentity("trigger1", "gourp1")
                 .startNow()
