@@ -83,10 +83,10 @@ public class TestNG {
     /**
          * @Description:   生成带 Logo 二维码
          * @author: 杨帆
-         * @param content  二维码包含的内容，文本或网址"Hello World"
-         * @param path     二维码图片目录"C:/Users/Administrator/Desktop/QRcode2/b.jpg"
-         * @param size     二维码图片尺寸 null or your size
-         * @param logoPath 插入图片目录
+         * @ content  二维码包含的内容，文本或网址"Hello World"
+         * @ path     二维码图片目录"C:/Users/Administrator/Desktop/QRcode2/b.jpg"
+         * @ size     二维码图片尺寸 null or your size
+         * @ logoPath 插入图片目录
          * @Date:   2018/11/26
     */
     @Test
