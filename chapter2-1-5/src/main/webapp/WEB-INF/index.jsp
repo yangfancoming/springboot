@@ -24,6 +24,7 @@
 
 <button type="button" class="btn btn-lg btn-primary" onclick="showMsg2(123)">Primary</button>
 
+123123123123
 
 </body>
 </html>
