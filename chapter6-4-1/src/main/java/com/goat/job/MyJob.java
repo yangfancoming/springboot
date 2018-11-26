@@ -1,10 +1,7 @@
 package com.goat.job;
 
-import org.quartz.Job;
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
+import org.quartz.*;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -16,16 +13,30 @@ import java.util.Date;
  */
 public class MyJob implements Job {
 
-    // 任务的构造方法  每次都会被调用
-    public MyJob() {
-        System.out.println("我是任务的构造方法。。。。。。。");
-    }
-
     @Override
-    public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String format = simpleDateFormat.format(new Date());
-        System.out.println("正在操作数据库。。。。。。。。。。"+format);
+    public void execute(JobExecutionContext context) throws JobExecutionException {
+        System.out.println("任务执行了: ");
+
+        JobDataMap dataMap = context.getMergedJobDataMap();
+        String name = dataMap.getString("name");  //获取名字
+        Integer age = dataMap.getInt("age");    //获取年龄
+
+        System.out.println("name: " + name + "  age:" + age);
+
+        JobDetail jobDetail = context.getJobDetail();
+        String jobName = jobDetail.getKey().getName();
+        String jobGroup = jobDetail.getKey().getGroup();
+
+        System.out.println("jobName: " + jobName + "  jobGroup:" + jobGroup);
+
+        Trigger trigger = context.getTrigger();
+        String triggerName = trigger.getKey().getName();
+        String triggerGroup = trigger.getKey().getGroup();
+        Date startTime = trigger.getStartTime();  //获取任务开始时间
+        Date endTime = trigger.getEndTime();    //获取任务结束时间
+
+        System.out.println("triggerName: " + triggerName + "  triggerGroup:" + triggerGroup);
+        System.out.println("startTime: " + startTime + "  endTime:" + endTime);
 
     }
 }
