@@ -1,8 +1,25 @@
-#搭建 redis 单机
-version: '3.1'
-service:
+#搭建 redis 单机  无密码
+#version: '3.1'
+#service:
+#  goat-redis:
+#    image: redis:4.0.11
+#    ports:
+#      - 6379:6379
+#    container_name: redis
+
+
+
+
+#搭建 redis 单机  带密码
+version: '3'
+services:
   goat-redis:
     image: redis:4.0.11
     ports:
       - 6379:6379
     container_name: redis
+    command: redis-server --requirepass 12345 --notify-keyspace-events Eglx
+
+#  测试是否安装   $ docker exec -it redis redis-cli -h 127.0.0.1 -p 6379 -a ${pwd}    如果密码输入错误 也可以登录但是 无法操作 get set 等命令 提示 NoAuth
+
+
