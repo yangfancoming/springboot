@@ -1,5 +1,6 @@
 import org.testng.annotations.Test;
 import utils.QrcodeUtil;
+import utils.ReadQRCode;
 
 import java.io.IOException;
 
@@ -13,6 +14,11 @@ public class TestNG  {
         qrcodeUtil.encodeQRcode("hello","src/222.png","png",10);
     }
 
+    @Test
+    public void test() throws IOException {
+        ReadQRCode readQRCode = new ReadQRCode();
+        readQRCode.test();
+    }
 
 
 }

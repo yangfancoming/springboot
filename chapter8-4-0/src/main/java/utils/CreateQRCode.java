@@ -9,10 +9,8 @@ import java.io.File;
 import java.io.IOException;
 
 /**
-     * @Description:
+     * @Description:  二维码 生成 (加密)
      * @author: 杨帆
-     * @Param:
-     * @Return:
      * @Date:   2018/11/26
 */
 public class CreateQRCode {
@@ -23,8 +21,6 @@ public class CreateQRCode {
         int v =6;
         int width = 67 + 12 * (v - 1);
         int height = 67 + 12 * (v - 1);
-
-
         Qrcode x = new Qrcode();
         /**
          * 纠错等级分为
@@ -37,23 +33,14 @@ public class CreateQRCode {
         x.setQrcodeEncodeMode('B');//注意版本信息 N代表数字 、A代表 a-z,A-Z、B代表 其他)
         x.setQrcodeVersion(v);//版本号  1-40
         String qrData = "https://www.onlybigroc.cn";//内容信息
-
         byte[] d = qrData.getBytes("utf-8");//汉字转格式需要抛出异常
-
-        //缓冲区
-        BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_BGR);
-
-        //绘图
-        Graphics2D gs = bufferedImage.createGraphics();
-
+        BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_BGR);  //缓冲区
+        Graphics2D gs = bufferedImage.createGraphics(); //绘图
         gs.setBackground(Color.WHITE);
         gs.setColor(Color.BLACK);
         gs.clearRect(0, 0, width, height);
 
-        //偏移量
-        int pixoff = 2;
-
-
+        int pixoff = 2;  //偏移量
         /**
          * 容易踩坑的地方
          * 1.注意for循环里面的i，j的顺序，
