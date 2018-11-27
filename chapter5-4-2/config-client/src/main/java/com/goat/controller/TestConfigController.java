@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestConfigController {
 
 
-    // 测试地址：   http://localhost:8666/hi
+    // 测试地址：   http://localhost:8666/hi   注入 配置文件中的属性  用来查看测试结果
     @Value("${spring.application.name}") String application;
 
 

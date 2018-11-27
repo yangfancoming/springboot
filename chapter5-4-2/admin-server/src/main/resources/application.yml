@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: admin-server
+
+server:
+  port: 8777
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: ["health", "info"]
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8542/eureka/

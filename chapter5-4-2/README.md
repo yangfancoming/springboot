@@ -110,6 +110,21 @@ http://localhost:本项目端口号/gitlab上配置文件名bootstrap.yml/项目
 http://localhost:8555/bootstrap/master 
 http://localhost:本项目端口号/gitlab上配置文件名bootstrap.yml/项目分支
 
+
+# Admin 监控
+
+测试地址： http://localhost:8777/#/applications
+
+
+###  微服务 项目 启动顺序
+
+1. 注册与发现
+2. 分布式配置中心
+3. 服务提供者
+4. 服务消费者
+5. API 网关
+
+
 二、SpringCloud子项目介绍
 　　Spring Cloud Config：配置管理开发工具包，可以让你把配置放到远程服务器，目前支持本地存储、Git以及Subversion。
             利用 Spring Cloud Bus 结合 RabibtMQ实现配置的自动刷新 
