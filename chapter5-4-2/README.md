@@ -26,11 +26,23 @@ Spring cloud 有两种服务调用方式：
 一般用在  RestTemplate + Ribbon 和 Feign 调用消费服务的项目中的  调用服务的方法上 
 
 1.RestTemplate + Ribbon
+在 pom.xml 文件 中    增加 依赖
 在 启动类头部         增加 @EnableHystrix  注解 
 在 service调用方法上  增加 @HystrixCommand 注解并指定 fallbackMethod 熔断方法
 
 2.Feign
+由于 Feign 自带 Hystrix  不需要在 pom.xml 中增加依赖 
 在 service接口方法上  增加 @FeignClient(value = "goat2234234234",fallback = SchedualServiceHiHystric.class) // 
 新增 fallback 指定的类 实现 当前接口 并重写 接口中的方法  作为其 熔断方法
 
 然后关闭服务提供者，再次请求 http://localhost:8222/test 会调用 @HystrixCommand 注解并指定的熔断方法
+
+
+# 熔断器  Hystrix  仪表盘
+
+1. 在 pom.xml 中增加依赖
+2. 在 Application 中增加 @EnableHystrixDashboard 注解
+3. 创建 hystrix.stream 的 Servlet 配置  (HystrixDashboardConfiguration)
+4. 测试 Hystrix Dashboard 浏览器端访问 http://localhost:8333/hystrix 界面如下：
+5. 在熔断页面 填写 http://localhost:8333/hystrix.stream  delay：监视时间间隔  Title： 随意
+
