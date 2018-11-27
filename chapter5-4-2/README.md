@@ -16,8 +16,16 @@ http://localhost:8112/hi
     http://localhost:8333/test  feign 测试 负载均衡 地址
     Feign 默认集成了 Ribbon，并和 Eureka 结合，默认实现了负载均衡的效果
  
-在微服务架构中，业务都会被拆分成一个独立的服务，服务与服务的通讯是基于 http restful 
+# 在微服务架构中，业务都会被拆分成一个独立的服务，服务与服务的通讯是基于 http restful 
 Spring cloud 有两种服务调用方式：
     1. ribbon + restTemplate
     2. feign 
 
+
+# 熔断器  Hystrix 
+一般用在  RestTemplate + Ribbon 和 Feign 调用消费服务的项目中的  调用服务的方法上 
+
+在 启动类头部         增加 @EnableHystrix  注解 
+在 service调用方法上  增加 @HystrixCommand 注解并指定 fallbackMethod 熔断方法
+
+然后关闭服务提供者，再次请求 http://localhost:8222/test 会调用 @HystrixCommand 注解并指定的熔断方法
