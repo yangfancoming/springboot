@@ -68,7 +68,7 @@ http://localhost:8444/api/b/test
 配置好后 重启 Zuul 项目  干掉 提供微服务的项目 后  http://localhost:8444/api/b/test  测试
 页面返回  {"message":"无法连接，请检查您的网络","status":200}  表明执行了  我们配置的回调 
 
-# 8555 配置中心 
+# 8555 配置中心  服务端
 1. 在 pom.xml 中增加依赖
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -79,8 +79,36 @@ http://localhost:8444/api/b/test
 4. 测试地址 ： 
 http://localhost:8555/bootstrap/master 
 http://localhost:本项目端口号/gitlab上配置文件名bootstrap.yml/项目分支
+  附：HTTP 请求地址和资源文件映射
+  http://ip:port/{application}/{profile}[/{label}]
+  http://ip:port/{application}-{profile}.yml
+  http://ip:port/{label}/{application}-{profile}.yml
+  http://ip:port/{application}-{profile}.properties
+  http://ip:port/{label}/{application}-{profile}.properties
+  
+# 8666 配置中心  客户端 
+1. 在 pom.xml 中增加依赖
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+        <!-- client需要添加以下依赖，否则访问/refresh将会得到404 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
 
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
+2. 在 Application 中增加 @EnableConfigServer 注解
+3. 在 application.yml 配置文件中 增加 配置 
+4. 测试地址 ： 
+http://localhost:8555/bootstrap/master 
+http://localhost:本项目端口号/gitlab上配置文件名bootstrap.yml/项目分支
 
 二、SpringCloud子项目介绍
 　　Spring Cloud Config：配置管理开发工具包，可以让你把配置放到远程服务器，目前支持本地存储、Git以及Subversion。

@@ -17,6 +17,7 @@
         <module>mic-feign</module>
         <module>mic-zuul</module>
         <module>config-server</module>
+        <module>config-client</module>
     </modules>
 
 
