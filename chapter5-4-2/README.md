@@ -1,3 +1,5 @@
+@EnableEurekaClient  (服务提供者)
+
 ###  8542  eureka-server    为注册中心  所有微服务都像其 进行注册
 http://localhost:8542/  查看注册中心页面 
 
@@ -66,7 +68,10 @@ http://localhost:8444/api/b/test
 配置好后 重启 Zuul 项目  干掉 提供微服务的项目 后  http://localhost:8444/api/b/test  测试
 页面返回  {"message":"无法连接，请检查您的网络","status":200}  表明执行了  我们配置的回调 
 
-
+# 8555 配置中心 
+1. 在 pom.xml 中增加依赖
+2. 在 Application 中增加 @EnableConfigServer 注解
+3. 在 application.yml 配置文件中 增加 配置 
 
 
 二、SpringCloud子项目介绍
