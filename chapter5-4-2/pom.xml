@@ -11,6 +11,8 @@
 
     <modules>
         <module>eureka-server</module>
+        <module>microservice-hi</module>
+        <module>mic-ribbon</module>
     </modules>
 
 
@@ -46,7 +48,10 @@
             <version>5.0.4.RELEASE</version>
         </dependency>
 
-
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
     </dependencies>
 
 
