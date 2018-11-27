@@ -1,0 +1,24 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8542/eureka/  # 向注册中心 进行注册
+server:
+  port: 8444
+spring:
+  application:
+    name: mic-zuul
+zuul:
+  routes:
+    api-a:
+      path: /api/a/**
+      serviceId: mic-ribbon #8222
+#      serviceId: mic-feign #8333
+    api-b:
+      path: /api/b/**
+      serviceId: mic-feign #8333
+#      serviceId: mic-ribbon #8222
+
+#  路由说明：
+#  serviceId 对应 其项目中 配置文件application.properties中的  spring.application.name=mic-ribbon 属性
+#  以 /api/a 开头的请求都转发给 mic-ribbon 项目的微服务  http://localhost:8444/api/a/test
+#  以 /api/b 开头的请求都转发给 mic-feign  项目的微服务  http://localhost:8444/api/b/test

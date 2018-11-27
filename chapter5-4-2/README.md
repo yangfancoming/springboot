@@ -46,3 +46,17 @@ Spring cloud 有两种服务调用方式：
 4. 测试 Hystrix Dashboard 浏览器端访问 http://localhost:8333/hystrix 界面如下：
 5. 在熔断页面 填写 http://localhost:8333/hystrix.stream  delay：监视时间间隔  Title： 随意
 
+### 8444 网关  Zuul 
+1. 在 pom.xml 中增加依赖
+2. 在 Application 中增加 @EnableZuulProxy 注解
+3. 在 application.yml 配置文件中 增加 网关配置 
+
+
+配置网关路由失败时的回调
+
+增加 WebAdminFeignFallbackProvider 路由调用失败 回调提供者类
+在 getRoute() 函数中 通过 serviceId (spring.application.name=mic-ribbon) 给指定 项目 提供回调服务 
+配置好后 重启 Zuul 项目  干掉 提供微服务的项目 后  http://localhost:8444/api/b/test  测试
+页面返回  {"message":"无法连接，请检查您的网络","status":200}  表明执行了  我们配置的回调 
+
+    

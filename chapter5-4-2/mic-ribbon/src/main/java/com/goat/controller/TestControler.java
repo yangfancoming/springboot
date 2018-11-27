@@ -15,6 +15,7 @@ public class TestControler {
 //    http://localhost:8222/test
     @RequestMapping(value = "/test")
     public String hi(){
+        System.out.println("进入 ribbon 的 Controler...............");
         return testService.hiService();
     }
 

@@ -15,6 +15,7 @@ public class TestControler {
 //    http://localhost:8333/test
     @RequestMapping(value = "/test")
     public String hi(){
+        System.out.println("进入 feign 的 Controler...............");
         return testService.testFuck();
     }
 
