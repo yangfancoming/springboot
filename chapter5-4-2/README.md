@@ -70,8 +70,16 @@ http://localhost:8444/api/b/test
 
 # 8555 配置中心 
 1. 在 pom.xml 中增加依赖
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-server</artifactId>
+        </dependency>
 2. 在 Application 中增加 @EnableConfigServer 注解
 3. 在 application.yml 配置文件中 增加 配置 
+4. 测试地址 ： 
+http://localhost:8555/bootstrap/master 
+http://localhost:本项目端口号/gitlab上配置文件名bootstrap.yml/项目分支
+
 
 
 二、SpringCloud子项目介绍

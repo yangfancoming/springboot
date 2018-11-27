@@ -13,5 +13,5 @@ target
 aliyun-oss.properties
 security.properties
 banner.txt
-
+bootstrap.yml
 gen
