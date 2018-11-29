@@ -23,23 +23,23 @@
     </dependencies>
 
     <!-- groovy -->
-    <plugin>
-        <groupId>org.codehaus.gmavenplus</groupId>
-        <artifactId>gmavenplus-plugin</artifactId>
-        <version>1.5</version>
-        <executions>
-            <execution>
-                <goals>
-                    <goal>addSources</goal>
-                    <goal>addTestSources</goal>
-                    <goal>generateStubs</goal>
-                    <goal>compile</goal>
-                    <goal>testGenerateStubs</goal>
-                    <goal>testCompile</goal>
-                    <goal>removeStubs</goal>
-                    <goal>removeTestStubs</goal>
-                </goals>
-            </execution>
-        </executions>
-    </plugin>
+    <!--<plugin>-->
+        <!--<groupId>org.codehaus.gmavenplus</groupId>-->
+        <!--<artifactId>gmavenplus-plugin</artifactId>-->
+        <!--<version>1.5</version>-->
+        <!--<executions>-->
+            <!--<execution>-->
+                <!--<goals>-->
+                    <!--<goal>addSources</goal>-->
+                    <!--<goal>addTestSources</goal>-->
+                    <!--<goal>generateStubs</goal>-->
+                    <!--<goal>compile</goal>-->
+                    <!--<goal>testGenerateStubs</goal>-->
+                    <!--<goal>testCompile</goal>-->
+                    <!--<goal>removeStubs</goal>-->
+                    <!--<goal>removeTestStubs</goal>-->
+                <!--</goals>-->
+            <!--</execution>-->
+        <!--</executions>-->
+    <!--</plugin>-->
 </project>
