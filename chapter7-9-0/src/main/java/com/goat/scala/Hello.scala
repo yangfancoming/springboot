@@ -9,6 +9,6 @@ package com.goat.scala
   */
 class Hello {
   def sayHello(x: String): Unit = {
-    println("hello," + x);
+    println("hello, fuckkkkkkkkkkkk" + x);
   }
 }

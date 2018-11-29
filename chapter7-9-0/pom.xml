@@ -14,67 +14,16 @@
 
     <properties>
         <scala.version>2.11.8</scala.version>
-        <spring.version>2.0.2.RELEASE</spring.version>
     </properties>
+
+
     <dependencies>
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
             <version>${scala.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
     </dependencies>
-    <!--ScalaApplication-->
-    <!--添加的插件的作用，如果不添加，在新建文件的时候右键只能新建java的文件，无法创建scala的class和object。添加插件之后就可以了。-->
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.scala-tools</groupId>
-                <artifactId>maven-scala-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>testCompile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <recompileMode>incremental</recompileMode>
-                    <scalaVersion>${scala.version}</scalaVersion>
-                    <launchers>
-                        <launcher>
-                            <id>app</id>
-                            <mainClass>com.light.sword.ylazy.LightSwordApplication</mainClass>
-                            <args>
-                                <arg>-deprecation</arg>
-                            </args>
-                            <jvmArgs>
-                                <jvmArg>-Xms256m</jvmArg>
-                                <jvmArg>-Xmx2048m</jvmArg>
-                            </jvmArgs>
-                        </launcher>
-                    </launchers>
-                </configuration>
-                <dependencies>
-                    <!-- spring热部署-->
-                    <!--<dependency>-->
-                        <!--<groupId>org.springframework</groupId>-->
-                        <!--<artifactId>springloaded</artifactId>-->
-                        <!--<version>1.2.6.RELEASE</version>-->
-                    <!--</dependency>-->
-                </dependencies>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 
 </project>

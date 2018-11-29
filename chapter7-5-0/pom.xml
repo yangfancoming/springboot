@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>springboot</artifactId>
+        <groupId>com.goat.springboot.learing</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>chapter7-5-0</artifactId>
+
+
+    <dependencies>
+
+        <!--
+        本地maven仓库 路径  F:\Package\Java Environment\apache-maven-3.3.9\repository
+
+        测试  是否已经把 maven 设置好环境变量  在命令行输入  mvn -vsersion  如果没设置 则 报错 "mvn 不是内部命令"
+        在 F:\Package\Java Environment\apache-maven-3.3.9\bin  目录下 输入  mvn -vsersion  则 报错 "Please set the JAVA_HOME variable in your environment to match the"
+
+
+         -->
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.53</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!--  scope的分类
+
+        compile（编译范围）
+        默认就是 compile，什么都不配置也就是意味着 compile。compile表示被依赖项目需要参与当前项目的编译，是一个比较强的依赖。打包的时候通常需要包含进去。
+
+        test（测试范围）
+        指的是测试范围有效，在编译和打包时都不会使用这个依赖。比较典型的如junit。
+
+        runntime（运行时范围）
+        runntime表示被依赖项目无需参与项目的编译，不过后期的测试和运行周期需要其参与。与compile相比，跳过编译而已，
+
+        说实话在终端的项目（非开源，企业内部系统）中，和compile区别不是很大。比较常见的如JSR×××的实现，对应的API jar是compile的，
+        具体实现是runtime的，compile只需要知道接口就足够了。Oracle jdbc驱动架包就是一个很好的例子，一般scope为runntime。
+        另外runntime的依赖通常和optional搭配使用，optional为true。我可以用A实现，也可以用B实现。
+
+        provided（已提供范围）
+        provided 依赖：在编译和测试的过程有效，最后生成war包时不会加入，诸如：servlet-api，因为servlet-api，tomcat等web服务器已经存在了，如果再打包会冲突
+        provided 意味：着打包的时候可以不用包进去，别的设施(Web Container)会提供。事实上该依赖理论上可以参与编译，测试，运行等周期。相当于compile，但是在打包阶段做了exclude的动作。
+        例如， 如果你开发了一个web 应用，你可能在编译 classpath 中需要可用的Servlet API 来编译一个servlet，但是你不会想要在打包好的WAR 中包含这个Servlet API；
+        这个Servlet API JAR 由你的应用服务器或者servlet 容器提供。已提供范围的依赖在编译classpath （不是运行时）可用。它们不是传递性的，也不会被打包。
+
+        system（系统范围）
+        system范围依赖与provided 类似，但是你必须显式的提供一个对于本地系统中JAR 文件的路径。这么做是为了允许基于本地对象编译，
+        而这些对象是系统类库的一部分。这样的构件应该是一直可用的，Maven 也不会在仓库中去寻找它。如果你将一个依赖范围设置成系统范围，
+        你必须同时提供一个 systemPath 元素。注意该范围是不推荐使用的（你应该一直尽量去从公共或定制的 Maven 仓库中引用依赖）。
+        -->
+    </dependencies>
+
+</project>
