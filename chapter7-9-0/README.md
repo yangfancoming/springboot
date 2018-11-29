@@ -1,5 +1,5 @@
 # https://www.scala-lang.org/download/  官网下载  Scala SDK  后缀名为 zip 的压缩包 为 Windows 使用的
-scala-2.12.7.zip	Windows	  19.51M
+scala-2.12.7.zip	Windows	  19.51M    
 
 # 下载后  解压到 scala-2.12.7 文件夹 
 
