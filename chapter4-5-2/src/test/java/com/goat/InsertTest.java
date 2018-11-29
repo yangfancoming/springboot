@@ -23,8 +23,6 @@ import java.util.List;
     db.collection.insertOne()  - 插入一个文档对象
     db.collection.insertMany()   - 插入多个文档对象
 
-
-
 插入一个文档---传递一个对象
 db.students.insert({name:"goat",age:28,gender:"boy"});
 

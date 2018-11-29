@@ -27,7 +27,7 @@ class Lambda {
     }
 
     @Test fun test3(){
-        operate(3,7,{ x,y->x+y })//函数参数传入
+        operate(3,7) { x, y->x+y }//函数参数传入
     }
 
     //函数参数作为函数的最后一个参数，并且传入的是一个lambda表达式，可以在在圆括号外指定
