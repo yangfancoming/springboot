@@ -1,5 +1,3 @@
-
-
 工程配置
 
 - chapter0-0-0 springboot 基础项目提供服务，共享model
@@ -107,9 +105,21 @@ Web开发
 - chapter6-5-1：springboot  异步任务
 - chapter7-3-1：springboot 集成 ElasticSearch  使用 JestClient 操作
 - chapter7-4-1：springboot 集成 ElasticSearch  使用 SpringData 操作
+- chapter7-5-0：springboot 集成 Maven
+  
+
+
+
+其他语言
+
+
+
+- chapter7-9-0：springboot 集成 Scala
 - chapter8-0-1：springboot 集成 Guava
+- chapter8-0-3：springboot 集成 Groovy
 - chapter8-0-5：springboot 集成 Lua
 - chapter8-0-8：springboot 集成 Kotlin
+- 
 - chapter8-1-0：springboot 集成  阿里云短信
 - chapter8-1-1：springboot 集成 Oss  使用阿里云存储
 - chapter8-1-2：springboot 集成  Java调用 Lua脚本  通过LuaJava
