@@ -3,20 +3,27 @@ package com.goat.bean3;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.constraints.Email;
 
 /**
  * Created by 64274 on 2018/7/14.
  *
  * @author 山羊来了
- * @Description: TODO
+ * @Description:   属性校检注入
  * @date 2018/7/14---21:01
  *
+ * @Validated 和 @Email 一起使用 来校检 某些字段格式
  * 配置文件中的占位符 相关知识
  */
 @PropertySource( value= {"classpath:placeholder.properties"})
 @Configuration
 @ConfigurationProperties(prefix = "app")
+@Validated
 public class Placeholder {
+
+    @Email // name属性的值 必须是  Email 格式 否则报错
     String name;
     String description;
     String title;

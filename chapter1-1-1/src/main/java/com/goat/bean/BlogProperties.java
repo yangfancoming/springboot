@@ -25,10 +25,23 @@ public class BlogProperties {
     @Value("${com.didispace.blog.test2}")
     private Integer test2;
 
+    @Value("#{11*2}") //  可以通过表达式 计算
+    private Integer test3;
+
+
     @Override
     public String toString() {
-        return "BlogProperties{" + "name='" + name + '\'' + ", title='" + title + '\'' + ", desc='" + desc + '\'' + ", value='" + value + '\'' + ", number=" + number + ", bignumber=" + bignumber + ", test1=" + test1 + ", test2=" + test2 + '}';
+        return "BlogProperties{" + "name='" + name + '\'' + ", title='" + title + '\'' + ", desc='" + desc + '\'' + ", value='" + value + '\'' + ", number=" + number + ", bignumber=" + bignumber + ", test1=" + test1 + ", test2=" + test2 + ", test3=" + test3 + '}';
     }
+
+    public Integer getTest3() {
+        return test3;
+    }
+
+    public void setTest3(Integer test3) {
+        this.test3 = test3;
+    }
+
 
     public String getName() {
         return name;
