@@ -15,3 +15,4 @@ security.properties
 banner.txt
 bootstrap.yml
 gen
+/chapter2-6-5/src/test/java/com/goat/myOut.txt

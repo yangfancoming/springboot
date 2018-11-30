@@ -12,15 +12,15 @@
 
 
 <h1>
-    Welcome ${user} !     <br/>
+    Welcome user is:  ${user} !     <br/>
 
 <#--if 指令-->
-    Welcome ${user} <#if user == "Big Joe">, our beloved leader</#if>!     <br/>
-    Welcome ${user} <#if user == "goat">, our beloved leader</#if>!     <br/>
+    Welcome ${user} <#if user == "Big Joe">, our Big Joe leader</#if>!     <br/>
+    Welcome ${user} <#if user == "goat">, our goat leader</#if>!     <br/>
 
-
-    <#if num == 0>  0000 </#if>
-    <#if num != 0>  1111 </#if>
+    num is :
+    <#if num == 0>  1234 </#if>
+    <#if num != 0>  4321 </#if>
 
 <#--if else  指令-->
     <#if num == 0>
@@ -28,7 +28,11 @@
     <#else>
         11111
     </#if>
+
+    <br/>
     <#--如果变量本身就是布尔值(true/false)，则可以直接让其作为 if 的 condition-->
+
+    mark is
     <#if mark >
         true
     <#else>
