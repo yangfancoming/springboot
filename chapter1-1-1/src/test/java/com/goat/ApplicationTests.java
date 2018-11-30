@@ -20,9 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class ApplicationTests {
 
     @Autowired private ApplicationContext ac;
-
     @Autowired private BlogProperties blogProperties;
-
     @Autowired private Student student;
     @Autowired private Pet pet;
     @Autowired private Person person;

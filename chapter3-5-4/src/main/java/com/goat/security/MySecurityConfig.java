@@ -29,7 +29,8 @@ public class MySecurityConfig  extends WebSecurityConfigurerAdapter {
         http.formLogin();
 
         /*
-        *   sos 干掉默认登录功能  实现自定义的登录请求， 需要自己实现对应的controller请求   输入 http://localhost:1111/level1/1 会自动跳转到 http://localhost:1111/userlogin
+        *   sos 干掉默认登录功能  实现自定义的登录请求， 需要自己实现对应的controller请求
+        *       输入 http://localhost:1111/level1/1 会自动跳转到 http://localhost:1111/userlogin
         *   http.formLogin().loginPage("/userlogin");
         *
         *   开启自动配置的注销功能：访问 /logout 表示用户注销，清空session  注销成功后  默认 会返回到  /login?logout 页面
