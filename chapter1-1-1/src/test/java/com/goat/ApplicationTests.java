@@ -33,12 +33,23 @@ public class ApplicationTests {
             System.out.println("***---***"+string);
         }
     }
-
     @Test
-    public void blogProperties(){
+    public void ac(){
         System.out.println(blogProperties);
     }
 
+    /*
+    Spring Boot里面没有Spring的配置文件，我们自己编写的配置文件，也不能自动识别；
+    想让Spring的配置文件生效，加载进来；@ImportResource(locations = {"classpath:beans.xml"}) 标注在启动类上
+    * */
+    @Test
+    public void blogProperties(){
+        System.out.println(ac.containsBean("testoService"));
+    }
+    @Test
+    public void helloService(){
+        System.out.println(ac.containsBean("helloService02"));
+    }
     @Test
     public void student(){
         System.out.println(student);

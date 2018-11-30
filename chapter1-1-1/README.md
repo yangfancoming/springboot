@@ -27,7 +27,7 @@
 如果说，我们专门编写了一个javaBean来和配置文件进行映射，我们就直接使用@ConfigurationProperties；
 
 
-#### @PropertySource   @ImportResource   @Bean
+#### @ConfigurationProperties @PropertySource   @ImportResource   @Bean
 @**ConfigurationProperties**： 只能加载两大默认配置文件 properties  和 yml 
 @**PropertySource**：可以加载指定的 properties 配置文件，不能加载yml配置文件
 @**ImportResource**：导入Spring的xml配置文件，让配置文件里面的内容生效；
@@ -39,4 +39,16 @@
 server.servlet.context-path=/hello
 没加的话 项目访问地址  http://localhost:8034
 加上之后 项目访问地址 http://localhost:8034/hello
+
+
+
+#激活指定profile 四种方式：
+	1、在配置文件中指定  spring.profiles.active=dev
+	2、命令行：java -jar spring-boot-02-config-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev；
+	3、虚拟机参数；-Dspring.profiles.active=dev
+	4、@ActiveProfiles("test") // 相当于 配置文件中的 spring.profiles.active=test
+		
+
+
+
 

@@ -14,16 +14,16 @@ import javax.validation.constraints.Email;
  * @Description:   属性校检注入
  * @date 2018/7/14---21:01
  *
- * @Validated 和 @Email 一起使用 来校检 某些字段格式
+ * @Validated 和 @Email 一起使用 来校检 某些字段格式  要打开注释就一起打开
  * 配置文件中的占位符 相关知识
  */
 @PropertySource( value= {"classpath:placeholder.properties"})
 @Configuration
 @ConfigurationProperties(prefix = "app")
-@Validated
+//@Validated
 public class Placeholder {
 
-    @Email // name属性的值 必须是  Email 格式 否则报错
+//    @Email // name属性的值 必须是  Email 格式 否则报错
     String name;
     String description;
     String title;
