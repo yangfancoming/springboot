@@ -21,7 +21,7 @@
 
         <dependency>
             <groupId>com.goat.springboot.learing</groupId>
-            <artifactId>chapter0-0-0</artifactId>
+            <artifactId>chapter0-0-1</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

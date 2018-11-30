@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class HelloWorldController {
 
 	@GetMapping("/get")
-	public String get() throws InterruptedException {
+	public String get()   {
 		return "get无参请求成功";
 	}
 

@@ -19,9 +19,14 @@ import java.util.Map;
 @Component
 public class FreemarkerUtils {
 
-    @Value("${spring.freemarker.charset}")       public  String charset;
-    @Value("${spring.freemarker.template_path}") public  String template_path;
-    @Value("${spring.freemarker.out_path}")      public  String out_path;
+    @Value("${spring.freemarker.charset}")      
+    public  String charset;
+    
+    @Value("${spring.freemarker.template_path}") 
+    public  String template_path;
+    
+    @Value("${spring.freemarker.out_path}")     
+    public  String out_path;
 
     public  void common(Map map,String file_name,String out_filename) throws Exception {
         //创建一个freemarker.template.Configuration 实例，它是存储 FreeMarker 应用级设置的核心部分

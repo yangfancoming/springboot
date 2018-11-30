@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value="/users")     // 通过这里配置使下面的映射都在/users下，可去除
 public class UserController {
 
-    static Map<String, User> users = Collections.synchronizedMap(new HashMap<String, User>());
+    static Map<String, User> users = Collections.synchronizedMap(new HashMap<>());
 
     @RequestMapping(value="/", method=RequestMethod.GET)
     public List<User> getUserList() {

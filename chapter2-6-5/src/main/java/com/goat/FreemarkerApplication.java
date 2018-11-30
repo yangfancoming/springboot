@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
      * @Date:   2018/10/24
 */
 @SpringBootApplication
-public class FreemarkerApplication {
+public class FreemarkerApplication  {
 
     public static void main(String[] args) {
         SpringApplication.run(FreemarkerApplication.class,args);

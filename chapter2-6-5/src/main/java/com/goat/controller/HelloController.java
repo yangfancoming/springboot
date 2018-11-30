@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/test")
-public class TestController {
+public class HelloController {
 
     // http://localhost:8265/test/demo1
     @RequestMapping("/demo1")

@@ -1,4 +1,4 @@
-package com.goat.domain;
+package com.goat.bean;
 
 /**
  * 城市实体类

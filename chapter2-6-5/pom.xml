@@ -7,16 +7,26 @@
         <groupId>com.goat.springboot.learing</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
 
+
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>war</packaging>
     <artifactId>chapter2-6-5</artifactId>
 
     <dependencies>
+
         <!-- Spring Boot Freemarker 依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.goat.springboot.learing</groupId>
+            <artifactId>chapter0-0-1</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
 </project>
