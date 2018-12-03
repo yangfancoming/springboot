@@ -1,9 +1,7 @@
-package com.goat.scala
-
 /**
   * Created by 64274 on 2018/11/29.
   *
-  * @Description:  My First Scala
+  * @Description:  My Firs Scala
   * @author 山羊来了
   * @date 2018/11/29---17:23
   */
