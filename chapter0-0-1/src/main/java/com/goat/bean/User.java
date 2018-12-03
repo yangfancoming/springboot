@@ -15,6 +15,7 @@ public class User implements Serializable {
     private Integer age;
     private String username;
     private String password;
+    private Long code;// 编号
 
     public User() {
     }
@@ -31,6 +32,20 @@ public class User implements Serializable {
     public User(Integer age, String username) {
         this.age = age;
         this.username = username;
+    }
+
+
+    @Override
+    public String toString() {
+        return "User{" + "id='" + id + '\'' + ", name='" + name + '\'' + ", age=" + age + ", username='" + username + '\'' + ", password='" + password + '\'' + ", code=" + code + '}';
+    }
+
+    public Long getCode() {
+        return code;
+    }
+
+    public void setCode(Long code) {
+        this.code = code;
     }
 
     public Integer getAge() {

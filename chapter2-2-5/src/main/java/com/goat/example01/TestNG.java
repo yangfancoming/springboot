@@ -1,6 +1,7 @@
 package com.goat.example01;
 
 
+import com.goat.InventoryPlanMsg;
 import com.goat.bean.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -38,7 +39,9 @@ public class TestNG {
     //    fromJson 将json字符串转为 单个 bean 对象
     @Test
     public void fromJson() {
-        String s = "{\"name\":\"peter\",\"id\":\"2222\"}";
+        String s = "{\"name\":\"peter\",\"id\":\"2222\"}"; //  OK
+//        String s = "{\"name\":\"peter\",\"id\":\"\"}"; //  OK
+//        String s = "{\"name\":\"peter\",\"id\":}"; //  报错  Expected value at line 1 column 22 path $.id
         User user = gson.fromJson(s, User.class);
         System.out.println(user);
     }
@@ -63,6 +66,23 @@ public class TestNG {
         List<User> users = gson.fromJson(jsonstr, new TypeToken<List<User>>(){}.getType());
         System.out.println(users);
     }
+
+    /**
+         * @Description:   对应 Long 类型 code属性 要么写正确 要么就不写默认转为null  否则报错
+         * @author: 杨帆
+         * @Return:   Caused by: java.lang.NumberFormatException: empty String
+         * @Date:   2018/12/3
+    */
+    @Test
+    public void fromJ2son5() {
+//        String jsonstr = "[{\"name\":\"jack\",\"id\":18,\"code\":\"\"},{\"name\":\"alex\",\"id\":23},{\"name\":\"jane\",\"id\":15}]"; // error  java.lang.NumberFormatException: empty String
+//        String jsonstr = "[{\"name\":\"jack\",\"id\":18,\"code\":15},{\"name\":\"alex\",\"id\":23},{\"name\":\"jane\",\"id\":15}]"; // OK 要么就写正确
+//        String jsonstr = "[{\"name\":\"jack\",\"id\":18,\"code\":},{\"name\":\"alex\",\"id\":23},{\"name\":\"jane\",\"id\":15}]"; // error  Expected value at line 1 column 32 path $[0].code
+        String jsonstr = "[{\"name\":\"jack\",\"id\":18},{\"name\":\"alex\",\"id\":23},{\"name\":\"jane\",\"id\":15}]"; // OK   要么就不写 code 属性 则 转换为 null
+        List<User> users = gson.fromJson(jsonstr, new TypeToken<List<User>>(){}.getType());
+        System.out.println(users);
+    }
+
     //    toJson 将 单个 bean 对象转换为json字符串 **序列化 bean **
     @Test
     public void toJsonBean() {

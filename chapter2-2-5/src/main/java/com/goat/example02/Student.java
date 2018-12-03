@@ -54,11 +54,6 @@ public class Student {
         this.school = school;
     }
 
-//    @Override
-//    public String toString() {
-//        return "name:" + getName() + " age:" + getAge() + " gender:" + getGender() + " school:" + getSchool();
-//    }
-
     @Override
     public String toString() {
         return "Student{" + "name='" + name + '\'' + ", age='" + age + '\'' + ", gender=" + gender + ", school='" + school + '\'' + ", grade=" + grade + '}';
