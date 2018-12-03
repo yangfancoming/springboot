@@ -2,6 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!--maven 坐标 三元素：groupId(项目名)、artifactId(模块名)、 version-->
     <parent>
         <artifactId>springboot</artifactId>
         <groupId>com.goat.springboot.learing</groupId>
@@ -44,10 +46,10 @@
         默认就是 compile，什么都不配置也就是意味着 compile。compile表示被依赖项目需要参与当前项目的编译，是一个比较强的依赖。打包的时候通常需要包含进去。
 
         test（测试范围）
-        指的是测试范围有效，在编译和打包时都不会使用这个依赖。比较典型的如junit。
+        指的是测试范围有效，在编译和打包时都不会使用这个依赖。比较典型的如 junit 和 spring-boot-starter-test 。
 
         runntime（运行时范围）
-        runntime表示被依赖项目无需参与项目的编译，不过后期的测试和运行周期需要其参与。与compile相比，跳过编译而已，
+        runntime表示被依赖项目无需参与项目的编译，不过后期的测试和运行周期需要其参与。与compile相比，跳过编译而已，例如：mysql数据库驱动包
 
         说实话在终端的项目（非开源，企业内部系统）中，和compile区别不是很大。比较常见的如JSR×××的实现，对应的API jar是compile的，
         具体实现是runtime的，compile只需要知道接口就足够了。Oracle jdbc驱动架包就是一个很好的例子，一般scope为runntime。
