@@ -69,7 +69,7 @@ public class HelloController {
     @RequestMapping("/map2")
     public Map<String,Object> map2(){
         Map<String,Object> map = new HashMap();
-        map.put("id",1);
+        map.put("id",2);
         map.put("name","fuck");
         map.put("age",12);
         return map;
@@ -84,9 +84,9 @@ public class HelloController {
     @RequestMapping("/listmap")
     public List<Map<String,Object>> listmap(){
         Map<String,Object> map = new HashMap();
-        map.put("id",1);
+        map.put("id",3);
         map.put("name","fuck");
-        map.put("age",12);
+        map.put("age",132);
 
         List<Map<String,Object>> temp = new ArrayList<>();
         temp.add(map);

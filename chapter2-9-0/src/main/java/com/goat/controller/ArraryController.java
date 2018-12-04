@@ -12,7 +12,6 @@ import java.util.List;
 public class ArraryController {
 
     //    http://localhost:8290/array/test1
-
     @RequestMapping("/test1")
     public void test1(@RequestParam(value = "codes[]", required = false) List<String> codes) {  // 成功
         String[] codeArr = codes.toArray(new String[codes.size()]); // list 转  数组
