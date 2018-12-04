@@ -7,9 +7,10 @@ global java.util.List list
 rule "Hello World"
     dialect "mvel"
     when
-        m : Message( status == Message.HELLO, message : message )
-    then
-        System.out.println( message );
+        //当该实体的status属性为HELLO的时候，将该实体赋值给m，实体的message属性赋值给printMsg
+        m : Message( status == Message.HELLO, printMsg  : message )
+    then  // 满足条件之后要做的事情
+        System.out.println( printMsg  );
 //    modify ( m ) { setMessage( "Goodbyte cruel world" ),setStatus( Message.GOODBYE ) };
     modify ( m ) { message = "Goodbye cruel world",status = Message.GOODBYE };
 
@@ -18,7 +19,7 @@ end
 rule "Good Bye"
     dialect "java"
     when
-        Message( status == Message.GOODBYE, message : message )
+        Message( status == Message.GOODBYE, printMsg  : message )
     then
-        System.out.println( message );
+        System.out.println( printMsg  );
 end

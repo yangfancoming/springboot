@@ -25,7 +25,8 @@ public class TestController {
     }
 
     // 指定 返回数据类型为  application/json  并指定返回数据编码为  charset=utf-8
-    @RequestMapping(value = "/test2", produces = MediaType.APPLICATION_JSON_VALUE + ";charset=utf-8")
+    // 也可以写成 MediaType.APPLICATION_JSON_VALUE + ";charset=utf-8"
+    @RequestMapping(value = "/test2", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public void test2(@RequestParam("codes") String[] codes ) {  // 失败
         System.out.println(codes);
     }
