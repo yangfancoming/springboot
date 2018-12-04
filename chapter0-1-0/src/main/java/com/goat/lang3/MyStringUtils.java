@@ -40,5 +40,34 @@ public class MyStringUtils {
         System.out.println(StringUtils.capitalize("abc"));// 首字母大写
         System.out.println(StringUtils.uncapitalize("ABC"));// 首字母小写
     }
+
+    /**
+         * @Description:  isBlank isEmpty  isNotBlank isNotEmpty
+         * @author: 杨帆
+                            isNotEmpty(str)等价于 str != null && str.length > 0
+                            isNotBlank(str) 等价于 str != null && str.length > 0 && str.trim().length > 0
+                            isEmpty 等价于 str == null || str.length == 0
+                            isBlank  等价于 str == null || str.length == 0 || str.trim().length == 0
+                            str.length > 0 && str.trim().length > 0  --->   str.length > 0
+         * @Date:   2018/12/4
+    */
+    @Test
+    public void isBlank() {
+        String test = ""; // true
+        // String test = null; // true
+        System.out.println(StringUtils.isBlank(test));
+    }
+    @Test
+    public void isNotBlank() {
+        String test = ""; // false
+        // String test = null; // false
+        System.out.println(StringUtils.isNotBlank(test));
+    }
+    @Test
+    public void isNoneEmpty() {
+        String test = ""; // false
+        // String test = null; // false
+        System.out.println(StringUtils.isNoneEmpty(test));
+    }
 }
 
