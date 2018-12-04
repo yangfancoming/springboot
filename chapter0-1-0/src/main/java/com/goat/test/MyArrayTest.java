@@ -1,6 +1,7 @@
-package com.goat;
+package com.goat.test;
 
 
+import com.goat.MyArrayTool;
 import org.testng.annotations.Test;
 
 

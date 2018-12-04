@@ -3,17 +3,24 @@ package com.goat;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.testng.Assert;
 
+import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class OpsForValue extends RedisCommon {
 
-//    ValueOperations operations = stringRedisTemplate.opsForValue();
 
+    @Resource(name = "redisTemplate")
+    private ValueOperations<String, Object> redisOperations;
+
+    //这里注入的 stringOperations 免去了 stringOperations
+    @Resource(name = "stringRedisTemplate")
+    private ValueOperations<String, Object> stringOperations;
     /**
          * @Description:  stringRedisTemplate 操作 字符串 总结
          * @author: 杨帆
@@ -36,23 +43,23 @@ public class OpsForValue extends RedisCommon {
     */
     @Test
     public void test1(){
-        stringRedisTemplate.opsForValue().set("fuck","tom"); // 这里插入的是 tom
-        Assert.assertEquals("tom", stringRedisTemplate.opsForValue().get("fuck")); // OK
+        stringOperations.set("fuck1","tom"); // 这里插入的是 tom
+        Assert.assertEquals("tom", stringOperations.get("fuck")); // OK
     }
 
     @Test
     public void test2(){
-        redisTemplate.opsForValue().set("fuck","tom"); // 这里插入的是 "tom"
-        Assert.assertEquals("tom", stringRedisTemplate.opsForValue().get("fuck")); // 报错 did not expect to find ["tom"] but found [tom]
+        redisOperations.set("fuck","tom"); // 这里插入的是 "tom"
+        Assert.assertEquals("tom", stringOperations.get("fuck")); // 报错 did not expect to find ["tom"] but found [tom]
     }
 
     @Test
     public void set(){ // SET key value
-        stringRedisTemplate.opsForValue().set("mark","aaa"); //  ****Template 方法的 set和get方法并没有提供返回值  但是在 jedis 中却有。。。
+        stringOperations.set("mark","aaa"); //  ****Template 方法的 set和get方法并没有提供返回值  但是在 jedis 中却有。。。
     }
     @Test
     public void get(){ // GET key
-        String temp = stringRedisTemplate.opsForValue().get("mark");
+        String temp = (String) stringOperations.get("mark");
         System.out.println(temp); // 如果不存在 key  则返回 null
     }
     /**
@@ -64,7 +71,7 @@ public class OpsForValue extends RedisCommon {
      */
     @Test
     public void getrange(){
-        String cutString = stringRedisTemplate.opsForValue().get("multi1",1,3);
+        String cutString = stringOperations.get("multi1",1,3);
         System.out.println("通过get(K key, long start, long end)方法获取截取的字符串:"+cutString);
     }
     /**
@@ -76,9 +83,9 @@ public class OpsForValue extends RedisCommon {
      */
     @Test
     public void getAndSet(){  //
-        String temp = stringRedisTemplate.opsForValue().getAndSet("stringValue","ccc");
+        Object temp = stringOperations.getAndSet("stringValue","ccc");
         System.out.print("temp:" + temp );
-        String value = stringRedisTemplate.opsForValue().get("stringValue");
+        Object value = stringOperations.get("stringValue");
         System.out.println("value:"+ value);
     }
 
@@ -86,15 +93,15 @@ public class OpsForValue extends RedisCommon {
     @Test
     public void getBit(){
         //判断指定的位置ASCII码的bit位是否为1   GETBIT key offset
-        boolean bitBoolean = stringRedisTemplate.opsForValue().getBit("stringValue",1);
+        boolean bitBoolean = stringOperations.getBit("stringValue",1);
         System.out.println(bitBoolean);
     }
 
     @Test
     public void setBit(){ //key键对应的值value对应的ascii码,在offset的位置(从左向右数)变为value   SETBIT key offset value
-        Boolean mark = stringRedisTemplate.opsForValue().setBit("stringValue",1,false);
+        Boolean mark = stringOperations.setBit("stringValue",1,false);
         System.out.println(mark);
-        String temp = stringRedisTemplate.opsForValue().get("stringValue");
+        Object temp = stringOperations.get("stringValue");
         System.out.println(temp);
     }
 
@@ -105,10 +112,10 @@ public class OpsForValue extends RedisCommon {
      */
     @Test
     public void timeOut() throws InterruptedException {
-        stringRedisTemplate.opsForValue().set("timeOutValue","timeOut",5, TimeUnit.SECONDS);
-        System.out.println(stringRedisTemplate.opsForValue().get("timeOutValue")); // timeOut
+        stringOperations.set("timeOutValue","timeOut",5, TimeUnit.SECONDS);
+        System.out.println(stringOperations.get("timeOutValue")); // timeOut
         Thread.sleep(6*1000);
-        System.out.println("等待5s过后，获取的值:" + stringRedisTemplate.opsForValue().get("timeOutValue")); // null
+        System.out.println("等待5s过后，获取的值:" + stringOperations.get("timeOutValue")); // null
     }
 
     /**
@@ -119,7 +126,7 @@ public class OpsForValue extends RedisCommon {
      */
     @Test
     public void setIfAbsent() {
-        boolean mark = stringRedisTemplate.opsForValue().setIfAbsent("absentValue","fff");
+        boolean mark = stringOperations.setIfAbsent("absentValue","fff");
         System.out.println(mark);
     }
 
@@ -131,13 +138,13 @@ public class OpsForValue extends RedisCommon {
      */
     @Test
     public void setOverride()  {
-        stringRedisTemplate.opsForValue().set("absentValue","aaa",2);
+        stringOperations.set("absentValue","aaa",2);
     }
 
     @Test
     public void size(){
         //获取指定key的 value 的长度   STRLEN key
-        Long temp = stringRedisTemplate.opsForValue().size("fuck");
+        Long temp = stringOperations.size("fuck");
         System.out.println(temp);
     }
     /**
@@ -156,12 +163,12 @@ public class OpsForValue extends RedisCommon {
 
     @Test
     public void incr(){
-        Long temp = stringRedisTemplate.opsForValue().increment("test",3);
+        Long temp = stringOperations.increment("test",3);
         System.out.println(temp);
     }
     @Test
     public void decr(){
-        Long temp = stringRedisTemplate.opsForValue().increment("test",-4);
+        Long temp = stringOperations.increment("test",-4);
         System.out.println(temp);
     }
     /**
@@ -174,7 +181,7 @@ public class OpsForValue extends RedisCommon {
      */
     @Test
     public void append(){
-        Integer temp = stringRedisTemplate.opsForValue().append("name","aaa");
+        Integer temp = stringOperations.append("name","aaa");
         System.out.println(temp);
     }
 

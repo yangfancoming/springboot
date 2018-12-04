@@ -1,6 +1,7 @@
 package com.goat;
 
 import com.goat.dao.BaseDao;
+import com.goat.service.impl.RedisServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ public class ApplicationTests {
 
     @Autowired BaseDao baseDao;
 
+    @Autowired
+    RedisServiceImpl redisService;
 
     @Test
     public void test1(){
@@ -28,6 +31,12 @@ public class ApplicationTests {
             redisTemplate.opsForValue().set("findById",map);
         }
         System.out.println(map);
+    }
+
+
+    @Test
+    public void test2(){
+        System.out.println(redisService.set("d3","d2"));
     }
 
 

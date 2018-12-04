@@ -1,6 +1,8 @@
-package com.goat;
+package com.goat.test;
 
 
+import com.goat.CrcTool;
+import com.goat.MyStringTool;
 import org.testng.annotations.Test;
 
 

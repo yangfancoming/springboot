@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)https://www.cnblogs.com/tangyuanyuan/p/8067923.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="origin">
+<title>redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园</title>
+<meta property="og:description" content="今天看到Spring操作redis 是可以将redisTemplate注入到ValueOperations，避免了ValueOperations&lt;String, Object&gt; value">
+<link type="text/css" rel="stylesheet" href="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/blog-common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/bundle-Autumn.css">
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/bundle-Autumn-mobile.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/tangyuanyuan/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/tangyuanyuan/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/tangyuanyuan/wlwmanifest.xml">
+<script src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/osd.js"></script><script src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/amp4ads-host-v0.js"></script><script src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/pubads_impl_rendering_276.js"></script><script async="" src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/analytics.js"></script><script type="text/javascript" src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/encoder.js"></script><script src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/jquery-2.2.0.min.js"></script>
+<script type="text/javascript">var currentBlogApp = 'tangyuanyuan', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/blog-common.js" type="text/javascript"></script>
+<link rel="preload" href="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/integrator.js" as="script"><script type="text/javascript" src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/integrator.js"></script><script src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/pubads_impl_276.js" async=""></script></head>
+<body style="">
+<a name="top"></a>
+
+<table id="blog_header" cellspacing="0" cellpadding="0" width="100%" border="0" class="banner" height="250" background="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/bg_banner.jpg">
+        <tbody><tr>
+            <td width="61">
+                &nbsp;
+            </td>
+            <td width="236" align="center">
+                
+<br><br><br><br><br><br><br>
+<div id="header">
+	<span>
+		<a id="Header1_HeaderTitle" href="https://www.cnblogs.com/tangyuanyuan/">汤圆圆</a><br><br>
+		
+	</span>
+</div>
+            </td>
+            <td style="padding-bottom: 30px" align="center" valign="bottom">
+                &nbsp;
+            </td>
+        </tr>
+</tbody></table>
+<table align="center" width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tbody><tr>
+        <td width="60">
+            &nbsp;
+        </td>
+        <td id="sidebar" valign="top" s="">
+            <table align="center" width="100%" height="1400" cellspacing="0" cellpadding="5" border="0" bgcolor="white">
+                <tbody><tr>
+                    <td class="banner" valign="top" style="padding-top: 0px">
+                        
+                            
+<div class="news"><div id="blog-news"><div id="profile_block">昵称：<a href="https://home.cnblogs.com/u/tangyuanyuan/">汤圆圆</a><br>园龄：<a href="https://home.cnblogs.com/u/tangyuanyuan/" title="入园时间：2017-10-25">1年1个月</a><br>粉丝：<a href="https://home.cnblogs.com/u/tangyuanyuan/followers/">1</a><br>关注：<a href="https://home.cnblogs.com/u/tangyuanyuan/followees/">0</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="follow(&#39;04c03005-a44b-49aa-3e79-08d4ef52ecb6&#39;)">+加关注</a></div><script>getFollowStatus('04c03005-a44b-49aa-3e79-08d4ef52ecb6')</script></div></div><script type="text/javascript">loadBlogNews();</script></div>
+
+                            <div id="blog-sidecolumn"><div id="sidebar_search" class="sidebar-block">
+<div id="sidebar_search" class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="sidebar_search_box">
+<div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk"></div>
+<div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+</div>
+</div>
+
+</div><div id="sidebar_shortcut" class="sidebar-block">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+<li><a href="https://www.cnblogs.com/tangyuanyuan/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="https://www.cnblogs.com/tangyuanyuan/MyComments.html" title="我发表过的评论列表">我的评论</a></li><li><a href="https://www.cnblogs.com/tangyuanyuan/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="https://www.cnblogs.com/tangyuanyuan/RecentComments.html" title="我的博客的评论列表">最新评论</a></li><li><a href="https://www.cnblogs.com/tangyuanyuan/tag/" title="我的博客的标签列表">我的标签</a></li>
+</ul>
+<div id="itemListLin_con" style="display:none;">
+
+</div></div><div id="sidebar_toptags" class="sidebar-block"></div><div id="sidebar_categories">
+		<h1 class="listtitle">随笔分类</h1>
+		
+				<ul class="list">
+			
+				<li class="listitem"><a id="CatList_LinkList_0_Link_0" class="listitem" href="https://www.cnblogs.com/tangyuanyuan/category/1102612.html">Java基础(1)</a> </li>
+			
+				<li class="listitem"><a id="CatList_LinkList_0_Link_1" class="listitem" href="https://www.cnblogs.com/tangyuanyuan/category/1116262.html">Spring(2)</a> </li>
+			
+				</ul>
+			
+	
+		<h1 class="listtitle">随笔档案</h1>
+		
+				<ul class="list">
+			
+				<li class="listitem"><a id="CatList_LinkList_1_Link_0" class="listitem" href="https://www.cnblogs.com/tangyuanyuan/archive/2018/01.html">2018年1月 (2)</a> </li>
+			
+				<li class="listitem"><a id="CatList_LinkList_1_Link_1" class="listitem" href="https://www.cnblogs.com/tangyuanyuan/archive/2017/12.html">2017年12月 (1)</a> </li>
+			
+				<li class="listitem"><a id="CatList_LinkList_1_Link_2" class="listitem" href="https://www.cnblogs.com/tangyuanyuan/archive/2017/11.html">2017年11月 (2)</a> </li>
+			
+				<li class="listitem"><a id="CatList_LinkList_1_Link_3" class="listitem" href="https://www.cnblogs.com/tangyuanyuan/archive/2017/10.html">2017年10月 (1)</a> </li>
+			
+				</ul>
+			
+	
+</div><div id="sidebar_recentcomments" class="sidebar-block"><div id="recent_comments_wrap">
+<h3 class="catListTitle">最新评论</h3>
+<div class="RecentComment" id="RecentComments">
+	<div id="RecentCommentsBlock"><ul>
+        <li class="recent_comment_title"><a href="https://www.cnblogs.com/tangyuanyuan/p/8067923.html#3890837">1. Re:redisTemplate如何注入到ValueOperations</a></li>
+        <li class="recent_comment_body">简单易懂</li>
+        <li class="recent_comment_author">--vAuLt101</li>
+</ul>
+</div>
+</div>
+</div></div><div id="sidebar_topviewedposts" class="sidebar-block"><div id="topview_posts_wrap">
+<h3 class="catListTitle">阅读排行榜</h3>
+<div class="RecentComment" id="TopViewPosts"> 
+	<div id="TopViewPostsBlock"><ul><li><a href="https://www.cnblogs.com/tangyuanyuan/p/8067923.html">1. redisTemplate如何注入到ValueOperations(4164)</a></li><li><a href="https://www.cnblogs.com/tangyuanyuan/p/8331243.html">2. sping+redis实现消息队列的乱码问题(328)</a></li><li><a href="https://www.cnblogs.com/tangyuanyuan/p/7778451.html">3. 实现一个依赖注入的小程序(228)</a></li><li><a href="https://www.cnblogs.com/tangyuanyuan/p/7732800.html">4. 类加载与双亲委派(64)</a></li><li><a href="https://www.cnblogs.com/tangyuanyuan/p/7825420.html">5. 数据库事务级别(29)</a></li></ul></div>
+</div>
+</div></div><div id="sidebar_topcommentedposts" class="sidebar-block"><div id="topfeedback_posts_wrap">
+<h3 class="catListTitle">评论排行榜</h3>
+<div class="RecentComment" id="TopCommentsPosts">
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="https://www.cnblogs.com/tangyuanyuan/p/8067923.html">1. redisTemplate如何注入到ValueOperations(1)</a></li></ul></div>
+</div></div></div><div id="sidebar_topdiggedposts" class="sidebar-block"><div id="topdigg_posts_wrap">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div class="RecentComment">
+	<div id="TopDiggPostsBlock"><ul><li><a href="https://www.cnblogs.com/tangyuanyuan/p/8067923.html">1. redisTemplate如何注入到ValueOperations(1)</a></li></ul></div>
+</div></div></div></div><script type="text/javascript">loadBlogSideColumn();</script>
+                        
+                        <br>
+                        <center>
+                            Powered by <a href="http://www.cnblogs.com/">博客园</a>
+                        </center>
+                    </td>
+                </tr>
+            </tbody></table>
+        </td>
+        <td valign="top" style="padding: 0">
+            <table align="center" width="100%" height="1400" cellspacing="0" cellpadding="5" border="0" bgcolor="white" class="index">
+                <tbody><tr>
+                    <td class="banner" valign="top">
+                        <center>
+                            <a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">博客园</a> <span id="sitehome_link_split">|</span> 
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/tangyuanyuan/">首页</a> <span id="bloghome_link_split">|</span> 
+<a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a> <span id="newpost_link_split">|</span> 
+<!--<a id="MyLinks1_NewArticleLink" class="menu" href="/EnterMyBlog.aspx?NewArticle=1">发新文章</a> | -->
+<a id="blog_nav_contact" accesskey="9" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/%E6%B1%A4%E5%9C%86%E5%9C%86">联系</a> <span id="contact_link_split">|</span>  
+<a id="blog_nav_rss" class="menu" href="https://www.cnblogs.com/tangyuanyuan/rss">订阅</a><a id="blog_nav_rss_image" href="https://www.cnblogs.com/tangyuanyuan/rss"><img src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/xml.gif" alt="订阅"></a> <span id="rss_link_split">|</span> 
+<a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a>
+
+                        </center>
+                        
+<div id="post_detail">
+<div class="block">
+	<h1 class="block_title"><a id="cb_post_title_url" href="https://www.cnblogs.com/tangyuanyuan/p/8067923.html">redisTemplate如何注入到ValueOperations</a></h1>
+	<div class="post">
+		<div class="postcontent">
+			<div id="cnblogs_post_body" class="blogpost-body"><p>&nbsp;</p>
+<p>今天看到Spring操作redis&nbsp; 是可以将redisTemplate注入到ValueOperations，避免了ValueOperations&lt;String, Object&gt; valueOperations = redisTemplate.opsForValue(); 这样来获取ValueOperations；</p>
+<div class="cnblogs_code">
+<pre>@Resource(name = "redisTemplate"<span style="color: #000000">)
+</span><span style="color: #0000ff">private</span> ValueOperations&lt;String, Object&gt; vOps;</pre>
+</div>
+<p>redisTemplate并不是ValueOperations的实现类，这两个在继承上毫无联系的两个类是如何注入的呢。</p>
+<p>后来查doGetBean()的代码才发现有一段以前没有详细的去看。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>        <span style="color: #008000">//</span><span style="color: #008000"> Check if required type matches the type of the actual bean instance.</span>
+        <span style="color: #0000ff">if</span> (requiredType != <span style="color: #0000ff">null</span> &amp;&amp; bean != <span style="color: #0000ff">null</span> &amp;&amp; !<span style="color: #000000">requiredType.isInstance(bean)) {
+            </span><span style="color: #0000ff">try</span><span style="color: #000000"> {
+                </span><span style="color: #0000ff">return</span><span style="color: #000000"> getTypeConverter().convertIfNecessary(bean, requiredType);
+            }
+            </span><span style="color: #0000ff">catch</span><span style="color: #000000"> (TypeMismatchException ex) {
+                </span><span style="color: #0000ff">if</span><span style="color: #000000"> (logger.isDebugEnabled()) {
+                    logger.debug(</span>"Failed to convert bean '" + name + "' to required type '" +<span style="color: #000000">
+                            ClassUtils.getQualifiedName(requiredType) </span>+ "'"<span style="color: #000000">, ex);
+                }
+                </span><span style="color: #0000ff">throw</span> <span style="color: #0000ff">new</span><span style="color: #000000"> BeanNotOfRequiredTypeException(name, requiredType, bean.getClass());
+            }
+        }</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>如果你要实例化的对象和你的引用对象并不是同一种类型，也就是如redisTemplate和ValueOperations一般不是父子关系或接口实现关系，那么spring就会进行转换。</p>
+<p>用什么转换呢？Spring的editor。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre>String editorName = targetType.getName() + "Editor"<span style="color: #000000">;
+        </span><span style="color: #0000ff">try</span><span style="color: #000000"> {
+            Class</span>&lt;?&gt; editorClass =<span style="color: #000000"> cl.loadClass(editorName);
+            </span><span style="color: #0000ff">if</span> (!PropertyEditor.<span style="color: #0000ff">class</span><span style="color: #000000">.isAssignableFrom(editorClass)) {
+                </span><span style="color: #0000ff">if</span><span style="color: #000000"> (logger.isWarnEnabled()) {
+                    logger.warn(</span>"Editor class [" + editorName +
+                            "] does not implement [java.beans.PropertyEditor] interface"<span style="color: #000000">);
+                }
+                unknownEditorTypes.add(targetType);
+                </span><span style="color: #0000ff">return</span> <span style="color: #0000ff">null</span><span style="color: #000000">;
+            }
+            </span><span style="color: #0000ff">return</span><span style="color: #000000"> (PropertyEditor) instantiateClass(editorClass);
+        }</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>spring会去加载 ValueOperations+Editor，即ValueOperationsEditor的类。且此类必须要实现PropertyEditor接口。</p>
+<p>而我们在ValueOperations的包目录下确实会找到ValueOperationsEditor。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff">class</span> ValueOperationsEditor <span style="color: #0000ff">extends</span><span style="color: #000000"> PropertyEditorSupport {
+
+    </span><span style="color: #0000ff">public</span> <span style="color: #0000ff">void</span><span style="color: #000000"> setValue(Object value) {
+        </span><span style="color: #0000ff">if</span> (value <span style="color: #0000ff">instanceof</span><span style="color: #000000"> RedisOperations) {
+            </span><span style="color: #0000ff">super</span><span style="color: #000000">.setValue(((RedisOperations) value).opsForValue());
+        } </span><span style="color: #0000ff">else</span><span style="color: #000000"> {
+            </span><span style="color: #0000ff">throw</span> <span style="color: #0000ff">new</span> java.lang.IllegalArgumentException("Editor supports only conversion of type " + RedisOperations.<span style="color: #0000ff">class</span><span style="color: #000000">);
+        }
+    }
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>这个类非常简单，它重写了setValue方法，将redisTemplate中的<span style="color: #000000">opsForValue()返回值set进去，而<span style="color: #000000">opsForValue()返回值</span>就是继承了ValueOperations的DefaultValueOperations。</span></p>
+<p><span style="color: #000000">这样我们用editor get value的时候就能获取到<span style="color: #000000">DefaultValueOperations</span>了。就可以将<span style="color: #000000">DefaultValueOperations</span>注入到<span style="color: #000000">ValueOperations中去了。</span></span></p>
+<p>&nbsp;</p>
+<p><span style="color: #000000"><span style="color: #000000">做个实验，写两个类</span></span></p>
+<p>&nbsp;</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff">public</span> <span style="color: #0000ff">class</span><span style="color: #000000"> ClassA {
+    </span><span style="color: #0000ff">private</span><span style="color: #000000"> String msg;
+    </span><span style="color: #0000ff">public</span><span style="color: #000000"> ClassA(String msg){
+        </span><span style="color: #0000ff">this</span>.msg=<span style="color: #000000">msg;
+    }
+    </span><span style="color: #0000ff">public</span> <span style="color: #0000ff">void</span><span style="color: #000000"> hi(){
+        System.out.println(msg);
+    }
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<p>&nbsp;</p>
+<div class="cnblogs_code">
+<pre><span style="color: #000000">@Component
+</span><span style="color: #0000ff">public</span> <span style="color: #0000ff">class</span><span style="color: #000000"> ClassB {
+    </span><span style="color: #0000ff">public</span><span style="color: #000000"> ClassA getA(){
+        </span><span style="color: #0000ff">return</span> <span style="color: #0000ff">new</span> ClassA("this is A from B"<span style="color: #000000">);
+    }
+}</span></pre>
+</div>
+<p>类B有个方法可以获取A类实例，我们将此注入到A对象中。</p>
+<div class="cnblogs_code"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div>
+<pre><span style="color: #0000ff">public</span> <span style="color: #0000ff">class</span> EditorTest <span style="color: #0000ff">extends</span><span style="color: #000000"> BaseJunitTest{
+    
+    @Resource(name</span>="classB"<span style="color: #000000">)
+    </span><span style="color: #0000ff">private</span><span style="color: #000000"> ClassA a; 
+    
+    @Test   
+    </span><span style="color: #0000ff">public</span> <span style="color: #0000ff">void</span><span style="color: #000000"> test(){
+        a.hi();
+    }
+}</span></pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/copycode.gif" alt="复制代码"></a></span></div></div>
+<pre><span style="font-size: 14px"><span style="color: #000000">BaseJunitTest</span>配置了一些spring的XML配置文件 不需要管它。</span><br><span style="font-size: 14px">此时我们还需要写一个ClassAEditor类。如果没有editor类的话当然会注入不了 并抛出一个异常</span><br><span style="font-size: 14px"><span style="color: #ff0000">Bean named 'classB' is expected to be of type 'xxx.test.ClassA' but was actually of type 'xxx.test.ClassB'<br></span><span style="color: #000000">我们完成<span style="font-size: 14px">ClassAEditor</span><br></span></span></pre>
+<div class="cnblogs_code">
+<pre><span style="color: #0000ff">public</span> <span style="color: #0000ff">class</span> ClassAEditor <span style="color: #0000ff">extends</span><span style="color: #000000"> PropertyEditorSupport{
+      </span><span style="color: #0000ff">public</span> <span style="color: #0000ff">void</span><span style="color: #000000"> setValue(Object value) {
+          </span><span style="color: #0000ff">super</span><span style="color: #000000">.setValue(((ClassB)value).getA());
+      }
+}</span></pre>
+</div>
+<pre></pre>
+<p>判断略去不写。</p>
+<p>运行程序，得到正确结果</p>
+<p><img src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/1264808-20171219215353506-277500118.png" alt=""></p>
+<p>&nbsp;</p>
+<p>非常有意思的一个细节，工厂模式的一种体现。</p>
+<pre><span style="font-size: 14px"><span style="color: #000000">&nbsp;</span></span></pre>
+<p>&nbsp;</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="https://www.cnblogs.com/tangyuanyuan/category/1116262.html" target="_blank">Spring</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(8067923,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow(&#39;04c03005-a44b-49aa-3e79-08d4ef52ecb6&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/tangyuanyuan/" target="_blank"><img src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/20171025100327.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="http://home.cnblogs.com/u/tangyuanyuan/">汤圆圆</a><br>
+            <a href="http://home.cnblogs.com/u/tangyuanyuan/followees">关注 - 0</a><br>
+            <a href="http://home.cnblogs.com/u/tangyuanyuan/followers">粉丝 - 1</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;04c03005-a44b-49aa-3e79-08d4ef52ecb6&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(8067923,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">1</span>
+    </div>
+    <div class="buryit" onclick="votePost(8067923,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="https://www.cnblogs.com/tangyuanyuan/p/7825420.html" class="p_n_p_prefix">« </a> 上一篇：<a href="https://www.cnblogs.com/tangyuanyuan/p/7825420.html" title="发布于2017-11-13 11:10">数据库事务级别</a><br><a href="https://www.cnblogs.com/tangyuanyuan/p/8242968.html" class="p_n_p_prefix">» </a> 下一篇：<a href="https://www.cnblogs.com/tangyuanyuan/p/8242968.html" title="发布于2018-01-08 15:33">JVM参数设置</a><br></div>
+</div>
+
+
+		</div>
+		<div class="itemdesc">
+			发表于 <span id="post-date">2017-12-19 21:54</span> <a href="https://www.cnblogs.com/tangyuanyuan/">汤圆圆</a> 阅读(<span id="post_view_count">4165</span>) 评论(<span id="post_comment_count">1</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=8067923" rel="nofollow">编辑</a> <a href="https://www.cnblogs.com/tangyuanyuan/p/8067923.html#" onclick="AddToWz(8067923);return false;">收藏</a>
+		</div>
+	</div>
+	<div class="seperator">&nbsp;</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=390460,cb_entryId=8067923,cb_blogApp=currentBlogApp,cb_blogUserGuid='04c03005-a44b-49aa-3e79-08d4ef52ecb6',cb_entryCreatedDate='2017/12/19 21:54:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<div class="post">
+<a name="评论"></a>
+<div class="moreinfo">
+	<div class="moreinfotitle">
+		评论
+	</div>
+	
+	
+			<div class="comments">
+		
+			<div class="comment">
+				<div class="comment_title">
+					<a href="https://www.cnblogs.com/tangyuanyuan/p/8067923.html#3890837" class="layer">#1楼</a><a name="3890837" id="comment_anchor_3890837"></a><span id="comment-maxId" style="display:none;">3890837</span><span id="comment-maxDate" style="display:none;">2018/1/16 16:46:20</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment_actions"></span>
+				</div>
+				<div class="comment_content"><div id="comment_body_3890837" class="blog_comment_body">简单易懂</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3890837,&#39;Digg&#39;,this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3890837,&#39;Bury&#39;,this)">反对(0)</a></div><span id="comment_3890837_avatar" style="display:none;">http://pic.cnblogs.com/face/968519/20160601232110.png</span></div>
+				<div class="comment_footer"><a id="a_comment_author_3890837" href="https://www.cnblogs.com/vault101/" target="_blank">vAuLt101</a> <a href="http://msg.cnblogs.com/send/vAuLt101" title="发送站内短消息" class="sendMsg2This">&nbsp;</a> 评论于  <span class="comment_date">2018-01-16 16:46</span></div>
+			</div>
+		
+			</div>
+		
+</div>
+</div>
+<div class="seperator">&nbsp;</div>
+<div id="comments_pager_bottom"></div></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/tangyuanyuan/p/8067923.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/tangyuanyuan/p/8067923.html#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】超50万VC++源码: 大型组态工控、电力仿真CAD与GIS源码库！</a><br><a href="http://clickc.admaster.com.cn/c/a113612,b3081535,c1705,i0,m101,8a1,8b3,h" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-EH&#39;)">【福利】华为云4核8G云主机免费试用</a><br><a href="http://clickc.admaster.com.cn/c/a116493,b2949399,c1705,i0,m101,8a1,8b3,h" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-华为云&#39;)">【活动】申请成为华为云云享专家 尊享9大权益</a><br><a href="https://cloud.tencent.com/developer/conf/2018-beijing?fromSource=gwzcw.1768694.1768694.1768694" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-腾讯云&#39;)">【活动】腾讯云+社区开发者大会12月15日首都北京盛大起航！</a><br></div>
+<div id="opt_under_post"></div>
+<div id="cnblogs_c1" class="c_ad_block"><a href="https://cloud.tencent.com/act/special/amd?fromSource=gwzcw.1351353.1351353.1351353" target="_blank"><img width="300" height="250" src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/24442-20181129113406214-695115565.jpg" alt="腾讯云1129" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;C1&#39;);"></a></div>
+<div id="under_post_news"><div class="itnews c_ad_block"><b>相关博文：</b><br>·  <a href="https://www.cnblogs.com/Jxwz/p/8372305.html" target="_blank" onclick="clickRecomItmem(8372305,&#39;JLUbUoIGvVACg91CeW+KAGKiX4fs3EidwwtZYSX3rfEdN4LjYoDUj9nxtcjyZMkVxf66ZczDLN25sWFaIcyn3DqiZvJ1j2BIgWGePJVUVx/FAF4xQFfyi+M4cH7tvKyFEjEdhi/HrYhstJOqZ7+IwIMQmjHDngvziReGChK6yZ6k/fgY&#39;)">Spring Data Redis入门示例:基于RedisTemplate （三）</a><br>·  <a href="https://www.cnblogs.com/luochengqiuse/p/4641256.html" target="_blank" onclick="clickRecomItmem(4641256,&#39;0Mv0LrSi/JSU1jRkLZ7do1o+w0gfB2lxSqBha1dBNSlNDCum9aaazjvhQYk13Br8B+pP9uTts8xJAIgyt8BpGwg7vt2kx7oSBns+JGplpDGaNrBw5WC88mPFZ41V1Ym9d30ynDfoU33lFtnaOAcdEiu3wSQvkk2QvS77Qwit0ovKVNkvh8d1FwB18NFaJivzwA==&#39;)">深入理解Spring Redis的使用 (三)、使用RedisTemplate的操作类访问Redis</a><br>·  <a href="https://www.cnblogs.com/alexcodinglife/articles/5527961.html" target="_blank" onclick="clickRecomItmem(5527961,&#39;KJ4TB2uXCatpy76xco9uWZDmxGSbxuW8w0HBBmQjmf8lm3fwoCh2cg1RaZtAgkGXJ+wC9TsIgIHT9DJLp0taZxUnZEqTgC7TD/uJmVWEJdPhhLuyf+sZY0IgYiNlThl97fu1tS4RXt9USEb/5HrTMB48TJb67GHIhxjexeAOAVk7aiZF&#39;)">redis Java实例1</a><br>·  <a href="https://www.cnblogs.com/sunchuanlei/p/4930489.html" target="_blank" onclick="clickRecomItmem(4930489,&#39;1fhgFArHzckUZFYXuaIiSHfQ+0b1LHv4sj1yX5s0PlddFAdE/RRu9tX8OWhrCqOF1MbheOHCPraukc4fzFPDmNfCJIayM5Fc+Rym32kdvPwN5gxyzbHsGJMudfF84KvKfWnIi8cI4m80dRsCXuRUBnIUZqEw0cjVRMviF4Vwkv26Y5kS&#39;)">redis最佳实践</a><br>·  <a href="https://www.cnblogs.com/flord/p/6089129.html" target="_blank" onclick="clickRecomItmem(6089129,&#39;x/1S5+BDXTRBW7+er6EYN3PqXLQr6PC7vfEEpyOXwtHmFJf6cg1zeWnCNnZq92vkcGKdhZ/gidullcNniQPpZ9vb3xkVR3+VCgFpGu6ch4eDf4TIJhKSeVT8IPrY8/M84Sb7Y2Nwdfmla48u61iLrfA+7q66Dzp31uLg5A1aYMHVpBpy&#39;)">api缓存</a><br></div></div>
+<script async="async" src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/gpt.js"></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script>
+
+<script>
+  googletag.cmd.push(function() {
+    googletag.defineSlot('/1090369/C2', [468, 60], 'div-gpt-ad-1539008685004-0').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+  });
+</script>
+<div id="cnblogs_c2" class="c_ad_block">
+    <div id="div-gpt-ad-1539008685004-0" style="height:60px; width:468px;" data-google-query-id="CPOdrva3ht8CFYqLlgodz7gG0g">
+    <script>
+    if (new Date() >= new Date(2018, 9, 13)) {
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1539008685004-0'); });
+    }
+    </script>
+    <div id="google_ads_iframe_/1090369/C2_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/C2_0" title="3rd party ad content" name="google_ads_iframe_/1090369/C2_0" width="468" height="60" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" data-google-container-id="1" data-load-complete="true" src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/saved_resource.html"></iframe></div></div>
+</div>
+<div id="under_post_kb"><div class="itnews c_ad_block"><b>最新新闻</b>：<br> ·  <a href="https://news.cnblogs.com/n/614018/" target="_blank">董明珠称10亿赌约稳了，网友：这两家公司免费打了5年广告</a><br> ·  <a href="https://news.cnblogs.com/n/614021/" target="_blank">乐视网等超九千万资产遭查封：天弘基金下属公司申请</a><br> ·  <a href="https://news.cnblogs.com/n/614020/" target="_blank">Nvidia开源PhysX SDK</a><br> ·  <a href="https://news.cnblogs.com/n/614019/" target="_blank">FSF从Handshake获得一百万美元捐款</a><br> ·  <a href="https://news.cnblogs.com/n/613987/" target="_blank">揭秘Uber新商业模式 优先打造最安全乘车环境</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+<script type="text/javascript">
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+                    </div></td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+</tbody></table>
+
+
+
+<iframe id="google_osd_static_frame_6641595385193" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./redisTemplate如何注入到ValueOperations - 汤圆圆 - 博客园_files/saved_resource(1).html"></iframe></body></html>

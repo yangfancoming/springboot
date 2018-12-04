@@ -1,6 +1,8 @@
-package com.goat;
+package com.goat.test;
 
 
+import com.goat.MyArrayTool;
+import com.goat.MyStringTool;
 import org.apache.commons.lang3.StringUtils;
 import org.testng.annotations.Test;
 
