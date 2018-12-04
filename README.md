@@ -1,6 +1,8 @@
+
 工程配置
 
-- chapter0-0-0 springboot 基础项目提供服务，共享model
+- chapter0-0-0 springboot 基础项目提供服务
+- chapter0-0-1 springboot 共享model
 - chapter0-1-0 springboot Utils 积累常用工具类
 - chapter1-1-1 springboot 读取配置文件
 - chapter1-1-2 springboot  javaconfig配置集合(其他模块共享该配置)
@@ -37,6 +39,7 @@ Web开发
 - chapter2-6-5 springboot  集成  freemarker
 - chapter2-7-1 springboot  集成 HttpClient
 - chapter2-8-0 springboot  集成  JSP 中使用 Echarts
+- chapter2-8-1 springboot  集成  JSP 中使用 JQuery
 - chapter2-8-2 springboot  集成  JSP 中使用 百度地图
 - chapter2-9-0 springboot  集成  前后台交互  方式 总结
 
@@ -96,13 +99,19 @@ Web开发
 
 
 
-其他功能
+
 
 - chapter6-1-1：springboot 集成 Swagger2
 - chapter6-2-1：springboot 集成 Email
+
+
+
+任务调度
+
 - chapter6-3-1：springboot 集成 Scheduled
 - chapter6-4-1：springboot 集成 Quartz
 - chapter6-5-1：springboot  异步任务
+- chapter6-5-5：springboot  重试机制
 - chapter7-3-1：springboot 集成 ElasticSearch  使用 JestClient 操作
 - chapter7-4-1：springboot 集成 ElasticSearch  使用 SpringData 操作
 - chapter7-5-0：springboot 集成 Maven
@@ -115,14 +124,15 @@ Web开发
 
 
 - chapter7-9-0：springboot 集成 Scala
+- chapter7-8-0：springboot 集成 Drools
 - chapter8-0-1：springboot 集成 Guava
 - chapter8-0-3：springboot 集成 Groovy
 - chapter8-0-5：springboot 集成 Lua
 - chapter8-0-8：springboot 集成 Kotlin
-- 
 - chapter8-1-0：springboot 集成  阿里云短信
 - chapter8-1-1：springboot 集成 Oss  使用阿里云存储
 - chapter8-1-2：springboot 集成  Java调用 Lua脚本  通过LuaJava
+- chapter8-1-4：springboot 集成  Java调用 Python脚本  通过命令行
 - chapter8-3-0：springboot 集成 RabbitMQ
 
 
@@ -141,6 +151,7 @@ Web开发
 - chapter9-4-1：springboot 集成 Docker
 - chapter9-4-3：springboot 集成 docker-compose
 - chapter9-5-1：springboot 集成23种设计模式
+- ==chapter9-5-5：springboot  代码重构 实例 ==
 - chapter9-6-1：springboot 集成 微信订阅号
   
 
