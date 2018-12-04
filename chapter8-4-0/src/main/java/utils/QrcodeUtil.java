@@ -29,7 +29,6 @@ public class QrcodeUtil {
      */
     public void encodeQRcode(String content,String imgPath,String imgType,int size) throws IOException {
 
-
         // 将字符串(待加密的文字信息) 转成 二位数组
         Qrcode qrcode = new Qrcode();
         qrcode.setQrcodeErrorCorrect('M');// 设置二维码的 排错率 7% < L M  Q  H  <30%  值越高 可存储信息越少 对二维码清晰度要求越小
@@ -48,7 +47,13 @@ public class QrcodeUtil {
         byte[] bs = content.getBytes("utf-8");
         boolean[][] codeOut = qrcode.calQrcode(bs);
         int pixOff = 2;
+        qrFillRect(gs, codeOut, pixOff);
+        gs.dispose();
+        bufferedImage.flush();
 
+    }
+
+    public static void qrFillRect(Graphics2D gs, boolean[][] codeOut, int pixOff) {
         for (int i = 0; i < codeOut.length ; i++) {
             for (int j = 0; j < codeOut.length; j++) {
                 if(codeOut[i][j]){
@@ -56,9 +61,6 @@ public class QrcodeUtil {
                 }
             }
         }
-        gs.dispose();
-        bufferedImage.flush();
-
     }
 
 }

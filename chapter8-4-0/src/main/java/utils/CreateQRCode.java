@@ -52,14 +52,7 @@ public class CreateQRCode {
          */
         if (d.length > 0 && d.length < 120) {
             boolean[][] s = x.calQrcode(d);
-
-            for (int i = 0; i < s.length; i++) {
-                for (int j = 0; j < s.length; j++) {
-                    if (s[j][i]) {
-                        gs.fillRect(j * 3 + pixoff, i * 3 + pixoff, 3, 3);
-                    }
-                }
-            }
+            QrcodeUtil.qrFillRect(gs, s, pixoff);
         }
         gs.dispose();
         bufferedImage.flush();
