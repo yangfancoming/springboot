@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule  xmlns="http://www.drools.org/xsd/kmodule">
+
+
+    <!-- 这里的 packages 属性就是规则文件的文件路径 -->
+    <kbase name="drools.rule" packages="drools.rules.test">
+        <!-- 对应 Java 代码  KieSession kieSession = kieContainer.newKieSession("helloWorldSession");-->
+        <ksession name="test"/>
+    </kbase>
+
+    <kbase name="drools.ru1le" packages="drools.rules.helloworld">
+        <ksession name="HelloWorldKS"/>
+    </kbase>
+
+</kmodule>

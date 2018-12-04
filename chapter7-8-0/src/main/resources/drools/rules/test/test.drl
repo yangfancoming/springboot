@@ -1,0 +1,10 @@
+package drools.rules.test;
+dialect  "mvel"
+
+rule "test"
+    when
+        eval(true)
+    then
+        System.out.println("Hellow ! test");
+end
+

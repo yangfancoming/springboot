@@ -59,7 +59,7 @@ public class TestNG {
 
     // 解码 失败
     @Test
-    public void test() throws IOException, WriterException {
+    public void test() {
         try {
             MultiFormatReader formatReader = new MultiFormatReader();
             File file = new File("src/123.png");
