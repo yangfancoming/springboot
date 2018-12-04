@@ -33,7 +33,6 @@ public class OpsForValue extends RedisCommon {
     redisTemplate 使用了 json序列化  插入的实际上是 json 数据
     stringRedisTemplate 只是操作字符串  插入就是字符串
     */
-
     /**
          * @Description:  对应命令
          * @author: 杨帆
