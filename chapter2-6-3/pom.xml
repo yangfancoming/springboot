@@ -61,6 +61,33 @@
             <version>RELEASE</version>
         </dependency>
 
+        <!-- 为了支持 LEGACYHTML5 -->
+        <dependency>
+            <groupId>net.sourceforge.nekohtml</groupId>
+            <artifactId>nekohtml</artifactId>
+            <version>1.9.22</version>
+        </dependency>
+
+        <!--
+        确保内嵌的servlet容器不能干扰war包将部署的servlet容器
+        doit 一个比较尖锐的问题：
+            这里用外置Tomcat 打war包 启动项目后会报错 找不到依赖公共模块中的User类
+            但是 使用 SpringBoot 启动方式就可以正常找到依赖
+        -->
+            <!-- … -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-tomcat</artifactId>
+                <scope>provided</scope>
+            </dependency>
+            <!-- … -->
+
+
+        <dependency>
+            <groupId>com.goat.springboot.learing</groupId>
+            <artifactId>chapter0-0-1</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 

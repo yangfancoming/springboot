@@ -13,6 +13,7 @@ import java.util.UUID;
 public class UserController {
 
 
+    // 首页跳转
     @GetMapping("/")
     public String index(Model model) {
         model.addAttribute("info", "user/list");
