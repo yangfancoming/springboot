@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class TestNG {
 
-    Gson gson = new Gson();
+    private final Gson gson = new Gson();
 
     //    json 中包含 jsonArray
     @Test

@@ -7,7 +7,7 @@ package com.goat.example02;
  * @Description: TODO
  * @date 2018/9/13---19:27
  */
-public class Student {
+class Student {
     private String name;
     private String age;
     private int gender;

@@ -9,7 +9,7 @@ import java.util.List;
  * @Description: TODO
  * @date 2018/9/13---19:27
  */
-public class Student {
+class Student {
     private String name;
     private String age;
     private int gender;
@@ -59,9 +59,9 @@ public class Student {
 
     @Override
     public String toString() {
-        String grades = null;
+        StringBuilder grades = null;
         for (Course course : grade) {
-            grades = grades + course.toString();
+            grades.append(course.toString());
         }
         return "name:" + getName() + " age:" + getAge() + " gender:" + getGender() + " school:" + getSchool() + "grade:" + grades;
     }

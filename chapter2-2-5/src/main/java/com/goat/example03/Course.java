@@ -8,7 +8,7 @@ package com.goat.example03;
  * @date 2018/9/13---19:27
  */
 
-public class Course {
+class Course {
     private String course;
     private String score;
     private String level;

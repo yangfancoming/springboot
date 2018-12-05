@@ -1,7 +1,6 @@
 package com.goat.example01;
 
 
-import com.goat.InventoryPlanMsg;
 import com.goat.bean.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -27,8 +26,8 @@ User 类的成员变量名要和 json 中的key 一致，成员变量类型要�
 
 public class TestNG {
 
-    Gson gson = new Gson();
-    HashMap<String, Object> map = new HashMap<>();
+    private final Gson gson = new Gson();
+    private final HashMap<String, Object> map = new HashMap<>();
     @BeforeMethod
     public void before(){
         map.put("name", "mafly");
