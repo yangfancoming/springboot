@@ -5,12 +5,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 /**
-     * @Description: 功能描述：
-     * @author: 杨帆
-     * @Return:
-     * @Date:   2018/7/14
- *     @PropertySource( value= {"classpath:security.yaml"}) // sos  @PropertySource 该注解不支持 yaml文件 只支持 properties文件！！！
+     * @ Description: 功能描述：
+     * @ author: 杨帆
+     * @ Return:
+     * @ Date:   2018/7/14
 */
+//@PropertySource( value= {"classpath:security.yaml"}) // sos  @PropertySource 该注解不支持 yaml文件 只支持 properties文件！！！
 @PropertySource( value= {"classpath:security.properties"})
 @Configuration
 @ConfigurationProperties(prefix = "security")

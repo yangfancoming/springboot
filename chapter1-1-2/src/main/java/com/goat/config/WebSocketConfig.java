@@ -8,10 +8,9 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 
 /**
  * Created by 64274 on 2018/8/24.
- *
- * @author 山羊来了
- * @Description: TODO
- * @date 2018/8/24---2:56
+ * @ author 山羊来了
+ * @ Description: TODO
+ * @ date 2018/8/24---2:56
 1.@Configuration：注解标识该类为Spring的配置类
 2.@EnableWebSocket：开启注解接收和发送消息
  */
@@ -24,7 +23,6 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
      * addEndpoint：添加STOMP协议的端点。提供WebSocket或SockJS客户端访问的地址
      * setAllowedOrigins("*")：  允许跨域访问
      * withSockJS：使用SockJS协议
-     * @param registry
      */
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/api/v1/socket").setAllowedOrigins("*").withSockJS() ;

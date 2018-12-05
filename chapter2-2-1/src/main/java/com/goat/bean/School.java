@@ -13,7 +13,7 @@ import java.util.List;
 public class School {
     private String id;
     private String name;
-    List<User> students = new ArrayList<User>();
+    private List<User> students = new ArrayList<>();
     public String getId() {
         return id;
     }

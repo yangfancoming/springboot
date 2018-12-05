@@ -22,20 +22,23 @@ import java.time.Duration;
 public class RedisConfig extends CachingConfigurerSupport {
 
     /**
-         * @Description: 功能描述：(这里用一句话描述这个方法的作用)
-         * @author: 杨帆
+         * @ Description: 功能描述：(这里用一句话描述这个方法的作用)
+         * @ author: 杨帆
+         * @ Date:   2018/8/12
     解释：SpringBoot提供了对Redis的自动配置功能，
     在RedisAutoConfiguration中默认为我们配置了 JedisConnectionFactory（客户端连接）、RedisTemplate以及StringRedisTemplate（数据操作模板），
     其中StringRedisTemplate模板只针对键值对都是字符型的数据进行操作，本示例采用RedisTemplate作为数据操作模板，
     该模板默认采用JdkSerializationRedisSerializer的二进制数据序列化方式，
     为了方便演示本示例采用Jackson2JsonRedisSerializer来序列化和反序列化redis的value值，
     使用StringRedisSerializer来序列化和反序列化redis的key值。
-         * @Date:   2018/8/12
+
     */
 
-    StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
+
+    // 代码优化：  IDEA 建议 增加 private final
+    private final StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
     //使用Jackson2JsonRedisSerializer来序列化和反序列化redis的value值
-    Jackson2JsonRedisSerializer j2 = new Jackson2JsonRedisSerializer(Object.class);
+    private final Jackson2JsonRedisSerializer j2 = new Jackson2JsonRedisSerializer(Object.class);
     //缓存管理器
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {

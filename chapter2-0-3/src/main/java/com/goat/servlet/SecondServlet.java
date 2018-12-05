@@ -20,7 +20,7 @@ public class SecondServlet extends HttpServlet {
 
     //访问地址：  http://localhost:8203/secondServlet
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.getWriter().append("SecondServlet");
     }
 }

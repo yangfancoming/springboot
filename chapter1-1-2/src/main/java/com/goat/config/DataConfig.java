@@ -10,9 +10,9 @@ import javax.sql.DataSource;
 public class DataConfig {
 
     /**
-         * @author: 杨帆
+         * @ author: 杨帆
          @ Bean 注解会告诉Spring 将该方法的返回值 添加到spring容器中 容器中该组件的默认id为函数名
-         * @Date:   2018/8/24
+         * @ Date:   2018/8/24
     */
     @Bean
     public DataSource dataSource() {

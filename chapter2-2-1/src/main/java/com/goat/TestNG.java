@@ -44,9 +44,9 @@ public class TestNG {
     public void json2JsonArray() {
         String s = "[{\"id\":\"17051801\",\"name\":\"lucy\"},{\"id\":\"17051802\",\"name\":\"peter\"}]";
         JSONArray array = JSON.parseArray(s);
-        for (int i = 0; i < array.size(); i++) {
+        for (Object o : array) {
             //JSONArray中的数据转换为String类型需要在外边加"";不然会报出类型强转异常！
-            String str = array.get(i)+"";
+            String str = o + "";
             JSONObject object = JSON.parseObject(str);
             System.out.println(object.get("name"));
         }
@@ -81,10 +81,11 @@ public class TestNG {
         String str = objArray+"";
         //方式1:转换成JSONArray对象形式
         JSONArray array = JSON.parseArray(str);
-        for (int i = 0; i < array.size(); i++) {
-            JSONObject obj = JSON.parseObject(array.get(i)+"");
+        for (Object o : array) {
+            JSONObject obj = JSON.parseObject(o + "");
             System.out.println(obj.get("name"));
         }
+
         //方式2:转换成List<JavaBean>形式
         List<User> list = JSON.parseArray(str, User.class);
         for (User user : list) {
