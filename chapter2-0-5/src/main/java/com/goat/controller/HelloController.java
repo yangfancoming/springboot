@@ -101,7 +101,7 @@ public class HelloController {
      */
     @RequestMapping("/RestResponse")
     public RestResponse<Map<String, Object>> RestResponse(){
-        Map<String,Object> map = new HashMap();
+        Map<String,Object> map = new HashMap<>();
         map.put("id",1);
         map.put("name","fuck");
         map.put("age",12);

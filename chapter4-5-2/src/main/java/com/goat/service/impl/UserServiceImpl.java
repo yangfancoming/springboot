@@ -22,9 +22,6 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public String sayHi(String name) {
-        User user = new User();
-        user.setId("22");
-        user.setName("fuck");
         return "OK";
     }
 

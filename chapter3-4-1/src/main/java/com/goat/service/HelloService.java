@@ -12,11 +12,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class HelloService {
 
-    public String SayHiService1(){
+    public String sayHiService1(){
         return "HelloService...........1";
     }
 
-    public String SayHiService2(){
+    public String sayHiService2(){
         return "HelloService...........2";
     }
 }

@@ -36,8 +36,7 @@ public class SelectTests extends CommonTest {
     @Test
     public void count() { // 查询 总数
         long size = repository.count();
-        int temp = Integer.valueOf(String.valueOf(size));
-        System.out.println(temp);
+        System.out.println(size);
     }
     /**
      * @Description:  CustomerRepository 需要自定义方法

@@ -35,7 +35,7 @@ public class MyStringTool {
          * @Return:
          * @Date:   2018/7/11
     */
-    public static String StrReverse(String str,int mark) {
+    public static String strReverse(String str,int mark) {
         StringBuilder heihei = new StringBuilder();
         for (int i = mark; i <= str.length(); i = i + mark){
             heihei.append(str.substring(str.length() - i, str.length() - i +mark));
@@ -129,7 +129,7 @@ public class MyStringTool {
          * @Return:  31323334
          * @Date:   2018/7/12
     */
-    public static String  IntToAsc(String haha){
+    public static String  intToAsc(String haha){
         String temp2 = "";
         try{
             // 0x31,0x32,0x33,0x34

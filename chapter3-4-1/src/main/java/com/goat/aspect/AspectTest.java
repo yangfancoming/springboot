@@ -80,20 +80,20 @@ public class AspectTest {
          * @Date:   2018/9/26
     */
     @AfterReturning(returning="rvt", pointcut="execution(* com.goat.service.HelloService.SayHiService1(..))")
-    public void AfterExec(Object rvt){
+    public void afterExec(Object rvt){
         System.out.println("哥是后AfterReturning。。。。。。。。。。。");
         System.out.println(rvt);
     }
 
     @AfterThrowing("execution(* com.goat.service..*(..))")
-    public void AfterThrowing(){
+    public void afterThrowing(){
         System.out.println("哥是 异常增强。。。。。。。。。。。");
     }
 
 
 
     @Around("execution(* com.goat.service..*(..))")
-    public void Around(ProceedingJoinPoint pjp){
+    public void around(ProceedingJoinPoint pjp){
         System.out.println("哥是 环绕增强1。。。。。。。。。。。");
         System.out.println(pjp.getArgs());
     }

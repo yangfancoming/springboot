@@ -18,7 +18,7 @@ import java.util.Optional;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class selectTest extends TestCommon {
+public class SelectTest extends TestCommon {
 
     /**
          * @Description: JPA 自带查询功能

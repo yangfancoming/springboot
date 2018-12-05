@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 2018/11/20---15:21
  */
 @Configuration
-public class jwtFilter {
+public class JwtFilter {
 
     @Bean
     public FilterRegistrationBean myJwtFilter() {

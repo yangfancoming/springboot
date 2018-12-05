@@ -21,7 +21,7 @@ public class HelloController {
     // 测试地址：    http://localhost:8341/hello1
     @RequestMapping(value = "/hello1", method = RequestMethod.GET)
     public String hello1() {
-        return helloService.SayHiService1();
+        return helloService.sayHiService1();
     }
 
 
@@ -29,6 +29,6 @@ public class HelloController {
     @RequestMapping(value = "/hello2", method = RequestMethod.GET)
     public String hello2() {
         System.out.println("执行 hello2 Controller");
-        return helloService.SayHiService2();
+        return helloService.sayHiService2();
     }
 }

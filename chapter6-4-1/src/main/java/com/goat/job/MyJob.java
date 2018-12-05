@@ -14,7 +14,7 @@ import java.util.Date;
 public class MyJob implements Job {
 
     @Override
-    public void execute(JobExecutionContext context) throws JobExecutionException {
+    public void execute(JobExecutionContext context)  {
         System.out.println("任务执行了: ");
 
         JobDataMap dataMap = context.getMergedJobDataMap();

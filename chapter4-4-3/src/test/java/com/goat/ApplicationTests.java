@@ -37,25 +37,25 @@ public class ApplicationTests {
     }
 
     @Test
-    public void Map() { //  P1 sql的唯一标识   P2 执行sql要用的参数
+    public void map() { //  P1 sql的唯一标识   P2 执行sql要用的参数
         Map map = sqlSession.selectOne("findMapById",7369);
         System.out.println(map);
     }
 
     @Test
-    public void Emp() { //  id: 唯一标识  在多个 xml 中 可以重复  但是在调用时 需要指定 namespace
+    public void emp() { //  id: 唯一标识  在多个 xml 中 可以重复  但是在调用时 需要指定 namespace
         Emp emp = sqlSession.selectOne("com.goat.dao.EmpDao.findObjectById",7369);
         System.out.println(emp);
     }
 
     @Test
-    public void Dept() {
+    public void dept() {
         Dept dept = sqlSession.selectOne("com.goat.dao.DeptDao.findObjectById",10);
         System.out.println(dept);
     }
 
     @Test
-    public void User() {
+    public void user() {
         User user = sqlSession.selectOne("com.goat.dao.UserDao.findObjectById",2);
         System.out.println(user);
     }

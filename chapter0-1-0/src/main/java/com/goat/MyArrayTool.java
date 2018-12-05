@@ -66,7 +66,7 @@ public class MyArrayTool<T>{
          * @Return:  2,1,14,22,18,3,27,20
          * @Date:   2018/7/8
     */
-    public <T> String StrPrint (T[] arrs){
+    public <T> String strPrint (T[] arrs){
         StringBuffer haha = new StringBuffer();
         for(T e:arrs){
             haha.append(e + ",");

@@ -27,14 +27,14 @@ public class MyArrayTest {
     @Test
     public void test2(){
         Integer[] temp ={2, 1, 14, 22, 18, 3, 27, 20};
-        String lolo = myArrayTool.StrPrint(temp);
+        String lolo = myArrayTool.strPrint(temp);
         System.out.println(lolo);
     }
     @Test
     public void test3(){
         Integer[] temp ={2, 1, 14, 22, 18, 3, 27, 20};
         Integer[] lolo = myArrayTool.selectSort(temp);
-        String gaga = myArrayTool.StrPrint(lolo);
+        String gaga = myArrayTool.strPrint(lolo);
         System.out.println(gaga);
     }
     @Test
@@ -45,7 +45,7 @@ public class MyArrayTest {
     @Test
     public void reverseArray(){
         Byte[] hoho1 = MyArrayTool.reverseArray(byteArrs);
-        String gaga = myArrayTool.StrPrint(hoho1);
+        String gaga = myArrayTool.strPrint(hoho1);
         System.out.println(gaga);
     }
 

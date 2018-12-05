@@ -23,14 +23,14 @@ public class MyStringTest {
     public void test3(){
         String marks = "1234567890";
         String[] hoho1 = MyStringTool.StrSplit(marks,3);
-        String lolo = myArrayTool.StrPrint(hoho1);
+        String lolo = myArrayTool.strPrint(hoho1);
         System.out.println(lolo);
     }
 
     @Test
     public void StrReverse(){
         String marks = "1234567890";
-        String ret = MyStringTool.StrReverse(marks,2);
+        String ret = MyStringTool.strReverse(marks,2);
         System.out.println(ret);
     }
     @Test
@@ -43,14 +43,14 @@ public class MyStringTest {
     public void hex2bytes(){
         String temp = "1234";
         Byte[] ret = MyStringTool.hex2bytes(temp);
-        String haha = MyArrayTool.getInstance().StrPrint(ret);
+        String haha = MyArrayTool.getInstance().strPrint(ret);
         System.out.println(haha);
     }
 
     @Test
     public void IntToAsc(){
         String temp = "1234";
-        String ret = MyStringTool.IntToAsc(temp);
+        String ret = MyStringTool.intToAsc(temp);
         System.out.println(ret);
     }
     @Test

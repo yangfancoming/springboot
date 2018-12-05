@@ -24,21 +24,21 @@ public class GlobalExceptionHandler {
     /**  处理自定义异常*/
     @ExceptionHandler(MyException.class)
     @ResponseBody
-    public void MyException(HttpServletRequest req, MyException e) throws Exception {
+    public void myException(HttpServletRequest req, MyException e)  {
         System.out.println(e.getMessage()+ ".............MyException");
     }
 
     /**  处理IO 异常*/
     @ExceptionHandler(IOException.class)
     @ResponseBody
-    public void IOException(IOException e) throws Exception {
+    public void iOException(IOException e) {
         System.out.println(e.getMessage()+ ".............IOException");
     }
 
     /**  处理 DuplicateKeyException 异常*/
     @ExceptionHandler(DuplicateKeyException.class)
     @ResponseBody
-    public void DuplicateKeyException(DuplicateKeyException e) throws Exception{
+    public void duplicateKeyException(DuplicateKeyException e) {
         System.out.println(e.getCause().getMessage()+ ".............DuplicateKeyException");
     }
 
@@ -46,13 +46,13 @@ public class GlobalExceptionHandler {
     /**  处理 RuntimeException 异常*/
     @ExceptionHandler(RuntimeException.class)
     @ResponseBody
-    public void RuntimeException(RuntimeException e) throws Exception{
+    public void runtimeException(RuntimeException e) {
         System.out.println(e.getCause().getMessage()+ ".............RuntimeException");
     }
 
     //    方法 defaultErrorHandler() 就会处理所有 Controller 层抛出的 Exception 及其子类的异常，这是最基本的用法了
     @ExceptionHandler(value = Exception.class)
-    public void defaultErrorHandler(HttpServletRequest req, Exception e) throws Exception {
+    public void defaultErrorHandler(HttpServletRequest req, Exception e) {
         System.out.println(e.getMessage()+ ".............Exception");
     }
 //
