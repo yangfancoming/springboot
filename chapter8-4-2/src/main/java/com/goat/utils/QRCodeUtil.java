@@ -147,7 +147,6 @@ public class QRCodeUtil {
 
     /**
      * 给二维码图片添加Logo
-     *
      * @param qrPic   二维码图片
      * @param logoPic logo图片
      * @param path    合成后的图片存储目录
