@@ -27,7 +27,10 @@ public class ApplicationTests {
 
     @Autowired
     private VelocityEngine velocityEngine;
+
+
     @Test
+    @SuppressWarnings("unchecked")
     public void test() throws MessagingException {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
 
@@ -38,6 +41,7 @@ public class ApplicationTests {
 
         Map<String, Object> model = new HashedMap();
         model.put("username", "didi");
+        //此处代码过时是： 官网推荐 使用 Thymeleaf 取代 velocity
         String text = VelocityEngineUtils.mergeTemplateIntoString(velocityEngine, "template.vm", "UTF-8", model);
         helper.setText(text, true);
         mailSender.send(mimeMessage);

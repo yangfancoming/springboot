@@ -1,5 +1,7 @@
 package com.goat;
 
+import java.nio.charset.StandardCharsets;
+
 /**
  * Created by 64274 on 2018/7/11.
  *
@@ -78,7 +80,10 @@ public class MyStringTool {
      * @return the array of byte
      */
     public static final Integer MARK = 2;
-    public static final Byte[] hex2bytes(String hex) throws IllegalArgumentException {
+
+    //  final表示这个方法不能被复写, 既然static方法本来就不具备复写的条件, 再加final就显得多余了
+//    public static final Byte[] hex2bytes(String hex) throws IllegalArgumentException {
+    public static  Byte[] hex2bytes(String hex) throws IllegalArgumentException {
         if (hex.length() % MARK != 0) {
             throw new IllegalArgumentException();
         }
@@ -133,7 +138,8 @@ public class MyStringTool {
         String temp2 = "";
         try{
             // 0x31,0x32,0x33,0x34
-            byte[] gaga = haha.getBytes("UTF-8");
+//            // 代码优化  使用 StandardCharsets.UTF_8 取代 "UTF-8"  避免了魔法值问题
+            byte[] gaga = haha.getBytes(StandardCharsets.UTF_8);
             // "31323334"
             temp2 = bytes2hex(gaga);
         }

@@ -8,5 +8,5 @@
 package mypackage;
 
 public interface CountriesPort extends java.rmi.Remote {
-    public mypackage.GetCountryResponse getCountry(mypackage.GetCountryRequest getCountryRequest) throws java.rmi.RemoteException;
+     mypackage.GetCountryResponse getCountry(mypackage.GetCountryRequest getCountryRequest) throws java.rmi.RemoteException;
 }

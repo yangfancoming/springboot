@@ -164,16 +164,14 @@ public enum ErrCode {
     //"物料" + upn + "已经在仓库，库位码：" + mscm.getLocation() + ",不能入库！"
     ERROR_MATERIAL_TYPE_WAREHOUSE_STOCK_IS_IN_WAREHOUSE_ERROR("70001","已经有了！");
 	
-	
-	
-	
+
 	private String code;
 	private String msg;
 
-	private ErrCode(String code, String msg) {
-		this.code = code;
-		this.msg = msg;
-	}
+    ErrCode(String code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }
 
 	public String getCode() {
 		return code;

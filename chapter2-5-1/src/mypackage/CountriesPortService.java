@@ -6,11 +6,12 @@
  */
 
 package mypackage;
+import java.net.URL;
 
 public interface CountriesPortService extends javax.xml.rpc.Service {
-    public java.lang.String getCountriesPortSoap11Address();
+     String getCountriesPortSoap11Address();
 
-    public mypackage.CountriesPort getCountriesPortSoap11() throws javax.xml.rpc.ServiceException;
+     CountriesPort getCountriesPortSoap11() throws javax.xml.rpc.ServiceException;
 
-    public mypackage.CountriesPort getCountriesPortSoap11(java.net.URL portAddress) throws javax.xml.rpc.ServiceException;
+     CountriesPort getCountriesPortSoap11(URL portAddress) throws javax.xml.rpc.ServiceException;
 }

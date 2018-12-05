@@ -19,7 +19,7 @@ import java.io.File;
  * Created by 64274 on 2018/7/27.
  *
  */
-@ContextConfiguration(classes= Application.class)
+@ContextConfiguration(classes= AliyunOssApplication.class)
 public class TestNG extends AbstractTestNGSpringContextTests {
 
     @Autowired private ApplicationContext ac;

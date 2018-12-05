@@ -96,7 +96,7 @@ public class HttpClientUtils {
 		CloseableHttpResponse httpResponse = null; // 创建httpResponse对象
 		try {
 			// 执行请求并获得响应结果
-			return getHttpClientResult(httpResponse, httpClient, httpGet);
+			return getHttpClientResult(httpClient, httpGet);
 		} finally {
 			// 释放资源
 			release(httpResponse, httpClient);
@@ -161,7 +161,7 @@ public class HttpClientUtils {
 
 		try {
 			// 执行请求并获得响应结果
-			return getHttpClientResult(httpResponse, httpClient, httpPost);
+			return getHttpClientResult(httpClient, httpPost);
 		} finally {
 			// 释放资源
 			release(httpResponse, httpClient);
@@ -252,7 +252,7 @@ public class HttpClientUtils {
 		packageParam(params, httpPut);
 		CloseableHttpResponse httpResponse = null;
 		try {
-			return getHttpClientResult(httpResponse, httpClient, httpPut);
+			return getHttpClientResult(httpClient, httpPut);
 		} finally {
 			release(httpResponse, httpClient);
 		}
@@ -272,7 +272,7 @@ public class HttpClientUtils {
 
 		CloseableHttpResponse httpResponse = null;
 		try {
-			return getHttpClientResult(httpResponse, httpClient, httpDelete);
+			return getHttpClientResult(httpClient, httpDelete);
 		} finally {
 			release(httpResponse, httpClient);
 		}
@@ -333,16 +333,14 @@ public class HttpClientUtils {
 
 	/**
 	 * Description: 获得响应结果
-	 * 
-	 * @param httpResponse
 	 * @param httpClient
 	 * @param httpMethod
 	 * @return
 	 * @throws Exception
 	 */
-	public static HttpClientResult getHttpClientResult(CloseableHttpResponse httpResponse,CloseableHttpClient httpClient, HttpRequestBase httpMethod) throws Exception {
+	public static HttpClientResult getHttpClientResult(CloseableHttpClient httpClient, HttpRequestBase httpMethod) throws Exception {
 		// 执行请求
-		httpResponse = httpClient.execute(httpMethod);
+        CloseableHttpResponse httpResponse = httpClient.execute(httpMethod);
 
 		// 获取返回结果
 		if (httpResponse != null && httpResponse.getStatusLine() != null) {
