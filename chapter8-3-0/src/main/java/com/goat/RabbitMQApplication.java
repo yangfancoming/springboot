@@ -7,10 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @EnableRabbit // 使  @RabbitListener 注解生效
 @SpringBootApplication
-public class Application {
+public class RabbitMQApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(RabbitMQApplication.class, args);
 	}
 
 }

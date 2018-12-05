@@ -15,8 +15,6 @@ import org.testng.annotations.Test;
 public class ObjectExplained {
 
     public static void main(String args[]) {
-
-
         // toString
         new ObjectExplained().toStringHelperMethod();
         // 比较器 Comparator

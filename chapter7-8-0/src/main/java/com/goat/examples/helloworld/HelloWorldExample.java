@@ -30,7 +30,7 @@ import java.util.List;
  */
 public class HelloWorldExample {
 
-    public static final void main(final String[] args) {
+    public static void main(final String[] args) {
         // KieServices is the factory for all KIE services 
         KieServices ks = KieServices.Factory.get();
         // From the kie services, a container is created from the classpath

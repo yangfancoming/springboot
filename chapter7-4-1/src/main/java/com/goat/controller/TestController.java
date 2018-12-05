@@ -46,8 +46,7 @@ public class TestController {
     //http://localhost:8741/test/getOne?id=1525417362754
     @GetMapping("getOne")
     public Optional<Article> getOne(Integer id){
-        Optional<Article> goodsInfo = bookRepository.findById(id);
-        return goodsInfo;
+        return bookRepository.findById(id);
     }
 
 }

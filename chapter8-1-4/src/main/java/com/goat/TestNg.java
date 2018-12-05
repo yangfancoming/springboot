@@ -22,9 +22,9 @@ public class TestNg {
         Process process=Runtime.getRuntime().exec(args);
         BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream(),"GBK"));
         String line;
-        String result="";
+        StringBuilder result= new StringBuilder();
         while ((line=in.readLine())!=null){
-            result+=line;
+            result.append(line);
         }
         in.close();
         process.waitFor();

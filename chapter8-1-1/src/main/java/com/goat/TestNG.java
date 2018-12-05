@@ -42,21 +42,6 @@ public class TestNG extends AbstractTestNGSpringContextTests {
         System.out.println(aliyunOssConfig);
     }
 
-
-    //  方法重构前
-    @Test
-    public void TestFile1(){
-        OSSClient ossClient = new OSSClient(aliyunOssConfig.getEndPoint() , aliyunOssConfig.getAccessKey(), aliyunOssConfig.getSecretKey());
-        // 创建上传Object的Metadata
-        ObjectMetadata meta = new ObjectMetadata();
-        // 必须设置ContentLength
-        meta.setContentLength(4096);
-        meta.setHeader("Content-Disposition", "inline");
-        PutObjectResult putObjectResult = ossClient.putObject(aliyunOssConfig.getBucket(), "goat/222.rar", new File("D:/123/222.rar"));
-        ossClient.shutdown();
-        System.out.println(putObjectResult.getETag());
-    }
-
     // 方法重构后   上传文件
     @Test
     public void uploadOss() {

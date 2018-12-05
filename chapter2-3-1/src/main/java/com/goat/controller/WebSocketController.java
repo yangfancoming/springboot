@@ -30,7 +30,7 @@ public class WebSocketController {
 
     // 当浏览器向服务器发送请求时，通过 @MessageMapping 注解来映射 /welcome 地址
     @MessageMapping("/welcome")
-    public ResponseMessage toTopic(RequestMessage msg) throws Exception {
+    public ResponseMessage toTopic(RequestMessage msg) {
         System.out.println("======================"+msg.getMessage());
         this.messagingTemplate.convertAndSend("/api/v1/socket/send",msg.getMessage());
         return new ResponseMessage("欢迎使用webScoket："+msg.getMessage());

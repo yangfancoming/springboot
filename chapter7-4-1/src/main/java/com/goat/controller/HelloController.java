@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
 
 
 @RestController
@@ -22,7 +21,7 @@ public class HelloController {
 //    http://localhost:8034/hello/create   创建索引
 //    http://172.16.163.135:9300/goat/news/1   查询已经操作的索引
     @RequestMapping("/create")
-    public void create() throws IOException {
+    public void create() {
         Article article = new Article();
         article.setId(1);
         article.setTitle("山羊来了");
@@ -44,7 +43,7 @@ public class HelloController {
 */
 
     @RequestMapping("/search")
-    public void search() throws IOException {
+    public void search()  {
         // 搜索 title内容 为山羊的 数据
 //        String json = "{\n" + "\"query\" : {\n" + "\"match\" : {\n" + "\"title\" : \"山羊\"\n" + "}\n" + "}\n" + "}";
 //        Search build = new Search.Builder(json).addIndex("goat").addType("news").build();
