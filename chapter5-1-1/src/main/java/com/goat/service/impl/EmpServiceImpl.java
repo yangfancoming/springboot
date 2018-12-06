@@ -38,7 +38,7 @@ public class EmpServiceImpl implements IEmpService {
     public synchronized Map findById(String id) {
         Map map = (Map) redisTemplate.opsForValue().get("findById");
         if(map==null){
-            map = baseDao.findById(id);
+            map = baseDao.findById(id); // 查询单条记录
             System.out.println("查询数据库了哦");
             redisTemplate.opsForValue().set("findById",map);
         }else {
@@ -51,7 +51,7 @@ public class EmpServiceImpl implements IEmpService {
     public List<Emp> findAll() {
         List<Emp> maps = (List<Emp>) redisTemplate.opsForValue().get("findAll");
         if(maps==null){
-            maps = baseDao.findAll();
+            maps = baseDao.findAll();  // 查询全部记录
             System.out.println("查询数据库了哦");
             redisTemplate.opsForValue().set("findAll",maps);
         }else {

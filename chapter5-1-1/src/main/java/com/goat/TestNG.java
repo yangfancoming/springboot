@@ -15,7 +15,7 @@ import java.util.Map;
  * Created by 64274 on 2018/7/27.
  *
  */
-@ContextConfiguration(classes= Application.class)
+@ContextConfiguration(classes= RedisApplication.class)
 public class TestNG extends AbstractTestNGSpringContextTests {
 
     @Autowired
