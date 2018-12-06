@@ -24,13 +24,13 @@ import java.io.IOException;
 public class MyServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws  IOException {
         System.out.println("-----------doGet----------------");
         doPost(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws  IOException {
         System.out.println("-----------doPost----------------");
         resp.getWriter().print("<h1>Hello MyServlet Response return you this</h1>");
     }

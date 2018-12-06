@@ -6,9 +6,9 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @SpringBootApplication
 @ServletComponentScan
-public class WechatApplication {
+public class WeChatApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WechatApplication.class, args);
+		SpringApplication.run(WeChatApplication.class, args);
 	}
 }
