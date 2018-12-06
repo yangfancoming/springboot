@@ -23,7 +23,6 @@ public  interface DeptDao {
 
     Dept findObjectBy2(Integer id,String dname);
 
-
     Dept findObjectBy22(@Param("id") Integer id,@Param("dname") String dname);
 
     Dept findObjectBy222(@Param("id") Integer id,@Param("dname") String dname);

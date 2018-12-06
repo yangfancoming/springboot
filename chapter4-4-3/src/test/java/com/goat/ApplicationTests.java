@@ -3,7 +3,7 @@ package com.goat;
 
 import com.goat.bean.Dept;
 import com.goat.dao.EmpDao;
-import com.goat.model.Emp;
+import com.goat.bean.Emp;
 import com.goat.bean.User;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -72,7 +72,7 @@ public class ApplicationTests {
     @Test
     public void saveObject() {
         Emp emp = new Emp();
-        emp.setENAME("321");
+        emp.setEname("321");
         int temp = empDao.saveObject(emp);
         System.out.println(temp);
     }

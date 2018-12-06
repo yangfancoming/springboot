@@ -4,7 +4,7 @@ package com.goat;
 import com.goat.bean.Dept;
 import com.goat.dao.DeptDao;
 import com.goat.dao.EmpDao;
-import com.goat.model.Emp;
+import com.goat.bean.Emp;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class ParameterTest {
      *
      * Mybatis 两个参数的传递
      * 1. sql 映射语句中 干掉  parameterType  属性
-     * 2. sql 映射语句中 使用  arg0     arg1 接收     SELECT * FROM dept WHERE DEPTNO = #{arg0} AND DNAME = #{arg1}
+     * 2. sql 映射语句中 使用  arg0     arg1 接收    SELECT * FROM dept WHERE DEPTNO = #{arg0}   AND DNAME = #{arg1}
      * 3. sql 映射语句中 使用 param1  param2 接收    SELECT * FROM dept WHERE DEPTNO = #{param1} AND DNAME = #{param2}
     */
     @Test
@@ -72,8 +72,8 @@ public class ParameterTest {
     @Test
     public void updateObjectById() {
         Emp emp = new Emp();
-        emp.setEMPNO(33);
-        emp.setENAME("shithaha");
+        emp.setEmpno(33);
+        emp.setEname("shithaha");
         int temp = empDao.updateObjectById(emp);
         System.out.println(temp);
     }
@@ -89,7 +89,6 @@ public class ParameterTest {
     DEBUG - ==>  Preparing: SELECT * FROM dept WHERE DEPTNO = 30 AND DNAME = ?
     DEBUG - ==> Parameters: SALES(String)
     DEBUG - <==      Total: 1
-
          * @Date:   2018/10/25
     */
 

@@ -20,7 +20,7 @@
     <!--别名不区分大小写-->
     <!--类型别名是为 Java 类型命名一个短的名字。 它只和 XML 配置有关, 只用来减少 类完全限定名的多余部分-->
     <typeAliases>
-        <typeAlias alias="Emp" type="com.goat.model.Emp"/>
+        <typeAlias alias="Emp" type="com.goat.bean.Emp"/>
 
         <!--为某个包及子包下的所有类 批量起别名 默认为 类名小写  即：com.goat.bean.Dept ===  dept -->
         <package name="com.goat.bean"/>
