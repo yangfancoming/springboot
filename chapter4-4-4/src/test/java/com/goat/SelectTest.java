@@ -98,8 +98,8 @@ public class SelectTest {
     @Test
     public void selectPage() {
         QueryWrapper<User> eq = new QueryWrapper<User>()
-                .between("age", 24, 25)
-                .eq("gender", 0);
+                .between("age", 0, 100)
+                .eq("version", 1);
         IPage<User> selectPag = userMapper.selectPage(new Page<>(1, 3),eq);
         System.out.println("selectPage ==> " + selectPag.getRecords());
     }
