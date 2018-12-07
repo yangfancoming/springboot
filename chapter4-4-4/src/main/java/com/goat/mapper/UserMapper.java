@@ -1,6 +1,5 @@
 package com.goat.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.goat.bean.User;
 
 /**

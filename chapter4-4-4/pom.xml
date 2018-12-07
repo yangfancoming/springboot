@@ -25,6 +25,13 @@
             <!--<artifactId>chapter0-0-0</artifactId>-->
             <!--<version>0.0.1-SNAPSHOT</version>-->
         <!--</dependency>-->
+        <!--&lt;!&ndash;引入 druid 数据源&ndash;&gt;-->
+        <!--<dependency> <groupId>com.alibaba</groupId> <artifactId>druid</artifactId><version>1.1.8</version> </dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>mysql</groupId>-->
+            <!--<artifactId>mysql-connector-java</artifactId>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>com.baomidou</groupId>

@@ -1,7 +1,6 @@
 package com.goat;
 
 import com.goat.bean.User;
-import com.goat.mapper.SuperMapper;
 import com.goat.mapper.UserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,8 +24,6 @@ public class SampleTest {
 
     @Autowired
     private UserMapper userMapper;
-    @Autowired
-    private SuperMapper superMapper;
 
     @Test
     public void testSelect() {
