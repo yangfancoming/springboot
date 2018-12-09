@@ -1,0 +1,17 @@
+#  腾讯云 部署配置
+
+#基于 Docker 来安装 Nginx
+version: '3.1'
+services:
+  nginx:
+    restart: always
+    image: nginx
+    container_name: nginx
+    ports:
+      - 80:80
+#      - 8961:8961
+    volumes:
+      #    ./conf/nginx.conf  需要在当前目录下  建好 conf 目录 再在该目录下 建好 ngin.conf 文件 空的就行
+      - ./conf/nginx.conf:/etc/nginx/nginx.conf
+      #      - ./home/goat/nginx/nginx.conf:/etc/nginx/nginx.conf
+
