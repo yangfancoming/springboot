@@ -18,4 +18,5 @@ ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urando
 # DockerFile ##############################################################################################
 # docker run --name hello -p 8961:8961  716ccfd578ee
 
-# docker run --name hello -d  -p 8961:8961  1e53622d91bb
+# docker run --name hello -d  -p 8961:8961  8fd5569cf177
+# docker run --name hello   -p 8961:8961  8fd5569cf177docker run --name hello   -p 8961:8961  8fd5569cf177

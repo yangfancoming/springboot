@@ -7,8 +7,19 @@ services:
     container_name: nginx
     ports:
       - 80:80
+      - 8080:8080
+      - 1234:1234
     volumes:
-#    ./conf/nginx.conf  需要在当前目录下  建好 conf 目录 再在该目录下 建好 ngin.conf 文件 空的就行
+      #    ./conf/nginx.conf  需要在宿主机的当前目录下  建好 conf 目录 再在该目录下 建好 ngin.conf 文件 空的就行  即：./home/goat/nginx/nginx.conf:/etc/nginx/nginx.conf
+      #      前面是宿主机 后面是容器
       - ./conf/nginx.conf:/etc/nginx/nginx.conf
-#      - ./home/goat/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./wwwroot:/usr/share/nginx/wwwroot
+  tomcat1:
+    image: tomcat:8.5
+    container_name: tomcat1
+    ports:
+      - 9090:8080
+
+#    http://172.16.163.135:9090    Tomcat 页面
+#    http://172.16.163.135/        hello 80
+#    http://172.16.163.135:8080/   hello 8080

@@ -78,9 +78,6 @@ public class HelloController {
         if (StringUtils.isAnyBlank(signature, timestamp, nonce, echostr)) {
             throw new IllegalArgumentException("请求参数非法，请核实!");
         }
-        if (StringUtils.isAnyBlank(signature, timestamp, nonce, echostr)) {
-            throw new IllegalArgumentException("请求参数非法，请核实!");
-        }
 
         if (wxMpService.checkSignature(timestamp, nonce,signature)) {
             return echostr;
