@@ -16,8 +16,8 @@ ENV JAVA_OPTS=""
 ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app.jar" ]
 
 # DockerFile ##############################################################################################
-# docker run --name hello -p 8961:8961  8fd5569cf177
+# docker run --name hello -p 8961:8961  1b782a155a35
 
-# docker run --name hello -d  -p 8961:8961  8fd5569cf177
+# docker run --name hello -d  -p 8961:8961  1b782a155a35
 # docker run --name hello -d    8fd5569cf177
 # docker run --name hello   -p 8961:8961  8fd5569cf177docker run --name hello   -p 8961:8961  8fd5569cf177

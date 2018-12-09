@@ -32,6 +32,14 @@
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
         </dependency>
+
+        <!-- doit 这里加入后  maven package 会报错-->
+        <!--<dependency>-->
+            <!--<groupId>com.goat.springboot.learing</groupId>-->
+            <!--<artifactId>chapter0-1-0</artifactId>-->
+            <!--<version>0.0.1-SNAPSHOT</version>-->
+        <!--</dependency>-->
+
     </dependencies>
 
 

@@ -36,3 +36,10 @@
     （3）在平时开发的时候，使用热部署的话，应该对Tomcat进行相应的设置，这样的话修改的jsp界面什么的东西才可以及时的显示出来。
     （4）war          模式 发布路径  F:\Package\Java Environment\apache-tomcat-8.0.39\webapps\ROOT\ptms
     （5）war exploded 模式 发布路径  E:\Code\J2EE_code\MySpringBoot\springboot\chapter7-4-1\target\ptms
+    
+    
+# Maven使用之packaging类型
+    jar  默认
+    pom
+    war
+    如果是需要部署的项目，则需要打包成war类型 ，如果只是内部调用或者是作服务使用，则推荐打包成jar类型。

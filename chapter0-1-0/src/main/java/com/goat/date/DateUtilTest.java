@@ -1,8 +1,10 @@
-package com.goat;
+package com.goat.date;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -12,7 +14,7 @@ import java.util.Date;
      * @Return:
      * @Date:   2018/9/27
 */
-public class TestNg {
+public class DateUtilTest {
 
 
     @BeforeMethod
@@ -22,9 +24,9 @@ public class TestNg {
 
 
     @Test
-    public void test()  {
-
-
+    public void test() throws ParseException {
+        System.out.println(DateUtil.scheduling("20181209","20181213"));
     }
+
 
 }

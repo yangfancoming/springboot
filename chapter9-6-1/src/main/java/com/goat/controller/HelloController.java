@@ -64,7 +64,7 @@ public class HelloController {
     }
 
 
-    // 接收 GET
+    // 接收 GET   微信官方验证连接
     @RequestMapping(value = "test",method=RequestMethod.GET)
     public String test(HttpServletRequest req,HttpServletResponse rep){
         String signature = req.getParameter("signature");  // 45e02aa4d9152289b5fd2f2106d1deece8ac5c2e
