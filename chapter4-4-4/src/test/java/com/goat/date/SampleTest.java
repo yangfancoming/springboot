@@ -1,4 +1,4 @@
-package com.goat;
+package com.goat.date;
 
 import com.goat.bean.Mydate;
 import com.goat.bean.User;
@@ -12,31 +12,23 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.List;
-
 
 /**
- * Created by 64274 on 2018/11/13.
- *
- * @author 山羊来了
- * @Description: TODO
- * @date 2018/11/13---13:28
- */
+     * @Description:  msyql  时间工具类
+     * @author: 杨帆
+     * @Param:
+     * @Return:
+     * @Date:   2018/12/10
+*/
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SampleTest {
 
-    @Autowired
-    private UserMapper userMapper;
 
     @Autowired
     private MydateMapper mydateMapper;
 
-    @Test
-    public void testSelect() {
-        List<User> userList = userMapper.selectList(null);
-        userList.forEach(System.out::println);
-    }
+
 
     @Test
     public void test() {

@@ -1,4 +1,4 @@
-package com.goat;
+package com.goat.crud;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.goat.bean.User;

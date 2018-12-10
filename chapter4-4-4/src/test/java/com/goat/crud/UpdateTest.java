@@ -1,5 +1,6 @@
-package com.goat;
+package com.goat.crud;
 
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.goat.bean.User;
 import com.goat.mapper.UserMapper;
 import org.junit.Test;
@@ -18,23 +19,27 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class InsertTest {
+public class UpdateTest {
 
     @Autowired
     private UserMapper userMapper;
 
+
     @Test
-    public void insert() {
-        User user = new User("goat",33);
-        System.out.println(userMapper.insert(user));
+    public void updateById() {  // 通过主键ID 修改
+        User user = new User(2L,"wahaha");
+        System.out.println(userMapper.updateById(user)); // UPDATE user SET name=? WHERE id=?
     }
 
     @Test
-    public void exist() {
-        User user = new User("goat",33,"haha");
-        System.out.println(userMapper.insert(user));
-        System.out.println(user.getId());// 插入后获取主键值
+    public void update() {  //-----------------  条件更改
+        User user = new User();
+        user.setName("HAHAHA");
+        user.setAge(30);
+        userMapper.update(user, new UpdateWrapper<User>()
+                .eq("name", "CCC"));
     }
+
 
 
 

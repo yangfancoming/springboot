@@ -15,3 +15,23 @@ ALTER TABLE authority.sys_role MODIFY createtime DATETIME DEFAULT CURRENT_TIMEST
 #
 # order by CREATETIME ASC
 # </select>
+
+# 获取mysql系统时间的三种方法
+select now();        # --yyyy-MM-dd HH:mm:ss  2018-12-10 11:34:34
+select sysdate();    # --yyyy-MM-dd HH:mm:ss  2018-12-10 11:34:30
+select current_date; # --yyyy-MM-dd           2018-12-10
+
+select code from test2.emp where delete_state = 0 and date_format(add_time,'%Y-%m-%d') = (select current_date);
+
+
+
+
+
+
+
+
+
+
+
+
+
