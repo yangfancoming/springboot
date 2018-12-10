@@ -2,14 +2,12 @@ package com.goat;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@EnableScheduling
-public class ScheduledApplication {
+public class PoiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ScheduledApplication.class, args);
+		SpringApplication.run(PoiApplication.class, args);
 	}
 
 }
