@@ -46,8 +46,15 @@ public class EmpServiceImpl implements IEmpService {
     public void test2() {
         System.out.println("周一至周六无论哪一天 0,1,2,3,4这几秒都会执行.。。。。。。。。。。。");
     }
+
     @Scheduled(cron = "0-4 * * * * MON-SAT")
     public void test3() {
         System.out.println("周一至周六无论哪一天 0,1,2,3,4这几秒都会执行");
+    }
+
+
+    @Scheduled(cron = "0 0 2 * * ?")
+    public void test4() {
+        System.out.println("每天凌晨2点 执行");
     }
 }

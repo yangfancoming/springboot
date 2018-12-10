@@ -6,10 +6,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication //Spring Boot会自动扫描@SpringBootApplication所在类的同级包,以及下级包里的所有BEAN，所以建议入口类放在最外层的包名下。
 @EnableScheduling
-public class Application {
+public class ScheduledApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(ScheduledApplication.class, args);
 	}
 
 }
