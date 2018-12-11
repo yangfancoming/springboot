@@ -35,10 +35,8 @@ public class SelectTest extends CommonTest {
     }
 
     /**
-     * @Description: 功能描述：  通过主键id 进行查找单个对象
+     * @Description: 功能描述：  通过主键id 进行查找单个对象    p1 指定 主键id  p2 指定 要在哪个集合中查找
      * @author: 杨帆
-     * @param  p1 指定 主键id
-     * @param  p2 指定 要在哪个集合中查找
      * @Date:   2018/9/27
      */
     @Test
@@ -54,7 +52,6 @@ public class SelectTest extends CommonTest {
         User user = mongoTemplate.findOne(query,User.class);
         System.out.println(user);
     }
-
 
 
     /**

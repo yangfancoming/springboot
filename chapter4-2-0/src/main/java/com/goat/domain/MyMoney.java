@@ -4,24 +4,25 @@ import javax.persistence.*;
 
 /**
  * Created by 64274 on 2018/12/6.
- *
  * @ Description: TODO
  * @ author  山羊来了
  * @ date 2018/12/6---16:48
- *
- 申明版本 @Version 属性时需遵守几个规则：
- 每个实体必须只能有一个版本属性
- 当一个实体映射到多个表时，版本属性必须在主表中
- 版本属性的类型必须是这几种类型之一：int, Integer, long, Long, short, Short, java.sql.Timestamp
  */
 @Entity
 @Table(name = "t_money")
 public class MyMoney {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
+    /*
+     申明版本 @Version 属性时需遵守几个规则：
+     每个实体必须只能有一个版本属性
+     当一个实体映射到多个表时，版本属性必须在主表中
+     版本属性的类型必须是这几种类型之一：int, Integer, long, Long, short, Short, java.sql.Timestamp
+    * */
     @Version
     @Column(name = "version")
     private Long version;

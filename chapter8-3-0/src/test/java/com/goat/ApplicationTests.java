@@ -30,7 +30,7 @@ public class ApplicationTests {
          * @Description:  单播 点对点 发送 Map 数据
          * @author: 杨帆
          * @Param:  convertAndSend  P1= exchange 路由器  P2  routingKey  P3 默认当成消息体 自动序列化后发送
-         * @Return:  发送消息后  打开 http://172.16.163.135:15672/#/queues/%2F/goat.shit  查看Queues Tab页 获取刚发送的消息内容
+         * @Return:  发送消息后  打开 http://172.16.163.135:15672/#/queues/%2F/goat.shiit  查看Queues Tab页 获取刚发送的消息内容
          * @Date:   2018/9/29
     */
     @Test
@@ -38,7 +38,7 @@ public class ApplicationTests {
         Map<String,Object> map = new HashMap<>(16);
         map.put("msg","这是一个msg");
         map.put("data", Arrays.asList("hoho",123,true));
-        rabbitTemplate.convertAndSend("exchange.direct","goat.shit",map);
+        rabbitTemplate.convertAndSend("exchange.direct","goat.shiit",map);
     }
     /**
          * @Description:  单播 点对点 发送 自定实体类 数据
@@ -48,7 +48,7 @@ public class ApplicationTests {
     @Test
     public void convertAndSend1() {
         Book book = new Book("西游记","陆小曼");
-        rabbitTemplate.convertAndSend("exchange.direct","goat.shit",book);
+        rabbitTemplate.convertAndSend("exchange.direct","goat.shiit",book);
     }
 
     /**
@@ -69,7 +69,7 @@ public class ApplicationTests {
      */
     @Test
     public void receive() {
-        Object o = rabbitTemplate.receiveAndConvert("goat.shit");
+        Object o = rabbitTemplate.receiveAndConvert("goat.shiit");
         // class java.util.HashMap
         // class com.goat.bean.Book
         System.out.println(o.getClass());

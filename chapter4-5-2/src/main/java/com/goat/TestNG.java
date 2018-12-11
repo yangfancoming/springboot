@@ -16,11 +16,8 @@ import org.testng.annotations.Test;
  * Created by 64274 on 2018/7/27.
  *
  */
-//@ContextConfiguration(classes= Application.class,locations = "classpath:application.yml")
-//@ContextConfiguration(locations = "classpath:application.yml")
 @ContextConfiguration(classes= Application.class)
-//@ImportResource("classpath:application.xml")
-//@Import(Application.class)
+
 public class TestNG extends AbstractTestNGSpringContextTests {
 
     @Autowired
@@ -37,7 +34,6 @@ public class TestNG extends AbstractTestNGSpringContextTests {
         }
     }
 
-    // doit  这里无法测试   是由于无法读取 application.yml 配置文件
     @Test
     public void test1() {
         User user = new User();
