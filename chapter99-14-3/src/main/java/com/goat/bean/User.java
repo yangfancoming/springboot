@@ -18,6 +18,10 @@ public class User {
     @Column(col_name = "user_name")
     private String userName;
 
-
     private Boolean userSex;
+
+    @Column(col_name = "user_age")
+    private Integer userAge;
+
+
 }

@@ -12,6 +12,9 @@
     <dependencies>
         <!--引入 TestNg -->
         <dependency><groupId>org.testng</groupId><artifactId>testng</artifactId><version>RELEASE</version></dependency>
+
+
+
     </dependencies>
 
 

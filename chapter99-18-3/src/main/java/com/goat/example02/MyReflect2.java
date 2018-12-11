@@ -54,11 +54,16 @@ public class MyReflect2 {
         Dog dog2 = constructor2.newInstance(); // 使用无参构造函数 来创建类对象
         System.out.println(dog2.toString());
     }
+
     @Test
     public void test4()  {
         Class<Dog> dogClass = Dog.class;
         Field[] publicfields1 = dogClass.getFields();  // 该方法只能获取 类中 public属性  private属性是获取不到的！
-        Field[] allfields1 = dogClass.getDeclaredFields();  // 该方法 可以获取类中的所有属性   无论公有还是私有
+        getDeclaredFields(dogClass);
+    }
+
+    public static void getDeclaredFields(Class<?> aClass) {
+        Field[] allfields1 = aClass.getDeclaredFields();  // 该方法 可以获取类中的所有属性   无论公有还是私有
         for (int i = 0; i < allfields1.length; i++) {
             int modifiers = allfields1[i].getModifiers();
             System.out.println(Modifier.toString(modifiers) + allfields1[i].getName());// 获取 属性修饰符 + 属性名称
