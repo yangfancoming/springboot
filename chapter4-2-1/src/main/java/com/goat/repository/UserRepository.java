@@ -32,6 +32,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findUser(@Param("name") String name);
 
 
+    /**  doit
+              @Query(value = "update Dictionary   d set d.valued = :batchNum  where d.deleteState =  0 and d.keyd = :keyd")
+              @Query(value = "update t_dictionary d set d.valued = :batchNum  where d.delete_state = 0 and d.keyd = :keyd", nativeQuery = true)
+    */
     @Transactional // 没有该注解 会报“Executing an update/delete query”的错
     @Modifying // 没有该注解 会报 Not supported for DML operations [UPDATE com.goat.domain.User SET name = :name WHERE id = :id]
     @Query("UPDATE User SET name = :name WHERE id = :id")

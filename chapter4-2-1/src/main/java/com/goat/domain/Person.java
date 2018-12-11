@@ -1,13 +1,15 @@
 package com.goat.domain;
 
+
+
 import javax.persistence.*;
 
 /**
  * Created by 64274 on 2018/10/17.
- *
  * @author 山羊来了
  * @Description: TODO
  * @date 2018/10/17---16:47
+ *   sos  在一个实体文件中，注解要么全部放在字段上，要么全部放在get方法上，不能混合使用！
  */
 @Entity
 @Table(name = "t_person")
@@ -18,10 +20,16 @@ public class Person {
     private Long id;
 
     @Column(nullable = false)
-    private Integer name;
+    private String name;
 
     @Column(name = "my_age") //name 属性 用于设置映射数据库表的列名
-    private String age;
+    private Integer age;
+
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name="pet_id") // 本表中指向另一个表的外键。
+    //    @NotFound(action= NotFoundAction.IGNORE)
+    private Pet pet;
 
     public Long getId() {
         return id;
@@ -31,25 +39,33 @@ public class Person {
         this.id = id;
     }
 
-    public Integer getName() {
+
+    public Person() {
+    }
+
+    public String getName() {
         return name;
     }
 
-    public void setName(Integer name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
-    public Person(Integer name, String age) {
-        this.name = name;
-        this.age = age;
+
+    public Pet getPet() {
+        return pet;
+    }
+
+    public void setPet(Pet pet) {
+        this.pet = pet;
     }
 
     @Override

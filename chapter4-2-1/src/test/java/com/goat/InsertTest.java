@@ -2,6 +2,8 @@ package com.goat;
 
 
 import com.goat.domain.Customer;
+import com.goat.domain.Person;
+import com.goat.domain.Pet;
 import com.goat.domain.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,6 +48,7 @@ public class InsertTest extends TestCommon {
         user = userRepository.save(user);
         System.out.println(user);
     }
+
     // 批量插入 方式一
     @Test
     public void test01() {

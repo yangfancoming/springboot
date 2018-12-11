@@ -12,15 +12,22 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class UpdateTest extends TestCommon  {
 
     @Test
+    public void test() { // doit
+        commonNativeSqls.updateTest(50, "cc1");
+    }
+
+    @Test
+    public void test01() {
+        Integer temp = userRepository.updateUser("wahaha", 4L);
+        System.out.println(temp);
+    }
+    @Test
     public void test02() {
         Integer temp = userRepository.updateUser("wahaha", 4L);
         System.out.println(temp);
     }
 
-    @Test
-    public void test() { // doit
-        commonNativeSqls.updateTest(50, "cc1");
-    }
+
 
 
 }
