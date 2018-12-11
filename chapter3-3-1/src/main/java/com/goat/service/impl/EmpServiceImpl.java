@@ -36,12 +36,13 @@ public class EmpServiceImpl implements IEmpService {
     }
 
     /**
-         * @Description: 功能描述：(这里用一句话描述这个方法的作用)
-         * @author: 杨帆
+     * @Description: 功能描述：(这里用一句话描述这个方法的作用)
+     * @author: 杨帆
+      * @Date:   2018/8/22
+     *
      @Transactional 注解应该只被应用到 public 方法上，这是由 Spring AOP 的本质决定的。
      如果你在 protected、private 或者默认可见性的方法上使用 @Transactional 注解，
      这将被忽略，也不会抛出任何异常。
-         * @Date:   2018/8/22
     */
     @Override
     @Transactional // 开启事务
