@@ -3,7 +3,7 @@ package com.goat;
 /**
  * Created by 64274 on 2018/7/8.
  *
- * @author É½ÑòÀ´ÁË
+ * @author å±±ç¾Šæ¥äº†
  * @Description: TODO
  * @date 2018/7/8---13:16
  */
@@ -13,25 +13,25 @@ public class MyArrayTool<T>{
     public static MyArrayTool getInstance(){
         return INSTANCE;
     }
-    private MyArrayTool() {} //sos ¹¹Ôìº¯ÊıË½ÓĞ»¯ ·ÀÖ¹ÔÚÍâ²¿´´½¨
+    private MyArrayTool() {} //sos æ„é€ å‡½æ•°ç§æœ‰åŒ– é˜²æ­¢åœ¨å¤–éƒ¨åˆ›å»º
     /**
-         * @Description: ¹¦ÄÜÃèÊö£º »ñÈ¡×îĞ¡ÖµÏÂ±ê
-         * @author: Ñî·«
-         * @Param:   int[] arrs = {2, 1, 14, 22, 18, 3, 27, 20};
-         * @Return:  1
-         * @Date:   2018/7/8
-    */
+     * @Description: åŠŸèƒ½æè¿°ï¼š è·å–æœ€å°å€¼ä¸‹æ ‡
+     * @author: æ¨å¸†
+     * @Param:   int[] arrs = {2, 1, 14, 22, 18, 3, 27, 20};
+     * @Return:  1
+     * @Date:   2018/7/8
+     */
     public static int getMin(int[] arr){
         int min = 0;
         for (int i = 1; i < arr.length; i++){
-            //½«min×÷ÎªÊı×éµÄ½Ç±êÊ¹ÓÃ¡£
+            //å°†minä½œä¸ºæ•°ç»„çš„è§’æ ‡ä½¿ç”¨ã€‚
             if (arr[min] > arr[i])   {min = i;}
         }
         return min;
     }
     /**
-     * @Description: ¹¦ÄÜÃèÊö£º »ñÈ¡×î´óÖµÏÂ±ê
-     * @author: Ñî·«
+     * @Description: åŠŸèƒ½æè¿°ï¼š è·å–æœ€å¤§å€¼ä¸‹æ ‡
+     * @author: æ¨å¸†
      * @Param:   int[] arrs = {2, 1, 14, 22, 18, 3, 27, 20};
      * @Return:  6
      * @Date:   2018/7/8
@@ -39,14 +39,14 @@ public class MyArrayTool<T>{
     public static int getMax(int[] arr) {
         int max = 0;
         for (int i = 1; i < arr.length; i++){
-            //½«max×÷ÎªÊı×éµÄ½Ç±êÊ¹ÓÃ¡£
+            //å°†maxä½œä¸ºæ•°ç»„çš„è§’æ ‡ä½¿ç”¨ã€‚
             if (arr[max] < arr[i])   { max = i;}
         }
         return max;
     }
     /**
-     * @Description: ¹¦ÄÜÃèÊö£ºÑ¡ÔñÅÅĞò(ÉıĞò)£ºÕûĞÍÊı×é ´ÓĞ¡µ½´óÅÅĞò
-     * @author: Ñî·«
+     * @Description: åŠŸèƒ½æè¿°ï¼šé€‰æ‹©æ’åº(å‡åº)ï¼šæ•´å‹æ•°ç»„ ä»å°åˆ°å¤§æ’åº
+     * @author: æ¨å¸†
      * @Param:  Integer[] temp ={2, 1, 14, 22, 18, 3, 27, 20};
      * @Return:  1,2,3,14,18,20,22,27
      * @Date:   2018/7/8
@@ -60,30 +60,30 @@ public class MyArrayTool<T>{
         return arr;
     }
     /**
-         * @Description: ¹¦ÄÜÃèÊö£º ÊäÈëÒ»¸öÕûĞÍÊı×é È»ºóÒÔ×Ö·û´®ĞÎÊ½Êä³ö
-         * @author: Ñî·«
-         * @Param:  int[] arrs = {2, 1, 14, 22, 18, 3, 27, 20};
-         * @Return:  2,1,14,22,18,3,27,20
-         * @Date:   2018/7/8
-    */
+     * @Description: åŠŸèƒ½æè¿°ï¼š è¾“å…¥ä¸€ä¸ªæ•´å‹æ•°ç»„ ç„¶åä»¥å­—ç¬¦ä¸²å½¢å¼è¾“å‡º
+     * @author: æ¨å¸†
+     * @Param:  int[] arrs = {2, 1, 14, 22, 18, 3, 27, 20};
+     * @Return:  2,1,14,22,18,3,27,20
+     * @Date:   2018/7/8
+     */
     public <T> String strPrint (T[] arrs){
         StringBuffer haha = new StringBuffer();
         for(T e:arrs){
             haha.append(e + ",");
         }
         String lolo = haha.toString();
-        // È¥µô ×îºóÒ»¸ö ¼ä¸ô·û
+        // å»æ‰ æœ€åä¸€ä¸ª é—´éš”ç¬¦
         lolo = lolo.substring(0,lolo.length()-1);
         return lolo;
     }
 
     /**
-         * @Description: ¹¦ÄÜÃèÊö£º(ÔªËØÎ»ÖÃÖÃ»»)
-         * @author: Ñî·«
-         * @Param:
-         * @Return:
-         * @Date:   2018/7/11
-    */
+     * @Description: åŠŸèƒ½æè¿°ï¼š(å…ƒç´ ä½ç½®ç½®æ¢)
+     * @author: æ¨å¸†
+     * @Param:
+     * @Return:
+     * @Date:   2018/7/11
+     */
     private static void swap(Integer[] arr, int a, int b){
         arr[a] = arr[a] + arr[b];
         arr[b] = arr[a] - arr[b];
@@ -91,24 +91,24 @@ public class MyArrayTool<T>{
     }
 
     /**
-         * @Description: ¹¦ÄÜÃèÊö£ºÕÛ°ë²éÕÒ(¶ş·Ö²éÕÒ)£º±ØĞë±£Ö¤¸ÃÊı×éÊÇÓĞĞò£¬ÉıĞò½µĞò¾ù¿É£¬²¢·µ»Ø½«Ò»¸öÊı²åÈë¸ÃÊı×éÖĞµÄÎ»ÖÃ¡£
-         * @author: Ñî·«
-         * @Param: int[] arrs = {2, 1, 14, 22, 18, 3, 27, 20};      int hoho1 = MyArrayTool.halfSearch(arrs,14);
-         * @Return:  2
-         * @Date:   2018/7/11
-    */
+     * @Description: åŠŸèƒ½æè¿°ï¼šæŠ˜åŠæŸ¥æ‰¾(äºŒåˆ†æŸ¥æ‰¾)ï¼šå¿…é¡»ä¿è¯è¯¥æ•°ç»„æ˜¯æœ‰åºï¼Œå‡åºé™åºå‡å¯ï¼Œå¹¶è¿”å›å°†ä¸€ä¸ªæ•°æ’å…¥è¯¥æ•°ç»„ä¸­çš„ä½ç½®ã€‚
+     * @author: æ¨å¸†
+     * @Param: int[] arrs = {2, 1, 14, 22, 18, 3, 27, 20};      int hoho1 = MyArrayTool.halfSearch(arrs,14);
+     * @Return:  2
+     * @Date:   2018/7/11
+     */
     public static int halfSearch(int[] arr, int key){
         int start = 0, end = arr.length - 1, mid;
         int max = getMax(arr);
         int min = getMin(arr);
-        //ÈôkeyÖµ´óÓÚ×î´óÖµ»òĞ¡ÓÚ×îĞ¡Öµ£¬·µ»Ø²åÈëÔªËØµÄÎ»ÖÃ
+        //è‹¥keyå€¼å¤§äºæœ€å¤§å€¼æˆ–å°äºæœ€å°å€¼ï¼Œè¿”å›æ’å…¥å…ƒç´ çš„ä½ç½®
         if (key > arr[max]) {return max;}
         else if (key < arr[min]) {return min;}
-        //whileÑ­»·¶ÔÔÚÊı×éÇø¼äÄÚµÄÔªËØ½øĞĞÅĞ¶Ï
+        //whileå¾ªç¯å¯¹åœ¨æ•°ç»„åŒºé—´å†…çš„å…ƒç´ è¿›è¡Œåˆ¤æ–­
         while (start <= end){
             mid = (start + end) >> 1;
             if (key > arr[mid]){
-                //ÅĞ¶ÏÊı×éÊÇÉıĞò»¹ÊÇ½µĞò
+                //åˆ¤æ–­æ•°ç»„æ˜¯å‡åºè¿˜æ˜¯é™åº
                 if (arr[0] <= arr[arr.length - 1]) {
                     start = mid + 1;
                 }
@@ -126,21 +126,21 @@ public class MyArrayTool<T>{
                 return mid;
             }
         }
-        //·µ»Ø½«Ò»¸öÔªËØ²åÈë¸ÃÊı×éÖĞµÄÎ»ÖÃ¡£
+        //è¿”å›å°†ä¸€ä¸ªå…ƒç´ æ’å…¥è¯¥æ•°ç»„ä¸­çš„ä½ç½®ã€‚
         return start;
     }
 
-  /**
-       * @Description: ¹¦ÄÜÃèÊö£ºÊı×é·´×ª
-       * @author: Ñî·«
-       * @Param:    byte[] byteArrs = {2, 1, 14, 22, 18, 3, 27, 20};   byte[] hoho1 = MyArrayTool.reverseArray(byteArrs);
-       * @Return:   20,27,3,18,22,14,1,2
-       * @Date:   2018/7/12
-  */
+    /**
+     * @Description: åŠŸèƒ½æè¿°ï¼šæ•°ç»„åè½¬
+     * @author: æ¨å¸†
+     * @Param:    byte[] byteArrs = {2, 1, 14, 22, 18, 3, 27, 20};   byte[] hoho1 = MyArrayTool.reverseArray(byteArrs);
+     * @Return:   20,27,3,18,22,14,1,2
+     * @Date:   2018/7/12
+     */
     public static Byte[] reverseArray(byte[] Array) {
         Byte[] new_array = new Byte[Array.length];
         for (int i = 0; i < Array.length; i++) {
-            // ·´×ªºóÊı×éµÄµÚÒ»¸öÔªËØµÈÓÚÔ´Êı×éµÄ×îºóÒ»¸öÔªËØ£º
+            // åè½¬åæ•°ç»„çš„ç¬¬ä¸€ä¸ªå…ƒç´ ç­‰äºæºæ•°ç»„çš„æœ€åä¸€ä¸ªå…ƒç´ ï¼š
             new_array[i] = Array[Array.length - i - 1];
         }
         return new_array;

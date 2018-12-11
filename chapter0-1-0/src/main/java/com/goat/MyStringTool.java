@@ -5,7 +5,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * Created by 64274 on 2018/7/11.
  *
- * @author É½ÑòÀ´ÁË
+ * @author å±±ç¾Šæ¥äº†
  * @Description: TODO
  * @date 2018/7/11---9:54
  */
@@ -13,12 +13,12 @@ public class MyStringTool {
     private MyStringTool() { }
 
     /**
-         * @Description: ¹¦ÄÜÃèÊö£º½«×Ö·û´®°´ÕÕÖ¸¶¨³¤¶È½øĞĞ·Ö¸î
-         * @author: Ñî·«
-         * @Param: 1234567890    MyStringTool.StrSplit(marks,3);
-         * @Return:  123,456,789
-         * @Date:   2018/7/11
-    */
+     * @Description: åŠŸèƒ½æè¿°ï¼šå°†å­—ç¬¦ä¸²æŒ‰ç…§æŒ‡å®šé•¿åº¦è¿›è¡Œåˆ†å‰²
+     * @author: æ¨å¸†
+     * @Param: 1234567890    MyStringTool.StrSplit(marks,3);
+     * @Return:  123,456,789
+     * @Date:   2018/7/11
+     */
     public static String[] StrSplit(String str, int len){
         int length = str.length() / len;
         String[] shcuy = new String[length];
@@ -30,17 +30,17 @@ public class MyStringTool {
     }
 
     /**
-         * @Description: ¹¦ÄÜÃèÊö£º4 ×Ö½Ú(8Î»)×Ö·û´®     Ã¿ n ¸ö×Ö½Úµ¹Ğò £¨ÊäÈë n ³¤¶È±ØĞëÄÜ±» ÊäÈë×Ö·û´®µÄ³¤¶ÈÕû³ı ·ñÔòÊı¾İ¶ªÊ§£©
-         * @author: Ñî·«
-         * @Param:   String ret = MyStringTool.StrReverse("1234567890",5);  1234567890 ---- 6789012345
-         * @Param:   String ret = MyStringTool.StrReverse("1234567890",2);  1234567890 ---- 9078563412
-         * @Return:
-         * @Date:   2018/7/11
-    */
+     * @Description: åŠŸèƒ½æè¿°ï¼š4 å­—èŠ‚(8ä½)å­—ç¬¦ä¸²     æ¯ n ä¸ªå­—èŠ‚å€’åº ï¼ˆè¾“å…¥ n é•¿åº¦å¿…é¡»èƒ½è¢« è¾“å…¥å­—ç¬¦ä¸²çš„é•¿åº¦æ•´é™¤ å¦åˆ™æ•°æ®ä¸¢å¤±ï¼‰
+     * @author: æ¨å¸†
+     * @Param:   String ret = MyStringTool.StrReverse("1234567890",5);  1234567890 ---- 6789012345
+     * @Param:   String ret = MyStringTool.StrReverse("1234567890",2);  1234567890 ---- 9078563412
+     * @Return:
+     * @Date:   2018/7/11
+     */
     public static String strReverse(String str,int mark) {
         StringBuilder heihei = new StringBuilder();
         for (int i = mark; i <= str.length(); i = i + mark){
-            heihei.append(str.substring(str.length() - i, str.length() - i +mark));
+            heihei.append(str,str.length() - i,str.length() - i +mark);
         }
         return heihei.toString();
     }
@@ -48,16 +48,16 @@ public class MyStringTool {
     /**
      *
      *
-     * @param b byte[] ĞèÒª×ª»»µÄ×Ö½ÚÊı×é
-     * @return String Ê®Áù½øÖÆ×Ö·û´®
+     * @param b byte[] éœ€è¦è½¬æ¢çš„å­—èŠ‚æ•°ç»„
+     * @return String åå…­è¿›åˆ¶å­—ç¬¦ä¸²
      */
     /**
-         * @Description: ¹¦ÄÜÃèÊö£º×Ö½ÚÊı×é×ª»»ÎªÊ®Áù½øÖÆ×Ö·û´®
-         * @author: Ñî·«
-         * @Param:  byte[] temp = {0x7e,0x09,0x0A}; MyStringTool.bytes2hex(temp);
-         * @Return:  7E090A
-         * @Date:   2018/7/12
-    */
+     * @Description: åŠŸèƒ½æè¿°ï¼šå­—èŠ‚æ•°ç»„è½¬æ¢ä¸ºåå…­è¿›åˆ¶å­—ç¬¦ä¸²
+     * @author: æ¨å¸†
+     * @Param:  byte[] temp = {0x7e,0x09,0x0A}; MyStringTool.bytes2hex(temp);
+     * @Return:  7E090A
+     * @Date:   2018/7/12
+     */
     public static  String bytes2hex(byte[] b) {
         if (b == null) {
             throw new IllegalArgumentException("Argument b ( byte array ) is null! ");
@@ -75,14 +75,14 @@ public class MyStringTool {
         return hs.toString().toUpperCase();
     }
     /**
-     * Ê®Áù½øÖÆ´®×ª»¯ÎªbyteÊı×é
+     * åå…­è¿›åˆ¶ä¸²è½¬åŒ–ä¸ºbyteæ•°ç»„
      *
      * @return the array of byte
      */
     public static final Integer MARK = 2;
 
-    //  final±íÊ¾Õâ¸ö·½·¨²»ÄÜ±»¸´Ğ´, ¼ÈÈ»static·½·¨±¾À´¾Í²»¾ß±¸¸´Ğ´µÄÌõ¼ş, ÔÙ¼Ófinal¾ÍÏÔµÃ¶àÓàÁË
-//    public static final Byte[] hex2bytes(String hex) throws IllegalArgumentException {
+    //  finalè¡¨ç¤ºè¿™ä¸ªæ–¹æ³•ä¸èƒ½è¢«å¤å†™, æ—¢ç„¶staticæ–¹æ³•æœ¬æ¥å°±ä¸å…·å¤‡å¤å†™çš„æ¡ä»¶, å†åŠ finalå°±æ˜¾å¾—å¤šä½™äº†
+    //    public static final Byte[] hex2bytes(String hex) throws IllegalArgumentException {
     public static  Byte[] hex2bytes(String hex) throws IllegalArgumentException {
         if (hex.length() % MARK != 0) {
             throw new IllegalArgumentException();
@@ -98,47 +98,47 @@ public class MyStringTool {
     }
 
     /**
-         * @Description: ¹¦ÄÜÃèÊö£º(ÕâÀïÓÃÒ»¾ä»°ÃèÊöÕâ¸ö·½·¨µÄ×÷ÓÃ)
-         * @author: Ñî·«
-         * @Param:
-         * @Return:
-                        src£ºbyteÔ´Êı×é
-                        srcPos£º½ØÈ¡Ô´byteÊı×éÆğÊ¼Î»ÖÃ£¨0Î»ÖÃÓĞĞ§£©
-                        dest,£ºbyteÄ¿µÄÊı×é£¨½ØÈ¡ºó´æ·ÅµÄÊı×é£©
-                        destPos£º½ØÈ¡ºó´æ·ÅµÄÊı×éÆğÊ¼Î»ÖÃ£¨0Î»ÖÃÓĞĞ§£©
-                        length£º½ØÈ¡µÄÊı¾İ³¤¶È
-         * @Date:   2018/7/12
-    */
-//    public static String AscToInt(String temp ){  // 31323334  ·µ»Ø 1234
-//        try {
-//            // 0x31,0x32,0x33,0x34
-//            Byte[] gaga2 = hex2bytes(temp);
-//            for(int i = 0;i<gaga2.length;i++){
-////                if(gaga2[i]== 0){
-//                    byte[] temp11  = new byte[i];
-//                    System.arraycopy(gaga2, 0, temp11, 0, i);
-//                    // 1234
-//                    String  productNo = new String(temp11,"UTF-8");
-//                    return productNo;
-////                }
-//            }
-//
-//        }
-//        catch (Exception e){ System.out.println("11111111111");}
-//        return "";
-//    }
+     * @Description: åŠŸèƒ½æè¿°ï¼š(è¿™é‡Œç”¨ä¸€å¥è¯æè¿°è¿™ä¸ªæ–¹æ³•çš„ä½œç”¨)
+     * @author: æ¨å¸†
+     * @Param:
+     * @Return:
+    srcï¼šbyteæºæ•°ç»„
+    srcPosï¼šæˆªå–æºbyteæ•°ç»„èµ·å§‹ä½ç½®ï¼ˆ0ä½ç½®æœ‰æ•ˆï¼‰
+    dest,ï¼šbyteç›®çš„æ•°ç»„ï¼ˆæˆªå–åå­˜æ”¾çš„æ•°ç»„ï¼‰
+    destPosï¼šæˆªå–åå­˜æ”¾çš„æ•°ç»„èµ·å§‹ä½ç½®ï¼ˆ0ä½ç½®æœ‰æ•ˆï¼‰
+    lengthï¼šæˆªå–çš„æ•°æ®é•¿åº¦
+     * @Date:   2018/7/12
+     */
+    //    public static String AscToInt(String temp ){  // 31323334  è¿”å› 1234
+    //        try {
+    //            // 0x31,0x32,0x33,0x34
+    //            Byte[] gaga2 = hex2bytes(temp);
+    //            for(int i = 0;i<gaga2.length;i++){
+    ////                if(gaga2[i]== 0){
+    //                    byte[] temp11  = new byte[i];
+    //                    System.arraycopy(gaga2, 0, temp11, 0, i);
+    //                    // 1234
+    //                    String  productNo = new String(temp11,"UTF-8");
+    //                    return productNo;
+    ////                }
+    //            }
+    //
+    //        }
+    //        catch (Exception e){ System.out.println("11111111111");}
+    //        return "";
+    //    }
     /**
-         * @Description: ¹¦ÄÜÃèÊö£º(ÕâÀïÓÃÒ»¾ä»°ÃèÊöÕâ¸ö·½·¨µÄ×÷ÓÃ)
-         * @author: Ñî·«
-         * @Param:    String ret = MyStringTool.IntToAsc("1234");
-         * @Return:  31323334
-         * @Date:   2018/7/12
-    */
+     * @Description: åŠŸèƒ½æè¿°ï¼š(è¿™é‡Œç”¨ä¸€å¥è¯æè¿°è¿™ä¸ªæ–¹æ³•çš„ä½œç”¨)
+     * @author: æ¨å¸†
+     * @Param:    String ret = MyStringTool.IntToAsc("1234");
+     * @Return:  31323334
+     * @Date:   2018/7/12
+     */
     public static String  intToAsc(String haha){
         String temp2 = "";
         try{
             // 0x31,0x32,0x33,0x34
-//            // ´úÂëÓÅ»¯  Ê¹ÓÃ StandardCharsets.UTF_8 È¡´ú "UTF-8"  ±ÜÃâÁËÄ§·¨ÖµÎÊÌâ
+            //            // ä»£ç ä¼˜åŒ–  ä½¿ç”¨ StandardCharsets.UTF_8 å–ä»£ "UTF-8"  é¿å…äº†é­”æ³•å€¼é—®é¢˜
             byte[] gaga = haha.getBytes(StandardCharsets.UTF_8);
             // "31323334"
             temp2 = bytes2hex(gaga);
