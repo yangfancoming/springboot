@@ -5,9 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.goat.springboot.learing</groupId>
-    <artifactId>chapter9-1-1</artifactId>
+    <artifactId>chapter99-14-3</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+
+    <dependencies>
+        <!--引入 TestNg -->
+        <dependency><groupId>org.testng</groupId><artifactId>testng</artifactId><version>RELEASE</version></dependency>
+    </dependencies>
 
 
     <build>
@@ -23,4 +28,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
