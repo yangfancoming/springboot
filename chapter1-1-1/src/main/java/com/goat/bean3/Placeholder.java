@@ -3,9 +3,6 @@ package com.goat.bean3;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.validation.annotation.Validated;
-
-import javax.validation.constraints.Email;
 
 /**
  * Created by 64274 on 2018/7/14.
