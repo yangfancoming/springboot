@@ -1,7 +1,7 @@
 package com.goat.repository;
 
 import com.goat.domain.Customer;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import java.util.List;
  * Customer 实体类
  * Long 主键ID 类型
  */
-public interface CustomerRepository extends CrudRepository<Customer, Long> {
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
     List<Customer> findByLastName(String lastName);
     List<Customer> findByLastNameOrFirstName(String lastName,String firstName);

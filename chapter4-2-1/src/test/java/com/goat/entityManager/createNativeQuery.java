@@ -1,14 +1,14 @@
 package com.goat.entityManager;
 
 
-import com.goat.Application;
 import com.goat.domain.User;
 import com.goat.domain.User2;
 import org.hibernate.SQLQuery;
 import org.hibernate.transform.Transformers;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.annotations.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,8 +28,9 @@ import java.util.Set;
 其实就是把数据从数据库里提出，然后在内存里处理的，再返回数据库的法则。
 */
 
-@ContextConfiguration(classes= Application.class)
-public class TestNG2 extends AbstractTestNGSpringContextTests {
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class createNativeQuery  {
 
     @PersistenceContext
     private EntityManager entityManager;
