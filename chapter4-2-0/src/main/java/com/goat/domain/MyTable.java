@@ -1,6 +1,8 @@
 package com.goat.domain;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.Date;
 
 /**
  * Created by 64274 on 2018/12/6.
@@ -30,6 +32,50 @@ public class MyTable {
     // 在没加任何注解的 属性  默认为 @Basic 注解
     private Integer col2;
 
+
+    @Transient // @Transient 是让该属性不在表中产生字段，但又可以在程序中使用它
+    private String info;
+
+
+    private Timestamp createdTime; // 对应生成数据库 datetime 字段 yyyy-MM-dd HH:mm:ss 2018-12-12 20:12:04
+
+    private Date lastTime;  // 对应生成数据库 datetime 字段 yyyy-MM-dd HH:mm:ss  2018-12-12 20:12:04
+
+    @Temporal(TemporalType.DATE)
+    private Date birthday1;  // 对应生成数据库 date 字段 2018-12-12
+
+    @Temporal(TemporalType.TIME)
+    private Date birthday2;  // 对应生成数据库 time 字段 20:16:14
+
+    @Temporal(TemporalType.TIMESTAMP) // 对应生成数据库 datetime 字段 2018-12-12 20:16:15
+    private Date birthday3;  //
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getCol2() {
+        return col2;
+    }
+
+
+    public void setCol2(Integer col2) {
+        this.col2 = col2;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
     public MyTable() {
     }
 
@@ -47,5 +93,49 @@ public class MyTable {
         this.col1 = col1;
     }
 
+    public Timestamp getCreatedTime() {
+        return createdTime;
+    }
 
+    public void setCreatedTime(Timestamp createdTime) {
+        this.createdTime = createdTime;
+    }
+
+    public Date getLastTime() {
+        return lastTime;
+    }
+
+    public void setLastTime(Date lastTime) {
+        this.lastTime = lastTime;
+    }
+
+    public Date getBirthday1() {
+        return birthday1;
+    }
+
+    public void setBirthday1(Date birthday1) {
+        this.birthday1 = birthday1;
+    }
+
+    public Date getBirthday2() {
+        return birthday2;
+    }
+
+    public void setBirthday2(Date birthday2) {
+        this.birthday2 = birthday2;
+    }
+
+    public Date getBirthday3() {
+        return birthday3;
+    }
+
+    public void setBirthday3(Date birthday3) {
+        this.birthday3 = birthday3;
+    }
+
+    public MyTable(String col1, Integer col2, String info) {
+        this.col1 = col1;
+        this.col2 = col2;
+        this.info = info;
+    }
 }

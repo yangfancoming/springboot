@@ -2,15 +2,52 @@ package com.goat.date;
 
 import org.testng.annotations.Test;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class DateUtil {
 
 
+    // 创建时间戳的三种方式
+    @Test
+    public void timestamp()  {
+        Timestamp time1 = new Timestamp(System.currentTimeMillis());
+        Timestamp time2 = new Timestamp(new Date().getTime());
+        Timestamp time3 = new Timestamp(Calendar.getInstance().getTimeInMillis());
+        System.out.println(time1);
+        System.out.println(time2);
+        System.out.println(time3);
+    }
 
-
+    /**
+         * @Description:  常用日期格式
+         * @author: 杨帆
+            yyyy-MM-dd
+            yyyy-MM-dd HH:mm:ss
+            yyyy-MM-dd HH:mm:ss EE
+            yyyy-MM-dd HH:mm:ss zzz
+         * @Date:   2018/12/12
+    */
+    @Test
+    public void simpleDateFormat ()  {
+        SimpleDateFormat aDate=new SimpleDateFormat("yyyy-mm-dd  HH:mm:ss");
+        long now=System.currentTimeMillis();
+        System.out.println(aDate.format(now)); // 2018-08-12  20:08:52
+        SimpleDateFormat myFmt=new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒"); // 2018年12月12日 20时08分52秒
+        SimpleDateFormat myFmt1=new SimpleDateFormat("yy/MM/dd HH:mm"); // 18/12/12 20:08
+        SimpleDateFormat myFmt2=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//2018-12-12 20:08:52   等价于now.toLocaleString()
+        SimpleDateFormat myFmt3=new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒 E "); // 2018年12月12日 20时08分52秒 星期三
+        // 一年中的第 346 天 一年中第50个星期 一月中第3个星期 在一天中20时 CST时区
+        SimpleDateFormat myFmt4=new SimpleDateFormat("一年中的第 D 天 一年中第w个星期 一月中第W个星期 在一天中k时 z时区");
+        System.out.println(myFmt.format(now));
+        System.out.println(myFmt1.format(now));
+        System.out.println(myFmt2.format(now));
+        System.out.println(myFmt3.format(now));
+        System.out.println(myFmt4.format(now));
+    }
     @Test
     public void test()  {
         Date date =new Date();
