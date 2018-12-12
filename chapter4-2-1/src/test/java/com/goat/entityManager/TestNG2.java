@@ -1,6 +1,7 @@
-package com.goat;
+package com.goat.entityManager;
 
 
+import com.goat.Application;
 import com.goat.domain.User;
 import com.goat.domain.User2;
 import org.hibernate.SQLQuery;

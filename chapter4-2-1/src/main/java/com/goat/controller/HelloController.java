@@ -2,11 +2,14 @@ package com.goat.controller;
 
 
 import com.goat.common.CommonNativeSqls;
+import com.goat.domain.Customer;
 import com.goat.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +21,10 @@ public class HelloController {
     // sos 注入 @Service  工具类   值得借鉴
     @Autowired CommonNativeSqls commonNativeSqls;
 
+    @PersistenceContext
+    private EntityManager entityManager;
 
-//    http://localhost:8080/hello/hellola
+//    http://localhost:8421/hello/hellola
     @RequestMapping("/hellola")
     public void hellola(){
         List<User> users = commonNativeSqls.findUserByAge(250);
@@ -27,7 +32,7 @@ public class HelloController {
     }
 
 
-    //    http://localhost:8080/hello/test2
+    //    http://localhost:8421/hello/test2
     @RequestMapping("/test2")
     public void test2(){
         List<String> names = new ArrayList<>();
@@ -36,5 +41,13 @@ public class HelloController {
         names.add("CCC");
         List<User> users = commonNativeSqls.getPnCountByRegion(names);
         System.out.println(users);
+    }
+
+    //    http://localhost:8421/hello/getReference
+    @RequestMapping("/getReference")
+    public void getReference(){
+        Customer customer = entityManager.getReference(Customer.class, 1L);
+        System.out.println("-----------------------------");
+        System.out.println(customer);
     }
 }

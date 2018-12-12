@@ -1,6 +1,7 @@
-package com.goat;
+package com.goat.entityManager;
 
 
+import com.goat.Application;
 import org.hibernate.SQLQuery;
 import org.hibernate.transform.Transformers;
 import org.springframework.test.context.ContextConfiguration;
