@@ -1,0 +1,14 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+#  resources:
+#    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:./config/
+
+license:
+  verify:
+    resource: /publicKey.store
+    storepass: init123
+    alias: publickey
+    subject: license
+    license-path: ./license.lic
