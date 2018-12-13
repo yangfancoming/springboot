@@ -23,7 +23,7 @@ import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Mytest {
+public class ManyToOneTest {
 
     @Autowired  CustomerRepository customerRepository;
     @Autowired  OrderRepository orderRepository;
@@ -58,6 +58,13 @@ public class Mytest {
         System.out.println(order);
         System.out.println(order.getCustomer().getFirstName()); // 通过对象外键 获取到 关联对象
     }
+    // FetchType.EAGER
+    @Test
+    public void EAGER1() {
+        Order order = orderRepository.findById(3L).get(); // 由于 被查询对象 有外键关联 所以这里 执行了两次查询  一次查询对象 一次查询外键对象
+        System.out.println(order);
+        System.out.println(order.getCustomer().getFirstName()); // 通过对象外键 获取到 关联对象
+    }
     // FetchType.LAZY
     @Test
     public void LAZY() {
@@ -83,4 +90,6 @@ public class Mytest {
         order.getCustomer().setLastName("fuck1111"); // 若 1 端 已经被删除 那么 报错  java.util.NoSuchElementException: No value present
         customerRepository.save(order.getCustomer());// 若 1 端 还在 则 成功修改
     }
+
+
 }

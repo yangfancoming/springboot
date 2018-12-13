@@ -26,7 +26,9 @@ public class Order {
     private String orderName;
     private Boolean isEnable;
 
-    @ManyToOne // 多对一  默认为 FetchType.EAGER
+    @ManyToOne(fetch = FetchType.EAGER) // 多对一  默认为 FetchType.EAGER
+//    @ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.PERSIST) //
+//    @ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.REMOVE) //
 //    @ManyToOne(fetch = FetchType.LAZY) // 多对一  设置为 懒加载
     @JoinColumn(name="customer_id") // 本表中指向另一个表的外键。
     private Customer customer;
