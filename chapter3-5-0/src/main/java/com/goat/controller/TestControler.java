@@ -3,11 +3,11 @@ package com.goat.controller;
 
 //import com.goat.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 
-@RestController
+@Controller
 public class TestControler {
 
     @Autowired
@@ -15,8 +15,9 @@ public class TestControler {
 
 //    http://localhost:8350/test
     @RequestMapping(value = "/test")
-    public void hi(){
+    public String hi(){
         System.out.println("进入  的 Controler...............");
+        return "index";
     }
 
 

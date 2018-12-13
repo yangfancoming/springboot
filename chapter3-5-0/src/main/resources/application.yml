@@ -1,0 +1,15 @@
+#
+#export:
+#  fileSaveDir: /WEB-INF/file_html/
+#  templatePath: /WEB-INF/export/template/
+#  exportAllNumber: 5000
+#pictrue:
+#  uploadPath: null
+#  maxWidth: 320
+#  maxHeight: 200
+#  prevfix: thumb_
+#upload:
+#  uploadFileDiskPath: E:/upload/andon/file/
+#  uploadFileAccessPath: http://localhost:8080/img/
+##  uploadFileDiskPath: D:/upload/andon/file/
+##  uploadFileAccessPath: http://10.172.5.77:8080/img/
