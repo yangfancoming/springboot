@@ -24,11 +24,6 @@
             <version>1.33</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/de.schlichtherle.truelicense/truelicense-xml -->
-        <dependency>
-            <groupId>de.schlichtherle.truelicense</groupId>
-            <artifactId>truelicense-xml</artifactId>
-            <version>1.33</version>
-        </dependency>
+
     </dependencies>
 </project>
