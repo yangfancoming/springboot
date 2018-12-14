@@ -19,7 +19,6 @@ public class VerifyLicense {
 
     /**
      * 验证（证书使用者端执行）
-     *
      * @param licenseCommon 公共属性
      * @return
      */
@@ -46,7 +45,6 @@ public class VerifyLicense {
 
     /**
      * 初始化生成证书时需要的参数
-     *
      * @param licenseCommon
      * @return
      */

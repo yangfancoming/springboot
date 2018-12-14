@@ -7,7 +7,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Created by futureX on 2018/6/7.
+ * @Description:  创建 license.lic 证书 文件
+ * @author: 杨帆
+ * @Date:   2018/12/14
  */
 @SpringBootApplication
 public class CreateApplication implements CommandLineRunner {

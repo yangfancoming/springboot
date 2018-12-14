@@ -31,7 +31,6 @@ public class CreateLicense {
 
     /**
      * 创建license（证书发布者端执行）
-     *
      * @param licenseCommon 公共属性
      * @param licenseCheck  受检查属性
      * @return
@@ -55,7 +54,6 @@ public class CreateLicense {
 
     /**
      * 初始化生成证书时需要的参数
-     *
      * @param licenseCommon
      * @return
      */
@@ -75,10 +73,8 @@ public class CreateLicense {
 
     /**
      * 从外部配置拿到证书的内容
-     *
      * @param licenseCommon 来自公共的属性
      * @param licenseCheck  来自配置的属性
-     * @return
      * @throws ParseException 日期转换异常
      */
     private final LicenseContent createLicenseContent(LicenseCommon licenseCommon, LicenseCheck licenseCheck) {

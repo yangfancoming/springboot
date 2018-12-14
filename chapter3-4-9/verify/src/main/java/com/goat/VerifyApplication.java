@@ -7,8 +7,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * Created by futureX on 2018/6/7.
- */
+     * @Description:  校检 license.lic 证书 文件
+     * @author: 杨帆
+     * @Date:   2018/12/14
+*/
 @SpringBootApplication
 public class VerifyApplication implements CommandLineRunner {
     @Autowired
@@ -19,7 +21,7 @@ public class VerifyApplication implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... strings) throws Exception {
+    public void run(String... strings)  {
         verifyLicenseService.doVerifyLicense();
     }
 }

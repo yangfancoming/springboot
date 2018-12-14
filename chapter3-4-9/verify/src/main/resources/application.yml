@@ -12,3 +12,5 @@ license:
     alias: publickey
     subject: license
     license-path: ./license.lic
+server:
+  port: 3492
