@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
      * @Description:  校检 license.lic 证书 文件
+     * @Description:  ApplicationRunner中run方法的参数为ApplicationArguments，而CommandLineRunner接口中run方法的参数为String数组
      * @author: 杨帆
      * @Date:   2018/12/14
 */

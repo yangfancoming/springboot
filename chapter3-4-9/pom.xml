@@ -18,6 +18,7 @@
 
 
     <dependencies>
+
         <dependency>
             <groupId>de.schlichtherle.truelicense</groupId>
             <artifactId>truelicense-core</artifactId>

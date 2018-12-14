@@ -57,6 +57,19 @@ public class createNativeQuery  {
         System.out.println(users);
     }
 
+    // sos 细节： 如果没有查询到结 那么 getResultList() 最多size为0 ,并不会报空异常 而 getSingleResult() 会报空异常！！！
+    @Test
+    public void createNa1tiveQuery() {
+        String sql = "select name from user";
+        Query query = entityManager.createNativeQuery(sql);
+//        Object users = query.getSingleResult(); // 报错： 空异常
+        List<String> users = query.getResultList(); // 不报错： size=0
+        if(users.size()==0){
+            System.out.println(users.size());
+        }else {
+            System.out.println(users.get(0));
+        }
+    }
     /**
          * @Description: 功能描述： createNativeQuery 执行原生sql  传参方法
          * @author: 杨帆
