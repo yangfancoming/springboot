@@ -12,11 +12,8 @@
 
 
     <dependencies>
-        <dependency>
-            <groupId>com.goat.springboot.learing</groupId>
-            <artifactId>chapter99-14-3</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+        <!--引入 TestNg -->
+        <dependency><groupId>org.testng</groupId><artifactId>testng</artifactId><version>RELEASE</version></dependency>
     </dependencies>
 
 
