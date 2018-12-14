@@ -14,7 +14,6 @@ public class SkuVo {
     private Long brandStoreSn;
 
     public SkuVo(Long skuId, String productName, Long brandStoreSn) {
-        super();
         this.skuId = skuId;
         this.productName = productName;
         this.brandStoreSn = brandStoreSn;
