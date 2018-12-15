@@ -4,6 +4,7 @@ package com.goat.M;
  * Created by 64274 on 2018/12/14.
  *
  * @ Description: 使用枚举类 中的 抽象方法 实现 替换多重 if...else 语句
+ * @ Description: 缺陷： 如果传递参数 没在枚举类型中  就不能实现 类似 case中 default 功能
  * @ author  山羊来了
  * @ date 2018/12/14---16:25
  */

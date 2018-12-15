@@ -1,0 +1,15 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+
+license:
+  create:
+    resource: /privateKey.store
+    storepass: init123
+    alias: privatekey
+    subject: license
+    license-path: ./license.lic  #  springboot 根目录了。。。。。
+    not-after: 2019-10-1  # 截止日期 sos 该时间必须要超过 当天日期 否则 无法生成  license.lic
+server:
+  port: 8348
