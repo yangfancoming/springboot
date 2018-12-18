@@ -1,10 +1,7 @@
 package com.goat.repository;
 
-import com.goat.domain.MyMoney;
 import com.goat.domain.MyTable;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.Optional;
 
 
 /**

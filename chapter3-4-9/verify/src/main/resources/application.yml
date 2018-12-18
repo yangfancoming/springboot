@@ -1,7 +1,7 @@
-spring:
-  output:
-    ansi:
-      enabled: always
+#spring:
+#  output:
+#    ansi:
+#      enabled: always
 #  resources:
 #    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,file:./config/
 
@@ -12,5 +12,6 @@ license:
     alias: publickey
     subject: license
     license-path: ./license.lic
+#    license-path: /license.lic
 server:
   port: 3492

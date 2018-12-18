@@ -36,6 +36,17 @@ SELECT * FROM emp WHERE DEPTNO LIKE '2_' ; -- like 查询 DEPTNO 字段中 以2�
 SELECT * FROM emp WHERE COMM LIKE '3__' ;  -- like 查询 DEPTNO 字段中 以3开头并且只有三位长度  所有记录
 
 
+select * from user where username like '%nihao%' ;
+select * from user where username like '_nihao';
+#   其中%做为通配符通配多个，_作为通配符通配一个
+#   如果要真的去查询username中含有 % _ 的，需要使他们不再作为通配符
+#   将% _ 在like中转义，拿_为例，
+#   转义前：select * from user where username like '_nihao',
+#   转义后：select * from user where username like '/_nihao' escape '/', sos 意思就是说/之后的_不作为通配符
+
+# 获取 t_batch 表的 format字段中 所有不带 % 的记录 并 降序排序 escape '/' sos 意思是 / 后的% 不作为查询用的通配符
+SELECT format FROM t_batch WHERE delete_state = 0 AND format NOT LIKE '%/%%' escape '/' ORDER BY length(format) DESC;
+
 
 --  判断是否为空：IS (NOT) NULL
 SELECT * FROM emp WHERE COMM IS NULL    ;    --  查询 COMM 字段为null  所有记录

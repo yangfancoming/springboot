@@ -11,7 +11,6 @@ import java.util.prefs.Preferences;
 /**
  * 验证license
  *
- * @author futureX
  */
 public class VerifyLicense {
 
@@ -27,7 +26,8 @@ public class VerifyLicense {
         LicenseManager licenseManager = LicenseManagerHolder.getLicenseManager(licenseParam);
         // 安装证书
         try {
-            licenseManager.install(new File(licenseCommon.getLicensePath()));
+            String licensePath = licenseCommon.getLicensePath();
+            licenseManager.install(new File(licensePath));
         } catch (Exception e) {
             LOGGER.error("证书安装失败", e);
             return false;
