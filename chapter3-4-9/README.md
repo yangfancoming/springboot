@@ -3,7 +3,8 @@
  
  ### 生成密钥对
      
-     1、首先要用KeyTool工具来生成私匙库：（-alias别名 –validity 3650表示10年有效
+     1、首先要用KeyTool工具来生成私匙库：（-alias别名 –validity 3650表示10年有效）
+     C:\Program Files\Java\jre1.8.0_60\bin
      keytool -genkeypair -alias privatekey -keysize 1024 -sigalg SHA1withDSA -keystore D:/privateKey.store -validity 180 -storetype pkcs12 -storepass init123
   
      2、然后把私匙库内的公匙导出到一个文件当中

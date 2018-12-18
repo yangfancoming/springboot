@@ -26,10 +26,25 @@ ${msg}
 
 <br>
 
-单个文件上传：<br/>
+单个文件上传：form表单 <br/>
 <form action="/upload" method="post" enctype="multipart/form-data">
     <input type="file" name="file"/>
     <input type="submit" value="提交上传"/>
+</form>
+
+
+单个文件上传：Ajax<br/>
+<form class="form-horizontal" id="upload_form" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label class="col-sm-3 control-label">请选择License.lic文件：</label>
+        <div class="col-sm-6">
+            <input type="file" class="form-control" id="file" name="file"/>
+        </div>
+
+        <div class="col-sm-3">
+            <input type="button" name="btnUpload" id="btnUpload" value="上传" class="btn btn-primary" onclick="importLicense()">
+        </div>
+    </div>
 </form>
 <br/>
 多个文件上传：
@@ -53,6 +68,43 @@ ${msg}
         maximumSelectionLength: 2
     });
 
-
-
+    function importLicense() {
+        var str = $("#file").val();
+        var fileName = getFileName(str); // 获取上传 文件名
+        var fileExt = str.substring(str.lastIndexOf('.') + 1);  // 获取上传 文件后缀名
+        console.log(fileName + "\r\n" + fileExt,123123123123);
+        if (fileName != "license.lic") {
+            alert("请上传 license.lic 证书文件！")
+            return;
+        }
+        var formData = new FormData($("#upload_form")[0]);
+        $.ajax({
+            type: "POST",
+            url: "/upload",
+            data: formData,
+            dataType: "json",
+            async: false,
+            enctype: "multipart/form-data",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (result) {
+                console.log(result,22222222);
+            },
+            error:function(data){ // doit 为什么返回值 不走 success  而会走这里？
+                console.log(data,111111111);
+            }
+        });
+    }
+    //获取文件名称
+    function getFileName(path) {
+        var pos1 = path.lastIndexOf('/');
+        var pos2 = path.lastIndexOf('\\');
+        var pos = Math.max(pos1, pos2);
+        if (pos < 0) {
+            return path;
+        } else {
+            return path.substring(pos + 1);
+        }
+    }
 </script>
