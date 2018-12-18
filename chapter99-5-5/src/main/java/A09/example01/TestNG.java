@@ -28,6 +28,9 @@ public class TestNG {
             case WINTER:
                 System.out.println("Winter");
                 break;
+            default:
+                System.out.println("11111");
+                break;
         }
     }
 

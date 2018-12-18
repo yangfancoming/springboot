@@ -1,0 +1,7 @@
+license:
+  verify:
+    resource: /publicKey.store
+    storepass: init123
+    alias: publickey
+    subject: license
+    license-path: /license.lic

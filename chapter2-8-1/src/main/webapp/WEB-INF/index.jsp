@@ -5,7 +5,7 @@
     <title>ECharts</title>
     <meta charset="utf-8">
 
-    <%-- sos 这个引入jQuery 放在 页面最下面 jQuery 就无法引入 报错  Uncaught ReferenceError: $ is not defined --%>
+    <%-- sos 这个引入jQuery 放在 页面最下面 jQuery 就无法引入 报错  Uncaught ReferenceError: $ is not defined   is not a function --%>
     <script type="text/javascript" src="../js/jquery-1.7.js"></script>
 </head>
 

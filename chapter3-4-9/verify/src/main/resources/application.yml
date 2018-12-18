@@ -11,7 +11,7 @@ license:
     storepass: init123
     alias: publickey
     subject: license
-    license-path: ./license.lic
-#    license-path: /license.lic
+#    license-path: ./license.lic
+    license-path: /license.lic
 server:
   port: 3492

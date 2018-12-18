@@ -5,10 +5,12 @@ import com.goat.listener.SecondListener;
 import com.goat.servlet.SecondServlet;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
 import java.util.ArrayList;
@@ -25,7 +27,13 @@ import java.util.List;
 
 @SpringBootApplication
 @ServletComponentScan   //(FirstServlet 使用)启动器启动时，扫描本目录以及子目录带有的 webservlet 注解的类  并对其进行实例化
-public class FirstServletApplication {
+public class FirstServletApplication extends SpringBootServletInitializer {
+
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(FirstServletApplication.class);
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(FirstServletApplication.class, args);
