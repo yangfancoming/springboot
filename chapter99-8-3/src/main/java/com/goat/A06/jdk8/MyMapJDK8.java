@@ -1,4 +1,4 @@
-package com.goat.A06;
+package com.goat.A06.jdk8;
 
 
 
