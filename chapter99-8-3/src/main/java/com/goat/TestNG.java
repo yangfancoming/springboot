@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 
 /**
-     * @Description:
+     * @Description:  list  groupby
      * @author: 杨帆
      * @Date:   2018/12/14
 */
