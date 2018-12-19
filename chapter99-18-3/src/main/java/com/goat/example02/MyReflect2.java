@@ -16,7 +16,7 @@ import java.lang.reflect.*;
 public class MyReflect2 {
 
     /**
-         * @Description: 功能描述： 获取class的三种方式
+         * @Description:  获取class的三种方式
          * @author: 杨帆
             第一种：通过Object类的getClass方法  Class cla = foo.getClass();
             第二种：通过对象实例方法获取对象  Class cla = foo.class;
