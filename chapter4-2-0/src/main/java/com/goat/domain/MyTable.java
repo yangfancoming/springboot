@@ -11,7 +11,7 @@ import java.util.Date;
  * @ date 2018年12月11日20:15:53
  */
 @Entity // 自动生成数据库的表名 为  my_table  但是 多用 @Table 来指定表名
-@Table(name = "t_my_able")
+@Table(name = "t_my_table")
 public class MyTable {
 
     /*

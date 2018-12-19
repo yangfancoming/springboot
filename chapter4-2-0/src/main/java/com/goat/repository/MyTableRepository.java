@@ -2,6 +2,10 @@ package com.goat.repository;
 
 import com.goat.domain.MyTable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 
 
 /**
@@ -16,6 +20,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface MyTableRepository extends JpaRepository<MyTable, Long> {
 
+
+//    @Query("select u from User u where u.name = :name")
+//    List<MyTable> findUser(@Param("id") String id);
 
 
 }

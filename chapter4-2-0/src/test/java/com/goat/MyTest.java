@@ -1,6 +1,7 @@
 package com.goat;
 
 
+import com.goat.common.CommonNativeSqls;
 import com.goat.domain.MyTable;
 import com.goat.repository.MyTableRepository;
 import org.junit.Test;
@@ -15,23 +16,22 @@ import java.util.Optional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SelectTest {
+public class MyTest {
+
 
 
     @Autowired
-    MyTableRepository myTableRepository;
-
+    CommonNativeSqls commonNativeSqls;
 
     @Test
     public void test01() {
-        List<MyTable> all = myTableRepository.findAll();
-        System.out.println(all);
+        String test = commonNativeSqls.test();
+        System.out.println(test);
     }
 
     @Test
     public void test() {
-        Optional<MyTable> byId = myTableRepository.findById(5L);
-        MyTable haha = byId.get();
-        System.out.println(haha);
+        Long test = commonNativeSqls.test1();
+        System.out.println(test);
     }
 }

@@ -5,10 +5,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
+
 
 /**
  * @Title：  原生sql 方法
@@ -53,7 +53,6 @@ public class CommonNativeSqls {
         query.setParameter("names",names);
         return query.getResultList();
     }
-
 
     /**
      * @Title：  sos  entityManager 的 update 使用方法 ： executeUpdate()
