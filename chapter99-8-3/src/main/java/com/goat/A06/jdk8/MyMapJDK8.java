@@ -16,6 +16,7 @@ import java.util.Map;
  * @date 2018/7/21---18:15
  */
 public class MyMapJDK8 {
+
     Map map = new HashMap();
 
     @BeforeMethod
