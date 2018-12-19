@@ -5,6 +5,28 @@ import org.testng.annotations.Test;
 import java.io.File;
 import java.io.IOException;
 
+
+/**
+ * Created by 64274 on 2018/6/25.
+ *
+ * @author 山羊来了
+ * @Description: TODO
+ * @date 2018/6/25---17:14
+ *
+ * File 构造方法：
+
+File(String pathname)  通过一个路径 得到File对象
+File(String parent, String child)  根据一个目录和一个子文件 得到File 对象
+File(File parent, String child)  根据一个父File对象 和一个子文件 得到File 对象
+
+创建功能：
+boolean createNewFile()    创建文件   如果不存在 则创建该文件  如果存在就不创建了  返回是否创建成功
+boolean mkdir()            创建文件夹 如果不存在 则创建该目录  如果存在就不创建了  返回是否创建成功
+boolean mkdirs()           创建文件夹 如果父级目录不存在 则强制创建
+删除功能：
+boolean delete()           删除文件或文件夹 如果不存在 则返回false  如果存在就删除   返回是否创建成功
+
+ */
 public class FileTest {
 
 
