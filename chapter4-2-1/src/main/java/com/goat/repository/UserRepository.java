@@ -41,5 +41,20 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("UPDATE User SET name = :name WHERE id = :id")
     Integer updateUser(@Param("name") String name,@Param("id") Long id);
 
+
+
+    // 累加 null值 问题
+    @Transactional
+    @Modifying
+    @Query("UPDATE User SET age = age + :age WHERE id = :id")
+    Integer updateUserAge(@Param("age") Integer age,@Param("id") Long id);
+
+    // 累加 null值  增加 if() 函数 sos 要使用if()函数就 必须要使用 原生sql  即：nativeQuery = true
+    @Transactional
+    @Modifying
+    @Query(value = "UPDATE user SET age = if(age is null,0,age) + :age WHERE id = :id",nativeQuery = true)
+    Integer updateUserAgeIf(@Param("age") Integer age,@Param("id") Long id);
+
+
     long countByAge(Integer age);
 }
