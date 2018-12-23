@@ -6,6 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
+import java.text.DateFormat;
+import java.text.MessageFormat;
+import java.text.SimpleDateFormat;
 import java.util.prefs.Preferences;
 
 /**
@@ -27,7 +30,9 @@ public class VerifyLicense {
         // 安装证书
         try {
             String licensePath = licenseCommon.getLicensePath();
-            licenseManager.install(new File(licensePath));
+            LicenseContent install = licenseManager.install(new File(licensePath));
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            LOGGER.info(MessageFormat.format("证书安装成功，证书有效期：{0} - {1}",format.format(install.getNotBefore()),format.format(install.getNotAfter())));
         } catch (Exception e) {
             LOGGER.error("证书安装失败", e);
             return false;
@@ -35,6 +40,9 @@ public class VerifyLicense {
         // 验证证书
         try {
             LicenseContent content = licenseManager.verify();
+            System.out.println(content.getIssued());
+            System.out.println(content.getNotBefore());
+            System.out.println(content.getNotAfter());
             // TODO 可以在这里验证其他参数，如mac地址
         } catch (Exception e) {
             LOGGER.error("证书验证失败", e);
