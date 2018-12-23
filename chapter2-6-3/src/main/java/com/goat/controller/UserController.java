@@ -26,13 +26,19 @@ public class UserController {
         model.addAttribute("user", new User(UUID.randomUUID().toString(), "yizhiwazi", "20170928"));
         return "user";
     }
-    // 测试地址：    http://localhost:8263/user/list
+
+    /*
+        测试地址：    http://localhost:8263/user/list
+        现象：User 对象中出现的 userId 属性 与 chapter0-0-1 中的 User 属性id 不一致！
+        报错：Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1008E: Property or field 'id' cannot be found on object of type 'com.goat.bean.User' - maybe not public or not valid?
+        原因：pom.xml 文件中 没有加入  sos <packaging>war</packaging>
+    */
     @GetMapping("/user/list")
     public String userlist(Model model) {
         List<User> userList = new ArrayList<>();
-        userList.add(new User(UUID.randomUUID().toString(), "yizhiwazi", "20170928"));
-        userList.add(new User(UUID.randomUUID().toString(), "kumamon", "123456"));
-        userList.add(new User(UUID.randomUUID().toString(), "admin", "admin"));
+        userList.add(new User("1", "yizhiwazi", "20170928"));
+        userList.add(new User("2", "kumamon", "123456"));
+        userList.add(new User("3", "admin", "admin"));
         model.addAttribute("userList", userList);
         return "userList";
     }
