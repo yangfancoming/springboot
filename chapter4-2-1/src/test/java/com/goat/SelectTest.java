@@ -53,6 +53,13 @@ public class SelectTest extends TestCommon {
         User user = userRepository.findByName("FFF");
         System.out.println(user);
     }
+    @Test
+    public void findAndSave() {   // 查询一条记录后  设置一个null属性  在save的 会将对应的表字段 update 为 null
+        User user = userRepository.findByName("FFF");
+        user.setAge(null);
+        User save = userRepository.save(user);
+        System.out.println(save);
+    }
 
     @Test
     public void findByLastName() {
