@@ -60,7 +60,15 @@ public class SelectTest extends TestCommon {
         User save = userRepository.save(user);
         System.out.println(save);
     }
-
+    @Test
+    public void findAndSaveNew() {   // 查询一条记录后  设置一个null属性  在save的 会将对应的表字段 update 为 null
+        User user = new User();
+        user.setId(5L);
+        user.setName("wakaka");
+        user.setAge(null);
+        User save = userRepository.save(user);
+        System.out.println(save);
+    }
     @Test
     public void findByLastName() {
         List<Customer> customer = customerRepository.findByLastName("Bauer");
