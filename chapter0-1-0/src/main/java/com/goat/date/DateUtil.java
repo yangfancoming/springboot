@@ -77,5 +77,25 @@ public class DateUtil {
         return haha[temp];
     }
 
+    @Test
+    public void test1() throws ParseException {
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+        String str = "2018-12-25";
+        Date date = dateFormatter.parse(str);
 
+        dateFormatter.applyPattern("D");
+        System.out.println("一年中的第几天：" + dateFormatter.format(date));
+
+        dateFormatter.applyPattern("d");
+        System.out.println("一个月中的第几天：" + dateFormatter.format(date));
+
+        dateFormatter.applyPattern("w");
+        System.out.println("一年中的第几周：" + dateFormatter.format(date));
+
+        dateFormatter.applyPattern("W");
+        System.out.println("一个月中的第几周：" + dateFormatter.format(date));
+
+        dateFormatter.applyPattern("E");
+        System.out.println("一个星期中的天数：" + dateFormatter.format(date));
+    }
 }
