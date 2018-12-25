@@ -33,13 +33,12 @@ public class ResultGenerator {
                 .setData(data);
     }
     //成功，自定义消息及数据
-    public  RestResult getSuccessResult(String message,Object data,long total) {
-        return new RestResult()
-                .setCode(ResultCode.SUCCESS)
-                .setMessage(message)
-                .setTotal(total)
-                .setData(data);
-    }
+//    public  RestResult getSuccessResult(String message,Object data,long total) {
+//        return new RestResult()
+//                .setCode(ResultCode.SUCCESS)
+//                .setMessage(message)
+//                .setData(data);
+//    }
     //失败，附带消息
     public  RestResult getFailResult(String message) {
         return new RestResult()
