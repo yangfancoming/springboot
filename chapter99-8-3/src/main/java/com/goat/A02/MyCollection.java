@@ -5,10 +5,7 @@ package com.goat.A02;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.*;
 
 /**
  * Created by 64274 on 2018/6/25.
@@ -108,6 +105,27 @@ public class MyCollection
         System.out.println("c集合是否完全包含books集合？" + c.containsAll(books)); // 输出false
     }
 
+    // doit
+    @Test
+    public void contain1sAll(){
+//        List<Map<Object, Object>> list1 = new ArrayList<>();
+//        List<Map<Object, Object>> list2 = new ArrayList<>();
+//        list1.stream()
+//                .filter(map -> list2.stream().anyMatch(map1 -> map.get("id").equals(map1.get("id"))))
+//                .forEach(map -> {
+//                    // to do sth
+//                });
+    }
+    @Test
+    public void contain21sAll(){
+//        List<User> list1 = new ArrayList<>();
+//        List<User> list2 = new ArrayList<>();
+//        list1.stream()
+//                .filter(map -> list2.stream().anyMatch(map1 -> map.getName().equals(map1.get("id"))))
+//                .forEach(map -> {
+//                    // to do sth
+//                });
+    }
     @Test
     public void addAll(){
         c.addAll(books);// 将books集合添加到c集合中 （允许有重复值）

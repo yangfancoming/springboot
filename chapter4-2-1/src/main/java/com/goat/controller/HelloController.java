@@ -4,6 +4,7 @@ package com.goat.controller;
 import com.goat.common.CommonNativeSqls;
 import com.goat.domain.Customer;
 import com.goat.domain.User;
+import com.goat.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +21,8 @@ public class HelloController {
 
     // sos 注入 @Service  工具类   值得借鉴
     @Autowired CommonNativeSqls commonNativeSqls;
-
+    @Autowired
+    public UserRepository userRepository;
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -49,5 +51,13 @@ public class HelloController {
         Customer customer = entityManager.getReference(Customer.class, 1L);
         System.out.println("-----------------------------");
         System.out.println(customer);
+    }
+
+    //    http://localhost:8421/hello/haha111
+    @RequestMapping("/haha111")
+    public void haha111(){
+        User user = userRepository.findByName("FFF");
+        user.setAge(null);
+//        User save = userRepository.save(user);
     }
 }
