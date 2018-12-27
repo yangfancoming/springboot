@@ -4,6 +4,7 @@ package com.goat.entityManager;
 import com.goat.domain.User;
 import com.goat.domain.User2;
 import org.hibernate.SQLQuery;
+import org.hibernate.query.internal.NativeQueryImpl;
 import org.hibernate.transform.Transformers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -136,7 +137,7 @@ public class createNativeQuery  {
         Map<String,String> paramMap = new HashMap<>();
         paramMap.put("id","3");
         Query query = setParam(entityManager.createNativeQuery(sql), paramMap);
-        query.unwrap(SQLQuery.class).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);// 这句代码是关键！
+        query.unwrap(NativeQueryImpl.class).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);// 这句代码是关键！
         List<Map<String, Object>> users = query.getResultList();
         System.out.println(users);
     }
