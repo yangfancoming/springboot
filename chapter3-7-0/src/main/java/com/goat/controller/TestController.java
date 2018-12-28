@@ -1,13 +1,15 @@
 package com.goat.controller;
 
-import com.goat.JwtUtil;
 import com.goat.bean.Account;
+import com.goat.utils.JwtUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.HashMap;
 
 /**
@@ -22,13 +24,15 @@ import java.util.HashMap;
 public class TestController {
 
 
+    // http://localhost:8370/api/protected
     @GetMapping("/api/protected")
     public Object hellWorld() {
         return "Hello World! This is a protected api";
     }
 
+    // http://localhost:8370/
     @PostMapping("/login")
-    public Object login(HttpServletResponse response, @RequestBody final Account account) throws IOException {
+    public Object login(HttpServletResponse response, @RequestBody final Account account) {
 
         if(account.getUsername().equals("admin") && account.getPassword().equals("123")){
             String jwt = JwtUtil.generateToken(account.username);

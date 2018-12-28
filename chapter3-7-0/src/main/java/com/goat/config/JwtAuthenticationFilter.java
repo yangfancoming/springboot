@@ -1,5 +1,6 @@
-package com.goat;
+package com.goat.config;
 
+import com.goat.utils.JwtUtil;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
