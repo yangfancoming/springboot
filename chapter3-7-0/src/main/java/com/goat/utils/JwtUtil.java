@@ -15,13 +15,15 @@ public class JwtUtil {
     public static String generateToken(String username) {
         HashMap<String, Object> map = new HashMap<>();
         map.put("username", username); //you can put any data in the map
+        map.put("role", "guest"); //  可以自定义 键值对！
         JwtBuilder jwtBuilder = Jwts.builder() // 生成使用  builder()
 //                .setId("666") // 当前用户登录的 id
 //                .setSubject("admin") // 当前用户登录的 用户名
 //                .setIssuedAt(new Date()) // 当前用户登录的 登录时间
                 .setClaims(map)  // 如果有 setClaims 则优先使用  如果没有 setClaims 才使用 setId setSubject setIssuedAt 。。。
-                .setExpiration(new Date(System.currentTimeMillis() + 3600_000_000L))// 1000 hour
+                .setExpiration(new Date(System.currentTimeMillis() + 3600_000_000L))// 设置token过期时间  1000 hour
                 .signWith(SignatureAlgorithm.HS512, SECRET); // P1 加密算法  P2 加盐值
+//                .claim("role","guest");
         String jwt = jwtBuilder.compact(); // 生成 jwt
         return "Bearer "+ jwt; //jwt前面一般都会加Bearer
     }

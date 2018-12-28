@@ -48,4 +48,11 @@ public class ApplicationTests {
         System.out.println(temp);
     }
 
+    // @Transactional(rollbackFor = Exception.class)  抛出自定义异常 也会回滚！
+    @Test
+    public void saveEmp3() {
+        Integer temp  = iEmpService.saveEmp3(33,"aaaaa");
+        System.out.println(temp);
+    }
+
 }

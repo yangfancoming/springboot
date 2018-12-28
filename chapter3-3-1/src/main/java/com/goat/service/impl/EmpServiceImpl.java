@@ -1,6 +1,7 @@
 package com.goat.service.impl;
 
 import com.goat.dao.BaseDao;
+import com.goat.exception.ServiceAppException;
 import com.goat.service.IEmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,9 +41,10 @@ public class EmpServiceImpl implements IEmpService {
      * @author: 杨帆
       * @Date:   2018/8/22
      *
-     @Transactional 注解应该只被应用到 public 方法上，这是由 Spring AOP 的本质决定的。
-     如果你在 protected、private 或者默认可见性的方法上使用 @Transactional 注解，
-     这将被忽略，也不会抛出任何异常。
+     @Transactional
+     1.注解应该只被应用到 public 方法上，这是由 Spring AOP 的本质决定的。如果你在 protected、private 或者默认可见性的方法上使用 @Transactional 注解，这将被忽略，也不会抛出任何异常。
+     2.方法内不能使用 try catch  否则 无法回滚
+
     */
     @Override
     @Transactional // 开启事务
@@ -50,6 +52,15 @@ public class EmpServiceImpl implements IEmpService {
         Integer temp = baseDao.saveEmp2(EMPNO,ENAME);
         int i = 10/0;
         System.out.println(i);
+        return temp;
+    }
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Integer saveEmp3(Integer EMPNO,String ENAME) {
+        Integer temp = baseDao.saveEmp2(EMPNO,ENAME);
+        if(temp == null){
+            throw new ServiceAppException("库位不存在！");
+        }
         return temp;
     }
 }

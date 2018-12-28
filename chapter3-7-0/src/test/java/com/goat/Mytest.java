@@ -5,6 +5,8 @@ import com.goat.utils.JwtUtil;
 import io.jsonwebtoken.Claims;
 import org.junit.Test;
 
+import java.text.SimpleDateFormat;
+
 
 //@RunWith(SpringRunner.class)
 //@SpringBootTest
@@ -13,15 +15,16 @@ public class Mytest {
 
     @Test
     public void generateToken()   {
-        String admin = JwtUtil.generateToken("g123");
+        String admin = JwtUtil.generateToken("haha");
         System.out.println(admin);
     }
 
-    // goat  eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE1NDk1NjQ4MjUsInVzZXJuYW1lIjoiZ29hdCJ9.OOB5uePQdRX4fedZCf9Ykn07q2C1HrcEdRmlFDQqRtOdAsg1PKWApSKA6OCn8QZ4awBm0Kq8F49XY_FkI3NQKw
+    // eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiZ3Vlc3QiLCJleHAiOjE1NDk1NjYyMDMsInVzZXJuYW1lIjoiaGFoYSJ9.Ux6LStOLZPh3H4-SImXdqjB8CKy7GTLMjY4DyRpfqletGO9cqDghYUsGAfKvlLycenAJBjJrs9llHqpjK1TMuw
     @Test
     public void validateToken()   {
-        String token = "eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE1NDk1NjQ4MjUsInVzZXJuYW1lIjoiZ29hdCJ9.OOB5uePQdRX4fedZCf9Ykn07q2C1HrcEdRmlFDQqRtOdAsg1PKWApSKA6OCn8QZ4awBm0Kq8F49XY_FkI3NQKw";
+        String token = "eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjoiZ3Vlc3QiLCJleHAiOjE1NDk1NjYyMDMsInVzZXJuYW1lIjoiaGFoYSJ9.Ux6LStOLZPh3H4-SImXdqjB8CKy7GTLMjY4DyRpfqletGO9cqDghYUsGAfKvlLycenAJBjJrs9llHqpjK1TMuw";
         Claims claims = JwtUtil.validateToken(token);
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(claims.getExpiration()));
         System.out.println(claims);
     }
 }

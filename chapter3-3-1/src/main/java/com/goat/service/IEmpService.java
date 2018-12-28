@@ -17,4 +17,6 @@ public interface IEmpService {
     Integer saveEmp(Integer EMPNO,String ENAME);
 
     Integer saveEmp2(Integer EMPNO,String ENAME);
+
+    Integer saveEmp3(Integer EMPNO,String ENAME);
 }

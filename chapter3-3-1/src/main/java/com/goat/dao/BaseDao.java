@@ -26,4 +26,7 @@ public interface BaseDao {
 
     @Select("insert into emp (EMPNO, ENAME) values(#{EMPNO},#{ENAME})")
     Integer saveEmp2(@Param("EMPNO") Integer EMPNO, @Param("ENAME")String ENAME);
+
+    @Select("insert into emp (EMPNO, ENAME) values(#{EMPNO},#{ENAME})")
+    Integer saveEmp3(@Param("EMPNO") Integer EMPNO, @Param("ENAME")String ENAME);
 }
