@@ -59,7 +59,7 @@ public class EmpServiceImpl implements IEmpService {
     public Integer saveEmp3(Integer EMPNO,String ENAME) {
         Integer temp = baseDao.saveEmp2(EMPNO,ENAME);
         if(temp == null){
-            throw new ServiceAppException("库位不存在！");
+            throw new ServiceAppException("库位不存在！");// 自定义异常 仍然可以回滚
         }
         return temp;
     }

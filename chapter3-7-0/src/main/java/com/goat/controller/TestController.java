@@ -35,7 +35,7 @@ public class TestController {
     public Object login(HttpServletResponse response, @RequestBody final Account account) {
 
         if(account.getUsername().equals("admin") && account.getPassword().equals("123")){
-            String jwt = JwtUtil.generateToken(account.username);
+            String jwt = JwtUtil.generateToken(account.username,"ThisIsASecret");
             return new HashMap<String,String>(){{
                 put("token", jwt);
             }};

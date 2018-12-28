@@ -15,7 +15,7 @@ public class Mytest {
 
     @Test
     public void generateToken()   {
-        String admin = JwtUtil.generateToken("haha");
+        String admin = JwtUtil.generateToken("haha","ThisIsASecret");
         System.out.println(admin);
     }
 
