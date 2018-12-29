@@ -24,6 +24,14 @@
 
 <button type="button" class="btn btn-lg btn-primary" onclick="showMsg2(123)">Primary</button>
 
+<br>
+<select class="form-control" >
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+</select>
 123123123123
 
 </body>
