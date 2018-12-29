@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 public class KungfuController {
 	private final String PREFIX = "pages/";
 
-	@GetMapping("/")
+	@GetMapping("/welcome")
 	public String index() { // 欢迎页
 		return "welcome";
 	}
 	
-	@GetMapping("/toLogin")
+	@GetMapping("/login")
 	public String loginPage() { // 登陆页
 		return PREFIX+"login";
 	}

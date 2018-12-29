@@ -3,6 +3,7 @@ package com.goat.security;
 import com.goat.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,13 +25,18 @@ public class MySecurityConfig  extends WebSecurityConfigurerAdapter {
     // 定制请求的授权规则
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/").permitAll()  // 对应  KungfuController 中访问欢迎页的请求   不拦截
+        http.cors().and().csrf().disable()
+                .authorizeRequests()
+//                .antMatchers("/welcome").permitAll()  // 对应  KungfuController 中访问欢迎页的请求   不拦截
+                .antMatchers("/", "/welcome.html","/login").permitAll()
+                // 只 拦截 post 方式 的 http://localhost:8355/hello/test 请求   get 方式则不拦截
+                .antMatchers(HttpMethod.POST,"/hello/test").authenticated()
                 .antMatchers("/hello/**").permitAll()  //  对应 HelloController 中的所有请求    不拦截
                 .antMatchers("/level1/**").hasRole("VIP1")
                 .antMatchers("/level2/**").hasRole("VIP2")  //  对应  KungfuController 中的 level 请求 需要 对应VIP角色才能访问
-                .antMatchers("/level3/**").hasRole("VIP3");
-        http.formLogin().loginPage("/toLogin");
+                .antMatchers("/level3/**").hasRole("VIP3")
+                .anyRequest().authenticated();
+        http.formLogin().loginPage("/login").successForwardUrl("/hello/test2");
 //        http.formLogin();
         http.rememberMe();
     }

@@ -20,7 +20,13 @@ import java.util.Map;
 @RequestMapping("/hello")
 public class HelloController {
 
-//    http://localhost:8354/hello/test1
+    //    http://localhost:8355/hello/test
+    @RequestMapping(value = "/test")
+    public String test(){
+        return "test";
+    }
+
+    //    http://localhost:8355/hello/test1
     @RequestMapping("/test1")
     public String hello(){
         return "goat like coming!"; // fuck 使用@RestController 这里会返回json字符串  使用@Controller 这里会去 templates 路径下找  名称为goat like coming!的html文件！！！
