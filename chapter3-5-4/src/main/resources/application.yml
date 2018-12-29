@@ -1,3 +1,9 @@
+
+server:
+  port: 8354
+
+
+
 spring:
   thymeleaf:
     cache: false #关闭缓存

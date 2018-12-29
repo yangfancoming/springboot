@@ -1,0 +1,15 @@
+spring:
+  thymeleaf:
+    cache: false #关闭缓存
+
+
+
+#@ConfigurationProperties(prefix = "demo.security.jwt")
+jwt.config:
+  tokenExpirationTime: 15 # Number of minutes
+  refreshTokenExpTime: 60 # Minutes
+  tokenIssuer: http://svlada.com
+  tokenSigningKey: xm8EV6Hy5RMFK4EEACIDAwQus
+  header: Authorization
+  tokenHead: Bearer
+
