@@ -13,7 +13,7 @@ public class KungfuController {
 		return "welcome";
 	}
 	
-	@GetMapping("/login")
+	@GetMapping("/myLogin")
 	public String loginPage() { // 登陆页
 		return PREFIX+"login";
 	}

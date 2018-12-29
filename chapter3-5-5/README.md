@@ -21,6 +21,11 @@
                     <input type="text" id="username" name="username" /> <br />
                     <input type="password" id="password" name="password" /> <br />
     2. 注意：MySecurityConfig 类中的loginPage() 与自定义登陆页 login.html 的 action 访问路径必须是一样的 toLogin  才能被SpringSecurity 拦截进行后续处理
-                 http.formLogin().loginPage("/toLogin");
-                <form th:action="@{/toLogin}" method="post">
+                 http.formLogin().loginPage("/myLogin");
+                <form th:action="@{/myLogin}" method="post">
+    3. 注意：MySecurityConfig 类中的 loginPage("/myLogin") 是 浏览器url输入 为拦截地址时 会自动跳转到  http://localhost:8355/myLogin 请求
+    4. 注意：MySecurityConfig 类中的 loginPage("/myLogin") 中的 /myLogin 请求必须是不能拦截的 必须要被放行 ！  .antMatchers("/myLogin").permitAll()
+                否则  302 提示 多次重定向 错误
+    
+              
         
