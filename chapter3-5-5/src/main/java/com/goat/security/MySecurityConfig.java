@@ -1,5 +1,7 @@
 package com.goat.security;
 
+import com.goat.service.MyUserDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -28,18 +30,17 @@ public class MySecurityConfig  extends WebSecurityConfigurerAdapter {
                 .antMatchers("/level1/**").hasRole("VIP1")
                 .antMatchers("/level2/**").hasRole("VIP2")  //  对应  KungfuController 中的 level 请求 需要 对应VIP角色才能访问
                 .antMatchers("/level3/**").hasRole("VIP3");
-        http.formLogin();
+        http.formLogin().loginPage("/toLogin");
+//        http.formLogin();
         http.rememberMe();
     }
 
+    @Autowired
+    MyUserDetailsService myUserDetailsService;
 
-    // 定制认证规则
+    // 定制认证规则      auth.inMemoryAuthentication().passwordEncoder(new MyPasswordEncoder())
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        // 在内存添加 虚拟用户
-        auth.inMemoryAuthentication().passwordEncoder(new MyPasswordEncoder())
-                .withUser("zhangsan").password("123").roles("VIP1","VIP2").and()
-                .withUser("lisi").password("123").roles("VIP3","VIP2").and()
-                .withUser("wangwu").password("123").roles("VIP1","VIP3");
+        auth.userDetailsService(myUserDetailsService).passwordEncoder(new MyPasswordEncoder());
     }
 }

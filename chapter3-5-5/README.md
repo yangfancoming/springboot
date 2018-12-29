@@ -15,3 +15,12 @@
     
     UserDetails
     UserDetails代表用户信息，即主体，相当于Shiro中的Subject。User是它的一个实现。
+    
+# 注意点：
+    1. 注意：自定义的登陆页 login.html 需要username和password输入域！否则会一直认证失败！！！！
+                    <input type="text" id="username" name="username" /> <br />
+                    <input type="password" id="password" name="password" /> <br />
+    2. 注意：MySecurityConfig 类中的loginPage() 与自定义登陆页 login.html 的 action 访问路径必须是一样的 toLogin  才能被SpringSecurity 拦截进行后续处理
+                 http.formLogin().loginPage("/toLogin");
+                <form th:action="@{/toLogin}" method="post">
+        
