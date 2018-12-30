@@ -2,6 +2,10 @@ package com.goat.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.goat.bean.User;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -16,10 +20,12 @@ import java.util.List;
  * @ date 2018/12/30---10:46
  */
 
+@Api(tags ="用户管理" ,description="用户管理相关功能API")
 @RestController
 @RequestMapping("/user")
 public class TestController {
 
+    @ApiOperation(value="获取所有用户记录", notes="controller方法描述")
     @GetMapping
     public List<User> users(){
         List<User> users = new ArrayList<>();
@@ -29,6 +35,8 @@ public class TestController {
         return users;
     }
 
+    @ApiOperation(value="新增一个用户", notes="controller方法描述")
+    @ApiImplicitParams({@ApiImplicitParam(name = "user", value = "用户详细实体", required = true, dataType = "User") })
     @PostMapping
     public User user(@Valid @RequestBody User user){
         System.out.println(user);
