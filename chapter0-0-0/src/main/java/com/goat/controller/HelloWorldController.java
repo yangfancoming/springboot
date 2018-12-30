@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/hello")
 public class HelloWorldController {
 
-	@GetMapping("/get")
+	@GetMapping("/get") //  等价于   @RequestMapping(value = "/get",method = RequestMethod.GET)
 	public String get()   {
 		return "get无参请求成功";
 	}
@@ -21,7 +21,7 @@ public class HelloWorldController {
 		return "get带参请求成功,参数message: " + message;
 	}
 
-	@PostMapping("/post")
+	@PostMapping("/post") //  等价于   @RequestMapping(value = "/post",method = RequestMethod.POST)
 	public String post(@RequestHeader("User-Agent") String userAgent,
             @RequestHeader("Accept") String accept,
             @RequestHeader("Accept-Language") String acceptLanguage,

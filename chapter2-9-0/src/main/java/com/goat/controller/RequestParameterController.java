@@ -10,7 +10,7 @@ import java.util.Map;
  * Created by 64274 on 2018/11/14.
  *
  * @author 山羊来了
- * @Description: TODO
+ * @Description:  doit  该项目打包有问题   由于使用了 0-0-1 项目的model
  * @date 2018年11月14日17:42:16
  */
 
@@ -30,6 +30,15 @@ public class RequestParameterController {
         return ownerId;
     }
 
+    /**
+     * 单个 @PathVariable值  正则校检 只能接受一个 纯数字的参数
+     * http://localhost:8290/request/path/1
+     * @param ownerId
+     */
+    @RequestMapping(value="/path/{ownerId:\\d+}")
+    public String  pathVariable1(@PathVariable String ownerId){
+        return ownerId;
+    }
     /**
      * 多个@PathVariable值
      * http://localhost:8290/request/path/1/pet/1234
@@ -67,16 +76,23 @@ public class RequestParameterController {
     }
 
     /**
-     * 多个请求参数填入到map
+     * 多个请求参数填入到 map  spring会自动封装
      * http://localhost:8290/request/requestParam2?ownerId=223&a=4&c=5
      * @param map
-     * @return
      */
     @RequestMapping(value="/requestParam2", method = RequestMethod.GET)
     public Object requestParam2(@RequestParam Map<String,Object> map) {
         return map;
     }
-
+    /**
+     * 多个请求参数填入到 实体类 spring会自动封装
+     * http://localhost:8290/request/requestParam2?username=223&password=4&age=5
+     * @param user
+     */
+    @RequestMapping(value="/requestParam22", method = RequestMethod.GET)
+    public Object requestParam22(@RequestParam User user) {
+        return user;
+    }
 
     /**
      * 设置@RequestParam自定义参数：如设置默认值，是否必须等等

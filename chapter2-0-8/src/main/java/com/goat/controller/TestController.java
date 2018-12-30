@@ -1,10 +1,8 @@
 package com.goat.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.goat.bean.User;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +16,10 @@ import java.util.List;
  */
 
 @RestController
+@RequestMapping("/user")
 public class TestController {
 
-
-    @RequestMapping(value = "/user",method = RequestMethod.POST)
+    @PostMapping
     public List<User> user(){
         List<User> users = new ArrayList<>();
         users.add(new User("111","111"));
@@ -31,10 +29,19 @@ public class TestController {
     }
 
     // 如果请求中没有 username 参数 则报错：  Required String parameter 'username' is not present
-    @RequestMapping(value = "/user1",method = RequestMethod.POST)
+    @JsonView(User.UserSimpleView.class) // 根据注解 没有返回 password 字段属性  只返回一个 username 属性
+    @PostMapping("/user1")
     public List<User> user1(@RequestParam String username){
         List<User> users = new ArrayList<>();
-        users.add(new User("111",username));
+        users.add(new User("111",username,"1111"));
         return users;
     }
+
+    @JsonView(User.UserDetailView.class) // 根据注解 可以返回 password 字段属性
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable String id){
+        User user = new User(id, "goat","1111");
+        return user;
+    }
+
 }

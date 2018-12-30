@@ -1,20 +1,28 @@
 package com.goat.bean;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import java.io.Serializable;
 
 /**
- * Created by 64274 on 2018/10/16.
- *
+ * Created by 64274 on 2018年12月30日16:14:03
  * @author 山羊来了
  * @Description: TODO
  * @date 2018/10/16---20:34
  */
 public class User implements Serializable {
 
+    public interface UserSimpleView {}
+    public interface UserDetailView extends UserSimpleView{}
+
     private String id;
     private String name;
     private Integer age;
+
+    @JsonView(UserSimpleView.class)
     private String username;
+
+    @JsonView(UserDetailView.class)
     private String password;
     private Long code;// 编号
 
