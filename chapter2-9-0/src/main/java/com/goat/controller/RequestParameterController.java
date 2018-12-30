@@ -49,11 +49,20 @@ public class RequestParameterController {
     /**
      * 可以从请求参数中获取参数值
      * 	http://localhost:8290/request/requestParam?ownerId=223
+     * 	http://localhost:8290/request/requestParam?ownerId111=223  则报错 Required int parameter 'ownerId' is not present
      * @param ownerId
-     * @return
      */
     @RequestMapping(value="/requestParam", method = RequestMethod.GET)
     public Object requestParam(@RequestParam("ownerId") int ownerId) {
+        return ownerId;
+    }
+    /**
+     *  指定别名
+     * 	http://localhost:8290/request/requestParam11?ownerId111=223  则 不再报错
+     * @param ownerId
+     */
+    @RequestMapping(value="/requestParam11", method = RequestMethod.GET)
+    public Object requestParam11(@RequestParam(name = "ownerId111") int ownerId) {
         return ownerId;
     }
 

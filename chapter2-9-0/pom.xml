@@ -9,16 +9,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>war</packaging>
+    <!--<packaging>jar</packaging>-->
     <artifactId>chapter2-9-0</artifactId>
 
     <!--确保内嵌的servlet容器不能干扰war包将部署的servlet容器-->
     <dependencies>
         <!-- … -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
         <!-- … -->
 
         <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
