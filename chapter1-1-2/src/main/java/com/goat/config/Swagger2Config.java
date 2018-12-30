@@ -30,10 +30,10 @@ public class Swagger2Config {
     public Docket controllerApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(new ApiInfoBuilder()
-                        .title("标题：111通信_协议管理管理系统_接口文档")
-                        .description("描述：用于管理集团旗下公司的人员信息,具体包括XXX,XXX模块...")
-                        .contact(new Contact("山羊来了","www.baidu.com","642744551@qq.com"))
-                        .version("版本号:1.0")
+                        .title("晨迅科技_license管理系统_接口文档") // 标题
+                        .description("用于管理集团旗下公司的所开发项目的license证书生成,具体包括XXX,XXX模块...") // 简介/描述
+                        .contact(new Contact("山羊来了","www.baidu.com","642744551@qq.com")) // 作者
+                        .version("1.0") // 版本号
                         .build())
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.goat.controller"))

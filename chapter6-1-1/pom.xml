@@ -12,7 +12,8 @@
     <artifactId>chapter6-1-1</artifactId>
 
     <properties>
-        <swagger.version>2.7.0</swagger.version>
+        <!--<version>2.9.2</version>-->
+        <swagger.version>2.9.2</swagger.version>
     </properties>
 
     <dependencies>
@@ -34,5 +35,14 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${swagger.version}</version>
         </dependency>
+
+        <!--第三方的UI界面美化jar包-->
+        <!-- https://mvnrepository.com/artifact/com.github.xiaoymin/swagger-bootstrap-ui -->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+            <version>1.8.8</version>
+        </dependency>
+
     </dependencies>
 </project>
