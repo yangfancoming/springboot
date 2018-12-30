@@ -119,7 +119,7 @@ public class RequestParameterController {
 
 
     /**
-     * @RequestBody: 请求内容为JSON  javaBean
+     * @RequestBody: 请求内容为JSON  javaBean  sos 该注解会自动将 Json串 封装到JavaBean中
      *	  测试方法在：查找 public void requestBodyBean() throws Exception
      * @param user
      */

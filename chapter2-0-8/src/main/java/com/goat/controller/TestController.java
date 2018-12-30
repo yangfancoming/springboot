@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.goat.bean.User;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,13 +20,21 @@ import java.util.List;
 @RequestMapping("/user")
 public class TestController {
 
-    @PostMapping
-    public List<User> user(){
+    @GetMapping
+    public List<User> users(){
         List<User> users = new ArrayList<>();
         users.add(new User("111","111"));
         users.add(new User("222","222"));
         users.add(new User("333","333"));
         return users;
+    }
+
+    @PostMapping
+    public User user(@Valid @RequestBody User user){
+        System.out.println(user);
+        User temp = new User("123","455","111");
+        temp.setBirthday(user.getBirthday());
+        return temp;
     }
 
     // 如果请求中没有 username 参数 则报错：  Required String parameter 'username' is not present

@@ -32,6 +32,17 @@ public class MockMvcGetTest {
 
 
     @Test
+    public void user() throws Exception {
+        //请求方式： post   请求url： /user    contentType 需要设置成 MediaType.APPLICATION_JSON，即声明是发送“application/json”格式的数据
+        String responseString = mockMvc.perform(get("/user").contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andDo(print()) //打印效果
+                .andExpect(status().isOk())  //预期结果状态
+                .andExpect(jsonPath("$.length()").value(3))  //预期结果 集合长度为3
+                .andReturn().getResponse().getContentAsString();
+        System.out.println(responseString);
+    }
+
+    @Test
     public void user1() throws Exception {
         String responseString = mockMvc.perform(get("/user/1").contentType(MediaType.APPLICATION_JSON_UTF8)
                 .param("username","goatlike")) //  添加请求参数

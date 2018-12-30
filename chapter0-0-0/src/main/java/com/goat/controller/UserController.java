@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value="/users")     // 通过这里配置使下面的映射都在/users下，可去除
 public class UserController {
 
+
+    // 使用这个方法测试，必须要先启动本项目 后 在 启动 mockMVC测试方法
     static Map<String, User> users = Collections.synchronizedMap(new HashMap<>());
 
     @RequestMapping(value="/", method=RequestMethod.GET)

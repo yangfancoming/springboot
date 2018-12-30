@@ -2,7 +2,9 @@ package com.goat.bean;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by 64274 on 2018年12月30日16:14:03
@@ -22,9 +24,12 @@ public class User implements Serializable {
     @JsonView(UserSimpleView.class)
     private String username;
 
+    @NotBlank // 必须与 controller 中的 @Valid 注解配合使用
     @JsonView(UserDetailView.class)
     private String password;
     private Long code;// 编号
+
+    private Date birthday;
 
     public User() {
     }
@@ -97,5 +102,13 @@ public class User implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 }

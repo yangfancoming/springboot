@@ -5,17 +5,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 /**
-     * @Description: 功能描述：(
+     * @Description: 功能描述：
      * @author: 杨帆
      * @Param:
      * @Return:
-     * @Date:   2018/9/22
+     * @Date:   2018年12月30日17:23:56
 */
 @SpringBootApplication
-public class Application {
+public class RestfulApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(RestfulApplication.class, args);
 	}
 
 }

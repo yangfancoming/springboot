@@ -2,6 +2,8 @@ package com.goat;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 
 /**
@@ -12,7 +14,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
      * @Date:   2018/9/23
 */
 @SpringBootApplication
-public class MockMvcApplication {
+public class MockMvcApplication extends SpringBootServletInitializer {
+
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(MockMvcApplication.class);
+    }
 
 	public static void main(String[] args) {
 		SpringApplication.run(MockMvcApplication.class, args);
