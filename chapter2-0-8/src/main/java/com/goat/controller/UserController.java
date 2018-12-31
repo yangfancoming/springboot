@@ -2,15 +2,19 @@ package com.goat.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.goat.bean.User;
+//import com.goat.service.IUserService;
+import com.goat.service.impl.UserServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 64274 on 2018/12/30.
@@ -25,22 +29,26 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
+    @Autowired
+    private UserServiceImpl userService;
+
     @ApiOperation(value="获取所有用户记录", notes="controller方法描述")
-    @GetMapping
+    @GetMapping("/list")
     public List<User> users(){
         List<User> users = new ArrayList<>();
-        users.add(new User("111","111"));
-        users.add(new User("222","222"));
-        users.add(new User("333","333"));
+        users.add(new User(111,"111"));
+        users.add(new User(222,"222"));
+        users.add(new User(333,"333"));
         return users;
     }
 
     @ApiOperation(value="新增一个用户", notes="controller方法描述")
     @ApiImplicitParams({@ApiImplicitParam(name = "user", value = "用户详细实体", required = true, dataType = "User") })
     @PostMapping
+    @JsonView(User.UserDetailView.class) // 根据注解 可以返回 password 字段属性
     public User user(@Valid @RequestBody User user){
         System.out.println(user);
-        User temp = new User("123","455","111");
+        User temp = new User(123,"455","111");
         temp.setBirthday(user.getBirthday());
         return temp;
     }
@@ -50,15 +58,23 @@ public class UserController {
     @PostMapping("/user1")
     public List<User> user1(@RequestParam String username){
         List<User> users = new ArrayList<>();
-        users.add(new User("111",username,"1111"));
+        users.add(new User(111,username,"1111"));
         return users;
     }
 
-    @JsonView(User.UserDetailView.class) // 根据注解 可以返回 password 字段属性
+
+
+    @ApiOperation(value="获取一个用户", notes="返回用户实体类")
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable String id){
-        User user = new User(id, "goat","1111");
-        return user;
+    public User getUserById(@PathVariable Integer id){
+        User oldUser = userService.getById(id);
+        return oldUser;
     }
 
+    @ApiOperation(value="获取一个用户", notes="返回用户Map")
+    @PostMapping("/{id}")
+    public Map getMapById(@PathVariable Integer id){
+        Map mapById = userService.findMapById(id);
+        return mapById;
+    }
 }

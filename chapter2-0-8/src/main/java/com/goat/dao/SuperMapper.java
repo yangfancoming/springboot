@@ -1,4 +1,4 @@
-package com.goat.mapper;
+package com.goat.dao;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;

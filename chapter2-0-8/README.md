@@ -14,7 +14,7 @@ http://localhost:8208/8208/doc.html
 ### 技术说明
 - springboot 项目结构
 - swagger2 在线接口文档/支持markdown/confluence/html/json 格式接口文档下载
-- 通过aop方式整合swagger2接口注解, 使用swagger2定义的接口自动记录操作日志
+- 通过aop方式整合swagger2接口注解, 使用swagger2定义的接口自动@ApiImplicitParams记录操作日志
 ### 项目中使用 
 ```java
 @Api(value = "/users", tags = "用户操作接口")

@@ -33,7 +33,6 @@ public class MockMvcPostTest {
     @Autowired
     private MockMvc mockMvc; //注入 MockMvc
 
-
     @Test
     public void user1() throws Exception {
         String responseString = mockMvc.perform(post("/user/user1").contentType(MediaType.APPLICATION_JSON_UTF8)
@@ -46,7 +45,7 @@ public class MockMvcPostTest {
 
     @Test
     public void requestBodyString() throws Exception {
-        User user = new User("111","222",null);
+        User user = new User(111,"222",null);
         user.setBirthday(new Date());
         String requestJson = JSONObject.toJSONString(user);
         //  content 输入参数

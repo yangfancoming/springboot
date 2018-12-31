@@ -1,9 +1,7 @@
 package com.goat.date;
 
 import com.goat.bean.Mydate;
-import com.goat.bean.User;
-import com.goat.mapper.MydateMapper;
-import com.goat.mapper.UserMapper;
+import com.goat.dao.MydateMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

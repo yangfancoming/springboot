@@ -1,6 +1,6 @@
-package com.goat.mapper;
+package com.goat.dao;
 
-import com.goat.bean.Mydate;
+import com.goat.bean.User;
 
 /**
  * Created by 64274 on 2018/11/13.
@@ -10,6 +10,6 @@ import com.goat.bean.Mydate;
  * @date 2018/11/13---13:30
  */
 
-public interface MydateMapper extends SuperMapper<Mydate>  {
+public interface  UserMapper extends SuperMapper<User>  {
 
 }

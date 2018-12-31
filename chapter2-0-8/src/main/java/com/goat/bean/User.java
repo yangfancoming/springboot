@@ -1,5 +1,9 @@
 package com.goat.bean;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import javax.validation.constraints.NotBlank;
@@ -12,13 +16,18 @@ import java.util.Date;
  * @Description: TODO
  * @date 2018/10/16---20:34
  */
+
+@TableName("sys_user")
 public class User implements Serializable {
 
     public interface UserSimpleView {}
     public interface UserDetailView extends UserSimpleView{}
 
-    private String id;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
     private String name;
+
+    @TableField(exist = false)
     private Integer age;
 
     @JsonView(UserSimpleView.class)
@@ -27,8 +36,10 @@ public class User implements Serializable {
     @NotBlank // 必须与 controller 中的 @Valid 注解配合使用
     @JsonView(UserDetailView.class)
     private String password;
-    private Long code;// 编号
 
+    @TableField(exist = false)
+    private Long code;// 编号
+    private String roleid;
     private Date birthday;
 
     public User() {
@@ -38,17 +49,18 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public User(String id, String name) {
+    public User(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public User(Integer age, String username) {
+    public User(Integer id,Integer age, String username) {
+        this.id = id;
         this.age = age;
         this.username = username;
     }
 
-    public User(String id, String username, String password) {
+    public User(Integer id, String username, String password) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -88,11 +100,11 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -110,5 +122,13 @@ public class User implements Serializable {
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    public String getRoleid() {
+        return roleid;
+    }
+
+    public void setRoleid(String roleid) {
+        this.roleid = roleid;
     }
 }

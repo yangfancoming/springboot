@@ -1,7 +1,6 @@
 package com.goat.plugin;
 
-import com.goat.config.MyInjector;
-import com.goat.mapper.UserMapper;
+import com.goat.dao.UserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

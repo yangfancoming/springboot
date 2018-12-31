@@ -1,6 +1,8 @@
-package com.goat.mapper;
+package com.goat.dao;
 
 import com.goat.bean.User;
+
+import java.util.Map;
 
 /**
  * Created by 64274 on 2018/11/13.
@@ -12,4 +14,6 @@ import com.goat.bean.User;
 
 public interface  UserMapper extends SuperMapper<User>  {
 
+
+    Map findMapById(Integer id);
 }

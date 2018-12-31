@@ -2,7 +2,7 @@ package com.goat.crud;
 
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.goat.bean.User;
-import com.goat.mapper.UserMapper;
+import com.goat.dao.UserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
