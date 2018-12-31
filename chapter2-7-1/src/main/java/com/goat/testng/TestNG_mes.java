@@ -1,8 +1,9 @@
-package com.goat;
+package com.goat.testng;
 
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.goat.HttpClientApplication;
 import com.goat.pojo.HttpClientResult;
 import com.goat.utils.HttpClientUtils;
 import org.springframework.test.context.ContextConfiguration;
@@ -11,7 +12,7 @@ import org.testng.annotations.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-@ContextConfiguration(classes= Application.class)
+@ContextConfiguration(classes= HttpClientApplication.class)
 public class TestNG_mes {
 
     /**

@@ -1,7 +1,6 @@
 package com.goat.controller;
 
-//import hello.constants.ApiDocTypeEnum;
-//import hello.util.SwaggerApiDocUtils;
+
 import com.goat.constants.ApiDocTypeEnum;
 import com.goat.utils.SwaggerApiDocUtils;
 import org.springframework.core.io.InputStreamResource;
@@ -27,23 +26,26 @@ public class SwaggerController {
     public ResponseEntity<InputStreamResource> downloadFile() throws IOException {
         return SwaggerApiDocUtils.downloadApiDoc(ApiDocTypeEnum.MARKDOWN);
     }
-//
-//    @RequestMapping(value = "/confluence", method = RequestMethod.GET)
-//    public ResponseEntity<InputStreamResource> downloadConfluence()
-//            throws IOException {
-//        return SwaggerApiDocUtils.downloadApiDoc(ApiDocTypeEnum.CONFLUENCE);
-//    }
+
+    @RequestMapping(value = "/json", method = RequestMethod.GET)
+    public ResponseEntity<InputStreamResource> downloadJsondoc()
+            throws Exception {
+        return SwaggerApiDocUtils.downloadApiDocJson();
+    }
+
+    @RequestMapping(value = "/confluence", method = RequestMethod.GET)
+    public ResponseEntity<InputStreamResource> downloadConfluence()
+            throws IOException {
+        return SwaggerApiDocUtils.downloadApiDoc(ApiDocTypeEnum.CONFLUENCE);
+    }
+
 //    @RequestMapping(value = "/asciidoc", method = RequestMethod.GET)
 //    public ResponseEntity<InputStreamResource> downloadAsciidoc()
 //            throws IOException {
 //        return SwaggerApiDocUtils.downloadApiDoc(ApiDocTypeEnum.ASCIIDOC);
 //    }
-//
-//    @RequestMapping(value = "/json", method = RequestMethod.GET)
-//    public ResponseEntity<InputStreamResource> downloadJsondoc()
-//            throws Exception {
-//        return SwaggerApiDocUtils.downloadApiDocJson();
-//    }
+
+
 //
 //    @RequestMapping(value = "/html", method = RequestMethod.GET)
 //    public ResponseEntity<InputStreamResource> downloadHtmldoc()

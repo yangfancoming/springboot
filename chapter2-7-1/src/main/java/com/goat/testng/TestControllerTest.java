@@ -1,8 +1,9 @@
-package com.goat;
+package com.goat.testng;
 
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.goat.HttpClientApplication;
 import com.goat.bean.User;
 import com.goat.pojo.HttpClientResult;
 import com.goat.utils.HttpClientUtils;
@@ -16,33 +17,37 @@ import java.util.Map;
 
 
 /**
-     * @Description:  测试服务器 0-0-0 项目  TestController
+     * @Description:  测试服务器 0-0-0 项目  TestControllerTest
      * @author: 杨帆
      * @Param:
      * @Return:
      * @Date:   2018/9/22
 */
-@ContextConfiguration(classes= Application.class)
-public class TestController {
+@ContextConfiguration(classes= HttpClientApplication.class)
+public class TestControllerTest {
 
-    //  @RequestMapping("/savaUser1")
+    private static final String url = "http://127.0.0.1:8208/8208";
+
     @Test
-    public void savaUser1() throws Exception { // OK
-        HttpClientUtils.doGet("http://127.0.0.1:8888/test/savaUser1?username=lixiaoxi&password=111111");
+    public void testGet() throws Exception { // OK
+        HttpClientResult httpClientResult = HttpClientUtils.doGet(url + "/test/savaUser1?username=lixiaoxi&password=111111");
+        System.out.println(httpClientResult);
     }
     @Test
-    public void savaUser1Post() throws Exception { // OK
-        HttpClientUtils.doPost("http://127.0.0.1:8888/test/savaUser1?username=lixiaoxi&password=111111");
+    public void testPost() throws Exception { // OK
+        HttpClientResult httpClientResult = HttpClientUtils.doPost(url +"/test/savaUser1?username=lixiaoxi&password=111111");
+        System.out.println(httpClientResult);
     }
 
-    //  @RequestMapping("/savaUser2")
     @Test
     public void savaUser2() throws Exception { // OK
-        HttpClientUtils.doGet("http://127.0.0.1:8888/test/savaUser2?username=lixiaoxi&password=111111");
+        HttpClientResult httpClientResult = HttpClientUtils.doGet(url + "/test/savaUser2?username=lixiaoxi&password=111111");
+        System.out.println(httpClientResult);
     }
+
     @Test
     public void savaUser2Post() throws Exception { // OK
-        HttpClientUtils.doPost("http://127.0.0.1:8888/test/savaUser2?username=lixiaoxi&password=111111");
+        HttpClientUtils.doPost(url + "/test/savaUser2?username=lixiaoxi&password=111111");
     }
 
     //  @RequestMapping("/addUser3")

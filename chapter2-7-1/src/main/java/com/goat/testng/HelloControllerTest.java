@@ -1,6 +1,7 @@
-package com.goat;
+package com.goat.testng;
 
 
+import com.goat.HttpClientApplication;
 import com.goat.pojo.HttpClientResult;
 import com.goat.utils.HttpClientUtils;
 import org.springframework.test.context.ContextConfiguration;
@@ -17,15 +18,17 @@ import java.util.Map;
      * @Return:
      * @Date:   2018/9/22
 */
-@ContextConfiguration(classes= Application.class)
-public class TestNG {
+@ContextConfiguration(classes= HttpClientApplication.class)
+public class HelloControllerTest {
+
+    private static final String url = "http://127.0.0.1:8208/8208";
     /**
      * Description: 测试get无参请求
      * @throws Exception
      */
     @Test
     public void testGet() throws Exception {
-        HttpClientResult result = HttpClientUtils.doGet("http://127.0.0.1:8888/hello/get");
+        HttpClientResult result = HttpClientUtils.doGet(url + "/hello/get");
         System.out.println(result);
     }
 
@@ -37,7 +40,7 @@ public class TestNG {
     public void testGetWithParam() throws Exception {
         Map<String, String> params = new HashMap<>();
         params.put("message", "helloworld");
-        HttpClientResult result = HttpClientUtils.doGet("http://127.0.0.1:8888/hello/getWithParam", params);
+        HttpClientResult result = HttpClientUtils.doGet(url +  "/hello/getWithParam", params);
         System.out.println(result);
     }
 
@@ -53,7 +56,7 @@ public class TestNG {
         headers.put("Accept", "application/json");
         headers.put("Accept-Language", "zh-CN,zh;q=0.9");
         headers.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36");
-        HttpClientResult result = HttpClientUtils.doPost("http://127.0.0.1:8888/hello/post", headers, null);
+        HttpClientResult result = HttpClientUtils.doPost(url + "/hello/post", headers, null);
         System.out.println(result);
     }
 
@@ -66,7 +69,7 @@ public class TestNG {
         Map<String, String> params = new HashMap<>();
         params.put("code", "0");
         params.put("message", "helloworld");
-        HttpClientResult result = HttpClientUtils.doPost("http://127.0.0.1:8888/hello/postWithParam", params);
+        HttpClientResult result = HttpClientUtils.doPost(url +  "/hello/postWithParam", params);
         System.out.println(result);
     }
 }

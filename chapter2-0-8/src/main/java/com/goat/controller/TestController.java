@@ -1,64 +1,108 @@
 package com.goat.controller;
 
-import com.fasterxml.jackson.annotation.JsonView;
 import com.goat.bean.User;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * Created by 64274 on 2018/12/30.
+ * Created by 64274 on 2018/10/16.
  *
- * @ Description: TODO
- * @ author  山羊来了
- * @ date 2018/12/30---10:46
+ * @author 山羊来了
+ * @Description: TODO
+ * @date 2018/10/16---19:43
  */
 
-@Api(tags ="用户管理" ,description="用户管理相关功能API")
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/test")
 public class TestController {
 
-    @ApiOperation(value="获取所有用户记录", notes="controller方法描述")
-    @GetMapping
-    public List<User> users(){
-        List<User> users = new ArrayList<>();
-        users.add(new User("111","111"));
-        users.add(new User("222","222"));
-        users.add(new User("333","333"));
-        return users;
+
+    // 测试地址：    http://localhost:8208/8208/test/savaUser1
+    /**
+     *  1、直接把表单的参数写在Controller相应的方法的形参中，适用于get方式提交，不适用于post方式提交。
+     *  http://localhost:8888/test/savaUser?username=lixiaoxi&password=111111 提交的参数需要和Controller方法中的入参名称一致。
+     * @param username
+     * @param password
+     * @return
+     */
+    @RequestMapping("/savaUser1")
+    public String savaUser1(HttpServletRequest request,String username,String password) {
+         //  + request.getRemoteHost() + request.getRemotePort() + request.getRemoteUser()
+        System.out.println(request.getRemoteAddr()); // 127.0.0.1
+        System.out.println(request.getRemoteHost()); // 127.0.0.1
+        System.out.println(request.getRemotePort()); // 14575  24446  随机端口
+        System.out.println(request.getRemoteUser()); // null
+        return username + password;
     }
 
-    @ApiOperation(value="新增一个用户", notes="controller方法描述")
-    @ApiImplicitParams({@ApiImplicitParam(name = "user", value = "用户详细实体", required = true, dataType = "User") })
-    @PostMapping
-    public User user(@Valid @RequestBody User user){
-        System.out.println(user);
-        User temp = new User("123","455","111");
-        temp.setBirthday(user.getBirthday());
-        return temp;
+    /**
+     * 2、通过HttpServletRequest接收，post方式和get方式都可以。
+     * @param request
+     * @return
+     */
+    @RequestMapping("/savaUser2")
+    public String addUser2(HttpServletRequest request) {
+        String username=request.getParameter("username");
+        String password=request.getParameter("password");
+        return username + password ;
     }
 
-    // 如果请求中没有 username 参数 则报错：  Required String parameter 'username' is not present
-    @JsonView(User.UserSimpleView.class) // 根据注解 没有返回 password 字段属性  只返回一个 username 属性
-    @PostMapping("/user1")
-    public List<User> user1(@RequestParam String username){
-        List<User> users = new ArrayList<>();
-        users.add(new User("111",username,"1111"));
-        return users;
-    }
-
-    @JsonView(User.UserDetailView.class) // 根据注解 可以返回 password 字段属性
-    @GetMapping("/{id}")
-    public User getUserById(@PathVariable String id){
-        User user = new User(id, "goat","1111");
+    /**
+     * 3、通过一个bean来接收,post方式和get方式都可以 建立一个和表单中参数对应的bean
+     * @param user
+     * @return
+     */
+    @RequestMapping("/addUser3")
+    public User addUser3(User user) {
         return user;
     }
+    /**
+     * 4、通过@PathVariable获取路径中的参数
+     * 访问http://localhost/SSMDemo/demo/addUser4/lixiaoxi/111111 路径时，
+     * 则自动将URL中模板变量{username}和{password}绑定到通过@PathVariable注解的同名参数上，
+     * 即入参后username=lixiaoxi、password=111111。
+     * @param username
+     * @param password
+     * @return
+     */
+    @RequestMapping(value="/addUser4/{username}/{password}",method= RequestMethod.GET)
+    public String addUser4(@PathVariable String username,@PathVariable String password) {
+        return username + password;
+    }
+
+    /**
+     * 5、使用@ModelAttribute注解获取POST请求的FORM表单数据
+     * @param user
+     * @return
+     */
+    @RequestMapping(value="/addUser5",method=RequestMethod.POST)
+    public String addUser5(@ModelAttribute("user") User user) {
+        return  user.getUsername() + user.getPassword();
+    }
+    /**
+     * 6、用注解@RequestParam绑定请求参数到方法入参
+     * 当请求参数username不存在时会有异常发生,可以通过设置属性required=false解决
+     * @param username
+     * @param password
+     * @return
+     */
+    @RequestMapping(value="/addUser6",method=RequestMethod.GET)
+    public String addUser6(@RequestParam("username") String username,@RequestParam("password") String password) {
+        return username + password;
+    }
+
+    @RequestMapping("/addUserJson")
+    public void addUserJson(@RequestBody String user) {
+        System.out.println("username is:"+user);
+    }
+
+    @RequestMapping("/addUserJson2")
+    public void addUserJson2(@RequestBody List<User> users) {
+        System.out.println("username is:"+users);
+    }
+
+
 
 }
