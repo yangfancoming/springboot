@@ -47,77 +47,71 @@ public class TestControllerTest {
 
     @Test
     public void savaUser2Post() throws Exception { // OK
-        HttpClientUtils.doPost(url + "/test/savaUser2?username=lixiaoxi&password=111111");
+        HttpClientResult httpClientResult = HttpClientUtils.doPost(url + "/test/savaUser2?username=lixiaoxi&password=111111");
+        System.out.println(httpClientResult);
     }
 
-    //  @RequestMapping("/addUser3")
     @Test
     public void addUser3() throws Exception {  // OK
         Map<String, String> params = new HashMap<>();
         params.put("username","111");
         params.put("password","222");
-        HttpClientResult result = HttpClientUtils.doGet("http://127.0.0.1:8888/test/addUser3",params);
+        HttpClientResult result = HttpClientUtils.doGet(url +  "/test/addUser3",params);
         System.out.println(result);
     }
     @Test
     public void addUser3Get() throws Exception { // OK
-        HttpClientUtils.doGet("http://127.0.0.1:8888/test/addUser3?username=lixiaoxi&password=111111");
+        HttpClientUtils.doGet(url +  "/test/addUser3?username=lixiaoxi&password=111111");
     }
     @Test
     public void addUser3Post() throws Exception { // OK
-        HttpClientResult result = HttpClientUtils.doPost("http://127.0.0.1:8888/test/addUser3?username=lixiaoxi&password=111111");
+        HttpClientResult result = HttpClientUtils.doPost(url + "/test/addUser3?username=lixiaoxi&password=111111");
         System.out.println(result);
     }
 
-    //  @RequestMapping("/addUser4")
     @Test
     public void addUser4() throws Exception { // OK
-       HttpClientUtils.doGet("http://127.0.0.1:8888/test/addUser4/lixiaoxi/111111");
+       HttpClientUtils.doGet(url + "/test/addUser4/lixiaoxi/111111");
     }
-    //  @RequestMapping("/addUser5")
+
     @Test
     public void addUser5() throws Exception { // OK
         Map<String, String> params = new HashMap<>();
         params.put("username","111");
         params.put("password","222");
-        HttpClientResult result = HttpClientUtils.doPost("http://127.0.0.1:8888/test/addUser5",params);
+        HttpClientResult result = HttpClientUtils.doPost(url + "/test/addUser5",params);
         System.out.println(result);
     }
 
-    //  @RequestMapping("/addUser6")
     @Test
     public void addUser6() throws Exception { // OK
-         HttpClientUtils.doGet("http://127.0.0.1:8888/test/addUser6?username=lixiaoxi&password=111111");
-    }
-    @Test
-    public void addUser61() throws Exception { // OK
-        // Required String parameter 'username' is not present
-        System.out.println(HttpClientUtils.doGet("http://127.0.0.1:8888/test/addUser6?&password=111111"));
-    }
-    @Test
-    public void addUser62() throws Exception { // OK
-        // Required String parameter 'password' is not present
-        System.out.println(HttpClientUtils.doGet("http://127.0.0.1:8888/test/addUser6?username=lixiaoxi"));
+        HttpClientResult httpClientResult = HttpClientUtils.doGet(url + "/test/addUser6?username=lixiaoxi&password=111111");
+        System.out.println(httpClientResult);
     }
 
-    //  @RequestMapping("/addUserJson")
+    @Test
+    public void addUser61() throws Exception { // OK
+        // Required String parameter 'username' is not present     username和password  缺一个都不好使
+        System.out.println(HttpClientUtils.doGet(url + "/test/addUser6?&password=111111"));
+    }
+
     @Test
     public void addUserJson() throws Exception { // ok
         User user = new User("1111", "22222");
         JSONObject json = (JSONObject) JSON.toJSON(user);
-        JSONObject result = HttpClientUtils.doPost("http://127.0.0.1:8888/test/addUserJson",json);
+        JSONObject result = HttpClientUtils.doPost(url + "/test/addUserJson",json);
         System.out.println(result);
     }
-    //  @RequestMapping("/addUserJson2")
+
     @Test
-    public void addUserJson2() throws Exception { // ok
+    public void addUserJson2()   { // ok
         User user1 = new User("1111", "22222");
         User user2 = new User("3333", "44444");
         List<User> users = new ArrayList<>(16);
         users.add(user1);
         users.add(user2);
         String json =  JSON.toJSONString(users);
-        String result = HttpClientUtils.doPost("http://127.0.0.1:8888/test/addUserJson2",json);
+        String result = HttpClientUtils.doPost(url + "/test/addUserJson2",json);
         System.out.println(result);
     }
 }

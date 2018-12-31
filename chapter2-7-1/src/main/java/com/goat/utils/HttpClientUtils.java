@@ -82,7 +82,6 @@ public class HttpClientUtils {
 				uriBuilder.setParameter(entry.getKey(), entry.getValue());
 			}
 		}
-
 		HttpGet httpGet = new HttpGet(uriBuilder.build()); // 创建http对象
 		/**
 		 * setConnectTimeout：设置连接超时时间，单位毫秒。
@@ -93,21 +92,12 @@ public class HttpClientUtils {
 		RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(CONNECT_TIMEOUT).setSocketTimeout(SOCKET_TIMEOUT).build();
 		httpGet.setConfig(requestConfig);
 		packageHeader(headers, httpGet); // 设置请求头
-		CloseableHttpResponse httpResponse = null; // 创建httpResponse对象
-		try {
-			// 执行请求并获得响应结果
-			return getHttpClientResult(httpClient, httpGet);
-		} finally {
-			// 释放资源
-			release(httpResponse, httpClient);
-		}
+        return test(httpClient, httpGet);
 	}
 
 	/**
 	 * 发送post请求；不带请求头和请求参数
-	 * 
 	 * @param url 请求地址
-	 * @return
 	 * @throws Exception
 	 */
 	public static HttpClientResult doPost(String url) throws Exception {
@@ -118,7 +108,6 @@ public class HttpClientUtils {
 	 * 发送post请求；带请求参数
 	 * @param url 请求地址
 	 * @param params 参数集合
-	 * @return
 	 * @throws Exception
 	 */
 	public static HttpClientResult doPost(String url, Map<String, String> params) throws Exception {
@@ -131,13 +120,11 @@ public class HttpClientUtils {
 	 * @param url 请求地址
 	 * @param headers 请求头集合
 	 * @param params 请求参数集合
-	 * @return
 	 * @throws Exception
 	 */
 	public static HttpClientResult doPost(String url, Map<String, String> headers, Map<String, String> params) throws Exception {
 		// 创建httpClient对象
 		CloseableHttpClient httpClient = HttpClients.createDefault();
-
 		// 创建http对象
 		HttpPost httpPost = new HttpPost(url);
 		/**
@@ -157,16 +144,19 @@ public class HttpClientUtils {
 		httpPost.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36");*/
 		packageHeader(headers, httpPost);
 		packageParam(params, httpPost); // 封装请求参数
-		CloseableHttpResponse httpResponse = null; // 创建httpResponse对象
+        return test(httpClient, httpPost);
+    }
 
-		try {
-			// 执行请求并获得响应结果
-			return getHttpClientResult(httpClient, httpPost);
-		} finally {
-			// 释放资源
-			release(httpResponse, httpClient);
-		}
-	}
+    public static HttpClientResult test(CloseableHttpClient httpClient, HttpRequestBase httpPost) throws Exception {
+        try {
+            // 执行请求并获得响应结果
+            return getHttpClientResult(httpClient, httpPost);
+        } finally {
+            // 释放资源
+            release(null, httpClient);
+        }
+    }
+
     public static String doPost(String url, String json) {
         String returnValue = "这是默认返回值，接口调用失败";
         CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -232,7 +222,7 @@ public class HttpClientUtils {
 	 * @return httpClientResult
 	 * @throws Exception
 	 */
-	public static HttpClientResult doPut(String url) throws Exception {
+	public static HttpClientResult doPut(String url)   {
 		return doPut(url);
 	}
 
@@ -249,13 +239,7 @@ public class HttpClientUtils {
 		HttpPut httpPut = new HttpPut(url);
 		RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(CONNECT_TIMEOUT).setSocketTimeout(SOCKET_TIMEOUT).build();
 		httpPut.setConfig(requestConfig);
-		packageParam(params, httpPut);
-		CloseableHttpResponse httpResponse = null;
-		try {
-			return getHttpClientResult(httpClient, httpPut);
-		} finally {
-			release(httpResponse, httpClient);
-		}
+        return test(httpClient, httpPut);
 	}
 
 	/**
@@ -269,13 +253,7 @@ public class HttpClientUtils {
 		HttpDelete httpDelete = new HttpDelete(url);
 		RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(CONNECT_TIMEOUT).setSocketTimeout(SOCKET_TIMEOUT).build();
 		httpDelete.setConfig(requestConfig);
-
-		CloseableHttpResponse httpResponse = null;
-		try {
-			return getHttpClientResult(httpClient, httpDelete);
-		} finally {
-			release(httpResponse, httpClient);
-		}
+        return test(httpClient, httpDelete);
 	}
 
 	/**
@@ -325,7 +303,6 @@ public class HttpClientUtils {
 			for (Entry<String, String> entry : entrySet) {
 				nvps.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));
 			}
-
 			// 设置到请求的http对象中
 			httpMethod.setEntity(new UrlEncodedFormEntity(nvps, ENCODING));
 		}

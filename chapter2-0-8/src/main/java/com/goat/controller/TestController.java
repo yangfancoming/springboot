@@ -52,7 +52,6 @@ public class TestController {
     /**
      * 3、通过一个bean来接收,post方式和get方式都可以 建立一个和表单中参数对应的bean
      * @param user
-     * @return
      */
     @RequestMapping("/addUser3")
     public User addUser3(User user) {
@@ -65,7 +64,6 @@ public class TestController {
      * 即入参后username=lixiaoxi、password=111111。
      * @param username
      * @param password
-     * @return
      */
     @RequestMapping(value="/addUser4/{username}/{password}",method= RequestMethod.GET)
     public String addUser4(@PathVariable String username,@PathVariable String password) {
@@ -94,13 +92,13 @@ public class TestController {
     }
 
     @RequestMapping("/addUserJson")
-    public void addUserJson(@RequestBody String user) {
-        System.out.println("username is:"+user);
+    public String addUserJson(@RequestBody String user) {
+        return user;
     }
 
     @RequestMapping("/addUserJson2")
-    public void addUserJson2(@RequestBody List<User> users) {
-        System.out.println("username is:"+users);
+    public List<User> addUserJson2(@RequestBody List<User> users) {
+        return users;
     }
 
 
