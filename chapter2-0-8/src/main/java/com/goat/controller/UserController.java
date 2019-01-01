@@ -42,7 +42,6 @@ public class UserController {
         return users;
     }
 
-    @ApiOperation(value="新增一个用户", notes="controller方法描述")
     @ApiImplicitParams({@ApiImplicitParam(name = "user", value = "用户详细实体", required = true, dataType = "User") })
     @PostMapping
     @JsonView(User.UserDetailView.class) // 根据注解 可以返回 password 字段属性
@@ -76,5 +75,26 @@ public class UserController {
     public Map getMapById(@PathVariable Integer id){
         Map mapById = userService.findMapById(id);
         return mapById;
+    }
+
+    @ApiOperation(value="删除一个用户", notes="返回是否删除成功")
+    @DeleteMapping("/{id}")
+    public Boolean deleteById(@PathVariable Integer id){
+        boolean b = userService.removeById(id);
+        return b;
+    }
+
+    @ApiOperation(value="新增一个用户", notes="返回是否成功")
+    @PostMapping("/save")
+    public Boolean savaUser(User user){
+        boolean b = userService.save(user);
+        return b;
+    }
+
+    @ApiOperation(value="更新一个用户", notes="返回是否成功")
+    @PutMapping("/update")
+    public Boolean updateUser(User user){
+        boolean b = userService.updateById(user);
+        return b;
     }
 }

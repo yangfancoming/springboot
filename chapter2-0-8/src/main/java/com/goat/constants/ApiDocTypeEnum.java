@@ -1,5 +1,6 @@
 package com.goat.constants;
 
+
 import io.github.swagger2markup.markup.builder.MarkupLanguage;
 
 /**

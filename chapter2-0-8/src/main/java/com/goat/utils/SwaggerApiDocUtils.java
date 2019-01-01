@@ -1,14 +1,13 @@
 package com.goat.utils;
 
-//import com.github.fge.jackson.JacksonUtils;
-//import hello.constants.ApiDocTypeEnum;
-//import hello.constants.SwaggerConstants;
+
 import com.goat.constants.ApiDocTypeEnum;
 import com.goat.constants.SwaggerConstants;
 import io.github.swagger2markup.Swagger2MarkupConfig;
 import io.github.swagger2markup.Swagger2MarkupConverter;
 import io.github.swagger2markup.builder.Swagger2MarkupConfigBuilder;
 import io.github.swagger2markup.markup.builder.MarkupLanguage;
+
 import io.swagger.models.Swagger;
 import io.swagger.parser.SwaggerParser;
 import org.apache.commons.io.FileUtils;

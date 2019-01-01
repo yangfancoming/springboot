@@ -83,6 +83,15 @@
                     <artifactId>jackson-coreutils</artifactId>
                     <groupId>com.github.fge</groupId>
                 </exclusion>
+
+                <!--<exclusion>-->
+                    <!--<artifactId>paleo-core</artifactId>-->
+                    <!--<groupId>ch.netzwerg</groupId>-->
+                <!--</exclusion>-->
+                <!--<exclusion>-->
+                    <!--<artifactId>markup-document-builder</artifactId>-->
+                    <!--<groupId>io.github.swagger2markup</groupId>-->
+                <!--</exclusion>-->
             </exclusions>
 
         </dependency>
