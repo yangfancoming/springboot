@@ -16,12 +16,20 @@ http://localhost:8611/swagger-ui.html
 
 #Swagger2 基本使用：
 
-    @Api  描述类/接口的主要用途
-    @ApiOperation  描述方法用途
-    @ApiImplicitParam  描述方法的参数
-    @ApiImplicitParams 描述方法的参数(Multi-Params)
-    @ApiIgnore 忽略某类/方法/参数的文档
+    @Api  描述类/接口的主要用途  类集描述  用于controller类上
+    @ApiResponses	Response集	 用在controller的方法上
+    @ApiResponse    Response	 用在 @ApiResponses里边
+    @ApiOperation  描述方法用途  用在controller的方法上
+    @ApiImplicitParams 描述方法的参数(Multi-Params) 非对象参数集 用在controller的方法上
+    @ApiImplicitParam  描述方法的参数  非对象参数描述  用在@ApiImplicitParams的方法里边
     
+    @ApiIgnore 忽略某类/方法/参数的文档
+    @ApiModelProperty   对象属性		用在参数对象的字段上
+    @ApiModel 描述返回对象的意义		用在返回对象类上
+
+
+
+
     
 #Swagger2相关注解说明
     @Api：用在请求的类上，表示对类的说明
@@ -55,4 +63,23 @@ http://localhost:8611/swagger-ui.html
     @ApiModel：用于响应类上，表示一个返回响应数据的信息
                 （这种一般用在post创建的时候，使用@RequestBody这样的场景，
                 请求参数无法使用@ApiImplicitParam注解进行描述的时候）
-        @ApiModelProperty：用在属性上，描述响应类的属性
+                
+## @ApiModelProperty：用在实体类的属性上，描述响应类的属性  
+    value–字段说明 
+    name–重写属性名字 
+    dataType–重写属性类型 
+    required–是否必填 
+    example–举例说明 
+    hidden–隐藏
+    
+    @ApiModelProperty(value="对应角色表主键",example="32",required=true)
+    private String roleid;
+    
+## @ApiOperation  描述方法用途  （除了 value 和 notes 其他貌似都没啥用）
+    value - 字段说明
+    notes - 注释说明
+    httpMethod - 说明这个方法被请求的方式
+    response - 方法的返回值的类型
+      @ApiOperation(value="删除一个用户", notes="返回是否删除成功")
+      
+      

@@ -1,6 +1,9 @@
 package com.goat.controller;
 
 import com.goat.bean.User;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -86,6 +89,10 @@ public class TestController {
      * @param password
      * @return
      */
+    @ApiOperation(value="我的测试", notes="返回用户实体类")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "username", value = "用户名", required = true, dataType = "query"),
+            @ApiImplicitParam(name = "password", value = "密码", required = true,   dataType = "query") })
     @RequestMapping(value="/addUser6",method=RequestMethod.GET)
     public String addUser6(@RequestParam("username") String username,@RequestParam("password") String password) {
         return username + password;

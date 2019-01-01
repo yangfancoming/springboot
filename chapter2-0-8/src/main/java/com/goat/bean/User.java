@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonView;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
@@ -16,7 +17,6 @@ import java.util.Date;
  * @Description: TODO
  * @date 2018/10/16---20:34
  */
-
 @TableName("sys_user")
 public class User implements Serializable {
 
@@ -39,7 +39,10 @@ public class User implements Serializable {
 
     @TableField(exist = false)
     private Long code;// 编号
+
+    @ApiModelProperty(value="对应角色表主键",example="32",required=true)
     private String roleid;
+
     private Date birthday;
 
     public User() {
