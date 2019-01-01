@@ -1,11 +1,5 @@
 
 
-
-
-
-
-
-
 http://localhost:端口号/项目名称/swagger-ui.html 
 http://localhost:8611/swagger-ui.html 
 
@@ -26,8 +20,6 @@ http://localhost:8611/swagger-ui.html
     @ApiIgnore 忽略某类/方法/参数的文档
     @ApiModelProperty   对象属性		用在参数对象的字段上
     @ApiModel 描述返回对象的意义		用在返回对象类上
-
-
 
 
     
