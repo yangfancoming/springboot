@@ -12,37 +12,11 @@
     <artifactId>dubbo-producer</artifactId>
 
     <dependencies>
-
-
-
-        <!--<dependency>-->
-            <!--<groupId>io.dubbo.springboot</groupId>-->
-            <!--<artifactId>spring-boot-starter-dubbo</artifactId>-->
-            <!--<version>1.0.0</version>-->
-        <!--</dependency>-->
-
         <!-- Spring Boot Dubbo 依赖 -->
-
         <dependency>
             <groupId>com.gitee.reger</groupId>
             <artifactId>spring-boot-starter-dubbo</artifactId>
             <version>1.1.1</version>
-        </dependency>
-
-
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-            <!--<version>2.0.4.RELEASE</version>-->
-        </dependency>
-
-
-        <!-- https://mvnrepository.com/artifact/com.github.sgroschupf/zkclient -->
-        <dependency>
-            <groupId>com.github.sgroschupf</groupId>
-            <artifactId>zkclient</artifactId>
-            <version>0.1</version>
         </dependency>
 
         <!-- 这里的 groupId    为 dubbo-api 项目的 <groupId>com.goat.springboot.learing</groupId>-->

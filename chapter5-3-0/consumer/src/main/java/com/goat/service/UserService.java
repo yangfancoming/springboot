@@ -1,8 +1,8 @@
 package com.goat.service;
 
-import com.alibaba.dubbo.config.annotation.Reference;
+//import com.alibaba.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Service;
-
+import javax.annotation.Resource;
 /**
  * Created by 64274 on 2018/10/26.
  *
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserService {
-    @Reference
+    @Resource
     ITicketService iTicketService;
 
     public void hello(){
