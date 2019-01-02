@@ -13,18 +13,22 @@
 
     <dependencies>
 
+
+
         <!--<dependency>-->
-            <!--<groupId>com.alibaba.spring.boot</groupId>-->
-            <!--<artifactId>dubbo-spring-boot-starter</artifactId>-->
-            <!--<version>2.0.0</version>-->
+            <!--<groupId>io.dubbo.springboot</groupId>-->
+            <!--<artifactId>spring-boot-starter-dubbo</artifactId>-->
+            <!--<version>1.0.0</version>-->
         <!--</dependency>-->
 
         <!-- Spring Boot Dubbo 依赖 -->
+
         <dependency>
-            <groupId>io.dubbo.springboot</groupId>
+            <groupId>com.gitee.reger</groupId>
             <artifactId>spring-boot-starter-dubbo</artifactId>
-            <version>1.0.0</version>
+            <version>1.1.1</version>
         </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
         <dependency>

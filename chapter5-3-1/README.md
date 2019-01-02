@@ -6,5 +6,7 @@
         
         
         
-        api      项目 打包方式  <packaging>jar</packaging>
+        api      项目 打包方式  <packaging>jar</packaging>   api层暴露的接口，不需要写任何注解加任何配置。写个接口就可以了。
         provider 项目  引用 api 项目  需要 api项目 install 到本地仓库   或者 deploy 到私服 这样 provider 项目才可以引用到
+        
+         http://localhost:7531/sayHello/name=jack

@@ -7,7 +7,7 @@
     异步通信：消息队列 kafka RabbitMQ
 3. 这么多服务，如何管理
     服务治理： 服务注册于发现
-    基于客户端的服务注册于发现：Apache Zookeeper
+    基于客户端的服务注册于发现： Apache Zookeeper
     基于服务端的服务注册与发现： Netflix Eureka
 4. 服务挂了，怎么办？
     重试机制
