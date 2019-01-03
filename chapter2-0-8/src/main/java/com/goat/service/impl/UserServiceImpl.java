@@ -3,7 +3,7 @@ package com.goat.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.goat.bean.User;
+import com.goat.entity.User;
 import com.goat.dao.UserMapper;
 //import com.goat.service.IUserService;
 import org.springframework.stereotype.Service;

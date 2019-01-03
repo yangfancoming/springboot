@@ -16,7 +16,7 @@ public class TestNG  {
     public void test0() throws ClassNotFoundException {
 
         // 反射拿到 class文件 字节码
-        Class<?> aClass = Class.forName("com.goat.bean.User");
+        Class<?> aClass = Class.forName("com.goat.entity.User");
         // 拿到类成员属性
         Field[] allfields = aClass.getDeclaredFields();  // 该方法 可以获取类中的所有属性   无论公有还是私有
         // 遍历 User 类中的所有字段属性 拿到注解获取 name 值

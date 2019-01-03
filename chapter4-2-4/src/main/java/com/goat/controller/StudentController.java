@@ -1,6 +1,6 @@
 package com.goat.controller;
 
-import com.goat.bean.Student;
+import com.goat.entity.Student;
 import com.goat.dto.PageResponse;
 import com.goat.service.IStudentService;
 import com.goat.tools.PageableTools;

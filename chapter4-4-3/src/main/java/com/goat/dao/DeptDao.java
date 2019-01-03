@@ -1,7 +1,7 @@
 package com.goat.dao;
 
 
-import com.goat.bean.Dept;
+import com.goat.entity.Dept;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.Map;

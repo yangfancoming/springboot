@@ -1,7 +1,7 @@
 package com.goat.service;
 
 
-import com.goat.bean.Emp;
+import com.goat.entity.Emp;
 
 import java.util.List;
 import java.util.Map;

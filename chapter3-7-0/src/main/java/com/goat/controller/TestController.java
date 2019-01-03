@@ -1,6 +1,6 @@
 package com.goat.controller;
 
-import com.goat.bean.Account;
+import com.goat.entity.Account;
 import com.goat.utils.JwtUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

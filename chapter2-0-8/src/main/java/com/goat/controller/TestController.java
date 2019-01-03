@@ -1,6 +1,6 @@
 package com.goat.controller;
 
-import com.goat.bean.User;
+import com.goat.entity.User;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;

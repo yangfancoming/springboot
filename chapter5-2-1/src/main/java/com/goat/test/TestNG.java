@@ -2,7 +2,7 @@ package com.goat.test;
 
 
 import com.goat.GuavaCacheApplication;
-import com.goat.bean.Person;
+import com.goat.entity.Person;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.BeforeMethod;

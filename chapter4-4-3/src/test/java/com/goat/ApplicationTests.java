@@ -1,10 +1,10 @@
 package com.goat;
 
 
-import com.goat.bean.Dept;
+import com.goat.entity.Dept;
 import com.goat.dao.EmpDao;
-import com.goat.bean.Emp;
-import com.goat.bean.User;
+import com.goat.entity.Emp;
+import com.goat.entity.User;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.After;

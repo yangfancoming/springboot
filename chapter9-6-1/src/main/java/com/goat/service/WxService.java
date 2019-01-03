@@ -1,7 +1,7 @@
 package com.goat.service;
 
-import com.goat.bean.BaseMessage;
-import com.goat.bean.TextMessage;
+import com.goat.entity.BaseMessage;
+import com.goat.entity.TextMessage;
 import com.thoughtworks.xstream.XStream;
 
 import java.util.Map;

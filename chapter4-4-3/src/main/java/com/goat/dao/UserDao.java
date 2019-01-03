@@ -1,7 +1,7 @@
 package com.goat.dao;
 
 
-import com.goat.bean.User;
+import com.goat.entity.User;
 
 import java.util.List;
 

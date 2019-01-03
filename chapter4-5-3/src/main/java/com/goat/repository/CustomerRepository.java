@@ -1,6 +1,6 @@
 package com.goat.repository;
 
-import com.goat.bean.User;
+import com.goat.entity.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;

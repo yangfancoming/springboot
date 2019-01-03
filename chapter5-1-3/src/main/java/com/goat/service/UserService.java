@@ -1,6 +1,6 @@
 package com.goat.service;
 
-import com.goat.bean.User;
+import com.goat.entity.User;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;

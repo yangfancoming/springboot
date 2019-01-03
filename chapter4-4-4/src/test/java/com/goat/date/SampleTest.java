@@ -1,6 +1,6 @@
 package com.goat.date;
 
-import com.goat.bean.Mydate;
+import com.goat.entity.Mydate;
 import com.goat.dao.MydateMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;

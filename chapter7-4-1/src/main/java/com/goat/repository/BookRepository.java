@@ -1,6 +1,6 @@
 package com.goat.repository;
 
-import com.goat.bean.Article;
+import com.goat.entity.Article;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 /**

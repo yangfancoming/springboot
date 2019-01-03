@@ -1,7 +1,7 @@
 package com.goat.controller;
 
 
-import com.goat.bean.Article;
+import com.goat.entity.Article;
 import io.searchbox.client.JestClient;
 import io.searchbox.core.Index;
 import io.searchbox.core.Search;

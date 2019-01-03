@@ -1,6 +1,6 @@
 package com.goat.others;
 
-import com.goat.bean.Student;
+import com.goat.entity.Student;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;

@@ -1,6 +1,6 @@
 package com.goat.util;
 
-import com.goat.bean.TextMessage;
+import com.goat.entity.TextMessage;
 import com.thoughtworks.xstream.XStream;
 
 

@@ -1,7 +1,7 @@
 package com.goat;
 
 
-import com.goat.bean.User;
+import com.goat.entity.User;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.DeleteResult;
 import org.junit.Test;

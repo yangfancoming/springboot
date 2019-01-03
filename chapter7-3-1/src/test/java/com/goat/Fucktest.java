@@ -1,7 +1,7 @@
 package com.goat;
 
 
-import com.goat.bean.Article;
+import com.goat.entity.Article;
 import io.searchbox.client.JestClient;
 import io.searchbox.client.JestResult;
 import io.searchbox.cluster.NodesInfo;

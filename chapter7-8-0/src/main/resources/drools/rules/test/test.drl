@@ -1,6 +1,6 @@
 package drools.rules.test;
 dialect  "mvel"
-import com.goat.bean.Person               // 导入类
+import com.goat.entity.Person               // 导入类
 rule "test"    // 规则名，唯一
    when
         $person : Person(age<16 || age>50)     //规则的条件部分

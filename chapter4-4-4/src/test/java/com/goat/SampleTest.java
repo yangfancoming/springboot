@@ -1,7 +1,7 @@
 package com.goat;
 
-import com.goat.bean.Mydate;
-import com.goat.bean.User;
+import com.goat.entity.Mydate;
+import com.goat.entity.User;
 import com.goat.dao.MydateMapper;
 import com.goat.dao.UserMapper;
 import org.junit.Test;

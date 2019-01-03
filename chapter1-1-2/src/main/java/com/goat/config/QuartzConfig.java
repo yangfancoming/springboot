@@ -1,6 +1,6 @@
 package com.goat.config;
 
-import com.goat.bean.SpringJobFactory;
+import com.goat.entity.SpringJobFactory;
 import org.quartz.Scheduler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

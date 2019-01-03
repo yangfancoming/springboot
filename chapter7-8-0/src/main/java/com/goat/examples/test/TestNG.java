@@ -1,7 +1,7 @@
 package com.goat.examples.test;
 
 
-import com.goat.bean.Person;
+import com.goat.entity.Person;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;

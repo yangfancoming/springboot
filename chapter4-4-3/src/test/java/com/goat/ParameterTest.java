@@ -1,10 +1,10 @@
 package com.goat;
 
 
-import com.goat.bean.Dept;
+import com.goat.entity.Dept;
 import com.goat.dao.DeptDao;
 import com.goat.dao.EmpDao;
-import com.goat.bean.Emp;
+import com.goat.entity.Emp;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

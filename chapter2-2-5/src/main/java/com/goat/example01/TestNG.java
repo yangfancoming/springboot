@@ -1,7 +1,7 @@
 package com.goat.example01;
 
 
-import com.goat.bean.User;
+import com.goat.entity.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;

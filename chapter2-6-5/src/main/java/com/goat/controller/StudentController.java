@@ -1,6 +1,5 @@
 package com.goat.controller;
 
-import com.goat.bean.City;
 import com.goat.bean2.Pet;
 import com.goat.bean2.Student;
 import org.springframework.stereotype.Controller;

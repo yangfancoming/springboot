@@ -4,8 +4,8 @@ package com.goat;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.goat.bean.School;
-import com.goat.bean.User;
+import com.goat.entity.School;
+import com.goat.entity.User;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;

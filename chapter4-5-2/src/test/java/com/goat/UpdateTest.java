@@ -1,7 +1,7 @@
 package com.goat;
 
 
-import com.goat.bean.Student;
+import com.goat.entity.Student;
 import com.mongodb.client.result.UpdateResult;
 import org.junit.Test;
 import org.junit.runner.RunWith;

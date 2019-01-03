@@ -1,6 +1,6 @@
 package com.goat.dao;
 
-import com.goat.bean.User;
+import com.goat.entity.User;
 
 /**
  * Created by 64274 on 2018/11/13.

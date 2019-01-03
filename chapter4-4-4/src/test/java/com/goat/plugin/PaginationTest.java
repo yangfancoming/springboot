@@ -2,7 +2,7 @@ package com.goat.plugin;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.goat.bean.User;
+import com.goat.entity.User;
 import com.goat.dao.UserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;

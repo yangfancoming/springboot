@@ -1,6 +1,6 @@
 package com.goat.service.impl;
 
-import com.goat.bean.Emp;
+import com.goat.entity.Emp;
 import com.goat.dao.BaseDao;
 import com.goat.service.IEmpService;
 import org.springframework.beans.factory.annotation.Autowired;

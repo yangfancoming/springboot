@@ -3,7 +3,7 @@ package com.goat.controller;
 
 import java.util.*;
 
-import com.goat.bean.User;
+import com.goat.entity.User;
 import org.springframework.web.bind.annotation.*;
 
 

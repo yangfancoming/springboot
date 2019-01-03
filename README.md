@@ -18,6 +18,7 @@ Web开发
 - chapter2-0-3 springboot  集成  servlet、Filter、 Listener、interceptor 的两种方式
 - chapter2-0-5 springboot  中的SpringMVC   返回各种数据类型总结 JPA
 - chapter2-0-7 springboot  中的SpringMVC 扩展与接管
+- chapter2-0-8 springboot  集成 MockMvc和Swagger2
 - ==chapter2-1-0 springboot  中使用 JavaScript ==
 - ==chapter2-1-3 springboot  中使用 JQuery ==
 - chapter2-1-4 springboot  中使用 Select2
@@ -61,7 +62,9 @@ Web开发
 - chapter3-4-9：springboot  集成 License 验证  生成和校检分开
 - ==chapter3-5-0：springboot  集成 License 验证 待整理 ==
 - chapter3-5-1：springboot  集成  Shiro +  Thymeleaf
-- chapter3-5-4：springboot  集成  SpringSecurity +  Thymeleaf
+- chapter3-5-4：springboot  集成  SpringSecurity +  Thymeleaf + 内存用户
+- chapter3-5-5：springboot  集成  SpringSecurity +  Thymeleaf + 数据库用户
+- chapter3-5-7：springboot  集成  SpringSecurity +  JWT
 - chapter3-6-3：springboot  集成  oauth2
 - chapter3-7-0：springboot  集成  jwt
 
@@ -72,7 +75,7 @@ Web开发
 - chapter4-2-0：springboot 集成 JPA 乐观锁  
 - chapter4-2-1：springboot 集成 JPA  
 - ==chapter4-2-2：springboot 集成 JPA  复杂条件查询 ==  
-- chapter4-2-4：springboot 集成 JPA 分页查询 JSP + DataTable  
+- chapter4-2-4：springboot 集成  JPA 分页查询 JSP + DataTable  
 - chapter4-4-1：springboot 集成 mybatis   Dao接口 + sqlxml 实现 
 - chapter4-4-2：springboot 集成 mybatis   Dao接口 +  注解 实现
 - chapter4-4-3：springboot 集成 mybatis 
@@ -97,8 +100,12 @@ Web开发
 微服务
 
 - ==chapter5-3-0：springboot 集成 Dubbo consumer/ product ==
-- ==chapter5-3-1：springboot 集成 Dubbo api / consumer/ product ==
-- chapter5-3-2：springboot 集成  Zookeeper 客户端
+- chapter5-3-1：springboot 集成 Dubbo api / consumer/ product
+- chapter5-3-2：springboot 集成  Zookeeper 客户端 + Zookeeper集群
+- ==chapter5-3-6：springboot 集成 Dubbo api ==
+- ==chapter5-3-7：springboot 集成 Dubbo consumer ==
+- ==chapter5-3-8：springboot 集成 Dubbo Provider MybatisPlus实现 ==
+- ==chapter5-3-9：springboot 集成 Dubbo Provider JPA实现 ==
 - chapter5-4-2：springboot 集成  SpringCloud eureka、Ribbon、feign、zuul 等全家桶
 - ==chapter5-5-0：springboot 集成  SpringCloud ==
 
@@ -108,6 +115,8 @@ Web开发
 
 - chapter6-1-1：springboot 集成 Swagger2
 - chapter6-2-1：springboot 集成 Email
+- chapter6-2-5：springboot 集成 StateMachine 框架实现状态机1
+- chapter6-2-6：springboot 集成 StateMachine 框架实现状态机2
 
 
 
@@ -117,6 +126,8 @@ Web开发
 - chapter6-4-1：springboot 集成 Quartz
 - chapter6-5-1：springboot  异步任务
 - chapter6-5-5：springboot  重试机制
+- ==chapter6-6-0：springboot  Batch 批处理1 ==
+- ==chapter6-6-1：springboot  Batch 批处理2 ==
 - chapter7-3-1：springboot 集成 ElasticSearch  使用 JestClient 操作
 - chapter7-4-1：springboot 集成 ElasticSearch  使用 SpringData 操作
 - chapter7-5-0：springboot 集成 Maven 学习总结

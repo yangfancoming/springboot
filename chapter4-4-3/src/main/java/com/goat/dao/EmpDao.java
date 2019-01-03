@@ -1,7 +1,7 @@
 package com.goat.dao;
 
 
-import com.goat.bean.Emp;
+import com.goat.entity.Emp;
 
 import java.util.Map;
 

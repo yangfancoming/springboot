@@ -1,7 +1,7 @@
 package com.goat.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.goat.bean.User;
+import com.goat.entity.User;
 //import com.goat.service.IUserService;
 import com.goat.service.impl.UserServiceImpl;
 import io.swagger.annotations.Api;

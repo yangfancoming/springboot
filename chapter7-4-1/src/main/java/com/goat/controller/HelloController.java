@@ -1,7 +1,7 @@
 package com.goat.controller;
 
 
-import com.goat.bean.Article;
+import com.goat.entity.Article;
 
 import com.goat.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;

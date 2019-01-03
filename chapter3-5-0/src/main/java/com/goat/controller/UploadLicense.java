@@ -12,8 +12,7 @@ import java.security.cert.X509Certificate;
 import java.util.Properties;
 
 import ch.qos.logback.classic.gaffer.PropertyUtil;
-import com.goat.bean.ValidMessageDTO;
-import org.springframework.beans.factory.annotation.Value;
+import com.goat.entity.ValidMessageDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

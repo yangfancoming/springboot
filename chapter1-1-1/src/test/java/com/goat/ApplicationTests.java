@@ -1,6 +1,6 @@
 package com.goat;
 
-import com.goat.bean.BlogProperties;
+import com.goat.entity.BlogProperties;
 import com.goat.bean2.Person;
 import com.goat.bean2.Pet;
 import com.goat.bean2.Student;

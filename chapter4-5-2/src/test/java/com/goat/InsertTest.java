@@ -1,8 +1,8 @@
 package com.goat;
 
 
-import com.goat.bean.Student;
-import com.goat.bean.User;
+import com.goat.entity.Student;
+import com.goat.entity.User;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

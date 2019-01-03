@@ -1,6 +1,6 @@
 package com.goat.crud;
 
-import com.goat.bean.User;
+import com.goat.entity.User;
 import com.goat.dao.UserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;

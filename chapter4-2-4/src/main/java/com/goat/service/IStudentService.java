@@ -1,6 +1,6 @@
 package com.goat.service;
 
-import com.goat.bean.Student;
+import com.goat.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

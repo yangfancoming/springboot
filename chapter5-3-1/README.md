@@ -13,7 +13,7 @@
          
  # 消费端 发起请求后台报错：       
     com.alibaba.dubbo.rpc.RpcException: No provider available from registry 172.16.163.135:2181
-     for service com.goat.service.HelloService on consumer 172.16.163.1 use dubbo version 2.0.1, 
+     for service com.goat.service.ITestService on consumer 172.16.163.1 use dubbo version 2.0.1, 
     please check status of providers(disabled, not registered or in blacklist).
     
     是由于：提供者没有启动起来。也就是你的server端没有启动。请检查是否在Tomcat中启动失败.
