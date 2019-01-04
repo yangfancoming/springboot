@@ -157,7 +157,7 @@
                 </plugin>
             </plugins>
 
-        <!-- 资源文件配置 -->
+        <!-- 资源文件配置：在要打成war包的项目pom中加指定resources位置 -->
         <resources>
             <resource>
                 <directory>src/main/java</directory>
