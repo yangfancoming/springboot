@@ -10,8 +10,21 @@ import java.util.Map;
  * Created by 64274 on 2018/11/14.
  *
  * @author 山羊来了
- * @Description:  doit  该项目打包有问题   由于使用了 0-0-1 项目的model
+ * @Description:  该项目 package 打包有问题   由于使用了 0-0-1 项目的model
  * @date 2018年11月14日17:42:16
+
+
+报错内容：
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.7.0:compile (default-compile) on project chapter2-9-0: Compilation failure: Compilation failure:
+[ERROR] /E:/Code/J2EE_code/MySpringBoot/springboot/chapter2-9-0/src/main/java/com/goat/controller/RequestParameterController.java:[3,23] 程序包com.goat.entity不存在
+[ERROR] /E:/Code/J2EE_code/MySpringBoot/springboot/chapter2-9-0/src/main/java/com/goat/controller/RequestParameterController.java:[93,48] 找不到符号
+[ERROR] 符号:   类 User
+[ERROR] 位置: 类 com.goat.controller.RequestParameterController
+sos 解决方法：
+ 1. 把被依赖的 项目 打成jar包
+ 2. 打成jar包  在 install 一下  其他项目就可以进行引用了
+maven的install可以将项目本身编译并打包到本地仓库，这样其他项目引用本项目的jar包时不用去私服上下载jar包，
+直接从本地就可以拿到刚刚编译打包好的项目的jar包，很灵活，避免每次都需要重新往私服发布jar包的痛苦；
  */
 
 @RestController

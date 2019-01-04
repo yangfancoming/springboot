@@ -8,8 +8,8 @@
     <artifactId>chapter0-0-1</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <packaging>pom</packaging>
-    <!--<packaging>jar</packaging>-->
+    <!--<packaging>pom</packaging>-->
+    <packaging>jar</packaging>
 
     <dependencies>
 
