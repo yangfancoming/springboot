@@ -8,6 +8,9 @@
     <artifactId>chapter5-3-6</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <!--这里必须要打成jar包-->
+    <packaging>jar</packaging>
+
     <properties>
         <commons-lang3.version>3.3.2</commons-lang3.version>
 

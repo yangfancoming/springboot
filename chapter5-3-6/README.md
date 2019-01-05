@@ -14,17 +14,3 @@
             </build>
             
             
-# 一 加入 MybatisPlus 依赖             
-            <!--  引入 MybatisPlus 依赖 -->
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>3.0-RC3</version>
-            </dependency>
-            <!--  引入 jackson 依赖 -->       
-            <dependency>
-                <groupId>com.fasterxml.jackson.core</groupId>
-                <artifactId>jackson-databind</artifactId>
-                <version>RELEASE</version>
-                <scope>compile</scope>
-            </dependency>
