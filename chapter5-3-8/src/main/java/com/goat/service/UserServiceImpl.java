@@ -1,14 +1,15 @@
 
-package com.goat.service.impl;
+package com.goat.service;
 
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.goat.entity.User;
 import com.goat.dao.UserMapper;
-//import com.goat.service.IUserService;
-import org.springframework.stereotype.Service;
+import com.goat.entity.User;
 
 import java.util.Map;
+
+//import com.goat.service.IUserService;
 
 /**
  * <p>
@@ -19,10 +20,12 @@ import java.util.Map;
  * @since 2018-02-22
  */
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
+    @Override
     public Map findMapById(Integer id) {
         return this.baseMapper.findMapById(id);
     }
+
 
 }

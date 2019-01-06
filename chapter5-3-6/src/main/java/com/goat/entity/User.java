@@ -34,6 +34,14 @@ public class User implements Serializable {
 
     private String roleid;
 
+    /**
+     * 盐值
+     */
+    @TableField("salt")
+    @JsonIgnore
+    private String salt;
+
+
     @TableField(value = "birthday", fill = FieldFill.INSERT)
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date birthday;
@@ -126,5 +134,13 @@ public class User implements Serializable {
 
     public void setRoleid(String roleid) {
         this.roleid = roleid;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 }

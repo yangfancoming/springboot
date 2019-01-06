@@ -3,6 +3,8 @@ package com.goat.dao;
 
 import com.goat.entity.User;
 
+import java.util.Map;
+
 /**
  * Created by 64274 on 2018/11/13.
  *
@@ -13,4 +15,5 @@ import com.goat.entity.User;
 
 public interface  UserMapper extends SuperMapper<User>  {
 
+    Map findMapById(Integer id);
 }

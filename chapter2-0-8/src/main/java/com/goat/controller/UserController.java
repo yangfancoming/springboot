@@ -1,20 +1,20 @@
 package com.goat.controller;
 
-import com.fasterxml.jackson.annotation.JsonView;
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.goat.entity.User;
-//import com.goat.service.IUserService;
-import com.goat.service.impl.UserServiceImpl;
+import com.goat.service.IUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+
 
 /**
  * Created by 64274 on 2018/12/30.
@@ -29,8 +29,9 @@ import java.util.Map;
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    private UserServiceImpl userService;
+
+    @Reference
+    public IUserService userService;
 
     @ApiOperation(value="获取所有用户记录", notes="controller方法描述")
     @GetMapping("/list")
@@ -44,7 +45,7 @@ public class UserController {
 
     @ApiImplicitParams({@ApiImplicitParam(name = "user", value = "用户详细实体", required = true, dataType = "User") })
     @PostMapping
-    @JsonView(User.UserDetailView.class) // 根据注解 可以返回 password 字段属性
+//    @JsonView(User.UserDetailView.class) // 根据注解 可以返回 password 字段属性
     public User user(@Valid @RequestBody User user){
         System.out.println(user);
         User temp = new User(123,"455","111");
@@ -53,7 +54,7 @@ public class UserController {
     }
 
     // 如果请求中没有 username 参数 则报错：  Required String parameter 'username' is not present
-    @JsonView(User.UserSimpleView.class) // 根据注解 没有返回 password 字段属性  只返回一个 username 属性
+//    @JsonView(User.UserSimpleView.class) // 根据注解 没有返回 password 字段属性  只返回一个 username 属性
     @PostMapping("/user1")
     public List<User> user1(@RequestParam String username){
         List<User> users = new ArrayList<>();
