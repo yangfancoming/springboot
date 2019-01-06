@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.OptimisticLockerInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.SqlExplainInterceptor;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.Configuration;
  * @ date 2018/12/7---11:05
  */
 @Configuration
+@MapperScan("com.goat.dao") // sos 不用在每个mapper上添加@Mapper注解
 public class MybatisPlusConfig {
 
 

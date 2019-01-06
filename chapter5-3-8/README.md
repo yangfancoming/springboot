@@ -65,4 +65,9 @@
  # 四 引入config 包下的 MybatisPlusConfig 和 DataSourceConfig 
  
  
+# 常见错误
+    1. 消费端调用时 报错：com.alibaba.dubbo.rpc.RpcException: No provider available from registry
+       解决： 多数是由于 提供者 没有把对应的服务暴露出来，看看 serviceImpl 中的方式  是否加上了 dubbo的 @service 注解
+
+ 
  
