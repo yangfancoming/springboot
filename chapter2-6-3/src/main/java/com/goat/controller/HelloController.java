@@ -10,7 +10,7 @@ import java.util.Map;
 @Controller
 public class HelloController {
 
-    // 测试地址：    http://localhost:8263/hello
+    // 测试地址：    http://localhost:8263/thymeleaf/hello
     @RequestMapping("/hello")
     public String hello()  {
         return "success"; // 跳转到  templates路径下的 success.html
