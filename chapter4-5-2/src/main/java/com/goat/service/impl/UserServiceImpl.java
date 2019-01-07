@@ -33,6 +33,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public List<User> getAll() {
         List<User> users = mongoTemplate.findAll(User.class);
+        System.out.println(users);
         return users;
     }
 }

@@ -14,7 +14,6 @@ import com.goat.annotation.Table;
 @Table(tb_name = "my_user")
 public class User {
 
-
     @Column(col_name = "user_name")
     private String userName;
 
@@ -22,6 +21,5 @@ public class User {
 
     @Column(col_name = "user_age")
     private Integer userAge;
-
 
 }

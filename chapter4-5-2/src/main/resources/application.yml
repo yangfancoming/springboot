@@ -1,3 +1,6 @@
+server:
+  port: 8452
+
 spring:
   data:
     mongodb:
