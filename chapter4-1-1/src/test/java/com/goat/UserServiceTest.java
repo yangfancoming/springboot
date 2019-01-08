@@ -2,22 +2,21 @@ package com.goat;
 
 
 import com.goat.service.UserService;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.annotations.Test;
+import org.springframework.test.context.junit4.SpringRunner;
 
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class UserServiceTest {
 
-/**
- * Created by 64274 on 2018/7/27.
- *
- */
-@ContextConfiguration(classes= Application.class)
-public class TestNG extends AbstractTestNGSpringContextTests {
 
-    @Autowired private ApplicationContext ac;
+    @Autowired
+    private ApplicationContext ac;
 
     @Autowired private UserService userService;
 
@@ -31,8 +30,19 @@ public class TestNG extends AbstractTestNGSpringContextTests {
 
     @Test
     public void getAllUsers() {
-       Integer count =  userService.getAllUsers();
+        Integer count =  userService.getAllUsers();
         System.out.println(count);
     }
 
+
+    @Test
+    public void test01() {
+
+
+    }
+
+    @Test
+    public void test() {
+
+    }
 }
