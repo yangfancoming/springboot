@@ -24,7 +24,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Override
     public Map findMapById(Integer id) {
-        return this.baseMapper.findMapById(id);
+        return baseMapper.findMapById(id);
     }
 
 

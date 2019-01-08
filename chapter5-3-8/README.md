@@ -69,5 +69,5 @@
     1. 消费端调用时 报错：com.alibaba.dubbo.rpc.RpcException: No provider available from registry
        解决： 多数是由于 提供者 没有把对应的服务暴露出来，看看 serviceImpl 中的方式  是否加上了 dubbo的 @service 注解
 
- 
- 
+    2. java.lang.IllegalStateException: Found multiple @SpringBootConfiguration annotated classes
+    分析原因：因为项目是springboot+dubbo架构，dao项目依赖于pojo项目，在pojo项目中也有启动类@SpringBootApplication，因为在dao的测试类中启动方法时，会加载pojo项目启动类，所以会造成上图所示错误，注释掉pojo项目启动类上的@SpringBootApplication注解即可。

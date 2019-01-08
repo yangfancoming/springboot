@@ -20,8 +20,6 @@ import java.util.Map;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(entityManagerFactoryRef="entityManagerFactorySecondary",transactionManagerRef="transactionManagerSecondary",basePackages= { "com.goat.domain.s" }) //设置Repository所在位置
-
-
 public class SecondaryConfig {
 
     @Autowired @Qualifier("secondaryDataSource")
