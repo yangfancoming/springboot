@@ -19,7 +19,6 @@ public class RestResponse<T> implements Serializable {
 	 * @Title：ok
 	 * @Description: 返回正确状态
 	 * @date 2015年3月18日 下午1:49:37
-	 * @param data
 	 * @return
 	 */
 	public static <T> RestResponse<T> ok() {
@@ -43,7 +42,6 @@ public class RestResponse<T> implements Serializable {
 	 * @Title：error
 	 * @Description: 返回错误，添加错误代码
 	 * @date 2015年3月18日 下午1:49:53
-	 * @param code
 	 * @return
 	 */
 	public static <T> RestResponse<T> error(ErrCode errCode) {
@@ -63,7 +61,7 @@ public class RestResponse<T> implements Serializable {
 	}
 
 	public static <T> RestResponse<T> errCode(ErrCode errCode) {
-		RestResponse<T> rp = new RestResponse<T>();
+		RestResponse<T> rp = new RestResponse<>();
 		rp.setErrmsg(errCode.getMsg());
 		rp.setErrcode(errCode.getCode());
 		return rp;

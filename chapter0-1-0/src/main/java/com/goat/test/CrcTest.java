@@ -24,11 +24,4 @@ public class CrcTest {
         String crc16 = CrcTool.getCrc16(data1, data1.length);//获取crc检验码
         System.out.println(crc16);
     }
-    @Test
-    public void test2(){
-        String data  = "1234";
-        Byte[] data1= MyStringTool.hex2bytes(data);
-        String crc16 = CrcTool.getCrc16(data1, data1.length);//获取crc检验码
-        System.out.println(crc16);
-    }
 }
