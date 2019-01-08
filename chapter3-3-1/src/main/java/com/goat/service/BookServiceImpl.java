@@ -6,7 +6,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-
+/**
+     * @Description: 事务的传播行为
+     * @author: 杨帆
+     * @Date:   2019/1/8
+*/
 @Service
 public class BookServiceImpl extends CommonServiceImpl {
 

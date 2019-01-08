@@ -2,7 +2,6 @@ package com.goat;
 
 
 import com.goat.service.BookServiceImpl;
-import com.goat.service.CommonServiceImpl;
 import com.goat.service.SimpleBookServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -59,11 +58,15 @@ public class BookServiceTest {
 
     /*
         设置 余额=30  第一本10元 第二本20元 这样一来 余额购买第一本书，到买第二本书时 则报余额不足异常
-        执行结果：一本书也没买成功  全部回滚了
+        执行结果：一本书也没买成功  全部回滚了  (即：Propagation.REQUIRES_NEW 不起作用)
         同一个Service中调用方法时：不论注解是Propagation.REQUIRES_NEW 还是 Propagation.REQUIRED，
         sos  purchaseNew 方法都不会创建一个新事务
         其结果都是一样的，就是都被忽略掉了，等于没写。
         当其抛出异常时，只需catch住不抛出，事务就可以正常提交。
+
+        若想Propagation.REQUIRES_NEW 起作用的解决方法：
+        1.需要将这两个 均带有事务的方法 写在不同的类里！
+        2.方法写在同一个类里，但调用B方法时 将service自己注入自己，然后用这个注入的对象来调用B方法！
      */
     @Test
     public void checkoutNew() {
