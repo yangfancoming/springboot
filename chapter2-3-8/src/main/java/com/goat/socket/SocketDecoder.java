@@ -23,7 +23,7 @@ public class SocketDecoder extends CumulativeProtocolDecoder {
 	}
 
 	@Override
-	protected boolean doDecode(IoSession session, IoBuffer in, ProtocolDecoderOutput out) throws Exception {
+	protected boolean doDecode(IoSession session, IoBuffer in, ProtocolDecoderOutput out)   {
 
 		if (in.remaining() > 0) {// 有数据时，读取8字节判断消息长度
 			byte[] sizeBytes = new byte[8];

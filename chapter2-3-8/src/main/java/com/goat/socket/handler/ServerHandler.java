@@ -18,7 +18,6 @@ public class ServerHandler extends IoHandlerAdapter {
 	@Override
 	public void exceptionCaught(IoSession session, Throwable cause)  {
 		logger.error("出现异常 :" + session.getRemoteAddress().toString() + " : " + cause.toString());
-
 		session.write("出现异常");
 		session.closeNow();
 	}
