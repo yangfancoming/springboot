@@ -15,15 +15,9 @@ import org.springframework.context.annotation.Configuration;
 import java.net.InetSocketAddress;
 import java.nio.charset.Charset;
 
-import static com.goat.MinaApplication.logger;
 
-/**
- * mina配置相关信息
- * @author John Doe
- * @since 2018/04/28 12:14:18
- */
 @Configuration
-public class MinaConfig {
+public class MinaServer {
 	// socket 占用端口
 	@Value("${mina.port}")
 	private int port;
@@ -49,14 +43,14 @@ public class MinaConfig {
 		acceptor.getFilterChain().addLast("logger", loggingFilter());
 
 		// 使用自定义编码解码工厂类
-		acceptor.getFilterChain().addLast("coderc", new ProtocolCodecFilter(new SocketFactory(Charset.forName("GBK"))));
+		acceptor.getFilterChain().addLast("coderc", new ProtocolCodecFilter(new SocketFactory(Charset.forName("UTF-8"))));
 		acceptor.setHandler(ioHandler());
 
 		acceptor.getSessionConfig().setReadBufferSize(2048);
 		acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 10);
 
 		acceptor.bind(inetSocketAddress());
-		logger.info("Socket服务器在端口：" + port + "已经启动");
+        System.out.println("Socket服务器在端口：" + port + "已经启动");
 		return acceptor;
 	}
 

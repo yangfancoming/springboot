@@ -34,7 +34,7 @@ public class ServerHandler extends IoHandlerAdapter {
 
 	@Override
 	public void messageReceived(IoSession session, Object message)  {
-		logger.info("接受到数据 :" + String.valueOf(message));
+		logger.info("接受到数据 :" + message);
 		String text = String.valueOf(message);
 		logger.info("开始分析数据 ");
 		String result = analyzeData(text, session);

@@ -15,7 +15,8 @@ public class SocketFactory implements ProtocolCodecFactory {
 	private final SocketDecoder decoder;
 	private final SocketEncoder encoder;
 
-	public SocketFactory(Charset charset) {
+
+    public SocketFactory(Charset charset) {
 		encoder = new SocketEncoder(charset);
 		decoder = new SocketDecoder(charset);
 	}

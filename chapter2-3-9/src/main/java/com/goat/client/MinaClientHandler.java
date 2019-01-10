@@ -1,4 +1,4 @@
-package com.goat.demo.client;
+package com.goat.client;
 
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;
