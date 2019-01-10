@@ -10,8 +10,6 @@ import java.nio.charset.Charset;
 
 /**
  * 自定义解码器
- * @author John Doe
- * @since 2018/04/28 12:14:18
  */
 public class SocketDecoder extends CumulativeProtocolDecoder {
 	/**编码集合*/

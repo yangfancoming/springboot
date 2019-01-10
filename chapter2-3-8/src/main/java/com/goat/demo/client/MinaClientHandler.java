@@ -1,6 +1,5 @@
 package com.goat.demo.client;
 
-import org.apache.log4j.Logger;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;
 
@@ -11,7 +10,6 @@ import org.apache.mina.core.session.IoSession;
  * 客户端handle
  */
 public class MinaClientHandler extends IoHandlerAdapter {
-    private static Logger logger = Logger.getLogger(MinaClientHandler.class);
 
     @Override
     public void messageReceived(IoSession session, Object message) {
@@ -21,7 +19,6 @@ public class MinaClientHandler extends IoHandlerAdapter {
         System.out.println("成功收到心跳包");
     //    	session.write(XiaoaiConstant.CMD_HEARTBEAT_RESPONSE);
    //     }
-       
     }
 
     @Override

@@ -1,7 +1,5 @@
-package com.goat.config;
+package com.goat.socket.config;
 
-//import cn.mzh.demo.socket.SocketFactory;
-//import cn.mzh.demo.socket.handler.ServerHandler;
 import com.goat.socket.SocketFactory;
 import com.goat.socket.handler.ServerHandler;
 import org.apache.mina.core.service.IoAcceptor;
