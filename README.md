@@ -23,7 +23,7 @@ Web开发
 - ==chapter2-1-3 springboot  中使用 JQuery ==
 - chapter2-1-4 springboot  中使用 Select2
 - chapter2-1-5 springboot  中使用 Bootstrap
-- chapter2-1-8 springboot  集成 Kaptcha 验证码
+- chapter2-1-8 springboot  集成 Kaptcha 验证码````
 - chapter2-2-1 springboot  集成 fastjson  相关操作总结
 - chapter2-2-5 springboot  集成 Gson  相关操作总结
 - chapter2-3-1 springboot  集成 WebSocket
