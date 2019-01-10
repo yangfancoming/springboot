@@ -31,6 +31,7 @@ public class MinaServer {
 //        ia.getFilterChain().addLast("codec",  new ProtocolCodecFilter(new ObjectSerializationCodecFactory())); //创建 协议编码解码过滤器ProtocolCodecFilter
         String temp = LineDelimiter.WINDOWS.getValue();
         ia.getFilterChain().addLast("codec",new ProtocolCodecFilter(new TextLineCodecFactory(Charset.forName("UTF-8"),temp,temp)));
+        ia.getFilterChain().addLast("filter",new MinaServerFilter()); // 注册服务端过滤器
         ia.getSessionConfig().setReadBufferSize(2048); //设置读取数据的缓存区大小
         ia.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 10); //读写通道10秒内无操作进入空闲状态
         ia.setHandler(new MinaServerHandler()); //绑定逻辑处理器

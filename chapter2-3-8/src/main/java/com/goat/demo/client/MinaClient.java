@@ -34,6 +34,7 @@ public class MinaClient {
 	public static void main(String[] args) {
         connector.setConnectTimeoutMillis(3000); // 设置链接超时时间
         connector.getFilterChain().addLast("codec",new ProtocolCodecFilter(new TextLineCodecFactory(Charset.forName("UTF-8"),LineDelimiter.WINDOWS.getValue(),LineDelimiter.WINDOWS.getValue())));// 添加过滤器  可序列话的对象
+        connector.getFilterChain().addLast("filter",new MinaClientFilter()); // 注册客户端过滤器
         connector.setHandler(new MinaClientHandler());  // 添加业务逻辑处理器类
         ConnectFuture future = connector.connect(new InetSocketAddress( HOST, PORT));// 创建连接
         future.awaitUninterruptibly();// 等待连接创建完成

@@ -38,25 +38,26 @@ public class MinaServerHandler extends IoHandlerAdapter {
 		 session.write(date); //返回给服务端数据
 	}
 
-	 @Override
-	    public void messageSent(IoSession session, Object message)  {
-	        System.out.println("服务端发送信息成功...");
-	    }
+    @Override
+    public void messageSent(IoSession session, Object message)  {
+        System.out.println("服务端发送信息成功...");
+        session.closeNow();
+    }
 
-	    @Override
-	    public void sessionClosed(IoSession session)  {
-            System.out.println("服务端进入关闭状态...");
-	    }
+    @Override
+    public void sessionClosed(IoSession session)  {
+        System.out.println("服务端进入关闭状态...");
+    }
 
-	    @Override
-	    public void sessionIdle(IoSession session, IdleStatus status){
-	        System.out.println("服务端进入空闲状态...");
-	    }
+    @Override
+    public void sessionIdle(IoSession session, IdleStatus status){
+        System.out.println("服务端进入空闲状态...");
+    }
 
-	    @Override
-	    public void exceptionCaught(IoSession session, Throwable cause){
-            System.out.println("服务端发送异常" + cause);
-	    }
+    @Override
+    public void exceptionCaught(IoSession session, Throwable cause){
+        System.out.println("服务端发送异常" + cause);
+    }
 	
 	
 }
