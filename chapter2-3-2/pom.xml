@@ -9,22 +9,24 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>chapter2-3-8</artifactId>
-
+    <artifactId>chapter2-3-2</artifactId>
 
 
     <dependencies>
-
         <dependency>
-            <groupId>org.apache.mina</groupId>
-            <artifactId>mina-core</artifactId>
-            <version>2.0.19</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
 
+
         <dependency>
-            <groupId>org.apache.mina</groupId>
-            <artifactId>mina-integration-spring</artifactId>
-            <version>1.1.7</version>
+            <groupId>com.goat.springboot.learing</groupId>
+            <artifactId>chapter0-1-0</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.slf4j</groupId>-->
+            <!--<artifactId>slf4j-api</artifactId>-->
+        <!--</dependency>-->
     </dependencies>
 </project>

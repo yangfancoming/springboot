@@ -11,7 +11,7 @@ import java.nio.charset.CharsetEncoder;
 
 /**
  * 自定义解码器(暂不用)
- * @author John Doe
+ * @author  {@link }
  * @since 2018/05/02 11:35:00
  */
 public class SocketEncoder extends ProtocolEncoderAdapter {
