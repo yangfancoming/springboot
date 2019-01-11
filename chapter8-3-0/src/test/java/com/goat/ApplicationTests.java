@@ -19,7 +19,6 @@ import java.util.Map;
 @SpringBootTest
 public class ApplicationTests {
 
-    @Autowired private ApplicationContext ac;
 
     @Autowired
     RabbitTemplate rabbitTemplate;
@@ -36,9 +35,9 @@ public class ApplicationTests {
     @Test
     public void convertAndSend() {
         Map<String,Object> map = new HashMap<>(16);
-        map.put("msg","这是一个msg");
+        map.put("msg","这1111是一个msg");
         map.put("data", Arrays.asList("hoho",123,true));
-        rabbitTemplate.convertAndSend("exchange.direct","goat.shiit",map);
+        rabbitTemplate.convertAndSend("exchange.direct","goat.shit",map);
     }
     /**
          * @Description:  单播 点对点 发送 自定实体类 数据

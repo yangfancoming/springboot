@@ -56,3 +56,11 @@ select  e.e_date as '日期',
         count(e.e_result='no' or null ) as '负'
 from ews_grade e GROUP BY e.e_date;
 
+
+
+# 删除 t_task 表中 order_number 字段重复 并且  创建时间 在 2019-01-02 之后 并且 delete_state 为1 的记录
+delete  from t_task where order_number in (
+  select haha.order_number from (
+                                  select t.order_number ,count(*) as count from t_task t group by t.order_number having count>1
+                                ) as haha
+) and date_format(add_time,'%Y-%m-%d') > '2019-01-02' and delete_state = 1;

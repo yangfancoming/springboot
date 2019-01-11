@@ -1,7 +1,5 @@
 package com.goat.domain.s;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 
 /**

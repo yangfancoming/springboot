@@ -1,6 +1,5 @@
 package com.goat.service;
 
-//import com.goat.bean.Book;
 import com.goat.entity.Book;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
