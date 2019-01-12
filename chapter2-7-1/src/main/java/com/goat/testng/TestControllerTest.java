@@ -35,13 +35,13 @@ public class TestControllerTest {
     }
     @Test
     public void testPost() throws Exception { // OK
-        HttpClientResult httpClientResult = HttpClientUtils.doPost(url +"/test/savaUser1?username=lixiaoxi&password=111111");
+        HttpClientResult httpClientResult = HttpClientUtils.doPost(url +"/user/save1?username=lixiaoxi&password=111111");
         System.out.println(httpClientResult);
     }
 
     @Test
     public void savaUser2() throws Exception { // OK
-        HttpClientResult httpClientResult = HttpClientUtils.doGet(url + "/test/savaUser2?username=lixiaoxi&password=111111");
+        HttpClientResult httpClientResult = HttpClientUtils.doGet(url + "/test/sava2?username=lixiaoxi&password=111111");
         System.out.println(httpClientResult);
     }
 

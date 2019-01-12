@@ -10,10 +10,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
+import java.util.*;
 
 
 /**
@@ -63,7 +60,8 @@ public class UserController {
     }
 
 
-
+    // 处理"/users/{id}"的GET请求，用来获取url中id值的User信息
+    // url中的id可通过@PathVariable绑定到函数的参数中
     @ApiOperation(value="获取一个用户", notes="返回用户实体类")
     @GetMapping("/{id}")
     public User getUserById(@PathVariable Integer id){
@@ -80,14 +78,22 @@ public class UserController {
 
     @ApiOperation(value="删除一个用户", notes="返回是否删除成功")
     @DeleteMapping("/{id}")
+//    @RequestMapping(value="/{id}", method=RequestMethod.DELETE)
     public Boolean deleteById(@PathVariable Integer id){
         boolean b = userService.removeById(id);
         return b;
     }
 
-    @ApiOperation(value="新增一个用户", notes="返回是否成功")
-    @PostMapping("/save")
+    @ApiOperation(value="新增一个用户1", notes="返回是否成功")
+    @PostMapping("/save1")
     public Boolean savaUser(User user){
+        boolean b = userService.save(user);
+        return b;
+    }
+
+    @ApiOperation(value="新增一个用户2", notes="返回是否成功")
+    @RequestMapping(value="/save2", method=RequestMethod.POST)
+    public Boolean postUser(@ModelAttribute User user) {  // 除了@ModelAttribute绑定参数之外，还可以通过@RequestParam从页面中传递参数
         boolean b = userService.save(user);
         return b;
     }
@@ -98,4 +104,22 @@ public class UserController {
         boolean b = userService.updateById(user);
         return b;
     }
+
+//    // 使用这个方法测试，必须要先启动本项目 后 在 启动 mockMVC测试方法
+//    static Map<Integer, User> users = Collections.synchronizedMap(new HashMap<>());
+
+
+
+
+    @RequestMapping(value="/{id}", method=RequestMethod.PUT)
+    public Boolean putUser(@PathVariable Integer id, @ModelAttribute User user) {
+        // 处理"/users/{id}"的PUT请求，用来更新User信息
+        User oldUser = userService.getById(id);
+        oldUser.setName(user.getName());
+        oldUser.setAge(user.getAge());
+        boolean b = userService.save(oldUser);
+        return b;
+    }
+
+
 }
