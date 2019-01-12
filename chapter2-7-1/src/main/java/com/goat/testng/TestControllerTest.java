@@ -30,7 +30,7 @@ public class TestControllerTest {
 
     @Test
     public void testGet() throws Exception { // OK
-        HttpClientResult httpClientResult = HttpClientUtils.doGet(url + "/test/savaUser1?username=lixiaoxi&password=111111");
+        HttpClientResult httpClientResult = HttpClientUtils.doGet(url + "/user/savaUser1?username=lixiaoxi&password=111111");
         System.out.println(httpClientResult);
     }
     @Test
@@ -41,13 +41,13 @@ public class TestControllerTest {
 
     @Test
     public void savaUser2() throws Exception { // OK
-        HttpClientResult httpClientResult = HttpClientUtils.doGet(url + "/test/sava2?username=lixiaoxi&password=111111");
+        HttpClientResult httpClientResult = HttpClientUtils.doGet(url + "/user/sava2?username=lixiaoxi&password=111111");
         System.out.println(httpClientResult);
     }
 
     @Test
     public void savaUser2Post() throws Exception { // OK
-        HttpClientResult httpClientResult = HttpClientUtils.doPost(url + "/test/savaUser2?username=lixiaoxi&password=111111");
+        HttpClientResult httpClientResult = HttpClientUtils.doPost(url + "/user/savaUser2?username=lixiaoxi&password=111111");
         System.out.println(httpClientResult);
     }
 
@@ -56,22 +56,22 @@ public class TestControllerTest {
         Map<String, String> params = new HashMap<>();
         params.put("username","111");
         params.put("password","222");
-        HttpClientResult result = HttpClientUtils.doGet(url +  "/test/addUser3",params);
+        HttpClientResult result = HttpClientUtils.doGet(url +  "/user/addUser3",params);
         System.out.println(result);
     }
     @Test
     public void addUser3Get() throws Exception { // OK
-        HttpClientUtils.doGet(url +  "/test/addUser3?username=lixiaoxi&password=111111");
+        HttpClientUtils.doGet(url +  "/user/addUser3?username=lixiaoxi&password=111111");
     }
     @Test
     public void addUser3Post() throws Exception { // OK
-        HttpClientResult result = HttpClientUtils.doPost(url + "/test/addUser3?username=lixiaoxi&password=111111");
+        HttpClientResult result = HttpClientUtils.doPost(url + "/user/addUser3?username=lixiaoxi&password=111111");
         System.out.println(result);
     }
 
     @Test
     public void addUser4() throws Exception { // OK
-       HttpClientUtils.doGet(url + "/test/addUser4/lixiaoxi/111111");
+       HttpClientUtils.doGet(url + "/user/addUser4/lixiaoxi/111111");
     }
 
     @Test

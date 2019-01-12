@@ -91,11 +91,21 @@ public class UserController {
         return b;
     }
 
+    /**
+     * 5、使用@ModelAttribute注解获取POST请求的FORM表单数据
+     * @param user
+     */
     @ApiOperation(value="新增一个用户2", notes="返回是否成功")
-    @RequestMapping(value="/save2", method=RequestMethod.POST)
+    @PostMapping("/save2")
     public Boolean postUser(@ModelAttribute User user) {  // 除了@ModelAttribute绑定参数之外，还可以通过@RequestParam从页面中传递参数
         boolean b = userService.save(user);
         return b;
+    }
+
+    @ModelAttribute
+    public void ModelAttributeTest(@RequestParam(value = "id",required = false)Integer id,Map<String,Object> map) {
+        System.out.println("你能看到我吗？");
+        map.put("user",new User(111,"111"));
     }
 
     @ApiOperation(value="更新一个用户", notes="返回是否成功")
