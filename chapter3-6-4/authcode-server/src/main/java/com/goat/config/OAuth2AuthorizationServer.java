@@ -15,7 +15,7 @@ public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdap
         clients.inMemory()
               /* withClient 和 secret  为客户凭证  */
             .withClient("clientapp") // 支持客户端的名称
-            .secret("112233")
+            .secret("{noop}112233")
             .redirectUris("http://localhost:9001/callback") // 重定向地址  (拿到授权码后跳转回客户端的地址)
             .authorizedGrantTypes("authorization_code") // 表示 授权服务器 只支持授权码模式
             .scopes("read_userinfo", "read_contacts"); // 给用户细分的权限

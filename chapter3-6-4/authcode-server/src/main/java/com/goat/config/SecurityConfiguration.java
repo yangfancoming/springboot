@@ -8,7 +8,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
      * @Description:
@@ -25,7 +26,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         //inMemoryAuthentication 从内存中获取
-        auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder()).withUser("user1").password(new BCryptPasswordEncoder().encode("123456")).roles("USER");
+        auth.inMemoryAuthentication().passwordEncoder(passwordEncoder())
+                .withUser("user1").password(passwordEncoder().encode("123456")).roles("USER");
     }
 
     @Override
@@ -36,6 +38,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .and()
             .authorizeRequests()
             .antMatchers("/oauth/*").permitAll();
+    }
+
+    // 如果不配 PasswordEncoder  则报错：  "There is no PasswordEncoder mapped for the id \"null\"",
+    @Bean
+    PasswordEncoder passwordEncoder(){
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
     /*

@@ -23,10 +23,12 @@
        redirect_uri：表示重定向URI，可选项
        scope：表示申请的权限范围，可选项
        state：表示客户端的当前状态，可以指定任意值，认证服务器会原封不动地返回这个值。
+
 # 4. 获取成功后  跳转到 回调 uri        
        http://localhost:9001/callback?code=cESfM4
        
 # 5. 通过 授权码 发 post 请求 来交换 access_token 
-
+        执行 public void getAccessToken()  方法  获取 access_token
  
 # 6. 通过 access_token  成功请求 http://localhost:3641/api/userinfo 
+        执行 public void testController()  方法  测试  可以进入 controller 中 
