@@ -25,7 +25,8 @@
     这种模式比较合适消费api的后端服务，比如拉取一组用户信息等
     不支持refresh token，主要是没有必要
     
-    
-    
     http://localhost:8363/oauth/token?grant_type=client_credentials&scope=select&client_id=client_1&client_secret=123456
     http://localhost:8363/oauth/token?username=user_1&password=123456&grant_type=password&scope=select& client_id=client_2&client_secret=123456
+    
+    http://localhost:8363/oauth/authorize?username=user_1&password=123456&grant_type=password&scope=select&client_id=clientapp&client_secret=123456
+    http://localhost:8363/oauth/authorize?client_id=clientapp&redirect_uri=http://localhost:3641/callback&response_type=code&read_userinfo

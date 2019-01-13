@@ -3,7 +3,7 @@ package com.goat.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
+//import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -60,21 +60,24 @@ public class OAuth2ServerConfig {
 
         @Autowired
         AuthenticationManager authenticationManager;
-        @Autowired
-        RedisConnectionFactory redisConnectionFactory;
+//        @Autowired
+//        RedisConnectionFactory redisConnectionFactory;
 
         @Override
         public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 
             String finalSecret = "{bcrypt}"+new BCryptPasswordEncoder().encode("123456");
             //配置两个客户端,一个用于password认证一个用于client认证
-            clients.inMemory().withClient("client_1")
+            clients.inMemory()
+                    .withClient("client_1")
                     .resourceIds(DEMO_RESOURCE_ID)
                     .authorizedGrantTypes("client_credentials", "refresh_token")
                     .scopes("select")
                     .authorities("oauth2")
                     .secret(finalSecret)
-                    .and().withClient("client_2")
+                    .and()
+
+                    .withClient("client_2")
                     .resourceIds(DEMO_RESOURCE_ID)
                     .authorizedGrantTypes("password", "refresh_token")
                     .scopes("select")
@@ -85,7 +88,7 @@ public class OAuth2ServerConfig {
         @Override
         public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
             endpoints
-                    .tokenStore(new RedisTokenStore(redisConnectionFactory))
+//                    .tokenStore(new RedisTokenStore(redisConnectionFactory))
                     .authenticationManager(authenticationManager)
                     .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);
         }

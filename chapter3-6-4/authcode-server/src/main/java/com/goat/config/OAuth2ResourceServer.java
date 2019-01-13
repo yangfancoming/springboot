@@ -1,10 +1,12 @@
 package com.goat.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 
+@Order(6)
 @Configuration
 @EnableResourceServer // 启用资源服务器
 public class OAuth2ResourceServer extends ResourceServerConfigurerAdapter {

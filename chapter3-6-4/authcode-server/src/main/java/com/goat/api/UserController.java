@@ -9,17 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class UserController {
 
-	// 资源API
+	// 资源API   http://localhost:3641/api/userinfo  如果没有token 则提示： Full authentication is required to access this resource  <unauthorized>
     @RequestMapping("/api/userinfo")
     public ResponseEntity<UserInfo> getUserInfo() {
-        User user = (User) SecurityContextHolder.getContext()
-                .getAuthentication().getPrincipal();
-        String email = user.getUsername() + "@spring2go.com";
-
-        UserInfo userInfo = new UserInfo();
-        userInfo.setName(user.getUsername());
-        userInfo.setEmail(email);
-
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserInfo userInfo = new UserInfo(user.getUsername(),user.getUsername() + "@spring2go.com");
         return ResponseEntity.ok(userInfo);
     }
 
