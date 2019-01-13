@@ -29,6 +29,22 @@
        
 # 5. 通过 授权码 发 post 请求 来交换 access_token 
         执行 public void getAccessToken()  方法  获取 access_token
+```json
+{
+    "access_token": "58a02fd5-87f5-44ff-bbdd-d429cf6a2f60",
+    "token_type": "bearer",
+    "expires_in": 43199,
+    "scope": "read_userinfo"
+}
+```
  
 # 6. 通过 access_token  成功请求 http://localhost:3641/api/userinfo 
         执行 public void testController()  方法  测试  可以进入 controller 中 
+        
+        
+# 简化模式  的不同点：
+     http://localhost:3641/oauth/authorize?client_id=clientapp&redirect_uri=http://localhost:9001/callback&response_type=token&scope=read_userinfo&state=abc
+    1. response_type=token
+    2. 页面点击 授权按钮后 直接就返回   token   http://localhost:9001/callback#access_token=bb88565c-f8af-464d-aa82-4f073798871d&token_type=bearer&state=abc&expires_in=119
+        
+

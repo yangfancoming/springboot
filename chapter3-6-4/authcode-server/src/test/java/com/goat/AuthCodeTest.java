@@ -16,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Mytest {
+public class AuthCodeTest {
 
 
 
@@ -89,12 +89,12 @@ public class Mytest {
         return authHeader;
     }
 
-    // 测试 可以进入 controller 中！
+    // 测试 可以进入 controller 中！  注意token 过期时间哦 ！
     @Test
     public void testController() {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        headers.add("authorization", "Bearer " + "7f50f4d0-131c-4ae2-b532-67f7b7e9fc2f");
+        headers.add("authorization", "Bearer " + "0204f4dc-7485-4964-80bf-121b75fe861c");
         ResponseEntity<String> resp = rest.postForEntity("http://localhost:3641/api/userinfo", new HttpEntity<>(null, headers), String.class);
         System.out.println(resp);
     }

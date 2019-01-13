@@ -17,7 +17,8 @@ public class OAuth2ResourceServer extends ResourceServerConfigurerAdapter {
         .and()
             .requestMatchers()
              //即 若要访问  UserController 中的 /api/userinfo 请求 就必须要带着 token 来请求 否则 返回未授权的错误
-            .antMatchers("/api/**"); // 设定 访问哪些 url 请求的资源  需要 进行 Oauth2 的认证
+            .antMatchers("/api/**") // 设定 访问哪些 url 请求的资源  需要 进行 Oauth2 的认证
+        .and().cors();
     }
 
 }
