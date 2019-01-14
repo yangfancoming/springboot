@@ -1,8 +1,17 @@
 package com.goat;
 
 
+import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.codec.binary.Base64;
-import org.junit.Before;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.CredentialsProvider;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.BasicCredentialsProvider;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,6 +21,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+
+import java.io.IOException;
 
 
 @RunWith(SpringRunner.class)
@@ -36,20 +47,38 @@ public class AuthCodeTest {
     HttpHeaders headers = new HttpHeaders();
 
     /**
-     * 用户名密码登录  doit 为什么请求失败 403 ？
+     *     final static String WAHAHA = "http://localhost:" + PORT + "/oauth/token?grant_type=" + GRANT_TYPE + "&code=" + CODE + "&redirect_uri=" + REDIRECT_URI + "&scope=" + SCOPE;
+     * 用户名密码模式   doit 为什么请求失败 403  401 400 ？
      * @throws Exception
      */
     @Test
-    public void signInTest()   {
-
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-//        headers.add("authorization", getBasicAuthHeader());
+    public void signInTest() throws IOException {
+        headers.setContentType(MediaType.APPLICATION_JSON);
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("username", "user1");
         params.add("password", "123456");
-        HttpEntity<?> entity = new HttpEntity(params, headers);
-        ResponseEntity<String> result = rest.exchange(SIGN_IN_URI, HttpMethod.POST, entity, String.class, new Object[]{null});
+        params.add("grant_type", "password");
+        params.add("scope", SCOPE);
+        HttpEntity<?> entity1 = new HttpEntity(params, headers);
+        ResponseEntity<String> result = rest.exchange("http://localhost:3641/oauth/token", HttpMethod.POST, entity1, String.class, new Object[]{null});
         System.out.println(result);
+
+        JSONObject obj = new JSONObject();
+        obj.put("username", "user1");
+        obj.put("password", "123456");
+        obj.put("grant_type", "password");
+        obj.put("scope", SCOPE);
+        CredentialsProvider credsProvider = new BasicCredentialsProvider();
+        credsProvider.setCredentials(AuthScope.ANY,new UsernamePasswordCredentials(CLIENT_ID, CLIENT_SECRET));
+        CloseableHttpClient createDefault = HttpClients.custom().setDefaultCredentialsProvider(credsProvider).build();
+//        HttpPost post = new HttpPost("http://localhost:3641/api/userinfo");
+        HttpPost post = new HttpPost("http://localhost:3641/oauth/token");
+        StringEntity entity = new StringEntity(obj.toString(),"utf-8");
+        entity.setContentType("application/x-www-form-urlencoded");
+        post.setEntity(entity);
+        CloseableHttpResponse result2 = createDefault.execute(post);
+        System.out.println(result2);
+
     }
 
 
@@ -85,11 +114,12 @@ public class AuthCodeTest {
         String auth = CLIENT_ID + ":" + CLIENT_SECRET;
         byte[] encodedAuth = Base64.encodeBase64(auth.getBytes());
         String authHeader = "Basic " + new String(encodedAuth);
+//        String authHeader = "Basic Auth " + new String(encodedAuth);
         System.out.println("-------"+authHeader);
         return authHeader;
     }
 
-    // 测试 可以进入 controller 中！  注意token 过期时间哦 ！
+    // 简化模式 ： 测试 可以进入 controller 中！  注意token 过期时间哦 ！
     @Test
     public void testController() {
         HttpHeaders headers = new HttpHeaders();
@@ -98,4 +128,5 @@ public class AuthCodeTest {
         ResponseEntity<String> resp = rest.postForEntity("http://localhost:3641/api/userinfo", new HttpEntity<>(null, headers), String.class);
         System.out.println(resp);
     }
+
 }

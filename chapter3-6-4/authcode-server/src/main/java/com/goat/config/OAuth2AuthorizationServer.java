@@ -1,13 +1,27 @@
 package com.goat.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 
 @Configuration
 @EnableAuthorizationServer // 启用授权服务器
 public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdapter {
+
+
+    //region   密码模式 专用配置  因为 该模式需要将 用户名和密码 传递给 authenticationManager 进行认证
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
+        endpoints.authenticationManager(authenticationManager);
+    }
+    //endregion
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -20,8 +34,6 @@ public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdap
             .authorizedGrantTypes("authorization_code","implicit","password") // 表示 授权服务器 支持授权码模式 和 简化模式 和 密码模式
             .accessTokenValiditySeconds(120) // token 有效期 120 秒
             .scopes("read_userinfo", "read_contacts"); // 给用户细分的权限
-
-
     }
 
 }

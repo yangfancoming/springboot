@@ -7,7 +7,6 @@ import org.junit.runner.RunWith;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Arrays;
@@ -23,7 +22,10 @@ public class ApplicationTests {
     @Autowired
     RabbitTemplate rabbitTemplate;
 
+    @Test
+    public void test() {
 
+    }
 
     /**
          * @Description:  单播 点对点 发送 Map 数据
@@ -46,8 +48,8 @@ public class ApplicationTests {
     */
     @Test
     public void convertAndSend1() {
-        Book book = new Book("西游记","陆小曼");
-        rabbitTemplate.convertAndSend("exchange.direct","goat.shiit",book);
+        Book book = new Book("山羊来了","你是谁？");
+        rabbitTemplate.convertAndSend("exchange.direct","goat.shit",book);
     }
 
     /**
