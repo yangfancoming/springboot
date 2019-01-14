@@ -4,6 +4,7 @@ package com.goat;
 import com.goat.entity.Book;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,6 +23,8 @@ public class RabbitMQTest {
     @Autowired
     RabbitTemplate rabbitTemplate;
 
+    @Autowired
+    AmqpTemplate amqpTemplate;
     @Test
     public void test() {
 
@@ -62,6 +65,11 @@ public class RabbitMQTest {
         Book book = new Book("西游记","陆小曼");
         rabbitTemplate.convertAndSend("exchange.fanout","",book);
     }
+
+    @Test
+    public void convertAndSend3() { // 不适用交换机  直接发送的到指定队列中
+        rabbitTemplate.convertAndSend("myChannel2","直接发送的到指定队列中");
+    }
     /**
      * @Description:  接收数据   这里一旦接收到消息后   则队列里无法再获取该条消息
      * @author: 杨帆
@@ -77,8 +85,6 @@ public class RabbitMQTest {
         // {msg=这是一个msg, data=[hoho, 123, true]}
         //  Book{bookName='西游记', author='陆小曼'}
         System.out.println(o);
-
-
     }
 
 }

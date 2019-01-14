@@ -19,3 +19,7 @@
      2. topic
      3. headers 
      4. fanout
+# RabbitMQ 持久化:     
+     消息 持久化：     channel.basicPublish(TOPIC_EXCHANGE_NAME, "item.insert", MessageProperties.PERSISTENT_BASIC, message.getBytes());
+     队列 持久化：     channel.queueDeclare(QUEUE1, true, false, false, null);
+     交换器 持久化：  channel.exchangeDeclare(TOPIC_EXCHANGE_NAME, "direct",true);
