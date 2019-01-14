@@ -1,4 +1,4 @@
-package com.goat;
+package com.goat.javase;
 
 /**
  * Created by 64274 on 2019/1/14.

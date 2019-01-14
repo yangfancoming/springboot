@@ -2,7 +2,7 @@
 
 工程配置
 
-- chapter0-0-0 springboot 基础项目提供服务
+- chapter0-0-0 springboot 空项目
 - chapter0-0-1 springboot 共享model
 - chapter0-1-0 springboot Utils 积累常用工具类
 - chapter1-1-1 springboot 读取配置文件
@@ -23,10 +23,13 @@ Web开发
 - ==chapter2-1-3 springboot  中使用 JQuery ==
 - chapter2-1-4 springboot  中使用 Select2
 - chapter2-1-5 springboot  中使用 Bootstrap
-- chapter2-1-8 springboot  集成 Kaptcha 验证码````
+- chapter2-1-8 springboot  集成 Kaptcha 验证码
 - chapter2-2-1 springboot  集成 fastjson  相关操作总结
 - chapter2-2-5 springboot  集成 Gson  相关操作总结
 - chapter2-3-1 springboot  集成 WebSocket
+- chapter2-3-2 springboot  集成 WebSocket2
+- chapter2-3-8 springboot  集成 Mina server
+- chapter2-3-9 springboot  集成 Mina client
 - chapter2-4-1 springboot  集成 WebService 服务端
 - chapter2-5-1 springboot  集成 WebService 客户端
 - chapter2-6-0 springboot  集成  JSP 内嵌Tomcat容器
@@ -83,6 +86,7 @@ Web开发
 - chapter4-5-2：springboot 集成 MongoDB  使用 MongoTemplate
 - chapter4-5-3：springboot 集成 MongoDB  使用 MongoRepository
 - chapter4-6-0：springboot 集成 Oracle
+- chapter4-7-0：springboot 集成 多数据源 基于 JPA和Mybatis
 
 
 
@@ -93,6 +97,8 @@ Web开发
 - chapter5-1-2：springboot 集成 redis     使用 jedis 列举 五大数据类型的 常用指令
 - chapter5-1-3：springboot 集成 redis     使用 redisTemplate 注解版
 - chapter5-1-5：springboot 集成 redis     使用 RedisTemplate 和 jedis 调用Lua脚本   
+- ==chapter5-1-6：springboot 集成 Dubbo Redis API ==
+- ==chapter5-1-7：springboot 集成 Dubbo Redis API Impl ==
 - chapter5-2-1：springboot 集成  guava cache
 
 
@@ -102,10 +108,12 @@ Web开发
 - ==chapter5-3-0：springboot 集成 Dubbo consumer/ product ==
 - chapter5-3-1：springboot 集成 Dubbo api / consumer/ product
 - chapter5-3-2：springboot 集成  Zookeeper 客户端 + Zookeeper集群
-- ==chapter5-3-6：springboot 集成 Dubbo api ==
-- ==chapter5-3-7：springboot 集成 Dubbo consumer ==
-- ==chapter5-3-8：springboot 集成 Dubbo Provider MybatisPlus实现 ==
-- ==chapter5-3-9：springboot 集成 Dubbo Provider JPA实现 ==
+- ==chapter5-3-5： ==
+- chapter5-3-6：springboot 集成 Dubbo api
+- chapter5-3-7：springboot 集成 Dubbo consumer
+- chapter5-3-8：springboot 集成 Dubbo Provider 使用 MybatisPlus实现
+- ==chapter5-3-9：springboot 集成 Dubbo Provider 使用 JPA实现 ==
+- ==chapter5-4-0：springboot 集成 Dubbo  单点登录SSO  ==
 - chapter5-4-2：springboot 集成  SpringCloud eureka、Ribbon、feign、zuul 等全家桶
 - ==chapter5-5-0：springboot 集成  SpringCloud ==
 
@@ -153,6 +161,11 @@ excel 相关操作
 - chapter8-1-1：springboot 集成 Oss  使用阿里云存储
 - chapter8-1-2：springboot 集成  Java调用 Lua脚本  通过LuaJava
 - chapter8-1-4：springboot 集成  Java调用 Python脚本  通过命令行
+
+
+
+消息中间件
+
 - chapter8-3-0：springboot 集成 RabbitMQ
 
 
@@ -181,12 +194,6 @@ excel 相关操作
 - chapter9-9-9：提供测试代码 编写
   
 
-
-
-
-
-
-
 JavaSe 项目目录
 
 
@@ -201,5 +208,3 @@ JavaSe 项目目录
 - chapter99-16-3：Java 多线程
 - chapter99-18-3：Java 类加载机制与反射
 - 
-
-

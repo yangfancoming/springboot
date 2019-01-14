@@ -16,7 +16,7 @@ import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ApplicationTests {
+public class RabbitMQTest {
 
 
     @Autowired

@@ -1,4 +1,4 @@
-package com.goat;
+package com.goat.javase;
 
 import com.rabbitmq.client.*;
 
@@ -26,6 +26,13 @@ public class RecvTestNg extends CommomTest {
 //        connectionFactory.setVirtualHost("/test"); // 设置虚拟主机
         Connection connection = connectionFactory.newConnection(); // 获取连接
         Channel channel = connection.createChannel();  // 创建通道
+        /**
+         声明队列： 如果队列存在 do nothing  如不存在则创建
+         1. 队列名称
+         2. 是否持久化队列：false则在内存中保存该队列 rabbitMQ重启后消失  true则保存erlang的数据库中  rabbitMQ重启后自动从数据库中读取
+         3. 是否为独占式 ： true 则 其他通道不能访问该队列
+         4. 是否自动删除：
+         */
         channel.queueDeclare(QUEUE,false,false,false,null);
 
         //回调消费消息
