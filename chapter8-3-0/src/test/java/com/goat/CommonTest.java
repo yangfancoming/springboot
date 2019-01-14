@@ -20,6 +20,7 @@ public class CommonTest {
     public static final String QUEUE1 = "myChannel1";
     public static final String QUEUE2 = "myChannel2";
     public final static String EXCHANGE_NAME = "fanout_exchange_test";
+    public final static String DIRECT_EXCHANGE_NAME = "direct_exchange_test";
 
     public static Connection connection = null;
     public static Channel channel  = null;
