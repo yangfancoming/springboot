@@ -1,4 +1,4 @@
-package com.goat.javase.common;
+package com.goat;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -14,9 +14,12 @@ import java.util.concurrent.TimeoutException;
  * @ author  山羊来了
  * @ date 2019/1/14---15:33
  */
-public class CommomTest {
+public class CommonTest {
 
-    public static final String QUEUE = "myChannel1";
+    public static final String QUEUE = "myChannel0";
+    public static final String QUEUE1 = "myChannel1";
+    public static final String QUEUE2 = "myChannel2";
+    public final static String EXCHANGE_NAME = "fanout_exchange_test";
 
     public static Connection connection = null;
     public static Channel channel  = null;
@@ -41,4 +44,14 @@ public class CommomTest {
         return channel;
     }
 
+    public static Channel init2() throws IOException, TimeoutException {
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        connectionFactory.setHost("172.16.163.135");
+//        connectionFactory.setPort(5672);
+        connectionFactory.setUsername("guest");
+        connectionFactory.setPassword("guest");
+        connection = connectionFactory.newConnection(); // 获取连接
+        channel = connection.createChannel();  // 创建通道
+        return channel;
+    }
 }

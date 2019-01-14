@@ -1,6 +1,6 @@
-package com.goat.javase.demo2;
+package com.goat.simple.demo2;
 
-import com.goat.javase.common.CommomTest;
+import com.goat.CommonTest;
 import com.rabbitmq.client.*;
 
 import java.io.IOException;
@@ -13,7 +13,7 @@ import java.util.concurrent.TimeoutException;
  * @ author  山羊来了
  * @ date 2019/1/14---17:45
  */
-public class SendFor extends CommomTest {
+public class SendFor extends CommonTest {
 
     public static void main(String[] args) throws IOException, TimeoutException {
         Channel channel = init();

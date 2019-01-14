@@ -1,7 +1,7 @@
-package com.goat.javase;
+package com.goat.simple;
 
 
-import com.goat.javase.common.CommomTest;
+import com.goat.CommonTest;
 import com.rabbitmq.client.Channel;
 import org.junit.Test;
 
@@ -14,7 +14,7 @@ import java.util.concurrent.TimeoutException;
      * @Date:   2019年1月14日13:53:47
 */
 
-public class SendTestNg extends CommomTest {
+public class SendTestNg extends CommonTest {
 
 
     // 发送 单条 消息
