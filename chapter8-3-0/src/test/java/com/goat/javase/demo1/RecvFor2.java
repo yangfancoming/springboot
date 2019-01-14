@@ -1,8 +1,7 @@
-package com.goat.javase;
+package com.goat.javase.demo1;
 
+import com.goat.javase.common.CommomTest;
 import com.rabbitmq.client.*;
-import org.junit.Test;
-//import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -12,28 +11,11 @@ import java.util.concurrent.TimeoutException;
  *
  * @ Description: TODO
  * @ author  山羊来了
- * @ date 2019/1/14---14:53
+ * @ date 2019/1/14---17:45
  */
+public class RecvFor2 extends CommomTest {
 
-
-public class RecvTestNg extends CommomTest {
-
-    @Test
-    public void recv1() throws IOException, TimeoutException {
-        Channel channel = init();
-        Consumer consumer = new DefaultConsumer(channel) {
-            @Override
-            public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
-                String message = new String(body, "UTF-8"); //  一旦进入该函数 那么 就接收消息确认
-                System.out.println(" [x] Received '" + message + "'");
-            }
-        };
-        channel.basicConsume(QUEUE, true, consumer); // P2 是否自动确认消息消费
-    }
-
-
-    @Test
-    public void recv2() throws IOException, TimeoutException {
+    public static void main(String[] args) throws IOException, TimeoutException {
         Channel channel = init();
         //回调消费消息 doit 录个视频
         Consumer consumer = new DefaultConsumer(channel) {

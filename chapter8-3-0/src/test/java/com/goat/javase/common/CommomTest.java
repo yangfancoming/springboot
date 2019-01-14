@@ -1,4 +1,4 @@
-package com.goat.javase;
+package com.goat.javase.common;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;

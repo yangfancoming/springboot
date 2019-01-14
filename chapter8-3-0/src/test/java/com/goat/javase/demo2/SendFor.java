@@ -1,5 +1,6 @@
-package com.goat.javase;
+package com.goat.javase.demo2;
 
+import com.goat.javase.common.CommomTest;
 import com.rabbitmq.client.*;
 
 import java.io.IOException;
