@@ -16,9 +16,9 @@ public class TestServiceTest {
     @Autowired
     private TestServiceImpl testService;
 
-
     @Test
     public void selectById() { // 通过主键ID 查询
         System.out.println(testService.sayHello(1));
     }
+
 }
