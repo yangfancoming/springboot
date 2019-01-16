@@ -19,7 +19,6 @@
         </dependency>
 
         <!--增加熔断器 仪表盘依赖-->
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>

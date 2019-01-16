@@ -26,11 +26,20 @@ public class TestService {
     public String hiService() {
         return restTemplate.getForObject("http://goat2234234234/hi",String.class);
     }
+/**
+ fallback method wasn't found: hiError([])] with root cause 报错原因： sos 熔断方法 和 请求服务方法 的参数个数，类型不同造成的；
+ public String hiError(String name) {
+ return "hi,"+name+",sorry,error!";
+ }
 
-    // fallback method wasn't found: hiError([])] with root cause 报错原因： sos 熔断方法 和 请求服务方法 的参数个数，类型不同造成的；
-//    public String hiError(String name) {
-//        return "hi,"+name+",sorry,error!";
-//    }
+ sos 熔断方法 和 请求服务方法的 返回值类型不同 造成的！
+ Hint: Fallback method 'public void com.goat.controller.ApiController.hiError()' must return: class java.lang.String or its subclass] with root cause
+ public void hiError(String name) {
+ return "hi,"+name+",sorry,error!";
+ }
+
+ sos ：总结 熔断方法和 请求方法 参数类型和个数 还有 返回值类型 必须都要相同！！！
+*/
 
     public String hiError() {
         return "hi,"+",sorry,error!";

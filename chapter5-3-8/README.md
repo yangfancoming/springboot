@@ -110,3 +110,20 @@
         id: dubbo
         name: dubbo
         serialization: kryo  # 实现高速序列化 
+        
+# 增加 熔断器 hystrix  生产者和消费者都添加依赖
+        <!--增加熔断器 仪表盘依赖  由于 不是springcloud 项目 所以要自己管理版本号-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+            <version>2.0.1.RELEASE</version>
+        </dependency>
+        
+        启动类增加 注解 @EnableHystrix
+        
+        在对外暴露的方法上 添加 注解 @HystrixCommand  sos 如果不到该注解 需要添加依赖 
+                <dependency>
+                    <groupId>com.netflix.hystrix</groupId>
+                    <artifactId>hystrix-javanica</artifactId>
+                    <version>RELEASE</version>
+                </dependency>

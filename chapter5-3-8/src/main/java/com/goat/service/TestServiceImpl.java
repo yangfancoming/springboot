@@ -5,6 +5,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.goat.dao.UserMapper;
 import com.goat.entity.User;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Value;
 
 
@@ -21,6 +22,15 @@ public class TestServiceImpl extends ServiceImpl<UserMapper, User> implements IT
         System.out.println("进入Dubbo 远程调用。。。。。。" + port);
         return baseMapper.selectById(id);
     }
+
+
+    @HystrixCommand // sos 如果找到该注解  就需要添加  hystrix-javanica 依赖
+    @Override
+    public String testHystrix() {
+        System.out.println("进入Dubbo 远程调用。。。。。。" + port);
+        throw new RuntimeException("我是熔断器的测试。。。。。");
+    }
+
 
 
 }
