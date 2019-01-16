@@ -18,10 +18,9 @@ import java.util.UUID;
 /**
  * 类的功能描述：
  * 消息生产者用于发送消息
- *
  * @ClassName: MessageProducer
- * @Author hcxin
- * @Date 2017-09-13 03:45:02
+ * @Author 杨帆
+ * @Date 2019年1月16日13:56:38
  */
 @Component
 @EnableScheduling

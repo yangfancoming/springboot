@@ -9,10 +9,9 @@ import org.springframework.stereotype.Service;
 /**
  * 类的功能描述：
  * 消息消费者者用于处理消息
- *
  * @ClassName: MessageConsumer
- * @Author haichen
- * @Date 2017-09-13 03:45:55
+ * @Author 杨帆
+ * @Date 2019年1月16日13:56:47
  */
 @Service
 public class MessageConsumer {
