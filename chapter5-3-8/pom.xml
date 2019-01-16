@@ -53,6 +53,12 @@
             <version>RELEASE</version>
         </dependency>
 
+        <!--&lt;!&ndash;增加熔断器 仪表盘依赖&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>-->
+            <!--<version>2.0.1.RELEASE</version> &lt;!&ndash;sos 由于 不是springcloud 项目 所以要自己管理版本号&ndash;&gt;-->
+        <!--</dependency>-->
         <!-- 高速序列化 kryo 依赖 -->
         <dependency>
             <groupId>de.javakaffee</groupId>

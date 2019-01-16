@@ -127,3 +127,11 @@
                     <artifactId>hystrix-javanica</artifactId>
                     <version>RELEASE</version>
                 </dependency>
+                
+# 熔断器  Hystrix  仪表盘   一般只在 消费者端使用 
+
+    1. 在 pom.xml 中增加依赖
+    2. 在 Application 中增加 @EnableHystrixDashboard 注解
+    3. 创建 hystrix.stream 的 Servlet 配置  (HystrixDashboardConfiguration)
+    4. 测试 Hystrix Dashboard 浏览器端访问 http://localhost:8537/hystrix 界面如下： 
+    5. 在熔断页面 填写 http://localhost:8537/hystrix.stream  delay：监视时间间隔  Title： 随意

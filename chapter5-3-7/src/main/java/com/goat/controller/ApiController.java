@@ -36,8 +36,7 @@ public class ApiController {
         return temp;
     }
 
-    public void hiError() {
-        System.out.println("1111");
-//        return "hi,"+",sorry,error!";
+    public String hiError() {
+        return "hi,"+",sorry,error!";
     }
 }
