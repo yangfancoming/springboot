@@ -71,3 +71,35 @@
 
     2. java.lang.IllegalStateException: Found multiple @SpringBootConfiguration annotated classes
     分析原因：因为项目是springboot+dubbo架构，dao项目依赖于pojo项目，在pojo项目中也有启动类@SpringBootApplication，因为在dao的测试类中启动方法时，会加载pojo项目启动类，所以会造成上图所示错误，注释掉pojo项目启动类上的@SpringBootApplication注解即可。
+
+
+# Dubbo 四种 负载均衡 策略
+    1.Random LoadBalance
+    随机，按权重设置随机概率。
+    在一个截面上碰撞的概率高，但调用量越大分布越均匀，而且按概率使用权重后也比较均匀，有利于动态调整提供者权重。
+    
+    2.RoundRobin LoadBalance
+    轮询，按公约后的权重设置轮询比率。
+    存在慢的提供者累积请求的问题，比如：第二台机器很慢，但没挂，当请求调到第二台时就卡在那，久而久之，所有请求都卡在调到第二台上。
+    
+    3.LeastActive LoadBalance
+    最少活跃调用数，相同活跃数的随机，活跃数指调用前后计数差。
+    使慢的提供者收到更少请求，因为越慢的提供者的调用前后计数差会越大。
+    
+    4.ConsistentHash LoadBalance
+    一致性 Hash，相同参数的请求总是发到同一提供者。
+    当某一台提供者挂时，原本发往该提供者的请求，基于虚拟节点，平摊到其它提供者，不会引起剧烈变动。
+    
+    生产者配置：spring.dubbo.provider.loadbalance=roundrobin
+    消费者配置：spring.dubbo.consumer.loadbalance=roundrobin
+    
+# kryo 序列化配置
+    生产者和消费者 都添加依赖
+            <dependency>
+                <groupId>de.javakaffee</groupId>
+                <artifactId>kryo-serializers</artifactId>
+                <version>0.42</version>
+            </dependency>
+            
+    生产者配置：spring.dubbo.protocol.serialization=kryo
+    消费者配置：spring.dubbo.protocol.serialization=kryo

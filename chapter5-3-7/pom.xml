@@ -36,10 +36,18 @@
 
         <!-- Spring Boot Dubbo 依赖 -->
         <dependency>
-            <groupId>com.gitee.reger</groupId>
-            <artifactId>spring-boot-starter-dubbo</artifactId>
-            <version>1.1.1</version>
+            <groupId>com.alibaba.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>0.2.0</version>
         </dependency>
+
+        <!-- 高速序列化 kryo 依赖 -->
+        <dependency>
+            <groupId>de.javakaffee</groupId>
+            <artifactId>kryo-serializers</artifactId>
+            <version>0.42</version>
+        </dependency>
+
         <!--  引入 common api 依赖 -->
         <dependency>
             <groupId>com.goat.springboot.learing</groupId>

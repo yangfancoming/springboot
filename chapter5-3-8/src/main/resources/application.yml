@@ -1,0 +1,26 @@
+# dubbo服务发布者实现类注解@service所在的包  sos 这里注意： 包扫描的是  service 的上一层
+
+
+dubbo:
+  scan:
+#    base-packages: com.goat fuck 这里 是个大坑！！！ dubbo 2.6.2 之后都是 basePackages 写法，使用 base-packages 则 无法扫描到 要暴露的服务
+    basePackages: com.goat
+  application:
+    id: service-provider
+    name: service-provider
+  protocol:
+    id: dubbo
+    name: dubbo
+    serialization: kryo
+    # 同一个duboo项目 启动多个实例时 报错 Caused by: java.net.BindException: Address already in use: bind   需要 更改 protocol.port 就可以解决！
+#     port: 20860
+#    port: 20861
+
+
+  registry:
+    id: zookeeper
+    address: zookeeper://172.16.163.135
+    port: 2181
+
+  provider:
+    loadbalance: roundrobin
