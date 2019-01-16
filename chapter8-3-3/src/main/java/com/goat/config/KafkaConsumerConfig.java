@@ -68,8 +68,4 @@ public class KafkaConsumerConfig {
         return propsMap;
     }
 
-//        @Bean
-//        public Listener listener() {
-//            return new Listener();
-//        }
 }

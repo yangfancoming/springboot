@@ -29,12 +29,25 @@
 # **也就是等待消费者处理完毕并自己对刚刚处理的消息进行确认之后**  才发送下一条消息，防止消费者太过于忙碌，也防止它太过去清闲。
 
 
-# exchage类型:
-     1. direct
-     2. topic
+# exchage 交换机类型:
+     1. direct ： 如果路由键完全匹配的话,消息才会被投放到相应的队列.
+     2. topic  ： 设置模糊的绑定方式,"*"操作符将"."视为分隔符,匹配单个字符;"#"操作符没有分块的概念,它将任意"."均视为关键字的匹配部分,能够匹配多个字符
      3. headers 
-     4. fanout
+     4. fanout ： 当发送一条消息到fanout交换器上时,它会把消息投放到所有附加在此交换器的上的队列.
 # RabbitMQ 持久化:     
      消息 持久化：     channel.basicPublish(TOPIC_EXCHANGE_NAME, "item.insert", MessageProperties.PERSISTENT_BASIC, message.getBytes());
      队列 持久化：     channel.queueDeclare(QUEUE1, true, false, false, null);
-     交换器 持久化：  channel.exchangeDeclare(TOPIC_EXCHANGE_NAME, "direct",true);
+     交换器 持久化：   channel.exchangeDeclare(TOPIC_EXCHANGE_NAME, "direct",true);
+     
+#RabbitMQ的五种模式
+     1.简单队列(simple-demo1)   
+     一个生产者对应一个消费者!!!
+     2.work模式(simple-demo2)  
+     一个生产者对应多个消费者,但是只能有一个消费者获得消息!!!
+     3.发布/订阅模式
+     一个消费者将消息首先发送到交换器,交换器绑定多个队列,然后被监听该队列的消费者所接收并消费.
+     4.路由模式
+     生产者将消息发送到direct交换器,在绑定队列和交换器的时候有一个路由key,生产者发送的消息会指定一个路由key,那么消息只会发送到相应key相同的队列,接着监听该队列的消费者消费信息.
+     5.主题模式
+     上面的路由模式是根据路由key进行完整的匹配(完全相等才发送消息),这里的通配符模式通俗的来讲就是模糊匹配.
+     符号"#"表示匹配一个或多个词,符号"*"表示匹配一个词.

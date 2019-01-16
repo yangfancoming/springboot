@@ -11,4 +11,10 @@ public class KafkaApplication {
 		SpringApplication.run(KafkaApplication.class, args);
 	}
 
+	// 使用这种方式也可以
+//    public static void main(String[] args) {
+//        ConfigurableApplicationContext context = SpringApplication.run(SpringbootKafkaApplication.class, args);
+//        KafkaSender sender = context.getBean(KafkaSender.class);
+//        sender.send();
+//    }
 }
