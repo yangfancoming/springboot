@@ -90,8 +90,13 @@
     一致性 Hash，相同参数的请求总是发到同一提供者。
     当某一台提供者挂时，原本发往该提供者的请求，基于虚拟节点，平摊到其它提供者，不会引起剧烈变动。
     
-    生产者配置：spring.dubbo.provider.loadbalance=roundrobin
-    消费者配置：spring.dubbo.consumer.loadbalance=roundrobin
+    生产者配置： 
+      provider:
+        loadbalance: roundrobin  # 实现负载均衡 
+
+    消费者配置：
+      consumer:
+         loadbalance: roundrobin  # 实现负载均衡 
     
 # kryo 序列化配置
     生产者和消费者 都添加依赖
@@ -100,6 +105,8 @@
                 <artifactId>kryo-serializers</artifactId>
                 <version>0.42</version>
             </dependency>
-            
-    生产者配置：spring.dubbo.protocol.serialization=kryo
-    消费者配置：spring.dubbo.protocol.serialization=kryo
+    生产者和消费者 都添 如下配置
+      protocol:
+        id: dubbo
+        name: dubbo
+        serialization: kryo  # 实现高速序列化 

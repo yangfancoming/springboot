@@ -12,12 +12,7 @@
     <artifactId>dubbo-producer</artifactId>
 
     <dependencies>
-        <!-- Spring Boot Dubbo 依赖 -->
-        <dependency>
-            <groupId>com.gitee.reger</groupId>
-            <artifactId>spring-boot-starter-dubbo</artifactId>
-            <version>1.1.1</version>
-        </dependency>
+
 
         <!-- 这里的 groupId    为 dubbo-api 项目的 <groupId>com.goat.springboot.learing</groupId>-->
         <!-- 这里的 artifactId 为 dubbo-api 项目的   <artifactId>dubbo-api</artifactId> -->

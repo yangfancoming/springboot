@@ -13,12 +13,6 @@
 
 
     <dependencies>
-        <!-- Spring Boot Dubbo 依赖 -->
-        <dependency>
-            <groupId>com.gitee.reger</groupId>
-            <artifactId>spring-boot-starter-dubbo</artifactId>
-            <version>1.1.1</version>
-        </dependency>
 
         <dependency>
             <artifactId>dubbo-api</artifactId>
