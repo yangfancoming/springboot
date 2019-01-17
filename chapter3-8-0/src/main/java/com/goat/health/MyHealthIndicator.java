@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 /**
  * <p>自定义健康端点</p>
  */
+
+//测试地址： http://localhost:8080/actuator/health
 @Component("my1")
 public class MyHealthIndicator implements HealthIndicator {
 
@@ -18,12 +20,10 @@ public class MyHealthIndicator implements HealthIndicator {
         if (code != 0) {
             Health.down().withDetail("code", code).withDetail("version", VERSION).build();
         }
-        return Health.up().withDetail("code", code)
-                .withDetail("version", VERSION).up().build();
+        return Health.up().withDetail("code", code).withDetail("version", VERSION).up().build();
     }
 
     private int check() {
-
         return 0;
     }
 }
