@@ -1,10 +1,39 @@
-#基于 Docker 来安装 FastDFS
+#基于 Docker 来安装 FastDFS  不好用。。。
+
 version: '3.1'
 services:
-  fastdfs:
-    build: environment
+  tracker:
+    image: season/fastdfs:1.2
     restart: always
-    container_name: fastdfs
     volumes:
-      - ./storage:/fastdfs/storage
-    network_mode: host
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "./tracker_data:/fastdfs/tracker/data"
+    network_mode: "host"
+    command: "tracker"
+
+  storage:
+    image: season/fastdfs:1.2
+    restart: always
+    volumes:
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+      - "./storage_base_path:/fastdfs/storage/data"
+      - "./store_path0:/fastdfs/store_path"
+    environment:
+      TRACKER_SERVER: "172.16.163.135:22122"
+    network_mode: "host"
+    command: "storage"
+
+#  nginx:
+#    image: season/fastdfs:1.2
+#    restart: always
+#    volumes:
+#      - "/etc/timezone:/etc/timezone:ro"
+#      - "/etc/localtime:/etc/localtime:ro"
+#      - "./nginx.conf:/etc/nginx/conf/nginx.conf"
+#      - "./store_path0:/fastdfs/store_path"
+#    environment:
+#      TRACKER_SERVER: "192.168.174.129:22122"
+#    network_mode: "host"
+#    command: "nginx"
