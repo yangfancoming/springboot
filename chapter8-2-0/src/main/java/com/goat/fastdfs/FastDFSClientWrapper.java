@@ -56,7 +56,7 @@ public class FastDFSClientWrapper {
 
     // 封装图片完整URL地址
     private String getResAccessUrl(StorePath storePath) {
-        String fileUrl = "http://172.16.163.135/" + storePath.getFullPath();
+        String fileUrl = "http://192.168.235.207/" + storePath.getFullPath();
         return fileUrl;
     }
 
