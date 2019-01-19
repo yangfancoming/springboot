@@ -1,5 +1,5 @@
 # dubbo服务发布者实现类注解@service所在的包  sos 这里注意： 包扫描的是  service 的上一层
-
+#  spring.dubbo.protocol.port=20880
 
 dubbo:
   scan:
@@ -13,7 +13,8 @@ dubbo:
     name: dubbo
     serialization: kryo  # 实现高速序列化
     # 同一个duboo项目 启动多个实例时 报错 Caused by: java.net.BindException: Address already in use: bind   需要 更改 protocol.port 就可以解决！
-#     port: 20860
+#    host: 47.98.148.84  # doit  一旦加这个属性  在阿里云上报错  Failed to bind NettyServer on /47.98.148.84:20880, cause: Failed to bind to:
+#    port: 20880 # 该端口为 消费者 远程RPC调用生产者时  所使用的端口！！！ 默认为 20880
 #    port: 20861
 
   registry:

@@ -15,9 +15,9 @@ dubbo:
 
   registry:
     id: zookeeper
-#    address: zookeeper://172.16.163.135
+    address: zookeeper://172.16.163.135
 #    address: zookeeper://47.98.148.84 # 注册到 阿里云的 zookeeper
-    address: zookeeper://172.16.71.34  # 注册到 阿里云的 内网id zookeeper
+#    address: zookeeper://172.16.71.34  # 注册到 阿里云的 内网id zookeeper
     port: 2181
 
   consumer:
