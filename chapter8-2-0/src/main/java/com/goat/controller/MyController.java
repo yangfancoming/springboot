@@ -1,5 +1,6 @@
 package com.goat.controller;
 
+
 import com.goat.fastdfs.FastDFSClientWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,4 +32,10 @@ public class MyController {
         System.out.println(imgUrl);
         return imgUrl; // http://192.168.235.207/group1/M00/00/00/wKjrz1xBjWGAezm-AAAAZeAEstw525.txt
     }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public void upload(String fileUrl) {
+        dfsClient.deleteFile(fileUrl);
+    }
+
 }

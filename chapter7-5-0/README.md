@@ -5,7 +5,7 @@
     
     
 #  配置 maven 仓库  阿里云镜像  
-    在 <mirror>  </mirrors>   标签中 加入
+    在 <mirror>  </mirrors>   标签中 加入 
         <!-- 阿里云仓库 -->
         <mirror>
             <id>alimaven</id>
