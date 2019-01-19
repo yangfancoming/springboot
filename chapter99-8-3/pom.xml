@@ -7,7 +7,7 @@
     <groupId>com.goat.springboot.learing</groupId>
     <artifactId>chapter99-8-3</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
+    <packaging>pom</packaging>
     <dependencies>
         <!--引入 TestNg -->
         <dependency><groupId>org.testng</groupId><artifactId>testng</artifactId><version>RELEASE</version></dependency>

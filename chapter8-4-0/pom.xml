@@ -9,11 +9,25 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <packaging>pom</packaging>
     <artifactId>chapter8-4-0</artifactId>
 
 
     <dependencies>
-
-
+        <!-- maven 如何将 本地jar包 install本地仓库-->
+        <!--mvn install:install-file -DgroupId=cn.goat.qrcode -DartifactId=my-qrcode-api -Dversion=0.10.1 -Dpackaging=jar -Dfile=F:/Package/Java Environment/MyJars/QRCode.jar-->
     </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

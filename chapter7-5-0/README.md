@@ -43,3 +43,10 @@
     pom
     war
     如果是需要部署的项目，则需要打包成war类型 ，如果只是内部调用或者是作服务使用，则推荐打包成jar类型。
+
+
+# 报错 Failed to read artifact descriptor for xxx:jar  
+      项目 chapter2-3-2 和 chapter5-3-8 依赖了 chapter0-1-0 但是 chapter2-3-2 package时报错  Failed to read artifact descriptor for xxx:jar 
+      是因为 chapter0-1-0 的父项目 springboot 并没有install
+      大致翻译一下：如果你有子项目引用了父项目的POM，但没有在父项目POM目录下执行安装操作，这个问题就会出现。
+      针对子模块依赖兄弟子模块的情况，需要在父项目POM目录下至少执行一次安装。

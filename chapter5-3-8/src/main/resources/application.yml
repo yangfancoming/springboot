@@ -16,10 +16,10 @@ dubbo:
 #     port: 20860
 #    port: 20861
 
-
   registry:
     id: zookeeper
-    address: zookeeper://172.16.163.135
+#    address: zookeeper://172.16.163.135
+    address: zookeeper://47.98.148.84 # 注册到 阿里云的 zookeeper
     port: 2181
 
   provider:

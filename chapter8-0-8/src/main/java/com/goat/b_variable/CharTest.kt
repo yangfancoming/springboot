@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
 	val ch = '\u9999'
 
 	// 定义一个'疯'字符值
-	var zhong = '疯'
+	var zhong = '1' // 编译报错  Too many characters in a character literal ''??''
 
     print(aChar)
     print(enterChar)

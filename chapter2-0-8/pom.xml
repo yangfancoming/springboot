@@ -73,44 +73,12 @@
         <!-- Swagger2Markup 是Github上的一个开源项目。该项目主要用来将Swagger自动生成的文档转换成几种流行的格式以便于静态部署和使用，比如：AsciiDoc、Markdown、Confluence。 -->
         <!-- Swagger => AsciiDoc的源文件 -->
         <!--doit 依赖报错 无法生成 markdown文件了。。。 貌似官网挂了 因为 maven 在线仓库 有这个依赖的 但是无法引入 -->
-        <dependency>
-            <groupId>io.github.swagger2markup</groupId>
-            <artifactId>swagger2markup</artifactId>
-            <version>${swagger2markup.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>swagger-models</artifactId>
-                    <groupId>io.swagger</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>guava</artifactId>
-                    <groupId>com.google.guava</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jsr305</artifactId>
-                    <groupId>com.google.code.findbugs</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jackson-coreutils</artifactId>
-                    <groupId>com.github.fge</groupId>
-                </exclusion>
-
-                <!--<exclusion>-->
-                    <!--<artifactId>paleo-core</artifactId>-->
-                    <!--<groupId>ch.netzwerg</groupId>-->
-                <!--</exclusion>-->
-                <!--<exclusion>-->
-                    <!--<artifactId>markup-document-builder</artifactId>-->
-                    <!--<groupId>io.github.swagger2markup</groupId>-->
-                <!--</exclusion>-->
-            </exclusions>
-
-        </dependency>
-
+        <!-- 添加Swagger2markup依赖 -->
+        <!--<dependency>-->
+            <!--<groupId>io.github.swagger2markup</groupId>-->
+            <!--<artifactId>swagger2markup</artifactId>-->
+            <!--<version>1.3.1</version>-->
+        <!--</dependency>-->
 
 
         <!--使用Java代码生成html-->
