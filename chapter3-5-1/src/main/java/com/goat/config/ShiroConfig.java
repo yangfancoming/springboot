@@ -2,16 +2,13 @@ package com.goat.config;
 
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
-import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Properties;
 
 
 /**
@@ -36,36 +33,33 @@ public class ShiroConfig {
 
 	@Bean
 	public ShiroFilterFactoryBean shirFilter(SecurityManager securityManager) {
-		System.out.println("ShiroConfiguration.shirFilter()");
-		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
-		shiroFilterFactoryBean.setSecurityManager(securityManager);
+
 		//拦截器.
-		Map<String,String> filterChainDefinitionMap = new LinkedHashMap<>();// 为了保证顺序 使用 LinkedHashMap
+		Map<String,String> filterMap = new LinkedHashMap<>();// 为了保证顺序 使用 LinkedHashMap
 		// 配置不会被拦截的链接 顺序判断
-		filterChainDefinitionMap.put("/", "anon"); //  对应 LoginController  中  index 首页的跳转  不拦截
-		filterChainDefinitionMap.put("/static/**", "anon");
-		filterChainDefinitionMap.put("/test2", "anon"); //  对应 LoginController  中 test2   不拦截
-        filterChainDefinitionMap.put("/doLogin", "anon");
-
-
+		filterMap.put("/", "anon"); //  对应 LoginController  中  index 首页的跳转  不拦截
+		filterMap.put("/static/**", "anon");
+		filterMap.put("/test2", "anon"); //  对应 LoginController  中 test2   不拦截
+        filterMap.put("/doLogin", "anon");
         /**
          授权过滤器 如果 指定了未授权界面 那么 直接跳到指定的页面(403) 如果未指定未授权界面  那么直接报错 401 Unauthorized
          授权认证会调用 doGetAuthorizationInfo 函数
          * */
-		filterChainDefinitionMap.put("/hello/add", "perms[hello:add]");
-        shiroFilterFactoryBean.setUnauthorizedUrl("/403"); //未授权界面;
-
+		filterMap.put("/hello/add", "perms[hello:add]");
 		//配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
-		filterChainDefinitionMap.put("/logout", "logout");
+		filterMap.put("/logout", "logout");
 		//<!-- 过滤链定义，从上向下顺序执行，一般将/**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
-		filterChainDefinitionMap.put("/**", "authc");
+		filterMap.put("/**", "authc");
 		//拦截成功后的跳转页面： 如果不设置默认会自动寻找Web工程根目录下(templates/)的"/login.jsp"页面
-		shiroFilterFactoryBean.setLoginUrl("/login");
-		// 登录成功后要跳转的链接
-//		shiroFilterFactoryBean.setSuccessUrl("/success");
 
-		shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
-		return shiroFilterFactoryBean;
+        // 创建 ShiroFilterFactoryBean 并与 securityManager 进行关联
+        ShiroFilterFactoryBean shiroBean = new ShiroFilterFactoryBean();
+        shiroBean.setSecurityManager(securityManager);
+        shiroBean.setUnauthorizedUrl("/403"); //未授权界面;
+		shiroBean.setLoginUrl("/login");
+//		shiroBean.setSuccessUrl("/success");// 登录成功后要跳转的链接
+		shiroBean.setFilterChainDefinitionMap(filterMap);
+		return shiroBean;
 	}
 
 	/**
@@ -79,15 +73,10 @@ public class ShiroConfig {
 		return hashedCredentialsMatcher;
 	}
 
-
-	@Bean // 将该方法返回值 放入spring容器环境
-	public SecurityManager securityManager(){
-	    // 1. 创建 DefaultWebSecurityManager 对象
-		DefaultWebSecurityManager securityManager =  new DefaultWebSecurityManager();
-        MyShiroRealm myShiroRealm = new MyShiroRealm();
-//        myShiroRealm.setCredentialsMatcher(new HashedCredentialsMatcher());
-        // 3.securityManager 关联 自定义realm
-		securityManager.setRealm(myShiroRealm);
+	@Bean // 将该方法返回值 放入spring容器环境 其在容器中的名称为 securityManager
+	public SecurityManager securityManager(MyShiroRealm myShiroRealm){
+		DefaultWebSecurityManager securityManager =  new DefaultWebSecurityManager(); // 1. 创建 DefaultWebSecurityManager 对象
+		securityManager.setRealm(myShiroRealm);  // 2.securityManager 关联 自定义realm
 		return securityManager;
 	}
 

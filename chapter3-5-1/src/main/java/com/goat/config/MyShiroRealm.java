@@ -13,18 +13,17 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.springframework.stereotype.Component;
 
 /**
-     * @Description:  自定义 Realm 类
+     * @Description:  自定义 Realm 类  需要继承shiro 提供的  AuthorizingRealm类
      * @author: 杨帆
      * @Param:
      * @Return:
      * @Date:   2018/11/7
 */
-
+@Component
 public class MyShiroRealm extends AuthorizingRealm {
-
-
 
     /* 执行授权 ： 主要是用来进行身份认证的，也就是说验证用户输入的账号和密码是否正确。*/
     @Override
@@ -46,6 +45,7 @@ public class MyShiroRealm extends AuthorizingRealm {
     /* 执行认证 ： 主要是用来进行身份认证的，也就是说验证用户输入的账号和密码是否正确。*/
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+        System.out.println("执行认证方法");
         String judgeName = "goat";
         String username = (String)token.getPrincipal();  //获取用户的输入的账号
 

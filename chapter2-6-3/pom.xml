@@ -46,6 +46,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+        <!-- 为了支持 LEGACYHTML5 -->
+        <dependency>
+            <groupId>net.sourceforge.nekohtml</groupId>
+            <artifactId>nekohtml</artifactId>
+            <version>1.9.22</version>
+        </dependency>
 
         <!--导入配置文件处理器，配置文件进行绑定就会有提示-->
         <dependency>
@@ -56,18 +62,12 @@
 
         <!--引入 testNG -->
         <!--<dependency><groupId>org.testng</groupId> <artifactId>testng</artifactId><scope>test</scope></dependency>-->
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>RELEASE</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.testng</groupId>-->
+            <!--<artifactId>testng</artifactId>-->
+            <!--<version>RELEASE</version>-->
+        <!--</dependency>-->
 
-        <!-- 为了支持 LEGACYHTML5 -->
-        <dependency>
-            <groupId>net.sourceforge.nekohtml</groupId>
-            <artifactId>nekohtml</artifactId>
-            <version>1.9.22</version>
-        </dependency>
 
             <!--
             Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.7.0:compile (default-compile) on project chapter2-6-3: Compilation failure

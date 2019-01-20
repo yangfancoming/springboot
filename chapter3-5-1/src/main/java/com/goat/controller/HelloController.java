@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/hello")
 public class HelloController {
 
-//    http://localhost:8351/hello/test2
+//    http://localhost:8351/hello/test1
     @RequestMapping("/test1")
     public String hello(){
         return "goat like coming!"; // fuck 使用@RestController 这里会返回json字符串  使用@Controller 这里会去 templates 路径下找  名称为goat like coming!的html文件！！！
