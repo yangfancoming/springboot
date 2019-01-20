@@ -26,5 +26,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         return baseMapper.findMapById(id);
     }
 
+    @Override
+    public User selectByUsername(String username) {
+        return null;
+    }
+
 
 }

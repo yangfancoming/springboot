@@ -1,5 +1,6 @@
 package com.goat.config;
 
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -49,7 +50,7 @@ public class ShiroConfig {
         // 创建 ShiroFilterFactoryBean 并与 securityManager 进行关联
         ShiroFilterFactoryBean shiroBean = new ShiroFilterFactoryBean();
         shiroBean.setSecurityManager(securityManager);
-        shiroBean.setUnauthorizedUrl("/403"); //未授权界面;
+        shiroBean.setUnauthorizedUrl("/403"); //未授权界面; perms[hello:add] 验证失败后 要跳转的页面
         //拦截成功后的跳转页面： 如果不设置默认会自动寻找Web工程根目录下(templates/)的"/login.jsp"页面
 		shiroBean.setLoginUrl("/login"); // 请求被拦截后  跳转到 登录页面  (哥是登录页哦)
 		shiroBean.setSuccessUrl("/success");// 登录成功后要跳转的链接
@@ -74,6 +75,12 @@ public class ShiroConfig {
 		securityManager.setRealm(myShiroRealm);  // 2.securityManager 关联 自定义realm
 		return securityManager;
 	}
+
+	// 用于  thymeleaf 和 shiro 标签配合使用
+    @Bean
+	public ShiroDialect getShiroDialect(){
+	    return new ShiroDialect();
+    }
 
 //	/**
 //	 *  开启shiro aop注解支持.

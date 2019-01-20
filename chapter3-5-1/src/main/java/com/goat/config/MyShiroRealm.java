@@ -1,13 +1,11 @@
 package com.goat.config;
 
-//import com.neo.entity.SysPermission;
-//import com.neo.entity.SysRole;
-//import com.neo.entity.UserInfo;
-//import com.neo.sevice.UserInfoService;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.goat.dto.UserInfo;
 import com.goat.entity.User;
 import com.goat.service.IUserService;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -16,6 +14,7 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Component;
 
 /**
@@ -36,16 +35,17 @@ public class MyShiroRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         System.out.println("执行授权方法");
         // 给资源进行授权
-        SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-        authorizationInfo.addStringPermission("hello:add");// 授予 对应  filterChainDefinitionMap.put("/hello/add", "perms[hello:add]");  访问权限
-//        UserInfo userInfo  = (UserInf)principals.getPrimaryPrincipal();
+        SimpleAuthorizationInfo authInfo = new SimpleAuthorizationInfo();
+        authInfo.addStringPermission("hello:add");// 授予 对应  filterChainDefinitionMap.put("/hello/add", "perms[hello:add]");  访问权限
+        User userInfo  = (User) principals.getPrimaryPrincipal();
 //        for(SysRole role:userInfo.getRoleList()){
-//            authorizationInfo.addRole(role.getRole());
+//            authInfo.addRole(role.getRole());
 //            for(SysPermission p:role.getPermissions()){
-//                authorizationInfo.addStringPermission(p.getPermission());
+//                authInfo.addStringPermission(p.getPermission());
 //            }
 //        }
-        return authorizationInfo;
+        authInfo.addStringPermission(userInfo.getRoleid());
+        return authInfo;
     }
 
     /* 执行认证 ： 主要是用来进行身份认证的，也就是说验证用户输入的账号和密码是否正确。*/
@@ -64,7 +64,7 @@ public class MyShiroRealm extends AuthorizingRealm {
          *  设置的自定义realm  又设置了 hashedCredentialsMatcher 的 MD5 那么 P2 必须是 经过 M5 加密的
          * */
         // 2. 判断密码
-        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user.getUsername(),user.getPassword(),getName());
+        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user,user.getPassword(),getName());
         return authenticationInfo;
     }
 

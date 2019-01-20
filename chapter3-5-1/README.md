@@ -7,6 +7,14 @@
             <version>1.4.0</version>
         </dependency>
         
+        <!-- 增加 thymeleaf 和 shiro 标签依赖 -->        
+        <dependency>
+            <groupId>com.github.theborakompanioni</groupId>
+            <artifactId>thymeleaf-extras-shiro</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        
+        html 页面增加：  <html lang="zh_CN" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
         
     1.Subject  用户主题 把操作交给 SecurityManager
     2.SecurityManager  安全管理器  关联Realm 
@@ -17,3 +25,5 @@
     创建 SecurityManager 并与自定义的 MyShiroRealm 进行关联
     创建 ShiroFilterFactoryBean  并与 SecurityManager 进行关联
     
+    
+   

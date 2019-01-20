@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 
 <head>
     <title>Thymeleaf</title>
@@ -11,7 +11,16 @@
 <div id="div01" class="myDiv" th:id="${hello}" th:class="${hello}" th:text="${hello}">这是显示欢迎信息</div>
 <h3 th:text="${nani}"></h3>
 
-<a href="hello/add">添加</a>
-<a href="hello/edit">修改</a>
+<div shiro:hasPermission = "user:add">
+    <a href="hello/add">添加</a>
+</div>
+<!--<shiro:hasPermission></shiro:hasPermission>-->
+
+<div shiro:hasPermission="user:update">
+    <a href="hello/edit">修改</a>
+</div>
+
 </body>
 </html>
+
+<!--'!', '!=', '%', '&#', '&&', '&gt;', '&lt;', '(', '*', '+', '+=', ',', '-', '.', '/',
