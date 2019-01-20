@@ -39,14 +39,13 @@ public class LoginController {
     // http://localhost:8351/hello/test3
     @RequestMapping("/doLogin")
     public String doLogin(String username , String password, Model model){
-        // 1. 获取 Subject
-        Subject subject = SecurityUtils.getSubject();
-        // 2. 封装 用户数据
-        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+
+        Subject subject = SecurityUtils.getSubject(); // 1. 获取 Subject
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password);  // 2. 封装 用户输入的账号和密码
         // 3. 执行登录方法   如果没有抛出异常,就表示用户名和密码是匹配的,表示登录成功
         try {
             subject.login(token); //  跳到 doGetAuthenticationInfo 函数 去认证
-            return "redirect:hello/success";
+            return "redirect:/hello/success"; // 若没有异常则 登录成功
         } catch (UnknownAccountException e) {
             model.addAttribute("msg","用户名不存在");
             return "login";

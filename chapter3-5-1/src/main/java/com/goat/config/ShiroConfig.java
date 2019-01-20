@@ -16,11 +16,6 @@ import java.util.Map;
      * @author: 杨帆
  *
 Subject  用户主题 把操作交给 SecurityManager
-SecurityManager  安全管理器  关联Realm
-Realm  Shiro 连接数据的桥梁
-
-ShiroFilterFactoryBean 关联 securityManager 关联 自定义realm
-
 anon  ： 无需认证就可以访问
 authc ： 必须认证后 才能访问
 user  ：  如果使用 rememberMe的功能 可以直接访问
@@ -34,7 +29,7 @@ public class ShiroConfig {
 	@Bean
 	public ShiroFilterFactoryBean shirFilter(SecurityManager securityManager) {
 
-		//拦截器.
+		//shiro内置拦截器.
 		Map<String,String> filterMap = new LinkedHashMap<>();// 为了保证顺序 使用 LinkedHashMap
 		// 配置不会被拦截的链接 顺序判断
 		filterMap.put("/", "anon"); //  对应 LoginController  中  index 首页的跳转  不拦截
@@ -48,16 +43,16 @@ public class ShiroConfig {
 		filterMap.put("/hello/add", "perms[hello:add]");
 		//配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
 		filterMap.put("/logout", "logout");
-		//<!-- 过滤链定义，从上向下顺序执行，一般将/**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
+		// 过滤链定义，从上向下顺序执行，一般将/**放在最为下边  这是一个坑呢，一不小心代码就不好使了;
 		filterMap.put("/**", "authc");
-		//拦截成功后的跳转页面： 如果不设置默认会自动寻找Web工程根目录下(templates/)的"/login.jsp"页面
 
         // 创建 ShiroFilterFactoryBean 并与 securityManager 进行关联
         ShiroFilterFactoryBean shiroBean = new ShiroFilterFactoryBean();
         shiroBean.setSecurityManager(securityManager);
         shiroBean.setUnauthorizedUrl("/403"); //未授权界面;
-		shiroBean.setLoginUrl("/login");
-//		shiroBean.setSuccessUrl("/success");// 登录成功后要跳转的链接
+        //拦截成功后的跳转页面： 如果不设置默认会自动寻找Web工程根目录下(templates/)的"/login.jsp"页面
+		shiroBean.setLoginUrl("/login"); // 请求被拦截后  跳转到 登录页面  (哥是登录页哦)
+		shiroBean.setSuccessUrl("/success");// 登录成功后要跳转的链接
 		shiroBean.setFilterChainDefinitionMap(filterMap);
 		return shiroBean;
 	}

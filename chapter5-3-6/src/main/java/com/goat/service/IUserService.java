@@ -11,4 +11,5 @@ public interface IUserService extends IService<User> {
 
     Map findMapById(Integer id);
 
+    User selectByUsername(String username);
 }

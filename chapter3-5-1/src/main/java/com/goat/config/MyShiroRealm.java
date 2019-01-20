@@ -5,6 +5,9 @@ package com.goat.config;
 //import com.neo.entity.UserInfo;
 //import com.neo.sevice.UserInfoService;
 
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.goat.entity.User;
+import com.goat.service.IUserService;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -24,6 +27,9 @@ import org.springframework.stereotype.Component;
 */
 @Component
 public class MyShiroRealm extends AuthorizingRealm {
+
+    @Reference
+    public IUserService userService;
 
     /* 执行授权 ： 主要是用来进行身份认证的，也就是说验证用户输入的账号和密码是否正确。*/
     @Override
@@ -46,11 +52,10 @@ public class MyShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         System.out.println("执行认证方法");
-        String judgeName = "goat";
         String username = (String)token.getPrincipal();  //获取用户的输入的账号
-
+        User user = userService.selectByUsername(username);
         // 1. 判断账号
-        if(!username.equals(judgeName)){
+        if(!username.equals(user.getUsername())){
             return null;// 如果 输入的账号和数据库中账号不相同 那么这里 null 会使 shiro 抛出 UnknownAccountException 异常
         }
         /**
@@ -59,7 +64,7 @@ public class MyShiroRealm extends AuthorizingRealm {
          *  设置的自定义realm  又设置了 hashedCredentialsMatcher 的 MD5 那么 P2 必须是 经过 M5 加密的
          * */
         // 2. 判断密码
-        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(judgeName,"1234",getName());
+        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user.getUsername(),user.getPassword(),getName());
         return authenticationInfo;
     }
 
