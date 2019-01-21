@@ -1,0 +1,25 @@
+#server:
+#  port: 8514
+#
+#
+#redis:
+#  maxIdle: 300                         #最大空闲数
+#  maxTotal:  1000                        #连接池的最大数据库连接数。设为0表示无限制,如果是jedis 2.4以后用redis.maxTotal
+#  maxWaitMillis : 1000                      # 最大建立连接等待时间。如果超过此时间将接到异常。设为-1表示无限制。
+#  minEvictableIdleTimeMillis: 300000         #连接的最小空闲时间 默认1800000毫秒(30分钟)
+#  numTestsPerEvictionRun: 1024             # 每次逐出检查时 逐出的最大数目 如果为负数就是 : 1/abs(n), 默认3
+#  timeBetweenEvictionRunsMillis: 30000      #逐出扫描的时间间隔(毫秒) 如果为负数,则不运行逐出线程, 默认-1
+#  testOnBorrow: true                         #是否在从池中取出连接前进行检验,如果检验失败,则从池中去除连接并尝试取出另一个
+#  testWhileIdle: true                     #在空闲时检查有效性, 默认false
+#  mymaster:
+#    masterName: mymaster
+##  sentinel:
+##    hostName: 127.0.0.1
+##    port: 26379
+##spring:
+##  redis:
+##    sentinel:
+##      master: 172.16.163.135:26379
+##      nodes:
+##        -172.16.163.135:26380
+##        -172.16.163.135:26381

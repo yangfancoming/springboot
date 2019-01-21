@@ -1,0 +1,24 @@
+#搭建 redis 集群 一主两从环境
+version: '3.1'
+services:
+  master:
+    image: 192.168.235.207:80/goat/redis:4.0.1
+    container_name: redis-master
+    ports:
+      - 6379:6379
+
+  slave1:
+    image: redis
+    container_name: redis-slave-1
+    ports:
+      - 6380:6379
+    command: redis-server --slaveof redis-master 6379 # 指定自己为 从节点 其主节点为 redis-master 容器名/计算机名 因为他们一个局域网里 所以可以使用该种方式访问！
+
+  slave2:
+    image: redis
+    container_name: redis-slave-2
+    ports:
+      - 6381:6379
+    command: redis-server --slaveof redis-master 6379 # 指定自己为 从节点 其主节点为 redis-master
+
+
