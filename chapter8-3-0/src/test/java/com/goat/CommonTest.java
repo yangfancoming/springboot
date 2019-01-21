@@ -16,6 +16,9 @@ import java.util.concurrent.TimeoutException;
  */
 public class CommonTest {
 
+//    public static final String IP = "172.16.163.135";
+    public static final String IP = "192.168.235.207";
+
     public static final String QUEUE = "myChannel0";
     public static final String QUEUE1 = "myChannel1";
     public static final String QUEUE2 = "myChannel2";
@@ -28,7 +31,7 @@ public class CommonTest {
 
     public static Channel init() throws IOException, TimeoutException {
         ConnectionFactory connectionFactory = new ConnectionFactory();
-        connectionFactory.setHost("172.16.163.135");
+        connectionFactory.setHost(IP);
         connectionFactory.setPort(5672);
         connectionFactory.setUsername("guest");
         connectionFactory.setPassword("guest");
@@ -48,7 +51,7 @@ public class CommonTest {
 
     public static Channel init2() throws IOException, TimeoutException {
         ConnectionFactory connectionFactory = new ConnectionFactory();
-        connectionFactory.setHost("172.16.163.135");
+        connectionFactory.setHost(IP);
 //        connectionFactory.setPort(5672);
         connectionFactory.setUsername("guest");
         connectionFactory.setPassword("guest");
