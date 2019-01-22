@@ -32,7 +32,7 @@ public class MongoOperationsTest  {
     @Test
     public void findById() {
         Student student = mongoOps.findById("5bb9b2a7766b333fc07d59a3", Student.class);
-//        log.info("Found: " + student);
+        System.out.println(student);
     }
     @Test
     public void updateFirst() {
