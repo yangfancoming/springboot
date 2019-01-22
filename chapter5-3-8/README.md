@@ -59,7 +59,7 @@
         
  # 三 引入 DubboProviderMPApplication 启动类
         @SpringBootApplication
-        @MapperScan("com.goat.mapper") // sos 不用在每个mapper上添加@Mapper注解
+        @MapperScan("com.goat.mapper")
         public class DubboProviderMPApplication {    
         
  # 四 引入config 包下的 MybatisPlusConfig 和 DataSourceConfig 

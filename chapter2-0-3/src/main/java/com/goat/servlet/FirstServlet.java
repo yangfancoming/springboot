@@ -61,7 +61,7 @@ public class FirstServlet extends HttpServlet {
         req.getSession().getServletContext();
 
         System.out.println(req.getContextPath());//获取上下文路径  ==  /servlet
-        System.out.println(req.getServletPath());//获取请求路径  ==  /fuck
+        System.out.println(req.getServletPath());//获取请求路径  ==  /
         System.out.println(req.getSession().getServletContext().getRealPath("/"));
         //获取绝对路径 == E:\J2EE\IDEA2016\servlet\out\artifacts\servlet_war_exploded\
         //获取绝对路径 == E:\Code\J2EE_code\MySpringBoot\springboot\chapter2-0-3\target\chapter2-0-3-0.0.1-SNAPSHOT\

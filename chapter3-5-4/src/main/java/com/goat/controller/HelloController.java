@@ -13,7 +13,6 @@ import java.util.Map;
  * @author 山羊来了
  * @Description: TODO
  * @date 2018/7/15---22:21
- * @RestController  sos 如果是配合 themleaf 跳转到前台页面，那么这里不能使用 @RestController  否则 无法跳转到页面
  */
 
 @RestController

@@ -13,7 +13,6 @@ import java.util.Map;
  * @author 山羊来了
  * @Description: TODO
  * @date 2018/7/15---22:21
- * @RestController  sos 如果是配合 themleaf 跳转到前台页面，那么这里不能使用 @RestController  否则 无法跳转到页面
  */
 
 @RestController
@@ -23,7 +22,7 @@ public class HelloController {
 //    http://localhost:8355/hello/test1
     @RequestMapping("/test1")
     public String hello(){
-        return "goat like coming!"; // fuck 使用@RestController 这里会返回json字符串  使用@Controller 这里会去 templates 路径下找  名称为goat like coming!的html文件！！！
+        return "goat like coming!";
     }
 
     @RequestMapping("/test2")

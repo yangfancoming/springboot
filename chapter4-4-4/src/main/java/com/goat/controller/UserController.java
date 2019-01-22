@@ -20,7 +20,6 @@ public class UserController {
     @RequestMapping("/test1")
     public void test1() throws InterruptedException {
         User user = userMapper.selectById(2);
-        // sos Thread.sleep(10000); 不会阻塞其他的请求。
         Thread.sleep(10000); // 先从数据库取出记录后   进行线程睡眠  让 test2 去修改
         user.setName("111111");
         int count =  userMapper.updateById(user);

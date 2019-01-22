@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class UpdateTest extends TestCommon  {
 
     @Test
-    public void test() { // doit
+    public void test() {
         commonNativeSqls.updateTest(50, "cc1");
     }
 
