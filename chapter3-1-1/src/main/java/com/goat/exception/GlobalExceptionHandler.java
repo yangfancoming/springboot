@@ -1,6 +1,7 @@
 package com.goat.exception;
 
 
+import org.hibernate.StaleObjectStateException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -55,6 +56,13 @@ public class GlobalExceptionHandler {
     public void defaultErrorHandler(HttpServletRequest req, Exception e) {
         System.out.println(e.getMessage()+ "统一捕获全局异常.............Exception");
     }
-//
+
+    /**   处理 JPA @Version 乐观锁 异常  详情见： chapter4-2-0  JpaTestController */
+    @ExceptionHandler(StaleObjectStateException.class)
+    @ResponseBody
+    public void iOException(StaleObjectStateException e) {
+        System.out.println(e.getMessage()+ "统一捕获全局异常.............StaleObjectStateException");
+    }
+
 }
 

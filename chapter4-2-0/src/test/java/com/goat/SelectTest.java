@@ -17,10 +17,8 @@ import java.util.Optional;
 @SpringBootTest
 public class SelectTest {
 
-
     @Autowired
     MyTableRepository myTableRepository;
-
 
     @Test
     public void test01() {

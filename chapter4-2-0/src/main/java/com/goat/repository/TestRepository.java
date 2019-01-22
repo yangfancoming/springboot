@@ -1,7 +1,11 @@
 package com.goat.repository;
 
 import com.goat.domain.MyMoney;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -16,10 +20,12 @@ import java.util.Optional;
  * Customer 实体类
  * Long 主键ID 类型
  */
-public interface TestRepository extends CrudRepository<MyMoney, Long> {
+public interface TestRepository extends JpaRepository<MyMoney, Long> {
 
     Optional<MyMoney> findById(Long id);
 
-
-
+    @Transactional
+    @Modifying
+    @Query("UPDATE MyMoney SET col1 = col1 + :num WHERE id = :id")
+    Integer updateMoney(@Param("num") Integer num, @Param("id") Long id);
 }

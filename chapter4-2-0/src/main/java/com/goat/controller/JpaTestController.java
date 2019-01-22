@@ -12,21 +12,24 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/test")
-public class TestController {
+public class JpaTestController {
 
     @Autowired
     public TestService testService;
+
+
+    // sos  两个方法 在做并发测试时 要注意原始值 不能与两个方法中的设置值相同   save 后 version值 并不会增加
 
 //    http://localhost:8420/test/test1
     @RequestMapping("/test1")
     public void test1() throws InterruptedException {
         Optional<MyMoney> myMoney = testService.findById(1L);
-        Thread.sleep(10000); // 先从数据库取出记录后   进行线程睡眠  让 test2 去修改
         MyMoney haha = myMoney.get();
-        haha.setCol1("123");
-        testService.save(haha);
-        // sos Thread.sleep(10000); 不会阻塞其他的请求。
-        System.out.println("调用test11111111111111111111");
+        haha.setCol1("1111");
+        System.out.println("test1 准备 save,version=====" + haha.getVersion());
+        Thread.sleep(10000); // 先从数据库取出记录后   进行线程睡眠  让 test2 去修改  sos Thread.sleep(10000); 不会阻塞其他的请求。
+        testService.save(haha); // 触发事务1
+        System.out.println("test1 save。。。。。。。。。。");
 
     }
 
@@ -35,8 +38,11 @@ public class TestController {
     public void test2(){
         Optional<MyMoney> myMoney = testService.findById(1L);
         MyMoney haha = myMoney.get();
-        haha.setCol1("234");
-        testService.save(haha);
-        System.out.println("调用test222222222222222222222");
+        haha.setCol1("2222");
+        System.out.println("test2 准备 save,version=====" + haha.getVersion());
+        testService.save(haha);// 触发事务2
+        System.out.println("test2 save。。。。。。。。。。");
     }
+
+
 }

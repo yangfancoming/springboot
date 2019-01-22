@@ -3,6 +3,8 @@ package com.goat.service;
 import com.goat.domain.MyMoney;
 import com.goat.repository.TestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,5 +33,11 @@ public class TestService {
          testRepository.save(myMoney);
     }
 
-
+    @Transactional
+    public void update(Integer num,Long id) {
+        testRepository.updateMoney(num,id);
+    }
 }
+
+
+//@Query(value = "UPDATE user SET age = if(age is null,0,age) + :age WHERE id = :id",nativeQuery = true)

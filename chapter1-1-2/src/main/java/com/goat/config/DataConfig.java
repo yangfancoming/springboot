@@ -10,10 +10,14 @@ import javax.sql.DataSource;
 public class DataConfig {
 
     /**
-         * @ author: 杨帆
-         @ Bean 注解会告诉Spring 将该方法的返回值 添加到spring容器中 容器中该组件的默认id为函数名
-         * @ Date:   2018/8/24
-    */
+     * @Description: @ Bean 注解会告诉Spring 将该方法的返回值 添加到spring容器中 容器中该组件的默认id为函数名
+     * @author: 杨帆
+     * @Date:   2018/9/12
+     *     出现如果下报错：
+    sos　Establishing SSL connection without server's identity verification is not recommended.
+    According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set
+    可以使用  &useSSL=false 来解决
+     */
     @Bean
     public DataSource dataSource() {
         DruidDataSource ds = new DruidDataSource();
