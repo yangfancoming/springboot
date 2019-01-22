@@ -11,10 +11,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
      * @Date:   2018/9/23
 */
 @SpringBootApplication
-public class Application {
+public class WebjarsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(WebjarsApplication.class, args);
 	}
 
 }
