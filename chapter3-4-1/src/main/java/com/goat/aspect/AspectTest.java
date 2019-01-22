@@ -66,7 +66,7 @@ public class AspectTest {
          * @Param:  测试地址：    http://localhost:8341/hello1
          * @Date:   2018/9/26
     */
-    @After("execution(* com.goat.service.HelloService.SayHiService1(..))")
+    @After("execution(* com.goat.service.HelloService.sayHiService1(..))")
     public void myAfter(){
         System.out.println("哥是后置增强。。。。。。。。。。。");
     }
@@ -79,7 +79,7 @@ public class AspectTest {
          * @Return:  rvt
          * @Date:   2018/9/26
     */
-    @AfterReturning(returning="rvt", pointcut="execution(* com.goat.service.HelloService.SayHiService1(..))")
+    @AfterReturning(returning="rvt", pointcut="execution(* com.goat.service.HelloService.sayHiService1(..))")
     public void afterExec(Object rvt){
         System.out.println("哥是后AfterReturning。。。。。。。。。。。");
         System.out.println(rvt);

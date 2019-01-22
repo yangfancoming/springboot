@@ -13,10 +13,12 @@ import org.springframework.stereotype.Service;
 public class HelloService {
 
     public String sayHiService1(){
+        System.out.println("sayHiService1"); // doit http://localhost:8341/hello1 请求  为啥执行不到这里？
         return "HelloService...........1";
     }
 
     public String sayHiService2(){
+        System.out.println("sayHiService2");
         return "HelloService...........2";
     }
 }

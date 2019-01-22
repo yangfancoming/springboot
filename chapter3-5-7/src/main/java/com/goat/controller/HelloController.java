@@ -19,7 +19,7 @@ import java.util.Map;
 @RequestMapping("/hello")
 public class HelloController {
 
-//    http://localhost:8355/hello/test1
+//    http://localhost:8357/hello/test1
     @RequestMapping("/test1")
     public String hello(){
         return "goat like coming!";
