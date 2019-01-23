@@ -19,7 +19,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  */
 @Configuration
 @EnableWebSecurity // 开启 web 的安全模式
-@EnableGlobalMethodSecurity(prePostEnabled = true)  //  启用方法级别的权限认证
+@EnableGlobalMethodSecurity(prePostEnabled = true)  //  启用方法级别的权限认证 即： controller上的注解： @PreAuthorize("hasRole('VIP1')")
 public class MySecurityConfig  extends WebSecurityConfigurerAdapter {
 
     @Autowired MyPasswordEncoder myPasswordEncoder;
