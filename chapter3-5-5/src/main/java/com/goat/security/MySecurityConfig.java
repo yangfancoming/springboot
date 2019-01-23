@@ -22,33 +22,31 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableGlobalMethodSecurity(prePostEnabled = true)  //  启用方法级别的权限认证
 public class MySecurityConfig  extends WebSecurityConfigurerAdapter {
 
+    @Autowired MyPasswordEncoder myPasswordEncoder;
+    @Autowired MyUserDetailsService myUserDetailsService;
+
     // 定制请求的授权规则
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-//                .antMatchers("/welcome").permitAll()  // 对应  KungfuController 中访问欢迎页的请求   不拦截
-//                .antMatchers("/", "/welcome.html","/login").permitAll()
-                .antMatchers("/myLogin").permitAll()
-                // 只 拦截 post 方式 的 http://localhost:8355/hello/test 请求   get 方式则不拦截
-                .antMatchers(HttpMethod.POST,"/hello/test").authenticated()
-                .antMatchers("/hello/**").permitAll()  //  对应 HelloController 中的所有请求    不拦截
-                .antMatchers("/level1/**").hasRole("VIP1")
-                .antMatchers("/level2/**").hasRole("VIP2")  //  对应  KungfuController 中的 level 请求 需要 对应VIP角色才能访问
-                .antMatchers("/level3/**").hasRole("VIP3")
-                .anyRequest().authenticated();
-        http.formLogin().loginPage("/myLogin")      //  一切非法请求 均重定向到该请求
-                .successForwardUrl("/hello/test2"); //  登录成功后  要跳转的页面
-//        http.formLogin();
+                .antMatchers("/toLogin","/login.html") //
+                .permitAll()
+                .antMatchers(HttpMethod.POST,"/hello/test").authenticated() // 只拦截post方式的 http://localhost:8355/hello/test 请求   get 方式则不拦截
+                .anyRequest().authenticated().and()
+                .formLogin().loginPage("/toLogin")      // 指定登录页的路径 一切非法请求 均重定向到该请求
+                .loginProcessingUrl("/authentication/form")//指定自定义form表单请求的路径
+                .successForwardUrl("/welcome") //  登录成功后  要跳转的页面
+                .failureUrl("/login?error")
+                .permitAll(); // sos 这里要把 /toLogin /authentication/form  /welcome /login?error 全部授权 否则无论登录成功还是失败 就 又跳转到 登录页了！
         http.rememberMe();
     }
 
-    @Autowired
-    MyUserDetailsService myUserDetailsService;
-
-    // 定制认证规则      auth.inMemoryAuthentication().passwordEncoder(new MyPasswordEncoder())
+    // 定制认证规则
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(myUserDetailsService).passwordEncoder(new MyPasswordEncoder());
+        auth
+            .userDetailsService(myUserDetailsService)
+            .passwordEncoder(myPasswordEncoder);
     }
 }

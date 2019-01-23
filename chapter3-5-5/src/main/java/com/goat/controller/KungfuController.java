@@ -3,17 +3,18 @@ package com.goat.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class KungfuController {
 	private final String PREFIX = "pages/";
 
-	@GetMapping("/welcome")
+	@RequestMapping("/welcome")
 	public String index() { // 欢迎页
 		return "welcome";
 	}
 	
-	@GetMapping("/myLogin")
+	@GetMapping("/toLogin")
 	public String loginPage() { // 登陆页
 		return PREFIX+"login";
 	}

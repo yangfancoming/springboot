@@ -29,15 +29,21 @@ public class MyUserDetailsService implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Map<String,Object> sysUser = new HashMap<>();
+        // 模拟数据库查出的用户对象
+        Map<String,String> sysUser = new HashMap<>();
         sysUser.put("username","goat");
         sysUser.put("password","123");
         if (null == sysUser) {
-            throw new UsernameNotFoundException(username);
+            throw new UsernameNotFoundException(username);// 登录失败 跳转到 failureUrl("/login?error")
         }
-        // 这里设置权限和角色
+        /*
+        *  这里设置权限和角色
+        *  sos 有个大坑。。。 前台对应的 <div sec:authorize="hasRole('VIP2')">  VIP2角色 后台这里需要 加上 ROLE_ 前缀才可以的！！！
+        * */
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        authorities.add( new SimpleGrantedAuthority("ROLE_ADMIN") );
-        return new User(sysUser.get("username").toString(), sysUser.get("password").toString(), authorities);
+        authorities.add( new SimpleGrantedAuthority("ROLE_VIP1") );
+        authorities.add( new SimpleGrantedAuthority("ROLE_VIP2") );
+        authorities.add( new SimpleGrantedAuthority("ROLE_VIP3") );
+        return new User(sysUser.get("username"), sysUser.get("password"), authorities);
     }
 }

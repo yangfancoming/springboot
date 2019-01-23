@@ -5,14 +5,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1 align="center">欢迎登陆武林秘籍管理系统</h1>
+	<h1 align="center">自定义登录页面哦 </h1>
 	<hr>
 	<div align="center">
-        <form th:action="@{/myLogin}" method="post">
-
+        <form th:action="@{/authentication/form}" method="post">
             用户名: <input type="text" id="username" name="username" /> <br />
             密码: <input type="password" id="password" name="password" /> <br />
-
 			<input type="submit" value="登陆">
 		</form>
 	</div>

@@ -12,10 +12,13 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class MyPasswordEncoder implements PasswordEncoder {
+
+    // 加密方法  对原始密码进行加密
     @Override
     public String encode(CharSequence charSequence) {
         return charSequence.toString();
     }
+    // 匹配方法   原始密码 与 加密后密码 进行匹配
     @Override
     public boolean matches(CharSequence charSequence, String s) {
         return s.equals(charSequence.toString());
