@@ -2,6 +2,7 @@ package com.goat;
 
 
 import com.goat.annotation.Column;
+import com.goat.annotation.Init;
 import com.goat.annotation.Table;
 import org.testng.annotations.Test;
 import java.lang.reflect.Field;
@@ -24,6 +25,13 @@ public class TestNG  {
             Column column = allfields[i].getDeclaredAnnotation(Column.class);
             if(column != null){
                 System.out.println(column.col_name());
+            }
+        }
+
+        for (int i = 0; i < allfields.length; i++) {
+            Init init = allfields[i].getDeclaredAnnotation(Init.class);
+            if(init != null){
+                System.out.println(init.value());
             }
         }
         Table annotation = aClass.getAnnotation(Table.class);

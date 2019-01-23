@@ -1,6 +1,7 @@
 package com.goat.entity;
 
 import com.goat.annotation.Column;
+import com.goat.annotation.Init;
 import com.goat.annotation.Table;
 
 /**
@@ -17,9 +18,13 @@ public class User {
     @Column(col_name = "user_name")
     private String userName;
 
+    @Column
     private Boolean userSex;
 
     @Column(col_name = "user_age")
     private Integer userAge;
+
+    @Init(value = "13845632145")
+    private String phone;
 
 }

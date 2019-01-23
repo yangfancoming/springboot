@@ -12,6 +12,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME) // 指定注解的声明周期： source/class/runtime
 @Target(ElementType.FIELD) // 指定注解的使用范围
 @Documented // 定义Testable Annotation将被javadoc工具提取
+@Inherited // 注解可以被继承
 public @interface Column {
 
     String col_name() default "gaga";
