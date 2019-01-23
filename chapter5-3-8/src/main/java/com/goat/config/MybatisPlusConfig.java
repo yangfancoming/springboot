@@ -5,8 +5,10 @@ import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.SqlExplainInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 /**
  * Created by 64274 on 2018/12/7.
@@ -25,29 +27,32 @@ public class MybatisPlusConfig {
     //  加分页插件后：  Preparing: SELECT id,name,age,version FROM user WHERE age BETWEEN ? AND ? AND version = ? LIMIT 0,3
     @Bean
     public PaginationInterceptor paginationInterceptor(){
-        PaginationInterceptor page = new PaginationInterceptor();
-        page.setDialectType("mysql");//设置方言类型
-        return page;
+        /**
+             PaginationInterceptor page = new PaginationInterceptor();
+             page.setDialectType("mysql");//设置方言类型
+             return page;
+        */
+        return new PaginationInterceptor(); // 自动识别数据库类型
     }
 
     /**
-     * 性能分析拦截器，不建议生产使用
+     * 性能分析拦截器，【生产环境建议关闭】
      * 控制台可以看到：
          Time：9 ms - ID：com.goat.mapper.UserMapper.insert
          Execute SQL：INSERT INTO user ( name, age ) VALUES ( ?, ? )
      * 超过执行最大时间： 报异常  The SQL execution time is too large, please optimize !
      */
     @Bean
-//    @Profile({"dev","test"})// 设置 dev test 环境开启
+    @Profile({"dev","test"})
     public PerformanceInterceptor performanceInterceptor(){
         PerformanceInterceptor performanceInterceptor = new PerformanceInterceptor();
         //SQL 执行最大时长，超过自动停止该sql运行，有助于发现问题，单位ms
-        //
         performanceInterceptor.setMaxTime(1000); // ms
         //SQL是否格式化  默认false  不建议开启格式化  否则控制台的sql会显得很乱
         // performanceInterceptor.setFormat(true);
         return performanceInterceptor;
     }
+
 
     /**
      执行分析拦截器插件

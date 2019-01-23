@@ -1,6 +1,7 @@
 # dubbo服务发布者实现类注解@service所在的包  sos 这里注意： 包扫描的是  service 的上一层
 #  spring.dubbo.protocol.port=20880
-
+spring:
+  profiles: dev
 dubbo:
   scan:
 #    base-packages: com.goat fuck 这里 是个大坑！！！ dubbo 2.6.2 之后都是 basePackages 写法，使用 base-packages 则 无法扫描到 要暴露的服务
@@ -20,8 +21,10 @@ dubbo:
   registry:
     id: zookeeper
 #    address: zookeeper://172.16.163.135
-    address: zookeeper://47.98.148.84 # 注册到 阿里云的 zookeeper
+    address: zookeeper://192.168.235.207
+#    address: zookeeper://47.98.148.84 # 注册到 阿里云的 zookeeper
     port: 2181
 
   provider:
     loadbalance: roundrobin  # 实现负载均衡
+
