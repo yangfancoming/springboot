@@ -4,6 +4,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
+import java.io.Serializable;
+
 /**
  * Created by 64274 on 2018/7/14.
  *
@@ -18,7 +20,7 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @ConfigurationProperties(prefix = "app")
 //@Validated
-public class Placeholder {
+public class Placeholder implements Serializable {
 
 //    @Email // name属性的值 必须是  Email 格式 否则报错
     String name;

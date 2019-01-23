@@ -1,0 +1,7 @@
+#my:
+#  servers:
+#    port: 8111
+#    threadPool:
+#      maxThreads: 100
+#      minThreads: 8
+#      idleTimeout: 6000

@@ -8,10 +8,10 @@ import org.springframework.context.annotation.ImportResource;
 //@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 @SpringBootApplication
 @ImportResource(locations = {"classpath:beans.xml"})
-public class Application {
+public class ConfigApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(ConfigApplication.class, args);
 	}
 
 }

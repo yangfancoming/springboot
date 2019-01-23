@@ -14,14 +14,8 @@ public class QueryUtil {
 	 * @param sqlStrategy 策略
 	 */
 	public void findUserInfos(String[] userNames,SqlStrategy sqlStrategy) {
-		// 数据库驱动
-		// 连接
-
-		// 策略中获取SQL
 		String sql = sqlStrategy.getSQL(userNames);
 		System.out.println("SQL: " + sql);
-		
-		// 读数据
-		// 封装对象返回
+
 	}
 }
