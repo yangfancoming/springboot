@@ -5,7 +5,6 @@
 spring:
   thymeleaf:
     cache: false #关闭缓存
-#    prefix: /templates/
 
 #@ConfigurationProperties(prefix = "demo.security.jwt")
 jwt.config:

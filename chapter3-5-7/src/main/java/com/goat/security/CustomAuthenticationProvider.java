@@ -1,6 +1,7 @@
 package com.goat.security;
 
 
+import com.goat.entity.User;
 import com.goat.exception.UsernameIsExitedException;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -65,6 +66,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
         //通过用户名从数据库中查询该用户
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+//        User user = userRepository.findByUsername(username);
 
         //判断密码(这里是md5加密方式)是否正确
         String dbPassword = userDetails.getPassword();

@@ -30,7 +30,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (user == null) {
             throw new UsernameIsExitedException("该用户不存在");
         }
-        // 关于 UserDetailsService 和 User 对象之前的文章已经讲过.
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), emptyList());
     }
 }

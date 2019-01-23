@@ -6,6 +6,7 @@ import com.goat.security.CustomAuthenticationProvider;
 import com.goat.security.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -43,11 +44,23 @@ public class MySecurityConfig  extends WebSecurityConfigurerAdapter {
         //禁用 csrf
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/hello","/","/welcome").permitAll() //允许以下请求
-                .anyRequest().authenticated() // 所有请求需要身份认证
+                .antMatchers("/myLogin","/welcome","/toLogin").permitAll() //允许以下请求
+                // 只 拦截 post 方式 的 http://localhost:8355/hello/test 请求   get 方式则不拦截
+                .antMatchers(HttpMethod.POST,"/hello/test").authenticated()
+                .antMatchers("/hello/**").permitAll()  //  对应 HelloController 中的所有请求    不拦截
+                .antMatchers("/level1/**").hasRole("VIP1")
+                .antMatchers("/level2/**").hasRole("VIP2")  //  对应  KungfuController 中的 level 请求 需要 对应VIP角色才能访问
+                .antMatchers("/level3/**").hasRole("VIP3")
+                .anyRequest().authenticated() // 其他所有请求需要身份认证
                 .and()
                 .addFilter(new JWTLoginFilter(authenticationManager())) //验证登陆
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()));  //验证token
+        http.formLogin()
+                .loginPage("/myLogin")      //  一切非法请求 均重定向到该请求
+//                .failureForwardUrl()
+                .successForwardUrl("/hello/test2"); //  登录成功后  要跳转的页面
+
+        http.rememberMe();
     }
 
 

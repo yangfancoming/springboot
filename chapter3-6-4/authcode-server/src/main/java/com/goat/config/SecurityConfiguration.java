@@ -40,7 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/oauth/*").permitAll();
     }
 
-    // 如果不配 PasswordEncoder  则报错：  "There is no PasswordEncoder mapped for the id \"null\"",
+    // 如果不配置 PasswordEncoder  则报错：  "There is no PasswordEncoder mapped for the id \"null\"",
     @Bean
     PasswordEncoder passwordEncoder(){
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();

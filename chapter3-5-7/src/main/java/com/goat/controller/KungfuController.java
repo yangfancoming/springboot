@@ -9,7 +9,7 @@ public class KungfuController {
 	private final String PREFIX = "pages/";
 	/**
 	 * 欢迎页
-     * Error resolving template "welcome", template might not exist or might not be accessible by any of the configured Template Resolvers
+     *  sos Error resolving template "welcome", template might not exist or might not be accessible by any of the configured Template Resolvers
      * 1. 在application.yml 中添加配置
      * spring：
      * thymeleaf：
@@ -31,7 +31,7 @@ public class KungfuController {
 	 * 登陆页
 	 * @return
 	 */
-	@GetMapping("/login")
+	@GetMapping("/myLogin")
 	public String loginPage() {
 		return PREFIX+"login";
 	}
