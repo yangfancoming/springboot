@@ -1,4 +1,4 @@
-package com.goat.config;
+package com.goat.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

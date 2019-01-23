@@ -1,5 +1,6 @@
 package com.goat.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,11 +15,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class JwtFilter {
 
+    @Autowired JwtAuthenticationFilter jwtAuthenticationFilter;
+
     @Bean
     public FilterRegistrationBean myJwtFilter() {
-        final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-        JwtAuthenticationFilter filter = new JwtAuthenticationFilter();
-        registrationBean.setFilter(filter);
-        return registrationBean;
+        return new FilterRegistrationBean(jwtAuthenticationFilter);
     }
 }

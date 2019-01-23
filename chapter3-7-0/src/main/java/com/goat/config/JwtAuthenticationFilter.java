@@ -1,6 +1,7 @@
 package com.goat.config;
 
 import com.goat.utils.JwtUtil;
+import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -12,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
+@Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
+
     private static final PathMatcher pathMatcher = new AntPathMatcher();
 
     @Override
@@ -26,9 +29,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
             return;
         }
-        filterChain.doFilter(request, response);  //如果jwt令牌通过了检测, 那么就把request传递给后面的RESTful api
+        filterChain.doFilter(request, response);  // 过滤器放行 让请求进入 controller
     }
-
 
     //我们只对地址 /api 开头的api检查jwt. 不然的话登录/login也需要jwt
     private boolean isProtectedUrl(HttpServletRequest request) {

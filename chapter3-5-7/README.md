@@ -15,7 +15,9 @@
         @EnableWebSecurity // 开启 web 的安全模式
         @EnableGlobalMethodSecurity(prePostEnabled = true)
         
-        
-        
         Authentication  认证、身份认证
         Authorization   授权，批准;
+        
+        
+# JWT 相关
+    

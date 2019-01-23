@@ -1,9 +1,7 @@
-package com.goat.config;
+package com.goat.security;
 
-import com.goat.filter.JWTAuthenticationFilter;
-import com.goat.filter.JWTLoginFilter;
-import com.goat.security.CustomAuthenticationProvider;
-import com.goat.security.UserDetailsServiceImpl;
+import com.goat.jwt.JWTAuthenticationFilter;
+import com.goat.jwt.JWTLoginFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -26,13 +24,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class MySecurityConfig  extends WebSecurityConfigurerAdapter {
 
-
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
-
-
 
     /**
      这个方法配置了对请求的拦截配置,

@@ -1,7 +1,6 @@
 package com.goat.security;
 
 
-import com.goat.entity.User;
 import com.goat.exception.UsernameIsExitedException;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

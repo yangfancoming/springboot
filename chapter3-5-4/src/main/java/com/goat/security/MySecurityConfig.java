@@ -25,6 +25,7 @@ public class MySecurityConfig  extends WebSecurityConfigurerAdapter {
                 .antMatchers("/level1/**").hasRole("VIP1")
                 .antMatchers("/level2/**").hasRole("VIP2")  //  对应  KungfuController 中的 level 请求 需要 对应VIP角色才能访问
                 .antMatchers("/level3/**").hasRole("VIP3")
+                .antMatchers("/haha/**").hasIpAddress("192.168.235.207")//  "/haha/**" 请求只能被 ip为 "192.168.235.207" 的机器访问
                 .anyRequest().authenticated();
         /*开启自动配置的登录功能： 如果没有权限/没有登录 就会自动跳转到Spring提供的登录页面  /login 如果登录失败 默认 会重定向到  /login?error 页面*/
         http.formLogin().successForwardUrl("/welcome"); //  登录成功后  要跳转的页面 为 POST 请求！所以 对应的controller 必须 @RequestMapping("/welcome") 而不能是 @GetMapping

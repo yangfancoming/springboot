@@ -1,4 +1,4 @@
-package com.goat.config;
+package com.goat.jwt;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -10,14 +10,33 @@ import org.springframework.context.annotation.Configuration;
      * @Date:   2018/7/14
 */
 @Configuration
-@ConfigurationProperties("jwt.config")
+@ConfigurationProperties(prefix = "jwt.config")
 public class JwtConfig {
 
     private Integer tokenExpirationTime;
-    private String  tokenIssuer;
-    private String  tokenSigningKey;
+
+    private String tokenIssuer;
+    private String tokenSigningKey;
     private Integer refreshTokenExpTime;
-    
+    private String header;
+    private String tokenHead;
+
+    public String getHeader() {
+        return header;
+    }
+
+    public void setHeader(String header) {
+        this.header = header;
+    }
+
+    public String getTokenHead() {
+        return tokenHead;
+    }
+
+    public void setTokenHead(String tokenHead) {
+        this.tokenHead = tokenHead;
+    }
+
     public Integer getRefreshTokenExpTime() {
         return refreshTokenExpTime;
     }

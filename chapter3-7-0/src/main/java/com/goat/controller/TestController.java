@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 
 /**
@@ -30,9 +28,9 @@ public class TestController {
         return "Hello World! This is a protected api";
     }
 
-    // http://localhost:8370/
+    // http://localhost:8370/  前天 login 登录按钮 请求方法
     @PostMapping("/login")
-    public Object login(HttpServletResponse response, @RequestBody final Account account) {
+    public Object login(@RequestBody final Account account) {
 
         if(account.getUsername().equals("admin") && account.getPassword().equals("123")){
             String jwt = JwtUtil.generateToken(account.username,"ThisIsASecret");

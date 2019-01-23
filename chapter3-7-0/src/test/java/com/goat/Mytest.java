@@ -8,8 +8,6 @@ import org.junit.Test;
 import java.text.SimpleDateFormat;
 
 
-//@RunWith(SpringRunner.class)
-//@SpringBootTest
 public class Mytest {
 
 

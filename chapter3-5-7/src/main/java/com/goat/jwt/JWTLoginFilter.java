@@ -1,4 +1,4 @@
-package com.goat.filter;
+package com.goat.jwt;
 
 import com.goat.security.GrantedAuthorityImpl;
 import io.jsonwebtoken.Jwts;

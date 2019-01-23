@@ -16,6 +16,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  * @author 山羊来了
  * @Description: TODO
  * @date 2018年11月7日11:31:08
+ *
+ * 3.1、@EnableGlobalMethodSecurity(securedEnabled=true) 开启@Secured 注解过滤权限
+ * 3.2、@EnableGlobalMethodSecurity(jsr250Enabled=true)  开启@RolesAllowed 注解过滤权限 
+ * 3.3、@EnableGlobalMethodSecurity(prePostEnabled=true) 使用表达式时间方法级别的安全性
  */
 @Configuration
 @EnableWebSecurity // 开启 web 的安全模式
@@ -33,7 +37,8 @@ public class MySecurityConfig  extends WebSecurityConfigurerAdapter {
                 .antMatchers("/toLogin","/login.html") //
                 .permitAll()
                 .antMatchers(HttpMethod.POST,"/hello/test").authenticated() // 只拦截post方式的 http://localhost:8355/hello/test 请求   get 方式则不拦截
-                .anyRequest().authenticated().and()
+                .anyRequest().authenticated() // 所有请求需要身份认证
+                .and()
                 .formLogin().loginPage("/toLogin")      // 指定登录页的路径 一切非法请求 均重定向到该请求
                 .loginProcessingUrl("/authentication/form")//指定自定义form表单请求的路径
                 .successForwardUrl("/welcome") //  登录成功后  要跳转的页面

@@ -1,4 +1,4 @@
-package com.goat.filter;
+package com.goat.jwt;
 
 import com.goat.exception.UsernameIsExitedException;
 import io.jsonwebtoken.Claims;
@@ -43,13 +43,11 @@ public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
 
         String token = request.getHeader("token");
-
         //判断是否有token
         if (token == null || !token.startsWith("Bearer ")) {
             chain.doFilter(request, response);
             return;
         }
-
         UsernamePasswordAuthenticationToken authenticationToken = getAuthentication(token);
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         chain.doFilter(request, response);//放行
