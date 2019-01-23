@@ -43,7 +43,7 @@ public class MySecurityConfig  extends WebSecurityConfigurerAdapter {
         //禁用 csrf
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/hello").permitAll() //允许以下请求
+                .antMatchers("/hello","/","/welcome").permitAll() //允许以下请求
                 .anyRequest().authenticated() // 所有请求需要身份认证
                 .and()
                 .addFilter(new JWTLoginFilter(authenticationManager())) //验证登陆

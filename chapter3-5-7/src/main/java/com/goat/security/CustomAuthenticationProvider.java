@@ -48,7 +48,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         return authentication.equals(UsernamePasswordAuthenticationToken.class);
     }
 
-
     /**
      * 验证登录信息,若登陆成功,设置 Authentication
      *
@@ -67,7 +66,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         //通过用户名从数据库中查询该用户
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
-
         //判断密码(这里是md5加密方式)是否正确
         String dbPassword = userDetails.getPassword();
         String encoderPassword = DigestUtils.md5DigestAsHex(password.getBytes());
@@ -76,15 +74,11 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
             throw new UsernameIsExitedException("密码错误");
         }
 
-
         // 还可以从数据库中查出该用户所拥有的权限,设置到 authorities 中去,这里模拟数据库查询.
         ArrayList<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new GrantedAuthorityImpl("ADMIN"));
-
         Authentication auth = new UsernamePasswordAuthenticationToken(username, password, authorities);
-
         return auth;
-
     }
 
 

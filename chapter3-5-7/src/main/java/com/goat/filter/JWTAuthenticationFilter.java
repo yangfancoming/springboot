@@ -28,7 +28,6 @@ public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
         super(authenticationManager);
     }
 
-
     /**
      * 在此方法中检验客户端请求头中的token,
      * 如果存在并合法,就把token中的信息封装到 Authentication 类型的对象中,
@@ -52,13 +51,8 @@ public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
         }
 
         UsernamePasswordAuthenticationToken authenticationToken = getAuthentication(token);
-
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-
-        //放行
-        chain.doFilter(request, response);
-
-
+        chain.doFilter(request, response);//放行
     }
 
     /**
@@ -66,31 +60,23 @@ public class JWTAuthenticationFilter extends BasicAuthenticationFilter {
      */
     private UsernamePasswordAuthenticationToken getAuthentication(String token) {
 
-
         Claims claims = Jwts.parser().setSigningKey("MyJwtSecret")
                 .parseClaimsJws(token.replace("Bearer ", ""))
                 .getBody();
 
-        //得到用户名
-        String username = claims.getSubject();
-
-        //得到过期时间
-        Date expiration = claims.getExpiration();
+        String username = claims.getSubject();//得到用户名
+        Date expiration = claims.getExpiration();//得到过期时间
 
         //判断是否过期
         Date now = new Date();
-
         if (now.getTime() > expiration.getTime()) {
-
             throw new UsernameIsExitedException("该账号已过期,请重新登陆");
         }
-
 
         if (username != null) {
             return new UsernamePasswordAuthenticationToken(username, null, new ArrayList<>());
         }
         return null;
     }
-
 
 }
