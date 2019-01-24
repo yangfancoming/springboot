@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @RestController  sos 如果是配合 themleaf 跳转到前台页面，那么这里不能使用 @RestController  否则 无法跳转到页面
  */
 
-//@RestController
 @Controller
 @RequestMapping("/hello")
 public class HelloController {

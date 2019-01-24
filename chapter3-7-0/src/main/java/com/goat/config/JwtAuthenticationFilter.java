@@ -1,6 +1,7 @@
 package com.goat.config;
 
 import com.goat.utils.JwtUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.PathMatcher;
@@ -16,6 +17,8 @@ import java.io.IOException;
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
+    @Autowired JwtUtil jwtUtil;
+
     private static final PathMatcher pathMatcher = new AntPathMatcher();
 
     @Override
@@ -23,7 +26,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         try {
             if(isProtectedUrl(request)) {
                 String token = request.getHeader("Authorization");
-                JwtUtil.validateToken(token); //检查jwt令牌, 如果令牌不合法或者过期, 里面会直接抛出异常, 下面的catch部分会直接返回
+                jwtUtil.validateToken(token); //检查jwt令牌, 如果令牌不合法或者过期, 里面会直接抛出异常, 下面的catch部分会直接返回
             }
         } catch (Exception e) {
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, e.getMessage());
