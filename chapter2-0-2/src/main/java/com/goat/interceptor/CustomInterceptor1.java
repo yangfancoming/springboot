@@ -18,7 +18,11 @@ import javax.servlet.http.HttpServletResponse;
      * @Date:   2018/11/12
 */
 @Component
-public class CustomInterceptor implements HandlerInterceptor {
+public class CustomInterceptor1 implements HandlerInterceptor {
+
+    /**
+     * 进入controller方法之前
+     */
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) {
         System.out.println("CustomInterceptor1拦截器开始工作，拦截到当前请求地址：" + httpServletRequest.getRequestURL().toString());
@@ -39,18 +43,21 @@ public class CustomInterceptor implements HandlerInterceptor {
         return true;
     }
 
+    /**
+     * 调用完controller之后，视图渲染之前
+     */
     @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) {
-        // 请求处理之后进行调用，但是在视图被渲染之前（Controller方法调用之后）
         System.out.println("CustomInterceptor.postHandle:" + o + ", modelAndView:" + modelAndView);
-
     }
 
+    /**
+     * 整个完成之后，通常用于资源清理
+     */
     @Override
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e)  {
         // 在整个请求结束之后被调用，也就是在DispatcherServlet 渲染了对应的视图之后执行（主要是用于进行资源清理工作）
         System.out.println("CustomInterceptor.afterCompletion:" + o);
-        System.out.println("afterCompletion清理资源...");
         // 清理session
 //        HttpSession session = httpServletRequest.getSession();
 //        Map<String, Object> map = (Map<String, Object>) session.getAttribute("map1");

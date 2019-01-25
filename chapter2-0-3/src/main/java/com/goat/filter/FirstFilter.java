@@ -7,6 +7,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponseWrapper;
 import java.io.IOException;
 
 /**
@@ -33,7 +34,6 @@ import java.io.IOException;
 
 原本使用web.xml配置过滤器时，是可指定执行顺序的，但使用@WebFilter时，没有这个配置属性的(需要配合@Order进行)，
 所以接下来介绍下通过 FilterRegistrationBean 进行过滤器的注册 并指定他们的顺序
-
  */
 //  filterName 过滤器名称  urlPatterns 要过滤的url   测试地址： http://localhost:8203/first
 @WebFilter(filterName = "FirstFilter", urlPatterns = { "/first" })
@@ -41,26 +41,35 @@ public class FirstFilter implements Filter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FirstFilter.class);
 
+
+    // 容器加载的时候调用
     @Override
     public void init(FilterConfig filterConfig)  {
-
+        System.out.println("拦截器进入========拦截器进入========");
     }
 
+    // 请求被拦截的时候进行调用
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        System.out.println("FirstFilter........................");
-        HttpServletRequest temp = (HttpServletRequest) request;
-        LOGGER.info("FirstFilter - Request URL: {}", temp.getRequestURL().toString());
-        LOGGER.info("FirstFilter - Request port：{}", temp.getServerPort());
-        LOGGER.info("FirstFilter - Request Method: {}", temp.getMethod());
-        HttpServletResponse temp2 = (HttpServletResponse) response;
-        temp2.setHeader("Current-Path", temp.getServletPath());
-        temp2.setHeader("My-Name", "MeiNanzi");
-        chain.doFilter(request, response);
+        System.out.println("拦截中========拦截中========");
+        HttpServletResponseWrapper wrapper = new HttpServletResponseWrapper((HttpServletResponse) response);
+        HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse resp = (HttpServletResponse) response;
+        if (req.getRequestURL().toString().indexOf("/index")>-1){
+            LOGGER.info("FirstFilter - Request URL: {}", req.getRequestURL().toString());
+            LOGGER.info("FirstFilter - Request port：{}", req.getServerPort());
+            LOGGER.info("FirstFilter - Request Method: {}", req.getMethod());
+            resp.setHeader("Current-Path", req.getServletPath());
+            resp.setHeader("My-Name", "MeiNanzi");
+            chain.doFilter(request, response); // 放行
+        }else {
+            wrapper.sendRedirect("/login"); // 不放行 重定向到登录页
+        }
     }
 
+    // 容器被销毁的时候被调用
     @Override
     public void destroy() {
-
+        System.out.println("拦截器销毁========拦截器销毁========");
     }
 }

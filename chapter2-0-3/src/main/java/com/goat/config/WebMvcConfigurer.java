@@ -10,7 +10,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
  * Created by 64274 on 2018/11/12.
  *
  * @author 山羊来了
- * @Description: TODO
+ * @Description: 根据拦截不同路径跳转不同自定义拦截器 两种方式：
+ * 1.（实现WebMvcConfigurer方法）
+ * 2. 继承 WebMvcConfigurationSupport 方法
  * @date 2018/11/12---11:04
  */
 @Configuration

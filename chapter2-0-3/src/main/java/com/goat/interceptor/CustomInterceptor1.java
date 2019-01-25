@@ -1,9 +1,7 @@
 
 package com.goat.interceptor;
 
-import org.springframework.core.MethodParameter;
 import org.springframework.util.CollectionUtils;
-import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 

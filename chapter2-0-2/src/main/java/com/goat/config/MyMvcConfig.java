@@ -1,6 +1,6 @@
 package com.goat.config;
 
-import com.goat.interceptor.CustomInterceptor;
+import com.goat.interceptor.CustomInterceptor1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class MyMvcConfig implements WebMvcConfigurer {
 
     @Autowired
-    CustomInterceptor customInterceptor;
+    CustomInterceptor1 customInterceptor;
 
     /** 视图跳转控制器
      * 自定义页面跳转 映射
@@ -54,5 +54,6 @@ public class MyMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(customInterceptor)
                 .addPathPatterns("/**").excludePathPatterns("/toLogin","/login","/asserts/**","/my/**");
+//        WebMvcConfigurer.super.addInterceptors(registry); // 可以省略
     }
 }
