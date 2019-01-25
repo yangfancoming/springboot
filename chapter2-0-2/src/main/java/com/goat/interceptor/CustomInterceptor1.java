@@ -1,6 +1,7 @@
 
 package com.goat.interceptor;
 
+import com.goat.annotation.PassToken;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
@@ -9,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.lang.reflect.Method;
 
 
 /**
@@ -29,11 +31,20 @@ public class CustomInterceptor1 implements HandlerInterceptor {
         if(!(o instanceof HandlerMethod)){  // 如果不是映射到方法直接通过
             return true;
         }
-        HandlerMethod method = (HandlerMethod) o;
-        System.out.println("-- MethodName:" + method.getMethod().getName());
-        System.out.println("-- ReturnType:" + method.getMethod().getReturnType());
-        System.out.println("-- MethodParameters:" + method.getMethodParameters());
-        MethodParameter[] parameters = method.getMethodParameters();
+        HandlerMethod methods = (HandlerMethod) o;
+        Method method=methods.getMethod();
+        //检查是否有 passtoken 注释，有则跳过认证
+        if (method.isAnnotationPresent(PassToken.class)) {
+            PassToken passToken = method.getAnnotation(PassToken.class);
+            if (passToken.required()) {
+                return true;
+            }
+        }
+
+        System.out.println("-- MethodName:" + methods.getMethod().getName());
+        System.out.println("-- ReturnType:" + methods.getMethod().getReturnType());
+        System.out.println("-- MethodParameters:" + methods.getMethodParameters());
+        MethodParameter[] parameters = methods.getMethodParameters();
         if (null != parameters) {
             for (MethodParameter parameter : parameters) {
                 System.out.println("  -- parameterIndex:" + parameter.getParameterIndex() + ",parameterName:" + parameter.getParameterName() + ",parameterType:" + parameter.getParameterType());
