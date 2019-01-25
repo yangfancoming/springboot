@@ -30,7 +30,7 @@ public class JwtUtil {
         map.put("role", "guest");
         JwtBuilder jwtBuilder = Jwts.builder()
                 .setClaims(map)  // 如果有 setClaims 则优先使用  如果没有 setClaims 才使用 setId setSubject setIssuedAt 。。。
-                .setExpiration(new Date(System.currentTimeMillis() + 3600_000_000L))// 设置token过期时间  1000 hour
+                .setExpiration(new Date(System.currentTimeMillis() + jwtConfig.getTokenExpirationTime()))// 设置token过期时间  1000 hour
                 .signWith(SignatureAlgorithm.HS512, tokenSigningKey); // P1 加密算法  P2 加盐值
         String jwt = jwtBuilder.compact(); // 生成 jwt
         return "Bearer "+ jwt; //jwt前面一般都会加Bearer

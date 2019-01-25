@@ -69,9 +69,14 @@ public class TestController {
 
     @Autowired
     public JwtConfig jwtConfig;
-    // http://localhost:8370/test3
+    // http://localhost:8370/test3  测试 token 过期时间
     @GetMapping("/test3")
     public void test3()   {
-        System.out.println(jwtConfig);
+        System.out.println(jwtConfig.getTokenExpirationTime());
+        System.out.println(System.currentTimeMillis());
+        System.out.println(System.currentTimeMillis() + jwtConfig.getTokenExpirationTime());
+        System.out.println(System.currentTimeMillis() + 5 * 60 * 1000);
+        System.out.println(System.currentTimeMillis() + 3600000000L);
+        System.out.println(System.currentTimeMillis() + 3600_000_000L);
     }
 }

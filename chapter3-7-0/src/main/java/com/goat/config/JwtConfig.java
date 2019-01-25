@@ -16,7 +16,7 @@ public class JwtConfig {
     private Integer tokenExpirationTime;
     private String tokenIssuer;
     private String tokenSigningKey;
-    private Integer refreshTokenExpTime;
+    private Long refreshTokenExpTime;
     private String header;
     private String tokenHead;
 
@@ -36,11 +36,11 @@ public class JwtConfig {
         this.tokenHead = tokenHead;
     }
 
-    public Integer getRefreshTokenExpTime() {
+    public Long getRefreshTokenExpTime() {
         return refreshTokenExpTime;
     }
 
-    public void setRefreshTokenExpTime(Integer refreshTokenExpTime) {
+    public void setRefreshTokenExpTime(Long refreshTokenExpTime) {
         this.refreshTokenExpTime = refreshTokenExpTime;
     }
 
