@@ -16,4 +16,15 @@ public class HelloController {
         return "Hello " + name;
     }
 
+
+    // 测试地址：    http://localhost:8202/hello?name=11
+    @RequestMapping(value = "/toLogin", method = RequestMethod.GET)
+    public String toLogin() {
+        return "toLogin";
+    }
+    // 测试地址：    http://localhost:8202/hello?name=11
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login() {
+        return "login";
+    }
 }

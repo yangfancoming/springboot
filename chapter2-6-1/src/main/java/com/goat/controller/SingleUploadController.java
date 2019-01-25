@@ -30,7 +30,6 @@ public class SingleUploadController {
      */
     @RequestMapping(value = "/upload",method = RequestMethod.POST)
     public @ResponseBody String upload(MultipartFile file) {
-
         try {
             String uploadDir =getClass().getResource("/").getPath();
             //如果目录不存在，自动创建文件夹
@@ -38,7 +37,6 @@ public class SingleUploadController {
             if(!dir.exists()){
                 dir.mkdir();
             }
-
             String suffix = file.getOriginalFilename();  //文件名
             //上传文件名
             File serverFile = new File(uploadDir + suffix);//服务器端保存的文件对象

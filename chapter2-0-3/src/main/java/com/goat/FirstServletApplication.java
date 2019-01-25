@@ -18,17 +18,13 @@ import java.util.List;
 
 
 /**
-     * @Description:
-     * @author: 杨帆
-     * @Param:
-     * @Return:
-     * @Date:   2018/10/23
+ 在 SpringBootApplication 上使用@ServletComponentScan 注解后，Servlet、Filter、Listener 可以直接通过 @WebServlet、@WebFilter、@WebListener 注解自动注册，无需其他代码。
+ 启动器启动时，扫描本目录以及子目录带有的 webservlet 注解的类  并对其进行实例化
 */
 
 @SpringBootApplication
-@ServletComponentScan   //(FirstServlet 使用)启动器启动时，扫描本目录以及子目录带有的 webservlet 注解的类  并对其进行实例化
+@ServletComponentScan
 public class FirstServletApplication extends SpringBootServletInitializer {
-
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
