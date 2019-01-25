@@ -31,11 +31,11 @@ import java.io.IOException;
     <url-pattern>/*</url-pattern>
 </filter-mapping>
 
-测试地址：
-http://localhost:8203/first
+原本使用web.xml配置过滤器时，是可指定执行顺序的，但使用@WebFilter时，没有这个配置属性的(需要配合@Order进行)，
+所以接下来介绍下通过 FilterRegistrationBean 进行过滤器的注册 并指定他们的顺序
 
  */
-
+//  filterName 过滤器名称  urlPatterns 要过滤的url   测试地址： http://localhost:8203/first
 @WebFilter(filterName = "FirstFilter", urlPatterns = { "/first" })
 public class FirstFilter implements Filter {
 

@@ -1,7 +1,9 @@
 
 package com.goat.interceptor;
 
+import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,6 +22,19 @@ public class CustomInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) {
         System.out.println("CustomInterceptor1拦截器开始工作，拦截到当前请求地址：" + httpServletRequest.getRequestURL().toString());
+        if(!(o instanceof HandlerMethod)){  // 如果不是映射到方法直接通过
+            return true;
+        }
+        HandlerMethod method = (HandlerMethod) o;
+        System.out.println("-- MethodName:" + method.getMethod().getName());
+        System.out.println("-- ReturnType:" + method.getMethod().getReturnType());
+        System.out.println("-- MethodParameters:" + method.getMethodParameters());
+        MethodParameter[] parameters = method.getMethodParameters();
+        if (null != parameters) {
+            for (MethodParameter parameter : parameters) {
+                System.out.println("  -- parameterIndex:" + parameter.getParameterIndex() + ",parameterName:" + parameter.getParameterName() + ",parameterType:" + parameter.getParameterType());
+            }
+        }
         // 只有返回true才会继续向下执行，返回false取消当前请求
         return true;
     }
@@ -28,16 +43,7 @@ public class CustomInterceptor implements HandlerInterceptor {
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) {
         // 请求处理之后进行调用，但是在视图被渲染之前（Controller方法调用之后）
         System.out.println("CustomInterceptor.postHandle:" + o + ", modelAndView:" + modelAndView);
-//        HandlerMethod method = (HandlerMethod) o;
-//        System.out.println("-- MethodName:" + method.getMethod().getName());
-//        System.out.println("-- ReturnType:" + method.getMethod().getReturnType());
-//        System.out.println("-- MethodParameters:" + method.getMethodParameters());
-//        MethodParameter[] parameters = method.getMethodParameters();
-//        if (null != parameters) {
-//            for (MethodParameter parameter : parameters) {
-//                System.out.println("  -- parameterIndex:" + parameter.getParameterIndex() + ",parameterName:" + parameter.getParameterName() + ",parameterType:" + parameter.getParameterType());
-//            }
-//        }
+
     }
 
     @Override

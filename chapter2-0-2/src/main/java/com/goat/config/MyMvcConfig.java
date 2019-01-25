@@ -16,7 +16,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
     @Autowired
     CustomInterceptor customInterceptor;
 
-    /**
+    /** 视图跳转控制器
      * 自定义页面跳转 映射
      * 浏览器发送 /test 请求来到 success
      * @param registry
@@ -26,7 +26,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/test").setViewName("success");
     }
 
-    /**
+    /** 静态资源处理器
      * 自定义静态资源映射
      * 浏览器输入 http://localhost:8202/my/my.html  可以正常访问页面
      * 如果不重写该方法的话 则无法访问 报错 404
@@ -38,7 +38,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/my/**").addResourceLocations("file:E:/my/");  // 指定 项目外部路径下静态资源
     }
 
-    /**
+    /** 拦截器配置
      * 不拦截 url
      测试地址：    http://localhost:8202/toLogin
      测试地址：    http://localhost:8202/login
@@ -47,7 +47,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
 
      * 拦截 url
      测试地址：    http://localhost:8202/hello?name=11
-     * addPathPatterns("/**")对所有请求都拦截，但是排除了/toLogin和/login请求的拦截。
+     * addPathPatterns("/**")对所有请求都拦截，但是排除了 "/toLogin","/login","/asserts/**","/my/**" 请求的拦截。
      * @param registry
     */
     @Override

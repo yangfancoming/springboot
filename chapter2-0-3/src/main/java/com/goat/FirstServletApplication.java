@@ -51,6 +51,7 @@ public class FirstServletApplication extends SpringBootServletInitializer {
      * @Description:  注册 Filter  bean    http://localhost:8203/second
      * @author: 杨帆
      * @Date:   2018/10/23
+     * FilterRegistrationBean是springboot提供的，此类提供setOrder方法，可以为filter设置排序值，让spring在注册web filter之前排序后再依次注册。
      */
     @Bean
     public FilterRegistrationBean webAppForIndexFilterRegistrationBean() {

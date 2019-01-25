@@ -31,16 +31,6 @@ public class CustomInterceptor1 implements HandlerInterceptor {
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) {
         // 请求处理之后进行调用，但是在视图被渲染之前（Controller方法调用之后）
 //        System.out.println("CustomInterceptor1.postHandle:" + o + ", modelAndView:" + modelAndView);
-        HandlerMethod method = (HandlerMethod) o;
-        System.out.println("-- MethodName:" + method.getMethod().getName());
-        System.out.println("-- ReturnType:" + method.getMethod().getReturnType());
-        System.out.println("-- MethodParameters:" + method.getMethodParameters());
-        MethodParameter[] parameters = method.getMethodParameters();
-        if (null != parameters) {
-            for (MethodParameter parameter : parameters) {
-                System.out.println("  -- parameterIndex:" + parameter.getParameterIndex() + ",parameterName:" + parameter.getParameterName() + ",parameterType:" + parameter.getParameterType());
-            }
-        }
     }
 
     @Override
