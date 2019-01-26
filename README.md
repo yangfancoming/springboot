@@ -1,14 +1,17 @@
 
 
+
+
 工程配置
 
 - chapter0-0-0 springboot 空项目
 - chapter0-0-1 springboot 共享model
+- chapter0-0-5 springboot Helloworld
 - chapter0-1-0 springboot Utils 积累常用工具类
 - chapter1-1-1 springboot 读取配置文件
 - chapter1-1-2 springboot  javaconfig配置集合(其他模块共享该配置)
 - chapter1-2-1 springboot  与 日志
-- chapter1-3-0 springboot  与  JavaSE
+  
   
 
 Web开发
@@ -33,7 +36,7 @@ Web开发
 - chapter2-4-1 springboot  集成 WebService 服务端
 - chapter2-5-1 springboot  集成 WebService 客户端
 - chapter2-6-0 springboot  集成  JSP 内嵌Tomcat容器
-- chapter2-6-1 springboot  集成  JSP 外置Tomcat容器
+- chapter2-6-1 springboot  集成  JSP 外置Tomcat容器 + 文件上传
 
 
 
@@ -64,12 +67,18 @@ Web开发
 - chapter3-4-8：springboot  集成 License 验证  生成和校检整合
 - chapter3-4-9：springboot  集成 License 验证  生成和校检分开
 - ==chapter3-5-0：springboot  集成 License 验证 待整理 ==
-- chapter3-5-1：springboot  集成  Shiro +  Thymeleaf
+- chapter3-5-1：springboot  集成  Shiro
+- chapter3-5-2：springboot  集成  Shiro + JWT
 - chapter3-5-4：springboot  集成  SpringSecurity +  Thymeleaf + 内存用户
 - chapter3-5-5：springboot  集成  SpringSecurity +  Thymeleaf + 数据库用户
 - chapter3-5-7：springboot  集成  SpringSecurity +  JWT
 - chapter3-6-3：springboot  集成  oauth2
+- chapter3-6-4：springboot  集成  oauth2 四种验证模式
+- chapter3-6-6：springboot  集成  Social QQ登录
 - chapter3-7-0：springboot  集成  jwt
+- chapter3-8-0：springboot  集成  actuator
+
+
 
 数据访问
 
@@ -96,6 +105,7 @@ Web开发
 - chapter5-1-1：springboot 集成 redis     使用 redisTemplate
 - chapter5-1-2：springboot 集成 redis     使用 jedis 列举 五大数据类型的 常用指令
 - chapter5-1-3：springboot 集成 redis     使用 redisTemplate 注解版
+- chapter5-1-4：springboot 集成 redis     使用 redisTemplate 集群
 - chapter5-1-5：springboot 集成 redis     使用 RedisTemplate 和 jedis 调用Lua脚本   
 - ==chapter5-1-6：springboot 集成 Dubbo Redis API ==
 - ==chapter5-1-7：springboot 集成 Dubbo Redis API Impl ==
@@ -115,7 +125,7 @@ Web开发
 - ==chapter5-3-9：springboot 集成 Dubbo Provider 使用 JPA实现 ==
 - ==chapter5-4-0：springboot 集成 Dubbo  单点登录SSO  ==
 - chapter5-4-2：springboot 集成  SpringCloud eureka、Ribbon、feign、zuul 等全家桶
-- ==chapter5-5-0：springboot 集成  SpringCloud ==
+- chapter5-5-0：springboot 集成  SpringCloud  Alibaba
 
 
 
@@ -153,7 +163,7 @@ excel 相关操作
 
 - chapter7-9-0：springboot 集成 Scala
 - chapter7-8-0：springboot 集成 Drools
-- chapter8-0-1：springboot 集成 Guava
+- chapter8-0-1：springboot 集成 Guava基础案例
 - chapter8-0-3：springboot 集成 Groovy
 - chapter8-0-5：springboot 集成 Lua
 - chapter8-0-8：springboot 集成 Kotlin
@@ -164,9 +174,16 @@ excel 相关操作
 
 
 
+
+
+- chapter8-2-0：springboot 集成 FastDFS
+
+
+
 消息中间件
 
 - chapter8-3-0：springboot 集成 RabbitMQ
+- chapter8-3-3：springboot 集成 Kafka
 
 
 
@@ -194,6 +211,9 @@ excel 相关操作
 - chapter9-9-9：提供测试代码 编写
   
 
+
+
+
 JavaSe 项目目录
 
 
@@ -208,3 +228,15 @@ JavaSe 项目目录
 - chapter99-16-3：Java 多线程
 - chapter99-18-3：Java 类加载机制与反射
 - 
+
+
+
+
+
+
+
+
+
+
+
+
