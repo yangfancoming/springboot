@@ -50,5 +50,12 @@ server.servlet.context-path=/hello
 		
 
 
+#SpringBoot 的 @Import 用于将指定的类实例注入之Spring IOC Container中。 
+    SpringBoot 提供了 三种使用 @Import 将 类实例注入至 Spring IOC Container中 的实例。
+    1.直接注入
+    2.实现 ImportBeanDefinitionRegistrar 接口 注入
+    3.实现 ImportSelector 注入
+
+
 
 
