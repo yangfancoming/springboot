@@ -2,10 +2,8 @@ package com.goat.config;
 
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.goat.dto.UserInfo;
 import com.goat.entity.User;
 import com.goat.service.IUserService;
-import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -19,8 +17,6 @@ import org.springframework.stereotype.Component;
 /**
      * @Description:  自定义 Realm 类  需要继承shiro 提供的  AuthorizingRealm类
      * @author: 杨帆
-     * @Param:
-     * @Return:
      * @Date:   2018/11/7
 */
 @Component
