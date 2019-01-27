@@ -29,9 +29,10 @@ public class RemoteService {
      include：和 value 一样，默认空，当exclude也为空时，所有异常都重试
      exclude：指定异常不重试，默认空，当include也为空时，所有异常都重试
      maxAttemps：重试次数，默认3
-     backoff：重试补偿机制，默认没有
+     backoff：重试补偿机制，默认没有  delay 每隔几秒记性重试  in milliseconds (default 1000)
+     multiplier：指定延迟的倍数，比如delay=5000l,multiplier=2时，第一次重试为5秒后，第二次为10秒，第三次为20秒
     */
-    @Retryable(value = { RemoteAccessException.class }, maxAttempts = 3, backoff = @Backoff(delay = 5000l, multiplier = 1))
+    @Retryable(value = { RemoteAccessException.class }, maxAttempts = 3, backoff = @Backoff(delay = 2000l, multiplier = 1.5))
     public void retryable() {
         logger.info(LocalTime.now()+" 进入 retryable()..............");
         throw new RemoteAccessException("RPC调用异常");
@@ -39,11 +40,12 @@ public class RemoteService {
 
     /**
      @Recover
-     当重试到达指定次数时，被注解的方法将被回调，可以在该方法中进行日志处理。需要注意的是发生的异常和入参类型一致时才会回调。
+     重试到达最大的次数之后的回调方法，可以在该方法中进行日志处理。需要注意的是发生的异常和入参类型一致时才会回调。
     */
     @Recover
     public void recover(RemoteAccessException e) {
         System.out.println(LocalTime.now()+" 进入 recover()..............");
         logger.info(e.getMessage());
+        throw new RuntimeException(e); // 这里抛出异常后  controller 才会catch到
     }
 }

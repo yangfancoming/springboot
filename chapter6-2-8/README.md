@@ -1,5 +1,17 @@
-# 
-
+#  Spring Retry支持集成到Spring或者Spring Boot项目中，而它支持AOP的切面注入写法，所以在引入时必须引入aspectjweaver.jar包。
+ 
+     加入依赖 
+             <dependency>
+                 <groupId>org.springframework.retry</groupId>
+                 <artifactId>spring-retry</artifactId>
+             </dependency>
+     
+             <dependency>
+                 <groupId>org.aspectj</groupId>
+                 <artifactId>aspectjweaver</artifactId>
+             </dependency>
+             
+             
     @Retryable注解
     被注解的方法发生异常时会重试 
     value：指定发生的异常进行重试 

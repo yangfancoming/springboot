@@ -17,14 +17,15 @@ public class TestController {
 
     @Autowired
     private RemoteService remoteService;
-//    http://localhost:8628/show
+
+//  测试url：  http://localhost:8628/show
     @RequestMapping("/show")
     public String show(){
         try {
             remoteService.retryable();
         } catch (Exception e) {
             System.out.println("TestController 捕获异常。。。。。。。。。。。");
-
+            return "调用失败";
         }
         return "Hello World";
     }
