@@ -1,4 +1,4 @@
-package com.goat;
+package com.goat.bean;
 
 
 

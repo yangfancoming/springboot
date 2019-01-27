@@ -1,6 +1,7 @@
 package com.goat;
 
 
+import com.goat.bean.Person;
 import com.goat.service.PersonService;
 import org.junit.Before;
 import org.junit.Test;

@@ -16,8 +16,8 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 public class MyAppConfig {
 
-    //将方法的返回值添加到容器中；容器中这个组件默认的id就是 sos 方法名
-    @Bean
+
+    @Bean // 给容器中注册一个bean 类型为返回值类型；id默认为函数名 自定义bean名称： @Bean("beanName")
     @Profile({"dev","test"})// 只有在 两大属性文件中 找到 spring.profiles.active=dev 相匹配则创建该bean ，若 spring.profiles.active=pro 则不创建
     //    @ConditionalOnProperty(name = "PROFILE", havingValue = "dev", matchIfMissing = false)
     public HelloService helloService02(){

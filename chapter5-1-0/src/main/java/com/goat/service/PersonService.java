@@ -1,7 +1,7 @@
 package com.goat.service;
 
 
-import com.goat.Person;
+import com.goat.bean.Person;
 
 public interface PersonService {
     Person save(Person person);
