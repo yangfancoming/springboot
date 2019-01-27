@@ -25,12 +25,12 @@ public class SecondFilter implements Filter {
     private static final Logger LOGGER = LoggerFactory.getLogger(SecondFilter.class);
     @Override
     public void init(FilterConfig filterConfig) {
-
+        System.out.println("SecondFilter 过滤器进入========过滤器进入========");
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        System.out.println("SecondFilter........................");
+        System.out.println("SecondFilter 过滤中========过滤中========");
         HttpServletRequest temp = (HttpServletRequest) request;
         LOGGER.info("SecondFilter - Request URL: {}", temp.getRequestURL().toString());
         LOGGER.info("SecondFilter - Request port：{}", temp.getServerPort());
@@ -43,6 +43,6 @@ public class SecondFilter implements Filter {
 
     @Override
     public void destroy() {
-
+        System.out.println("SecondFilter 过滤器销毁========过滤器销毁========");
     }
 }

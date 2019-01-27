@@ -20,7 +20,7 @@ import java.util.Random;
 
 @RestController
 public class TestController {
-
+    //    http://localhost:8203/random1
     @RequestMapping("/random1")
     public ResponseEntity<Map> random1(HttpSession session){
         Map<String, Object> map = new HashMap<>();
@@ -29,7 +29,7 @@ public class TestController {
         session.setAttribute("map1", map);
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
-
+    //    http://localhost:8203/random2
     @RequestMapping("/random2")
     public ResponseEntity<Map> random2(HttpSession session){
         Map<String, Object> map = new HashMap<>();
@@ -42,5 +42,10 @@ public class TestController {
     @RequestMapping("/error1")
     public Object error1(){
         return "error,无权限！";
+    }
+//    http://localhost:8203/test
+    @RequestMapping("/test")
+    public Object test(){
+        return "test";
     }
 }

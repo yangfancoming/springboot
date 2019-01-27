@@ -30,13 +30,13 @@ import java.io.IOException;
 import java.util.Enumeration;
 
 //访问地址：  http://localhost:8203/firstServlet
-@WebServlet(name = "firstServlet", urlPatterns = "/firstServlet")  //标记为 servlet，以便启动器扫描。
+@WebServlet(name = "firstServlet", urlPatterns = "/random1/**")  //标记为 servlet，以便启动器扫描。
 public class FirstServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws  IOException {
+        System.out.println("进入 firstServlet 。。。。。。。。。。。。。。。。。");
         resp.getWriter().append("firstServlet");
-
         ServletContext servletContext = this.getServletContext();
         String driver = servletContext.getInitParameter("driver1");
         System.out.println("driver1============" + driver);

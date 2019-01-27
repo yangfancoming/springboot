@@ -18,12 +18,12 @@ import java.io.IOException;
 //这里不需要添加webServlet注解
 public class SecondServlet extends HttpServlet {
 
-    //访问地址：  http://localhost:8203/secondServlet
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        resp.getWriter().append("SecondServlet");
+        System.out.println("进入 SecondServlet 。。。。。。。。。。。。。。。。。");
+//        resp.getWriter().append("SecondServlet");
 //        req.getRequestDispatcher("/WEB-INF/index").forward(req,resp); //doit  这里为什么404？ 将请求分发到 index.jsp 页面  然后 forward 进行跳转
-        req.getRequestDispatcher("index.jsp").forward(req,resp); //doit  这里为什么404？ 将请求分发到 index.jsp 页面  然后 forward 进行跳转
+//        req.getRequestDispatcher("index.jsp").forward(req,resp); //doit  这里为什么404？ 将请求分发到 index.jsp 页面  然后 forward 进行跳转
     }
 }
 

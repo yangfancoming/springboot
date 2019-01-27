@@ -22,7 +22,6 @@ import javax.servlet.annotation.WebListener;
 @WebListener
 public class FirstListener implements ServletContextListener {
 
-
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         System.out.println("WebAppListener通过注解实现的监听器已销毁...");

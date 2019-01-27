@@ -56,13 +56,13 @@ public class FirstServletApplication extends SpringBootServletInitializer {
     @Bean
     public FilterRegistrationBean webAppForIndexFilterRegistrationBean() {
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-//        registrationBean.setName("webAppForIndexFilter");
-        SecondFilter secondFilter = new SecondFilter();
-        registrationBean.setFilter(secondFilter);
+        registrationBean.setName("SecondFilter");
+        registrationBean.setFilter(new SecondFilter());
         registrationBean.setOrder(-1);
         List<String> urlList = new ArrayList<>();
-        urlList.add("/servlet/index");
-        urlList.add("/second");
+//        urlList.add("/servlet/index");
+//        urlList.add("/second");
+        urlList.add("/random2");
         registrationBean.setUrlPatterns(urlList);
         return registrationBean;
     }

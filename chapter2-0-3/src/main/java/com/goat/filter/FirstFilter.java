@@ -36,7 +36,7 @@ import java.io.IOException;
 所以接下来介绍下通过 FilterRegistrationBean 进行过滤器的注册 并指定他们的顺序
  */
 //  filterName 过滤器名称  urlPatterns 要过滤的url   测试地址： http://localhost:8203/first
-@WebFilter(filterName = "FirstFilter", urlPatterns = { "/first" })
+@WebFilter(filterName = "FirstFilter", urlPatterns = { "/random1" })
 public class FirstFilter implements Filter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FirstFilter.class);
@@ -45,13 +45,13 @@ public class FirstFilter implements Filter {
     // 容器加载的时候调用
     @Override
     public void init(FilterConfig filterConfig)  {
-        System.out.println("拦截器进入========拦截器进入========");
+        System.out.println("FirstFilter 过滤器进入========过滤器进入========");
     }
 
     // 请求被拦截的时候进行调用
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        System.out.println("拦截中========拦截中========");
+        System.out.println("FirstFilter 过滤中========过滤中========");
         HttpServletResponseWrapper wrapper = new HttpServletResponseWrapper((HttpServletResponse) response);
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
@@ -70,6 +70,6 @@ public class FirstFilter implements Filter {
     // 容器被销毁的时候被调用
     @Override
     public void destroy() {
-        System.out.println("拦截器销毁========拦截器销毁========");
+        System.out.println("FirstFilter 过滤器销毁========过滤器销毁========");
     }
 }
