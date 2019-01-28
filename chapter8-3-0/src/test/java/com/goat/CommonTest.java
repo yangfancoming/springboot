@@ -19,10 +19,10 @@ public class CommonTest {
 //    public static final String IP = "172.16.163.135";
     public static final String IP = "192.168.235.207";
 
-    public static final String QUEUE = "myChannel0";
+    public static final String QUEUE = "fanout.A";
     public static final String QUEUE1 = "myChannel1";
     public static final String QUEUE2 = "myChannel2";
-    public final static String EXCHANGE_NAME = "fanout_exchange_test";
+    public final static String EXCHANGE_NAME = "fanoutExchange";
     public final static String DIRECT_EXCHANGE_NAME = "direct_exchange_test";
     public final static String TOPIC_EXCHANGE_NAME = "topic_exchange_test";
 
@@ -35,7 +35,7 @@ public class CommonTest {
         connectionFactory.setPort(5672);
         connectionFactory.setUsername("guest");
         connectionFactory.setPassword("guest");
-        //        connectionFactory.setVirtualHost("/test"); // 设置虚拟主机
+//        connectionFactory.setVirtualHost("/test"); // 设置虚拟主机
         connection = connectionFactory.newConnection(); // 获取连接
         channel = connection.createChannel();  // 创建通道
         /**

@@ -28,7 +28,7 @@ public class RecvFor2 extends CommonTest {
                 }
                 String message = new String(body, "UTF-8"); //  一旦进入该函数 那么 就接收消息确认
                 System.out.println(" [x] Received '" + message + "'");
-                channel.basicAck(envelope.getDeliveryTag(),false); // 只有手动消息确认后  才算消息已接收！
+                channel.basicAck(envelope.getDeliveryTag(),false); // 只有手动确认后  才算消息已接收！
             }
         };
         channel.basicConsume(QUEUE, false, consumer); // P2 是否自动确认消息消费

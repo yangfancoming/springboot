@@ -136,6 +136,8 @@
         <module>chapter3-6-6</module>
         <module>chapter3-5-2</module>
         <module>chapter6-2-8</module>
+        <module>chapter8-3-1</module>
+        <module>chapter8-3-2</module>
 
 
     </modules>
@@ -163,15 +165,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
-
-        <!--&lt;!&ndash;加入子模块 配置依赖&ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>com.goat.springboot.learing</groupId>-->
-            <!--<artifactId>chapter1-1-2</artifactId>-->
-            <!--<version>0.0.1-SNAPSHOT</version>-->
-        <!--</dependency>-->
-
-
 
         <!--导入配置文件处理器，配置文件进行绑定就会有提示-->
         <dependency>

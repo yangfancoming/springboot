@@ -24,7 +24,7 @@ public class RecvFor2 extends CommonTest {
                 String message = new String(body, "UTF-8");
                 System.out.println(" [x] Received '" + message + "'");
                 System.out.println("haha" + 1/0);
-                channel.basicAck(envelope.getDeliveryTag(),false); // 只有手动消息确认后  才算消息已接收！
+                channel.basicAck(envelope.getDeliveryTag(),false); // 只有手动确认后  才算消息已接收！
             }
         };
         channel.basicConsume(QUEUE, false, consumer);

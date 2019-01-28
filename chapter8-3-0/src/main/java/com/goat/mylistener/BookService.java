@@ -1,4 +1,4 @@
-package com.goat.service;
+package com.goat.mylistener;
 
 import com.goat.constants.RabbitConstants;
 import com.goat.entity.Book;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
  * @Description: TODO
  * @date 2018/9/29---15:25
  *
- *  启动该项目后， 使用test 方法  发送广播消息， 一旦监听到消息队列中有消息发来 那么久触发该方法
+ *  启动该项目后， 使用test 方法  发送广播消息， 一旦监听到消息队列中有消息发来 那么就触发该方法
  *  打印：收到消息队列中的来了新的消息---Book{bookName='西游记', author='陆小曼'}
  */
 
@@ -37,7 +37,8 @@ public class BookService {
         System.out.println(message.getClass());
     }
 
-    @RabbitListener(bindings = @QueueBinding( value = @Queue(value = RabbitConstants.QUEUE3, durable = "true"),
+    @RabbitListener(bindings = @QueueBinding(
+            value = @Queue(value = RabbitConstants.QUEUE3, durable = "true"),
             exchange = @Exchange(value = RabbitConstants.EXCHANGE,ignoreDeclarationExceptions = "true",type = ExchangeTypes.TOPIC ),
             key = {"item.insert","item.update"}))
     public void listen(String msg){

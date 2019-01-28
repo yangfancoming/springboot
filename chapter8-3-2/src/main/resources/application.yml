@@ -7,12 +7,18 @@ spring:
     publisher-returns: true  # 支持发布返回
     publisher-confirms: true # 支持发布确认
     virtual-host:  / # Invalid configuration: 'virtualHost' must be non-null
-
     listener:
       simple:
         acknowledge-mode: manual  #采用手动应答
         concurrency: 1 # 当前监听容器数
         max-concurrency: 1 #  最大数
         retry:
-          enabled: true #  是否支持重试
-
+          enabled: true #  开启重试机制
+          max-attempts: 2 #  重试次数 默认为 3
+    #      direct:
+    #        acknowledge-mode: manual #采用手动应答
+    template:
+      retry:
+        enabled: true
+server:
+  port: 8832
