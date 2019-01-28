@@ -83,22 +83,6 @@ public class TimeUtil {
     /**
      * 获取格式化后的时间或日期
      *
-     * @param date date
-     * @return string
-     */
-    public static String date2Str(Date date) {
-        SimpleDateFormat df;
-        String returnValue = "";
-        if (date != null) {
-            df = new SimpleDateFormat(DATE_PATTERN_WITH_HENGXIAN);
-            returnValue = df.format(date);
-        }
-        return (returnValue);
-    }
-
-    /**
-     * 获取格式化后的时间或日期
-     *
      * @param pattern pattern
      * @param aDate   aDate
      */
@@ -138,21 +122,6 @@ public class TimeUtil {
         return (date);
     }
 
-    /**
-     * 字符串转时间
-     *
-     * @param strDate strDate
-     */
-    public static Date convertStringToDate(String strDate) {
-        Date aDate;
-        //传入的时间是以 / 分割
-        int length = 2;
-        if (strDate.split(SymbolConst.HENGXIAN).length < length) {
-            strDate = strDate.replace(SymbolConst.ZHENGXIEXIAN, SymbolConst.HENGXIAN);
-        }
-        aDate = convertStringToDate(DATE_PATTERN_WITH_HENGXIAN, strDate);
-        return aDate;
-    }
 
     /**
      * 获取当前时间或时间
@@ -459,18 +428,14 @@ public class TimeUtil {
 
     /**
      * 获取当前月份
-     *
-     * @return 返回字符串 格式：两位数
+     * @return 返回字符串 格式：两位数  可以带0
      */
     public static String getCurrentMonth() {
         String strMonth;
-        Calendar cld = Calendar.getInstance();
-        Date date = new Date();
-        cld.setTime(date);
-        int intMon = cld.get(Calendar.MONTH) + 1;
+        Integer intMon = getMonth();
         int ten = 10;
         if (intMon < ten) {
-            strMonth = "0" + String.valueOf(intMon);
+            strMonth = "0" + intMon;
         } else {
             strMonth = String.valueOf(intMon);
         }
@@ -479,15 +444,17 @@ public class TimeUtil {
 
     /**
      * 获取当前月份
-     *
      * @return 返回字符串 格式：不带0
      */
     public static String getCurrMonth() {
+        return String.valueOf(getMonth());
+    }
+
+    public static Integer getMonth() {
         Calendar cld = Calendar.getInstance();
         Date date = new Date();
         cld.setTime(date);
-        int intMon = cld.get(Calendar.MONTH) + 1;
-        return String.valueOf(intMon);
+        return cld.get(Calendar.MONTH) + 1;
     }
 
     /**
@@ -504,12 +471,12 @@ public class TimeUtil {
         String days = String.valueOf(intDay);
         int ten = 10;
         if (intMon < ten) {
-            mons = "0" + String.valueOf(intMon);
+            mons = "0" + intMon;
         }
         if (intDay < ten) {
-            days = "0" + String.valueOf(intDay);
+            days = "0" + intDay;
         }
-        return String.valueOf(cld.get(Calendar.YEAR)) + "-" + mons + "-" + days;
+        return cld.get(Calendar.YEAR) + "-" + mons + "-" + days;
     }
 
     /**
@@ -529,42 +496,6 @@ public class TimeUtil {
         }
 
         return (returnValue);
-    }
-
-    /**
-     * 判断两个时间是否是同一天
-     *
-     * @param sourceTime sourceTime
-     * @param targetTime targetTime
-     * @return
-     */
-    public static boolean isSameDay(long sourceTime, long targetTime) {
-        return getLogicIntervalDays(sourceTime, targetTime) == 0;
-    }
-
-    /**
-     * 判断指定的时间是否是今天
-     *
-     * @param time time
-     */
-    public static boolean isToday(long time) {
-        return isSameDay(System.currentTimeMillis(), time);
-    }
-
-    /**
-     * 获取两个时间的逻辑间隔天数,以源时间为基准,目标时间小于源时间则返回大于或等于天数，反之返回小于等于天数
-     * <p/>
-     * 举例：sourceTime=今天凌晨0点0分1秒,targetTime=昨天晚上11点59分59秒,则返回1
-     *
-     * @param sourceTime sourceTime
-     * @param targetTime targetTime
-     * @return
-     */
-    public static int getLogicIntervalDays(long sourceTime, long targetTime) {
-        long source0ClockTime = getZeroClockTime(sourceTime);
-        long target0ClockTime = getZeroClockTime(targetTime);
-
-        return getRealIntervalDays(source0ClockTime, target0ClockTime);
     }
 
     /**
@@ -590,34 +521,15 @@ public class TimeUtil {
     }
 
     /**
-     * 获取在指定时间戳和指定小时，分钟，秒，毫秒数的时间
-     *
-     * @param time        时间戳
-     * @param hour        小时(24小时制)
-     * @param minute      分钟
-     * @param second      秒
-     * @param milliSecond 毫秒
-     */
-    public static long getTimeInMillis(long time, int hour, int minute, int second, int milliSecond) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(time);
-        calendar.set(Calendar.HOUR_OF_DAY, hour);
-        calendar.set(Calendar.MINUTE, minute);
-        calendar.set(Calendar.SECOND, second);
-        calendar.set(Calendar.MILLISECOND, milliSecond);
-        return calendar.getTimeInMillis();
-    }
-
-    /**
      * 获取指定日期的时间戳
-     *
+     *  输入  getTimeInMillis(2019, 1, 28, 10, 20, 32, 0)
      * @param year        year
      * @param month       从1开始
      * @param day         day
      * @param hour        月
      * @param minute      分
      * @param second      秒
-     * @param milliSecond 毫秒
+     * @param milliSecond 毫秒   返回 1548642032000
      */
     public static long getTimeInMillis(int year, int month, int day, int hour, int minute, int second, int milliSecond) {
         Calendar calendar = Calendar.getInstance();
@@ -629,25 +541,6 @@ public class TimeUtil {
         calendar.set(Calendar.SECOND, second);
         calendar.set(Calendar.MILLISECOND, milliSecond);
         return calendar.getTimeInMillis();
-    }
-
-    /**
-     * 获取今日指定的时间
-     *
-     * @param hour        小时(24小时制)
-     * @param minute      分钟
-     * @param second      秒
-     * @param milliSecond 毫秒
-     */
-    public static long getTodayTime(int hour, int minute, int second, int milliSecond) {
-        return getTimeInMillis(System.currentTimeMillis(), hour, minute, second, milliSecond);
-    }
-
-    /**
-     * 获取指定时间的零点时间
-     */
-    public static long getZeroClockTime(long time) {
-        return getTimeInMillis(time, 0, 0, 0, 0);
     }
 
 

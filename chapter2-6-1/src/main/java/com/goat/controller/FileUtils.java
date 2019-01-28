@@ -21,29 +21,24 @@ public class FileUtils {
     //            String filename = UUID.randomUUID() + suffix;
     //            String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));  //文件后缀名
 
-
     @Test
     public void test() throws FileNotFoundException {
         // 获取项目发布后的类路径  path=/E:/Code/J2EE_code/MySpringBoot/springboot/chapter2-6-1/target/classes/
-        String path = getClass().getResource("/").getPath();
-        System.out.println("path="+path);
-
         // 获取项目发布后的类路径  path:E:\Code\J2EE_code\MySpringBoot\springboot\chapter2-6-1\target\classes
-        File file = new File(ResourceUtils.getURL("classpath:").getPath());
-        if(!file.exists()) {
-            file = new File("");
-        }
-        System.out.println("path:"+file.getAbsolutePath());
+        mytest();
     }
 
     //    http://localhost:8261/getPath
     @RequestMapping(value = "/upload",method = RequestMethod.GET)
     public void getPath() throws FileNotFoundException {
         // 获取项目发布后的类路径 E:/Code/J2EE_code/MySpringBoot/springboot/chapter2-6-1/target/chapter2-6-1-0.0.1-SNAPSHOT/WEB-INF/classes/
+        // 获取项目发布后的类路径  E:\Code\J2EE_code\MySpringBoot\springboot\chapter2-6-1\target\chapter2-6-1-0.0.1-SNAPSHOT\WEB-INF\classes
+        mytest();
+    }
+
+    public void mytest() throws FileNotFoundException {
         String path = getClass().getResource("/").getPath();
         System.out.println("path="+path);
-
-        // 获取项目发布后的类路径  E:\Code\J2EE_code\MySpringBoot\springboot\chapter2-6-1\target\chapter2-6-1-0.0.1-SNAPSHOT\WEB-INF\classes
         File file = new File(ResourceUtils.getURL("classpath:").getPath());
         if(!file.exists()) {
             file = new File("");

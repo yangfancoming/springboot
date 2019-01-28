@@ -1,10 +1,9 @@
 # 配置文件的作用： 修改springboot 自动配置的默认值！
 
 ### 全局配置文件：
-    Springboot 默认的 两个全局配置文件：application.properties 和 application.yml （文件名是约定死的）
+    Springboot 默认的 两个全局配置文件：application.properties 和 application.yml （这两个文件名都是约定死的）
     properties和yml中的配置 相互补充，如果有冲突，则 properties 配置文件的优先级高
     springboot 默认扫描两个配置文件的四个位置(优先级由高到低排列)：
-
     1. 外置，在相对于应用程序运行目录的/config子目录里
     2. 外置，在应用程序运行的目录里
     3. 内置，在resources/config包内
@@ -23,22 +22,22 @@
 
 
 #### @Configuration 和 @Value 使用场景
-如果说，我们只是在某个业务逻辑中需要获取一下配置文件中的某项值，使用@Value；
-如果说，我们专门编写了一个javaBean来和配置文件进行映射，我们就直接使用@ConfigurationProperties；
+    如果说，我们只是在某个业务逻辑中需要获取一下配置文件中的某项值，使用@Value；
+    如果说，我们专门编写了一个javaBean来和配置文件进行映射，我们就直接使用@ConfigurationProperties；
 
 
 #### @ConfigurationProperties @PropertySource   @ImportResource   @Bean
-@**ConfigurationProperties**： 只能加载两大默认配置文件 properties  和 yml 
-@**PropertySource**：可以加载指定的 properties 配置文件，不能加载yml配置文件
-@**ImportResource**：导入Spring的xml配置文件，让配置文件里面的内容生效；
-@ImportResource(locations = {"classpath:beans.xml"}) 导入Spring的配置文件让其生效
+    @**ConfigurationProperties**： 只能加载两大默认配置文件 properties  和 yml 
+    @**PropertySource**：可以加载指定的 properties 配置文件，不能加载yml配置文件
+    @**ImportResource**：导入Spring的xml配置文件，让配置文件里面的内容生效；
+    @ImportResource(locations = {"classpath:beans.xml"}) 导入Spring的配置文件让其生效
 
 
 
 # 给项目访问路径 增加项目名称 
-server.servlet.context-path=/hello
-没加的话 项目访问地址  http://localhost:8034
-加上之后 项目访问地址 http://localhost:8034/hello
+    server.servlet.context-path=/hello
+    没加的话 项目访问地址  http://localhost:8034
+    加上之后 项目访问地址 http://localhost:8034/hello
 
 
 

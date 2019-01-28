@@ -168,7 +168,7 @@ public class JacksonUtils {
     public static <T> List<T> json2list(String jsonArrayStr, Class<T> clazz) throws Exception {
 
         JavaType javaType = getCollectionType(ArrayList.class, clazz);
-        List<T> lst = (List<T>) objectMapper.readValue(jsonArrayStr, javaType);
+        List<T> lst = objectMapper.readValue(jsonArrayStr, javaType);
         return lst;
     }
 
