@@ -1,0 +1,16 @@
+spring:
+#  redis:
+#    database: 0
+#    # Redis服务器地址
+#    host: 127.0.0.1
+#    # Redis服务器连接端口
+#    port: 6379
+#    # Redis服务器连接密码（默认为空）
+#    password: 123456789
+  rabbitmq:
+    host: 192.168.235.207
+    port: 5672
+    username: guest
+    password: guest
+    virtualHost: / # Invalid configuration: 'virtualHost' must be non-null
+    publisherConfirms: true
