@@ -41,10 +41,17 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public User(String name, Integer age, String password) {
+        this.name = name;
+        this.age = age;
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "User{" + "id='" + id + '\'' + ", name='" + name + '\'' + ", age=" + age + ", username='" + username + '\'' + ", password='" + password + '\'' + ", code=" + code + '}';
     }
+
 
     public Long getCode() {
         return code;

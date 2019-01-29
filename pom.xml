@@ -138,6 +138,7 @@
         <module>chapter6-2-8</module>
         <module>chapter8-3-1</module>
         <module>chapter8-3-2</module>
+        <module>chapter2-7-3</module>
 
 
     </modules>
@@ -160,7 +161,12 @@
 	</properties>
 
 	<dependencies>
-
+        <!-- 引入后 可以使用 StringUtils.leftPad-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.7</version>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>

@@ -8,22 +8,16 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <packaging>jar</packaging>
-    <artifactId>chapter0-1-0</artifactId>
+
+    <artifactId>chapter2-7-3</artifactId>
 
 
     <dependencies>
-
-        <!--SpringBoot 貌似不支持该依赖-->
-         <!--https://mvnrepository.com/artifact/org.docx4j/docx4j-->
-        <!--<dependency>-->
-            <!--<groupId>org.docx4j</groupId>-->
-            <!--<artifactId>docx4j</artifactId>-->
-            <!--<version>3.2.1</version>-->
-        <!--</dependency>-->
-
-
-
+        <dependency>
+            <groupId>com.goat.springboot.learing</groupId>
+            <artifactId>chapter0-0-1</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 </project>

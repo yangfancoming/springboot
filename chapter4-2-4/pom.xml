@@ -30,11 +30,6 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>com.goat.springboot.learing</groupId>-->
-            <!--<artifactId>chapter0-0-0</artifactId>-->
-            <!--<version>0.0.1-SNAPSHOT</version>-->
-        <!--</dependency>-->
 
         <!--引入 druid 数据源-->
         <dependency> <groupId>com.alibaba</groupId> <artifactId>druid</artifactId><version>1.1.8</version> </dependency>
@@ -43,18 +38,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>com.goat.springboot.learing</groupId>-->
-            <!--<artifactId>chapter1-1-2</artifactId>-->
-            <!--<version>0.0.1-SNAPSHOT</version>-->
-        <!--</dependency>-->
 
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.7</version>
-        </dependency>
     </dependencies>
 
 </project>
