@@ -9,7 +9,7 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
     <property name="LOG_HOME" value="/app/log" />
     <!-- 定义日志文件名称 -->
     <property name="appName" value="atguigu-springboot"></property>
-    <!-- ch.qos.logback.core.ConsoleAppender 表示控制台输出 -->
+    <!-- ch.qos.logback.core.ConsoleAppender 表示控制台输出  -->
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <!--
         日志输出格式：
