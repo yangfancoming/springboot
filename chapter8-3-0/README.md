@@ -44,9 +44,9 @@
 
 
 # exchage 交换机类型:
-     1. direct ： 如果路由键完全匹配的话,消息才会被投放到相应的队列.
-     2. topic  ： 设置模糊的绑定方式,"*"操作符将"."视为分隔符,匹配单个字符;"#"操作符没有分块的概念,它将任意"."均视为关键字的匹配部分,能够匹配多个字符
-     3. headers 
+     1. direct ： 通过routingKey和exchange决定的那个唯一的queue可以接收消息
+     2. topic  ： 设置模糊的绑定方式,"*"操作符将"."视为分隔符,匹配单个字符;"#"操作符没有分块的概念,它将任意"."均视为关键字的匹配部分,能够匹配多个字符 。所有符合routingKey(此时可以是一个表达式)的routingKey所bind的queue可以接收消息
+     3. headers ： 一般情况下 用不到
      4. fanout ： 当发送一条消息到fanout交换器上时,它会把消息投放到所有附加在此交换器的上的队列.
 # RabbitMQ 持久化:     
      消息 持久化：     channel.basicPublish(TOPIC_EXCHANGE_NAME, "item.insert", MessageProperties.PERSISTENT_BASIC, message.getBytes());

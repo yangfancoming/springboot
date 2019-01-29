@@ -43,6 +43,10 @@ public class JpaTestController {
         testService.save(haha);// 触发事务2
         System.out.println("test2 save。。。。。。。。。。");
     }
+    @RequestMapping("/test3")
+    public void test3(){
+        testService.update("567",1L);// 触发事务2
+    }
 
 
 }

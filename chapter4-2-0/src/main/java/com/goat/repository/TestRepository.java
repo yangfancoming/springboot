@@ -24,8 +24,10 @@ public interface TestRepository extends JpaRepository<MyMoney, Long> {
 
     Optional<MyMoney> findById(Long id);
 
+
     @Transactional
     @Modifying
-    @Query("UPDATE MyMoney SET col1 = col1 + :num WHERE id = :id")
-    Integer updateMoney(@Param("num") Integer num, @Param("id") Long id);
+    @Query("UPDATE MyMoney SET col1 = :num WHERE id = :id")
+//    @Query("UPDATE MyMoney SET col1 = :num,version=:version+1 WHERE id = :id and version=:version ")
+    Integer updateMoney(@Param("num") String num, @Param("id") Long id);
 }

@@ -3,8 +3,6 @@ package com.goat.service;
 import com.goat.domain.MyMoney;
 import com.goat.repository.TestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,13 +26,24 @@ public class TestService {
         return testRepository.findById(id);
     }
 
+
+    /**
+     * 在更新数据时，jpa 提供的 两个方法  可以实现 @version 字段的自增+1
+     <S extends T> S save(S var1);
+     <S extends T> Iterable<S> saveAll(Iterable<S> var1);
+     * */
     @Transactional
     public void save(MyMoney myMoney) {
          testRepository.save(myMoney);
     }
 
+
+    /** 如果是自己写的update方法，下面这样，是不生效的 比如这样： @Query("UPDATE MyMoney SET col1 = :num WHERE id = :id")
+        需要 改成这样：@Query("UPDATE MyMoney SET col1 = :num,version=:version+1 WHERE id = :id and version=:version ")
+        输了一瓶脉动 得到的教训啊。。。
+     * * */
     @Transactional
-    public void update(Integer num,Long id) {
+    public void update(String num,Long id) {
         testRepository.updateMoney(num,id);
     }
 }
