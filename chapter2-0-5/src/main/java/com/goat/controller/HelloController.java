@@ -14,7 +14,6 @@ import java.util.*;
 
 /**
      * @Description: 功能描述：   controller 返回 常见 数据类型 示例
-     * @author: 杨帆
      * @Date:   2018/9/13
 */
 @RestController
@@ -25,9 +24,18 @@ public class HelloController {
     private UserRepository userRepository;
 
     /**
-         * @Description: 功能描述： 返回   Optional<User>  类型
-         * @author: 杨帆
-         * @Date:   2018/9/13
+     返回   User  类型
+     *      http://localhost:8080/hello/findById
+     */
+    @RequestMapping("/test")
+    public User test(){
+        User user = userRepository.findById(2L).get();
+        return user;
+    }
+
+
+    /**
+            返回   Optional<User>  类型
      *      http://localhost:8080/hello/findById
     */
     @RequestMapping("/findById")
@@ -37,8 +45,6 @@ public class HelloController {
     }
     /**
      * @Description: 功能描述： 返回    List<User>  类型
-     * @author: 杨帆
-     * @Date:   2018/9/13
        http://localhost:8080/hello/findAll
      */
     @RequestMapping("/findAll")
@@ -48,8 +54,6 @@ public class HelloController {
     }
     /**
      * @Description: 功能描述： 返回   Map  类型
-     * @author: 杨帆
-     * @Date:   2018/9/13
     http://localhost:8080/hello/map
      */
     @RequestMapping("/map")
@@ -62,8 +66,6 @@ public class HelloController {
     }
     /**
      * @Description: 功能描述： 返回   Map<String,Object>  类型
-     * @author: 杨帆
-     * @Date:   2018/9/13
     http://localhost:8080/hello/map2
      */
     @RequestMapping("/map2")
@@ -77,8 +79,6 @@ public class HelloController {
 
     /**
      * @Description: 功能描述： 返回   List<Map<String,Object>>  类型
-     * @author: 杨帆
-     * @Date:   2018/9/13
     http://localhost:8080/hello/listmap
      */
     @RequestMapping("/listmap")
@@ -95,8 +95,6 @@ public class HelloController {
     }
     /**
      * @Description: 功能描述： 返回   RestResponse  类型
-     * @author: 杨帆
-     * @Date:   2018/9/13
     http://localhost:8080/hello/RestResponse
      */
     @RequestMapping("/RestResponse")
@@ -110,8 +108,6 @@ public class HelloController {
 
     /**
      * @Description: 功能描述： 返回   RestResponse  类型
-     * @author: 杨帆
-     * @Date:   2018/9/13
     http://localhost:8080/hello/RestResponse2
      */
     @RequestMapping("/RestResponse2")
@@ -120,7 +116,6 @@ public class HelloController {
         map.put("id",1);
         map.put("name","fuck");
         map.put("age",12);
-
         List<Map<String,Object>> temp = new ArrayList<>();
         temp.add(map);
         temp.add(map);
@@ -129,8 +124,6 @@ public class HelloController {
 
     /**
      * @Description: 功能描述： 返回   MesDto  类型
-     * @author: 杨帆
-     * @Date:   2018/9/13
     http://localhost:8080/hello/MesDto
      */
     @RequestMapping("/MesDto")
