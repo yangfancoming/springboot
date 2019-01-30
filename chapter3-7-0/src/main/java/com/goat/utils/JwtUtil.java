@@ -1,6 +1,6 @@
 package com.goat.utils;
 
-import com.goat.jwt.JwtConfig;
+import com.goat.config.JwtConfig;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

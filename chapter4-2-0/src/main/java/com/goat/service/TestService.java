@@ -39,7 +39,7 @@ public class TestService {
 
 
     /** 如果是自己写的update方法，下面这样，是不生效的 比如这样： @Query("UPDATE MyMoney SET col1 = :num WHERE id = :id")
-        需要 改成这样：@Query("UPDATE MyMoney SET col1 = :num,version=:version+1 WHERE id = :id and version=:version ")
+        需要 改成这样：@Query("UPDATE MyMoney SET col1 = :num,version=version+1 WHERE id = :id and version=:version ")
         输了一瓶脉动 得到的教训啊。。。
      * * */
     @Transactional
