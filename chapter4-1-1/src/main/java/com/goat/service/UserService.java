@@ -26,5 +26,6 @@ public interface UserService {
      */
     void deleteAllUsers();
 
+    Integer update(String name, Integer id);
 
 }

@@ -2,6 +2,7 @@ package com.goat;
 
 
 import com.goat.service.UserService;
+import com.goat.service.impl.UserServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class UserServiceTest {
 
     @Autowired
     private ApplicationContext ac;
+
+//    @Autowired
+//    private UserServiceImpl userService;
 
     @Autowired private UserService userService;
 
@@ -37,7 +41,8 @@ public class UserServiceTest {
 
     @Test
     public void test01() {
-
+        Integer count =  userService.update("2222",33);
+        System.out.println(count);
 
     }
 

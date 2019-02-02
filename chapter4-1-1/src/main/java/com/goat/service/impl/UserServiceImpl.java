@@ -37,4 +37,9 @@ public class UserServiceImpl implements UserService {
     public void deleteAllUsers() {
         jdbcTemplate.update("delete from emp");
     }
+
+    @Override
+    public Integer update(String name, Integer id) {
+        return jdbcTemplate.update("update emp set ENAME = ? where EMPNO = ?", name, id);
+    }
 }
