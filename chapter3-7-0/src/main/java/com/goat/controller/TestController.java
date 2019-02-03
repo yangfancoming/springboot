@@ -1,7 +1,7 @@
 package com.goat.controller;
 
+import com.goat.config.JwtConfig;
 import com.goat.entity.Account;
-import com.goat.jwt.JwtConfig;
 import com.goat.utils.JwtUtil;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;

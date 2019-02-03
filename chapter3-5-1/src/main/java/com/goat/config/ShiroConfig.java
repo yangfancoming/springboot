@@ -28,7 +28,7 @@ role  ： 该资源必须得到角色权限才可以访问
 public class ShiroConfig {
 
 	@Bean
-	public ShiroFilterFactoryBean shirFilter(SecurityManager securityManager) {
+	public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
 
 		//shiro内置拦截器.
 		Map<String,String> filterMap = new LinkedHashMap<>();// 为了保证顺序 使用 LinkedHashMap
