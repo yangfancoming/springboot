@@ -7,15 +7,14 @@ import com.goat.dto.UserDto;
 import com.goat.service.UserService;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.HttpStatus;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.AuthenticatingFilter;
-import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
 import org.apache.shiro.web.util.WebUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.apache.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.ServletRequest;
@@ -29,6 +28,14 @@ import java.util.Date;
 /**
  这里也可以使用  BasicHttpAuthenticationFilter FormAuthenticationFilter 以为他俩都继承了 AuthenticatingFilter
  代码的执行流程preHandle->isAccessAllowed->isLoginAttempt->executeLogin
+
+ jwt.config:
+ tokenExpirationTime: 30000 #Number of minutes 时间单位：分钟 token 过期时间 5分钟
+ refreshTokenExpTime: 30000 #Number of minutes 时间单位：分钟 token 刷新时间 5分钟
+ tokenIssuer: http://svlada.com
+ tokenSigningKey: xm8EV6Hy5RMFK4EEACIDAwQus
+ header: Authorization
+ tokenHead: Bearer
 */
 
 public class JwtAuthFilter extends AuthenticatingFilter {
@@ -36,6 +43,8 @@ public class JwtAuthFilter extends AuthenticatingFilter {
 	private final Logger log = LoggerFactory.getLogger(JwtAuthFilter.class);
 	
     private static final int tokenRefreshInterval = 300;
+    public  static final String HEADER_PREFIX = "Bearer "; // 这里的空格 千万别忘了！ 调试了好半天。。。
+    public  static final String HEADER = "Authorization";
     private UserService userService;
 
     public JwtAuthFilter(UserService userService){
@@ -103,9 +112,9 @@ public class JwtAuthFilter extends AuthenticatingFilter {
         return null;
     }
 
-
     /**
      *  如果Shiro Login认证成功，会进入该方法，等同于用户名密码登录成功，我们这里还判断了是否要刷新Token
+     *  如果用户这次的token校验通过后，我们还会顺便看看token要不要刷新，如果需要刷新则将新的token放到header里面。
      */
     @Override
     protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response) {
@@ -120,7 +129,7 @@ public class JwtAuthFilter extends AuthenticatingFilter {
             }
         }
         if(StringUtils.isNotBlank(newToken))
-            httpResponse.setHeader("x-auth-token", newToken);
+            httpResponse.setHeader(HEADER, newToken);
 
         return true;
     }
@@ -136,8 +145,8 @@ public class JwtAuthFilter extends AuthenticatingFilter {
 
     protected String getAuthzHeader(ServletRequest request) {
         HttpServletRequest httpRequest = WebUtils.toHttp(request);
-        String header = httpRequest.getHeader("x-auth-token");
-        return StringUtils.removeStart(header, "Bearer ");
+        String header = httpRequest.getHeader(HEADER);
+        return StringUtils.removeStart(header,HEADER_PREFIX);
     }
 
     protected boolean shouldTokenRefresh(Date issueAt){

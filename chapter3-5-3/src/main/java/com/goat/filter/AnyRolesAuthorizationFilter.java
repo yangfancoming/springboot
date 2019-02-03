@@ -9,8 +9,12 @@ import org.apache.shiro.web.util.WebUtils;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
+/**
+ 在实际的项目中，对同一个url多个角色都有访问权限很常见，shiro默认的RoleFilter没有提供支持，
+ 比如上面的配置，如果我们配置成下面这样，那用户必须同时具备admin和manager权限才能访问，显然这个是不合理的
+ 所以自己实现一个role filter，只要任何一个角色符合条件就通过，只需要重写AuthorizationFilter中两个方法就可以了：
+*/
 public class AnyRolesAuthorizationFilter  extends AuthorizationFilter {
 	
 	@Override
@@ -19,7 +23,7 @@ public class AnyRolesAuthorizationFilter  extends AuthorizationFilter {
 	}
 
     @Override
-    protected boolean isAccessAllowed(ServletRequest servletRequest, ServletResponse servletResponse, Object mappedValue) throws Exception {
+    protected boolean isAccessAllowed(ServletRequest servletRequest, ServletResponse servletResponse, Object mappedValue)  {
     	Boolean afterFiltered = (Boolean)(servletRequest.getAttribute("anyRolesAuthFilter.FILTERED"));
         if( BooleanUtils.isTrue(afterFiltered))
         	return true;
@@ -37,7 +41,7 @@ public class AnyRolesAuthorizationFilter  extends AuthorizationFilter {
     }
 
     @Override
-    protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws IOException {
+    protected boolean onAccessDenied(ServletRequest request, ServletResponse response) {
         HttpServletResponse httpResponse = WebUtils.toHttp(response);
         httpResponse.setCharacterEncoding("UTF-8");
         httpResponse.setContentType("application/json;charset=utf-8");

@@ -1,0 +1,19 @@
+
+#@ConfigurationProperties(prefix = "demo.security.jwt")
+jwt.config:
+  tokenExpirationTime: 30000 #Number of minutes 时间单位：分钟 token 过期时间 5分钟
+  refreshTokenExpTime: 30000 #Number of minutes 时间单位：分钟 token 刷新时间 5分钟
+  tokenIssuer: http://svlada.com
+  tokenSigningKey: xm8EV6Hy5RMFK4EEACIDAwQus
+  header: Authorization
+  tokenHead: Bearer
+
+
+
+
+
+
+
+
+
+

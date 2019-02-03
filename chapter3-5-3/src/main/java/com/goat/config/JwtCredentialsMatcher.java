@@ -1,5 +1,6 @@
 package com.goat.config;
 
+
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -36,7 +37,6 @@ public class JwtCredentialsMatcher implements CredentialsMatcher {
         } catch (UnsupportedEncodingException | JWTVerificationException e) {
             log.error("Token Error:{}", e.getMessage());
         }
-
         return false;
     }
 

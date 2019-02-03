@@ -28,7 +28,8 @@
             <artifactId>java-jwt</artifactId>
             <version>${jwt.auth0.version}</version>
         </dependency>
-
+        <!-- JWT  -->
+        <!--<dependency><groupId>io.jsonwebtoken</groupId><artifactId>jjwt</artifactId><version>0.7.0</version></dependency>-->
 
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>

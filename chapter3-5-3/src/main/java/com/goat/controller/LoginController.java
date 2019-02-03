@@ -2,6 +2,7 @@ package com.goat.controller;
 
 
 import com.goat.dto.UserDto;
+import com.goat.filter.JwtAuthFilter;
 import com.goat.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -32,8 +33,9 @@ public class LoginController {
 
     /**
      * 用户名密码登录
-     * @param request
+     * @param request "x-auth-token"
      * @return token
+     *  http://localhost:8353/login
      */
     @PostMapping(value = "/login")
     public ResponseEntity<Void> login(@RequestBody UserDto loginInfo, HttpServletRequest request, HttpServletResponse response){
@@ -43,7 +45,7 @@ public class LoginController {
             subject.login(token);
             UserDto user = (UserDto) subject.getPrincipal();  //Shiro认证通过后会将user信息放到subject内，生成token并返回
             String newToken = userService.generateJwtToken(user.getUsername());
-            response.setHeader("x-auth-token", newToken);
+            response.setHeader(JwtAuthFilter.HEADER, newToken);
             return ResponseEntity.ok().build();
         } catch (AuthenticationException e) { // 如果校验失败，shiro会抛出异常，返回客户端失败
             logger.error("User {} login fail, Reason:{}", loginInfo.getUsername(), e.getMessage());

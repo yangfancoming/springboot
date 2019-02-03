@@ -35,26 +35,22 @@ public class JwtShiroRealm extends AuthorizingRealm {
     }
 
     /**
-     * 更controller登录一样，也是获取用户的salt值，给到shiro，由shiro来调用matcher来做认证
-     */
-    /**
      * 认证信息.(身份验证) : Authentication 是用来验证用户身份
      * 默认使用此方法进行用户名正确与否验证，错误抛出异常即可。
+     *  跟controller登录一样，也是获取用户的salt值，给到shiro，由shiro来调用matcher来做认证
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
         JwtToken jwtToken = (JwtToken) authcToken;
         String token = jwtToken.getToken();
-        
         UserDto user = userService.getJwtTokenInfo(JwtUtils.getUsername(token));
         if(user == null)
             throw new AuthenticationException("token过期，请重新登录");
-
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user, user.getSalt(), "jwtRealm");
-
         return authenticationInfo;
     }
 
+    /**在JWT Realm里面，因为没有存储角色信息，所以直接返回空就可以了：*/
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         return new SimpleAuthorizationInfo();

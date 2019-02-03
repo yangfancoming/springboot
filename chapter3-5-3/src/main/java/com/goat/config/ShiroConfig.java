@@ -77,7 +77,7 @@ public class ShiroConfig {
     protected ShiroFilterChainDefinition shiroFilterChainDefinition() {
         DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition();
         chainDefinition.addPathDefinition("/login", "noSessionCreation,anon");
-        chainDefinition.addPathDefinition("/logout", "noSessionCreation,authcToken[permissive]");
+        chainDefinition.addPathDefinition("/logout", "noSessionCreation,authcToken[permissive]"); //做用户认证，permissive参数的作用是当token无效时也允许请求访问，不会返回鉴权未通过的错误
         chainDefinition.addPathDefinition("/image/**", "anon");
         chainDefinition.addPathDefinition("/admin/**", "noSessionCreation,authcToken,anyRole[admin,manager]"); //只允许admin或manager角色的用户访问
         chainDefinition.addPathDefinition("/article/list", "noSessionCreation,authcToken");
@@ -101,6 +101,9 @@ public class ShiroConfig {
         return new JwtShiroRealm(userService);
     }
 
+    /**
+     * 初始化Authenticator
+     */
     @Bean
     public Authenticator authenticator(UserService userService) {
         ModularRealmAuthenticator authenticator = new ModularRealmAuthenticator();
