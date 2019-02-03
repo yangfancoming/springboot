@@ -39,19 +39,22 @@ public class DbShiroRealm extends AuthorizingRealm {
      */
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+        System.out.println("进入DbShiroRealm---doGetAuthenticationInfo() 认证操作。。。。。。。。。。。。。。");
 		UsernamePasswordToken userpasswordToken = (UsernamePasswordToken)token;
 		String username = userpasswordToken.getUsername();  // 解密获得 username，用于和数据库进行对比
-		UserDto user = userService.getUserInfo(username);
+		UserDto user = userService.getUserInfo(username);   //  通过 token 解析出的 username 去查询数据库
+        System.out.println("进行查库操作 认证用户信息。。。。。。。。。数据库操作");
 		if(user == null) throw new AuthenticationException("用户名或者密码错误");
 		return new SimpleAuthenticationInfo(user, user.getEncryptPwd(), ByteSource.Util.bytes(encryptSalt), "dbRealm");
 	}
 
     /**
      * 只有当需要检测用户权限的时候才会调用此方法，例如checkRole,checkPermission之类的
-     * 执行授权 ： 主要是用来进行身份认证的，也就是说验证用户输入的账号和密码是否正确。
+     * 执行授权 ：
      */
 	@Override
-	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {      
+	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+        System.out.println("进入DbShiroRealm---doGetAuthorizationInfo() 授权操作。。。。。。。。。。。。。。");
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         UserDto user = (UserDto) principals.getPrimaryPrincipal();
         List<String> roles = user.getRoles();

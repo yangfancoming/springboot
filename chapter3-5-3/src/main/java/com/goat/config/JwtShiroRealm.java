@@ -31,6 +31,7 @@ public class JwtShiroRealm extends AuthorizingRealm {
      */
     @Override
     public boolean supports(AuthenticationToken token) {
+        System.out.println("进入 JwtShiroRealm---supports() 操作。。。。。。。。。。。。。。");
         return token instanceof JwtToken;
     }
 
@@ -41,6 +42,7 @@ public class JwtShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
+        System.out.println("进入 JwtShiroRealm---doGetAuthenticationInfo() 认证操作。。。。。。。。。。。。。。");
         JwtToken jwtToken = (JwtToken) authcToken;
         String token = jwtToken.getToken();
         UserDto user = userService.getJwtTokenInfo(JwtUtils.getUsername(token));
@@ -53,6 +55,7 @@ public class JwtShiroRealm extends AuthorizingRealm {
     /**在JWT Realm里面，因为没有存储角色信息，所以直接返回空就可以了：*/
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+        System.out.println("进入 JwtShiroRealm---doGetAuthorizationInfo() 授权操作。。。。。。。。。。。。。。");
         return new SimpleAuthorizationInfo();
     }
 }

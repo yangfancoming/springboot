@@ -24,6 +24,7 @@ public class AnyRolesAuthorizationFilter  extends AuthorizationFilter {
 
     @Override
     protected boolean isAccessAllowed(ServletRequest servletRequest, ServletResponse servletResponse, Object mappedValue)  {
+        System.out.println("进入 AnyRolesAuthorizationFilter---isAccessAllowed() 。。。。。。。。。。。。。。");
     	Boolean afterFiltered = (Boolean)(servletRequest.getAttribute("anyRolesAuthFilter.FILTERED"));
         if( BooleanUtils.isTrue(afterFiltered))
         	return true;
@@ -42,6 +43,7 @@ public class AnyRolesAuthorizationFilter  extends AuthorizationFilter {
 
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) {
+        System.out.println("进入 AnyRolesAuthorizationFilter---onAccessDenied() 。。。。。。。。。。。。。。");
         HttpServletResponse httpResponse = WebUtils.toHttp(response);
         httpResponse.setCharacterEncoding("UTF-8");
         httpResponse.setContentType("application/json;charset=utf-8");

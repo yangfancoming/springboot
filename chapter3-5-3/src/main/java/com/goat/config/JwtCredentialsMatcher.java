@@ -22,14 +22,12 @@ public class JwtCredentialsMatcher implements CredentialsMatcher {
      */
     @Override
     public boolean doCredentialsMatch(AuthenticationToken authenticationToken, AuthenticationInfo authenticationInfo) {
+        System.out.println("进入 JwtCredentialsMatcher---doCredentialsMatch() 匹配操作。。。。。。。。。。。。。。");
         String token = (String) authenticationToken.getCredentials();
-        Object stored = authenticationInfo.getCredentials();
-        String salt = stored.toString();
-
+        String salt = authenticationInfo.getCredentials().toString();
         UserDto user = (UserDto)authenticationInfo.getPrincipals().getPrimaryPrincipal();
         try {
-            Algorithm algorithm = Algorithm.HMAC256(salt);
-            JWTVerifier verifier = JWT.require(algorithm)
+            JWTVerifier verifier = JWT.require(Algorithm.HMAC256(salt))
                     .withClaim("username", user.getUsername())
                     .build();
             verifier.verify(token);

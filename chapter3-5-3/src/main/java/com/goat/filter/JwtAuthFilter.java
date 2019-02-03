@@ -54,6 +54,7 @@ public class JwtAuthFilter extends AuthenticatingFilter {
 
     @Override
     protected boolean preHandle(ServletRequest request, ServletResponse response) throws Exception {
+        System.out.println("进入 JwtAuthFilter---preHandle() 。。。。。。。。。。。。。。");
         HttpServletRequest httpServletRequest = WebUtils.toHttp(request);
         if (httpServletRequest.getMethod().equals(RequestMethod.OPTIONS.name())) //对于OPTION请求做拦截，不做token校验
             return false;
@@ -62,6 +63,7 @@ public class JwtAuthFilter extends AuthenticatingFilter {
 
     @Override
     protected void postHandle(ServletRequest request, ServletResponse response){
+        System.out.println("进入 JwtAuthFilter---postHandle() 。。。。。。。。。。。。。。");
         this.fillCorsHeader(WebUtils.toHttp(request), WebUtils.toHttp(response));
         request.setAttribute("jwtShiroFilter.FILTERED", true);
     }
@@ -71,6 +73,7 @@ public class JwtAuthFilter extends AuthenticatingFilter {
      */
     @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
+        System.out.println("进入 JwtAuthFilter---isAccessAllowed() 。。。。。。。。。。。。。。");
         if(this.isLoginRequest(request, response))
             return true;
         Boolean afterFiltered = (Boolean)(request.getAttribute("jwtShiroFilter.FILTERED"));
@@ -93,6 +96,7 @@ public class JwtAuthFilter extends AuthenticatingFilter {
      */
     @Override
     protected boolean onAccessDenied(ServletRequest servletRequest, ServletResponse servletResponse) {
+        System.out.println("进入 JwtAuthFilter---onAccessDenied() 。。。。。。。。。。。。。。");
         HttpServletResponse httpResponse = WebUtils.toHttp(servletResponse);
         httpResponse.setCharacterEncoding("UTF-8");
         httpResponse.setContentType("application/json;charset=UTF-8");
@@ -106,6 +110,7 @@ public class JwtAuthFilter extends AuthenticatingFilter {
      */
     @Override
     protected AuthenticationToken createToken(ServletRequest servletRequest, ServletResponse servletResponse) {
+        System.out.println("进入 JwtAuthFilter---createToken() 。。。。。。。。。。。。。。");
         String jwtToken = getAuthzHeader(servletRequest);
         if(StringUtils.isNotBlank(jwtToken)&&! JwtUtils.isTokenExpired(jwtToken))
             return new JwtToken(jwtToken);
@@ -118,6 +123,7 @@ public class JwtAuthFilter extends AuthenticatingFilter {
      */
     @Override
     protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response) {
+        System.out.println("进入 JwtAuthFilter---onLoginSuccess() 。。。。。。。。。。。。。。");
         HttpServletResponse httpResponse = WebUtils.toHttp(response);
         String newToken = null;
         if(token instanceof JwtToken){
@@ -130,7 +136,6 @@ public class JwtAuthFilter extends AuthenticatingFilter {
         }
         if(StringUtils.isNotBlank(newToken))
             httpResponse.setHeader(HEADER, newToken);
-
         return true;
     }
 
@@ -139,6 +144,7 @@ public class JwtAuthFilter extends AuthenticatingFilter {
      */
     @Override
     protected boolean onLoginFailure(AuthenticationToken token, AuthenticationException e, ServletRequest request, ServletResponse response) {
+        System.out.println("进入 JwtAuthFilter---onLoginFailure() 。。。。。。。。。。。。。。");
         log.error("Validate token fail, token:{}, error:{}", token.toString(), e.getMessage());
         return false;
     }
@@ -146,10 +152,13 @@ public class JwtAuthFilter extends AuthenticatingFilter {
     protected String getAuthzHeader(ServletRequest request) {
         HttpServletRequest httpRequest = WebUtils.toHttp(request);
         String header = httpRequest.getHeader(HEADER);
-        return StringUtils.removeStart(header,HEADER_PREFIX);
+        String s = StringUtils.removeStart(header, HEADER_PREFIX);
+        System.out.println("进入 JwtAuthFilter---getAuthzHeader() 。。。。。。。。。。。。。。"+ s);
+        return s;
     }
 
     protected boolean shouldTokenRefresh(Date issueAt){
+        System.out.println("进入 JwtAuthFilter---shouldTokenRefresh() 。。。。。。。。。。。。。。");
         LocalDateTime issueTime = LocalDateTime.ofInstant(issueAt.toInstant(), ZoneId.systemDefault());
         return LocalDateTime.now().minusSeconds(tokenRefreshInterval).isAfter(issueTime);
     }

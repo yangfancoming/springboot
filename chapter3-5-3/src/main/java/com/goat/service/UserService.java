@@ -18,6 +18,7 @@ public class UserService {
 
     /** 保存user登录信息，返回token */
     public String generateJwtToken(String username) {
+        System.out.println("进入 UserService---generateJwtToken() 生成操作。。。。。。。。。。。。。。");
     	String salt = "12345";//JwtUtils.generateSalt();
     	return JwtUtils.sign(username, salt, 3600); //生成jwt token，设置过期时间为1小时
     }
@@ -28,6 +29,7 @@ public class UserService {
      * @return
      */
     public UserDto getJwtTokenInfo(String username) {
+        System.out.println("进入 UserService---getJwtTokenInfo() 获取上次生成的token信心。。。。。。。。。。。。。。数据库操作");
     	String salt = "12345";
     	/**
     	 * @todo 从数据库或者缓存中取出jwt token生成时用的salt
@@ -57,6 +59,7 @@ public class UserService {
      * @return
      */
     public UserDto getUserInfo(String userName) {
+        System.out.println("进入 UserService---getUserInfo() 获取数据库中保存的用户信息。。。。。。。。。。。。。。数据库操作");
     	UserDto user = new UserDto();
     	user.setUserId(1L);
     	user.setUsername("admin");
@@ -70,6 +73,7 @@ public class UserService {
      * @return
      */
     public List<String> getUserRoles(Long userId){
+        System.out.println("进入 UserService---getUserRoles() 获取用户角色列表。。。。。。。。。。。。。。数据库操作");
     	return Arrays.asList("admin");
     }
 
