@@ -15,6 +15,7 @@ public class UserDto implements Serializable {
     private Long userId;
     private String salt;
     private List<String> roles;
+    private List<String> permission;
 
 	public String getUsername() {
 		return username;
@@ -64,4 +65,11 @@ public class UserDto implements Serializable {
 		this.encryptPwd = encryptPwd;
 	}
 
+    public List<String> getPermission() {
+        return permission;
+    }
+
+    public void setPermission(List<String> permission) {
+        this.permission = permission;
+    }
 }

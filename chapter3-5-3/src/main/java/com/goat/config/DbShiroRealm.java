@@ -12,7 +12,7 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 
-import java.util.List;
+import java.util.*;
 
 public class DbShiroRealm extends AuthorizingRealm {
 
@@ -57,12 +57,8 @@ public class DbShiroRealm extends AuthorizingRealm {
         System.out.println("进入DbShiroRealm---doGetAuthorizationInfo() 授权操作。。。。。。。。。。。。。。");
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         UserDto user = (UserDto) principals.getPrimaryPrincipal();
-        List<String> roles = user.getRoles();
-        if(roles == null) {
-            roles = userService.getUserRoles(user.getUserId());
-            user.setRoles(roles);
-        }
-        if (roles != null) simpleAuthorizationInfo.addRoles(roles);
+        simpleAuthorizationInfo.addRoles(user.getRoles());
+        simpleAuthorizationInfo.addStringPermissions(user.getPermission());
         return simpleAuthorizationInfo;
 	}
 

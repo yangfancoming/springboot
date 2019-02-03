@@ -20,7 +20,7 @@ public class UserService {
     public String generateJwtToken(String username) {
         System.out.println("进入 UserService---generateJwtToken() 生成操作。。。。。。。。。。。。。。");
     	String salt = "12345";//JwtUtils.generateSalt();
-    	return JwtUtils.sign(username, salt, 3600); //生成jwt token，设置过期时间为1小时
+    	return JwtUtils.sign(username, salt); //生成jwt token，设置过期时间为1小时
     }
     
     /**

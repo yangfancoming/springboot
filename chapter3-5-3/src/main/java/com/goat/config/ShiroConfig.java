@@ -47,11 +47,10 @@ public class ShiroConfig {
         ShiroFilterFactoryBean factoryBean = new ShiroFilterFactoryBean();
         factoryBean.setSecurityManager(securityManager);
         Map<String, Filter> filterMap = factoryBean.getFilters();
-        filterMap.put("authcToken", createAuthFilter(userService));
-        filterMap.put("anyRole", createRolesFilter());
+        filterMap.put("authcToken", createAuthFilter(userService)); // 添加自己的过滤器并且取名为 authcToken
+        filterMap.put("anyRole", createRolesFilter()); // 添加自己的过滤器并且取名为 anyRole
         factoryBean.setFilters(filterMap);
-        factoryBean.setFilterChainDefinitionMap(shiroFilterChainDefinition().getFilterChainMap());
-
+        factoryBean.setFilterChainDefinitionMap(shiroFilterChainDefinition().getFilterChainMap());//  加载url拦截规则
         return factoryBean;
     }
 
@@ -81,6 +80,7 @@ public class ShiroConfig {
         chainDefinition.addPathDefinition("/image/**", "anon");
         chainDefinition.addPathDefinition("/admin/**", "noSessionCreation,authcToken,anyRole[admin,manager]"); //只允许admin或manager角色的用户访问
         chainDefinition.addPathDefinition("/article/list", "noSessionCreation,authcToken");
+        chainDefinition.addPathDefinition("/article/edit", "noSessionCreation,authc,anyRole[admin,manager]");
         chainDefinition.addPathDefinition("/article/*", "noSessionCreation,authcToken[permissive]");
         chainDefinition.addPathDefinition("/**", "noSessionCreation,authcToken");
         return chainDefinition;
@@ -113,7 +113,7 @@ public class ShiroConfig {
         return authenticator;
     }
     /**
-     * 禁用session, 不保存用户登录状态。保证每次请求都重新认证。
+     * 禁用session, 不保存用户登录状态。保证每次请求都重新认证。 关闭shiro自带的session
      * 需要注意的是，如果用户代码里调用Subject.getSession()还是可以用session，如果要完全禁用，要配合下面的noSessionCreation的Filter来实现
      */
     @Bean

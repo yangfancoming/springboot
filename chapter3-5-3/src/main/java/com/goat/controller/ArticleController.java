@@ -19,11 +19,16 @@ public class ArticleController {
         return null;
     }
 
-    // http://localhost:8353/1
+    // http://localhost:8353/article/1
     @GetMapping("/{id}")
     public ResponseEntity<String> read(@PathVariable Long id){
         return null;
     }
 
+    // http://localhost:8353/article/edit
+    @GetMapping("/edit")
+    public void edit(){
+        System.out.println("进入 ArticleController  edit()。。。。。。。。。。。。。。");
+    }
 
 }
