@@ -22,16 +22,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyShiroRealm extends AuthorizingRealm {
 
-    @Reference
-    public IUserService userService;
+//    @Reference
+//    public IUserService userService;
 
-    /* 执行授权 ： 主要是用来进行身份认证的，也就是说验证用户输入的账号和密码是否正确。*/
+    /* 执行授权 ：*/
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         System.out.println("执行授权方法");
         // 给资源进行授权
         SimpleAuthorizationInfo authInfo = new SimpleAuthorizationInfo();
-        authInfo.addStringPermission("hello:add");// 授予 对应  filterChainDefinitionMap.put("/hello/add", "perms[hello:add]");  访问权限
         User userInfo  = (User) principals.getPrimaryPrincipal();
 //        for(SysRole role:userInfo.getRoleList()){
 //            authInfo.addRole(role.getRole());
@@ -39,7 +38,8 @@ public class MyShiroRealm extends AuthorizingRealm {
 //                authInfo.addStringPermission(p.getPermission());
 //            }
 //        }
-        authInfo.addStringPermission(userInfo.getRoleid());
+//        authInfo.addStringPermission(userInfo.getRoleid());
+//        authInfo.addStringPermission("hello:add");// 授予 对应  filterChainDefinitionMap.put("/hello/add", "perms[hello:add]");  访问权限
         return authInfo;
     }
 
@@ -48,7 +48,8 @@ public class MyShiroRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         System.out.println("执行认证方法");
         String username = (String)token.getPrincipal();  //获取用户的输入的账号
-        User user = userService.selectByUsername(username);
+//        User user = userService.selectByUsername(username);
+        User user = new User(1,"admin","12345");
         // 1. 判断账号
         if(!username.equals(user.getUsername())){
             return null;// 如果 输入的账号和数据库中账号不相同 那么这里 null 会使 shiro 抛出 UnknownAccountException 异常

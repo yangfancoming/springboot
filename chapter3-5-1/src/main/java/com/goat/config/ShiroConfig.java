@@ -35,7 +35,7 @@ public class ShiroConfig {
 		// 配置不会被拦截的链接 顺序判断
 		filterMap.put("/", "anon"); //  对应 LoginController  中  index 首页的跳转  不拦截
 		filterMap.put("/static/**", "anon");
-		filterMap.put("/test2", "anon"); //  对应 LoginController  中 test2   不拦截
+		filterMap.put("/hello/test1", "anon"); //  对应 HelloController  中 /hello/test1   不拦截
         filterMap.put("/doLogin", "anon");
         /**
          授权过滤器 如果 指定了未授权界面 那么 直接跳到指定的页面(403) 如果未指定未授权界面  那么直接报错 401 Unauthorized

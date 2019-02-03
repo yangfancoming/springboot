@@ -3,6 +3,7 @@ package com.goat.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Created by 64274 on 2018/7/15.
@@ -19,6 +20,7 @@ public class HelloController {
 
 //    http://localhost:8351/hello/test1
     @RequestMapping("/test1")
+    @ResponseBody
     public String hello(){
         return "goat like coming!"; // fuck 使用@RestController 这里会返回json字符串  使用@Controller 这里会去 templates 路径下找  名称为goat like coming!的html文件！！！
     }
