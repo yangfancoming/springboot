@@ -1,9 +1,8 @@
 package com.goat.config;
 
 
-import com.alibaba.dubbo.config.annotation.Reference;
-import com.goat.entity.User;
-import com.goat.service.IUserService;
+
+import com.goat.bean.User;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;

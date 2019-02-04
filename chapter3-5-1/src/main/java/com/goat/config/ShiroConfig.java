@@ -3,13 +3,13 @@ package com.goat.config;
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
+import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
+import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 
 /**
@@ -29,35 +29,37 @@ public class ShiroConfig {
 
 	@Bean
 	public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
+        // 创建 ShiroFilterFactoryBean 并与 securityManager 进行关联
+        ShiroFilterFactoryBean shiroBean = new ShiroFilterFactoryBean();
+        shiroBean.setSecurityManager(securityManager);
+        //拦截成功后的跳转页面： 如果不设置默认会自动寻找Web工程根目录下(templates/)的"/login.jsp"页面
+		shiroBean.setLoginUrl("/login"); // 请求被拦截后  跳转到 登录页面  (哥是登录页哦) 没有登陆的用户只能访问登陆页面
+		shiroBean.setSuccessUrl("/success");// 设置成功之后要跳转的链接
+        shiroBean.setUnauthorizedUrl("/403"); //未授权界面; perms[hello:add] 验证失败后 要跳转的页面
+//		shiroBean.setFilterChainDefinitionMap(filterMap);
+        shiroBean.setFilterChainDefinitionMap(shiroFilterChainDefinition().getFilterChainMap());//  加载url拦截规则
+		return shiroBean;
+	}
+    /**
+     对于登录请求，Filter直接放过，进到controller里面。Controller会调用shiro做用户名和密码的校验，成功后返回token
+     */
+    @Bean
+    protected ShiroFilterChainDefinition shiroFilterChainDefinition() {
 
-		//shiro内置拦截器.
-		Map<String,String> filterMap = new LinkedHashMap<>();// 为了保证顺序 使用 LinkedHashMap
-		// 配置不会被拦截的链接 顺序判断
-		filterMap.put("/", "anon"); //  对应 LoginController  中  index 首页的跳转  不拦截
-		filterMap.put("/static/**", "anon");
-		filterMap.put("/hello/test1", "anon"); //  对应 HelloController  中 /hello/test1   不拦截
-        filterMap.put("/doLogin", "anon");
+        DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition(); // 为了保证顺序 使用 LinkedHashMap
+        chainDefinition.addPathDefinition("/", "anon"); //  对应 LoginController  中  index 首页的跳转  不拦截
+        chainDefinition.addPathDefinition("/static/**", "anon");
+        chainDefinition.addPathDefinition("/hello/test1", "anon"); //  对应 HelloController  中 /hello/test1   不拦截
+        chainDefinition.addPathDefinition("/logout", "logout");   //配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
+        chainDefinition.addPathDefinition("/doLogin", "noSessionCreation,anon");
         /**
          授权过滤器 如果 指定了未授权界面 那么 直接跳到指定的页面(403) 如果未指定未授权界面  那么直接报错 401 Unauthorized
          授权认证会调用 doGetAuthorizationInfo 函数
          * */
-		filterMap.put("/hello/add", "perms[hello:add]");
-		//配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了
-		filterMap.put("/logout", "logout");
-		// 过滤链定义，从上向下顺序执行，一般将/**放在最为下边  这是一个坑呢，一不小心代码就不好使了;
-		filterMap.put("/**", "authc");
-
-        // 创建 ShiroFilterFactoryBean 并与 securityManager 进行关联
-        ShiroFilterFactoryBean shiroBean = new ShiroFilterFactoryBean();
-        shiroBean.setSecurityManager(securityManager);
-        shiroBean.setUnauthorizedUrl("/403"); //未授权界面; perms[hello:add] 验证失败后 要跳转的页面
-        //拦截成功后的跳转页面： 如果不设置默认会自动寻找Web工程根目录下(templates/)的"/login.jsp"页面
-		shiroBean.setLoginUrl("/login"); // 请求被拦截后  跳转到 登录页面  (哥是登录页哦)
-		shiroBean.setSuccessUrl("/success");// 登录成功后要跳转的链接
-		shiroBean.setFilterChainDefinitionMap(filterMap);
-		return shiroBean;
-	}
-
+        chainDefinition.addPathDefinition("/hello/add", "perms[hello:add]");
+        chainDefinition.addPathDefinition("/**", "authc");   // 过滤链定义，从上向下顺序执行，一般将/**放在最为下边  这是一个坑呢，一不小心代码就不好使了;
+        return chainDefinition;
+    }
 	/**
 	 * 凭证匹配器 （由于我们的密码校验交给Shiro的SimpleAuthenticationInfo进行处理了 ）
 	 */
@@ -82,18 +84,17 @@ public class ShiroConfig {
 	    return new ShiroDialect();
     }
 
-//	/**
-//	 *  开启shiro aop注解支持.
-//	 *  使用代理方式;所以需要开启代码支持;
-//	 * @param securityManager
-//	 * @return
-//	 */
-//	@Bean
-//	public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager){
-//		AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
-//		authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
-//		return authorizationAttributeSourceAdvisor;
-//	}
+	/**
+	 *  开启shiro aop注解支持.
+	 *  使用代理方式;所以需要开启代码支持; 加入注解的使用，不加入这个注解不生效
+	 * @param securityManager
+	 */
+	@Bean
+	public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager){
+		AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
+		authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
+		return authorizationAttributeSourceAdvisor;
+	}
 //
 //	@Bean(name="simpleMappingExceptionResolver")
 //	public SimpleMappingExceptionResolver createSimpleMappingExceptionResolver() {
