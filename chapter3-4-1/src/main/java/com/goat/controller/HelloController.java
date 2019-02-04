@@ -8,25 +8,22 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class HelloController {
 
-    @Autowired
-    HelloService helloService;
+    @Autowired  HelloService helloService;
 
-// 测试地址：    http://localhost:8341/hello?name=11
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    // 测试地址：    http://localhost:8341/hello?name=11
+    @GetMapping("/hello")
     public String hello(@RequestParam String name) {
         return "Hello " + name;
     }
 
-
     // 测试地址：    http://localhost:8341/hello1
-    @RequestMapping(value = "/hello1", method = RequestMethod.GET)
+    @GetMapping("/hello1")
     public String hello1() {
         return helloService.sayHiService1();
     }
 
-
     // 测试地址：    http://localhost:8341/hello2
-    @RequestMapping(value = "/hello2", method = RequestMethod.GET)
+    @GetMapping("/hello2")
     public String hello2() {
         System.out.println("执行 hello2 Controller");
         return helloService.sayHiService2();
