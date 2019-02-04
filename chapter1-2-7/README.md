@@ -22,4 +22,4 @@
     切换两个配置属性  i18n.lang=en_US 和 i18n.lang=zh_CN
     看控制台 分别打印出不同的结果：
     com.goat.condition3.I18nEngImpl
-    English
+    English   
