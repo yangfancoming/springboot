@@ -8,19 +8,11 @@ package com.goat.config;
  * @ date 2019/1/30---10:36
  */
 
-import com.goat.utils.RestBaseTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.client.ClientHttpRequestFactory;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.http.client.SimpleClientHttpRequestFactory;
-import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 import sun.net.www.http.HttpClient;
-
-import java.util.List;
 
 /**
  * HTTP 封装类
