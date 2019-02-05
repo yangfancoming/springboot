@@ -25,6 +25,7 @@ import org.springframework.stereotype.Component;
 @Import(MyImportBeanDefinitionRegistrar.class)
 public class MyImportBeanDefinitionRegistrar implements ImportBeanDefinitionRegistrar {
 
+    @Override
     public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
         //手动注入 Forwards 类的实例
         BeanDefinitionBuilder beanDef_forwards = BeanDefinitionBuilder.rootBeanDefinition(Forwards.class);

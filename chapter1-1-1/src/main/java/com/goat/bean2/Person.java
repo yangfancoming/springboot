@@ -44,6 +44,14 @@ public class Person {
     private List<Object> lists;
     private Pet pet;
 
+    public Person(String lastName, Integer age) {
+        this.lastName = lastName;
+        this.age = age;
+    }
+
+    public Person() {
+    }
+
     @Override
     public String toString() {
         return "Person{" + "lastName='" + lastName + '\'' + ", age=" + age + ", boss=" + boss + ", birth=" + birth + ", maps=" + maps + ", lists=" + lists + ", pet=" + pet + '}';

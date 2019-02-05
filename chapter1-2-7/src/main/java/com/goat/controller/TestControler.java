@@ -31,7 +31,7 @@ public class TestControler {
         }
     }
 
-//    http://localhost:8127/test1
+//    http://localhost:8127/test1  context.getEnvironment().getProperty("os.name") 获取当前项目所运行的操作系统环境
     @RequestMapping(value = "/test1")
     public void test1(){
         ApplicationContext context = new AnnotationConfigApplicationContext(ConditionConfig.class);

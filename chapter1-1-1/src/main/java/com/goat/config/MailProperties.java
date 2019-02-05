@@ -20,6 +20,15 @@ import javax.validation.constraints.NotNull;
 @ConfigurationProperties(ignoreUnknownFields = false,prefix = "mail")
 public class MailProperties {
 
+    @NotBlank
+    private String host;
+    private int port;
+    private String from;
+    private String username;
+    private String password;
+    @NotNull
+    private Smtp smtp;
+
     public static class Smtp {
         private boolean auth;
         private boolean starttlsEnable;
@@ -40,14 +49,6 @@ public class MailProperties {
             this.starttlsEnable = starttlsEnable;
         }
     }
-    @NotBlank
-    private String host;
-    private int port;
-    private String from;
-    private String username;
-    private String password;
-    @NotNull
-    private Smtp smtp;
 
     public String getHost() {
         return host;

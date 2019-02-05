@@ -1,5 +1,6 @@
 package com.goat.config;
 
+import com.goat.bean2.Person;
 import com.goat.service.HelloService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,13 +17,18 @@ import org.springframework.context.annotation.Profile;
 @Configuration
 public class MyAppConfig {
 
-
-    @Bean // 给容器中注册一个bean 类型为返回值类型；id默认为函数名 自定义bean名称： @Bean("beanName")
+    @Bean
     @Profile({"dev","test"})// 只有在 两大属性文件中 找到 spring.profiles.active=dev 相匹配则创建该bean ，若 spring.profiles.active=pro 则不创建
     //    @ConditionalOnProperty(name = "PROFILE", havingValue = "dev", matchIfMissing = false)
     public HelloService helloService02(){
         System.out.println("配置类@Bean给容器中添加组件了...");
         return new HelloService();
+    }
+
+
+    @Bean  // 给容器中注册一个bean！ 其类型为返回值类型，id 默认为函数名 自定义bean名称： @Bean("beanName")
+    public Person person01(){
+        return new Person("goat",11);
     }
 
 

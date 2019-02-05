@@ -16,7 +16,7 @@ public class TestControler {
     @Autowired private Placeholder placeholder;
     @Autowired private MailProperties mailProperties;
 
-    //    http://localhost:1111/test0
+    //    http://localhost:8111/test0
     @RequestMapping(value = "/test0")
     public void test0() {
         String[] str= ac.getBeanDefinitionNames();
@@ -26,17 +26,16 @@ public class TestControler {
 //        System.out.println(ac.containsBean("testoService"));
     }
 
-//    http://localhost:1111/test1
+//    http://localhost:8111/test1
     @RequestMapping(value = "/test1")
     public void test1(){
         System.out.println(placeholder);
     }
 
 
-    //    http://localhost:1111/test2
+    //    http://localhost:8111/test2
     @RequestMapping(value = "/test2")
     public void test2(){
-
     }
 
 

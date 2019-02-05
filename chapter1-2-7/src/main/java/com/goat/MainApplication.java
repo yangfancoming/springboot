@@ -13,7 +13,7 @@ public class MainApplication {
         I18n i18n = context.getBean(I18n.class);
         System.out.println(i18n.getClass().getName());
         System.out.println(i18n.i18n("lang"));
-        context.close();
+//        context.close();
 	}
 
 }
