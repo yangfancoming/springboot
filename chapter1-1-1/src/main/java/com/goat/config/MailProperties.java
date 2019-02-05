@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
  * @ author  山羊来了
  * @ date 2019/1/23---11:26
  * @ConfigurationProperties 注解就可以绑定属性了
- * ignoreUnknownFields = false告诉Spring Boot在有属性不能匹配到声明的域的时候抛出异常
+ * ignoreUnknownFields = false告诉Spring Boot 在有属性不能匹配到声明的域的时候抛出异常
  * prefix 用来选择哪个属性的prefix名字来绑定
  */
 @Configuration // 如果不加该注解 报错：Field mailProperties in com.goat.controller.TestControler required a bean of type 'com.goat.config.MailProperties' that could not be found.
