@@ -1,5 +1,6 @@
 package com.goat.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import java.io.Serializable;
@@ -30,7 +31,7 @@ public class User implements Serializable {
 	private String password;
 
 	// @JsonProperty("bth")
-	// @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	 @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@JsonView(AllUserFieldView.class)
 	private Date birthday;
 
