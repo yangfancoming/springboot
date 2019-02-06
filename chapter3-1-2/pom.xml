@@ -9,10 +9,12 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>chapter3-1-1</artifactId>
+    <artifactId>chapter3-1-2</artifactId>
 
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
+
 
         <!--加入JPA依赖-->
         <dependency>

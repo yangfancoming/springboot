@@ -3,12 +3,16 @@ package com.goat.exception;
 
 import org.hibernate.StaleObjectStateException;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -63,6 +67,16 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public void iOException(StaleObjectStateException e) {
         System.out.println(e.getMessage()+ "统一捕获全局异常.............StaleObjectStateException");
+    }
+
+    @ExceptionHandler(UserNotExistException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public Map<String, Object> handleUserNotExistsException(UserNotExistException e) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("id", e.getId());
+        map.put("message", e.getMessage());
+        return map;
     }
 
 }
