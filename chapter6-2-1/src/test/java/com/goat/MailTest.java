@@ -34,9 +34,9 @@ public class MailTest {
     private JavaMailSender mailSender; //自动注入的Bean
 
     @Value("${spring.mail.username}")
-    private String from; //读取配置文件中的参数
+    private String from; // 读取配置文件中的参数
 
-    private String to = "1286031921@qq.com";
+    private String to = "1286031921@qq.com"; // 接收地址
 
     @Autowired
     private TemplateEngine templateEngine;
@@ -113,9 +113,9 @@ public class MailTest {
     public void sendAttachmentsMail() throws MessagingException, UnsupportedEncodingException {
         MimeMessage message   = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
-        InternetAddress fromAddress = new InternetAddress(MimeUtility.encodeText("Flyat1111111") + "<" + from + ">");// 创建邮件发送者地址
+        InternetAddress fromAddress = new InternetAddress(MimeUtility.encodeText("Flyat1111111") + "<" + from + ">");// 创建邮件 发送方地址
         helper.setFrom(fromAddress);
-        InternetAddress toAddress = new InternetAddress(MimeUtility.encodeText("接收方22222222") + "<" + to + ">");// 创建邮件发送者地址
+        InternetAddress toAddress = new InternetAddress(MimeUtility.encodeText("接收方22222222") + "<" + to + ">");// 创建邮件 接收方地址
         helper.setTo(toAddress);
         helper.setSubject("带附件的邮件1111");
         StringBuffer sb = new StringBuffer();
