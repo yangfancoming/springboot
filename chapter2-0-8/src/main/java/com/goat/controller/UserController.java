@@ -26,7 +26,6 @@ import java.util.*;
 @RequestMapping("/user")
 public class UserController {
 
-
     @Reference
     public IUserService userService;
 
