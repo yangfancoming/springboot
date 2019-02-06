@@ -15,11 +15,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
  * 1.（实现WebMvcConfigurer方法）
  * 2. 继承 WebMvcConfigurationSupport 方法
  * @date 2018/11/12---11:04
+ *
+ * 其中 CustomInterceptor1  通过 new 方式 注册
+ *      CustomInterceptor2  通过 @Component 和 @Autowired 方式 注册
  */
 @Configuration
 public class WebMvcConfigurer extends WebMvcConfigurationSupport {
 
     @Autowired CustomInterceptor2 customInterceptor2;
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         // addPathPatterns 用于添加拦截url  sos 这里的url 必须在controller中有对应的接收函数 否则 无法进入拦截器
