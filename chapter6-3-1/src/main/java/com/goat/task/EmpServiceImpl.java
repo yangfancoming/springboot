@@ -1,4 +1,4 @@
-package com.goat.service;
+package com.goat.task;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -31,7 +31,7 @@ import java.util.Date;
  * “#”字符只能用在星期字段，该字段指定了第几个星期value在某月中
  */
 @Service
-@EnableScheduling
+//@EnableScheduling
 public class EmpServiceImpl   {
 
     @Scheduled(fixedRate = 5 * 1000)
