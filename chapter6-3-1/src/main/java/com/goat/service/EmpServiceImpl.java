@@ -1,8 +1,10 @@
-package com.goat.service.impl;
+package com.goat.service;
 
-import com.goat.service.IEmpService;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 
 /**
  * Created by 64274 on 2018/8/20.
@@ -29,12 +31,17 @@ import org.springframework.stereotype.Service;
  * “#”字符只能用在星期字段，该字段指定了第几个星期value在某月中
  */
 @Service
-public class EmpServiceImpl implements IEmpService {
+@EnableScheduling
+public class EmpServiceImpl   {
 
-    @Override
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 5 * 1000)
     public void test() {
-        System.out.println("每5秒钟执行一次");
+        System.out.println("固定每5秒执行一次");
+    }
+
+    @Scheduled(cron = "0/10 * * * * ? ")
+    public void doJobByCron() {
+        System.out.println(new Date() + "每10秒执行一次");
     }
 
     @Scheduled(cron = "0 */1 *  * * * ")
@@ -52,9 +59,18 @@ public class EmpServiceImpl implements IEmpService {
         System.out.println("周一至周六无论哪一天 0,1,2,3,4这几秒都会执行");
     }
 
-
     @Scheduled(cron = "0 0 2 * * ?")
     public void test4() {
         System.out.println("每天凌晨2点 执行");
+    }
+
+    @Scheduled(initialDelay = 1000, fixedRate = 2000)
+    public void doInitialDelay() {
+        System.out.println(new Date() + "第一次延迟1秒后执行，之后按fixedRate的规则每2秒执行一次");
+    }
+
+    @Scheduled(fixedDelay = 1 * 1000)
+    public void doJobByFixedDelay() {
+        System.out.println(new Date() + "上次任务结束后一秒后再次执行");
     }
 }
