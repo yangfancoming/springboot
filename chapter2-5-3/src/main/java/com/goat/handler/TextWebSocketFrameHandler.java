@@ -26,7 +26,7 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
 
 
 
-    /**读取客户端发来的请求 并返回响应信息*/
+    /**读取客户端发来的请求 并返回响应信息 doit 这里为什么请求后 没断下？*/
     @Override
     protected void channelRead0(ChannelHandlerContext ctx,TextWebSocketFrame msg) {
         ByteBuf content = Unpooled.copiedBuffer("hello world", CharsetUtil.UTF_8);
@@ -49,11 +49,9 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
 
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx)  {
-        Channel incoming = ctx.channel();
         for (Channel channel : channels) {
             channel.writeAndFlush(new TextWebSocketFrame("[用户] - " + "adsfasdfa1133333333333333" + " 离开"));
         }
-
         channels.remove(ctx.channel());
     }
 

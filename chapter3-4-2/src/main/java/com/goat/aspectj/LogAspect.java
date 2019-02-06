@@ -10,6 +10,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
@@ -45,30 +46,51 @@ public class LogAspect {
     /**
      * 是否存在注解，如果存在就获取
      */
-    private Log getAnnotationLog(JoinPoint joinPoint) {
-        Signature signature = joinPoint.getSignature();
-        MethodSignature methodSignature = (MethodSignature) signature;
-        Method method = methodSignature.getMethod();
-        if (method != null){
-            return method.getAnnotation(Log.class);
-        }
-        return null;
-    }
+//    private Log getAnnotationLog(JoinPoint joinPoint) {
+//        Signature signature = joinPoint.getSignature();
+//        MethodSignature methodSignature = (MethodSignature) signature;
+//        Method method = methodSignature.getMethod();
+//        if (method != null){
+//            return method.getAnnotation(Log.class);
+//        }
+//        return null;
+//    }
     @Async
     protected void handleLog(final JoinPoint joinPoint, final Exception e){
         try
         {
+            Log controllerLog = null;
+            Signature signature = joinPoint.getSignature();
+            MethodSignature methodSignature = (MethodSignature) signature;
+            Method method = methodSignature.getMethod();
+            if (method != null){
+                controllerLog = method.getAnnotation(Log.class);
+            }
             // 获得注解
-            Log controllerLog = getAnnotationLog(joinPoint);
             if (controllerLog == null){
                 return;
             }
+
             // *========数据库日志=========*//
             OperLog operLog = new OperLog();
             String className = joinPoint.getTarget().getClass().getName();  // 设置方法名称
             String methodName = joinPoint.getSignature().getName();
             operLog.setMethod(className + "." + methodName + "()");
             getControllerMethodDescription(controllerLog, operLog);  // 处理设置注解上的参数
+
+            // 请求的方法参数值
+            Object[] args = joinPoint.getArgs();
+            // 请求的方法参数名
+            LocalVariableTableParameterNameDiscoverer u = new LocalVariableTableParameterNameDiscoverer();
+            String[] paramNames = u.getParameterNames(method);
+            if (args != null && paramNames != null) {
+                String params = "";
+                for (int i = 0; i < args.length; i++) {
+                    params += "  " + paramNames[i] + ": " + args[i];
+                }
+                System.out.println(params); // 获取 参数值
+            }
+
             System.out.println(operLog); // 保存数据库
         }
         catch (Exception exp){

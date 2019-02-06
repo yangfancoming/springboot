@@ -24,10 +24,11 @@ public class UserController {
         return false;
     }
 
-    // 测试地址：    http://localhost:8342/api/user/remove
+    // 测试地址：  http://localhost:8342/api/user/remove?name=goat&age=123
     @Log(title = "用户管理", action = BusinessType.DELETE)
     @GetMapping("/remove")
-    public Boolean remove(){
+    public Boolean remove(String name, Integer age){
+        System.out.println(name + age);
         return false;
     }
 
