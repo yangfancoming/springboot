@@ -13,7 +13,7 @@ import java.io.IOException;
  * Created by 64274 on 2018/10/23.
  *
  * @author 山羊来了
- * @Description: 自定义 Filter  第二种实现方式
+ * @Description: 自定义 Filter  第二种实现方式  在启动类中 通过 FilterRegistrationBean 方式注册
  *
  * 测试地址：
  * http://localhost:8203/second

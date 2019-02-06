@@ -38,7 +38,7 @@ public class TestController {
         session.setAttribute("map2", map);
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
-
+    //    http://localhost:8203/error1
     @RequestMapping("/error1")
     public Object error1(){
         return "error,无权限！";

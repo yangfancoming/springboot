@@ -15,6 +15,7 @@
  */
 package com.goat.interceptor;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,11 +25,12 @@ import javax.servlet.http.HttpServletResponse;
 
 
 /**
- * @Description: 功能描述：(这里用一句话描述这个方法的作用)
+ * @Description:
  * @author: 杨帆
- * http://localhost:8203/random1
+ * http://localhost:8203/random2
  * @Date:   2018/11/12
  */
+@Component
 public class CustomInterceptor2 implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {

@@ -41,14 +41,14 @@ public class FirstServletApplication extends SpringBootServletInitializer {
          * @Date:   2018/10/23
     */
     @Bean  //一定要加，不然这个方法不会运行   手动为第二个servlet 实例化bean (SecondServlet 使用)
-    public ServletRegistrationBean getServletRegistrationBean() {  //一定要返回ServletRegistrationBean
+    public ServletRegistrationBean getServletRegistrationBean() {  //一定要返回 ServletRegistrationBean
         ServletRegistrationBean bean = new ServletRegistrationBean(new SecondServlet());     //放入自己的Servlet对象实例
         bean.addUrlMappings("/secondServlet");  //访问路径值
         return bean;
     }
 
     /**
-     * @Description:  注册 Filter  bean    http://localhost:8203/second
+     * @Description:  注册 SecondFilter  bean    http://localhost:8203/second
      * @author: 杨帆
      * @Date:   2018/10/23
      * FilterRegistrationBean是springboot提供的，此类提供setOrder方法，可以为filter设置排序值，让spring在注册web filter之前排序后再依次注册。
