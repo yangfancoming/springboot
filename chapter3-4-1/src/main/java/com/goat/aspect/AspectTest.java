@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 
 /**
-     * @Description: 功能描述：(这里用一句话描述这个方法的作用)
+     * @Description:
      * @author: 杨帆
      * @Date:   2018/8/23
     整个表达式可以分为五个部分：
