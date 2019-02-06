@@ -2,6 +2,8 @@ package com.goat.aspectj;
 
 import com.goat.annotation.Log;
 import com.goat.domain.OperLog;
+import com.goat.util.HttpContextUtils;
+import com.goat.util.IPUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -15,6 +17,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 
 /**
@@ -91,6 +94,10 @@ public class LogAspect {
                 System.out.println(params); // 获取 参数值
             }
 
+            // 获取request
+            HttpServletRequest request = HttpContextUtils.getHttpServletRequest();
+            // 设置IP地址
+            System.out.println(IPUtils.getIpAddr(request));
             System.out.println(operLog); // 保存数据库
         }
         catch (Exception exp){
