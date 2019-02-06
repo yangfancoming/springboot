@@ -12,17 +12,12 @@
     <artifactId>chapter6-1-1</artifactId>
 
     <properties>
-        <!--<version>2.9.2</version>-->
+        <!--<swagger.version>2.2.2</swagger.version>-->
         <swagger.version>2.9.2</swagger.version>
     </properties>
 
     <dependencies>
 
-        <!--<dependency>-->
-            <!--<groupId>com.goat.springboot.learing</groupId>-->
-            <!--<artifactId>chapter1-1-2</artifactId>-->
-            <!--<version>0.0.1-SNAPSHOT</version>-->
-        <!--</dependency>-->
 
         <!--加入Swagger2的依赖-->
         <dependency>
@@ -38,11 +33,11 @@
 
         <!--第三方的UI界面美化jar包-->
         <!-- https://mvnrepository.com/artifact/com.github.xiaoymin/swagger-bootstrap-ui -->
-        <dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>swagger-bootstrap-ui</artifactId>
-            <version>1.8.8</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.github.xiaoymin</groupId>-->
+            <!--<artifactId>swagger-bootstrap-ui</artifactId>-->
+            <!--<version>1.8.8</version>-->
+        <!--</dependency>-->
 
     </dependencies>
 </project>

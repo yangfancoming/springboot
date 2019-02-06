@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.Contact;
+//import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -32,7 +32,8 @@ public class Swagger2Config {
                 .apiInfo(new ApiInfoBuilder()
                         .title("晨迅科技_license管理系统_接口文档") // 标题
                         .description("用于管理集团旗下公司的所开发项目的license证书生成,具体包括XXX,XXX模块...") // 简介/描述
-                        .contact(new Contact("山羊来了","www.baidu.com","642744551@qq.com")) // 作者
+//                        .contact(new Contact("山羊来了","www.baidu.com","642744551@qq.com")) // 作者
+                        .contact("山羊来了") // 作者
                         .version("1.0") // 版本号
                         .build())
                 .select()
