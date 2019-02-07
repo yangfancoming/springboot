@@ -1,4 +1,11 @@
 
+http://localhost:8641/JobManager.html
+
+com.goat.job.HelloJob
+2
+0/5 * * * * ?
+org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): 
+
 ##Quartz和Spring Task定时任务 比较
 
 

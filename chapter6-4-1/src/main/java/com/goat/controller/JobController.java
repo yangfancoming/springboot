@@ -1,23 +1,23 @@
 package com.goat.controller;
 
 
+import com.github.pagehelper.PageInfo;
+import com.goat.entity.JobAndTrigger;
 import com.goat.job.BaseJob;
+import com.goat.service.IJobAndTriggerService;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 @RestController
 @RequestMapping(value="/job")
-public class JobController 
-{
-//	@Autowired
-//	private IJobAndTriggerService iJobAndTriggerService;
-	
+public class JobController  {
+
 	//加入Qulifier注解，通过名称注入bean
 	@Autowired
     @Qualifier("Scheduler")
@@ -25,7 +25,7 @@ public class JobController
 	
 
 	/**
-	     * @Description: 功能描述：(这里用一句话描述这个方法的作用)
+	     * @Description: 功能描述：
 	     * @author: 杨帆
          * @param jobClassName  com.goat.job.HelloJob   这里必须是 全限定类名
          * @param jobGroupName  组名 可以随意填写
@@ -36,8 +36,8 @@ public class JobController
 	@PostMapping(value="/addjob")
 	public void addjob(@RequestParam(value="jobClassName")String jobClassName,
 			@RequestParam(value="jobGroupName")String jobGroupName,
-			@RequestParam(value="cronExpression")String cronExpression) throws Exception
-	{			
+			@RequestParam(value="cronExpression")String cronExpression) throws Exception {
+
 		addJob(jobClassName, jobGroupName, cronExpression);
 	}
 	
@@ -54,8 +54,8 @@ public class JobController
 	}
 
 
-	@PostMapping(value="/pausejob")
-	public void pausejob(@RequestParam(value="jobClassName")String jobClassName, @RequestParam(value="jobGroupName")String jobGroupName) throws Exception {
+	@PostMapping("/pausejob")
+	public void pausejob(@RequestParam("jobClassName")String jobClassName, @RequestParam("jobGroupName")String jobGroupName) throws Exception {
 		jobPause(jobClassName, jobGroupName);
 	}
 	
@@ -64,8 +64,8 @@ public class JobController
 	}
 	
 
-	@PostMapping(value="/resumejob")
-	public void resumejob(@RequestParam(value="jobClassName")String jobClassName, @RequestParam(value="jobGroupName")String jobGroupName) throws Exception {
+	@PostMapping("/resumejob")
+	public void resumejob(@RequestParam("jobClassName")String jobClassName, @RequestParam("jobGroupName")String jobGroupName) throws Exception {
 		jobresume(jobClassName, jobGroupName);
 	}
 	
@@ -74,10 +74,10 @@ public class JobController
 	}
 	
 	
-	@PostMapping(value="/reschedulejob")
-	public void rescheduleJob(@RequestParam(value="jobClassName")String jobClassName,
-			@RequestParam(value="jobGroupName")String jobGroupName,
-			@RequestParam(value="cronExpression")String cronExpression) throws Exception
+	@PostMapping("/reschedulejob")
+	public void rescheduleJob(@RequestParam("jobClassName")String jobClassName,
+			@RequestParam("jobGroupName")String jobGroupName,
+			@RequestParam("cronExpression")String cronExpression) throws Exception
 	{			
 		jobreschedule(jobClassName, jobGroupName, cronExpression);
 	}
@@ -94,8 +94,8 @@ public class JobController
 	}
 
 	
-	@PostMapping(value="/deletejob")
-	public void deletejob(@RequestParam(value="jobClassName")String jobClassName, @RequestParam(value="jobGroupName")String jobGroupName) throws Exception {
+	@PostMapping("/deletejob")
+	public void deletejob(@RequestParam("jobClassName")String jobClassName, @RequestParam("jobGroupName")String jobGroupName) throws Exception {
 		jobdelete(jobClassName, jobGroupName);
 	}
 	
@@ -110,6 +110,18 @@ public class JobController
 		Class<?> class1 = Class.forName(classname);
 		return (BaseJob)class1.newInstance();
 	}
-	
+
+    @Autowired
+    private IJobAndTriggerService iJobAndTriggerService;
+
+    @GetMapping(value="/queryjob")
+    public Map<String, Object> queryjob(@RequestParam(value="pageNum")Integer pageNum, @RequestParam(value="pageSize")Integer pageSize) {
+        // doit list 集合报错： All elements are null 异常  这是为什么？
+        PageInfo<JobAndTrigger> jobAndTrigger = iJobAndTriggerService.getJobAndTriggerDetails(pageNum, pageSize);
+        Map<String, Object> map = new HashMap<>();
+        map.put("JobAndTrigger", jobAndTrigger);
+        map.put("number", jobAndTrigger.getTotal());
+        return map;
+    }
 	
 }

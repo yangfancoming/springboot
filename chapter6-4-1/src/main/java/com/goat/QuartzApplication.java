@@ -1,5 +1,6 @@
 package com.goat;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -12,10 +13,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 */
 @SpringBootApplication
 @EnableScheduling
-public class Application {
+@MapperScan("com.goat.dao")
+public class QuartzApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(QuartzApplication.class, args);
 	}
 
 }
