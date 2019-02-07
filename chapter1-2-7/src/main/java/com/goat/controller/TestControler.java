@@ -5,10 +5,11 @@ import com.goat.condition.ConditionConfig;
 import com.goat.condition.ListService;
 import com.goat.condition2.ConditionConfig2;
 import com.goat.condition2.Person;
+import com.goat.config.MessageConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -20,7 +21,7 @@ public class TestControler {
 
 
     //    http://localhost:8127/test0
-    @RequestMapping(value = "/test0")
+    @GetMapping("/test0")
     public void test0() {
         String[] str= ac.getBeanDefinitionNames();
         for (String string : str) {
@@ -29,7 +30,7 @@ public class TestControler {
     }
 
 //    http://localhost:8127/test1  context.getEnvironment().getProperty("os.name") 获取当前项目所运行的操作系统环境
-    @RequestMapping(value = "/test1")
+    @GetMapping("/test1")
     public void test1(){
         ApplicationContext context = new AnnotationConfigApplicationContext(ConditionConfig.class);
         ListService listService = context.getBean(ListService.class);
@@ -37,7 +38,7 @@ public class TestControler {
     }
 
     //    http://localhost:8127/test2
-    @RequestMapping(value = "/test2")
+    @GetMapping("/test2")
     public void test2(){
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(ConditionConfig2.class);
         Person person = ctx.getBean(Person.class);
@@ -46,8 +47,24 @@ public class TestControler {
         person.birth();
     }
 
-    //    http://localhost:8127/test3
-//    @RequestMapping(value = "/test3")
+   // http://localhost:8127/test3
+    @GetMapping("/test3")
+    public void testGetMessageBean() {
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MessageConfiguration.class);
+        System.out.println(ctx.getBean("message"));
+    }
+
+    //    http://localhost:8127/test4
+    @GetMapping("/test4")
+    public void testScanPackages() {
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+        ctx.scan("com.goat.config");
+        ctx.refresh();
+        System.out.println(ctx.getBean("message"));
+    }
+
+//    //    http://localhost:8127/test3
+//    @RequestMapping("/test3")
 //    public void test3(){
 //        ConfigurableApplicationContext context = new AnnotationConfigApplicationContext();
 //        context.refresh();

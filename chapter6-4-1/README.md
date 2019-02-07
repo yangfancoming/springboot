@@ -1,14 +1,14 @@
-
+# 运行说明 
+访问地址：
 http://localhost:8641/JobManager.html
-
-com.goat.job.HelloJob
-2
-0/5 * * * * ?
+新增任务 
+任务名称 com.goat.job.HelloJob
+任务 分组 2
+cron表达式 每隔5秒执行一次  0/5 * * * * ?
 org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): 
 
+
 ##Quartz和Spring Task定时任务 比较
-
-
 
 精确度和功能 
 
