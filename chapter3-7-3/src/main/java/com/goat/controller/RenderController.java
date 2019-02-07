@@ -23,7 +23,8 @@ public class RenderController {
 	public @ResponseBody
     Map<String, Object> setSession(String value, HttpServletRequest request) {
 		Map<String, Object> map = new HashMap<>();
-		request.getSession().setAttribute(STR_SESSION_KEY, value);
+        HttpSession session = request.getSession();
+        session.setAttribute(STR_SESSION_KEY, value);  // 设置 session
 		map.put("msg", "ok");
 		return map;
 	}
@@ -33,7 +34,7 @@ public class RenderController {
     Map<String, Object> getSession(HttpServletRequest request) {
 		Map<String, Object> map = new HashMap<>();
 		HttpSession session = request.getSession();
-		Object value = session.getAttribute(STR_SESSION_KEY);
+		Object value = session.getAttribute(STR_SESSION_KEY); // 获取 session
 		map.put("value", value);
 		map.put("id", session.getId());
 		map.put("port", request.getLocalPort());
