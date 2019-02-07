@@ -24,7 +24,10 @@ public class TCPServer {
     private Channel serverChannel;
 
     public void start() throws Exception {
-        serverChannel =  serverBootstrap.bind(tcpPort).sync().channel().closeFuture().sync().channel();
+//        serverChannel =  serverBootstrap.bind(tcpPort).sync().channel().closeFuture().sync().channel();
+        serverChannel =  serverBootstrap.bind(tcpPort).sync().channel();
+        System.out.println("netty 服务器 已启动");
+        serverChannel.closeFuture().sync().channel();
     }
 
     @PreDestroy

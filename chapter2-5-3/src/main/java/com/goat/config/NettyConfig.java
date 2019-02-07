@@ -61,12 +61,16 @@ public class NettyConfig {
     private NettyWebSocketChannelInitializer nettyWebSocketChannelInitializer;
 
     @Bean(name = "serverBootstrap")
-    public ServerBootstrap bootstrap() throws InterruptedException {
+    public ServerBootstrap bootstrap() {
         ServerBootstrap b = new ServerBootstrap();
         b.group(bossGroup(), workerGroup())
-                .channel(NioServerSocketChannel.class)
+                .channel(NioServerSocketChannel.class) // 指定通道我 NIO 方式
                 .handler(new LoggingHandler(LogLevel.DEBUG))
-                .childHandler(nettyWebSocketChannelInitializer);// 自定义的子处理器
+                .childHandler(nettyWebSocketChannelInitializer)// 自定义的子处理器
+        .option(ChannelOption.SO_BACKLOG,128)
+        .childOption(ChannelOption.SO_KEEPALIVE,true)// 保持这个链接
+        ;
+
 //        ChannelFuture sync = b.bind(8899).sync();
         //        Map<ChannelOption<?>, Object> tcpChannelOptions = tcpChannelOptions();
 //        Set<ChannelOption<?>> keySet = tcpChannelOptions.keySet();

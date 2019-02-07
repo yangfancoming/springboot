@@ -26,11 +26,10 @@ public class NettyWebSocketChannelInitializer extends ChannelInitializer<SocketC
     @Override
     public void initChannel(SocketChannel ch) {
         ChannelPipeline pipeline = ch.pipeline();
-        pipeline.addLast("diyName",new HttpServerCodec());
-        pipeline.addLast(new HttpObjectAggregator(64*1024));
-        pipeline.addLast(new ChunkedWriteHandler());
+        pipeline.addLast("diyName",new HttpServerCodec()); // 将请求和应答信息 编码/解码为http协议信息
+        pipeline.addLast(new HttpObjectAggregator(64*1024)); // 将多条信息整合成一条
+        pipeline.addLast(new ChunkedWriteHandler()); // 向客户端发送html页面文件  即：向客户端显示聊天页面
         pipeline.addLast(new WebSocketServerProtocolHandler("/ws"));
         pipeline.addLast(textWebSocketFrameHandler);
-
     }
 }
