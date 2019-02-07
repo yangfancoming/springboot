@@ -4,10 +4,7 @@ package com.goat.exception;
 import org.hibernate.StaleObjectStateException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -25,7 +22,8 @@ import java.util.Map;
  @RestControllerAdvice 类似于 @RestController 与 @Controller的区别
  */
 
-@ControllerAdvice // 该注解定义全局异常处理类  请确保此 GlobalExceptionHandler 类能被扫描到并装载进 Spring 容器中
+//@ControllerAdvice // 该注解定义全局异常处理类  请确保此 GlobalExceptionHandler 类能被扫描到并装载进 Spring 容器中
+@ControllerAdvice(annotations = RestController.class) //  指定 拦截 带有 @RestController 注解的 controller 触发的异常。 eg: HelloController 中的除零异常就不能捕获
 @ResponseBody
 public class GlobalExceptionHandler {
 
@@ -75,7 +73,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public void defaultErrorHandler(HttpServletRequest req, Exception e) {
-
         System.out.println(e.getMessage()+ "统一捕获全局异常.............Exception");
         if (e instanceof MyException) {
             MyException ze = (MyException) e;

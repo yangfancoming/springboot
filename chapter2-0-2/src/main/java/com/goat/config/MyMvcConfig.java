@@ -3,10 +3,7 @@ package com.goat.config;
 import com.goat.interceptor.CustomInterceptor1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
 //使用 WebMvcConfigurer 可以来扩展SpringMVC的功能  既保留了所有的自动配置，也能用我们自定义的配置
 //@EnableWebMvc   注释掉@EnableWebMvc 表示 不要接管SpringMVC
@@ -25,6 +22,30 @@ public class MyMvcConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/test").setViewName("success");
     }
+
+
+    /**
+     * 跨域CORS配置
+     * @param registry
+     */
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/cors/**")
+                .allowedHeaders("*")
+                .allowedMethods("POST","GET")
+                .allowedOrigins("*");
+    }
+    /**
+     * 配置请求视图映射
+     * @return
+     */
+//    @Bean
+//    public InternalResourceViewResolver resourceViewResolver(){
+//        InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
+//        internalResourceViewResolver.setPrefix("/WEB-INF/jsp/");  //请求视图文件的前缀地址
+//        internalResourceViewResolver.setSuffix(".jsp");  //请求视图文件的后缀
+//        return internalResourceViewResolver;
+//    }
 
     /** 静态资源处理器
      * 自定义静态资源映射
