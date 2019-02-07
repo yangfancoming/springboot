@@ -29,13 +29,15 @@ public class MyMvcConfig implements WebMvcConfigurer {
     /** 静态资源处理器
      * 自定义静态资源映射
      * 浏览器输入 http://localhost:8202/my/my.html  可以正常访问页面
+     * 浏览器输入 http://localhost:8202/my/t.png  可以正常访问图片
      * 如果不重写该方法的话 则无法访问 报错 404
      * @param registry
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        // sos 这里映射 类路径 和 项目外部路径 不能同时存在 否则 第一个会是失效！
         registry.addResourceHandler("/my/**").addResourceLocations("classpath:/my/"); // 指定类路径下静态资源
-        registry.addResourceHandler("/my/**").addResourceLocations("file:E:/my/");  // 指定 项目外部路径下静态资源
+//        registry.addResourceHandler("/my/**").addResourceLocations("file:E:/my/");  // 指定 项目外部路径下静态资源
     }
 
     /** 拦截器配置
@@ -54,6 +56,5 @@ public class MyMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(customInterceptor)
                 .addPathPatterns("/**").excludePathPatterns("/toLogin","/login","/asserts/**","/my/**");
-//        WebMvcConfigurer.super.addInterceptors(registry); // 可以省略
     }
 }

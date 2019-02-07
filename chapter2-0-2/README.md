@@ -10,6 +10,6 @@
     
     
 # springboot 内置配置
-    官方推荐直接实现WebMvcConfigurer或者直接继承WebMvcConfigurationSupport，
+    官方推荐直接实现 WebMvcConfigurer 或者直接继承 WebMvcConfigurationSupport，
     方式一实现 WebMvcConfigurer 接口（推荐），
     方式二继承 WebMvcConfigurationSupport 类

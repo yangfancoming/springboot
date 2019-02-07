@@ -97,7 +97,6 @@ public class UserService {
         return new User(id, "temp");
     }
 
-
     // cacheNames默认都是此值 booksAll  key 默认值是 参数名 wahaha  redis中的保存结果： booksAll::321
     @Cacheable
     public User booksAll(String wahaha) {

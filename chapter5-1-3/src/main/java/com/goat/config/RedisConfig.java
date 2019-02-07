@@ -17,8 +17,6 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
-
-import java.lang.reflect.Method;
 import java.time.Duration;
 
 @Configuration
@@ -28,7 +26,8 @@ public class RedisConfig extends CachingConfigurerSupport {
     private final StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
     //使用Jackson2JsonRedisSerializer来序列化和反序列化redis的value值
     private final Jackson2JsonRedisSerializer j2 = new Jackson2JsonRedisSerializer(Object.class);
-    //缓存管理器
+
+    /**采用RedisCacheManager作为缓存管理器*/
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
         RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
@@ -61,8 +60,6 @@ public class RedisConfig extends CachingConfigurerSupport {
      * 自定义生成key的规则
      * 注解默认  key   名称生成规则结果：usercache3::goat3
      * 自定义 keyGenerator 生成规则结果：usercache3::com.goat.service.UserServicefindUser3goat3
-     *
-     * @return
      */
     @Override
     public KeyGenerator keyGenerator() {
