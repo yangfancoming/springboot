@@ -1,8 +1,10 @@
 package com.goat.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
@@ -20,8 +22,20 @@ import java.util.Random;
 
 @RestController
 public class TestController {
+
+    @Autowired
+    private ApplicationContext ac;
+
+    @GetMapping("/ac")
+    public void test0() {
+        String[] str= ac.getBeanDefinitionNames();
+        for (String string : str) {
+            System.out.println("***---***"+string);
+        }
+    }
+
     //    http://localhost:8203/random1
-    @RequestMapping("/random1")
+    @GetMapping("/random1")
     public ResponseEntity<Map> random1(HttpSession session){
         Map<String, Object> map = new HashMap<>();
         map.put("key", "random1");
@@ -29,8 +43,9 @@ public class TestController {
         session.setAttribute("map1", map);
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
+
     //    http://localhost:8203/random2
-    @RequestMapping("/random2")
+    @GetMapping("/random2")
     public ResponseEntity<Map> random2(HttpSession session){
         Map<String, Object> map = new HashMap<>();
         map.put("key", "random2");
@@ -38,13 +53,15 @@ public class TestController {
         session.setAttribute("map2", map);
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
+
     //    http://localhost:8203/error1
-    @RequestMapping("/error1")
+    @GetMapping("/error1")
     public Object error1(){
         return "error,无权限！";
     }
+
 //    http://localhost:8203/test
-    @RequestMapping("/test")
+    @GetMapping("/test")
     public Object test(){
         return "test";
     }

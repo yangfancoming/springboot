@@ -18,8 +18,9 @@ import java.util.List;
 
 
 /**
- 在 SpringBootApplication 上使用@ServletComponentScan 注解后，Servlet、Filter、Listener 可以直接通过 @WebServlet、@WebFilter、@WebListener 注解自动注册，无需其他代码。
+ 在 SpringBootApplication 上使用 @ServletComponentScan 注解后，Servlet、Filter、Listener 可以直接通过 @WebServlet、@WebFilter、@WebListener 注解自动注册，无需其他代码。
  启动器启动时，扫描本目录以及子目录带有的 webservlet 注解的类  并对其进行实例化
+ eg: 注释掉 @ServletComponentScan 注解后 @WebServlet(name = "firstServlet", urlPatterns = "/random1/**")  firstServlet 将不会在spring容器中
 */
 
 @SpringBootApplication

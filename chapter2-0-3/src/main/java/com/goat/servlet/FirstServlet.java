@@ -37,6 +37,8 @@ public class FirstServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws  IOException {
         System.out.println("进入 firstServlet 。。。。。。。。。。。。。。。。。");
         resp.getWriter().append("firstServlet");
+        resp.setContentType("application/json");  //设置返回类型为json
+        resp.setCharacterEncoding("utf-8"); //设置返回字符集
         ServletContext servletContext = this.getServletContext();
         String driver = servletContext.getInitParameter("driver1");
         System.out.println("driver1============" + driver);
