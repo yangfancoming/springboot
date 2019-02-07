@@ -1,13 +1,20 @@
 package com.goat.controller;
 
+import com.goat.constant.View;
+import com.goat.exception.BadRequestException;
 import com.goat.exception.MyException;
+import com.goat.exception.NotFoundException;
 import com.goat.exception.UserNotExistException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.sql.SQLException;
 
 
-@Controller
+@RestController
 public class TestController {
 
     @GetMapping("/test1")
@@ -29,6 +36,23 @@ public class TestController {
     @GetMapping("/{id:\\d+}")
     public void get(@PathVariable String id) {
         throw new UserNotExistException(id);
+    }
+
+    @RequestMapping("/{view}")
+    public Object index(@PathVariable("view") String view) throws Exception {
+        View v = View.getView(view);
+        switch (v) {
+            case sql:
+                throw new SQLException("数据库异常！");
+            case bad:
+                throw new BadRequestException("失败的请求！");
+            case zhyd:
+                throw new MyException("这是一个自定义的异常！");
+            case exception:
+                return 1 / 0;
+            default:
+                throw new NotFoundException("页面未找到！");
+        }
     }
 
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,25 +26,40 @@ import java.util.Map;
  */
 
 @ControllerAdvice // 该注解定义全局异常处理类  请确保此 GlobalExceptionHandler 类能被扫描到并装载进 Spring 容器中
+@ResponseBody
 public class GlobalExceptionHandler {
 
     /**  处理自定义异常*/
     @ExceptionHandler(MyException.class)
-    @ResponseBody
     public void myException(HttpServletRequest req, MyException e)  {
         System.out.println(e.getMessage()+ "统一捕获全局异常.............MyException");
     }
 
+    @ExceptionHandler(SQLException.class)
+    public void handleSQLException(HttpServletRequest request, Exception e) {
+        System.out.println(e.getMessage()+ "统一捕获全局异常.............SQL异常");
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(NotFoundException.class)
+    public void handleNotFoundException(NotFoundException e) {
+        System.out.println(e.getMessage()+ "统一捕获全局异常............."+ HttpStatus.NOT_FOUND.value());
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(BadRequestException.class)
+    public void handleBadRequestException(BadRequestException e) {
+        System.out.println(e.getMessage()+ "统一捕获全局异常............."+ HttpStatus.BAD_REQUEST.value());
+    }
+
     /**  处理IO 异常*/
     @ExceptionHandler(IOException.class)
-    @ResponseBody
     public void iOException(IOException e) {
         System.out.println(e.getMessage()+ "统一捕获全局异常.............IOException");
     }
 
     /**  处理 DuplicateKeyException 异常*/
     @ExceptionHandler(DuplicateKeyException.class)
-    @ResponseBody
     public void duplicateKeyException(DuplicateKeyException e) {
         System.out.println(e.getCause().getMessage()+ "统一捕获全局异常.............DuplicateKeyException");
     }
@@ -51,26 +67,29 @@ public class GlobalExceptionHandler {
 
     /**  处理 RuntimeException 异常*/
     @ExceptionHandler(RuntimeException.class)
-    @ResponseBody
     public void runtimeException(RuntimeException e) {
         System.out.println(e.getCause().getMessage()+ "统一捕获全局异常.............RuntimeException");
     }
 
     //    方法 defaultErrorHandler() 就会处理所有 Controller 层抛出的 Exception 及其子类的异常，这是最基本的用法了
     @ExceptionHandler(value = Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public void defaultErrorHandler(HttpServletRequest req, Exception e) {
+
         System.out.println(e.getMessage()+ "统一捕获全局异常.............Exception");
+        if (e instanceof MyException) {
+            MyException ze = (MyException) e;
+            System.out.println(e.getMessage()+"这里还可以判断类型的哦");
+        }
     }
 
     /**   处理 JPA @Version 乐观锁 异常  详情见： chapter4-2-0  JpaTestController */
     @ExceptionHandler(StaleObjectStateException.class)
-    @ResponseBody
     public void iOException(StaleObjectStateException e) {
         System.out.println(e.getMessage()+ "统一捕获全局异常.............StaleObjectStateException");
     }
 
     @ExceptionHandler(UserNotExistException.class)
-    @ResponseBody
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Map<String, Object> handleUserNotExistsException(UserNotExistException e) {
         Map<String, Object> map = new HashMap<>();
