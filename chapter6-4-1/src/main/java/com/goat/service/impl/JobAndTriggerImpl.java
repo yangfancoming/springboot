@@ -19,7 +19,7 @@ public class JobAndTriggerImpl implements IJobAndTriggerService {
 	private JobAndTriggerMapper jobAndTriggerMapper;
 
     /**
-     * sos 注意： List<JobAndTrigger> list  集合报错： All elements are null 异常  这是为什么？
+     * sos 注意： List<JobAndTrigger> list  集合报错： All elements are null 异常   这是为什么？
      *   原因是 mybatis-config.xml 配置文件中 使用了 驼峰命名规范。。。 我草
          驼峰命名法 eg: javabean中的属性 lastName  数据库表中的字段 last_name 则 last_name 会被映射为 lastName
          <setting name="mapUnderscoreToCamelCase" value="true"/>
