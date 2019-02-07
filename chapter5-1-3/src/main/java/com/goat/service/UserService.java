@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
  * @date 2018/11/14---9:58
  *
  * 使用方法参数时我们可以直接使用“#参数名”或者“#p参数index”
- * @CacheConfig: 类级别的注解：如果我们在此类中定义cacheNames，则此类中的所有方法上 @Cacheable的cacheNames默认都是此值。当然@Cacheable也可以覆盖定义cacheNames的值
+ * @CacheConfig: 类级别的注解：如果我们在此类中定义 cacheNames，则此类中的所有方法上 @Cacheable 的cacheNames默认都是此值。当然@Cacheable也可以覆盖定义cacheNames的值
  */
 
 @Service
