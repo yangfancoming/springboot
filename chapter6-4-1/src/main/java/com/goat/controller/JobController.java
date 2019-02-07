@@ -116,7 +116,7 @@ public class JobController  {
 
     @GetMapping(value="/queryjob")
     public Map<String, Object> queryjob(@RequestParam(value="pageNum")Integer pageNum, @RequestParam(value="pageSize")Integer pageSize) {
-        // doit list 集合报错： All elements are null 异常  这是为什么？
+
         PageInfo<JobAndTrigger> jobAndTrigger = iJobAndTriggerService.getJobAndTriggerDetails(pageNum, pageSize);
         Map<String, Object> map = new HashMap<>();
         map.put("JobAndTrigger", jobAndTrigger);
