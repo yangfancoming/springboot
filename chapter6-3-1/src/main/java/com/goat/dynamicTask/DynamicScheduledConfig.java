@@ -17,7 +17,6 @@ import java.util.Date;
  * @ date 2019/2/7---0:49
  */
 @Component
-@EnableScheduling
 public class DynamicScheduledConfig implements SchedulingConfigurer {
 
     // 默认每秒执行一次定时任务
