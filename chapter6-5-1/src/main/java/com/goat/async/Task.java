@@ -1,4 +1,4 @@
-package async;
+package com.goat.async;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.AsyncResult;
