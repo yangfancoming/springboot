@@ -8,8 +8,8 @@ import java.util.Optional;
 
 /**
  * 客户数据接口
- * 继承自MongoRepository接口
- *  当进行以下查询时，MongoRepository提供的方法已经不能满足，
+ * 继承自 MongoRepository 接口
+ *  当进行以下查询时，MongoRepository 提供的方法已经不能满足，
  *  根据实体类中的属性查询，定义方法名的规则为：find + By + 属性名（首字母大写）
     根据实体类中的属性进行模糊查询，定义方法名的规则为：find + By + 属性名（首字母大写） + Like，
  */
