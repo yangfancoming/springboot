@@ -32,9 +32,9 @@ public class MessageConsumer {
         Optional<?> kafkaMessage = Optional.ofNullable(record.value());
         if (kafkaMessage.isPresent()) {
             Object message = kafkaMessage.get();
-            logger.info("【1】record =" + record);
-            logger.info("【1】message =" + message);
-            logger.info("【1】" + record.key());
+            logger.info("【1】消费者 consumer 接收record =" + record);
+            logger.info("【1】消费者 consumer message =" + message);
+            logger.info("【1】消费者 consumer " + record.key());
         }
     }
 }

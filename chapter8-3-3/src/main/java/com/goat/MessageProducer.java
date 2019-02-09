@@ -25,17 +25,20 @@ import java.util.UUID;
 @Component
 @EnableScheduling
 public class MessageProducer {
+
     private static Logger logger = LoggerFactory.getLogger(MessageProducer.class);
+
     @Autowired
     private KafkaTemplate kafkaTemplate;
 
-    @Scheduled(cron = "00/1 * * * * ?")
+
+   // 默认每3秒执行一次定时任务
+    @Scheduled(fixedRate = 3*1000)
     public void send() {
         String s = UUID.randomUUID().toString();
         ListenableFuture send = kafkaTemplate.send("test", s);
-        send.addCallback(o->System.out.println("send-----发送成功"+ s),Throwable->System.out.println("消息发送失败,"+s));
+        send.addCallback(o->System.out.println("producer生产者-----发送成功"+ s),Throwable->System.out.println("消息发送失败,"+s));
         logger.info("MessageProducer: send: message is: [" + "goatkdfksdfk1111111" + "]");
-
     }
 
 }
