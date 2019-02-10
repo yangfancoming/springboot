@@ -1,0 +1,7 @@
+
+spring:
+  activemq:
+    in-memory: false
+    broker-url: tcp://172.16.163.135:61616
+server:
+  port: 8835

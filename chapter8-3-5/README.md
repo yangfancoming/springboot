@@ -1,0 +1,1 @@
+# JMS 是(java message service) 是 基于JVM代理的规范, ActiveMQ是他的一种实现
