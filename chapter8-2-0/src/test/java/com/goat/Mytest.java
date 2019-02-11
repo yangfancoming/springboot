@@ -1,8 +1,10 @@
 package com.goat;
 
 
-import com.github.tobato.fastdfs.domain.StorePath;
-import com.github.tobato.fastdfs.domain.ThumbImageConfig;
+//import com.github.tobato.fastdfs.domain.StorePath;
+//import com.github.tobato.fastdfs.domain.ThumbImageConfig;
+import com.github.tobato.fastdfs.domain.fdfs.StorePath;
+import com.github.tobato.fastdfs.domain.fdfs.ThumbImageConfig;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
 import org.junit.Test;
 import org.junit.runner.RunWith;

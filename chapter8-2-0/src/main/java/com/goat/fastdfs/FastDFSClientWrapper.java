@@ -8,7 +8,8 @@ package com.goat.fastdfs;
  * @ date 2019/1/17---11:57
  */
 
-import com.github.tobato.fastdfs.domain.StorePath;
+import com.github.tobato.fastdfs.domain.fdfs.StorePath;
+import com.github.tobato.fastdfs.domain.proto.storage.DownloadByteArray;
 import com.github.tobato.fastdfs.exception.FdfsUnsupportStorePathException;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
 import org.apache.commons.io.FilenameUtils;
@@ -70,10 +71,23 @@ public class FastDFSClientWrapper {
             return;
         }
         try {
-            StorePath storePath = StorePath.praseFromUrl(fileUrl);
+            StorePath storePath = StorePath.parseFromUrl(fileUrl);
             storageClient.deleteFile(storePath.getGroup(), storePath.getPath());
         } catch (FdfsUnsupportStorePathException e) {
         }
+    }
+
+
+    /**
+     * 下载文件
+     * @param fileUrl 文件url
+     * @return
+     */
+    public byte[]  download(String fileUrl) {
+        String group = fileUrl.substring(0, fileUrl.indexOf("/"));
+        String path = fileUrl.substring(fileUrl.indexOf("/") + 1);
+        byte[] bytes = storageClient.downloadFile(group, path, new DownloadByteArray());
+        return bytes;
     }
 
     // 除了FastDFSClientWrapper类中用到的api，客户端提供的api还有很多，可根据自身的业务需求，将其它接口也添加到工具类中即可。

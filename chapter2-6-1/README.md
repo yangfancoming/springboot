@@ -14,3 +14,10 @@
 
 
 
+# tomcat的webapp下的root文件夹的作用是什么
+    tomcat的root文件夹下面默认是tomcat的管理程序，但是如果你把自己的web项目发布到root下面的话，
+    你可以不通过项目名直接访问你的项目，比如，你见了一个名为Test的项目，你要访问的路径一般是:http://localhost:8080/Test
+    但是你把项目部署在root文件夹下之后，可以通过http://localhost:8080直接访问你的项目
+
+
+
