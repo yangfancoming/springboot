@@ -18,8 +18,6 @@ public class Producer {
     @Autowired
     private JmsMessagingTemplate jmsMessagingTemplate;
 
-
-
     @Autowired
     private Queue queue;
 

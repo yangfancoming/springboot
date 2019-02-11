@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * 定义队列和topic的类
-
  */
 @Configuration
 public class QueueDefine {
