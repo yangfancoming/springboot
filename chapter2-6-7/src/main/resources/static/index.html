@@ -2,8 +2,13 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <!--sos 注解 ② 和 ③ 的引入顺序不能颠倒 否则 加载会报错-->
+
+    <!-- ① 引入 elementUI 样式-->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- ② 引入 vue.js-->
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- ③ 引入 elementUI 组件-->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 
 </head>
@@ -13,6 +18,11 @@
         <el-dialog :visible.sync="visible" title="Hello world">
             <p>Try Element</p>
         </el-dialog>
+
+
+        <div>{{message}}</div>
+        <input type="text" v-model="message">
+
     </div>
 </body>
 
@@ -20,7 +30,10 @@
     new Vue({
         el: '#app',
         data: function() {
-            return { visible: false }
+            return {
+                message:'hello vue.js.',
+                visible: false
+            }
         }
     })
 </script>
