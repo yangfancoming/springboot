@@ -42,7 +42,7 @@ public class UpLoadFileController {
     @ResponseBody
     public void testUpload1() throws FileNotFoundException {
         // 上传并且生成缩略图
-        StorePath storePath = this.storageClient.uploadFile(new FileInputStream(file), file.length(), "png", null);
+        StorePath storePath = storageClient.uploadFile(new FileInputStream(file), file.length(), "png", null);
         System.out.println(storePath.getFullPath()); // 带分组的路径
         System.out.println(storePath.getPath()); // 不带分组的路径
     }
@@ -51,7 +51,7 @@ public class UpLoadFileController {
     @ResponseBody
     public void testUpload2() throws FileNotFoundException {
         // 上传并且生成缩略图
-        StorePath storePath = this.storageClient.uploadImageAndCrtThumbImage(new FileInputStream(file), file.length(), "png", null);
+        StorePath storePath = storageClient.uploadImageAndCrtThumbImage(new FileInputStream(file), file.length(), "png", null);
         System.out.println(storePath.getFullPath());// 带分组的路径
         System.out.println(storePath.getPath());  // 不带分组的路径
         String path = thumbImageConfig.getThumbImagePath(storePath.getPath());// 获取缩略图路径
