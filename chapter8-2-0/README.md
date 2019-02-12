@@ -9,3 +9,11 @@
             <artifactId>fastdfs-client</artifactId>
             <version>1.26.5</version>
         </dependency>
+
+# 注意点：
+    一台服务器可以装多个组(group)但不能装同组的多个Storage,日志会报错误，日志报错原因是"注意1"
+    
+    
+# 测试
+    宁镇 那边项目 上传的excel  根据返回的地址：http://localhost:8820/download?fileUrl=group1/M00/00/00/wKjrz1xiPgKAEWvuAAAYIMYNlFA91.xlsx
+    我这边项目 也可以下载 ！

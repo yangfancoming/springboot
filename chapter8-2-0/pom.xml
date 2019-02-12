@@ -17,6 +17,7 @@
 
     <dependencies>
 
+        <!--sos 此 jar包 必须要在maven中配置 阿里云仓库 才能下载到-->
         <dependency>
             <groupId>com.github.tobato</groupId>
             <artifactId>fastdfs-client</artifactId>

@@ -43,8 +43,8 @@ public class UpLoadFileController {
     public void testUpload1() throws FileNotFoundException {
         // 上传并且生成缩略图
         StorePath storePath = storageClient.uploadFile(new FileInputStream(file), file.length(), "png", null);
-        System.out.println(storePath.getFullPath()); // 带分组的路径
-        System.out.println(storePath.getPath()); // 不带分组的路径
+        System.out.println(storePath.getFullPath()); // 带分组的路径  group1/M00/00/00/wKjrz1xiNyeAChhWAADSADZFffY398.png
+        System.out.println(storePath.getPath()); // 不带分组的路径 M00/00/00/wKjrz1xiNyeAChhWAADSADZFffY398.png
     }
 
     @PostMapping("/testUpload2")

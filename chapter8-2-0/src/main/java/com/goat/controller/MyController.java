@@ -4,6 +4,7 @@ package com.goat.controller;
 import com.goat.fastdfs.FastDFSClientWrapper;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -47,7 +48,7 @@ public class MyController {
  */
 //
 //    M00/00/00/wKjrz1xhRB6AGrcSAADSADZFffY772.png
-    // 上传图片  http://localhost:8820/delete?fileUrl=M00/00/00/wKjrz1xhPr-Aa9FsAADSADZFffY361.png
+    // 上传图片  http://localhost:8820/delete?fileUrl=group1/M00/00/00/wKjrz1xiNyeAChhWAADSADZFffY398.png
     @RequestMapping(value = "/delete")
     public void deleteFile(String fileUrl) {
         dfsClient.deleteFile(fileUrl);
@@ -55,7 +56,7 @@ public class MyController {
 
     /**
      * 文件下载
-     * @param fileUrl  url 开头从组名开始  http://localhost:8820/download?fileUrl=group1/M00/00/00/wKjrz1xhRB6AGrcSAADSADZFffY772.png
+     * @param fileUrl  url 开头从组名开始  http://localhost:8820/download?fileUrl=group1/M00/00/00/wKjrz1xiPgKAEWvuAAAYIMYNlFA91.xlsx
      * @param response
      * @throws Exception
      */
@@ -63,7 +64,8 @@ public class MyController {
     public void  download(String fileUrl, HttpServletResponse response) throws Exception{
         byte[] data = dfsClient.download(fileUrl);
         response.setCharacterEncoding("UTF-8");
-        response.setHeader("Content-disposition", "attachment;filename=" + URLEncoder.encode("test.jpg", "UTF-8"));
+        response.setContentType(MediaType.TEXT_HTML_VALUE);
+        response.setHeader("Content-disposition", "attachment;filename=" + URLEncoder.encode("test.xlsx", "UTF-8"));
         // 写出
         ServletOutputStream outputStream = response.getOutputStream();
         IOUtils.write(data, outputStream);
