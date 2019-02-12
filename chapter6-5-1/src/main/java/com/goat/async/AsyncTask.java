@@ -8,10 +8,15 @@ import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.Future;
 
+/**
+     * @Description: 异步任务 方式二 ： springBoot 自带注解实现
+     * @author: 杨帆
+     * @Date:   2019/2/12
+*/
 @Component
-public class Task {
+public class AsyncTask {
 
-    public static Random random =new Random();
+    public static Random random = new Random();
 
     @Async //这里进行标注为异步任务，在执行此方法的时候，会单独开启线程来执行
     public Future<String> doTaskOne() throws Exception {
