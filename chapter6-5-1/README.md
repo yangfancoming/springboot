@@ -36,6 +36,17 @@
     完成任务二，耗时：6298毫秒
     任务全部完成，总耗时：7008毫秒
     
+#测试3： 开启 TaskExecutorPoolConfig 线程池后 的控制台 log 
+    f2 : asyncTaskExecutor2   012382ed-364a-4ca3-9267-f0d176e431dd
+    开始做任务二
+    f1 : asyncTaskExecutor1   d7dda92e-a6ce-406d-80ae-04b106a5317d
+    开始做任务一
+    f3 : asyncTaskExecutor3   a5b0d675-d32d-4b3e-866d-4578f5c5b1c0
+    开始做任务三
+    完成任务一，耗时：1403毫秒
+    完成任务二，耗时：2818毫秒
+    完成任务三，耗时：7970毫秒
+    任务全部完成，总耗时：8012毫秒
 # 明显 测试1 为 同步任务   测试2 为异步任务
 
 
