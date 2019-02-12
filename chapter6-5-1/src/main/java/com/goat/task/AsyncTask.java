@@ -29,11 +29,11 @@ public class AsyncTask {
      * @Date:   2019/2/12
      */
     @Async //定义一个线程任务 , 这里进行标注为异步任务，在执行此方法的时候，会单独开启线程来执行
-    public Future<User> doTaskOne(User user) throws Exception {
+    public Future<User> doTaskOne(User user) throws InterruptedException {
         System.out.println("f1 : " + Thread.currentThread().getName() + "   " + UUID.randomUUID().toString());
         System.out.println("开始做任务一");
         long start = System.currentTimeMillis();
-        Thread.sleep(random.nextInt(10000));
+        Thread.sleep(random.nextInt(1000));
         long end = System.currentTimeMillis();
         System.out.println("完成任务一，耗时：" + (end - start) + "毫秒");
         return new AsyncResult<>(user);
@@ -45,7 +45,7 @@ public class AsyncTask {
         System.out.println("f2 : " + Thread.currentThread().getName() + "   " + UUID.randomUUID().toString());
         System.out.println("开始做任务二");
         long start = System.currentTimeMillis();
-        Thread.sleep(random.nextInt(10000));
+        Thread.sleep(random.nextInt(1000));
         long end = System.currentTimeMillis();
         System.out.println("完成任务二，耗时：" + (end - start) + "毫秒");
         return new AsyncResult<>("任务二完成");
@@ -53,14 +53,68 @@ public class AsyncTask {
 
     @Async
 //    @Async("asyncTaskExecutor")
-    public Future<String> doTaskThree(String name) throws Exception {
+    public Future<String> doTaskThree(String name) throws InterruptedException {
         System.out.println("f3 : " + Thread.currentThread().getName() + "   " + UUID.randomUUID().toString());
         System.out.println("开始做任务三");
         long start = System.currentTimeMillis();
-        Thread.sleep(random.nextInt(10000));
+        Thread.sleep(random.nextInt(1000));
         long end = System.currentTimeMillis();
         System.out.println("完成任务三，耗时：" + (end - start) + "毫秒");
         return new AsyncResult<>(name);
+    }
+
+
+    /**
+     * 最简单的异步调用，无参数 无返回值
+     */
+    @Async
+    public void doTaskFive() throws InterruptedException {
+        System.out.println("f5 : " + Thread.currentThread().getName() + "   " + UUID.randomUUID().toString());
+        System.out.println("开始做任务五");
+        long start = System.currentTimeMillis();
+        Thread.sleep(random.nextInt(1000));
+        long end = System.currentTimeMillis();
+        System.out.println("完成任务五，耗时：" + (end - start) + "毫秒");
+    }
+
+
+    /**
+     *  基于@Async注解的 带有参数的异步调用 异步方法可以传入参数
+     * 	对于返回值是 void，异常会被 AsyncUncaughtExceptionHandler 处理掉
+     * @param name
+     */
+    @Async("asyncTaskExecutor")
+    public void doTaskFour(String name) throws InterruptedException {
+        System.out.println("f4 : " + Thread.currentThread().getName() + "   " + UUID.randomUUID().toString());
+        System.out.println("开始做任务四");
+        long start = System.currentTimeMillis();
+        Thread.sleep(random.nextInt(1000));
+        long end = System.currentTimeMillis();
+        System.out.println("完成任务四，耗时：" + (end - start) + "毫秒");
+        throw new IllegalArgumentException(name); // 抛出自定义异常后 在 MyAsyncExceptionHandler 类中  会被拦截到！
+    }
+
+
+    /**
+     * 异常调用返回Future
+     * 	对于返回值是Future，不会被AsyncUncaughtExceptionHandler处理，需要我们在方法中捕获异常并处理
+     *  或者在调用方在调用Futrue.get时捕获异常进行处理
+     * @param i
+     * @return
+     */
+    @Async
+    public Future<String> doTaskSix(int i) {
+        Future<String> future;
+        try {
+            Thread.sleep(1000 * 1);
+            future = new AsyncResult<>("success:" + i);
+            throw new IllegalArgumentException("a");
+        } catch (InterruptedException e) {
+            future = new AsyncResult<>("error");
+        } catch(IllegalArgumentException e){
+            future = new AsyncResult<>("error-IllegalArgumentException");
+        }
+        return future;
     }
 
 }
