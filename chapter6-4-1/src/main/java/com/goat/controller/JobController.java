@@ -25,8 +25,6 @@ public class JobController  {
 	
 
 	/**
-	     * @Description: 功能描述：
-	     * @author: 杨帆
          * @param jobClassName  com.goat.job.HelloJob   这里必须是 全限定类名
          * @param jobGroupName  组名 可以随意填写
          * @param cronExpression  cron 表达式 0/1 * * * * ?
@@ -34,14 +32,11 @@ public class JobController  {
 	     * @Date:   2018/11/26
 	*/
 	@PostMapping(value="/addjob")
-	public void addjob(@RequestParam(value="jobClassName")String jobClassName,
-			@RequestParam(value="jobGroupName")String jobGroupName,
-			@RequestParam(value="cronExpression")String cronExpression) throws Exception {
-
+	public void addjob(@RequestParam(value="jobClassName")String jobClassName,@RequestParam(value="jobGroupName")String jobGroupName,@RequestParam(value="cronExpression")String cronExpression) throws Exception {
 		addJob(jobClassName, jobGroupName, cronExpression);
 	}
 	
-	public void addJob(String jobClassName, String jobGroupName, String cronExpression)throws Exception{
+	public void addJob(String jobClassName, String jobGroupName, String cronExpression)throws Exception {
         // 启动调度器
         scheduler.start();
         //构建job信息
@@ -54,6 +49,7 @@ public class JobController  {
 	}
 
 
+	/** 暂停任务 */
 	@PostMapping("/pausejob")
 	public void pausejob(@RequestParam("jobClassName")String jobClassName, @RequestParam("jobGroupName")String jobGroupName) throws Exception {
 		jobPause(jobClassName, jobGroupName);
@@ -62,8 +58,8 @@ public class JobController  {
 	public void jobPause(String jobClassName, String jobGroupName) throws Exception {
 		scheduler.pauseJob(JobKey.jobKey(jobClassName, jobGroupName));
 	}
-	
 
+    /** 恢复任务 */
 	@PostMapping("/resumejob")
 	public void resumejob(@RequestParam("jobClassName")String jobClassName, @RequestParam("jobGroupName")String jobGroupName) throws Exception {
 		jobresume(jobClassName, jobGroupName);
@@ -72,13 +68,11 @@ public class JobController  {
 	public void jobresume(String jobClassName, String jobGroupName) throws Exception {
 		scheduler.resumeJob(JobKey.jobKey(jobClassName, jobGroupName));
 	}
-	
-	
+
+
+    /** 刷新任务 */
 	@PostMapping("/reschedulejob")
-	public void rescheduleJob(@RequestParam("jobClassName")String jobClassName,
-			@RequestParam("jobGroupName")String jobGroupName,
-			@RequestParam("cronExpression")String cronExpression) throws Exception
-	{			
+	public void rescheduleJob(@RequestParam("jobClassName")String jobClassName,@RequestParam("jobGroupName")String jobGroupName,@RequestParam("cronExpression")String cronExpression) throws Exception{
 		jobreschedule(jobClassName, jobGroupName, cronExpression);
 	}
 	
@@ -93,7 +87,7 @@ public class JobController  {
         scheduler.rescheduleJob(triggerKey, trigger);
 	}
 
-	
+    /** 删除任务 */
 	@PostMapping("/deletejob")
 	public void deletejob(@RequestParam("jobClassName")String jobClassName, @RequestParam("jobGroupName")String jobGroupName) throws Exception {
 		jobdelete(jobClassName, jobGroupName);

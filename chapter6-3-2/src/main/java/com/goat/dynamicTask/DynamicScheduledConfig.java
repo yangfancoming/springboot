@@ -1,6 +1,5 @@
 package com.goat.dynamicTask;
 
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.config.CronTask;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
@@ -20,7 +19,7 @@ import java.util.Date;
 public class DynamicScheduledConfig implements SchedulingConfigurer {
 
     // 默认每秒执行一次定时任务
-    private String cron = "0/1 * * * * ?";
+    private String cron = "0/3 * * * * ?";
 
     @Override
     public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {

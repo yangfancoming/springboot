@@ -24,7 +24,7 @@ public class TestController {
     */
     @GetMapping("/updateTask")
     public Object updateTask() {
-        dynamicScheduledConfig.setCron("0/3 * * * * ?");
+        dynamicScheduledConfig.setCron("0/10 * * * * ?");
         return "success";
     }
 
