@@ -1,5 +1,7 @@
 package com.goat.dynamicTask;
 
+import com.goat.job.MyJob1;
+import com.goat.job.MyJob2;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.config.CronTask;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
@@ -38,8 +40,11 @@ public class DynamicScheduledConfig implements SchedulingConfigurer {
 
         // 定时任务四：此种不会因为cron的改变而改变任务执行时间
         taskRegistrar.addCronTask(()->System.out.println("定时任务三，当前时间：" + new Date()), this.getCron());
-    }
 
+        // 定时任务五：此种是 implements Runnable 方式
+        taskRegistrar.addFixedRateTask(new MyJob1(6),5*1000);
+        taskRegistrar.addFixedRateTask(new MyJob2(7),5*1000);
+    }
 
     public String getCron() {
         return cron;
