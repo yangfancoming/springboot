@@ -27,3 +27,8 @@
 # 测试
     宁镇 那边项目 上传的excel  根据返回的地址：http://localhost:8820/download?fileUrl=group1/M00/00/00/wKjrz1xiPgKAEWvuAAAYIMYNlFA91.xlsx
     我这边项目 也可以下载 ！
+    
+    
+# 报错：Resource interpreted as Document but transferred with MIME type application/json 
+    猜想会出现的原因是服务器响应的content-type值是application/json,而谷歌浏览器所期望的值应该是text/html
+    在下载controller方法中 加入 response.setContentType(MediaType.TEXT_HTML_VALUE); 即 "text/html"

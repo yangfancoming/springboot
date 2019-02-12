@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@AutoConfigureMockMvc //开启MockMvc  否则报错 No qualifying bean of type 'org.springframework.test.web.servlet.MockMvc' available
+@AutoConfigureMockMvc
 public class MockMvcPostTest {
 
     @Autowired
