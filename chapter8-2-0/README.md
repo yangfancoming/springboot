@@ -10,6 +10,16 @@
             <version>1.26.5</version>
         </dependency>
 
+
+    /**
+         group1/M00/00/00/wKjrz1xhRB6AGrcSAADSADZFffY772.png
+     	组名：(group1) 文件上传后所在的storage组名称，在文件上传成功后有storage服务器返回，需要客户端自行保存。
+     	虚拟磁盘路径(M00)：storage配置的虚拟路径，与磁盘选项store_path*对应。如果配置了store_path0则是M00，如果配置了store_path1则是M01，以此类推。
+     	数据两级目录(/00/00/)：storage服务器在每个虚拟磁盘路径下创建的两级目录，用于存储数据文件。
+     	文件名(wKjrz1xhRB6AGrcSAADSADZFffY772)：与文件上传时不同。是由存储服务器根据特定信息生成，
+                    文件名包含：源存储服务器IP地址、文件创建时间戳、文件大小、随机数和文件拓展名等信息。
+    
+     */
 # 注意点：
     一台服务器可以装多个组(group)但不能装同组的多个Storage,日志会报错误，日志报错原因是"注意1"
     
