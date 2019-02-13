@@ -1,27 +1,17 @@
 package com.goat.test;
 
 import com.goat.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
 
-/**
- * @author itguang
- * @create 2017-12-17 13:14
- **/
+
 @RestController
 @RequestMapping("post")
-public class PostTest {
-
-    protected static final String HOST = "http://localhost:8273";
-
-    @Autowired
-    RestTemplate restTemplate;
+public class PostTest extends BaseTest{
 
     /**---------------------------postForEntity-----------------------------*/
 
@@ -30,7 +20,7 @@ public class PostTest {
      方法的第二个参数表示上传的参数
      方法的第三个参数表示返回的消息体的数据类型
     */
-    //post 请求,提交 UserEntity 对像  http://localhost/saveUser?username=itguang&password=123456&age=20&email=123@123.com
+    //post 请求,提交 UserEntity 对像  http://localhost:8273/post/saveUser?username=itguang&password=123456&age=20&email=123@123.com
     @RequestMapping("saveUser")
     public String save(User user) {
         ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://localhost/save", user, String.class);

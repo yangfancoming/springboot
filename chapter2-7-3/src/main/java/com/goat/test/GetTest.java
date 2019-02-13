@@ -1,14 +1,12 @@
 package com.goat.test;
 
 import com.goat.entity.User;
-
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,11 +16,10 @@ import java.util.List;
  * @create 2017-12-17 13:14
  **/
 @RestController
-public class GetTest {
+public class GetTest extends BaseTest {
 
     protected static final String HOST = "http://localhost:8273";
 
-    RestTemplate restTemplate = new RestTemplate();
 
     /**---------------------------getForEntity-----------------------------*/
 
@@ -46,7 +43,7 @@ public class GetTest {
     }
 
     //有参数的 getForEntity 请求 返回实体
-    @RequestMapping("getForEntity/{id}")
+    @RequestMapping("getForEntity1/{id}")
     public User getById2(@PathVariable(name = "id") String id) {
         ResponseEntity<User> responseEntity = restTemplate.getForEntity("http://localhost/get/{id}", User.class, id);
         User userEntity = responseEntity.getBody();
@@ -54,7 +51,7 @@ public class GetTest {
     }
 
     //有参数的 getForEntity 请求,使用map封装参数
-    @RequestMapping("getForEntity/{id}")
+    @RequestMapping("getForEntity2/{id}")
     public User getById4(@PathVariable(name = "id") String id) {
         HashMap<String, String> map = new HashMap<>();
         map.put("id",id);

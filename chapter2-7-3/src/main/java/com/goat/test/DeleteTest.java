@@ -1,9 +1,7 @@
 package com.goat.test;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * Created by 64274 on 2019/2/13.
@@ -15,11 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("delete")
-public class DeleteTest {
-    protected static final String HOST = "http://localhost:8273";
-    @Autowired
-    RestTemplate restTemplate;
-
+public class DeleteTest extends BaseTest {
 
     /**
      * 演示方法：public void delete(String url, Object... uriVariables)
