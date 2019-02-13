@@ -52,7 +52,6 @@ public class MyDateController {
     @RequestMapping(method = RequestMethod.POST, value = "test2", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public void test2(@RequestBody String result) {
-        // 1. 将mes传来的Json数据 转成 list<T>
         List<MyDate> list = new Gson().fromJson(result, new TypeToken<List<MyDate>>() {}.getType());
         System.out.println(list);
     }

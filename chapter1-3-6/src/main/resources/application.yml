@@ -1,0 +1,10 @@
+
+#  sos spring boot中全局设置时间格式  启动你的项目，所有的@RestController和@ResponseBody响应资源都会自动将Java对象里面的Date类型转化为date-format: 配置的格式
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss #如果使用字符串表示，用这行设置格式
+    timezone: GMT+8
+    serialization:
+      write-dates-as-timestamps: true # 是否使用时间戳，使用数值timestamp表示日期
+# 如果 开启时间戳 那么将是所有的@RestController和@ResponseBody响应资源都会自动将Java对象里面的Date类型转化为 1510820204000 时间戳格式
