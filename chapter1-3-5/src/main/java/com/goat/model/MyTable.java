@@ -1,5 +1,7 @@
 package com.goat.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -28,27 +30,34 @@ public class MyTable {
     @Column(name = "col1")
     private String col1;
 
-
     // 在没加任何注解的 属性  默认为 @Basic 注解
     private Integer col2;
 
-
     @Transient // @Transient 是让该属性不在表中产生字段，但又可以在程序中使用它
     private String info;
-
 
     private Timestamp createdTime; // 对应生成数据库 datetime 字段 yyyy-MM-dd HH:mm:ss 2018-12-12 20:12:04
 
     private Date lastTime;  // 对应生成数据库 datetime 字段 yyyy-MM-dd HH:mm:ss  2018-12-12 20:12:04
 
     @Temporal(TemporalType.DATE)
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date birthday1;  // 对应生成数据库 date 字段 2018-12-12
 
     @Temporal(TemporalType.TIME)
+    @JsonFormat(pattern = "HH:mm:ss")
     private Date birthday2;  // 对应生成数据库 time 字段 20:16:14
 
     @Temporal(TemporalType.TIMESTAMP) // 对应生成数据库 datetime 字段 2018-12-12 20:16:15
-    private Date birthday3;  //
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date birthday3;
+
+/**
+  在远程调用数据传输时： 涉及到 到日期和时间的属性字段  如果不加 @JsonFormat(pattern = "xxxxx") 会因为无法解析而报错：
+ om.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot deserialize value of type `java.util.Date` from String "20:16:14": not a valid representation (error: Failed to parse Date value '20:16:14': Unparseable date: "20:16:14")
+ at [Source: (String)"[{"id":5,"col1":"sdf","col2":4313412,"info":null,"createdTime":"2018-12-12 20:16:15","lastTime":"2018-12-12 20:16:15","birthday1":"2018-12-11","birthday2":"20:16:14","birthday3":"2018-12-12 20:16:15"}]"; line: 1, column: 156] (through reference chain: java.util.ArrayList[0]->com.goat.model.MyTable["birthday2"])
+
+*/
 
 
     public Long getId() {

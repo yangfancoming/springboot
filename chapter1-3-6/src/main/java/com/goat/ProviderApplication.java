@@ -11,5 +11,4 @@ public class ProviderApplication {
         SpringApplication.run(ProviderApplication.class, args);
     }
 
-
 }
