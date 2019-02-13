@@ -32,7 +32,6 @@ import java.util.concurrent.ThreadPoolExecutor;
 @Configuration
 public class TaskExecutorPoolConfig implements AsyncConfigurer { // 通过AsyncConfigurer自定义线程池，以及异常处理
 
-
     /**
      * 自定义异步线程池
      * 	如果没有这个方法，则使用默认的线程池

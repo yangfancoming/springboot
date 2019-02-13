@@ -14,10 +14,7 @@ import static java.util.stream.Collectors.toList;
 
 /**
  * 用户API
- *
- * @author: LIUTAO
  * @Date: Created in 2018/8/14  14:54
- * @Modified By:
  */
 @RestController
 @RequestMapping("/get")
