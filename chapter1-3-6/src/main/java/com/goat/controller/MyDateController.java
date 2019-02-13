@@ -50,14 +50,12 @@ public class MyDateController {
      */
 
     @RequestMapping(method = RequestMethod.POST, value = "test2", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
     public void test2(@RequestBody String result) {
         List<MyDate> list = new Gson().fromJson(result, new TypeToken<List<MyDate>>() {}.getType());
         System.out.println(list);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "test3", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
     public void test3(@RequestBody String jsonStr) throws IOException {
         JavaType type = mapper.getTypeFactory().constructParametricType(List.class, MyDate.class);
         List<MyDate> list = mapper.readValue(jsonStr, type);

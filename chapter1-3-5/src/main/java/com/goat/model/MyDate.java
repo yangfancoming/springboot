@@ -1,6 +1,5 @@
 package com.goat.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
