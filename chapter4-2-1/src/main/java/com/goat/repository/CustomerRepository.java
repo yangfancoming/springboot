@@ -2,6 +2,7 @@ package com.goat.repository;
 
 import com.goat.domain.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -20,3 +21,4 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     List<Customer> findByLastName(String lastName);
     List<Customer> findByLastNameOrFirstName(String lastName,String firstName);
 }
+
