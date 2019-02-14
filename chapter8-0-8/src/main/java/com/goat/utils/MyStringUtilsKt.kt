@@ -10,12 +10,12 @@ class  MyStringUtilsKt{
 
     companion object {
         fun strSplit(str:String,len:Int): Array<String?>{
-            var fuck = str
-            val length = fuck.length/len
+            var goat = str
+            val length = goat.length/len
             var strArr = arrayOfNulls<String>(length)
             for (temp in strArr.indices){
-                strArr[temp] = fuck.substring(0,len)
-                fuck = fuck.substring(len)
+                strArr[temp] = goat.substring(0,len)
+                goat = goat.substring(len)
             }
             return strArr
         }

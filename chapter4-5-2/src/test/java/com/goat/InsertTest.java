@@ -46,17 +46,17 @@ public class InsertTest extends CommonTest {
 
     @Test
     public void save1() { //  Save the object to the default collection
-        User user = new User("33","fuck33");
+        User user = new User("33","goat33");
         mongoTemplate.save(user);
     }
     @Test
     public void save11() { // Save the object to the specified collection
-        User user = new User("33","fuck33");
+        User user = new User("33","goat33");
         mongoTemplate.save(user, "students");
     }
     @Test
     public void save2() {
-        User user = new User("34","fuck34");
+        User user = new User("34","goat34");
         mongoTemplate.save(user);
     }
 
@@ -74,12 +74,12 @@ public class InsertTest extends CommonTest {
 
     @Test
     public void insert1() { //  insert the object to the default collection
-        User user = new User("fuck");
+        User user = new User("goat");
         mongoTemplate.insert(user);
     }
     @Test
     public void insert2() { // insert the object to the specified collection
-        User user = new User("fuck123");
+        User user = new User("goat123");
         mongoTemplate.insert(user,"students");
     }
 
@@ -91,8 +91,8 @@ public class InsertTest extends CommonTest {
     @Test
     public void insert() { //   insert 指定集合
         List<User> lists = new ArrayList<>();
-        User user1 = new User("fuck111");
-        User user2 = new User("fuck222");
+        User user1 = new User("goat111");
+        User user2 = new User("goat222");
         lists.add(user1);
         lists.add(user2);
         mongoTemplate.insert(lists,Student.class);

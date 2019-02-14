@@ -38,7 +38,7 @@ public class TestNG extends AbstractTestNGSpringContextTests {
     public void test1() {
         User user = new User();
         user.setId("33");
-        user.setName("fuck");
+        user.setName("goat");
         mongoTemplate.save(user);
     }
 

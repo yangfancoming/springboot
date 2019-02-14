@@ -37,7 +37,7 @@ public class StudentController {
         stu.setPet(pet);
 
         List<String> skills = new ArrayList<>(16);
-        skills.add("fuck");
+        skills.add("aiya");
         skills.add("shit");
         stu.setSkill(skills);
         model.addAttribute("student",stu);

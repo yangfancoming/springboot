@@ -34,12 +34,12 @@ public class Redis_Common {
     }
     @Test
     public void exists(){
-        Boolean temp = jedis.exists("fuck1"); // 判断集合中 是否包含指定的 key
+        Boolean temp = jedis.exists("goat1"); // 判断集合中 是否包含指定的 key
         System.out.println(temp);
     }
     @Test
     public void expire(){
-        Long temp = jedis.expire("fuck",5); // 设置 指定键值对的 过期时间  过期后 该键值对消失
+        Long temp = jedis.expire("goat",5); // 设置 指定键值对的 过期时间  过期后 该键值对消失
         System.out.println(temp);
     }
     @Test
@@ -49,7 +49,7 @@ public class Redis_Common {
     }
     @Test
     public void type(){
-        String temp = jedis.type("fuck"); // 查看 key 所存储的 值的 类型
+        String temp = jedis.type("goat"); // 查看 key 所存储的 值的 类型
         System.out.println(temp);
     }
     @Test

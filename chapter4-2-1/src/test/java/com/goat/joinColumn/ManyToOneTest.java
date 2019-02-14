@@ -87,7 +87,7 @@ public class ManyToOneTest {
     public void deleteB1yId() {
         Optional<Order> byId = orderRepository.findById(6L);//
         Order order = byId.get();
-        order.getCustomer().setLastName("fuck1111"); // 若 1 端 已经被删除 那么 报错  java.util.NoSuchElementException: No value present
+        order.getCustomer().setLastName("goat1111"); // 若 1 端 已经被删除 那么 报错  java.util.NoSuchElementException: No value present
         customerRepository.save(order.getCustomer());// 若 1 端 还在 则 成功修改
     }
 

@@ -42,8 +42,8 @@ public class TestNG_mes {
     @Test
     public void test4() throws Exception { // HttpClient doPost请求 发送 map 对象
         Map<String,String> map = new HashMap<>();
-        map.put("fuck","111");
-        map.put("shit","222");
+        map.put("haha","111");
+        map.put("gaga","222");
         HttpClientResult result2 = HttpClientUtils.doPost("http://192.168.1.115:8081/wms/warehouseSplit/updateWarehouseSplit",map);
         System.out.println(result2);
     }

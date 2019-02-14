@@ -60,7 +60,7 @@ public class HelloController {
     public Map map(){
         Map map = new HashMap();
         map.put("id",1);
-        map.put("name","fuck");
+        map.put("name","goat");
         map.put("age",12);
         return map;
     }
@@ -72,7 +72,7 @@ public class HelloController {
     public Map<String,Object> map2(){
         Map<String,Object> map = new HashMap();
         map.put("id",2);
-        map.put("name","fuck");
+        map.put("name","goat");
         map.put("age",12);
         return map;
     }
@@ -85,7 +85,7 @@ public class HelloController {
     public List<Map<String,Object>> listmap(){
         Map<String,Object> map = new HashMap();
         map.put("id",3);
-        map.put("name","fuck");
+        map.put("name","goat");
         map.put("age",132);
 
         List<Map<String,Object>> temp = new ArrayList<>();
@@ -101,7 +101,7 @@ public class HelloController {
     public RestResponse<Map<String, Object>> RestResponse(){
         Map<String,Object> map = new HashMap<>();
         map.put("id",1);
-        map.put("name","fuck");
+        map.put("name","goat");
         map.put("age",12);
         return RestResponse.ok(map);
     }
@@ -114,7 +114,7 @@ public class HelloController {
     public RestResponse<List<Map<String,Object>>> RestResponse2(){
         Map<String,Object> map = new HashMap();
         map.put("id",1);
-        map.put("name","fuck");
+        map.put("name","goat");
         map.put("age",12);
         List<Map<String,Object>> temp = new ArrayList<>();
         temp.add(map);
@@ -130,7 +130,7 @@ public class HelloController {
     public MesDto MesDto(){
         Map<String,Object> map = new HashMap();
         map.put("id",1);
-        map.put("name","fuck");
+        map.put("name","goat");
         map.put("age",12);
         MesDto mesDto = new MesDto();
         mesDto.setMessage(map);

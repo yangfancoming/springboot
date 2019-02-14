@@ -17,15 +17,15 @@ public class CreateLicenseController {
     @Autowired
     CreateLicenseService createLicenseService;
 
-    // 测试地址：    http://localhost:8263/fuck
+    // 测试地址：    http://localhost:8263/goat
     @RequestMapping("/test1")
     public String success(Map<String,String> map){
         createLicenseService.doCreateLicense();
-        map.put("hello","fuck123123");
+        map.put("hello","goat123123");
         return "success";
     }
 
-    // 测试地址：    http://localhost:8263/fuck2
+    // 测试地址：    http://localhost:8263/goat2
     @RequestMapping("/test2")
     public String index(ModelMap map) { //  ModelMap 也是一种渲染方式
         map.addAttribute("hello", "http://blog.didispace.com");

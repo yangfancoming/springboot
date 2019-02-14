@@ -38,9 +38,9 @@ public class MapHere{
         map1.put("05","goat5");
         map1.put("06","goat6");
 
-        map2.put(1,"fuck1");
-        map2.put(2,"fuck2");
-        map2.put(3,"fuck3");
+        map2.put(1,"goat1");
+        map2.put(2,"goat2");
+        map2.put(3,"goat3");
     }
 
     @Test

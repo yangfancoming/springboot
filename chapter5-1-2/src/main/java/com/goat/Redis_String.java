@@ -14,7 +14,7 @@ public class Redis_String extends Redis_Common {
 //     stringRedisTemplate.opsForValue().set("timeOutValue","timeOut",5, TimeUnit.SECONDS);
     @Test
     public void set(){
-        String temp = jedis.set("fuck","gaga"); // 设置 键值对   对应命令 set fuck1 gaga
+        String temp = jedis.set("goat","gaga"); // 设置 键值对   对应命令 set goat1 gaga
         System.out.println(temp); // 返回 OK
     }
     // 设置过期时间  对应  stringRedisTemplate.opsForValue().set("timeOutValue","timeOut",5, TimeUnit.SECONDS);
@@ -25,40 +25,40 @@ public class Redis_String extends Redis_Common {
     }
     @Test
     public void get(){
-        String temp = jedis.get("fuck1"); //获取 指定 键值对   对应命令 get fuck1
+        String temp = jedis.get("goat1"); //获取 指定 键值对   对应命令 get goat1
         System.out.println(temp); // 返回 OK
     }
 
     @Test
     public void del(){
-        Long temp = jedis.del("fuck1"); // 根据key 删除 键值对  对应命令 del fuck1
+        Long temp = jedis.del("goat1"); // 根据key 删除 键值对  对应命令 del goat1
         System.out.println(temp); // 成功 返回 1   失败返回 0
     }
 
     //  incr decr 操作 不存在的key时  则新建key 其value设置0  然后在进行 增加或减少操作
     @Test
     public void incr(){
-        Long temp = jedis.incr("fuck2"); // 将key对应的value加1  value必须为整数型  对应命令  incr fuck2
+        Long temp = jedis.incr("goat2"); // 将key对应的value加1  value必须为整数型  对应命令  incr goat2
         System.out.println(temp);
     }
     @Test
     public void incrBy(){
-        Long temp = jedis.incrBy("fuck2",5); // 可以指定 增量步长
+        Long temp = jedis.incrBy("goat2",5); // 可以指定 增量步长
         System.out.println(temp);
     }
     @Test
     public void decr(){
-        Long temp = jedis.decr("fuck2"); // 将key对应的value减1  value必须为整数型  对应命令  decr fuck2
+        Long temp = jedis.decr("goat2"); // 将key对应的value减1  value必须为整数型  对应命令  decr goat2
         System.out.println(temp);
     }
     @Test
     public void decrBy(){
-        Long temp = jedis.decrBy("fuck2",5); // 可以指定 减量步长
+        Long temp = jedis.decrBy("goat2",5); // 可以指定 减量步长
         System.out.println(temp);
     }
     @Test
     public void move(){
-        Long temp = jedis.move("fuck",2); // 将指定 键值对 剪切 到 其他库
+        Long temp = jedis.move("goat",2); // 将指定 键值对 剪切 到 其他库
         System.out.println(temp);
     }
 

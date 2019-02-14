@@ -51,7 +51,7 @@ public class SelectController extends BaseController {
     // 测试地址：    http://localhost:8453/test5
     @GetMapping("/test5")
     public void findByNameLike() { // 通过 name 属性 模糊查询  记录
-        List<User> users = repository.findByNameLike("fuck");
+        List<User> users = repository.findByNameLike("aiya");
         System.out.println(users);
     }
 

@@ -89,8 +89,8 @@ public class createNativeQuery  {
 
     @Test
     public void test1() {
-        String sql = "SELECT * FROM user  WHERE name = :fuckname";
-        Query query = entityManager.createNativeQuery(sql).setParameter("fuckname","BBB"); // 按 名称 输入参数
+        String sql = "SELECT * FROM user  WHERE name = :name";
+        Query query = entityManager.createNativeQuery(sql).setParameter("name","BBB"); // 按 名称 输入参数
         List<User> users = query.getResultList();
         System.out.println(users);
     }
@@ -106,8 +106,8 @@ public class createNativeQuery  {
     */
     @Test
     public void test2() {
-        String sql = "SELECT * FROM user  WHERE name = :fuckname";
-        Query query = entityManager.createNativeQuery(sql,User.class).setParameter("fuckname","BBB");
+        String sql = "SELECT * FROM user  WHERE name = :name";
+        Query query = entityManager.createNativeQuery(sql,User.class).setParameter("name","BBB");
         List<User> users = query.getResultList();
         System.out.println(users);
     }
@@ -120,8 +120,8 @@ public class createNativeQuery  {
     */
     @Test
     public void test3() {
-        String sql = "SELECT * FROM user u  WHERE name = :fuckname";
-        Query query = entityManager.createNativeQuery(sql,User2.class).setParameter("fuckname","BBB");
+        String sql = "SELECT * FROM user u  WHERE name = :name";
+        Query query = entityManager.createNativeQuery(sql,User2.class).setParameter("name","BBB");
         List<User2> users = query.getResultList();
         System.out.println(users);
     }

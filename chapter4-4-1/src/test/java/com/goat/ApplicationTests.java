@@ -76,7 +76,7 @@ public class ApplicationTests {
     @Test
     public void updateMapById() {
         Map map = new HashMap();
-        map.put("ENAME","fuck");
+        map.put("ENAME","goat");
         map.put("id",33);
         int temp = baseDao.updateMapById(map);
         System.out.println(temp);

@@ -42,14 +42,14 @@ public class OpsForValue extends RedisCommon {
     */
     @Test
     public void test1(){
-        stringOperations.set("fuck1","tom"); // 这里插入的是 tom
-        Assert.assertEquals("tom", stringOperations.get("fuck")); // OK
+        stringOperations.set("haha1","tom"); // 这里插入的是 tom
+        Assert.assertEquals("tom", stringOperations.get("haha1")); // OK
     }
 
     @Test
     public void test2(){
-        redisOperations.set("fuck","tom"); // 这里插入的是 "tom"
-        Assert.assertEquals("tom", stringOperations.get("fuck")); // 报错 did not expect to find ["tom"] but found [tom]
+        redisOperations.set("haha2","tom"); // 这里插入的是 "tom"
+        Assert.assertEquals("tom", stringOperations.get("haha2")); // 报错 did not expect to find ["tom"] but found [tom]
     }
 
     @Test
@@ -143,7 +143,7 @@ public class OpsForValue extends RedisCommon {
     @Test
     public void size(){
         //获取指定key的 value 的长度   STRLEN key
-        Long temp = stringOperations.size("fuck");
+        Long temp = stringOperations.size("asdf");
         System.out.println(temp);
     }
     /**

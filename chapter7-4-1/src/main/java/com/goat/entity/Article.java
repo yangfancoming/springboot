@@ -10,7 +10,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
  * @Description: TODO
  * @date 2018/8/22---13:54
  */
-@Document(indexName = "fuck",type = "news")
+@Document(indexName = "gaga",type = "news")
 public class Article {
 
     private Integer id;

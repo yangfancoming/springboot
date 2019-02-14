@@ -28,9 +28,9 @@ public class MapHere2 {
         map1.put("05","goat51");
         map1.put("06","goat61");
 
-        map2.put(1,"fuck11");
-        map2.put(2,"fuck21");
-        map2.put(3,"fuck31");
+        map2.put(1,"goat11");
+        map2.put(2,"goat21");
+        map2.put(3,"goat31");
 
         map4.add(map);
         map4.add(map);
