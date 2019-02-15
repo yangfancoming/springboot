@@ -3,7 +3,7 @@
 
 spring:
   jackson:
-    date-format: yyyy-MM-dd HH:mm:ss #如果使用字符串表示，用这行设置格式
+#    date-format: yyyy-MM-dd HH:mm:ss #如果使用字符串表示，用这行设置格式
     timezone: GMT+8
     serialization:
       write-dates-as-timestamps: false # 是否使用时间戳，使用数值timestamp表示日期

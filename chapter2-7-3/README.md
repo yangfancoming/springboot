@@ -16,3 +16,7 @@
     postForLocation() POST 数据到一个URL，返回新创建资源的URL
     put() PUT 资源到特定的URL
 
+# 返回值问题： RestTemplate.getForObject 和 RestTemplate.getForEntity
+    ResponseEntity<List> forEntity = restTemplate.getForEntity(HOST + "/warehouseStockContentLog/getWarehouseLog1", List.class);
+    List<T> list = restTemplate.getForObject(HOST + "/warehouseStockContentLog/getWarehouseLog2", List.class);
+    使用以上两种方式 返回结果 ，不管这个T是什么，接收到都被转化为 LinkedHashMap

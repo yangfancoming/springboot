@@ -36,6 +36,7 @@ public class MyTable {
     @Transient // @Transient 是让该属性不在表中产生字段，但又可以在程序中使用它
     private String info;
 
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
     private Timestamp createdTime; // 对应生成数据库 datetime 字段 yyyy-MM-dd HH:mm:ss 2018-12-12 20:12:04
 
     private Date lastTime;  // 对应生成数据库 datetime 字段 yyyy-MM-dd HH:mm:ss  2018-12-12 20:12:04

@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
 
-//使用 WebMvcConfigurer 可以来扩展SpringMVC的功能  既保留了所有的自动配置，也能用我们自定义的配置
 //@EnableWebMvc   注释掉@EnableWebMvc 表示 不要接管SpringMVC
 @Configuration
 public class MyMvcConfig implements WebMvcConfigurer {

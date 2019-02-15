@@ -54,7 +54,6 @@ public class TestController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "test3", produces = MediaType.APPLICATION_JSON_VALUE)
-
     public void test3(@RequestBody String jsonStr) throws IOException {
         JavaType type = mapper.getTypeFactory().constructParametricType(List.class, MyTable.class);
         List<MyTable> list = mapper.readValue(jsonStr, type);
