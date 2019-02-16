@@ -12,16 +12,16 @@ import org.springframework.context.annotation.Configuration;
  * @ date 2019/2/4---18:24
  */
 @Configuration
-public class ConditionConfig {
+public class OsServiceConfig {
 
     @Bean
-    @Conditional(LinuxCondition.class)
+    @Conditional(LinuxCondition.class) // 条件判断 true 则创建该bean  false 则不会创建该bean
     public ListService linuxListService() {
         return new LinuxListService();
     }
 
     @Bean
-    @Conditional(WindowsCondition.class)
+    @Conditional(WindowsCondition.class) // 条件判断 true 则创建该bean  false 则不会创建该bean
     public ListService windowsListService() {
         return new WindowsListService();
     }

@@ -1,7 +1,7 @@
 package com.goat.controller;
 
 
-import com.goat.condition.ConditionConfig;
+import com.goat.condition.OsServiceConfig;
 import com.goat.condition.ListService;
 import com.goat.condition2.ConditionConfig2;
 import com.goat.condition2.Person;
@@ -32,7 +32,7 @@ public class TestControler {
 //    http://localhost:8127/test1  context.getEnvironment().getProperty("os.name") 获取当前项目所运行的操作系统环境
     @GetMapping("/test1")
     public void test1(){
-        ApplicationContext context = new AnnotationConfigApplicationContext(ConditionConfig.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(OsServiceConfig.class);
         ListService listService = context.getBean(ListService.class);
         System.out.println(context.getEnvironment().getProperty("os.name") + "系统下的列表命令为:" + listService.showListCmd());
     }
