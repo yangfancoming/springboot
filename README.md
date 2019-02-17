@@ -1,12 +1,11 @@
-
-
-
-
 工程配置
 
 - chapter0-0-0 springboot 空项目
 - chapter0-0-1 springboot 共享model
 - chapter0-0-5 springboot Helloworld
+- chapter0-0-6 springboot 自定义jar包
+- chapter0-0-7 springboot 引入自定义jar包并以可运行jar方式启动
+- chapter0-0-8 springboot 引入自定义jar包并以war包方式启动
 - chapter0-1-0 springboot Utils 积累常用工具类
 - chapter0-1-2 springboot 自定义banner
 - chapter1-1-1 springboot 读取配置文件
@@ -14,8 +13,24 @@
 - chapter1-2-1 springboot  与 日志
 - chapter1-2-5 springboot  自定义starter
 - chapter1-2-7 springboot  注解开发
-  
-  
+- 
+
+
+
+
+
+
+
+日期和时间处理
+
+- chapter1-3-5 springboot  公共接口和model
+- chapter1-3-6 springboot  生产者 Provider
+- chapter1-3-7 springboot  消费者 Consumer
+- 
+
+
+
+
 
 Web开发
 
@@ -51,7 +66,8 @@ Web开发
 
 - chapter2-6-3 springboot  集成  Thymeleaf 与 SpringMVC 扩展
 - chapter2-6-4 springboot  集成  velocity
-- chapter2-6-5 springboot  集成  freemarker
+- chapter2-6-5 springboot  集成  freemarker + 日期类型处理
+- chapter2-6-7 springboot  集成  vue+ elementUI
 
 
 
@@ -109,7 +125,7 @@ Web开发
 - chapter4-4-1：springboot 集成 mybatis   Dao接口 + sqlxml 实现 
 - chapter4-4-2：springboot 集成 mybatis   Dao接口 +  注解 实现
 - chapter4-4-3：springboot 集成 mybatis 
-- chapter4-4-4：springboot 集成 mybatis + mybatisplus 
+- chapter4-4-4：springboot 集成 mybatis + mybatisplus + 日期处理 
 - chapter4-5-2：springboot 集成 MongoDB  使用 MongoTemplate
 - chapter4-5-3：springboot 集成 MongoDB  使用 MongoRepository
 - chapter4-6-0：springboot 集成 Oracle
@@ -162,7 +178,6 @@ Web开发
 
 - chapter6-3-1：springboot 集成 Scheduled
 - chapter6-4-1：springboot 集成 Quartz
-- 
 - chapter6-5-1：springboot  异步任务
 - chapter6-5-5：springboot  重试机制
 - ==chapter6-6-0：springboot  Batch 批处理1 ==
@@ -200,6 +215,8 @@ excel 相关操作
 
 - chapter8-3-0：springboot 集成 RabbitMQ
 - chapter8-3-3：springboot 集成 Kafka
+- chapter8-3-5：springboot 集成 Activemq
+- 
 
 
 
