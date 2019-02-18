@@ -1,18 +1,23 @@
 package com.goat.controller;
 
 
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.goat.model.MyDate;
-import com.goat.model.MyTable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -72,4 +77,15 @@ public class MyDateController {
         ResponseEntity<List> listResponseEntity = restTemplate.postForEntity(HOST + "/mydate/test3", list, List.class);
         logger.debug(Thread.currentThread().getName(),listResponseEntity);
     }
+
+
+    @Autowired
+    ObjectMapper mapper;
+    @RequestMapping(method = RequestMethod.POST, value = "test3", produces = MediaType.APPLICATION_JSON_VALUE)
+    public void test3(@RequestBody String jsonStr) throws IOException {
+        JavaType type = mapper.getTypeFactory().constructParametricType(List.class, MyDate.class);
+        List<MyDate> list = mapper.readValue(jsonStr, type);
+        System.out.println(list);
+    }
+
 }

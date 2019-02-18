@@ -3,16 +3,18 @@ package com.goat.controller;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.goat.model.MyDate;
-import com.goat.model.MyTable;
 import com.goat.repository.MyDateRepository;
-import com.goat.repository.MyTableRepository;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.util.List;
@@ -61,6 +63,26 @@ public class MyDateController {
         JavaType type = mapper.getTypeFactory().constructParametricType(List.class, MyDate.class);
         List<MyDate> list = mapper.readValue(jsonStr, type);
         System.out.println(list);
+    }
+
+    //    Could not extract response: no suitable HttpMessageConverter found for response type
+
+
+    //    http://localhost:8136/mydate/test3
+    protected static final String HOST = "http://127.0.0.1:8137";
+    @Autowired
+    RestTemplate restTemplate;
+    @RequestMapping("test3")
+    public void test3() {
+
+        List<MyDate> list = repository.findAll();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<List<MyDate>> requestEntity = new HttpEntity<>(list, headers);
+        ResponseEntity<List> exchange = restTemplate.exchange(HOST + "/mydate/test3", HttpMethod.POST, requestEntity, List.class);
+        List<MyDate> body = exchange.getBody();
+        System.out.println(body);
+
     }
 
 }

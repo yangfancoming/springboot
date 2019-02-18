@@ -5,12 +5,15 @@
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.context.annotation.Bean;
 //import org.springframework.context.annotation.Configuration;
+//import org.springframework.http.MediaType;
 //import org.springframework.http.converter.HttpMessageConverter;
 //import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+//import org.springframework.web.client.RestTemplate;
 //import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 //import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 //
 //import java.text.SimpleDateFormat;
+//import java.util.Arrays;
 //import java.util.List;
 //import java.util.TimeZone;
 //
@@ -36,6 +39,7 @@
 //        mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")); // 功能同配置文件  这里先不配置
 //        mapper.setTimeZone(TimeZone.getTimeZone("GMT+8"));//解决时区差8小时问题
 //        converter.setObjectMapper(mapper);
+//        converter.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON, MediaType.APPLICATION_OCTET_STREAM));
 //        return converter;
 //    }
 //
