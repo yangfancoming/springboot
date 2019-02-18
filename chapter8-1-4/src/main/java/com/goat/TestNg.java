@@ -18,11 +18,12 @@ public class TestNg {
     @Test
     public void test() throws IOException, InterruptedException {
         // 要输入命令行的 命令内容
-        String args="python "+"E:\\Code\\Python\\MyPython\\PythonLearning\\234.py ";
+//        String args="python "+"E:\\Code\\Python\\MyPython\\PythonLearning\\234.py ";
+        String args="python "+"E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter8-1-4\\src\\main\\java\\com\\goat\\234.py";
         Process process=Runtime.getRuntime().exec(args);
         BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream(),"GBK"));
         String line;
-        StringBuilder result= new StringBuilder();
+        StringBuilder result = new StringBuilder();
         while ((line=in.readLine())!=null){
             result.append(line);
         }
