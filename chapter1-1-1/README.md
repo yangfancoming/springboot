@@ -41,7 +41,7 @@
 
 
 
-#激活指定profile 四种方式：
+# 激活指定profile 四种方式：
 	1、在配置文件中指定  spring.profiles.active=dev
 	2、命令行：java -jar spring-boot-02-config-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev；
 	3、虚拟机参数；-Dspring.profiles.active=dev
@@ -49,11 +49,14 @@
 		
 
 
-#SpringBoot 的 @Import 用于将指定的类实例注入之Spring IOC Container中。 
+# SpringBoot 的 @Import 用于将指定的类实例注入之Spring IOC Container中。 
     SpringBoot 提供了 三种使用 @Import 将 类实例注入至 Spring IOC Container中 的实例。
     1.直接注入
     2.实现 ImportBeanDefinitionRegistrar 接口 注入
     3.实现 ImportSelector 注入
 
+
+#  解决Spring Boot 拦截器注入service为空的问题  可以参考 chapter6-5-1 项目 
+     因为： 拦截器加载的时间点在springcontext之前，所以在拦截器中的注入 自然都为null
 
 

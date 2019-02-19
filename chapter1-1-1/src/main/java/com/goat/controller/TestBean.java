@@ -76,7 +76,7 @@ public class TestBean {
         testoService1.test();
     }
 
-    /**
+    /**   sos 实测 该方法  不能 在拦截器中 注入 bean
      http://localhost:1111/testbean/test6
      通过 MyAppConfig 类的  @Configuration 和 @Bean 注解 注入该bean
      */

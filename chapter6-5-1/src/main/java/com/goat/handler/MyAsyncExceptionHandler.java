@@ -1,5 +1,6 @@
 package com.goat.handler;
 
+import com.goat.service.HelloService;
 import com.goat.service.TestService;
 import com.goat.utils.SpringContextUtil;
 import org.slf4j.Logger;
@@ -25,6 +26,8 @@ public class MyAsyncExceptionHandler implements AsyncUncaughtExceptionHandler {
     @Autowired
     TestService testService;
 
+    @Autowired
+    HelloService helloService;
     public void test(){
         testService.sayHi();
     }
@@ -38,6 +41,7 @@ public class MyAsyncExceptionHandler implements AsyncUncaughtExceptionHandler {
         }
         TestService testService = (TestService) SpringContextUtil.getBean("testService");
         testService.sayHi();
+        helloService.hello(); // 为 null
         /**  在 自定义异常中 获取 报错函数的信息 报错获取函数头上的注解 @Log
      Log myLog = null;
      if (method != null){ // 是否存在注解，如果存在就获取
