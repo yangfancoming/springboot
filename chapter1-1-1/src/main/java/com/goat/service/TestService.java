@@ -10,4 +10,7 @@ package com.goat.service;
 // 这里没加  @service 注解哦
 public class TestService {
 
+    public void test(){
+        System.out.println("test bean1...............");
+    }
 }

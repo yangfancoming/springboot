@@ -1,6 +1,7 @@
 package com.goat.controller;
 
 
+import com.goat.handler.MyAsyncExceptionHandler;
 import com.goat.task.AsyncTask;
 import com.goat.model.User;
 import com.goat.task.SyncTask;
@@ -17,6 +18,13 @@ public class TestControler {
     @Autowired
     private AsyncTask asyncTask;
 
+    @Autowired
+    MyAsyncExceptionHandler myAsyncExceptionHandler;
+    // http://localhost:8651/test11
+    @GetMapping("/test11")
+    public void test(){
+        myAsyncExceptionHandler.test();
+    }
     // 异步任务测试   http://localhost:8651/asyn_test
     @GetMapping("/asyn_test")
     public String hi() throws Exception {
