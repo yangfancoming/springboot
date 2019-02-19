@@ -1,10 +1,11 @@
 package com.goat.domain;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by 64274 on 2018/9/28.
@@ -19,6 +20,7 @@ import javax.persistence.Id;
 
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class Customer {
 
     @Id
@@ -26,6 +28,10 @@ public class Customer {
     private Long id;
     private String firstName;
     private String lastName;
+
+    @CreatedDate
+    @Column(name = "create_time")
+    private Date createTime;
 
     public Customer() {}
 
@@ -56,6 +62,14 @@ public class Customer {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     @Override

@@ -15,13 +15,13 @@ import org.springframework.data.repository.query.Param;
 
 */
 
-public interface TestRepository extends JpaRepository {
-
-    @Query(value = "select u from t_user u where u.name = :name", nativeQuery = true)
-    Integer updateUserAgeIf(@Param("age") Integer age, @Param("id") Long id);
-
-}
-
+//public interface TestRepository extends JpaRepository {
+//
+//    @Query(value = "select u from t_user u where u.name = :name", nativeQuery = true)
+//    Integer updateUserAgeIf(@Param("age") Integer age, @Param("id") Long id);
+//
+//}
+//
 
 
 

@@ -31,8 +31,12 @@ public class RetryService {
         throw new RemoteAccessException("RPC调用异常");
     }
 
-    // @Retryable注解方法返回值是void，@Recover才会生效
-    @Recover // 当重试到达指定次数时，被注解的方法将被回调，可以在该方法中进行日志处理。需要注意的是发生的异常和入参类型一致时才会回调
+    /**
+     * 当重试到达指定次数时，被注解的方法将被回调，可以在该方法中进行日志处理。需要注意的是发生的异常和入参类型一致时才会回调
+         @Retryable 注解方法返回值是void，@Recover才会生效
+         @Recover 来开启重试失败后调用的方法(注意,需跟重处理方法在同一个类中)
+    */
+    @Recover
     public void recover(RemoteAccessException e) {
         logger.info(e.getMessage());
         logger.info("@Recover 执行............................. ");

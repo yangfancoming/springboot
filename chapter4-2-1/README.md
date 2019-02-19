@@ -17,3 +17,24 @@
 # 表关系  
     单向 多对一 
     单向 一对多
+    
+    
+    
+# JPA 自动创建时间，修改时间。
+    1.实体类加注解 注意 日期类型 为 Date 不能是 Timestamp   还要记得 增加对应的get set 方法
+    
+    /**  * 创建时间 */
+    @CreatedDate
+    @Column(name = "create_time")
+    private Date createTime;
+    
+    /** * 修改时间 */
+    @LastModifiedDate
+    @Column(name = "modify_time")
+    private Date modifyTime;
+     
+    2.实体类头加注解   @EntityListeners(AuditingEntityListener.class)
+    
+    3.SpringBoot启动类加注解  @EnableJpaAuditing
+    
+    

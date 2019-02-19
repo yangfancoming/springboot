@@ -21,10 +21,24 @@ public class MyAsyncExceptionHandler implements AsyncUncaughtExceptionHandler {
 
     @Override
     public void handleUncaughtException(Throwable throwable, Method method, Object... obj) {
-        log.info("山羊来了 Exception message - " + throwable.getMessage());
+        log.info("进入自定义 错误 handler  Exception message - " + throwable.getMessage());
         log.info("Method name - " + method.getName());
         for (Object param : obj) {
             log.info("Parameter value - " + param);
         }
+
+
+    /**  在 自定义异常中 获取 报错函数的信息 报错获取函数头上的注解 @Log
+     Log myLog = null;
+     if (method != null){ // 是否存在注解，如果存在就获取
+     myLog = method.getAnnotation(Log.class);
+     }
+
+     if (myLog == null) return;
+     OperLog operLog = new OperLog();
+     operLog.setAction(myLog.action()); // 设置action动作
+     operLog.setTitle(myLog.title()); // 设置标题
+     operLog.setOperTime(new Date()); // 设置操作时间
+    */
     }
 }
