@@ -52,7 +52,6 @@ public class AsyncTask {
     }
 
     @Async
-//    @Async("asyncTaskExecutor")
     public Future<String> doTaskThree(String name) throws InterruptedException {
         System.out.println("f3 : " + Thread.currentThread().getName() + "   " + UUID.randomUUID().toString());
         System.out.println("开始做任务三");
@@ -77,13 +76,12 @@ public class AsyncTask {
         System.out.println("完成任务五，耗时：" + (end - start) + "毫秒");
     }
 
-
     /**
      *  基于@Async注解的 带有参数的异步调用 异步方法可以传入参数
      * 	对于返回值是 void，异常会被 AsyncUncaughtExceptionHandler 处理掉
      * @param name
      */
-    @Async("asyncTaskExecutor")
+    @Async("asyncTaskExecutor") // 使用 指定的线程池！
     public void doTaskFour(String name) throws InterruptedException {
         System.out.println("f4 : " + Thread.currentThread().getName() + "   " + UUID.randomUUID().toString());
         System.out.println("开始做任务四");
@@ -93,7 +91,6 @@ public class AsyncTask {
         System.out.println("完成任务四，耗时：" + (end - start) + "毫秒");
         throw new IllegalArgumentException(name); // 抛出自定义异常后 在 MyAsyncExceptionHandler 类中  会被拦截到！
     }
-
 
     /**
      * 异常调用返回Future

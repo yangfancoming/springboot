@@ -14,11 +14,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
+import java.util.Date;
 
 /**
  * Created by 64274 on 2019/2/4.
@@ -28,7 +28,6 @@ import java.lang.reflect.Method;
  */
 @Aspect
 @Component
-@EnableAsync
 public class LogAspect {
 
     private static final Logger log = LoggerFactory.getLogger(LogAspect.class);
@@ -46,18 +45,6 @@ public class LogAspect {
         handleLog(joinPoint, null);
     }
 
-    /**
-     * 是否存在注解，如果存在就获取
-     */
-//    private Log getAnnotationLog(JoinPoint joinPoint) {
-//        Signature signature = joinPoint.getSignature();
-//        MethodSignature methodSignature = (MethodSignature) signature;
-//        Method method = methodSignature.getMethod();
-//        if (method != null){
-//            return method.getAnnotation(Log.class);
-//        }
-//        return null;
-//    }
     @Async
     protected void handleLog(final JoinPoint joinPoint, final Exception e){
         try
@@ -66,13 +53,11 @@ public class LogAspect {
             Signature signature = joinPoint.getSignature();
             MethodSignature methodSignature = (MethodSignature) signature;
             Method method = methodSignature.getMethod();
-            if (method != null){
+            if (method != null){ // 是否存在注解，如果存在就获取
                 controllerLog = method.getAnnotation(Log.class);
             }
             // 获得注解
-            if (controllerLog == null){
-                return;
-            }
+            if (controllerLog == null) return;
 
             // *========数据库日志=========*//
             OperLog operLog = new OperLog();
@@ -93,11 +78,6 @@ public class LogAspect {
                 }
                 System.out.println(params); // 获取 参数值
             }
-
-            // 获取request
-            HttpServletRequest request = HttpContextUtils.getHttpServletRequest();
-            // 设置IP地址
-            System.out.println(IPUtils.getIpAddr(request));
             System.out.println(operLog); // 保存数据库
         }
         catch (Exception exp){
@@ -116,9 +96,14 @@ public class LogAspect {
      * @throws Exception
      */
     public void getControllerMethodDescription(Log log, OperLog operLog)  {
+        // 获取request
+        HttpServletRequest request = HttpContextUtils.getHttpServletRequest();
+        operLog.setOperIp(IPUtils.getIpAddr(request));// 设置IP地址
         operLog.setAction(log.action()); // 设置action动作
         operLog.setTitle(log.title()); // 设置标题
         operLog.setChannel(log.channel()); // 设置channel
+        operLog.setOperTime(new Date()); // 设置操作时间
+
 
     }
 }

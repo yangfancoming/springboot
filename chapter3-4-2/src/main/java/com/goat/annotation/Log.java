@@ -13,10 +13,10 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface Log{
-    /** 模块 */
+    /** 模块名称 */
     String title() default "";
 
-    /** 功能 */
+    /** 功能类型 */
     String action() default "";
 
     /** 渠道 */
