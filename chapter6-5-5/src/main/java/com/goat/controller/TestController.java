@@ -17,7 +17,7 @@ public class TestController {
 
     @Autowired
     private RetryService retryService;
-
+    //  http://localhost:8655/test1
     @GetMapping("/test1")
     public void getAllUsers() {
         retryService.retry();

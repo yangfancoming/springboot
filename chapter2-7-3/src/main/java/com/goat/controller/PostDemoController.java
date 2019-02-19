@@ -16,7 +16,7 @@ import java.util.List;
  * @Date: Created in 2018/8/14  14:54
  */
 @RestController
-@RequestMapping("/get")
+@RequestMapping("/post")
 public class PostDemoController {
 
     private Logger logger = LoggerFactory.getLogger(PostDemoController.class);

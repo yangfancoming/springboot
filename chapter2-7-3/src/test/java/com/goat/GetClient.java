@@ -31,7 +31,7 @@ public class GetClient extends BaseClient {
      */
     @Test
     public void testGetForObject_one(){
-        String url = HOST +"/api-demo/user";
+        String url = HOST +"/get/user";
         Map<String,Object> paramMap = new HashMap<>();
         paramMap.put("name","rose");
         paramMap.put("age",22);

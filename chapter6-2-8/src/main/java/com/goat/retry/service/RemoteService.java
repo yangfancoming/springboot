@@ -28,7 +28,7 @@ public class RemoteService {
      include：和 value 一样，默认空，当exclude也为空时，所有异常都重试
      exclude：指定异常不重试，默认空，当include也为空时，所有异常都重试
      maxAttemps：重试次数，默认3
-     backoff：重试补偿机制，默认没有  delay 每隔几秒记性重试  in milliseconds (default 1000)
+     backoff：重试补偿机制，默认没有  delay 每隔几秒进行重试  in milliseconds (default 1000)
      multiplier：指定延迟的倍数，比如delay=5000l,multiplier=2时，第一次重试为5秒后，第二次为10秒，第三次为20秒
     */
     @Retryable(value = { RemoteAccessException.class }, maxAttempts = 4, backoff = @Backoff(delay = 2000l, multiplier = 1.5))

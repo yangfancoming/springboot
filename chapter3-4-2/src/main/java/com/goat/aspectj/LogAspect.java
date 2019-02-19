@@ -40,9 +40,9 @@ public class LogAspect {
      * 前置通知 用于拦截操作
      * @param joinPoint 切点
      */
-    @AfterReturning(pointcut = "logPointCut()")
-    public void doBefore(JoinPoint joinPoint){
-        handleLog(joinPoint, null);
+    @AfterReturning(returning="rvt",pointcut = "logPointCut()")
+    public void afterExec(JoinPoint rvt){
+        handleLog(rvt, null);
     }
 
     @Async
@@ -103,7 +103,5 @@ public class LogAspect {
         operLog.setTitle(log.title()); // 设置标题
         operLog.setChannel(log.channel()); // 设置channel
         operLog.setOperTime(new Date()); // 设置操作时间
-
-
     }
 }
