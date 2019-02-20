@@ -7,8 +7,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 
-/**
-     * @Description:  list  groupby
+/**    在JDK 8中对List按照某个属性分组的代码，超级简单
+     * @Description:  list 分组  groupby
      * @author: 杨帆
      * @Date:   2018/12/14
 */
@@ -62,6 +62,24 @@ public class TestNG {
         //过滤出符合条件的数据
         List<Apple> filterList = list.stream().filter(a -> a.getName().equals("333")).collect(Collectors.toList());
         System.err.println("filterList:"+filterList);
+    }
+
+    @Test
+    public void te1st1() {
+        Coupon coupon1 = new Coupon(1,100,"优惠券1");
+        Coupon coupon2 = new Coupon(2,200,"优惠券2");
+        Coupon coupon3 = new Coupon(3,300,"优惠券3");
+        Coupon coupon4 = new Coupon(3,400,"优惠券4");
+        List<Coupon> couponList = Arrays.asList(new Coupon [] {coupon1,coupon2,coupon3,coupon4});
+
+        // 按照某个属性分组
+        Map<Integer, List<Coupon>> resultList1 = couponList.stream().collect(Collectors.groupingBy(Coupon::getCouponId));
+
+        // 如果分组后，分组内并不想是对象，而是对象的属性，也可以做到的
+        Map<Integer, List<String>> resultList2 = couponList.stream().collect(Collectors.groupingBy(Coupon::getCouponId,Collectors.mapping(Coupon::getName,Collectors.toList())));
+
+        System.out.println(resultList1);
+        System.out.println(resultList2);
     }
 
 }
