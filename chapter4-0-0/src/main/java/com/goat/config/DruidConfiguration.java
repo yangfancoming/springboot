@@ -9,10 +9,6 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * ========================
- * Created with IntelliJ IDEA.
- * User：恒宇少年
- * Date：2017/4/5
- * Time：21:46
  * 监控页面访问地址：127.0.0.1:8080/druid/login.html
  * ========================
  */
