@@ -84,7 +84,8 @@ ${msg}
             type: "POST",
             url: "/upload",
             data: formData,
-            dataType: "json",
+            // dataType: "json",
+            dataType: "text",
             async: false,
             enctype: "multipart/form-data",
             cache: false,
@@ -93,7 +94,7 @@ ${msg}
             success: function (result) {
                 console.log(result,22222222);
             },
-            error:function(data){ // doit 为什么返回值 不走 success  而会走这里？
+            error:function(data){ // sos 走这里是因为 dataType: "text" 与 controller 中 返回的 格式不一致导致的
                 console.log(data,111111111);
             }
         });

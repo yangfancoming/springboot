@@ -70,12 +70,14 @@ FLUSH PRIVILEGES;
 # 如果不加上端口，在执行的时候读取的是默认端口：3306.加上端口之后问题解决！
 
 
-
 # Linux系统下
-#
 # mysql -V  查看数据库版本
-#
 # service mysqld stop  停止mysql 服务
-#
 # service mysqld start
 
+
+# 遇到问题  com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: SELECT command denied to user 'wms'@'192.168.235.196' for table 'help_topic'
+# 遇到问题  com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: SELECT command denied to user 'wms'@'192.168.235.197' for table 'help_topic'
+# 解决方法： grant all on *.* to 用户名@'%' identified by '密码'  help_topic 是mysql的一个表 用于行列转换
+# sos 注意： 'wms'@'192.168.235.196' 中的 ip 地址 指的是 连接客户端的ip   196 是我的电脑， 197 是石涵之的电脑
+# sos 由于 数据库连接池 的原因 账号赋权后，需要重启Tomcat 让项目重新连接 数据库后 才能获得 数据库账号 分配的权限
