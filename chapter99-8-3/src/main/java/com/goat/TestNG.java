@@ -82,4 +82,9 @@ public class TestNG {
         System.out.println(resultList2);
     }
 
+    @Test
+    public void te1st12() {
+
+    }
+
 }
