@@ -35,6 +35,7 @@ public class TestService {
     @Transactional
     public void save(MyMoney myMoney) {
          testRepository.save(myMoney);
+         throw new RuntimeException("hahaha"); // sos 这里抛出异常 为啥不能回滚？  解决：因为表引擎不是 InnoDB 而是 MyISAM ！
     }
 
 

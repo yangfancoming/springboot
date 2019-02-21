@@ -20,7 +20,7 @@ public class SimpleBookServiceImpl extends CommonServiceImpl {
      2.方法内不能使用 try catch  否则 无法回滚
 
      3.@Transactional 所注解的方法所在的类，是否已经被注解@Service或@Component等。
-     4.需要调用该方法，且需要支持事务特性的调用方是在在 @Transactional所在的类的外面。注意：类内部的其他方法调用这个注解了@Transactional的方法，事务是不会起作用的。
+     4.需要调用该方法，且需要支持事务特性的调用方是在 @Transactional 所在的类的外面。注意：类内部的其他方法调用这个注解了@Transactional的方法，事务是不会起作用的。
      */
 
     // 事务不会 回滚

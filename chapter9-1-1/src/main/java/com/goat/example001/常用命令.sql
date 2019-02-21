@@ -20,7 +20,13 @@ show CREATE TABLE emp;
 # 查看你的mysql现在已提供什么存储引擎
 show engines;
 
-
+# 看你的mysql当前默认的存储引擎:
+show variables like '%storage_engine%';
+# 如何查看表的存储引擎
+show create table test;
+#建完表后修改
+ALTER TABLE t_money ENGINE = InnoDB;
+ALTER TABLE t_money ENGINE = MyISAM;
 
 ALTER DATABASE test2 character set utf8mb4 COLLATE utf8mb4_general_ci ;
 

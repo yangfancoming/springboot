@@ -14,14 +14,14 @@ import java.util.List;
 @Service
 public class BookServiceImpl extends CommonServiceImpl {
 
-    // 事务不会 回滚
+    // 没有 @Transactional 注解 事务不会 回滚
     public void purchaseBad(String username,String isBn){
         int price = findBookPriceByIsbn(isBn);
         updateBookStockByIsb(isBn); //  这句代码执行完成后  stock - 1 立即 修改数据库
         updateUserMoney(username, price);
     }
-    // 事务可以 回滚
-    @Transactional
+
+    @Transactional  // 事务可以 回滚
     public void purchaseGood(String username,String isBn){
         int price = findBookPriceByIsbn(isBn);
         updateBookStockByIsb(isBn); //  这句代码执行完成后  stock - 1  并没有修改数据库 ！
