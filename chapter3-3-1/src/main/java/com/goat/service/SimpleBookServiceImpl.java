@@ -21,6 +21,7 @@ public class SimpleBookServiceImpl extends CommonServiceImpl {
 
      3.@Transactional 所注解的方法所在的类，是否已经被注解@Service或@Component等。
      4.需要调用该方法，且需要支持事务特性的调用方是在 @Transactional 所在的类的外面。注意：类内部的其他方法调用这个注解了@Transactional的方法，事务是不会起作用的。
+     5.数据库引擎 或 表引擎 不是 InnoDB ！
      */
 
     // 事务不会 回滚

@@ -18,7 +18,6 @@ public class JpaTestController {
     @Autowired
     public TestService testService;
 
-
     // sos  两个方法 在做并发测试时 要注意原始值 不能与两个方法中的设置值相同   save 后 version 值 并不会增加
 
 //    http://localhost:8420/test/test1
@@ -49,11 +48,21 @@ public class JpaTestController {
     public void test3(){
         testService.update("567",1L);// 触发事务2
     }
+
     //    http://localhost:8420/test/test4
     @GetMapping("/test4")
     public void test4(){
         MyMoney myMoney = new MyMoney();
         myMoney.setCol1("333");
-        testService.save(myMoney);
+        testService.mySave(myMoney);
+    }
+
+
+    //    http://localhost:8420/test/test5
+    @GetMapping("/test5")
+    public void test5(){
+        MyMoney myMoney = new MyMoney();
+        myMoney.setCol1("222");
+        testService.save1(myMoney);
     }
 }

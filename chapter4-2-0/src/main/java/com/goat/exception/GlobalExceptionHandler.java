@@ -25,5 +25,12 @@ public class GlobalExceptionHandler {
     }
 
 
+    /**  JPA RuntimeException 异常*/
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseBody
+    public void RuntimeException(RuntimeException e) {
+        System.out.println(e.getMessage()+ "统一捕获全局异常.............RuntimeException");
+    }
+
 }
 

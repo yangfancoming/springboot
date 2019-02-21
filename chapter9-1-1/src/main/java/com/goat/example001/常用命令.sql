@@ -24,6 +24,7 @@ show engines;
 show variables like '%storage_engine%';
 # 如何查看表的存储引擎
 show create table test;
+show create table t_warehouse_storage_content_log;
 #建完表后修改
 ALTER TABLE t_money ENGINE = InnoDB;
 ALTER TABLE t_money ENGINE = MyISAM;

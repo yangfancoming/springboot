@@ -41,5 +41,10 @@
     3、幻读(Phantom read)：一个事务读取几行记录后，另一个事务插入了一些记录（也可以删除），幻读就发生了。在后来的查询中第一个事务就会发现有些原来没有的记录。
     
     
+# 解决问题积累
+    将hibernate.dialect配置成hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect,
+    指定MYSQL建表的时候使用InnoDB引擎(支持事务安全),使用MySQL5InnoDBDialect方言在生成表结构的时候可以指定表的"ENGINE=InnoDB",
+    而如果使用方言MySQL5Dialect,则在生成表结构的时候默认使用的是 ENGINE=MyISAM，该引擎不支持事务，即使程序中使用事务，也不起作用
     
+
     
