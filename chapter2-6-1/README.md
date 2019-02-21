@@ -20,4 +20,7 @@
     但是你把项目部署在root文件夹下之后，可以通过http://localhost:8080直接访问你的项目
 
 
-
+#  springboot 配置 外置Tomcat  报错：
+    Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]]
+     解决方法： 查看控制台 报警告 LogBack 和 log4j 两个日志冲突  因为在pom.xml文件中 早就已经解决过 该依赖冲突问题
+     把 target 目录删除 重新启动项目后 OK！！！
