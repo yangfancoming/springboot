@@ -18,7 +18,7 @@ public class JpaTestController {
     public TestService testService;
 
 
-    // sos  两个方法 在做并发测试时 要注意原始值 不能与两个方法中的设置值相同   save 后 version值 并不会增加
+    // sos  两个方法 在做并发测试时 要注意原始值 不能与两个方法中的设置值相同   save 后 version 值 并不会增加
 
 //    http://localhost:8420/test/test1
     @RequestMapping("/test1")

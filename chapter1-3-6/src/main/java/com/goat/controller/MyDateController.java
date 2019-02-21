@@ -65,7 +65,11 @@ public class MyDateController {
         System.out.println(list);
     }
 
-    //    Could not extract response: no suitable HttpMessageConverter found for response type
+    /**
+        sos  Could not extract response: no suitable HttpMessageConverter found for response type
+            是由于 被请求方的原因： filter、intercepter 等拦截了 就会 出现这样的错误！！！
+            应该是被拦截之后  默认返回的数据 没办法解析，导致的！！！
+    */
 
 
     //    http://localhost:8136/mydate/test3

@@ -14,9 +14,13 @@ public class SimpleBookServiceImpl extends CommonServiceImpl {
     /**
      * @author: 杨帆
      * @Date:   2018/8/22
-     @Transactional
-     1.注解应该只被应用到 public 方法上，这是由 Spring AOP 的本质决定的。如果你在 protected、private 或者默认可见性的方法上使用 @Transactional 注解，这将被忽略，也不会抛出任何异常。
+       sos @Transactional
+     1.注解应该只被应用到 public 方法上，这是由 Spring AOP 的本质决定的。
+        如果你在 protected、private 或者默认可见性的方法上使用 @Transactional 注解，这将被忽略，也不会抛出任何异常。
      2.方法内不能使用 try catch  否则 无法回滚
+
+     3.@Transactional 所注解的方法所在的类，是否已经被注解@Service或@Component等。
+     4.需要调用该方法，且需要支持事务特性的调用方是在在 @Transactional所在的类的外面。注意：类内部的其他方法调用这个注解了@Transactional的方法，事务是不会起作用的。
      */
 
     // 事务不会 回滚
