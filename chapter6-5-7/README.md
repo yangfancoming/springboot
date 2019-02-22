@@ -4,3 +4,6 @@
        但是不能加入  @Recover  因为 一旦加入 @Recover 则不会 进入 handleUncaughtException 异常捕获
        handleUncaughtException 方法 比 @Recover 方法 提供的参数信息 更加丰富
        比如 handleUncaughtException 可以获取 异常方法的 方法名
+       
+       
+       @Async("asyncTaskExecutor") 注解标记的方法 必须要在 @service 类中 才能实现 自定义异常捕获 进入 AsyncUncaughtExceptionHandler 中

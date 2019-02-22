@@ -78,7 +78,7 @@ public class AsyncTask {
 
     /**
      *  基于@Async注解的 带有参数的异步调用 异步方法可以传入参数
-     * 	对于返回值是 void，异常会被 AsyncUncaughtExceptionHandler 处理掉
+     * 	对于 无返回值的异步方法 ，异常会被 AsyncUncaughtExceptionHandler 处理掉
      * @param name
      */
     @Async("asyncTaskExecutor") // 使用 指定的线程池！
