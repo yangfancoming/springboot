@@ -40,10 +40,16 @@ public class TestBean {
     //    http://localhost:1111/testbean/test1
     @GetMapping("/test1")
     public void test1() {
-        String[] beanNamesForType = ac.getBeanNamesForType(Dog.class);
+        String[] beanNamesForType = ac.getBeanNamesForType(Dog.class); // 根据 bean 的类型 从 IOC容器中获取 bean 的实例  数组
         System.out.println(beanNamesForType);
     }
-
+    //    http://localhost:1111/testbean/test11
+    @GetMapping("/test11")
+    public void test11() {
+//      Dog beanNamesForType = ac.getBean(Dog.class);  // 根据 bean 的类型 从 IOC容器中获取 bean 的实例  单个
+        Dog dog03 = ac.getBean("dog03",Dog.class); // 根据 bean 的类型 和 bean id  从 IOC容器中获取 bean 的实例  单个
+        System.out.println(dog03);
+    }
     /**
      http://localhost:1111/testbean/test2
      通过启动类 @ImportResource(locations = {"classpath:beans.xml"}) 注解  注入 该bean
@@ -66,6 +72,8 @@ public class TestBean {
      http://localhost:1111/testbean/test4
      通过启动类 FileSystemXmlApplicationContext  加载 该bean
      FileSystemXmlApplicationContext("beans.xml") 这种路径 虽然鼠标可以点击导航 但路径是不正确的 会报错  java.io.FileNotFoundException: beans.xml
+     ClassPathXmlApplicationContext 适用于 配置文件 在 其他磁盘或是其他非 项目路径下 的情况
+     ClassPathXmlApplicationContext("beans.xml") 是正常的   ClassPathXmlApplicationContext 才是默认在 类路径下 查找配置文件
      */
     @GetMapping("/test4")
     public void test4(){
@@ -73,11 +81,11 @@ public class TestBean {
         TestService testService = (TestService) ac.getBean("testoService");
         testService.test();
     }
-
+    //   http://localhost:1111/testbean/test44
     @GetMapping("/test44")
     public void test44(){
-        ApplicationContext ac = new ClassPathXmlApplicationContext("classpath:beans.xml");
-        Dog dog = (Dog) ac.getBean("Dog01");
+        ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
+        Dog dog = (Dog) ac.getBean("dog01");
         System.out.println(dog);
     }
 
@@ -96,12 +104,25 @@ public class TestBean {
     /**   http://localhost:1111/testbean/test55
      Expected: sameInstance(<com.goat.bean2.Dog@5195507d>)
      but: was <com.goat.bean2.Dog@6293e6e0>] with root cause
+     说明 @bean 方法 配置了一次   在 bean.xml 中配置了一次  容器在启动的时候会给我们 new 出两个对象
+     因为 容器是使用 new 方式来帮我们创建对象 所以 bean 必须要有 无参构造函数 否则报错：
+     Parameter 0 of constructor in com.goat.bean2.Dog required a bean of type 'java.lang.String' that could not be found.
     */
     @GetMapping("/test55")
     public void test55(){
         Dog dog01 = (Dog) SpringContextUtil.getBean("dog01");
         Dog dog03 = (Dog) SpringContextUtil.getBean("dog03");
         assertThat(dog03, sameInstance(dog01)); // 判断两个对象 是否是同一个实例
+    }
+
+    /**   http://localhost:1111/testbean/test555
+     * 同一个 组件 在ioc容器中 是单例的
+     */
+    @GetMapping("/test555")
+    public void test555(){
+        Dog dog01 = (Dog) SpringContextUtil.getBean("dog01");
+        Dog dog03 = (Dog) SpringContextUtil.getBean("dog01");
+        System.out.println(dog01 == dog03); // true
     }
 
     /**   sos 实测 该方法  不能 在拦截器中 注入 bean
