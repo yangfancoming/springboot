@@ -22,6 +22,9 @@ public class Mydate {
     private Timestamp mytimestamp;
     private Date mydate;
 
+    @TableField(exist = false)//：表示该属性不为数据库表字段，但又是必须使用的。
+    private String boring;
+
     public Timestamp getMydatetime() {
         return mydatetime;
     }
@@ -44,6 +47,22 @@ public class Mydate {
 
     public void setMydate(Date mydate) {
         this.mydate = mydate;
+    }
+
+    public String getBoring() {
+        return boring;
+    }
+
+    public void setBoring(String boring) {
+        this.boring = boring;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override

@@ -1,4 +1,4 @@
-
+mysqldump: [Warning] Using a password on the command line interface can be insecure.
 -- MySQL dump 10.13  Distrib 8.0.12, for Linux (x86_64)
 --
 -- Host: localhost    Database: 
@@ -17,6 +17,1130 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Current Database: `ApolloConfigDB`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `ApolloConfigDB` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
+
+USE `ApolloConfigDB`;
+
+--
+-- Table structure for table `App`
+--
+
+DROP TABLE IF EXISTS `App`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `App` (
+  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `AppId` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'AppID',
+  `Name` varchar(500) NOT NULL DEFAULT 'default' COMMENT '应用名',
+  `OrgId` varchar(32) NOT NULL DEFAULT 'default' COMMENT '部门Id',
+  `OrgName` varchar(64) NOT NULL DEFAULT 'default' COMMENT '部门名字',
+  `OwnerName` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'ownerName',
+  `OwnerEmail` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'ownerEmail',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) NOT NULL DEFAULT 'default' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `AppId` (`AppId`(191)),
+  KEY `DataChange_LastTime` (`DataChange_LastTime`),
+  KEY `IX_Name` (`Name`(191))
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='应用表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `App`
+--
+
+LOCK TABLES `App` WRITE;
+/*!40000 ALTER TABLE `App` DISABLE KEYS */;
+INSERT INTO `App` VALUES (1,'SampleApp','Sample App','TEST1','样例部门1','apollo','apollo@acme.com',_binary '\0','default','2019-01-12 08:26:54','','2019-01-12 08:26:54');
+/*!40000 ALTER TABLE `App` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `AppNamespace`
+--
+
+DROP TABLE IF EXISTS `AppNamespace`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `AppNamespace` (
+  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `Name` varchar(32) NOT NULL DEFAULT '' COMMENT 'namespace名字，注意，需要全局唯一',
+  `AppId` varchar(32) NOT NULL DEFAULT '' COMMENT 'app id',
+  `Format` varchar(32) NOT NULL DEFAULT 'properties' COMMENT 'namespace的format类型',
+  `IsPublic` bit(1) NOT NULL DEFAULT b'0' COMMENT 'namespace是否为公共',
+  `Comment` varchar(64) NOT NULL DEFAULT '' COMMENT '注释',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) NOT NULL DEFAULT '' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `IX_AppId` (`AppId`),
+  KEY `Name_AppId` (`Name`,`AppId`),
+  KEY `DataChange_LastTime` (`DataChange_LastTime`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='应用namespace定义';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `AppNamespace`
+--
+
+LOCK TABLES `AppNamespace` WRITE;
+/*!40000 ALTER TABLE `AppNamespace` DISABLE KEYS */;
+INSERT INTO `AppNamespace` VALUES (1,'application','SampleApp','properties',_binary '\0','default app namespace',_binary '\0','','2019-01-12 08:26:54','','2019-01-12 08:26:54');
+/*!40000 ALTER TABLE `AppNamespace` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Audit`
+--
+
+DROP TABLE IF EXISTS `Audit`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `Audit` (
+  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `EntityName` varchar(50) NOT NULL DEFAULT 'default' COMMENT '表名',
+  `EntityId` int(10) unsigned DEFAULT NULL COMMENT '记录ID',
+  `OpName` varchar(50) NOT NULL DEFAULT 'default' COMMENT '操作类型',
+  `Comment` varchar(500) DEFAULT NULL COMMENT '备注',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) NOT NULL DEFAULT 'default' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `DataChange_LastTime` (`DataChange_LastTime`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='日志审计表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Audit`
+--
+
+LOCK TABLES `Audit` WRITE;
+/*!40000 ALTER TABLE `Audit` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Audit` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Cluster`
+--
+
+DROP TABLE IF EXISTS `Cluster`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `Cluster` (
+  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `Name` varchar(32) NOT NULL DEFAULT '' COMMENT '集群名字',
+  `AppId` varchar(32) NOT NULL DEFAULT '' COMMENT 'App id',
+  `ParentClusterId` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '父cluster',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) NOT NULL DEFAULT '' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `IX_AppId_Name` (`AppId`,`Name`),
+  KEY `IX_ParentClusterId` (`ParentClusterId`),
+  KEY `DataChange_LastTime` (`DataChange_LastTime`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='集群';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Cluster`
+--
+
+LOCK TABLES `Cluster` WRITE;
+/*!40000 ALTER TABLE `Cluster` DISABLE KEYS */;
+INSERT INTO `Cluster` VALUES (1,'default','SampleApp',0,_binary '\0','','2019-01-12 08:26:54','','2019-01-12 08:26:54');
+/*!40000 ALTER TABLE `Cluster` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Commit`
+--
+
+DROP TABLE IF EXISTS `Commit`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `Commit` (
+  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `ChangeSets` longtext NOT NULL COMMENT '修改变更集',
+  `AppId` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'AppID',
+  `ClusterName` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'ClusterName',
+  `NamespaceName` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'namespaceName',
+  `Comment` varchar(500) DEFAULT NULL COMMENT '备注',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) NOT NULL DEFAULT 'default' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `DataChange_LastTime` (`DataChange_LastTime`),
+  KEY `AppId` (`AppId`(191)),
+  KEY `ClusterName` (`ClusterName`(191)),
+  KEY `NamespaceName` (`NamespaceName`(191))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='commit 历史表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Commit`
+--
+
+LOCK TABLES `Commit` WRITE;
+/*!40000 ALTER TABLE `Commit` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Commit` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `GrayReleaseRule`
+--
+
+DROP TABLE IF EXISTS `GrayReleaseRule`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `GrayReleaseRule` (
+  `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `AppId` varchar(32) NOT NULL DEFAULT 'default' COMMENT 'AppID',
+  `ClusterName` varchar(32) NOT NULL DEFAULT 'default' COMMENT 'Cluster Name',
+  `NamespaceName` varchar(32) NOT NULL DEFAULT 'default' COMMENT 'Namespace Name',
+  `BranchName` varchar(32) NOT NULL DEFAULT 'default' COMMENT 'branch name',
+  `Rules` varchar(16000) DEFAULT '[]' COMMENT '灰度规则',
+  `ReleaseId` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '灰度对应的release',
+  `BranchStatus` tinyint(2) DEFAULT '1' COMMENT '灰度分支状态: 0:删除分支,1:正在使用的规则 2：全量发布',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) NOT NULL DEFAULT 'default' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `DataChange_LastTime` (`DataChange_LastTime`),
+  KEY `IX_Namespace` (`AppId`,`ClusterName`,`NamespaceName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='灰度规则表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `GrayReleaseRule`
+--
+
+LOCK TABLES `GrayReleaseRule` WRITE;
+/*!40000 ALTER TABLE `GrayReleaseRule` DISABLE KEYS */;
+/*!40000 ALTER TABLE `GrayReleaseRule` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Instance`
+--
+
+DROP TABLE IF EXISTS `Instance`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `Instance` (
+  `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
+  `AppId` varchar(32) NOT NULL DEFAULT 'default' COMMENT 'AppID',
+  `ClusterName` varchar(32) NOT NULL DEFAULT 'default' COMMENT 'ClusterName',
+  `DataCenter` varchar(64) NOT NULL DEFAULT 'default' COMMENT 'Data Center Name',
+  `Ip` varchar(32) NOT NULL DEFAULT '' COMMENT 'instance ip',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `IX_UNIQUE_KEY` (`AppId`,`ClusterName`,`Ip`,`DataCenter`),
+  KEY `IX_IP` (`Ip`),
+  KEY `IX_DataChange_LastTime` (`DataChange_LastTime`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='使用配置的应用实例';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Instance`
+--
+
+LOCK TABLES `Instance` WRITE;
+/*!40000 ALTER TABLE `Instance` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Instance` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `InstanceConfig`
+--
+
+DROP TABLE IF EXISTS `InstanceConfig`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `InstanceConfig` (
+  `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
+  `InstanceId` int(11) unsigned DEFAULT NULL COMMENT 'Instance Id',
+  `ConfigAppId` varchar(32) NOT NULL DEFAULT 'default' COMMENT 'Config App Id',
+  `ConfigClusterName` varchar(32) NOT NULL DEFAULT 'default' COMMENT 'Config Cluster Name',
+  `ConfigNamespaceName` varchar(32) NOT NULL DEFAULT 'default' COMMENT 'Config Namespace Name',
+  `ReleaseKey` varchar(64) NOT NULL DEFAULT '' COMMENT '发布的Key',
+  `ReleaseDeliveryTime` timestamp NULL DEFAULT NULL COMMENT '配置获取时间',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `IX_UNIQUE_KEY` (`InstanceId`,`ConfigAppId`,`ConfigNamespaceName`),
+  KEY `IX_ReleaseKey` (`ReleaseKey`),
+  KEY `IX_DataChange_LastTime` (`DataChange_LastTime`),
+  KEY `IX_Valid_Namespace` (`ConfigAppId`,`ConfigClusterName`,`ConfigNamespaceName`,`DataChange_LastTime`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='应用实例的配置信息';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `InstanceConfig`
+--
+
+LOCK TABLES `InstanceConfig` WRITE;
+/*!40000 ALTER TABLE `InstanceConfig` DISABLE KEYS */;
+/*!40000 ALTER TABLE `InstanceConfig` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Item`
+--
+
+DROP TABLE IF EXISTS `Item`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `Item` (
+  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
+  `NamespaceId` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '集群NamespaceId',
+  `Key` varchar(128) NOT NULL DEFAULT 'default' COMMENT '配置项Key',
+  `Value` longtext NOT NULL COMMENT '配置项值',
+  `Comment` varchar(1024) DEFAULT '' COMMENT '注释',
+  `LineNum` int(10) unsigned DEFAULT '0' COMMENT '行号',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) NOT NULL DEFAULT 'default' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `IX_GroupId` (`NamespaceId`),
+  KEY `DataChange_LastTime` (`DataChange_LastTime`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='配置项目';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Item`
+--
+
+LOCK TABLES `Item` WRITE;
+/*!40000 ALTER TABLE `Item` DISABLE KEYS */;
+INSERT INTO `Item` VALUES (1,1,'timeout','100','sample timeout配置',1,_binary '\0','default','2019-01-12 08:26:54','','2019-01-12 08:26:54');
+/*!40000 ALTER TABLE `Item` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Namespace`
+--
+
+DROP TABLE IF EXISTS `Namespace`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `Namespace` (
+  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `AppId` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'AppID',
+  `ClusterName` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'Cluster Name',
+  `NamespaceName` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'Namespace Name',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) NOT NULL DEFAULT 'default' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `AppId_ClusterName_NamespaceName` (`AppId`(191),`ClusterName`(191),`NamespaceName`(191)),
+  KEY `DataChange_LastTime` (`DataChange_LastTime`),
+  KEY `IX_NamespaceName` (`NamespaceName`(191))
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='命名空间';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Namespace`
+--
+
+LOCK TABLES `Namespace` WRITE;
+/*!40000 ALTER TABLE `Namespace` DISABLE KEYS */;
+INSERT INTO `Namespace` VALUES (1,'SampleApp','default','application',_binary '\0','default','2019-01-12 08:26:54','','2019-01-12 08:26:54');
+/*!40000 ALTER TABLE `Namespace` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `NamespaceLock`
+--
+
+DROP TABLE IF EXISTS `NamespaceLock`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `NamespaceLock` (
+  `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `NamespaceId` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '集群NamespaceId',
+  `DataChange_CreatedBy` varchar(32) NOT NULL DEFAULT 'default' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT 'default' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  `IsDeleted` bit(1) DEFAULT b'0' COMMENT '软删除',
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `IX_NamespaceId` (`NamespaceId`),
+  KEY `DataChange_LastTime` (`DataChange_LastTime`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='namespace的编辑锁';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `NamespaceLock`
+--
+
+LOCK TABLES `NamespaceLock` WRITE;
+/*!40000 ALTER TABLE `NamespaceLock` DISABLE KEYS */;
+/*!40000 ALTER TABLE `NamespaceLock` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Release`
+--
+
+DROP TABLE IF EXISTS `Release`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `Release` (
+  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `ReleaseKey` varchar(64) NOT NULL DEFAULT '' COMMENT '发布的Key',
+  `Name` varchar(64) NOT NULL DEFAULT 'default' COMMENT '发布名字',
+  `Comment` varchar(256) DEFAULT NULL COMMENT '发布说明',
+  `AppId` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'AppID',
+  `ClusterName` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'ClusterName',
+  `NamespaceName` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'namespaceName',
+  `Configurations` longtext NOT NULL COMMENT '发布配置',
+  `IsAbandoned` bit(1) NOT NULL DEFAULT b'0' COMMENT '是否废弃',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) NOT NULL DEFAULT 'default' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `AppId_ClusterName_GroupName` (`AppId`(191),`ClusterName`(191),`NamespaceName`(191)),
+  KEY `DataChange_LastTime` (`DataChange_LastTime`),
+  KEY `IX_ReleaseKey` (`ReleaseKey`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='发布';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Release`
+--
+
+LOCK TABLES `Release` WRITE;
+/*!40000 ALTER TABLE `Release` DISABLE KEYS */;
+INSERT INTO `Release` VALUES (1,'20161009155425-d3a0749c6e20bc15','20161009155424-release','Sample发布','SampleApp','default','application','{\"timeout\":\"100\"}',_binary '\0',_binary '\0','default','2019-01-12 08:26:54','','2019-01-12 08:26:54');
+/*!40000 ALTER TABLE `Release` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ReleaseHistory`
+--
+
+DROP TABLE IF EXISTS `ReleaseHistory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `ReleaseHistory` (
+  `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
+  `AppId` varchar(32) NOT NULL DEFAULT 'default' COMMENT 'AppID',
+  `ClusterName` varchar(32) NOT NULL DEFAULT 'default' COMMENT 'ClusterName',
+  `NamespaceName` varchar(32) NOT NULL DEFAULT 'default' COMMENT 'namespaceName',
+  `BranchName` varchar(32) NOT NULL DEFAULT 'default' COMMENT '发布分支名',
+  `ReleaseId` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '关联的Release Id',
+  `PreviousReleaseId` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '前一次发布的ReleaseId',
+  `Operation` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '发布类型，0: 普通发布，1: 回滚，2: 灰度发布，3: 灰度规则更新，4: 灰度合并回主分支发布，5: 主分支发布灰度自动发布，6: 主分支回滚灰度自动发布，7: 放弃灰度',
+  `OperationContext` longtext NOT NULL COMMENT '发布上下文信息',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) NOT NULL DEFAULT 'default' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `IX_Namespace` (`AppId`,`ClusterName`,`NamespaceName`,`BranchName`),
+  KEY `IX_ReleaseId` (`ReleaseId`),
+  KEY `IX_DataChange_LastTime` (`DataChange_LastTime`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='发布历史';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ReleaseHistory`
+--
+
+LOCK TABLES `ReleaseHistory` WRITE;
+/*!40000 ALTER TABLE `ReleaseHistory` DISABLE KEYS */;
+INSERT INTO `ReleaseHistory` VALUES (1,'SampleApp','default','application','default',1,0,0,'{}',_binary '\0','apollo','2019-01-12 08:26:54','apollo','2019-01-12 08:26:54');
+/*!40000 ALTER TABLE `ReleaseHistory` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ReleaseMessage`
+--
+
+DROP TABLE IF EXISTS `ReleaseMessage`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `ReleaseMessage` (
+  `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `Message` varchar(1024) NOT NULL DEFAULT '' COMMENT '发布的消息内容',
+  `DataChange_LastTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `DataChange_LastTime` (`DataChange_LastTime`),
+  KEY `IX_Message` (`Message`(191))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='发布消息';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ReleaseMessage`
+--
+
+LOCK TABLES `ReleaseMessage` WRITE;
+/*!40000 ALTER TABLE `ReleaseMessage` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ReleaseMessage` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ServerConfig`
+--
+
+DROP TABLE IF EXISTS `ServerConfig`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `ServerConfig` (
+  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
+  `Key` varchar(64) NOT NULL DEFAULT 'default' COMMENT '配置项Key',
+  `Cluster` varchar(32) NOT NULL DEFAULT 'default' COMMENT '配置对应的集群，default为不针对特定的集群',
+  `Value` varchar(2048) NOT NULL DEFAULT 'default' COMMENT '配置项值',
+  `Comment` varchar(1024) DEFAULT '' COMMENT '注释',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) NOT NULL DEFAULT 'default' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `IX_Key` (`Key`),
+  KEY `DataChange_LastTime` (`DataChange_LastTime`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='配置服务自身配置';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ServerConfig`
+--
+
+LOCK TABLES `ServerConfig` WRITE;
+/*!40000 ALTER TABLE `ServerConfig` DISABLE KEYS */;
+INSERT INTO `ServerConfig` VALUES (1,'eureka.service.url','default','http://localhost:8080/eureka/','Eureka服务Url，多个service以英文逗号分隔',_binary '\0','default','2019-01-12 08:26:53','','2019-01-12 08:26:53'),(2,'namespace.lock.switch','default','false','一次发布只能有一个人修改开关',_binary '\0','default','2019-01-12 08:26:53','','2019-01-12 08:26:53'),(3,'item.value.length.limit','default','20000','item value最大长度限制',_binary '\0','default','2019-01-12 08:26:53','','2019-01-12 08:26:53'),(4,'config-service.cache.enabled','default','false','ConfigService是否开启缓存，开启后能提高性能，但是会增大内存消耗！',_binary '\0','default','2019-01-12 08:26:53','','2019-01-12 08:26:53'),(5,'item.key.length.limit','default','128','item key 最大长度限制',_binary '\0','default','2019-01-12 08:26:53','','2019-01-12 08:26:53');
+/*!40000 ALTER TABLE `ServerConfig` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Current Database: `ApolloPortalDB`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `ApolloPortalDB` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
+
+USE `ApolloPortalDB`;
+
+--
+-- Table structure for table `App`
+--
+
+DROP TABLE IF EXISTS `App`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `App` (
+  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `AppId` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'AppID',
+  `Name` varchar(500) NOT NULL DEFAULT 'default' COMMENT '应用名',
+  `OrgId` varchar(32) NOT NULL DEFAULT 'default' COMMENT '部门Id',
+  `OrgName` varchar(64) NOT NULL DEFAULT 'default' COMMENT '部门名字',
+  `OwnerName` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'ownerName',
+  `OwnerEmail` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'ownerEmail',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) NOT NULL DEFAULT 'default' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `AppId` (`AppId`(191)),
+  KEY `DataChange_LastTime` (`DataChange_LastTime`),
+  KEY `IX_Name` (`Name`(191))
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='应用表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `App`
+--
+
+LOCK TABLES `App` WRITE;
+/*!40000 ALTER TABLE `App` DISABLE KEYS */;
+INSERT INTO `App` VALUES (1,'SampleApp','Sample App','TEST1','样例部门1','apollo','apollo@acme.com',_binary '\0','default','2019-01-12 08:27:13','','2019-01-12 08:27:13');
+/*!40000 ALTER TABLE `App` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `AppNamespace`
+--
+
+DROP TABLE IF EXISTS `AppNamespace`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `AppNamespace` (
+  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `Name` varchar(32) NOT NULL DEFAULT '' COMMENT 'namespace名字，注意，需要全局唯一',
+  `AppId` varchar(32) NOT NULL DEFAULT '' COMMENT 'app id',
+  `Format` varchar(32) NOT NULL DEFAULT 'properties' COMMENT 'namespace的format类型',
+  `IsPublic` bit(1) NOT NULL DEFAULT b'0' COMMENT 'namespace是否为公共',
+  `Comment` varchar(64) NOT NULL DEFAULT '' COMMENT '注释',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) NOT NULL DEFAULT '' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `IX_AppId` (`AppId`),
+  KEY `Name_AppId` (`Name`,`AppId`),
+  KEY `DataChange_LastTime` (`DataChange_LastTime`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='应用namespace定义';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `AppNamespace`
+--
+
+LOCK TABLES `AppNamespace` WRITE;
+/*!40000 ALTER TABLE `AppNamespace` DISABLE KEYS */;
+INSERT INTO `AppNamespace` VALUES (1,'application','SampleApp','properties',_binary '\0','default app namespace',_binary '\0','','2019-01-12 08:27:13','','2019-01-12 08:27:13');
+/*!40000 ALTER TABLE `AppNamespace` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Authorities`
+--
+
+DROP TABLE IF EXISTS `Authorities`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `Authorities` (
+  `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
+  `Username` varchar(64) NOT NULL,
+  `Authority` varchar(50) NOT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Authorities`
+--
+
+LOCK TABLES `Authorities` WRITE;
+/*!40000 ALTER TABLE `Authorities` DISABLE KEYS */;
+INSERT INTO `Authorities` VALUES (1,'apollo','ROLE_user');
+/*!40000 ALTER TABLE `Authorities` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Consumer`
+--
+
+DROP TABLE IF EXISTS `Consumer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `Consumer` (
+  `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
+  `AppId` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'AppID',
+  `Name` varchar(500) NOT NULL DEFAULT 'default' COMMENT '应用名',
+  `OrgId` varchar(32) NOT NULL DEFAULT 'default' COMMENT '部门Id',
+  `OrgName` varchar(64) NOT NULL DEFAULT 'default' COMMENT '部门名字',
+  `OwnerName` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'ownerName',
+  `OwnerEmail` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'ownerEmail',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) NOT NULL DEFAULT 'default' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `AppId` (`AppId`(191)),
+  KEY `DataChange_LastTime` (`DataChange_LastTime`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='开放API消费者';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Consumer`
+--
+
+LOCK TABLES `Consumer` WRITE;
+/*!40000 ALTER TABLE `Consumer` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Consumer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ConsumerAudit`
+--
+
+DROP TABLE IF EXISTS `ConsumerAudit`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `ConsumerAudit` (
+  `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
+  `ConsumerId` int(11) unsigned DEFAULT NULL COMMENT 'Consumer Id',
+  `Uri` varchar(1024) NOT NULL DEFAULT '' COMMENT '访问的Uri',
+  `Method` varchar(16) NOT NULL DEFAULT '' COMMENT '访问的Method',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `IX_DataChange_LastTime` (`DataChange_LastTime`),
+  KEY `IX_ConsumerId` (`ConsumerId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='consumer审计表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ConsumerAudit`
+--
+
+LOCK TABLES `ConsumerAudit` WRITE;
+/*!40000 ALTER TABLE `ConsumerAudit` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ConsumerAudit` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ConsumerRole`
+--
+
+DROP TABLE IF EXISTS `ConsumerRole`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `ConsumerRole` (
+  `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
+  `ConsumerId` int(11) unsigned DEFAULT NULL COMMENT 'Consumer Id',
+  `RoleId` int(10) unsigned DEFAULT NULL COMMENT 'Role Id',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) DEFAULT '' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `IX_DataChange_LastTime` (`DataChange_LastTime`),
+  KEY `IX_RoleId` (`RoleId`),
+  KEY `IX_ConsumerId_RoleId` (`ConsumerId`,`RoleId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='consumer和role的绑定表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ConsumerRole`
+--
+
+LOCK TABLES `ConsumerRole` WRITE;
+/*!40000 ALTER TABLE `ConsumerRole` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ConsumerRole` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ConsumerToken`
+--
+
+DROP TABLE IF EXISTS `ConsumerToken`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `ConsumerToken` (
+  `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
+  `ConsumerId` int(11) unsigned DEFAULT NULL COMMENT 'ConsumerId',
+  `Token` varchar(128) NOT NULL DEFAULT '' COMMENT 'token',
+  `Expires` datetime NOT NULL DEFAULT '2099-01-01 00:00:00' COMMENT 'token失效时间',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) NOT NULL DEFAULT 'default' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `IX_Token` (`Token`),
+  KEY `DataChange_LastTime` (`DataChange_LastTime`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='consumer token表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ConsumerToken`
+--
+
+LOCK TABLES `ConsumerToken` WRITE;
+/*!40000 ALTER TABLE `ConsumerToken` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ConsumerToken` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Favorite`
+--
+
+DROP TABLE IF EXISTS `Favorite`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `Favorite` (
+  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `UserId` varchar(32) NOT NULL DEFAULT 'default' COMMENT '收藏的用户',
+  `AppId` varchar(500) NOT NULL DEFAULT 'default' COMMENT 'AppID',
+  `Position` int(32) NOT NULL DEFAULT '10000' COMMENT '收藏顺序',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) NOT NULL DEFAULT 'default' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `AppId` (`AppId`(191)),
+  KEY `IX_UserId` (`UserId`),
+  KEY `DataChange_LastTime` (`DataChange_LastTime`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='应用收藏表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Favorite`
+--
+
+LOCK TABLES `Favorite` WRITE;
+/*!40000 ALTER TABLE `Favorite` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Favorite` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Permission`
+--
+
+DROP TABLE IF EXISTS `Permission`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `Permission` (
+  `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
+  `PermissionType` varchar(32) NOT NULL DEFAULT '' COMMENT '权限类型',
+  `TargetId` varchar(256) NOT NULL DEFAULT '' COMMENT '权限对象类型',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) NOT NULL DEFAULT '' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `IX_TargetId_PermissionType` (`TargetId`(191),`PermissionType`),
+  KEY `IX_DataChange_LastTime` (`DataChange_LastTime`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='permission表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Permission`
+--
+
+LOCK TABLES `Permission` WRITE;
+/*!40000 ALTER TABLE `Permission` DISABLE KEYS */;
+INSERT INTO `Permission` VALUES (1,'CreateCluster','SampleApp',_binary '\0','','2019-01-12 08:27:13','','2019-01-12 08:27:13'),(2,'CreateNamespace','SampleApp',_binary '\0','','2019-01-12 08:27:13','','2019-01-12 08:27:13'),(3,'AssignRole','SampleApp',_binary '\0','','2019-01-12 08:27:13','','2019-01-12 08:27:13'),(4,'ModifyNamespace','SampleApp+application',_binary '\0','','2019-01-12 08:27:13','','2019-01-12 08:27:13'),(5,'ReleaseNamespace','SampleApp+application',_binary '\0','','2019-01-12 08:27:13','','2019-01-12 08:27:13');
+/*!40000 ALTER TABLE `Permission` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Role`
+--
+
+DROP TABLE IF EXISTS `Role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `Role` (
+  `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
+  `RoleName` varchar(256) NOT NULL DEFAULT '' COMMENT 'Role name',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) NOT NULL DEFAULT 'default' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `IX_RoleName` (`RoleName`(191)),
+  KEY `IX_DataChange_LastTime` (`DataChange_LastTime`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='角色表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Role`
+--
+
+LOCK TABLES `Role` WRITE;
+/*!40000 ALTER TABLE `Role` DISABLE KEYS */;
+INSERT INTO `Role` VALUES (1,'Master+SampleApp',_binary '\0','default','2019-01-12 08:27:14','','2019-01-12 08:27:14'),(2,'ModifyNamespace+SampleApp+application',_binary '\0','default','2019-01-12 08:27:14','','2019-01-12 08:27:14'),(3,'ReleaseNamespace+SampleApp+application',_binary '\0','default','2019-01-12 08:27:14','','2019-01-12 08:27:14');
+/*!40000 ALTER TABLE `Role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `RolePermission`
+--
+
+DROP TABLE IF EXISTS `RolePermission`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `RolePermission` (
+  `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
+  `RoleId` int(10) unsigned DEFAULT NULL COMMENT 'Role Id',
+  `PermissionId` int(10) unsigned DEFAULT NULL COMMENT 'Permission Id',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) DEFAULT '' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `IX_DataChange_LastTime` (`DataChange_LastTime`),
+  KEY `IX_RoleId` (`RoleId`),
+  KEY `IX_PermissionId` (`PermissionId`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='角色和权限的绑定表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `RolePermission`
+--
+
+LOCK TABLES `RolePermission` WRITE;
+/*!40000 ALTER TABLE `RolePermission` DISABLE KEYS */;
+INSERT INTO `RolePermission` VALUES (1,1,1,_binary '\0','','2019-01-12 08:27:14','','2019-01-12 08:27:14'),(2,1,2,_binary '\0','','2019-01-12 08:27:14','','2019-01-12 08:27:14'),(3,1,3,_binary '\0','','2019-01-12 08:27:14','','2019-01-12 08:27:14'),(4,2,4,_binary '\0','','2019-01-12 08:27:14','','2019-01-12 08:27:14'),(5,3,5,_binary '\0','','2019-01-12 08:27:14','','2019-01-12 08:27:14');
+/*!40000 ALTER TABLE `RolePermission` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ServerConfig`
+--
+
+DROP TABLE IF EXISTS `ServerConfig`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `ServerConfig` (
+  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
+  `Key` varchar(64) NOT NULL DEFAULT 'default' COMMENT '配置项Key',
+  `Value` varchar(2048) NOT NULL DEFAULT 'default' COMMENT '配置项值',
+  `Comment` varchar(1024) DEFAULT '' COMMENT '注释',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) NOT NULL DEFAULT 'default' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `IX_Key` (`Key`),
+  KEY `DataChange_LastTime` (`DataChange_LastTime`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='配置服务自身配置';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ServerConfig`
+--
+
+LOCK TABLES `ServerConfig` WRITE;
+/*!40000 ALTER TABLE `ServerConfig` DISABLE KEYS */;
+INSERT INTO `ServerConfig` VALUES (1,'apollo.portal.envs','dev','可支持的环境列表',_binary '\0','default','2019-01-12 08:27:13','','2019-01-12 08:27:13'),(2,'organizations','[{\"orgId\":\"TEST1\",\"orgName\":\"样例部门1\"},{\"orgId\":\"TEST2\",\"orgName\":\"样例部门2\"}]','部门列表',_binary '\0','default','2019-01-12 08:27:13','','2019-01-12 08:27:13'),(3,'superAdmin','apollo','Portal超级管理员',_binary '\0','default','2019-01-12 08:27:13','','2019-01-12 08:27:13'),(4,'api.readTimeout','10000','http接口read timeout',_binary '\0','default','2019-01-12 08:27:13','','2019-01-12 08:27:13'),(5,'consumer.token.salt','someSalt','consumer token salt',_binary '\0','default','2019-01-12 08:27:13','','2019-01-12 08:27:13'),(6,'admin.createPrivateNamespace.switch','true','是否允许项目管理员创建私有namespace',_binary '\0','default','2019-01-12 08:27:13','','2019-01-12 08:27:13'),(7,'configView.memberOnly.envs','dev','只对项目成员显示配置信息的环境列表，多个env以英文逗号分隔',_binary '\0','default','2019-01-12 08:27:13','','2019-01-12 08:27:13');
+/*!40000 ALTER TABLE `ServerConfig` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `UserRole`
+--
+
+DROP TABLE IF EXISTS `UserRole`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `UserRole` (
+  `Id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
+  `UserId` varchar(128) DEFAULT '' COMMENT '用户身份标识',
+  `RoleId` int(10) unsigned DEFAULT NULL COMMENT 'Role Id',
+  `IsDeleted` bit(1) NOT NULL DEFAULT b'0' COMMENT '1: deleted, 0: normal',
+  `DataChange_CreatedBy` varchar(32) DEFAULT '' COMMENT '创建人邮箱前缀',
+  `DataChange_CreatedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `DataChange_LastModifiedBy` varchar(32) DEFAULT '' COMMENT '最后修改人邮箱前缀',
+  `DataChange_LastTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '最后修改时间',
+  PRIMARY KEY (`Id`),
+  KEY `IX_DataChange_LastTime` (`DataChange_LastTime`),
+  KEY `IX_RoleId` (`RoleId`),
+  KEY `IX_UserId_RoleId` (`UserId`,`RoleId`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户和role的绑定表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `UserRole`
+--
+
+LOCK TABLES `UserRole` WRITE;
+/*!40000 ALTER TABLE `UserRole` DISABLE KEYS */;
+INSERT INTO `UserRole` VALUES (1,'apollo',1,_binary '\0','','2019-01-12 08:27:14','','2019-01-12 08:27:14'),(2,'apollo',2,_binary '\0','','2019-01-12 08:27:14','','2019-01-12 08:27:14'),(3,'apollo',3,_binary '\0','','2019-01-12 08:27:14','','2019-01-12 08:27:14');
+/*!40000 ALTER TABLE `UserRole` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Users`
+--
+
+DROP TABLE IF EXISTS `Users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `Users` (
+  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增Id',
+  `Username` varchar(64) NOT NULL DEFAULT 'default' COMMENT '用户名',
+  `Password` varchar(64) NOT NULL DEFAULT 'default' COMMENT '密码',
+  `Email` varchar(64) NOT NULL DEFAULT 'default' COMMENT '邮箱地址',
+  `Enabled` tinyint(4) DEFAULT NULL COMMENT '是否有效',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='用户表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Users`
+--
+
+LOCK TABLES `Users` WRITE;
+/*!40000 ALTER TABLE `Users` DISABLE KEYS */;
+INSERT INTO `Users` VALUES (1,'apollo','$2a$10$7r20uS.BQ9uBpf3Baj3uQOZvMVvB1RN3PYoKE94gtz2.WAOuiiwXS','apollo@acme.com',1);
+/*!40000 ALTER TABLE `Users` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Current Database: `admin`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `admin` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
+
+USE `admin`;
+
+--
+-- Table structure for table `menu`
+--
+
+DROP TABLE IF EXISTS `menu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `menu` (
+  `id` varchar(50) NOT NULL,
+  `label` varchar(20) NOT NULL,
+  `path` varchar(200) DEFAULT '0',
+  `order` smallint(6) DEFAULT '1',
+  `level` smallint(6) DEFAULT '1' COMMENT '层级，方便根据层级查询',
+  `url` varchar(200) DEFAULT NULL,
+  `type` smallint(6) DEFAULT '1' COMMENT '扩展不同菜单时用',
+  `style` varchar(50) DEFAULT NULL COMMENT 'ui 样式',
+  `disabled` smallint(6) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `menu`
+--
+
+LOCK TABLES `menu` WRITE;
+/*!40000 ALTER TABLE `menu` DISABLE KEYS */;
+INSERT INTO `menu` VALUES ('menu','菜单管理','0,system',2,1,'/menu',1,NULL,0),('role','角色管理','0,system',3,3,'/role',1,NULL,0),('system','系统管理','0',1,1,'',1,NULL,0),('user','用户管理','0,system',4,2,'/user',1,NULL,0);
+/*!40000 ALTER TABLE `menu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `role`
+--
+
+DROP TABLE IF EXISTS `role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `role` (
+  `id` varchar(50) NOT NULL,
+  `name` varchar(30) NOT NULL COMMENT '角色',
+  `disabled` smallint(6) NOT NULL DEFAULT '0',
+  `description` varchar(60) DEFAULT NULL COMMENT '描述',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `rolename` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role`
+--
+
+LOCK TABLES `role` WRITE;
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
+INSERT INTO `role` VALUES ('1','admin',0,'管理员'),('f1d07c8f-57e9-4e00-a03f-348a96cd54e2','user',0,'普通用户');
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `role_menu`
+--
+
+DROP TABLE IF EXISTS `role_menu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `role_menu` (
+  `role_id` varchar(50) DEFAULT NULL,
+  `menu_id` varchar(50) DEFAULT NULL,
+  KEY `role_id_rm` (`role_id`),
+  KEY `menu_code_rm` (`menu_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role_menu`
+--
+
+LOCK TABLES `role_menu` WRITE;
+/*!40000 ALTER TABLE `role_menu` DISABLE KEYS */;
+INSERT INTO `role_menu` VALUES ('1','menu'),('1','role'),('1','system'),('1','user'),('f1d07c8f-57e9-4e00-a03f-348a96cd54e2','menu');
+/*!40000 ALTER TABLE `role_menu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `user` (
+  `id` varchar(50) NOT NULL COMMENT '主键ID',
+  `username` varchar(20) NOT NULL COMMENT '登录名称',
+  `password` varchar(32) NOT NULL COMMENT '密码',
+  `email` varchar(60) DEFAULT NULL COMMENT '邮箱',
+  `salt` varchar(50) DEFAULT '0' COMMENT '密码的盐',
+  `disabled` smallint(6) NOT NULL DEFAULT '1' COMMENT '0、禁用 1、正常',
+  `createTime` datetime DEFAULT NULL COMMENT '创建时间',
+  `lastTime` datetime DEFAULT NULL COMMENT '最后登录时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `loginname` (`username`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES ('1','root','5442b02dabc5ed9401be4dfe1ca8adb9','jonsychen@hotmail.com','r',0,'2016-09-27 19:53:20','2016-09-27 19:53:22'),('8891e12f-81a7-43cd-8ab8-4accdf141f96','jonsy','2e9ca4d0b1a586fd80bc2ba782ac36bc','jonsychen@hotmail.com','0',0,'2016-10-31 21:16:47',NULL),('aaf62456-d96c-4aae-bff0-90330a7d7a02','frank','52d76781a799f857f35e3bb50c94c21e','jonsychen@hotmail.com','0',0,'2016-11-04 18:12:34',NULL);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_role`
+--
+
+DROP TABLE IF EXISTS `user_role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `user_role` (
+  `uid` varchar(50) NOT NULL,
+  `role_id` varchar(50) NOT NULL,
+  KEY `uid` (`uid`),
+  KEY `role_id` (`role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_role`
+--
+
+LOCK TABLES `user_role` WRITE;
+/*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
+INSERT INTO `user_role` VALUES ('1','1'),('8891e12f-81a7-43cd-8ab8-4accdf141f96','1'),('aaf62456-d96c-4aae-bff0-90330a7d7a02','f1d07c8f-57e9-4e00-a03f-348a96cd54e2');
+/*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Current Database: `authority`
@@ -164,7 +1288,7 @@ CREATE TABLE `sys_user` (
   `createtime` datetime DEFAULT NULL COMMENT '创建时间',
   `version` int(11) DEFAULT NULL COMMENT '保留字段',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8 COMMENT='管理员表';
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8 COMMENT='管理员表';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,7 +1297,7 @@ CREATE TABLE `sys_user` (
 
 LOCK TABLES `sys_user` WRITE;
 /*!40000 ALTER TABLE `sys_user` DISABLE KEYS */;
-INSERT INTO `sys_user` VALUES (1,'girl.gif','11','11','8pgby','lulala','2017-05-05 00:00:00',2,'sn93@qq.com','18200000000','11',27,1,'2016-01-29 08:49:53',25),(44,NULL,'test','45abb7879f6a8268f1ef600e6038ac73','ssts3','test','2017-05-01 00:00:00',1,'abc@123.com','','5',26,3,'2017-05-16 20:33:37',NULL),(45,NULL,'boss','71887a5ad666a18f709e1d4e693d5a35','1f7bf','老板','2017-12-04 00:00:00',1,'','','1',24,1,'2017-12-04 22:24:02',NULL),(47,NULL,'haha','nima',NULL,'1111',NULL,NULL,NULL,NULL,'3',NULL,NULL,NULL,NULL);
+INSERT INTO `sys_user` VALUES (1,'girl.gif','11','11','8pgby','lulala','2017-05-05 00:00:00',2,'sn93@qq.com','18200000000','11',27,1,'2016-01-29 08:49:53',25),(44,NULL,'test','45abb7879f6a8268f1ef600e6038ac73','ssts3','test','2017-05-01 00:00:00',1,'abc@123.com','','5',26,3,'2017-05-16 20:33:37',NULL),(45,NULL,'boss','71887a5ad666a18f709e1d4e693d5a35','1f7bf','老板','2017-12-04 00:00:00',1,'','','1',24,1,'2017-12-04 22:24:02',NULL),(47,NULL,'haha','nima',NULL,'1111',NULL,NULL,NULL,NULL,'3',NULL,NULL,NULL,NULL),(48,NULL,'lixiaoxi','111111',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(49,NULL,'lixiaoxi','111111',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `sys_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -428,6 +1552,409 @@ INSERT INTO `message` VALUES (1,'aaaaaaaaaa','o1'),(2,'bbbbbbbbbb','o2'),(3,'ccc
 UNLOCK TABLES;
 
 --
+-- Current Database: `dmc`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `dmc` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `dmc`;
+
+--
+-- Table structure for table `resource`
+--
+
+DROP TABLE IF EXISTS `resource`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `resource` (
+  `id` bigint(36) NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `remark` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `seq` int(11) DEFAULT NULL,
+  `url` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `method` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `pid` bigint(36) DEFAULT NULL,
+  `type` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_sogl6f9lioeptbf7s105wbx82` (`pid`) USING BTREE,
+  KEY `fk_bjlrqegc9iu81src5vlta7p00` (`type`) USING BTREE,
+  CONSTRAINT `resource_ibfk_1` FOREIGN KEY (`pid`) REFERENCES `resource` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `resource`
+--
+
+LOCK TABLES `resource` WRITE;
+/*!40000 ALTER TABLE `resource` DISABLE KEYS */;
+INSERT INTO `resource` VALUES (0,'系统管理',NULL,0,NULL,NULL,NULL,0),(1,'角色管理','角色列表',2,'../rolelist/rolelist.html',NULL,0,0),(2,'用户管理','用户列表',3,'../userlist/userlist.html',NULL,0,0),(3,'资源管理','管理系统中所有的菜单或功能',1,'../menu/menu.html',NULL,0,0),(4,'添加角色',NULL,3,'/role','post',1,1),(5,'删除角色',NULL,6,'/role/*','delete',1,1),(6,'编辑角色',NULL,5,'/role','put',1,1),(7,'角色授权',NULL,8,'/role/grant','post',1,1),(9,'添加用户',NULL,3,'/user','post',2,1),(12,'删除用户',NULL,6,'/user/*','delete',2,1),(13,'编辑用户',NULL,5,'/user','put',2,1),(14,'用户修改密码',NULL,11,'/user/editpwd','post',2,1),(15,'用户授权',NULL,9,'/user/grant','post',2,1),(16,'添加资源',NULL,4,'/resource','post',3,1),(17,'删除资源',NULL,7,'/resource/*','delete',3,1),(18,'编辑资源',NULL,6,'/resource','put',3,1),(19,'资源树列表',NULL,2,'/resource/tree','post',3,1),(3907913782690816,'角色详情',NULL,NULL,'/role/*','get',1,1);
+/*!40000 ALTER TABLE `resource` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `role`
+--
+
+DROP TABLE IF EXISTS `role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `role` (
+  `id` bigint(36) NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `remark` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `seq` int(11) DEFAULT NULL,
+  `pid` bigint(36) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_tealaj0x99w9xj8on8ax0jgjb` (`pid`) USING BTREE,
+  CONSTRAINT `role_ibfk_1` FOREIGN KEY (`pid`) REFERENCES `role` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role`
+--
+
+LOCK TABLES `role` WRITE;
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
+INSERT INTO `role` VALUES (0,'超管','超级管理员角色，拥有系统中所有的资源访问权限',0,NULL),(6110291811206144,'一级管理',NULL,1,NULL),(6110292397425664,'二级管理','2',2,NULL);
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `role_resource`
+--
+
+DROP TABLE IF EXISTS `role_resource`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `role_resource` (
+  `role_id` bigint(36) NOT NULL,
+  `resource_id` bigint(36) NOT NULL,
+  PRIMARY KEY (`resource_id`,`role_id`),
+  KEY `resource_id` (`resource_id`) USING BTREE,
+  KEY `role_resource_ibfk_1` (`role_id`) USING BTREE,
+  CONSTRAINT `role_resource_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `role_resource_ibfk_2` FOREIGN KEY (`resource_id`) REFERENCES `resource` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role_resource`
+--
+
+LOCK TABLES `role_resource` WRITE;
+/*!40000 ALTER TABLE `role_resource` DISABLE KEYS */;
+INSERT INTO `role_resource` VALUES (0,0),(0,1),(6110291811206144,1),(0,2),(0,3),(6110291811206144,3),(0,4),(6110291811206144,4),(0,5),(0,6),(6110291811206144,6),(0,7),(0,9),(0,12),(0,13),(0,14),(0,15),(0,16),(6110291811206144,16),(0,17),(6110291811206144,17),(0,18),(6110291811206144,18),(0,19),(6110291811206144,19),(0,3907913782690816),(6110291811206144,3907913782690816);
+/*!40000 ALTER TABLE `role_resource` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `user` (
+  `id` bigint(36) NOT NULL,
+  `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
+  `modify_time` datetime DEFAULT CURRENT_TIMESTAMP,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `username` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_o3uyea7py4jnln0qxrtg1qqhq` (`username`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (0,'2015-05-02 17:50:05','2016-12-27 21:58:01','管理员','96e79218965eb72c92a549dd5a330112','admin'),(1,'2015-05-02 17:50:06','2016-12-27 18:34:10','admin1','202cb962ac59075b964b07152d234b70','admin1'),(6110293962327040,'2019-01-23 06:25:03','2019-01-23 06:26:14','123','202cb962ac59075b964b07152d234b70','goat');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_role`
+--
+
+DROP TABLE IF EXISTS `user_role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `user_role` (
+  `user_id` bigint(20) NOT NULL,
+  `role_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`user_id`,`role_id`),
+  KEY `role_id` (`role_id`) USING BTREE,
+  KEY `role_id_2` (`role_id`) USING BTREE,
+  KEY `role_id_3` (`role_id`) USING BTREE,
+  CONSTRAINT `user_role_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `user_role_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_role`
+--
+
+LOCK TABLES `user_role` WRITE;
+/*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
+INSERT INTO `user_role` VALUES (0,0),(6110293962327040,0),(0,6110291811206144),(6110293962327040,6110291811206144),(0,6110292397425664);
+/*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Current Database: `fescar`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `fescar` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
+
+USE `fescar`;
+
+--
+-- Table structure for table `account_tbl`
+--
+
+DROP TABLE IF EXISTS `account_tbl`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `account_tbl` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(255) DEFAULT NULL,
+  `money` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account_tbl`
+--
+
+LOCK TABLES `account_tbl` WRITE;
+/*!40000 ALTER TABLE `account_tbl` DISABLE KEYS */;
+INSERT INTO `account_tbl` VALUES (1,'U100001',999);
+/*!40000 ALTER TABLE `account_tbl` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `order_tbl`
+--
+
+DROP TABLE IF EXISTS `order_tbl`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `order_tbl` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(255) DEFAULT NULL,
+  `commodity_code` varchar(255) DEFAULT NULL,
+  `count` int(11) DEFAULT '0',
+  `money` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order_tbl`
+--
+
+LOCK TABLES `order_tbl` WRITE;
+/*!40000 ALTER TABLE `order_tbl` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order_tbl` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `storage_tbl`
+--
+
+DROP TABLE IF EXISTS `storage_tbl`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `storage_tbl` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `commodity_code` varchar(255) DEFAULT NULL,
+  `count` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `commodity_code` (`commodity_code`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `storage_tbl`
+--
+
+LOCK TABLES `storage_tbl` WRITE;
+/*!40000 ALTER TABLE `storage_tbl` DISABLE KEYS */;
+INSERT INTO `storage_tbl` VALUES (1,'C00321',100);
+/*!40000 ALTER TABLE `storage_tbl` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `undo_log`
+--
+
+DROP TABLE IF EXISTS `undo_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `undo_log` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `branch_id` bigint(20) NOT NULL,
+  `xid` varchar(100) NOT NULL,
+  `rollback_info` longblob NOT NULL,
+  `log_status` int(11) NOT NULL,
+  `log_created` datetime NOT NULL,
+  `log_modified` datetime NOT NULL,
+  `ext` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_unionkey` (`xid`,`branch_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `undo_log`
+--
+
+LOCK TABLES `undo_log` WRITE;
+/*!40000 ALTER TABLE `undo_log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `undo_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_money_a`
+--
+
+DROP TABLE IF EXISTS `user_money_a`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `user_money_a` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `money` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_money_a`
+--
+
+LOCK TABLES `user_money_a` WRITE;
+/*!40000 ALTER TABLE `user_money_a` DISABLE KEYS */;
+INSERT INTO `user_money_a` VALUES (1,10000);
+/*!40000 ALTER TABLE `user_money_a` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_money_b`
+--
+
+DROP TABLE IF EXISTS `user_money_b`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `user_money_b` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `money` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_money_b`
+--
+
+LOCK TABLES `user_money_b` WRITE;
+/*!40000 ALTER TABLE `user_money_b` DISABLE KEYS */;
+INSERT INTO `user_money_b` VALUES (1,10000);
+/*!40000 ALTER TABLE `user_money_b` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Current Database: `fescar2`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `fescar2` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
+
+USE `fescar2`;
+
+--
+-- Table structure for table `undo_log`
+--
+
+DROP TABLE IF EXISTS `undo_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `undo_log` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `branch_id` bigint(20) NOT NULL,
+  `xid` varchar(100) NOT NULL,
+  `rollback_info` longblob NOT NULL,
+  `log_status` int(11) NOT NULL,
+  `log_created` datetime NOT NULL,
+  `log_modified` datetime NOT NULL,
+  `ext` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_unionkey` (`xid`,`branch_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `undo_log`
+--
+
+LOCK TABLES `undo_log` WRITE;
+/*!40000 ALTER TABLE `undo_log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `undo_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_money_a`
+--
+
+DROP TABLE IF EXISTS `user_money_a`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `user_money_a` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `money` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_money_a`
+--
+
+LOCK TABLES `user_money_a` WRITE;
+/*!40000 ALTER TABLE `user_money_a` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_money_a` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_money_b`
+--
+
+DROP TABLE IF EXISTS `user_money_b`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `user_money_b` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `money` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_money_b`
+--
+
+LOCK TABLES `user_money_b` WRITE;
+/*!40000 ALTER TABLE `user_money_b` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_money_b` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Current Database: `guns`
 --
 
@@ -567,7 +2094,7 @@ CREATE TABLE `sys_login_log` (
   `message` text COMMENT '具体消息',
   `ip` varchar(255) DEFAULT NULL COMMENT '登录ip',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=230 DEFAULT CHARSET=utf8 COMMENT='登录记录';
+) ENGINE=InnoDB AUTO_INCREMENT=231 DEFAULT CHARSET=utf8 COMMENT='登录记录';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -576,7 +2103,7 @@ CREATE TABLE `sys_login_log` (
 
 LOCK TABLES `sys_login_log` WRITE;
 /*!40000 ALTER TABLE `sys_login_log` DISABLE KEYS */;
-INSERT INTO `sys_login_log` VALUES (217,'登录失败日志',NULL,'2018-11-06 21:40:03','成功','账号:guanliyuan,账号密码错误','0:0:0:0:0:0:0:1'),(218,'登录失败日志',NULL,'2018-11-06 21:41:07','成功','账号:admin,账号密码错误','0:0:0:0:0:0:0:1'),(219,'登录失败日志',NULL,'2018-11-06 21:41:12','成功','账号:admin,账号密码错误','0:0:0:0:0:0:0:1'),(220,'登录失败日志',NULL,'2018-11-06 21:45:23','成功','账号:admin,账号密码错误','0:0:0:0:0:0:0:1'),(221,'登录失败日志',NULL,'2018-11-06 21:45:38','成功','账号:guanliyuan,账号密码错误','0:0:0:0:0:0:0:1'),(222,'登录失败日志',NULL,'2018-11-06 21:46:31','成功','账号:admin,账号密码错误','0:0:0:0:0:0:0:1'),(223,'登录失败日志',NULL,'2018-11-06 21:58:35','成功','账号:admin,账号密码错误','0:0:0:0:0:0:0:1'),(224,'登录失败日志',NULL,'2018-11-06 21:59:33','成功','账号:admin,账号密码错误','0:0:0:0:0:0:0:1'),(225,'登录失败日志',NULL,'2018-11-06 21:59:39','成功','账号:admin,账号密码错误','0:0:0:0:0:0:0:1'),(226,'登录失败日志',NULL,'2018-11-06 22:03:08','成功','账号:guanliyuan,账号密码错误','0:0:0:0:0:0:0:1'),(227,'登录失败日志',NULL,'2018-11-06 22:03:16','成功','账号:guanliyuan,账号密码错误','0:0:0:0:0:0:0:1'),(228,'登录失败日志',NULL,'2018-11-06 22:03:27','成功','账号:guanliyuan,账号密码错误','0:0:0:0:0:0:0:1'),(229,'登录日志',1,'2018-11-06 22:04:39','成功',NULL,'0:0:0:0:0:0:0:1');
+INSERT INTO `sys_login_log` VALUES (217,'登录失败日志',NULL,'2018-11-06 21:40:03','成功','账号:guanliyuan,账号密码错误','0:0:0:0:0:0:0:1'),(218,'登录失败日志',NULL,'2018-11-06 21:41:07','成功','账号:admin,账号密码错误','0:0:0:0:0:0:0:1'),(219,'登录失败日志',NULL,'2018-11-06 21:41:12','成功','账号:admin,账号密码错误','0:0:0:0:0:0:0:1'),(220,'登录失败日志',NULL,'2018-11-06 21:45:23','成功','账号:admin,账号密码错误','0:0:0:0:0:0:0:1'),(221,'登录失败日志',NULL,'2018-11-06 21:45:38','成功','账号:guanliyuan,账号密码错误','0:0:0:0:0:0:0:1'),(222,'登录失败日志',NULL,'2018-11-06 21:46:31','成功','账号:admin,账号密码错误','0:0:0:0:0:0:0:1'),(223,'登录失败日志',NULL,'2018-11-06 21:58:35','成功','账号:admin,账号密码错误','0:0:0:0:0:0:0:1'),(224,'登录失败日志',NULL,'2018-11-06 21:59:33','成功','账号:admin,账号密码错误','0:0:0:0:0:0:0:1'),(225,'登录失败日志',NULL,'2018-11-06 21:59:39','成功','账号:admin,账号密码错误','0:0:0:0:0:0:0:1'),(226,'登录失败日志',NULL,'2018-11-06 22:03:08','成功','账号:guanliyuan,账号密码错误','0:0:0:0:0:0:0:1'),(227,'登录失败日志',NULL,'2018-11-06 22:03:16','成功','账号:guanliyuan,账号密码错误','0:0:0:0:0:0:0:1'),(228,'登录失败日志',NULL,'2018-11-06 22:03:27','成功','账号:guanliyuan,账号密码错误','0:0:0:0:0:0:0:1'),(229,'登录日志',1,'2018-11-06 22:04:39','成功',NULL,'0:0:0:0:0:0:0:1'),(230,'登录日志',1,'2019-02-04 13:46:16','成功',NULL,'0:0:0:0:0:0:0:1');
 /*!40000 ALTER TABLE `sys_login_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -661,7 +2188,7 @@ CREATE TABLE `sys_operation_log` (
   `succeed` varchar(255) DEFAULT NULL COMMENT '是否成功',
   `message` text COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=554 DEFAULT CHARSET=utf8 COMMENT='操作日志';
+) ENGINE=InnoDB AUTO_INCREMENT=560 DEFAULT CHARSET=utf8 COMMENT='操作日志';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -670,6 +2197,7 @@ CREATE TABLE `sys_operation_log` (
 
 LOCK TABLES `sys_operation_log` WRITE;
 /*!40000 ALTER TABLE `sys_operation_log` DISABLE KEYS */;
+INSERT INTO `sys_operation_log` VALUES (554,'业务日志','冻结用户',1,'cn.stylefeng.guns.modular.system.controller.UserMgrController','freeze','2019-02-04 13:46:40','成功','账号=boss'),(555,'业务日志','冻结用户',1,'cn.stylefeng.guns.modular.system.controller.UserMgrController','freeze','2019-02-04 13:46:45','成功','账号=boss'),(556,'业务日志','冻结用户',1,'cn.stylefeng.guns.modular.system.controller.UserMgrController','freeze','2019-02-04 13:46:48','成功','账号=boss'),(557,'业务日志','解除冻结用户',1,'cn.stylefeng.guns.modular.system.controller.UserMgrController','unfreeze','2019-02-04 13:46:50','成功','账号=boss'),(558,'业务日志','解除冻结用户',1,'cn.stylefeng.guns.modular.system.controller.UserMgrController','unfreeze','2019-02-04 13:46:59','成功','账号=manager'),(559,'业务日志','冻结用户',1,'cn.stylefeng.guns.modular.system.controller.UserMgrController','freeze','2019-02-04 13:47:10','成功','账号=manager');
 /*!40000 ALTER TABLE `sys_operation_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -760,7 +2288,7 @@ CREATE TABLE `sys_user` (
 
 LOCK TABLES `sys_user` WRITE;
 /*!40000 ALTER TABLE `sys_user` DISABLE KEYS */;
-INSERT INTO `sys_user` VALUES (1,'girl.gif','admin','ecfadcde9305f8891bcfe5a1e28c253e','8pgby','张三','2017-05-05 00:00:00',2,'sn93@qq.com','18200000000','1',27,1,'2016-01-29 08:49:53',25),(44,NULL,'test','45abb7879f6a8268f1ef600e6038ac73','ssts3','test','2017-05-01 00:00:00',1,'abc@123.com','','5',26,3,'2017-05-16 20:33:37',NULL),(45,NULL,'boss','71887a5ad666a18f709e1d4e693d5a35','1f7bf','老板','2017-12-04 00:00:00',1,'','','1',24,1,'2017-12-04 22:24:02',NULL),(46,NULL,'manager','b53cac62e7175637d4beb3b16b2f7915','j3cs9','经理','2017-12-04 00:00:00',1,'','','1',24,1,'2017-12-04 22:24:24',NULL);
+INSERT INTO `sys_user` VALUES (1,'girl.gif','admin','ecfadcde9305f8891bcfe5a1e28c253e','8pgby','张三','2017-05-05 00:00:00',2,'sn93@qq.com','18200000000','1',27,1,'2016-01-29 08:49:53',25),(44,NULL,'test','45abb7879f6a8268f1ef600e6038ac73','ssts3','test','2017-05-01 00:00:00',1,'abc@123.com','','5',26,3,'2017-05-16 20:33:37',NULL),(45,NULL,'boss','71887a5ad666a18f709e1d4e693d5a35','1f7bf','老板','2017-12-04 00:00:00',1,'','','1',24,1,'2017-12-04 22:24:02',NULL),(46,NULL,'manager','b53cac62e7175637d4beb3b16b2f7915','j3cs9','经理','2017-12-04 00:00:00',1,'','','1',24,2,'2017-12-04 22:24:24',NULL);
 /*!40000 ALTER TABLE `sys_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -806,6 +2334,7 @@ CREATE TABLE `customer` (
   `id` bigint(20) NOT NULL,
   `first_name` varchar(255) DEFAULT NULL,
   `last_name` varchar(255) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -816,7 +2345,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'gaga','fafa'),(5,'gaga','fuck1111');
+INSERT INTO `customer` VALUES (1,'gaga','fafa',NULL),(5,'gaga','fuck1111',NULL),(11,'Jack','Bauer','2019-02-19 16:11:37'),(12,'Chloe','O\'Brian','2019-02-19 16:11:37'),(13,'Kim','Bauer','2019-02-19 16:11:37'),(14,'David','Palmer','2019-02-19 16:11:37'),(15,'Michelle','Dessler','2019-02-19 16:11:37');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -838,7 +2367,7 @@ CREATE TABLE `hibernate_sequence` (
 
 LOCK TABLES `hibernate_sequence` WRITE;
 /*!40000 ALTER TABLE `hibernate_sequence` DISABLE KEYS */;
-INSERT INTO `hibernate_sequence` VALUES (11),(11);
+INSERT INTO `hibernate_sequence` VALUES (16),(16);
 /*!40000 ALTER TABLE `hibernate_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -910,7 +2439,7 @@ CREATE TABLE `t_money` (
 
 LOCK TABLES `t_money` WRITE;
 /*!40000 ALTER TABLE `t_money` DISABLE KEYS */;
-INSERT INTO `t_money` VALUES (1,'234',1),(2,'222',0),(3,'333',0);
+INSERT INTO `t_money` VALUES (1,'2222',8),(2,'222',0),(3,'333',0);
 /*!40000 ALTER TABLE `t_money` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -943,6 +2472,63 @@ LOCK TABLES `t_my_able` WRITE;
 /*!40000 ALTER TABLE `t_my_able` DISABLE KEYS */;
 INSERT INTO `t_my_able` VALUES (1,'11',11,NULL,NULL,NULL,NULL,NULL,NULL),(2,'22',22,NULL,NULL,NULL,NULL,NULL,NULL),(3,'33',33,NULL,NULL,NULL,NULL,NULL,NULL),(4,'sdf',1145,'2018-12-12 20:12:04','2018-12-12 20:12:04',NULL,NULL,NULL,NULL),(5,'sdf',4313412,NULL,'2018-12-12 20:16:15','2018-12-12','20:16:14','2018-12-12 20:16:15','2018-12-12 20:16:15');
 /*!40000 ALTER TABLE `t_my_able` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_my_date`
+--
+
+DROP TABLE IF EXISTS `t_my_date`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `t_my_date` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `col1` varchar(255) DEFAULT NULL,
+  `col2` int(11) DEFAULT NULL,
+  `created_time` datetime DEFAULT NULL,
+  `last_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_my_date`
+--
+
+LOCK TABLES `t_my_date` WRITE;
+/*!40000 ALTER TABLE `t_my_date` DISABLE KEYS */;
+INSERT INTO `t_my_date` VALUES (1,'11',22,'2019-02-13 12:22:51','2019-02-13 12:22:54');
+/*!40000 ALTER TABLE `t_my_date` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_my_table`
+--
+
+DROP TABLE IF EXISTS `t_my_table`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `t_my_table` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `birthday1` date DEFAULT NULL,
+  `birthday2` time DEFAULT NULL,
+  `birthday3` datetime DEFAULT NULL,
+  `col1` varchar(255) DEFAULT NULL,
+  `col2` int(11) DEFAULT NULL,
+  `created_time` datetime DEFAULT NULL,
+  `last_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_my_table`
+--
+
+LOCK TABLES `t_my_table` WRITE;
+/*!40000 ALTER TABLE `t_my_table` DISABLE KEYS */;
+INSERT INTO `t_my_table` VALUES (5,'2018-12-12','20:16:14','2018-12-12 20:16:15','sdf',4313412,'2018-12-12 20:16:15','2018-12-12 20:16:15');
+/*!40000 ALTER TABLE `t_my_table` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -1384,7 +2970,7 @@ UNLOCK TABLES;
 --
 
 /*!40000 ALTER TABLE `innodb_index_stats` DISABLE KEYS */;
-INSERT  IGNORE INTO `innodb_index_stats` VALUES ('authority','sys_menu','PRIMARY','2018-12-28 20:30:04','n_diff_pfx01',55,1,'id'),('authority','sys_menu','PRIMARY','2018-12-28 20:30:04','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('authority','sys_menu','PRIMARY','2018-12-28 20:30:04','size',1,NULL,'Number of pages in the index'),('authority','sys_re_role_menu','PRIMARY','2018-12-28 20:29:54','n_diff_pfx01',75,1,'id'),('authority','sys_re_role_menu','PRIMARY','2018-12-28 20:29:54','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('authority','sys_re_role_menu','PRIMARY','2018-12-28 20:29:54','size',1,NULL,'Number of pages in the index'),('authority','sys_re_user_role','PRIMARY','2018-12-28 20:29:41','n_diff_pfx01',0,1,'id'),('authority','sys_re_user_role','PRIMARY','2018-12-28 20:29:41','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('authority','sys_re_user_role','PRIMARY','2018-12-28 20:29:41','size',1,NULL,'Number of pages in the index'),('authority','sys_role','PRIMARY','2018-12-28 20:29:41','n_diff_pfx01',2,1,'id'),('authority','sys_role','PRIMARY','2018-12-28 20:29:41','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('authority','sys_role','PRIMARY','2018-12-28 20:29:41','size',1,NULL,'Number of pages in the index'),('authority','sys_user','PRIMARY','2019-01-01 02:18:01','n_diff_pfx01',4,1,'id'),('authority','sys_user','PRIMARY','2019-01-01 02:18:01','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('authority','sys_user','PRIMARY','2019-01-01 02:18:01','size',1,NULL,'Number of pages in the index'),('baseAuthority','base_menu','PRIMARY','2018-12-28 23:57:46','n_diff_pfx01',0,1,'ID'),('baseAuthority','base_menu','PRIMARY','2018-12-28 23:57:46','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('baseAuthority','base_menu','PRIMARY','2018-12-28 23:57:46','size',1,NULL,'Number of pages in the index'),('baseAuthority','base_role','PRIMARY','2018-12-28 23:57:46','n_diff_pfx01',2,1,'ID'),('baseAuthority','base_role','PRIMARY','2018-12-28 23:57:46','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('baseAuthority','base_role','PRIMARY','2018-12-28 23:57:46','size',1,NULL,'Number of pages in the index'),('baseAuthority','base_role_menu','PRIMARY','2018-12-28 23:57:46','n_diff_pfx01',0,1,'ID'),('baseAuthority','base_role_menu','PRIMARY','2018-12-28 23:57:46','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('baseAuthority','base_role_menu','PRIMARY','2018-12-28 23:57:46','size',1,NULL,'Number of pages in the index'),('baseAuthority','base_user','PRIMARY','2018-12-28 23:57:46','n_diff_pfx01',0,1,'ID'),('baseAuthority','base_user','PRIMARY','2018-12-28 23:57:46','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('baseAuthority','base_user','PRIMARY','2018-12-28 23:57:46','size',1,NULL,'Number of pages in the index'),('baseAuthority','base_user_role','PRIMARY','2018-12-28 23:57:46','n_diff_pfx01',2,1,'ID'),('baseAuthority','base_user_role','PRIMARY','2018-12-28 23:57:46','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('baseAuthority','base_user_role','PRIMARY','2018-12-28 23:57:46','size',1,NULL,'Number of pages in the index'),('guns','code_dbinfo','PRIMARY','2018-11-05 22:06:10','n_diff_pfx01',0,1,'id'),('guns','code_dbinfo','PRIMARY','2018-11-05 22:06:10','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','code_dbinfo','PRIMARY','2018-11-05 22:06:10','size',1,NULL,'Number of pages in the index'),('guns','sys_dept','PRIMARY','2018-11-05 22:04:37','n_diff_pfx01',4,1,'id'),('guns','sys_dept','PRIMARY','2018-11-05 22:04:37','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','sys_dept','PRIMARY','2018-11-05 22:04:37','size',1,NULL,'Number of pages in the index'),('guns','sys_dict','PRIMARY','2018-11-05 22:04:37','n_diff_pfx01',10,1,'id'),('guns','sys_dict','PRIMARY','2018-11-05 22:04:37','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','sys_dict','PRIMARY','2018-11-05 22:04:37','size',1,NULL,'Number of pages in the index'),('guns','sys_expense','PRIMARY','2018-11-05 22:04:37','n_diff_pfx01',0,1,'id'),('guns','sys_expense','PRIMARY','2018-11-05 22:04:37','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','sys_expense','PRIMARY','2018-11-05 22:04:37','size',1,NULL,'Number of pages in the index'),('guns','sys_login_log','PRIMARY','2018-11-05 22:29:46','n_diff_pfx01',11,1,'id'),('guns','sys_login_log','PRIMARY','2018-11-05 22:29:46','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','sys_login_log','PRIMARY','2018-11-05 22:29:46','size',1,NULL,'Number of pages in the index'),('guns','sys_menu','PRIMARY','2018-11-05 22:04:58','n_diff_pfx01',55,1,'id'),('guns','sys_menu','PRIMARY','2018-11-05 22:04:58','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','sys_menu','PRIMARY','2018-11-05 22:04:58','size',1,NULL,'Number of pages in the index'),('guns','sys_notice','PRIMARY','2018-11-05 22:04:37','n_diff_pfx01',2,1,'id'),('guns','sys_notice','PRIMARY','2018-11-05 22:04:37','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','sys_notice','PRIMARY','2018-11-05 22:04:37','size',1,NULL,'Number of pages in the index'),('guns','sys_operation_log','PRIMARY','2018-11-05 22:04:37','n_diff_pfx01',0,1,'id'),('guns','sys_operation_log','PRIMARY','2018-11-05 22:04:37','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','sys_operation_log','PRIMARY','2018-11-05 22:04:37','size',1,NULL,'Number of pages in the index'),('guns','sys_relation','PRIMARY','2018-11-05 22:04:37','n_diff_pfx01',75,1,'id'),('guns','sys_relation','PRIMARY','2018-11-05 22:04:37','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','sys_relation','PRIMARY','2018-11-05 22:04:37','size',1,NULL,'Number of pages in the index'),('guns','sys_role','PRIMARY','2018-11-05 22:04:47','n_diff_pfx01',2,1,'id'),('guns','sys_role','PRIMARY','2018-11-05 22:04:47','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','sys_role','PRIMARY','2018-11-05 22:04:47','size',1,NULL,'Number of pages in the index'),('guns','sys_user','PRIMARY','2018-11-05 22:05:08','n_diff_pfx01',4,1,'id'),('guns','sys_user','PRIMARY','2018-11-05 22:05:08','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','sys_user','PRIMARY','2018-11-05 22:05:08','size',1,NULL,'Number of pages in the index'),('guns','test','PRIMARY','2018-11-05 22:04:37','n_diff_pfx01',0,1,'aaa'),('guns','test','PRIMARY','2018-11-05 22:04:37','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','test','PRIMARY','2018-11-05 22:04:37','size',1,NULL,'Number of pages in the index'),('mysql','component','PRIMARY','2018-08-21 11:48:24','n_diff_pfx01',0,1,'component_id'),('mysql','component','PRIMARY','2018-08-21 11:48:24','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('mysql','component','PRIMARY','2018-08-21 11:48:24','size',1,NULL,'Number of pages in the index'),('mysql','gtid_executed','PRIMARY','2018-08-21 11:48:24','n_diff_pfx01',0,1,'source_uuid'),('mysql','gtid_executed','PRIMARY','2018-08-21 11:48:24','n_diff_pfx02',0,1,'source_uuid,interval_start'),('mysql','gtid_executed','PRIMARY','2018-08-21 11:48:24','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('mysql','gtid_executed','PRIMARY','2018-08-21 11:48:24','size',1,NULL,'Number of pages in the index'),('security_db','sys_role','PRIMARY','2018-12-28 16:12:35','n_diff_pfx01',0,1,'id'),('security_db','sys_role','PRIMARY','2018-12-28 16:12:35','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('security_db','sys_role','PRIMARY','2018-12-28 16:12:35','size',1,NULL,'Number of pages in the index'),('security_db','sys_user','PRIMARY','2018-12-28 16:12:35','n_diff_pfx01',0,1,'id'),('security_db','sys_user','PRIMARY','2018-12-28 16:12:35','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('security_db','sys_user','PRIMARY','2018-12-28 16:12:35','size',1,NULL,'Number of pages in the index'),('security_db','sys_user_roles','FKd0ut7sloes191bygyf7a3pk52','2018-12-28 16:12:35','n_diff_pfx01',0,1,'sys_user_id'),('security_db','sys_user_roles','FKd0ut7sloes191bygyf7a3pk52','2018-12-28 16:12:35','n_diff_pfx02',0,1,'sys_user_id,DB_ROW_ID'),('security_db','sys_user_roles','FKd0ut7sloes191bygyf7a3pk52','2018-12-28 16:12:35','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('security_db','sys_user_roles','FKd0ut7sloes191bygyf7a3pk52','2018-12-28 16:12:35','size',1,NULL,'Number of pages in the index'),('security_db','sys_user_roles','FKdpvc6d7xqpqr43dfuk1s27cqh','2018-12-28 16:12:35','n_diff_pfx01',0,1,'roles_id'),('security_db','sys_user_roles','FKdpvc6d7xqpqr43dfuk1s27cqh','2018-12-28 16:12:35','n_diff_pfx02',0,1,'roles_id,DB_ROW_ID'),('security_db','sys_user_roles','FKdpvc6d7xqpqr43dfuk1s27cqh','2018-12-28 16:12:35','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('security_db','sys_user_roles','FKdpvc6d7xqpqr43dfuk1s27cqh','2018-12-28 16:12:35','size',1,NULL,'Number of pages in the index'),('security_db','sys_user_roles','GEN_CLUST_INDEX','2018-12-28 16:12:35','n_diff_pfx01',0,1,'DB_ROW_ID'),('security_db','sys_user_roles','GEN_CLUST_INDEX','2018-12-28 16:12:35','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('security_db','sys_user_roles','GEN_CLUST_INDEX','2018-12-28 16:12:35','size',1,NULL,'Number of pages in the index'),('sys','sys_config','PRIMARY','2018-08-21 11:48:25','n_diff_pfx01',6,1,'variable'),('sys','sys_config','PRIMARY','2018-08-21 11:48:25','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('sys','sys_config','PRIMARY','2018-08-21 11:48:25','size',1,NULL,'Number of pages in the index'),('test2','QRTZ_BLOB_TRIGGERS','PRIMARY','2018-11-26 06:22:40','n_diff_pfx01',0,1,'SCHED_NAME'),('test2','QRTZ_BLOB_TRIGGERS','PRIMARY','2018-11-26 06:22:40','n_diff_pfx02',0,1,'SCHED_NAME,TRIGGER_NAME'),('test2','QRTZ_BLOB_TRIGGERS','PRIMARY','2018-11-26 06:22:40','n_diff_pfx03',0,1,'SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP'),('test2','QRTZ_BLOB_TRIGGERS','PRIMARY','2018-11-26 06:22:40','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','QRTZ_BLOB_TRIGGERS','PRIMARY','2018-11-26 06:22:40','size',1,NULL,'Number of pages in the index'),('test2','QRTZ_CALENDARS','PRIMARY','2018-11-26 06:22:40','n_diff_pfx01',0,1,'SCHED_NAME'),('test2','QRTZ_CALENDARS','PRIMARY','2018-11-26 06:22:40','n_diff_pfx02',0,1,'SCHED_NAME,CALENDAR_NAME'),('test2','QRTZ_CALENDARS','PRIMARY','2018-11-26 06:22:40','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','QRTZ_CALENDARS','PRIMARY','2018-11-26 06:22:40','size',1,NULL,'Number of pages in the index'),('test2','QRTZ_CRON_TRIGGERS','PRIMARY','2018-11-26 06:22:40','n_diff_pfx01',0,1,'SCHED_NAME'),('test2','QRTZ_CRON_TRIGGERS','PRIMARY','2018-11-26 06:22:40','n_diff_pfx02',0,1,'SCHED_NAME,TRIGGER_NAME'),('test2','QRTZ_CRON_TRIGGERS','PRIMARY','2018-11-26 06:22:40','n_diff_pfx03',0,1,'SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP'),('test2','QRTZ_CRON_TRIGGERS','PRIMARY','2018-11-26 06:22:40','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','QRTZ_CRON_TRIGGERS','PRIMARY','2018-11-26 06:22:40','size',1,NULL,'Number of pages in the index'),('test2','QRTZ_FIRED_TRIGGERS','PRIMARY','2018-11-26 07:45:49','n_diff_pfx01',1,1,'SCHED_NAME'),('test2','QRTZ_FIRED_TRIGGERS','PRIMARY','2018-11-26 07:45:49','n_diff_pfx02',1,1,'SCHED_NAME,ENTRY_ID'),('test2','QRTZ_FIRED_TRIGGERS','PRIMARY','2018-11-26 07:45:49','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','QRTZ_FIRED_TRIGGERS','PRIMARY','2018-11-26 07:45:49','size',1,NULL,'Number of pages in the index'),('test2','QRTZ_JOB_DETAILS','PRIMARY','2018-11-26 06:22:39','n_diff_pfx01',0,1,'SCHED_NAME'),('test2','QRTZ_JOB_DETAILS','PRIMARY','2018-11-26 06:22:39','n_diff_pfx02',0,1,'SCHED_NAME,JOB_NAME'),('test2','QRTZ_JOB_DETAILS','PRIMARY','2018-11-26 06:22:39','n_diff_pfx03',0,1,'SCHED_NAME,JOB_NAME,JOB_GROUP'),('test2','QRTZ_JOB_DETAILS','PRIMARY','2018-11-26 06:22:39','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','QRTZ_JOB_DETAILS','PRIMARY','2018-11-26 06:22:39','size',1,NULL,'Number of pages in the index'),('test2','QRTZ_LOCKS','PRIMARY','2018-11-26 06:22:40','n_diff_pfx01',0,1,'SCHED_NAME'),('test2','QRTZ_LOCKS','PRIMARY','2018-11-26 06:22:40','n_diff_pfx02',0,1,'SCHED_NAME,LOCK_NAME'),('test2','QRTZ_LOCKS','PRIMARY','2018-11-26 06:22:40','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','QRTZ_LOCKS','PRIMARY','2018-11-26 06:22:40','size',1,NULL,'Number of pages in the index'),('test2','QRTZ_PAUSED_TRIGGER_GRPS','PRIMARY','2018-11-26 06:22:40','n_diff_pfx01',0,1,'SCHED_NAME'),('test2','QRTZ_PAUSED_TRIGGER_GRPS','PRIMARY','2018-11-26 06:22:40','n_diff_pfx02',0,1,'SCHED_NAME,TRIGGER_GROUP'),('test2','QRTZ_PAUSED_TRIGGER_GRPS','PRIMARY','2018-11-26 06:22:40','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','QRTZ_PAUSED_TRIGGER_GRPS','PRIMARY','2018-11-26 06:22:40','size',1,NULL,'Number of pages in the index'),('test2','QRTZ_SCHEDULER_STATE','PRIMARY','2018-11-26 06:22:40','n_diff_pfx01',0,1,'SCHED_NAME'),('test2','QRTZ_SCHEDULER_STATE','PRIMARY','2018-11-26 06:22:40','n_diff_pfx02',0,1,'SCHED_NAME,INSTANCE_NAME'),('test2','QRTZ_SCHEDULER_STATE','PRIMARY','2018-11-26 06:22:40','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','QRTZ_SCHEDULER_STATE','PRIMARY','2018-11-26 06:22:40','size',1,NULL,'Number of pages in the index'),('test2','QRTZ_SIMPLE_TRIGGERS','PRIMARY','2018-11-26 06:22:40','n_diff_pfx01',0,1,'SCHED_NAME'),('test2','QRTZ_SIMPLE_TRIGGERS','PRIMARY','2018-11-26 06:22:40','n_diff_pfx02',0,1,'SCHED_NAME,TRIGGER_NAME'),('test2','QRTZ_SIMPLE_TRIGGERS','PRIMARY','2018-11-26 06:22:40','n_diff_pfx03',0,1,'SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP'),('test2','QRTZ_SIMPLE_TRIGGERS','PRIMARY','2018-11-26 06:22:40','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','QRTZ_SIMPLE_TRIGGERS','PRIMARY','2018-11-26 06:22:40','size',1,NULL,'Number of pages in the index'),('test2','QRTZ_SIMPROP_TRIGGERS','PRIMARY','2018-11-26 06:22:40','n_diff_pfx01',0,1,'SCHED_NAME'),('test2','QRTZ_SIMPROP_TRIGGERS','PRIMARY','2018-11-26 06:22:40','n_diff_pfx02',0,1,'SCHED_NAME,TRIGGER_NAME'),('test2','QRTZ_SIMPROP_TRIGGERS','PRIMARY','2018-11-26 06:22:40','n_diff_pfx03',0,1,'SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP'),('test2','QRTZ_SIMPROP_TRIGGERS','PRIMARY','2018-11-26 06:22:40','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','QRTZ_SIMPROP_TRIGGERS','PRIMARY','2018-11-26 06:22:40','size',1,NULL,'Number of pages in the index'),('test2','QRTZ_TRIGGERS','PRIMARY','2018-11-26 06:22:39','n_diff_pfx01',0,1,'SCHED_NAME'),('test2','QRTZ_TRIGGERS','PRIMARY','2018-11-26 06:22:39','n_diff_pfx02',0,1,'SCHED_NAME,TRIGGER_NAME'),('test2','QRTZ_TRIGGERS','PRIMARY','2018-11-26 06:22:39','n_diff_pfx03',0,1,'SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP'),('test2','QRTZ_TRIGGERS','PRIMARY','2018-11-26 06:22:39','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','QRTZ_TRIGGERS','PRIMARY','2018-11-26 06:22:39','size',1,NULL,'Number of pages in the index'),('test2','QRTZ_TRIGGERS','SCHED_NAME','2018-11-26 06:22:39','n_diff_pfx01',0,1,'SCHED_NAME'),('test2','QRTZ_TRIGGERS','SCHED_NAME','2018-11-26 06:22:39','n_diff_pfx02',0,1,'SCHED_NAME,JOB_NAME'),('test2','QRTZ_TRIGGERS','SCHED_NAME','2018-11-26 06:22:39','n_diff_pfx03',0,1,'SCHED_NAME,JOB_NAME,JOB_GROUP'),('test2','QRTZ_TRIGGERS','SCHED_NAME','2018-11-26 06:22:39','n_diff_pfx04',0,1,'SCHED_NAME,JOB_NAME,JOB_GROUP,TRIGGER_NAME'),('test2','QRTZ_TRIGGERS','SCHED_NAME','2018-11-26 06:22:39','n_diff_pfx05',0,1,'SCHED_NAME,JOB_NAME,JOB_GROUP,TRIGGER_NAME,TRIGGER_GROUP'),('test2','QRTZ_TRIGGERS','SCHED_NAME','2018-11-26 06:22:39','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','QRTZ_TRIGGERS','SCHED_NAME','2018-11-26 06:22:39','size',1,NULL,'Number of pages in the index'),('test2','dept','PRIMARY','2018-08-21 11:51:31','n_diff_pfx01',4,1,'DEPTNO'),('test2','dept','PRIMARY','2018-08-21 11:51:31','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','dept','PRIMARY','2018-08-21 11:51:31','size',1,NULL,'Number of pages in the index'),('test2','emp','EMP','2018-12-28 03:37:41','n_diff_pfx01',4,1,'DEPTNO'),('test2','emp','EMP','2018-12-28 03:37:41','n_diff_pfx02',15,1,'DEPTNO,EMPNO'),('test2','emp','EMP','2018-12-28 03:37:41','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','emp','EMP','2018-12-28 03:37:41','size',1,NULL,'Number of pages in the index'),('test2','emp','PRIMARY','2018-12-28 03:37:41','n_diff_pfx01',15,1,'EMPNO'),('test2','emp','PRIMARY','2018-12-28 03:37:41','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','emp','PRIMARY','2018-12-28 03:37:41','size',1,NULL,'Number of pages in the index'),('test2','my_date','PRIMARY','2018-12-10 12:41:00','n_diff_pfx01',0,1,'id'),('test2','my_date','PRIMARY','2018-12-10 12:41:00','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','my_date','PRIMARY','2018-12-10 12:41:00','size',1,NULL,'Number of pages in the index'),('test2','salgrade','GEN_CLUST_INDEX','2018-08-21 11:51:43','n_diff_pfx01',5,1,'DB_ROW_ID'),('test2','salgrade','GEN_CLUST_INDEX','2018-08-21 11:51:43','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','salgrade','GEN_CLUST_INDEX','2018-08-21 11:51:43','size',1,NULL,'Number of pages in the index');
+INSERT  IGNORE INTO `innodb_index_stats` VALUES ('ApolloConfigDB','App','AppId','2019-01-12 08:26:52','n_diff_pfx01',0,1,'AppId'),('ApolloConfigDB','App','AppId','2019-01-12 08:26:52','n_diff_pfx02',0,1,'AppId,Id'),('ApolloConfigDB','App','AppId','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','App','AppId','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','App','DataChange_LastTime','2019-01-12 08:26:52','n_diff_pfx01',0,1,'DataChange_LastTime'),('ApolloConfigDB','App','DataChange_LastTime','2019-01-12 08:26:52','n_diff_pfx02',0,1,'DataChange_LastTime,Id'),('ApolloConfigDB','App','DataChange_LastTime','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','App','DataChange_LastTime','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','App','IX_Name','2019-01-12 08:26:52','n_diff_pfx01',0,1,'Name'),('ApolloConfigDB','App','IX_Name','2019-01-12 08:26:52','n_diff_pfx02',0,1,'Name,Id'),('ApolloConfigDB','App','IX_Name','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','App','IX_Name','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','App','PRIMARY','2019-01-12 08:26:52','n_diff_pfx01',0,1,'Id'),('ApolloConfigDB','App','PRIMARY','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','App','PRIMARY','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','AppNamespace','DataChange_LastTime','2019-01-12 08:26:52','n_diff_pfx01',0,1,'DataChange_LastTime'),('ApolloConfigDB','AppNamespace','DataChange_LastTime','2019-01-12 08:26:52','n_diff_pfx02',0,1,'DataChange_LastTime,Id'),('ApolloConfigDB','AppNamespace','DataChange_LastTime','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','AppNamespace','DataChange_LastTime','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','AppNamespace','IX_AppId','2019-01-12 08:26:52','n_diff_pfx01',0,1,'AppId'),('ApolloConfigDB','AppNamespace','IX_AppId','2019-01-12 08:26:52','n_diff_pfx02',0,1,'AppId,Id'),('ApolloConfigDB','AppNamespace','IX_AppId','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','AppNamespace','IX_AppId','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','AppNamespace','Name_AppId','2019-01-12 08:26:52','n_diff_pfx01',0,1,'Name'),('ApolloConfigDB','AppNamespace','Name_AppId','2019-01-12 08:26:52','n_diff_pfx02',0,1,'Name,AppId'),('ApolloConfigDB','AppNamespace','Name_AppId','2019-01-12 08:26:52','n_diff_pfx03',0,1,'Name,AppId,Id'),('ApolloConfigDB','AppNamespace','Name_AppId','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','AppNamespace','Name_AppId','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','AppNamespace','PRIMARY','2019-01-12 08:26:52','n_diff_pfx01',0,1,'Id'),('ApolloConfigDB','AppNamespace','PRIMARY','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','AppNamespace','PRIMARY','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Audit','DataChange_LastTime','2019-01-12 08:26:52','n_diff_pfx01',0,1,'DataChange_LastTime'),('ApolloConfigDB','Audit','DataChange_LastTime','2019-01-12 08:26:52','n_diff_pfx02',0,1,'DataChange_LastTime,Id'),('ApolloConfigDB','Audit','DataChange_LastTime','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Audit','DataChange_LastTime','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Audit','PRIMARY','2019-01-12 08:26:52','n_diff_pfx01',0,1,'Id'),('ApolloConfigDB','Audit','PRIMARY','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Audit','PRIMARY','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Cluster','DataChange_LastTime','2019-01-12 08:26:52','n_diff_pfx01',0,1,'DataChange_LastTime'),('ApolloConfigDB','Cluster','DataChange_LastTime','2019-01-12 08:26:52','n_diff_pfx02',0,1,'DataChange_LastTime,Id'),('ApolloConfigDB','Cluster','DataChange_LastTime','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Cluster','DataChange_LastTime','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Cluster','IX_AppId_Name','2019-01-12 08:26:52','n_diff_pfx01',0,1,'AppId'),('ApolloConfigDB','Cluster','IX_AppId_Name','2019-01-12 08:26:52','n_diff_pfx02',0,1,'AppId,Name'),('ApolloConfigDB','Cluster','IX_AppId_Name','2019-01-12 08:26:52','n_diff_pfx03',0,1,'AppId,Name,Id'),('ApolloConfigDB','Cluster','IX_AppId_Name','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Cluster','IX_AppId_Name','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Cluster','IX_ParentClusterId','2019-01-12 08:26:52','n_diff_pfx01',0,1,'ParentClusterId'),('ApolloConfigDB','Cluster','IX_ParentClusterId','2019-01-12 08:26:52','n_diff_pfx02',0,1,'ParentClusterId,Id'),('ApolloConfigDB','Cluster','IX_ParentClusterId','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Cluster','IX_ParentClusterId','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Cluster','PRIMARY','2019-01-12 08:26:52','n_diff_pfx01',0,1,'Id'),('ApolloConfigDB','Cluster','PRIMARY','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Cluster','PRIMARY','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Commit','AppId','2019-01-12 08:26:52','n_diff_pfx01',0,1,'AppId'),('ApolloConfigDB','Commit','AppId','2019-01-12 08:26:52','n_diff_pfx02',0,1,'AppId,Id'),('ApolloConfigDB','Commit','AppId','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Commit','AppId','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Commit','ClusterName','2019-01-12 08:26:52','n_diff_pfx01',0,1,'ClusterName'),('ApolloConfigDB','Commit','ClusterName','2019-01-12 08:26:52','n_diff_pfx02',0,1,'ClusterName,Id'),('ApolloConfigDB','Commit','ClusterName','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Commit','ClusterName','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Commit','DataChange_LastTime','2019-01-12 08:26:52','n_diff_pfx01',0,1,'DataChange_LastTime'),('ApolloConfigDB','Commit','DataChange_LastTime','2019-01-12 08:26:52','n_diff_pfx02',0,1,'DataChange_LastTime,Id'),('ApolloConfigDB','Commit','DataChange_LastTime','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Commit','DataChange_LastTime','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Commit','NamespaceName','2019-01-12 08:26:52','n_diff_pfx01',0,1,'NamespaceName'),('ApolloConfigDB','Commit','NamespaceName','2019-01-12 08:26:52','n_diff_pfx02',0,1,'NamespaceName,Id'),('ApolloConfigDB','Commit','NamespaceName','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Commit','NamespaceName','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Commit','PRIMARY','2019-01-12 08:26:52','n_diff_pfx01',0,1,'Id'),('ApolloConfigDB','Commit','PRIMARY','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Commit','PRIMARY','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','GrayReleaseRule','DataChange_LastTime','2019-01-12 08:26:52','n_diff_pfx01',0,1,'DataChange_LastTime'),('ApolloConfigDB','GrayReleaseRule','DataChange_LastTime','2019-01-12 08:26:52','n_diff_pfx02',0,1,'DataChange_LastTime,Id'),('ApolloConfigDB','GrayReleaseRule','DataChange_LastTime','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','GrayReleaseRule','DataChange_LastTime','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','GrayReleaseRule','IX_Namespace','2019-01-12 08:26:52','n_diff_pfx01',0,1,'AppId'),('ApolloConfigDB','GrayReleaseRule','IX_Namespace','2019-01-12 08:26:52','n_diff_pfx02',0,1,'AppId,ClusterName'),('ApolloConfigDB','GrayReleaseRule','IX_Namespace','2019-01-12 08:26:52','n_diff_pfx03',0,1,'AppId,ClusterName,NamespaceName'),('ApolloConfigDB','GrayReleaseRule','IX_Namespace','2019-01-12 08:26:52','n_diff_pfx04',0,1,'AppId,ClusterName,NamespaceName,Id'),('ApolloConfigDB','GrayReleaseRule','IX_Namespace','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','GrayReleaseRule','IX_Namespace','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','GrayReleaseRule','PRIMARY','2019-01-12 08:26:52','n_diff_pfx01',0,1,'Id'),('ApolloConfigDB','GrayReleaseRule','PRIMARY','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','GrayReleaseRule','PRIMARY','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Instance','IX_DataChange_LastTime','2019-01-12 08:26:52','n_diff_pfx01',0,1,'DataChange_LastTime'),('ApolloConfigDB','Instance','IX_DataChange_LastTime','2019-01-12 08:26:52','n_diff_pfx02',0,1,'DataChange_LastTime,Id'),('ApolloConfigDB','Instance','IX_DataChange_LastTime','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Instance','IX_DataChange_LastTime','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Instance','IX_IP','2019-01-12 08:26:52','n_diff_pfx01',0,1,'Ip'),('ApolloConfigDB','Instance','IX_IP','2019-01-12 08:26:52','n_diff_pfx02',0,1,'Ip,Id'),('ApolloConfigDB','Instance','IX_IP','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Instance','IX_IP','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Instance','IX_UNIQUE_KEY','2019-01-12 08:26:52','n_diff_pfx01',0,1,'AppId'),('ApolloConfigDB','Instance','IX_UNIQUE_KEY','2019-01-12 08:26:52','n_diff_pfx02',0,1,'AppId,ClusterName'),('ApolloConfigDB','Instance','IX_UNIQUE_KEY','2019-01-12 08:26:52','n_diff_pfx03',0,1,'AppId,ClusterName,Ip'),('ApolloConfigDB','Instance','IX_UNIQUE_KEY','2019-01-12 08:26:52','n_diff_pfx04',0,1,'AppId,ClusterName,Ip,DataCenter'),('ApolloConfigDB','Instance','IX_UNIQUE_KEY','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Instance','IX_UNIQUE_KEY','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Instance','PRIMARY','2019-01-12 08:26:52','n_diff_pfx01',0,1,'Id'),('ApolloConfigDB','Instance','PRIMARY','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Instance','PRIMARY','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','InstanceConfig','IX_DataChange_LastTime','2019-01-12 08:26:52','n_diff_pfx01',0,1,'DataChange_LastTime'),('ApolloConfigDB','InstanceConfig','IX_DataChange_LastTime','2019-01-12 08:26:52','n_diff_pfx02',0,1,'DataChange_LastTime,Id'),('ApolloConfigDB','InstanceConfig','IX_DataChange_LastTime','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','InstanceConfig','IX_DataChange_LastTime','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','InstanceConfig','IX_ReleaseKey','2019-01-12 08:26:52','n_diff_pfx01',0,1,'ReleaseKey'),('ApolloConfigDB','InstanceConfig','IX_ReleaseKey','2019-01-12 08:26:52','n_diff_pfx02',0,1,'ReleaseKey,Id'),('ApolloConfigDB','InstanceConfig','IX_ReleaseKey','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','InstanceConfig','IX_ReleaseKey','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','InstanceConfig','IX_UNIQUE_KEY','2019-01-12 08:26:52','n_diff_pfx01',0,1,'InstanceId'),('ApolloConfigDB','InstanceConfig','IX_UNIQUE_KEY','2019-01-12 08:26:52','n_diff_pfx02',0,1,'InstanceId,ConfigAppId'),('ApolloConfigDB','InstanceConfig','IX_UNIQUE_KEY','2019-01-12 08:26:52','n_diff_pfx03',0,1,'InstanceId,ConfigAppId,ConfigNamespaceName'),('ApolloConfigDB','InstanceConfig','IX_UNIQUE_KEY','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','InstanceConfig','IX_UNIQUE_KEY','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','InstanceConfig','IX_Valid_Namespace','2019-01-12 08:26:52','n_diff_pfx01',0,1,'ConfigAppId'),('ApolloConfigDB','InstanceConfig','IX_Valid_Namespace','2019-01-12 08:26:52','n_diff_pfx02',0,1,'ConfigAppId,ConfigClusterName'),('ApolloConfigDB','InstanceConfig','IX_Valid_Namespace','2019-01-12 08:26:52','n_diff_pfx03',0,1,'ConfigAppId,ConfigClusterName,ConfigNamespaceName'),('ApolloConfigDB','InstanceConfig','IX_Valid_Namespace','2019-01-12 08:26:52','n_diff_pfx04',0,1,'ConfigAppId,ConfigClusterName,ConfigNamespaceName,DataChange_LastTime'),('ApolloConfigDB','InstanceConfig','IX_Valid_Namespace','2019-01-12 08:26:52','n_diff_pfx05',0,1,'ConfigAppId,ConfigClusterName,ConfigNamespaceName,DataChange_LastTime,Id'),('ApolloConfigDB','InstanceConfig','IX_Valid_Namespace','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','InstanceConfig','IX_Valid_Namespace','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','InstanceConfig','PRIMARY','2019-01-12 08:26:52','n_diff_pfx01',0,1,'Id'),('ApolloConfigDB','InstanceConfig','PRIMARY','2019-01-12 08:26:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','InstanceConfig','PRIMARY','2019-01-12 08:26:52','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Item','DataChange_LastTime','2019-01-12 08:26:53','n_diff_pfx01',0,1,'DataChange_LastTime'),('ApolloConfigDB','Item','DataChange_LastTime','2019-01-12 08:26:53','n_diff_pfx02',0,1,'DataChange_LastTime,Id'),('ApolloConfigDB','Item','DataChange_LastTime','2019-01-12 08:26:53','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Item','DataChange_LastTime','2019-01-12 08:26:53','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Item','IX_GroupId','2019-01-12 08:26:53','n_diff_pfx01',0,1,'NamespaceId'),('ApolloConfigDB','Item','IX_GroupId','2019-01-12 08:26:53','n_diff_pfx02',0,1,'NamespaceId,Id'),('ApolloConfigDB','Item','IX_GroupId','2019-01-12 08:26:53','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Item','IX_GroupId','2019-01-12 08:26:53','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Item','PRIMARY','2019-01-12 08:26:53','n_diff_pfx01',0,1,'Id'),('ApolloConfigDB','Item','PRIMARY','2019-01-12 08:26:53','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Item','PRIMARY','2019-01-12 08:26:53','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Namespace','AppId_ClusterName_NamespaceName','2019-01-12 08:26:53','n_diff_pfx01',0,1,'AppId'),('ApolloConfigDB','Namespace','AppId_ClusterName_NamespaceName','2019-01-12 08:26:53','n_diff_pfx02',0,1,'AppId,ClusterName'),('ApolloConfigDB','Namespace','AppId_ClusterName_NamespaceName','2019-01-12 08:26:53','n_diff_pfx03',0,1,'AppId,ClusterName,NamespaceName'),('ApolloConfigDB','Namespace','AppId_ClusterName_NamespaceName','2019-01-12 08:26:53','n_diff_pfx04',0,1,'AppId,ClusterName,NamespaceName,Id'),('ApolloConfigDB','Namespace','AppId_ClusterName_NamespaceName','2019-01-12 08:26:53','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Namespace','AppId_ClusterName_NamespaceName','2019-01-12 08:26:53','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Namespace','DataChange_LastTime','2019-01-12 08:26:53','n_diff_pfx01',0,1,'DataChange_LastTime'),('ApolloConfigDB','Namespace','DataChange_LastTime','2019-01-12 08:26:53','n_diff_pfx02',0,1,'DataChange_LastTime,Id'),('ApolloConfigDB','Namespace','DataChange_LastTime','2019-01-12 08:26:53','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Namespace','DataChange_LastTime','2019-01-12 08:26:53','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Namespace','IX_NamespaceName','2019-01-12 08:26:53','n_diff_pfx01',0,1,'NamespaceName'),('ApolloConfigDB','Namespace','IX_NamespaceName','2019-01-12 08:26:53','n_diff_pfx02',0,1,'NamespaceName,Id'),('ApolloConfigDB','Namespace','IX_NamespaceName','2019-01-12 08:26:53','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Namespace','IX_NamespaceName','2019-01-12 08:26:53','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Namespace','PRIMARY','2019-01-12 08:26:53','n_diff_pfx01',0,1,'Id'),('ApolloConfigDB','Namespace','PRIMARY','2019-01-12 08:26:53','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Namespace','PRIMARY','2019-01-12 08:26:53','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','NamespaceLock','DataChange_LastTime','2019-01-12 08:26:53','n_diff_pfx01',0,1,'DataChange_LastTime'),('ApolloConfigDB','NamespaceLock','DataChange_LastTime','2019-01-12 08:26:53','n_diff_pfx02',0,1,'DataChange_LastTime,Id'),('ApolloConfigDB','NamespaceLock','DataChange_LastTime','2019-01-12 08:26:53','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','NamespaceLock','DataChange_LastTime','2019-01-12 08:26:53','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','NamespaceLock','IX_NamespaceId','2019-01-12 08:26:53','n_diff_pfx01',0,1,'NamespaceId'),('ApolloConfigDB','NamespaceLock','IX_NamespaceId','2019-01-12 08:26:53','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','NamespaceLock','IX_NamespaceId','2019-01-12 08:26:53','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','NamespaceLock','PRIMARY','2019-01-12 08:26:53','n_diff_pfx01',0,1,'Id'),('ApolloConfigDB','NamespaceLock','PRIMARY','2019-01-12 08:26:53','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','NamespaceLock','PRIMARY','2019-01-12 08:26:53','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Release','AppId_ClusterName_GroupName','2019-01-12 08:26:53','n_diff_pfx01',0,1,'AppId'),('ApolloConfigDB','Release','AppId_ClusterName_GroupName','2019-01-12 08:26:53','n_diff_pfx02',0,1,'AppId,ClusterName'),('ApolloConfigDB','Release','AppId_ClusterName_GroupName','2019-01-12 08:26:53','n_diff_pfx03',0,1,'AppId,ClusterName,NamespaceName'),('ApolloConfigDB','Release','AppId_ClusterName_GroupName','2019-01-12 08:26:53','n_diff_pfx04',0,1,'AppId,ClusterName,NamespaceName,Id'),('ApolloConfigDB','Release','AppId_ClusterName_GroupName','2019-01-12 08:26:53','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Release','AppId_ClusterName_GroupName','2019-01-12 08:26:53','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Release','DataChange_LastTime','2019-01-12 08:26:53','n_diff_pfx01',0,1,'DataChange_LastTime'),('ApolloConfigDB','Release','DataChange_LastTime','2019-01-12 08:26:53','n_diff_pfx02',0,1,'DataChange_LastTime,Id'),('ApolloConfigDB','Release','DataChange_LastTime','2019-01-12 08:26:53','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Release','DataChange_LastTime','2019-01-12 08:26:53','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Release','IX_ReleaseKey','2019-01-12 08:26:53','n_diff_pfx01',0,1,'ReleaseKey'),('ApolloConfigDB','Release','IX_ReleaseKey','2019-01-12 08:26:53','n_diff_pfx02',0,1,'ReleaseKey,Id'),('ApolloConfigDB','Release','IX_ReleaseKey','2019-01-12 08:26:53','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Release','IX_ReleaseKey','2019-01-12 08:26:53','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','Release','PRIMARY','2019-01-12 08:26:53','n_diff_pfx01',0,1,'Id'),('ApolloConfigDB','Release','PRIMARY','2019-01-12 08:26:53','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','Release','PRIMARY','2019-01-12 08:26:53','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','ReleaseHistory','IX_DataChange_LastTime','2019-01-12 08:26:53','n_diff_pfx01',0,1,'DataChange_LastTime'),('ApolloConfigDB','ReleaseHistory','IX_DataChange_LastTime','2019-01-12 08:26:53','n_diff_pfx02',0,1,'DataChange_LastTime,Id'),('ApolloConfigDB','ReleaseHistory','IX_DataChange_LastTime','2019-01-12 08:26:53','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','ReleaseHistory','IX_DataChange_LastTime','2019-01-12 08:26:53','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','ReleaseHistory','IX_Namespace','2019-01-12 08:26:53','n_diff_pfx01',0,1,'AppId'),('ApolloConfigDB','ReleaseHistory','IX_Namespace','2019-01-12 08:26:53','n_diff_pfx02',0,1,'AppId,ClusterName'),('ApolloConfigDB','ReleaseHistory','IX_Namespace','2019-01-12 08:26:53','n_diff_pfx03',0,1,'AppId,ClusterName,NamespaceName'),('ApolloConfigDB','ReleaseHistory','IX_Namespace','2019-01-12 08:26:53','n_diff_pfx04',0,1,'AppId,ClusterName,NamespaceName,BranchName'),('ApolloConfigDB','ReleaseHistory','IX_Namespace','2019-01-12 08:26:53','n_diff_pfx05',0,1,'AppId,ClusterName,NamespaceName,BranchName,Id'),('ApolloConfigDB','ReleaseHistory','IX_Namespace','2019-01-12 08:26:53','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','ReleaseHistory','IX_Namespace','2019-01-12 08:26:53','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','ReleaseHistory','IX_ReleaseId','2019-01-12 08:26:53','n_diff_pfx01',0,1,'ReleaseId'),('ApolloConfigDB','ReleaseHistory','IX_ReleaseId','2019-01-12 08:26:53','n_diff_pfx02',0,1,'ReleaseId,Id'),('ApolloConfigDB','ReleaseHistory','IX_ReleaseId','2019-01-12 08:26:53','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','ReleaseHistory','IX_ReleaseId','2019-01-12 08:26:53','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','ReleaseHistory','PRIMARY','2019-01-12 08:26:53','n_diff_pfx01',0,1,'Id'),('ApolloConfigDB','ReleaseHistory','PRIMARY','2019-01-12 08:26:53','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','ReleaseHistory','PRIMARY','2019-01-12 08:26:53','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','ReleaseMessage','DataChange_LastTime','2019-01-12 08:26:53','n_diff_pfx01',0,1,'DataChange_LastTime'),('ApolloConfigDB','ReleaseMessage','DataChange_LastTime','2019-01-12 08:26:53','n_diff_pfx02',0,1,'DataChange_LastTime,Id'),('ApolloConfigDB','ReleaseMessage','DataChange_LastTime','2019-01-12 08:26:53','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','ReleaseMessage','DataChange_LastTime','2019-01-12 08:26:53','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','ReleaseMessage','IX_Message','2019-01-12 08:26:53','n_diff_pfx01',0,1,'Message'),('ApolloConfigDB','ReleaseMessage','IX_Message','2019-01-12 08:26:53','n_diff_pfx02',0,1,'Message,Id'),('ApolloConfigDB','ReleaseMessage','IX_Message','2019-01-12 08:26:53','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','ReleaseMessage','IX_Message','2019-01-12 08:26:53','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','ReleaseMessage','PRIMARY','2019-01-12 08:26:53','n_diff_pfx01',0,1,'Id'),('ApolloConfigDB','ReleaseMessage','PRIMARY','2019-01-12 08:26:53','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','ReleaseMessage','PRIMARY','2019-01-12 08:26:53','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','ServerConfig','DataChange_LastTime','2019-01-12 08:27:04','n_diff_pfx01',1,1,'DataChange_LastTime'),('ApolloConfigDB','ServerConfig','DataChange_LastTime','2019-01-12 08:27:04','n_diff_pfx02',5,1,'DataChange_LastTime,Id'),('ApolloConfigDB','ServerConfig','DataChange_LastTime','2019-01-12 08:27:04','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','ServerConfig','DataChange_LastTime','2019-01-12 08:27:04','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','ServerConfig','IX_Key','2019-01-12 08:27:04','n_diff_pfx01',5,1,'Key'),('ApolloConfigDB','ServerConfig','IX_Key','2019-01-12 08:27:04','n_diff_pfx02',5,1,'Key,Id'),('ApolloConfigDB','ServerConfig','IX_Key','2019-01-12 08:27:04','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','ServerConfig','IX_Key','2019-01-12 08:27:04','size',1,NULL,'Number of pages in the index'),('ApolloConfigDB','ServerConfig','PRIMARY','2019-01-12 08:27:04','n_diff_pfx01',5,1,'Id'),('ApolloConfigDB','ServerConfig','PRIMARY','2019-01-12 08:27:04','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloConfigDB','ServerConfig','PRIMARY','2019-01-12 08:27:04','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','App','AppId','2019-01-12 08:27:12','n_diff_pfx01',0,1,'AppId'),('ApolloPortalDB','App','AppId','2019-01-12 08:27:12','n_diff_pfx02',0,1,'AppId,Id'),('ApolloPortalDB','App','AppId','2019-01-12 08:27:12','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','App','AppId','2019-01-12 08:27:12','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','App','DataChange_LastTime','2019-01-12 08:27:12','n_diff_pfx01',0,1,'DataChange_LastTime'),('ApolloPortalDB','App','DataChange_LastTime','2019-01-12 08:27:12','n_diff_pfx02',0,1,'DataChange_LastTime,Id'),('ApolloPortalDB','App','DataChange_LastTime','2019-01-12 08:27:12','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','App','DataChange_LastTime','2019-01-12 08:27:12','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','App','IX_Name','2019-01-12 08:27:12','n_diff_pfx01',0,1,'Name'),('ApolloPortalDB','App','IX_Name','2019-01-12 08:27:12','n_diff_pfx02',0,1,'Name,Id'),('ApolloPortalDB','App','IX_Name','2019-01-12 08:27:12','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','App','IX_Name','2019-01-12 08:27:12','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','App','PRIMARY','2019-01-12 08:27:12','n_diff_pfx01',0,1,'Id'),('ApolloPortalDB','App','PRIMARY','2019-01-12 08:27:12','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','App','PRIMARY','2019-01-12 08:27:12','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','AppNamespace','DataChange_LastTime','2019-01-12 08:27:12','n_diff_pfx01',0,1,'DataChange_LastTime'),('ApolloPortalDB','AppNamespace','DataChange_LastTime','2019-01-12 08:27:12','n_diff_pfx02',0,1,'DataChange_LastTime,Id'),('ApolloPortalDB','AppNamespace','DataChange_LastTime','2019-01-12 08:27:12','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','AppNamespace','DataChange_LastTime','2019-01-12 08:27:12','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','AppNamespace','IX_AppId','2019-01-12 08:27:12','n_diff_pfx01',0,1,'AppId'),('ApolloPortalDB','AppNamespace','IX_AppId','2019-01-12 08:27:12','n_diff_pfx02',0,1,'AppId,Id'),('ApolloPortalDB','AppNamespace','IX_AppId','2019-01-12 08:27:12','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','AppNamespace','IX_AppId','2019-01-12 08:27:12','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','AppNamespace','Name_AppId','2019-01-12 08:27:12','n_diff_pfx01',0,1,'Name'),('ApolloPortalDB','AppNamespace','Name_AppId','2019-01-12 08:27:12','n_diff_pfx02',0,1,'Name,AppId'),('ApolloPortalDB','AppNamespace','Name_AppId','2019-01-12 08:27:12','n_diff_pfx03',0,1,'Name,AppId,Id'),('ApolloPortalDB','AppNamespace','Name_AppId','2019-01-12 08:27:12','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','AppNamespace','Name_AppId','2019-01-12 08:27:12','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','AppNamespace','PRIMARY','2019-01-12 08:27:12','n_diff_pfx01',0,1,'Id'),('ApolloPortalDB','AppNamespace','PRIMARY','2019-01-12 08:27:12','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','AppNamespace','PRIMARY','2019-01-12 08:27:12','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','Authorities','PRIMARY','2019-01-12 08:27:13','n_diff_pfx01',0,1,'Id'),('ApolloPortalDB','Authorities','PRIMARY','2019-01-12 08:27:13','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','Authorities','PRIMARY','2019-01-12 08:27:13','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','Consumer','AppId','2019-01-12 08:27:12','n_diff_pfx01',0,1,'AppId'),('ApolloPortalDB','Consumer','AppId','2019-01-12 08:27:12','n_diff_pfx02',0,1,'AppId,Id'),('ApolloPortalDB','Consumer','AppId','2019-01-12 08:27:12','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','Consumer','AppId','2019-01-12 08:27:12','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','Consumer','DataChange_LastTime','2019-01-12 08:27:12','n_diff_pfx01',0,1,'DataChange_LastTime'),('ApolloPortalDB','Consumer','DataChange_LastTime','2019-01-12 08:27:12','n_diff_pfx02',0,1,'DataChange_LastTime,Id'),('ApolloPortalDB','Consumer','DataChange_LastTime','2019-01-12 08:27:12','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','Consumer','DataChange_LastTime','2019-01-12 08:27:12','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','Consumer','PRIMARY','2019-01-12 08:27:12','n_diff_pfx01',0,1,'Id'),('ApolloPortalDB','Consumer','PRIMARY','2019-01-12 08:27:12','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','Consumer','PRIMARY','2019-01-12 08:27:12','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','ConsumerAudit','IX_ConsumerId','2019-01-12 08:27:12','n_diff_pfx01',0,1,'ConsumerId'),('ApolloPortalDB','ConsumerAudit','IX_ConsumerId','2019-01-12 08:27:12','n_diff_pfx02',0,1,'ConsumerId,Id'),('ApolloPortalDB','ConsumerAudit','IX_ConsumerId','2019-01-12 08:27:12','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','ConsumerAudit','IX_ConsumerId','2019-01-12 08:27:12','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','ConsumerAudit','IX_DataChange_LastTime','2019-01-12 08:27:12','n_diff_pfx01',0,1,'DataChange_LastTime'),('ApolloPortalDB','ConsumerAudit','IX_DataChange_LastTime','2019-01-12 08:27:12','n_diff_pfx02',0,1,'DataChange_LastTime,Id'),('ApolloPortalDB','ConsumerAudit','IX_DataChange_LastTime','2019-01-12 08:27:12','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','ConsumerAudit','IX_DataChange_LastTime','2019-01-12 08:27:12','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','ConsumerAudit','PRIMARY','2019-01-12 08:27:12','n_diff_pfx01',0,1,'Id'),('ApolloPortalDB','ConsumerAudit','PRIMARY','2019-01-12 08:27:12','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','ConsumerAudit','PRIMARY','2019-01-12 08:27:12','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','ConsumerRole','IX_ConsumerId_RoleId','2019-01-12 08:27:12','n_diff_pfx01',0,1,'ConsumerId'),('ApolloPortalDB','ConsumerRole','IX_ConsumerId_RoleId','2019-01-12 08:27:12','n_diff_pfx02',0,1,'ConsumerId,RoleId'),('ApolloPortalDB','ConsumerRole','IX_ConsumerId_RoleId','2019-01-12 08:27:12','n_diff_pfx03',0,1,'ConsumerId,RoleId,Id'),('ApolloPortalDB','ConsumerRole','IX_ConsumerId_RoleId','2019-01-12 08:27:12','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','ConsumerRole','IX_ConsumerId_RoleId','2019-01-12 08:27:12','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','ConsumerRole','IX_DataChange_LastTime','2019-01-12 08:27:12','n_diff_pfx01',0,1,'DataChange_LastTime'),('ApolloPortalDB','ConsumerRole','IX_DataChange_LastTime','2019-01-12 08:27:12','n_diff_pfx02',0,1,'DataChange_LastTime,Id'),('ApolloPortalDB','ConsumerRole','IX_DataChange_LastTime','2019-01-12 08:27:12','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','ConsumerRole','IX_DataChange_LastTime','2019-01-12 08:27:12','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','ConsumerRole','IX_RoleId','2019-01-12 08:27:12','n_diff_pfx01',0,1,'RoleId'),('ApolloPortalDB','ConsumerRole','IX_RoleId','2019-01-12 08:27:12','n_diff_pfx02',0,1,'RoleId,Id'),('ApolloPortalDB','ConsumerRole','IX_RoleId','2019-01-12 08:27:12','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','ConsumerRole','IX_RoleId','2019-01-12 08:27:12','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','ConsumerRole','PRIMARY','2019-01-12 08:27:12','n_diff_pfx01',0,1,'Id'),('ApolloPortalDB','ConsumerRole','PRIMARY','2019-01-12 08:27:12','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','ConsumerRole','PRIMARY','2019-01-12 08:27:12','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','ConsumerToken','DataChange_LastTime','2019-01-12 08:27:13','n_diff_pfx01',0,1,'DataChange_LastTime'),('ApolloPortalDB','ConsumerToken','DataChange_LastTime','2019-01-12 08:27:13','n_diff_pfx02',0,1,'DataChange_LastTime,Id'),('ApolloPortalDB','ConsumerToken','DataChange_LastTime','2019-01-12 08:27:13','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','ConsumerToken','DataChange_LastTime','2019-01-12 08:27:13','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','ConsumerToken','IX_Token','2019-01-12 08:27:13','n_diff_pfx01',0,1,'Token'),('ApolloPortalDB','ConsumerToken','IX_Token','2019-01-12 08:27:13','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','ConsumerToken','IX_Token','2019-01-12 08:27:13','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','ConsumerToken','PRIMARY','2019-01-12 08:27:13','n_diff_pfx01',0,1,'Id'),('ApolloPortalDB','ConsumerToken','PRIMARY','2019-01-12 08:27:13','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','ConsumerToken','PRIMARY','2019-01-12 08:27:13','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','Favorite','AppId','2019-01-12 08:27:13','n_diff_pfx01',0,1,'AppId'),('ApolloPortalDB','Favorite','AppId','2019-01-12 08:27:13','n_diff_pfx02',0,1,'AppId,Id'),('ApolloPortalDB','Favorite','AppId','2019-01-12 08:27:13','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','Favorite','AppId','2019-01-12 08:27:13','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','Favorite','DataChange_LastTime','2019-01-12 08:27:13','n_diff_pfx01',0,1,'DataChange_LastTime'),('ApolloPortalDB','Favorite','DataChange_LastTime','2019-01-12 08:27:13','n_diff_pfx02',0,1,'DataChange_LastTime,Id'),('ApolloPortalDB','Favorite','DataChange_LastTime','2019-01-12 08:27:13','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','Favorite','DataChange_LastTime','2019-01-12 08:27:13','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','Favorite','IX_UserId','2019-01-12 08:27:13','n_diff_pfx01',0,1,'UserId'),('ApolloPortalDB','Favorite','IX_UserId','2019-01-12 08:27:13','n_diff_pfx02',0,1,'UserId,Id'),('ApolloPortalDB','Favorite','IX_UserId','2019-01-12 08:27:13','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','Favorite','IX_UserId','2019-01-12 08:27:13','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','Favorite','PRIMARY','2019-01-12 08:27:13','n_diff_pfx01',0,1,'Id'),('ApolloPortalDB','Favorite','PRIMARY','2019-01-12 08:27:13','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','Favorite','PRIMARY','2019-01-12 08:27:13','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','Permission','IX_DataChange_LastTime','2019-01-12 08:27:13','n_diff_pfx01',1,1,'DataChange_LastTime'),('ApolloPortalDB','Permission','IX_DataChange_LastTime','2019-01-12 08:27:13','n_diff_pfx02',5,1,'DataChange_LastTime,Id'),('ApolloPortalDB','Permission','IX_DataChange_LastTime','2019-01-12 08:27:13','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','Permission','IX_DataChange_LastTime','2019-01-12 08:27:13','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','Permission','IX_TargetId_PermissionType','2019-01-12 08:27:13','n_diff_pfx01',2,1,'TargetId'),('ApolloPortalDB','Permission','IX_TargetId_PermissionType','2019-01-12 08:27:13','n_diff_pfx02',5,1,'TargetId,PermissionType'),('ApolloPortalDB','Permission','IX_TargetId_PermissionType','2019-01-12 08:27:13','n_diff_pfx03',5,1,'TargetId,PermissionType,Id'),('ApolloPortalDB','Permission','IX_TargetId_PermissionType','2019-01-12 08:27:13','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','Permission','IX_TargetId_PermissionType','2019-01-12 08:27:13','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','Permission','PRIMARY','2019-01-12 08:27:13','n_diff_pfx01',5,1,'Id'),('ApolloPortalDB','Permission','PRIMARY','2019-01-12 08:27:13','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','Permission','PRIMARY','2019-01-12 08:27:13','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','Role','IX_DataChange_LastTime','2019-01-12 08:27:14','n_diff_pfx01',1,1,'DataChange_LastTime'),('ApolloPortalDB','Role','IX_DataChange_LastTime','2019-01-12 08:27:14','n_diff_pfx02',3,1,'DataChange_LastTime,Id'),('ApolloPortalDB','Role','IX_DataChange_LastTime','2019-01-12 08:27:14','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','Role','IX_DataChange_LastTime','2019-01-12 08:27:14','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','Role','IX_RoleName','2019-01-12 08:27:14','n_diff_pfx01',3,1,'RoleName'),('ApolloPortalDB','Role','IX_RoleName','2019-01-12 08:27:14','n_diff_pfx02',3,1,'RoleName,Id'),('ApolloPortalDB','Role','IX_RoleName','2019-01-12 08:27:14','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','Role','IX_RoleName','2019-01-12 08:27:14','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','Role','PRIMARY','2019-01-12 08:27:14','n_diff_pfx01',3,1,'Id'),('ApolloPortalDB','Role','PRIMARY','2019-01-12 08:27:14','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','Role','PRIMARY','2019-01-12 08:27:14','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','RolePermission','IX_DataChange_LastTime','2019-01-12 08:27:24','n_diff_pfx01',1,1,'DataChange_LastTime'),('ApolloPortalDB','RolePermission','IX_DataChange_LastTime','2019-01-12 08:27:24','n_diff_pfx02',5,1,'DataChange_LastTime,Id'),('ApolloPortalDB','RolePermission','IX_DataChange_LastTime','2019-01-12 08:27:24','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','RolePermission','IX_DataChange_LastTime','2019-01-12 08:27:24','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','RolePermission','IX_PermissionId','2019-01-12 08:27:24','n_diff_pfx01',5,1,'PermissionId'),('ApolloPortalDB','RolePermission','IX_PermissionId','2019-01-12 08:27:24','n_diff_pfx02',5,1,'PermissionId,Id'),('ApolloPortalDB','RolePermission','IX_PermissionId','2019-01-12 08:27:24','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','RolePermission','IX_PermissionId','2019-01-12 08:27:24','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','RolePermission','IX_RoleId','2019-01-12 08:27:24','n_diff_pfx01',3,1,'RoleId'),('ApolloPortalDB','RolePermission','IX_RoleId','2019-01-12 08:27:24','n_diff_pfx02',5,1,'RoleId,Id'),('ApolloPortalDB','RolePermission','IX_RoleId','2019-01-12 08:27:24','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','RolePermission','IX_RoleId','2019-01-12 08:27:24','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','RolePermission','PRIMARY','2019-01-12 08:27:24','n_diff_pfx01',5,1,'Id'),('ApolloPortalDB','RolePermission','PRIMARY','2019-01-12 08:27:24','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','RolePermission','PRIMARY','2019-01-12 08:27:24','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','ServerConfig','DataChange_LastTime','2019-01-12 08:27:13','n_diff_pfx01',1,1,'DataChange_LastTime'),('ApolloPortalDB','ServerConfig','DataChange_LastTime','2019-01-12 08:27:13','n_diff_pfx02',7,1,'DataChange_LastTime,Id'),('ApolloPortalDB','ServerConfig','DataChange_LastTime','2019-01-12 08:27:13','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','ServerConfig','DataChange_LastTime','2019-01-12 08:27:13','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','ServerConfig','IX_Key','2019-01-12 08:27:13','n_diff_pfx01',7,1,'Key'),('ApolloPortalDB','ServerConfig','IX_Key','2019-01-12 08:27:13','n_diff_pfx02',7,1,'Key,Id'),('ApolloPortalDB','ServerConfig','IX_Key','2019-01-12 08:27:13','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','ServerConfig','IX_Key','2019-01-12 08:27:13','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','ServerConfig','PRIMARY','2019-01-12 08:27:13','n_diff_pfx01',7,1,'Id'),('ApolloPortalDB','ServerConfig','PRIMARY','2019-01-12 08:27:13','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','ServerConfig','PRIMARY','2019-01-12 08:27:13','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','UserRole','IX_DataChange_LastTime','2019-01-12 08:27:34','n_diff_pfx01',1,1,'DataChange_LastTime'),('ApolloPortalDB','UserRole','IX_DataChange_LastTime','2019-01-12 08:27:34','n_diff_pfx02',3,1,'DataChange_LastTime,Id'),('ApolloPortalDB','UserRole','IX_DataChange_LastTime','2019-01-12 08:27:34','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','UserRole','IX_DataChange_LastTime','2019-01-12 08:27:34','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','UserRole','IX_RoleId','2019-01-12 08:27:34','n_diff_pfx01',3,1,'RoleId'),('ApolloPortalDB','UserRole','IX_RoleId','2019-01-12 08:27:34','n_diff_pfx02',3,1,'RoleId,Id'),('ApolloPortalDB','UserRole','IX_RoleId','2019-01-12 08:27:34','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','UserRole','IX_RoleId','2019-01-12 08:27:34','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','UserRole','IX_UserId_RoleId','2019-01-12 08:27:34','n_diff_pfx01',1,1,'UserId'),('ApolloPortalDB','UserRole','IX_UserId_RoleId','2019-01-12 08:27:34','n_diff_pfx02',3,1,'UserId,RoleId'),('ApolloPortalDB','UserRole','IX_UserId_RoleId','2019-01-12 08:27:34','n_diff_pfx03',3,1,'UserId,RoleId,Id'),('ApolloPortalDB','UserRole','IX_UserId_RoleId','2019-01-12 08:27:34','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','UserRole','IX_UserId_RoleId','2019-01-12 08:27:34','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','UserRole','PRIMARY','2019-01-12 08:27:34','n_diff_pfx01',3,1,'Id'),('ApolloPortalDB','UserRole','PRIMARY','2019-01-12 08:27:34','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','UserRole','PRIMARY','2019-01-12 08:27:34','size',1,NULL,'Number of pages in the index'),('ApolloPortalDB','Users','PRIMARY','2019-01-12 08:27:13','n_diff_pfx01',0,1,'Id'),('ApolloPortalDB','Users','PRIMARY','2019-01-12 08:27:13','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('ApolloPortalDB','Users','PRIMARY','2019-01-12 08:27:13','size',1,NULL,'Number of pages in the index'),('admin','menu','PRIMARY','2019-02-04 05:38:18','n_diff_pfx01',4,1,'id'),('admin','menu','PRIMARY','2019-02-04 05:38:18','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('admin','menu','PRIMARY','2019-02-04 05:38:18','size',1,NULL,'Number of pages in the index'),('admin','role','PRIMARY','2019-02-04 05:37:57','n_diff_pfx01',2,1,'id'),('admin','role','PRIMARY','2019-02-04 05:37:57','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('admin','role','PRIMARY','2019-02-04 05:37:57','size',1,NULL,'Number of pages in the index'),('admin','role','rolename','2019-02-04 05:37:57','n_diff_pfx01',2,1,'name'),('admin','role','rolename','2019-02-04 05:37:57','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('admin','role','rolename','2019-02-04 05:37:57','size',1,NULL,'Number of pages in the index'),('admin','role_menu','GEN_CLUST_INDEX','2019-02-04 05:37:58','n_diff_pfx01',5,1,'DB_ROW_ID'),('admin','role_menu','GEN_CLUST_INDEX','2019-02-04 05:37:58','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('admin','role_menu','GEN_CLUST_INDEX','2019-02-04 05:37:58','size',1,NULL,'Number of pages in the index'),('admin','role_menu','menu_code_rm','2019-02-04 05:37:58','n_diff_pfx01',4,1,'menu_id'),('admin','role_menu','menu_code_rm','2019-02-04 05:37:58','n_diff_pfx02',5,1,'menu_id,DB_ROW_ID'),('admin','role_menu','menu_code_rm','2019-02-04 05:37:58','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('admin','role_menu','menu_code_rm','2019-02-04 05:37:58','size',1,NULL,'Number of pages in the index'),('admin','role_menu','role_id_rm','2019-02-04 05:37:58','n_diff_pfx01',2,1,'role_id'),('admin','role_menu','role_id_rm','2019-02-04 05:37:58','n_diff_pfx02',5,1,'role_id,DB_ROW_ID'),('admin','role_menu','role_id_rm','2019-02-04 05:37:58','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('admin','role_menu','role_id_rm','2019-02-04 05:37:58','size',1,NULL,'Number of pages in the index'),('admin','user','PRIMARY','2019-02-04 05:38:08','n_diff_pfx01',3,1,'id'),('admin','user','PRIMARY','2019-02-04 05:38:08','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('admin','user','PRIMARY','2019-02-04 05:38:08','size',1,NULL,'Number of pages in the index'),('admin','user','loginname','2019-02-04 05:38:08','n_diff_pfx01',3,1,'username'),('admin','user','loginname','2019-02-04 05:38:08','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('admin','user','loginname','2019-02-04 05:38:08','size',1,NULL,'Number of pages in the index'),('admin','user_role','GEN_CLUST_INDEX','2019-02-04 05:38:28','n_diff_pfx01',3,1,'DB_ROW_ID'),('admin','user_role','GEN_CLUST_INDEX','2019-02-04 05:38:28','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('admin','user_role','GEN_CLUST_INDEX','2019-02-04 05:38:28','size',1,NULL,'Number of pages in the index'),('admin','user_role','role_id','2019-02-04 05:38:28','n_diff_pfx01',2,1,'role_id'),('admin','user_role','role_id','2019-02-04 05:38:28','n_diff_pfx02',3,1,'role_id,DB_ROW_ID'),('admin','user_role','role_id','2019-02-04 05:38:28','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('admin','user_role','role_id','2019-02-04 05:38:28','size',1,NULL,'Number of pages in the index'),('admin','user_role','uid','2019-02-04 05:38:28','n_diff_pfx01',3,1,'uid'),('admin','user_role','uid','2019-02-04 05:38:28','n_diff_pfx02',3,1,'uid,DB_ROW_ID'),('admin','user_role','uid','2019-02-04 05:38:28','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('admin','user_role','uid','2019-02-04 05:38:28','size',1,NULL,'Number of pages in the index'),('authority','sys_menu','PRIMARY','2018-12-28 20:30:04','n_diff_pfx01',55,1,'id'),('authority','sys_menu','PRIMARY','2018-12-28 20:30:04','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('authority','sys_menu','PRIMARY','2018-12-28 20:30:04','size',1,NULL,'Number of pages in the index'),('authority','sys_re_role_menu','PRIMARY','2018-12-28 20:29:54','n_diff_pfx01',75,1,'id'),('authority','sys_re_role_menu','PRIMARY','2018-12-28 20:29:54','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('authority','sys_re_role_menu','PRIMARY','2018-12-28 20:29:54','size',1,NULL,'Number of pages in the index'),('authority','sys_re_user_role','PRIMARY','2018-12-28 20:29:41','n_diff_pfx01',0,1,'id'),('authority','sys_re_user_role','PRIMARY','2018-12-28 20:29:41','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('authority','sys_re_user_role','PRIMARY','2018-12-28 20:29:41','size',1,NULL,'Number of pages in the index'),('authority','sys_role','PRIMARY','2018-12-28 20:29:41','n_diff_pfx01',2,1,'id'),('authority','sys_role','PRIMARY','2018-12-28 20:29:41','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('authority','sys_role','PRIMARY','2018-12-28 20:29:41','size',1,NULL,'Number of pages in the index'),('authority','sys_user','PRIMARY','2019-01-11 12:22:06','n_diff_pfx01',6,1,'id'),('authority','sys_user','PRIMARY','2019-01-11 12:22:06','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('authority','sys_user','PRIMARY','2019-01-11 12:22:06','size',1,NULL,'Number of pages in the index'),('baseAuthority','base_menu','PRIMARY','2018-12-28 23:57:46','n_diff_pfx01',0,1,'ID'),('baseAuthority','base_menu','PRIMARY','2018-12-28 23:57:46','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('baseAuthority','base_menu','PRIMARY','2018-12-28 23:57:46','size',1,NULL,'Number of pages in the index'),('baseAuthority','base_role','PRIMARY','2018-12-28 23:57:46','n_diff_pfx01',2,1,'ID'),('baseAuthority','base_role','PRIMARY','2018-12-28 23:57:46','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('baseAuthority','base_role','PRIMARY','2018-12-28 23:57:46','size',1,NULL,'Number of pages in the index'),('baseAuthority','base_role_menu','PRIMARY','2018-12-28 23:57:46','n_diff_pfx01',0,1,'ID'),('baseAuthority','base_role_menu','PRIMARY','2018-12-28 23:57:46','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('baseAuthority','base_role_menu','PRIMARY','2018-12-28 23:57:46','size',1,NULL,'Number of pages in the index'),('baseAuthority','base_user','PRIMARY','2018-12-28 23:57:46','n_diff_pfx01',0,1,'ID'),('baseAuthority','base_user','PRIMARY','2018-12-28 23:57:46','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('baseAuthority','base_user','PRIMARY','2018-12-28 23:57:46','size',1,NULL,'Number of pages in the index'),('baseAuthority','base_user_role','PRIMARY','2018-12-28 23:57:46','n_diff_pfx01',2,1,'ID'),('baseAuthority','base_user_role','PRIMARY','2018-12-28 23:57:46','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('baseAuthority','base_user_role','PRIMARY','2018-12-28 23:57:46','size',1,NULL,'Number of pages in the index'),('dmc','resource','PRIMARY','2019-01-23 09:36:35','n_diff_pfx01',18,1,'id'),('dmc','resource','PRIMARY','2019-01-23 09:36:35','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('dmc','resource','PRIMARY','2019-01-23 09:36:35','size',1,NULL,'Number of pages in the index'),('dmc','resource','fk_bjlrqegc9iu81src5vlta7p00','2019-01-23 09:36:35','n_diff_pfx01',2,1,'type'),('dmc','resource','fk_bjlrqegc9iu81src5vlta7p00','2019-01-23 09:36:35','n_diff_pfx02',18,1,'type,id'),('dmc','resource','fk_bjlrqegc9iu81src5vlta7p00','2019-01-23 09:36:35','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('dmc','resource','fk_bjlrqegc9iu81src5vlta7p00','2019-01-23 09:36:35','size',1,NULL,'Number of pages in the index'),('dmc','resource','fk_sogl6f9lioeptbf7s105wbx82','2019-01-23 09:36:35','n_diff_pfx01',5,1,'pid'),('dmc','resource','fk_sogl6f9lioeptbf7s105wbx82','2019-01-23 09:36:35','n_diff_pfx02',18,1,'pid,id'),('dmc','resource','fk_sogl6f9lioeptbf7s105wbx82','2019-01-23 09:36:35','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('dmc','resource','fk_sogl6f9lioeptbf7s105wbx82','2019-01-23 09:36:35','size',1,NULL,'Number of pages in the index'),('dmc','role','PRIMARY','2019-01-23 09:36:14','n_diff_pfx01',3,1,'id'),('dmc','role','PRIMARY','2019-01-23 09:36:14','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('dmc','role','PRIMARY','2019-01-23 09:36:14','size',1,NULL,'Number of pages in the index'),('dmc','role','fk_tealaj0x99w9xj8on8ax0jgjb','2019-01-23 09:36:14','n_diff_pfx01',1,1,'pid'),('dmc','role','fk_tealaj0x99w9xj8on8ax0jgjb','2019-01-23 09:36:14','n_diff_pfx02',3,1,'pid,id'),('dmc','role','fk_tealaj0x99w9xj8on8ax0jgjb','2019-01-23 09:36:14','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('dmc','role','fk_tealaj0x99w9xj8on8ax0jgjb','2019-01-23 09:36:14','size',1,NULL,'Number of pages in the index'),('dmc','role_resource','PRIMARY','2019-01-23 09:36:14','n_diff_pfx01',18,1,'resource_id'),('dmc','role_resource','PRIMARY','2019-01-23 09:36:14','n_diff_pfx02',27,1,'resource_id,role_id'),('dmc','role_resource','PRIMARY','2019-01-23 09:36:14','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('dmc','role_resource','PRIMARY','2019-01-23 09:36:14','size',1,NULL,'Number of pages in the index'),('dmc','role_resource','resource_id','2019-01-23 09:36:14','n_diff_pfx01',18,1,'resource_id'),('dmc','role_resource','resource_id','2019-01-23 09:36:14','n_diff_pfx02',27,1,'resource_id,role_id'),('dmc','role_resource','resource_id','2019-01-23 09:36:14','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('dmc','role_resource','resource_id','2019-01-23 09:36:14','size',1,NULL,'Number of pages in the index'),('dmc','role_resource','role_resource_ibfk_1','2019-01-23 09:36:14','n_diff_pfx01',2,1,'role_id'),('dmc','role_resource','role_resource_ibfk_1','2019-01-23 09:36:14','n_diff_pfx02',27,1,'role_id,resource_id'),('dmc','role_resource','role_resource_ibfk_1','2019-01-23 09:36:14','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('dmc','role_resource','role_resource_ibfk_1','2019-01-23 09:36:14','size',1,NULL,'Number of pages in the index'),('dmc','user','PRIMARY','2019-01-23 09:36:24','n_diff_pfx01',3,1,'id'),('dmc','user','PRIMARY','2019-01-23 09:36:24','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('dmc','user','PRIMARY','2019-01-23 09:36:24','size',1,NULL,'Number of pages in the index'),('dmc','user','uk_o3uyea7py4jnln0qxrtg1qqhq','2019-01-23 09:36:24','n_diff_pfx01',3,1,'username'),('dmc','user','uk_o3uyea7py4jnln0qxrtg1qqhq','2019-01-23 09:36:24','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('dmc','user','uk_o3uyea7py4jnln0qxrtg1qqhq','2019-01-23 09:36:24','size',1,NULL,'Number of pages in the index'),('dmc','user_role','PRIMARY','2019-01-23 09:36:45','n_diff_pfx01',2,1,'user_id'),('dmc','user_role','PRIMARY','2019-01-23 09:36:45','n_diff_pfx02',5,1,'user_id,role_id'),('dmc','user_role','PRIMARY','2019-01-23 09:36:45','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('dmc','user_role','PRIMARY','2019-01-23 09:36:45','size',1,NULL,'Number of pages in the index'),('dmc','user_role','role_id','2019-01-23 09:36:45','n_diff_pfx01',3,1,'role_id'),('dmc','user_role','role_id','2019-01-23 09:36:45','n_diff_pfx02',5,1,'role_id,user_id'),('dmc','user_role','role_id','2019-01-23 09:36:45','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('dmc','user_role','role_id','2019-01-23 09:36:45','size',1,NULL,'Number of pages in the index'),('dmc','user_role','role_id_2','2019-01-23 09:36:45','n_diff_pfx01',3,1,'role_id'),('dmc','user_role','role_id_2','2019-01-23 09:36:45','n_diff_pfx02',5,1,'role_id,user_id'),('dmc','user_role','role_id_2','2019-01-23 09:36:45','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('dmc','user_role','role_id_2','2019-01-23 09:36:45','size',1,NULL,'Number of pages in the index'),('dmc','user_role','role_id_3','2019-01-23 09:36:45','n_diff_pfx01',3,1,'role_id'),('dmc','user_role','role_id_3','2019-01-23 09:36:45','n_diff_pfx02',5,1,'role_id,user_id'),('dmc','user_role','role_id_3','2019-01-23 09:36:45','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('dmc','user_role','role_id_3','2019-01-23 09:36:45','size',1,NULL,'Number of pages in the index'),('fescar','account_tbl','PRIMARY','2019-02-01 22:58:49','n_diff_pfx01',0,1,'id'),('fescar','account_tbl','PRIMARY','2019-02-01 22:58:49','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('fescar','account_tbl','PRIMARY','2019-02-01 22:58:49','size',1,NULL,'Number of pages in the index'),('fescar','order_tbl','PRIMARY','2019-02-01 23:01:15','n_diff_pfx01',0,1,'id'),('fescar','order_tbl','PRIMARY','2019-02-01 23:01:15','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('fescar','order_tbl','PRIMARY','2019-02-01 23:01:15','size',1,NULL,'Number of pages in the index'),('fescar','storage_tbl','PRIMARY','2019-02-01 22:58:48','n_diff_pfx01',0,1,'id'),('fescar','storage_tbl','PRIMARY','2019-02-01 22:58:48','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('fescar','storage_tbl','PRIMARY','2019-02-01 22:58:48','size',1,NULL,'Number of pages in the index'),('fescar','storage_tbl','commodity_code','2019-02-01 22:58:48','n_diff_pfx01',0,1,'commodity_code'),('fescar','storage_tbl','commodity_code','2019-02-01 22:58:48','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('fescar','storage_tbl','commodity_code','2019-02-01 22:58:48','size',1,NULL,'Number of pages in the index'),('fescar','undo_log','PRIMARY','2019-02-01 23:01:25','n_diff_pfx01',0,1,'id'),('fescar','undo_log','PRIMARY','2019-02-01 23:01:25','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('fescar','undo_log','PRIMARY','2019-02-01 23:01:25','size',1,NULL,'Number of pages in the index'),('fescar','undo_log','idx_unionkey','2019-02-01 23:01:25','n_diff_pfx01',0,1,'xid'),('fescar','undo_log','idx_unionkey','2019-02-01 23:01:25','n_diff_pfx02',0,1,'xid,branch_id'),('fescar','undo_log','idx_unionkey','2019-02-01 23:01:25','n_diff_pfx03',0,1,'xid,branch_id,id'),('fescar','undo_log','idx_unionkey','2019-02-01 23:01:25','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('fescar','undo_log','idx_unionkey','2019-02-01 23:01:25','size',1,NULL,'Number of pages in the index'),('fescar','user_money_a','PRIMARY','2019-02-01 22:19:22','n_diff_pfx01',0,1,'id'),('fescar','user_money_a','PRIMARY','2019-02-01 22:19:22','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('fescar','user_money_a','PRIMARY','2019-02-01 22:19:22','size',1,NULL,'Number of pages in the index'),('fescar','user_money_b','PRIMARY','2019-02-01 22:19:22','n_diff_pfx01',0,1,'id'),('fescar','user_money_b','PRIMARY','2019-02-01 22:19:22','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('fescar','user_money_b','PRIMARY','2019-02-01 22:19:22','size',1,NULL,'Number of pages in the index'),('fescar2','undo_log','PRIMARY','2019-02-01 22:00:51','n_diff_pfx01',0,1,'id'),('fescar2','undo_log','PRIMARY','2019-02-01 22:00:51','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('fescar2','undo_log','PRIMARY','2019-02-01 22:00:51','size',1,NULL,'Number of pages in the index'),('fescar2','undo_log','idx_unionkey','2019-02-01 22:00:51','n_diff_pfx01',0,1,'xid'),('fescar2','undo_log','idx_unionkey','2019-02-01 22:00:51','n_diff_pfx02',0,1,'xid,branch_id'),('fescar2','undo_log','idx_unionkey','2019-02-01 22:00:51','n_diff_pfx03',0,1,'xid,branch_id,id'),('fescar2','undo_log','idx_unionkey','2019-02-01 22:00:51','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('fescar2','undo_log','idx_unionkey','2019-02-01 22:00:51','size',1,NULL,'Number of pages in the index'),('fescar2','user_money_a','PRIMARY','2019-02-01 22:00:56','n_diff_pfx01',0,1,'id'),('fescar2','user_money_a','PRIMARY','2019-02-01 22:00:56','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('fescar2','user_money_a','PRIMARY','2019-02-01 22:00:56','size',1,NULL,'Number of pages in the index'),('fescar2','user_money_b','PRIMARY','2019-02-01 22:00:57','n_diff_pfx01',0,1,'id'),('fescar2','user_money_b','PRIMARY','2019-02-01 22:00:57','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('fescar2','user_money_b','PRIMARY','2019-02-01 22:00:57','size',1,NULL,'Number of pages in the index'),('guns','code_dbinfo','PRIMARY','2018-11-05 22:06:10','n_diff_pfx01',0,1,'id'),('guns','code_dbinfo','PRIMARY','2018-11-05 22:06:10','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','code_dbinfo','PRIMARY','2018-11-05 22:06:10','size',1,NULL,'Number of pages in the index'),('guns','sys_dept','PRIMARY','2018-11-05 22:04:37','n_diff_pfx01',4,1,'id'),('guns','sys_dept','PRIMARY','2018-11-05 22:04:37','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','sys_dept','PRIMARY','2018-11-05 22:04:37','size',1,NULL,'Number of pages in the index'),('guns','sys_dict','PRIMARY','2018-11-05 22:04:37','n_diff_pfx01',10,1,'id'),('guns','sys_dict','PRIMARY','2018-11-05 22:04:37','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','sys_dict','PRIMARY','2018-11-05 22:04:37','size',1,NULL,'Number of pages in the index'),('guns','sys_expense','PRIMARY','2018-11-05 22:04:37','n_diff_pfx01',0,1,'id'),('guns','sys_expense','PRIMARY','2018-11-05 22:04:37','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','sys_expense','PRIMARY','2018-11-05 22:04:37','size',1,NULL,'Number of pages in the index'),('guns','sys_login_log','PRIMARY','2018-11-05 22:29:46','n_diff_pfx01',11,1,'id'),('guns','sys_login_log','PRIMARY','2018-11-05 22:29:46','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','sys_login_log','PRIMARY','2018-11-05 22:29:46','size',1,NULL,'Number of pages in the index'),('guns','sys_menu','PRIMARY','2018-11-05 22:04:58','n_diff_pfx01',55,1,'id'),('guns','sys_menu','PRIMARY','2018-11-05 22:04:58','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','sys_menu','PRIMARY','2018-11-05 22:04:58','size',1,NULL,'Number of pages in the index'),('guns','sys_notice','PRIMARY','2018-11-05 22:04:37','n_diff_pfx01',2,1,'id'),('guns','sys_notice','PRIMARY','2018-11-05 22:04:37','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','sys_notice','PRIMARY','2018-11-05 22:04:37','size',1,NULL,'Number of pages in the index'),('guns','sys_operation_log','PRIMARY','2019-02-04 05:47:00','n_diff_pfx01',5,1,'id'),('guns','sys_operation_log','PRIMARY','2019-02-04 05:47:00','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','sys_operation_log','PRIMARY','2019-02-04 05:47:00','size',1,NULL,'Number of pages in the index'),('guns','sys_relation','PRIMARY','2018-11-05 22:04:37','n_diff_pfx01',75,1,'id'),('guns','sys_relation','PRIMARY','2018-11-05 22:04:37','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','sys_relation','PRIMARY','2018-11-05 22:04:37','size',1,NULL,'Number of pages in the index'),('guns','sys_role','PRIMARY','2018-11-05 22:04:47','n_diff_pfx01',2,1,'id'),('guns','sys_role','PRIMARY','2018-11-05 22:04:47','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','sys_role','PRIMARY','2018-11-05 22:04:47','size',1,NULL,'Number of pages in the index'),('guns','sys_user','PRIMARY','2018-11-05 22:05:08','n_diff_pfx01',4,1,'id'),('guns','sys_user','PRIMARY','2018-11-05 22:05:08','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','sys_user','PRIMARY','2018-11-05 22:05:08','size',1,NULL,'Number of pages in the index'),('guns','test','PRIMARY','2018-11-05 22:04:37','n_diff_pfx01',0,1,'aaa'),('guns','test','PRIMARY','2018-11-05 22:04:37','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('guns','test','PRIMARY','2018-11-05 22:04:37','size',1,NULL,'Number of pages in the index'),('mysql','component','PRIMARY','2018-08-21 11:48:24','n_diff_pfx01',0,1,'component_id'),('mysql','component','PRIMARY','2018-08-21 11:48:24','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('mysql','component','PRIMARY','2018-08-21 11:48:24','size',1,NULL,'Number of pages in the index'),('mysql','gtid_executed','PRIMARY','2018-08-21 11:48:24','n_diff_pfx01',0,1,'source_uuid'),('mysql','gtid_executed','PRIMARY','2018-08-21 11:48:24','n_diff_pfx02',0,1,'source_uuid,interval_start'),('mysql','gtid_executed','PRIMARY','2018-08-21 11:48:24','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('mysql','gtid_executed','PRIMARY','2018-08-21 11:48:24','size',1,NULL,'Number of pages in the index'),('quartz','QRTZ_BLOB_TRIGGERS','PRIMARY','2019-02-07 11:18:42','n_diff_pfx01',0,1,'SCHED_NAME'),('quartz','QRTZ_BLOB_TRIGGERS','PRIMARY','2019-02-07 11:18:42','n_diff_pfx02',0,1,'SCHED_NAME,TRIGGER_NAME'),('quartz','QRTZ_BLOB_TRIGGERS','PRIMARY','2019-02-07 11:18:42','n_diff_pfx03',0,1,'SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP'),('quartz','QRTZ_BLOB_TRIGGERS','PRIMARY','2019-02-07 11:18:42','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('quartz','QRTZ_BLOB_TRIGGERS','PRIMARY','2019-02-07 11:18:42','size',1,NULL,'Number of pages in the index'),('quartz','QRTZ_CALENDARS','PRIMARY','2019-02-07 11:18:42','n_diff_pfx01',0,1,'SCHED_NAME'),('quartz','QRTZ_CALENDARS','PRIMARY','2019-02-07 11:18:42','n_diff_pfx02',0,1,'SCHED_NAME,CALENDAR_NAME'),('quartz','QRTZ_CALENDARS','PRIMARY','2019-02-07 11:18:42','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('quartz','QRTZ_CALENDARS','PRIMARY','2019-02-07 11:18:42','size',1,NULL,'Number of pages in the index'),('quartz','QRTZ_CRON_TRIGGERS','PRIMARY','2019-02-12 07:01:43','n_diff_pfx01',1,1,'SCHED_NAME'),('quartz','QRTZ_CRON_TRIGGERS','PRIMARY','2019-02-12 07:01:43','n_diff_pfx02',1,1,'SCHED_NAME,TRIGGER_NAME'),('quartz','QRTZ_CRON_TRIGGERS','PRIMARY','2019-02-12 07:01:43','n_diff_pfx03',1,1,'SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP'),('quartz','QRTZ_CRON_TRIGGERS','PRIMARY','2019-02-12 07:01:43','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('quartz','QRTZ_CRON_TRIGGERS','PRIMARY','2019-02-12 07:01:43','size',1,NULL,'Number of pages in the index'),('quartz','QRTZ_FIRED_TRIGGERS','PRIMARY','2019-02-12 07:02:22','n_diff_pfx01',1,1,'SCHED_NAME'),('quartz','QRTZ_FIRED_TRIGGERS','PRIMARY','2019-02-12 07:02:22','n_diff_pfx02',1,1,'SCHED_NAME,ENTRY_ID'),('quartz','QRTZ_FIRED_TRIGGERS','PRIMARY','2019-02-12 07:02:22','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('quartz','QRTZ_FIRED_TRIGGERS','PRIMARY','2019-02-12 07:02:22','size',1,NULL,'Number of pages in the index'),('quartz','QRTZ_JOB_DETAILS','PRIMARY','2019-02-07 11:18:41','n_diff_pfx01',0,1,'SCHED_NAME'),('quartz','QRTZ_JOB_DETAILS','PRIMARY','2019-02-07 11:18:41','n_diff_pfx02',0,1,'SCHED_NAME,JOB_NAME'),('quartz','QRTZ_JOB_DETAILS','PRIMARY','2019-02-07 11:18:41','n_diff_pfx03',0,1,'SCHED_NAME,JOB_NAME,JOB_GROUP'),('quartz','QRTZ_JOB_DETAILS','PRIMARY','2019-02-07 11:18:41','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('quartz','QRTZ_JOB_DETAILS','PRIMARY','2019-02-07 11:18:41','size',1,NULL,'Number of pages in the index'),('quartz','QRTZ_LOCKS','PRIMARY','2019-02-07 11:18:42','n_diff_pfx01',0,1,'SCHED_NAME'),('quartz','QRTZ_LOCKS','PRIMARY','2019-02-07 11:18:42','n_diff_pfx02',0,1,'SCHED_NAME,LOCK_NAME'),('quartz','QRTZ_LOCKS','PRIMARY','2019-02-07 11:18:42','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('quartz','QRTZ_LOCKS','PRIMARY','2019-02-07 11:18:42','size',1,NULL,'Number of pages in the index'),('quartz','QRTZ_PAUSED_TRIGGER_GRPS','PRIMARY','2019-02-07 11:18:42','n_diff_pfx01',0,1,'SCHED_NAME'),('quartz','QRTZ_PAUSED_TRIGGER_GRPS','PRIMARY','2019-02-07 11:18:42','n_diff_pfx02',0,1,'SCHED_NAME,TRIGGER_GROUP'),('quartz','QRTZ_PAUSED_TRIGGER_GRPS','PRIMARY','2019-02-07 11:18:42','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('quartz','QRTZ_PAUSED_TRIGGER_GRPS','PRIMARY','2019-02-07 11:18:42','size',1,NULL,'Number of pages in the index'),('quartz','QRTZ_SCHEDULER_STATE','PRIMARY','2019-02-07 11:18:42','n_diff_pfx01',0,1,'SCHED_NAME'),('quartz','QRTZ_SCHEDULER_STATE','PRIMARY','2019-02-07 11:18:42','n_diff_pfx02',0,1,'SCHED_NAME,INSTANCE_NAME'),('quartz','QRTZ_SCHEDULER_STATE','PRIMARY','2019-02-07 11:18:42','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('quartz','QRTZ_SCHEDULER_STATE','PRIMARY','2019-02-07 11:18:42','size',1,NULL,'Number of pages in the index'),('quartz','QRTZ_SIMPLE_TRIGGERS','PRIMARY','2019-02-07 11:18:41','n_diff_pfx01',0,1,'SCHED_NAME'),('quartz','QRTZ_SIMPLE_TRIGGERS','PRIMARY','2019-02-07 11:18:41','n_diff_pfx02',0,1,'SCHED_NAME,TRIGGER_NAME'),('quartz','QRTZ_SIMPLE_TRIGGERS','PRIMARY','2019-02-07 11:18:41','n_diff_pfx03',0,1,'SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP'),('quartz','QRTZ_SIMPLE_TRIGGERS','PRIMARY','2019-02-07 11:18:41','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('quartz','QRTZ_SIMPLE_TRIGGERS','PRIMARY','2019-02-07 11:18:41','size',1,NULL,'Number of pages in the index'),('quartz','QRTZ_SIMPROP_TRIGGERS','PRIMARY','2019-02-07 11:18:41','n_diff_pfx01',0,1,'SCHED_NAME'),('quartz','QRTZ_SIMPROP_TRIGGERS','PRIMARY','2019-02-07 11:18:41','n_diff_pfx02',0,1,'SCHED_NAME,TRIGGER_NAME'),('quartz','QRTZ_SIMPROP_TRIGGERS','PRIMARY','2019-02-07 11:18:41','n_diff_pfx03',0,1,'SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP'),('quartz','QRTZ_SIMPROP_TRIGGERS','PRIMARY','2019-02-07 11:18:41','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('quartz','QRTZ_SIMPROP_TRIGGERS','PRIMARY','2019-02-07 11:18:41','size',1,NULL,'Number of pages in the index'),('quartz','QRTZ_TRIGGERS','PRIMARY','2019-02-12 07:01:33','n_diff_pfx01',1,1,'SCHED_NAME'),('quartz','QRTZ_TRIGGERS','PRIMARY','2019-02-12 07:01:33','n_diff_pfx02',1,1,'SCHED_NAME,TRIGGER_NAME'),('quartz','QRTZ_TRIGGERS','PRIMARY','2019-02-12 07:01:33','n_diff_pfx03',1,1,'SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP'),('quartz','QRTZ_TRIGGERS','PRIMARY','2019-02-12 07:01:33','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('quartz','QRTZ_TRIGGERS','PRIMARY','2019-02-12 07:01:33','size',1,NULL,'Number of pages in the index'),('quartz','QRTZ_TRIGGERS','SCHED_NAME','2019-02-12 07:01:33','n_diff_pfx01',1,1,'SCHED_NAME'),('quartz','QRTZ_TRIGGERS','SCHED_NAME','2019-02-12 07:01:33','n_diff_pfx02',1,1,'SCHED_NAME,JOB_NAME'),('quartz','QRTZ_TRIGGERS','SCHED_NAME','2019-02-12 07:01:33','n_diff_pfx03',1,1,'SCHED_NAME,JOB_NAME,JOB_GROUP'),('quartz','QRTZ_TRIGGERS','SCHED_NAME','2019-02-12 07:01:33','n_diff_pfx04',1,1,'SCHED_NAME,JOB_NAME,JOB_GROUP,TRIGGER_NAME'),('quartz','QRTZ_TRIGGERS','SCHED_NAME','2019-02-12 07:01:33','n_diff_pfx05',1,1,'SCHED_NAME,JOB_NAME,JOB_GROUP,TRIGGER_NAME,TRIGGER_GROUP'),('quartz','QRTZ_TRIGGERS','SCHED_NAME','2019-02-12 07:01:33','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('quartz','QRTZ_TRIGGERS','SCHED_NAME','2019-02-12 07:01:33','size',1,NULL,'Number of pages in the index'),('rabc','QRTZ_BLOB_TRIGGERS','PRIMARY','2019-02-22 05:32:39','n_diff_pfx01',0,1,'SCHED_NAME'),('rabc','QRTZ_BLOB_TRIGGERS','PRIMARY','2019-02-22 05:32:39','n_diff_pfx02',0,1,'SCHED_NAME,TRIGGER_NAME'),('rabc','QRTZ_BLOB_TRIGGERS','PRIMARY','2019-02-22 05:32:39','n_diff_pfx03',0,1,'SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP'),('rabc','QRTZ_BLOB_TRIGGERS','PRIMARY','2019-02-22 05:32:39','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','QRTZ_BLOB_TRIGGERS','PRIMARY','2019-02-22 05:32:39','size',1,NULL,'Number of pages in the index'),('rabc','QRTZ_CALENDARS','PRIMARY','2019-02-22 05:32:39','n_diff_pfx01',0,1,'SCHED_NAME'),('rabc','QRTZ_CALENDARS','PRIMARY','2019-02-22 05:32:39','n_diff_pfx02',0,1,'SCHED_NAME,CALENDAR_NAME'),('rabc','QRTZ_CALENDARS','PRIMARY','2019-02-22 05:32:39','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','QRTZ_CALENDARS','PRIMARY','2019-02-22 05:32:39','size',1,NULL,'Number of pages in the index'),('rabc','QRTZ_CRON_TRIGGERS','PRIMARY','2019-02-22 10:15:02','n_diff_pfx01',1,1,'SCHED_NAME'),('rabc','QRTZ_CRON_TRIGGERS','PRIMARY','2019-02-22 10:15:02','n_diff_pfx02',4,1,'SCHED_NAME,TRIGGER_NAME'),('rabc','QRTZ_CRON_TRIGGERS','PRIMARY','2019-02-22 10:15:02','n_diff_pfx03',4,1,'SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP'),('rabc','QRTZ_CRON_TRIGGERS','PRIMARY','2019-02-22 10:15:02','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','QRTZ_CRON_TRIGGERS','PRIMARY','2019-02-22 10:15:02','size',1,NULL,'Number of pages in the index'),('rabc','QRTZ_FIRED_TRIGGERS','PRIMARY','2019-02-22 05:32:39','n_diff_pfx01',0,1,'SCHED_NAME'),('rabc','QRTZ_FIRED_TRIGGERS','PRIMARY','2019-02-22 05:32:39','n_diff_pfx02',0,1,'SCHED_NAME,ENTRY_ID'),('rabc','QRTZ_FIRED_TRIGGERS','PRIMARY','2019-02-22 05:32:39','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','QRTZ_FIRED_TRIGGERS','PRIMARY','2019-02-22 05:32:39','size',1,NULL,'Number of pages in the index'),('rabc','QRTZ_JOB_DETAILS','PRIMARY','2019-02-22 05:34:45','n_diff_pfx01',1,1,'SCHED_NAME'),('rabc','QRTZ_JOB_DETAILS','PRIMARY','2019-02-22 05:34:45','n_diff_pfx02',4,1,'SCHED_NAME,JOB_NAME'),('rabc','QRTZ_JOB_DETAILS','PRIMARY','2019-02-22 05:34:45','n_diff_pfx03',4,1,'SCHED_NAME,JOB_NAME,JOB_GROUP'),('rabc','QRTZ_JOB_DETAILS','PRIMARY','2019-02-22 05:34:45','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','QRTZ_JOB_DETAILS','PRIMARY','2019-02-22 05:34:45','size',1,NULL,'Number of pages in the index'),('rabc','QRTZ_LOCKS','PRIMARY','2019-02-22 05:34:55','n_diff_pfx01',1,1,'SCHED_NAME'),('rabc','QRTZ_LOCKS','PRIMARY','2019-02-22 05:34:55','n_diff_pfx02',2,1,'SCHED_NAME,LOCK_NAME'),('rabc','QRTZ_LOCKS','PRIMARY','2019-02-22 05:34:55','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','QRTZ_LOCKS','PRIMARY','2019-02-22 05:34:55','size',1,NULL,'Number of pages in the index'),('rabc','QRTZ_PAUSED_TRIGGER_GRPS','PRIMARY','2019-02-22 05:32:39','n_diff_pfx01',0,1,'SCHED_NAME'),('rabc','QRTZ_PAUSED_TRIGGER_GRPS','PRIMARY','2019-02-22 05:32:39','n_diff_pfx02',0,1,'SCHED_NAME,TRIGGER_GROUP'),('rabc','QRTZ_PAUSED_TRIGGER_GRPS','PRIMARY','2019-02-22 05:32:39','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','QRTZ_PAUSED_TRIGGER_GRPS','PRIMARY','2019-02-22 05:32:39','size',1,NULL,'Number of pages in the index'),('rabc','QRTZ_SCHEDULER_STATE','PRIMARY','2019-02-22 10:14:52','n_diff_pfx01',1,1,'SCHED_NAME'),('rabc','QRTZ_SCHEDULER_STATE','PRIMARY','2019-02-22 10:14:52','n_diff_pfx02',1,1,'SCHED_NAME,INSTANCE_NAME'),('rabc','QRTZ_SCHEDULER_STATE','PRIMARY','2019-02-22 10:14:52','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','QRTZ_SCHEDULER_STATE','PRIMARY','2019-02-22 10:14:52','size',1,NULL,'Number of pages in the index'),('rabc','QRTZ_SIMPLE_TRIGGERS','PRIMARY','2019-02-22 05:32:39','n_diff_pfx01',0,1,'SCHED_NAME'),('rabc','QRTZ_SIMPLE_TRIGGERS','PRIMARY','2019-02-22 05:32:39','n_diff_pfx02',0,1,'SCHED_NAME,TRIGGER_NAME'),('rabc','QRTZ_SIMPLE_TRIGGERS','PRIMARY','2019-02-22 05:32:39','n_diff_pfx03',0,1,'SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP'),('rabc','QRTZ_SIMPLE_TRIGGERS','PRIMARY','2019-02-22 05:32:39','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','QRTZ_SIMPLE_TRIGGERS','PRIMARY','2019-02-22 05:32:39','size',1,NULL,'Number of pages in the index'),('rabc','QRTZ_SIMPROP_TRIGGERS','PRIMARY','2019-02-22 05:32:39','n_diff_pfx01',0,1,'SCHED_NAME'),('rabc','QRTZ_SIMPROP_TRIGGERS','PRIMARY','2019-02-22 05:32:39','n_diff_pfx02',0,1,'SCHED_NAME,TRIGGER_NAME'),('rabc','QRTZ_SIMPROP_TRIGGERS','PRIMARY','2019-02-22 05:32:39','n_diff_pfx03',0,1,'SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP'),('rabc','QRTZ_SIMPROP_TRIGGERS','PRIMARY','2019-02-22 05:32:39','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','QRTZ_SIMPROP_TRIGGERS','PRIMARY','2019-02-22 05:32:39','size',1,NULL,'Number of pages in the index'),('rabc','QRTZ_TRIGGERS','PRIMARY','2019-02-22 10:14:42','n_diff_pfx01',1,1,'SCHED_NAME'),('rabc','QRTZ_TRIGGERS','PRIMARY','2019-02-22 10:14:42','n_diff_pfx02',4,1,'SCHED_NAME,TRIGGER_NAME'),('rabc','QRTZ_TRIGGERS','PRIMARY','2019-02-22 10:14:42','n_diff_pfx03',4,1,'SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP'),('rabc','QRTZ_TRIGGERS','PRIMARY','2019-02-22 10:14:42','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','QRTZ_TRIGGERS','PRIMARY','2019-02-22 10:14:42','size',1,NULL,'Number of pages in the index'),('rabc','QRTZ_TRIGGERS','SCHED_NAME','2019-02-22 10:14:42','n_diff_pfx01',1,1,'SCHED_NAME'),('rabc','QRTZ_TRIGGERS','SCHED_NAME','2019-02-22 10:14:42','n_diff_pfx02',4,1,'SCHED_NAME,JOB_NAME'),('rabc','QRTZ_TRIGGERS','SCHED_NAME','2019-02-22 10:14:42','n_diff_pfx03',4,1,'SCHED_NAME,JOB_NAME,JOB_GROUP'),('rabc','QRTZ_TRIGGERS','SCHED_NAME','2019-02-22 10:14:42','n_diff_pfx04',4,1,'SCHED_NAME,JOB_NAME,JOB_GROUP,TRIGGER_NAME'),('rabc','QRTZ_TRIGGERS','SCHED_NAME','2019-02-22 10:14:42','n_diff_pfx05',4,1,'SCHED_NAME,JOB_NAME,JOB_GROUP,TRIGGER_NAME,TRIGGER_GROUP'),('rabc','QRTZ_TRIGGERS','SCHED_NAME','2019-02-22 10:14:42','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','QRTZ_TRIGGERS','SCHED_NAME','2019-02-22 10:14:42','size',1,NULL,'Number of pages in the index'),('rabc','admin_user','PRIMARY','2019-02-22 05:08:10','n_diff_pfx01',0,1,'id'),('rabc','admin_user','PRIMARY','2019-02-22 05:08:10','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','admin_user','PRIMARY','2019-02-22 05:08:10','size',1,NULL,'Number of pages in the index'),('rabc','base_admin_permission','PRIMARY','2019-02-22 04:54:07','n_diff_pfx01',10,1,'id'),('rabc','base_admin_permission','PRIMARY','2019-02-22 04:54:07','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','base_admin_permission','PRIMARY','2019-02-22 04:54:07','size',1,NULL,'Number of pages in the index'),('rabc','base_admin_role','PRIMARY','2019-02-22 04:54:11','n_diff_pfx01',2,1,'id'),('rabc','base_admin_role','PRIMARY','2019-02-22 04:54:11','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','base_admin_role','PRIMARY','2019-02-22 04:54:11','size',1,NULL,'Number of pages in the index'),('rabc','base_admin_user','PRIMARY','2019-02-22 04:54:32','n_diff_pfx01',2,1,'id'),('rabc','base_admin_user','PRIMARY','2019-02-22 04:54:32','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','base_admin_user','PRIMARY','2019-02-22 04:54:32','size',1,NULL,'Number of pages in the index'),('rabc','menu','PRIMARY','2019-02-22 05:09:10','n_diff_pfx01',16,1,'id'),('rabc','menu','PRIMARY','2019-02-22 05:09:10','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','menu','PRIMARY','2019-02-22 05:09:10','size',1,NULL,'Number of pages in the index'),('rabc','role','PRIMARY','2019-02-22 05:08:10','n_diff_pfx01',0,1,'id'),('rabc','role','PRIMARY','2019-02-22 05:08:10','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','role','PRIMARY','2019-02-22 05:08:10','size',1,NULL,'Number of pages in the index'),('rabc','role_menu','PRIMARY','2019-02-22 05:08:11','n_diff_pfx01',0,1,'menuid'),('rabc','role_menu','PRIMARY','2019-02-22 05:08:11','n_diff_pfx02',0,1,'menuid,roleid'),('rabc','role_menu','PRIMARY','2019-02-22 05:08:11','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','role_menu','PRIMARY','2019-02-22 05:08:11','size',1,NULL,'Number of pages in the index'),('rabc','t_dept','PRIMARY','2019-02-22 05:33:00','n_diff_pfx01',6,1,'DEPT_ID'),('rabc','t_dept','PRIMARY','2019-02-22 05:33:00','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','t_dept','PRIMARY','2019-02-22 05:33:00','size',1,NULL,'Number of pages in the index'),('rabc','t_dict','PRIMARY','2019-02-22 05:32:40','n_diff_pfx01',11,1,'DICT_ID'),('rabc','t_dict','PRIMARY','2019-02-22 05:32:40','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','t_dict','PRIMARY','2019-02-22 05:32:40','size',1,NULL,'Number of pages in the index'),('rabc','t_job','PRIMARY','2019-02-22 05:32:42','n_diff_pfx01',4,1,'JOB_ID'),('rabc','t_job','PRIMARY','2019-02-22 05:32:42','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','t_job','PRIMARY','2019-02-22 05:32:42','size',1,NULL,'Number of pages in the index'),('rabc','t_job_log','PRIMARY','2019-02-22 05:32:43','n_diff_pfx01',28,1,'LOG_ID'),('rabc','t_job_log','PRIMARY','2019-02-22 05:32:43','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','t_job_log','PRIMARY','2019-02-22 05:32:43','size',1,NULL,'Number of pages in the index'),('rabc','t_log','PRIMARY','2019-02-22 05:58:15','n_diff_pfx01',64,1,'ID'),('rabc','t_log','PRIMARY','2019-02-22 05:58:15','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','t_log','PRIMARY','2019-02-22 05:58:15','size',1,NULL,'Number of pages in the index'),('rabc','t_menu','PRIMARY','2019-02-22 05:32:50','n_diff_pfx01',46,1,'MENU_ID'),('rabc','t_menu','PRIMARY','2019-02-22 05:32:50','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','t_menu','PRIMARY','2019-02-22 05:32:50','size',1,NULL,'Number of pages in the index'),('rabc','t_role','PRIMARY','2019-02-22 05:32:50','n_diff_pfx01',9,1,'ROLE_ID'),('rabc','t_role','PRIMARY','2019-02-22 05:32:50','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','t_role','PRIMARY','2019-02-22 05:32:50','size',1,NULL,'Number of pages in the index'),('rabc','t_role_menu','GEN_CLUST_INDEX','2019-02-22 05:33:10','n_diff_pfx01',99,1,'DB_ROW_ID'),('rabc','t_role_menu','GEN_CLUST_INDEX','2019-02-22 05:33:10','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','t_role_menu','GEN_CLUST_INDEX','2019-02-22 05:33:10','size',1,NULL,'Number of pages in the index'),('rabc','t_user','PRIMARY','2019-02-22 05:33:20','n_diff_pfx01',8,1,'USER_ID'),('rabc','t_user','PRIMARY','2019-02-22 05:33:20','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','t_user','PRIMARY','2019-02-22 05:33:20','size',1,NULL,'Number of pages in the index'),('rabc','t_user_role','GEN_CLUST_INDEX','2019-02-22 05:33:30','n_diff_pfx01',18,1,'DB_ROW_ID'),('rabc','t_user_role','GEN_CLUST_INDEX','2019-02-22 05:33:30','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','t_user_role','GEN_CLUST_INDEX','2019-02-22 05:33:30','size',1,NULL,'Number of pages in the index'),('rabc','tenant','PRIMARY','2019-02-22 05:08:10','n_diff_pfx01',0,1,'id'),('rabc','tenant','PRIMARY','2019-02-22 05:08:10','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','tenant','PRIMARY','2019-02-22 05:08:10','size',1,NULL,'Number of pages in the index'),('rabc','user_role','PRIMARY','2019-02-22 05:08:11','n_diff_pfx01',0,1,'userid'),('rabc','user_role','PRIMARY','2019-02-22 05:08:11','n_diff_pfx02',0,1,'userid,roleid'),('rabc','user_role','PRIMARY','2019-02-22 05:08:11','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('rabc','user_role','PRIMARY','2019-02-22 05:08:11','size',1,NULL,'Number of pages in the index'),('security_db','sys_role','PRIMARY','2018-12-28 16:12:35','n_diff_pfx01',0,1,'id'),('security_db','sys_role','PRIMARY','2018-12-28 16:12:35','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('security_db','sys_role','PRIMARY','2018-12-28 16:12:35','size',1,NULL,'Number of pages in the index'),('security_db','sys_user','PRIMARY','2018-12-28 16:12:35','n_diff_pfx01',0,1,'id'),('security_db','sys_user','PRIMARY','2018-12-28 16:12:35','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('security_db','sys_user','PRIMARY','2018-12-28 16:12:35','size',1,NULL,'Number of pages in the index'),('security_db','sys_user_roles','FKd0ut7sloes191bygyf7a3pk52','2018-12-28 16:12:35','n_diff_pfx01',0,1,'sys_user_id'),('security_db','sys_user_roles','FKd0ut7sloes191bygyf7a3pk52','2018-12-28 16:12:35','n_diff_pfx02',0,1,'sys_user_id,DB_ROW_ID'),('security_db','sys_user_roles','FKd0ut7sloes191bygyf7a3pk52','2018-12-28 16:12:35','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('security_db','sys_user_roles','FKd0ut7sloes191bygyf7a3pk52','2018-12-28 16:12:35','size',1,NULL,'Number of pages in the index'),('security_db','sys_user_roles','FKdpvc6d7xqpqr43dfuk1s27cqh','2018-12-28 16:12:35','n_diff_pfx01',0,1,'roles_id'),('security_db','sys_user_roles','FKdpvc6d7xqpqr43dfuk1s27cqh','2018-12-28 16:12:35','n_diff_pfx02',0,1,'roles_id,DB_ROW_ID'),('security_db','sys_user_roles','FKdpvc6d7xqpqr43dfuk1s27cqh','2018-12-28 16:12:35','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('security_db','sys_user_roles','FKdpvc6d7xqpqr43dfuk1s27cqh','2018-12-28 16:12:35','size',1,NULL,'Number of pages in the index'),('security_db','sys_user_roles','GEN_CLUST_INDEX','2018-12-28 16:12:35','n_diff_pfx01',0,1,'DB_ROW_ID'),('security_db','sys_user_roles','GEN_CLUST_INDEX','2018-12-28 16:12:35','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('security_db','sys_user_roles','GEN_CLUST_INDEX','2018-12-28 16:12:35','size',1,NULL,'Number of pages in the index'),('springTransactional','account','PRIMARY','2019-01-08 06:56:49','n_diff_pfx01',0,1,'username'),('springTransactional','account','PRIMARY','2019-01-08 06:56:49','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('springTransactional','account','PRIMARY','2019-01-08 06:56:49','size',1,NULL,'Number of pages in the index'),('springTransactional','book','PRIMARY','2019-01-08 06:56:49','n_diff_pfx01',0,1,'isbn'),('springTransactional','book','PRIMARY','2019-01-08 06:56:49','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('springTransactional','book','PRIMARY','2019-01-08 06:56:49','size',1,NULL,'Number of pages in the index'),('springTransactional','book_stock','PRIMARY','2019-01-08 06:56:49','n_diff_pfx01',0,1,'isbn'),('springTransactional','book_stock','PRIMARY','2019-01-08 06:56:49','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('springTransactional','book_stock','PRIMARY','2019-01-08 06:56:49','size',1,NULL,'Number of pages in the index'),('sys','sys_config','PRIMARY','2018-08-21 11:48:25','n_diff_pfx01',6,1,'variable'),('sys','sys_config','PRIMARY','2018-08-21 11:48:25','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('sys','sys_config','PRIMARY','2018-08-21 11:48:25','size',1,NULL,'Number of pages in the index'),('test2','account','PRIMARY','2019-01-08 10:06:14','n_diff_pfx01',0,1,'username'),('test2','account','PRIMARY','2019-01-08 10:06:14','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','account','PRIMARY','2019-01-08 10:06:14','size',1,NULL,'Number of pages in the index'),('test2','book','PRIMARY','2019-01-08 11:57:19','n_diff_pfx01',2,1,'isbn'),('test2','book','PRIMARY','2019-01-08 11:57:19','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','book','PRIMARY','2019-01-08 11:57:19','size',1,NULL,'Number of pages in the index'),('test2','book_stock','PRIMARY','2019-01-08 12:22:18','n_diff_pfx01',2,1,'isbn'),('test2','book_stock','PRIMARY','2019-01-08 12:22:18','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','book_stock','PRIMARY','2019-01-08 12:22:18','size',1,NULL,'Number of pages in the index'),('test2','dept','PRIMARY','2018-08-21 11:51:31','n_diff_pfx01',4,1,'DEPTNO'),('test2','dept','PRIMARY','2018-08-21 11:51:31','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','dept','PRIMARY','2018-08-21 11:51:31','size',1,NULL,'Number of pages in the index'),('test2','emp','EMP','2018-12-28 03:37:41','n_diff_pfx01',4,1,'DEPTNO'),('test2','emp','EMP','2018-12-28 03:37:41','n_diff_pfx02',15,1,'DEPTNO,EMPNO'),('test2','emp','EMP','2018-12-28 03:37:41','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','emp','EMP','2018-12-28 03:37:41','size',1,NULL,'Number of pages in the index'),('test2','emp','PRIMARY','2018-12-28 03:37:41','n_diff_pfx01',15,1,'EMPNO'),('test2','emp','PRIMARY','2018-12-28 03:37:41','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','emp','PRIMARY','2018-12-28 03:37:41','size',1,NULL,'Number of pages in the index'),('test2','my_date','PRIMARY','2018-12-10 12:41:00','n_diff_pfx01',0,1,'id'),('test2','my_date','PRIMARY','2018-12-10 12:41:00','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','my_date','PRIMARY','2018-12-10 12:41:00','size',1,NULL,'Number of pages in the index'),('test2','salgrade','GEN_CLUST_INDEX','2018-08-21 11:51:43','n_diff_pfx01',5,1,'DB_ROW_ID'),('test2','salgrade','GEN_CLUST_INDEX','2018-08-21 11:51:43','n_leaf_pages',1,NULL,'Number of leaf pages in the index'),('test2','salgrade','GEN_CLUST_INDEX','2018-08-21 11:51:43','size',1,NULL,'Number of pages in the index');
 /*!40000 ALTER TABLE `innodb_index_stats` ENABLE KEYS */;
 
 --
@@ -1392,7 +2978,7 @@ INSERT  IGNORE INTO `innodb_index_stats` VALUES ('authority','sys_menu','PRIMARY
 --
 
 /*!40000 ALTER TABLE `innodb_table_stats` DISABLE KEYS */;
-INSERT  IGNORE INTO `innodb_table_stats` VALUES ('authority','sys_menu','2018-12-28 20:30:04',55,1,0),('authority','sys_re_role_menu','2018-12-28 20:29:54',75,1,0),('authority','sys_re_user_role','2018-12-28 20:29:41',0,1,0),('authority','sys_role','2018-12-28 20:29:41',2,1,0),('authority','sys_user','2019-01-01 02:18:01',4,1,0),('baseAuthority','base_menu','2018-12-28 23:57:46',0,1,0),('baseAuthority','base_role','2018-12-28 23:57:46',2,1,0),('baseAuthority','base_role_menu','2018-12-28 23:57:46',0,1,0),('baseAuthority','base_user','2018-12-28 23:57:46',0,1,0),('baseAuthority','base_user_role','2018-12-28 23:57:46',2,1,0),('guns','code_dbinfo','2018-11-05 22:06:10',0,1,0),('guns','sys_dept','2018-11-05 22:04:37',4,1,0),('guns','sys_dict','2018-11-05 22:04:37',10,1,0),('guns','sys_expense','2018-11-05 22:04:37',0,1,0),('guns','sys_login_log','2018-11-05 22:29:46',11,1,0),('guns','sys_menu','2018-11-05 22:04:58',55,1,0),('guns','sys_notice','2018-11-05 22:04:37',2,1,0),('guns','sys_operation_log','2018-11-05 22:04:37',0,1,0),('guns','sys_relation','2018-11-05 22:04:37',75,1,0),('guns','sys_role','2018-11-05 22:04:47',2,1,0),('guns','sys_user','2018-11-05 22:05:08',4,1,0),('guns','test','2018-11-05 22:04:37',0,1,0),('mysql','component','2018-08-21 11:48:24',0,1,0),('mysql','gtid_executed','2018-08-21 11:48:24',0,1,0),('security_db','sys_role','2018-12-28 16:12:35',0,1,0),('security_db','sys_user','2018-12-28 16:12:35',0,1,0),('security_db','sys_user_roles','2018-12-28 16:12:35',0,1,2),('sys','sys_config','2018-08-21 11:48:25',6,1,0),('test2','QRTZ_BLOB_TRIGGERS','2018-11-26 06:22:40',0,1,0),('test2','QRTZ_CALENDARS','2018-11-26 06:22:40',0,1,0),('test2','QRTZ_CRON_TRIGGERS','2018-11-26 06:22:40',0,1,0),('test2','QRTZ_FIRED_TRIGGERS','2018-11-26 07:45:49',1,1,0),('test2','QRTZ_JOB_DETAILS','2018-11-26 06:22:39',0,1,0),('test2','QRTZ_LOCKS','2018-11-26 06:22:40',0,1,0),('test2','QRTZ_PAUSED_TRIGGER_GRPS','2018-11-26 06:22:40',0,1,0),('test2','QRTZ_SCHEDULER_STATE','2018-11-26 06:22:40',0,1,0),('test2','QRTZ_SIMPLE_TRIGGERS','2018-11-26 06:22:40',0,1,0),('test2','QRTZ_SIMPROP_TRIGGERS','2018-11-26 06:22:40',0,1,0),('test2','QRTZ_TRIGGERS','2018-11-26 06:22:39',0,1,1),('test2','dept','2018-08-21 11:51:31',4,1,0),('test2','emp','2018-12-28 03:37:41',15,1,1),('test2','my_date','2018-12-10 12:41:00',0,1,0),('test2','salgrade','2018-08-21 11:51:43',5,1,0);
+INSERT  IGNORE INTO `innodb_table_stats` VALUES ('ApolloConfigDB','App','2019-01-12 08:26:52',0,1,3),('ApolloConfigDB','AppNamespace','2019-01-12 08:26:52',0,1,3),('ApolloConfigDB','Audit','2019-01-12 08:26:52',0,1,1),('ApolloConfigDB','Cluster','2019-01-12 08:26:52',0,1,3),('ApolloConfigDB','Commit','2019-01-12 08:26:52',0,1,4),('ApolloConfigDB','GrayReleaseRule','2019-01-12 08:26:52',0,1,2),('ApolloConfigDB','Instance','2019-01-12 08:26:52',0,1,3),('ApolloConfigDB','InstanceConfig','2019-01-12 08:26:52',0,1,4),('ApolloConfigDB','Item','2019-01-12 08:26:53',0,1,2),('ApolloConfigDB','Namespace','2019-01-12 08:26:53',0,1,3),('ApolloConfigDB','NamespaceLock','2019-01-12 08:26:53',0,1,2),('ApolloConfigDB','Release','2019-01-12 08:26:53',0,1,3),('ApolloConfigDB','ReleaseHistory','2019-01-12 08:26:53',0,1,3),('ApolloConfigDB','ReleaseMessage','2019-01-12 08:26:53',0,1,2),('ApolloConfigDB','ServerConfig','2019-01-12 08:27:04',5,1,2),('ApolloPortalDB','App','2019-01-12 08:27:12',0,1,3),('ApolloPortalDB','AppNamespace','2019-01-12 08:27:12',0,1,3),('ApolloPortalDB','Authorities','2019-01-12 08:27:13',0,1,0),('ApolloPortalDB','Consumer','2019-01-12 08:27:12',0,1,2),('ApolloPortalDB','ConsumerAudit','2019-01-12 08:27:12',0,1,2),('ApolloPortalDB','ConsumerRole','2019-01-12 08:27:12',0,1,3),('ApolloPortalDB','ConsumerToken','2019-01-12 08:27:13',0,1,2),('ApolloPortalDB','Favorite','2019-01-12 08:27:13',0,1,3),('ApolloPortalDB','Permission','2019-01-12 08:27:13',5,1,2),('ApolloPortalDB','Role','2019-01-12 08:27:14',3,1,2),('ApolloPortalDB','RolePermission','2019-01-12 08:27:24',5,1,3),('ApolloPortalDB','ServerConfig','2019-01-12 08:27:13',7,1,2),('ApolloPortalDB','UserRole','2019-01-12 08:27:34',3,1,3),('ApolloPortalDB','Users','2019-01-12 08:27:13',0,1,0),('admin','menu','2019-02-04 05:38:18',4,1,0),('admin','role','2019-02-04 05:37:57',2,1,1),('admin','role_menu','2019-02-04 05:37:58',5,1,2),('admin','user','2019-02-04 05:38:08',3,1,1),('admin','user_role','2019-02-04 05:38:28',3,1,2),('authority','sys_menu','2018-12-28 20:30:04',55,1,0),('authority','sys_re_role_menu','2018-12-28 20:29:54',75,1,0),('authority','sys_re_user_role','2018-12-28 20:29:41',0,1,0),('authority','sys_role','2018-12-28 20:29:41',2,1,0),('authority','sys_user','2019-01-11 12:22:06',6,1,0),('baseAuthority','base_menu','2018-12-28 23:57:46',0,1,0),('baseAuthority','base_role','2018-12-28 23:57:46',2,1,0),('baseAuthority','base_role_menu','2018-12-28 23:57:46',0,1,0),('baseAuthority','base_user','2018-12-28 23:57:46',0,1,0),('baseAuthority','base_user_role','2018-12-28 23:57:46',2,1,0),('dmc','resource','2019-01-23 09:36:35',18,1,2),('dmc','role','2019-01-23 09:36:14',3,1,1),('dmc','role_resource','2019-01-23 09:36:14',27,1,2),('dmc','user','2019-01-23 09:36:24',3,1,1),('dmc','user_role','2019-01-23 09:36:45',5,1,3),('fescar','account_tbl','2019-02-01 22:58:49',0,1,0),('fescar','order_tbl','2019-02-01 23:01:15',0,1,0),('fescar','storage_tbl','2019-02-01 22:58:48',0,1,1),('fescar','undo_log','2019-02-01 23:01:25',0,1,1),('fescar','user_money_a','2019-02-01 22:19:22',0,1,0),('fescar','user_money_b','2019-02-01 22:19:22',0,1,0),('fescar2','undo_log','2019-02-01 22:00:51',0,1,1),('fescar2','user_money_a','2019-02-01 22:00:56',0,1,0),('fescar2','user_money_b','2019-02-01 22:00:57',0,1,0),('guns','code_dbinfo','2018-11-05 22:06:10',0,1,0),('guns','sys_dept','2018-11-05 22:04:37',4,1,0),('guns','sys_dict','2018-11-05 22:04:37',10,1,0),('guns','sys_expense','2018-11-05 22:04:37',0,1,0),('guns','sys_login_log','2018-11-05 22:29:46',11,1,0),('guns','sys_menu','2018-11-05 22:04:58',55,1,0),('guns','sys_notice','2018-11-05 22:04:37',2,1,0),('guns','sys_operation_log','2019-02-04 05:47:00',5,1,0),('guns','sys_relation','2018-11-05 22:04:37',75,1,0),('guns','sys_role','2018-11-05 22:04:47',2,1,0),('guns','sys_user','2018-11-05 22:05:08',4,1,0),('guns','test','2018-11-05 22:04:37',0,1,0),('mysql','component','2018-08-21 11:48:24',0,1,0),('mysql','gtid_executed','2018-08-21 11:48:24',0,1,0),('quartz','QRTZ_BLOB_TRIGGERS','2019-02-07 11:18:42',0,1,0),('quartz','QRTZ_CALENDARS','2019-02-07 11:18:42',0,1,0),('quartz','QRTZ_CRON_TRIGGERS','2019-02-12 07:01:43',1,1,0),('quartz','QRTZ_FIRED_TRIGGERS','2019-02-12 07:02:22',1,1,0),('quartz','QRTZ_JOB_DETAILS','2019-02-07 11:18:41',0,1,0),('quartz','QRTZ_LOCKS','2019-02-07 11:18:42',0,1,0),('quartz','QRTZ_PAUSED_TRIGGER_GRPS','2019-02-07 11:18:42',0,1,0),('quartz','QRTZ_SCHEDULER_STATE','2019-02-07 11:18:42',0,1,0),('quartz','QRTZ_SIMPLE_TRIGGERS','2019-02-07 11:18:41',0,1,0),('quartz','QRTZ_SIMPROP_TRIGGERS','2019-02-07 11:18:41',0,1,0),('quartz','QRTZ_TRIGGERS','2019-02-12 07:01:33',1,1,1),('rabc','QRTZ_BLOB_TRIGGERS','2019-02-22 05:32:39',0,1,0),('rabc','QRTZ_CALENDARS','2019-02-22 05:32:39',0,1,0),('rabc','QRTZ_CRON_TRIGGERS','2019-02-22 10:15:02',4,1,0),('rabc','QRTZ_FIRED_TRIGGERS','2019-02-22 05:32:39',0,1,0),('rabc','QRTZ_JOB_DETAILS','2019-02-22 05:34:45',4,1,0),('rabc','QRTZ_LOCKS','2019-02-22 05:34:55',2,1,0),('rabc','QRTZ_PAUSED_TRIGGER_GRPS','2019-02-22 05:32:39',0,1,0),('rabc','QRTZ_SCHEDULER_STATE','2019-02-22 10:14:52',1,1,0),('rabc','QRTZ_SIMPLE_TRIGGERS','2019-02-22 05:32:39',0,1,0),('rabc','QRTZ_SIMPROP_TRIGGERS','2019-02-22 05:32:39',0,1,0),('rabc','QRTZ_TRIGGERS','2019-02-22 10:14:42',4,1,1),('rabc','admin_user','2019-02-22 05:08:10',0,1,0),('rabc','base_admin_permission','2019-02-22 04:54:07',10,1,0),('rabc','base_admin_role','2019-02-22 04:54:11',2,1,0),('rabc','base_admin_user','2019-02-22 04:54:32',2,1,0),('rabc','menu','2019-02-22 05:09:10',16,1,0),('rabc','role','2019-02-22 05:08:10',0,1,0),('rabc','role_menu','2019-02-22 05:08:11',0,1,0),('rabc','t_dept','2019-02-22 05:33:00',6,1,0),('rabc','t_dict','2019-02-22 05:32:40',11,1,0),('rabc','t_job','2019-02-22 05:32:42',4,1,0),('rabc','t_job_log','2019-02-22 05:32:43',28,1,0),('rabc','t_log','2019-02-22 05:58:15',64,1,0),('rabc','t_menu','2019-02-22 05:32:50',46,1,0),('rabc','t_role','2019-02-22 05:32:50',9,1,0),('rabc','t_role_menu','2019-02-22 05:33:10',99,1,0),('rabc','t_user','2019-02-22 05:33:20',8,1,0),('rabc','t_user_role','2019-02-22 05:33:30',18,1,0),('rabc','tenant','2019-02-22 05:08:10',0,1,0),('rabc','user_role','2019-02-22 05:08:11',0,1,0),('security_db','sys_role','2018-12-28 16:12:35',0,1,0),('security_db','sys_user','2018-12-28 16:12:35',0,1,0),('security_db','sys_user_roles','2018-12-28 16:12:35',0,1,2),('springTransactional','account','2019-01-08 06:56:49',0,1,0),('springTransactional','book','2019-01-08 06:56:49',0,1,0),('springTransactional','book_stock','2019-01-08 06:56:49',0,1,0),('sys','sys_config','2018-08-21 11:48:25',6,1,0),('test2','account','2019-01-08 10:06:14',0,1,0),('test2','book','2019-01-08 11:57:19',2,1,0),('test2','book_stock','2019-01-08 12:22:18',2,1,0),('test2','dept','2018-08-21 11:51:31',4,1,0),('test2','emp','2018-12-28 03:37:41',15,1,1),('test2','my_date','2018-12-10 12:41:00',0,1,0),('test2','salgrade','2018-08-21 11:51:43',5,1,0);
 /*!40000 ALTER TABLE `innodb_table_stats` ENABLE KEYS */;
 
 --
@@ -1944,6 +3530,1214 @@ CREATE TABLE IF NOT EXISTS `slow_log` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Current Database: `quartz`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `quartz` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
+
+USE `quartz`;
+
+--
+-- Table structure for table `QRTZ_BLOB_TRIGGERS`
+--
+
+DROP TABLE IF EXISTS `QRTZ_BLOB_TRIGGERS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_BLOB_TRIGGERS` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `TRIGGER_NAME` varchar(200) NOT NULL,
+  `TRIGGER_GROUP` varchar(200) NOT NULL,
+  `BLOB_DATA` blob,
+  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
+  CONSTRAINT `QRTZ_BLOB_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) REFERENCES `QRTZ_TRIGGERS` (`sched_name`, `trigger_name`, `trigger_group`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_BLOB_TRIGGERS`
+--
+
+LOCK TABLES `QRTZ_BLOB_TRIGGERS` WRITE;
+/*!40000 ALTER TABLE `QRTZ_BLOB_TRIGGERS` DISABLE KEYS */;
+/*!40000 ALTER TABLE `QRTZ_BLOB_TRIGGERS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `QRTZ_CALENDARS`
+--
+
+DROP TABLE IF EXISTS `QRTZ_CALENDARS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_CALENDARS` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `CALENDAR_NAME` varchar(200) NOT NULL,
+  `CALENDAR` blob NOT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`CALENDAR_NAME`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_CALENDARS`
+--
+
+LOCK TABLES `QRTZ_CALENDARS` WRITE;
+/*!40000 ALTER TABLE `QRTZ_CALENDARS` DISABLE KEYS */;
+/*!40000 ALTER TABLE `QRTZ_CALENDARS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `QRTZ_CRON_TRIGGERS`
+--
+
+DROP TABLE IF EXISTS `QRTZ_CRON_TRIGGERS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_CRON_TRIGGERS` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `TRIGGER_NAME` varchar(200) NOT NULL,
+  `TRIGGER_GROUP` varchar(200) NOT NULL,
+  `CRON_EXPRESSION` varchar(200) NOT NULL,
+  `TIME_ZONE_ID` varchar(80) DEFAULT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
+  CONSTRAINT `QRTZ_CRON_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) REFERENCES `QRTZ_TRIGGERS` (`sched_name`, `trigger_name`, `trigger_group`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_CRON_TRIGGERS`
+--
+
+LOCK TABLES `QRTZ_CRON_TRIGGERS` WRITE;
+/*!40000 ALTER TABLE `QRTZ_CRON_TRIGGERS` DISABLE KEYS */;
+INSERT INTO `QRTZ_CRON_TRIGGERS` VALUES ('SchedulerFactory','com.goat.job.HelloJob','2','0/1 * * * * ?','Asia/Shanghai');
+/*!40000 ALTER TABLE `QRTZ_CRON_TRIGGERS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `QRTZ_FIRED_TRIGGERS`
+--
+
+DROP TABLE IF EXISTS `QRTZ_FIRED_TRIGGERS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_FIRED_TRIGGERS` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `ENTRY_ID` varchar(95) NOT NULL,
+  `TRIGGER_NAME` varchar(200) NOT NULL,
+  `TRIGGER_GROUP` varchar(200) NOT NULL,
+  `INSTANCE_NAME` varchar(200) NOT NULL,
+  `FIRED_TIME` bigint(13) NOT NULL,
+  `SCHED_TIME` bigint(13) NOT NULL,
+  `PRIORITY` int(11) NOT NULL,
+  `STATE` varchar(16) NOT NULL,
+  `JOB_NAME` varchar(200) DEFAULT NULL,
+  `JOB_GROUP` varchar(200) DEFAULT NULL,
+  `IS_NONCONCURRENT` varchar(1) DEFAULT NULL,
+  `REQUESTS_RECOVERY` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`ENTRY_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_FIRED_TRIGGERS`
+--
+
+LOCK TABLES `QRTZ_FIRED_TRIGGERS` WRITE;
+/*!40000 ALTER TABLE `QRTZ_FIRED_TRIGGERS` DISABLE KEYS */;
+INSERT INTO `QRTZ_FIRED_TRIGGERS` VALUES ('SchedulerFactory','NON_CLUSTERED1549954136647','com.goat.job.HelloJob','2','NON_CLUSTERED',1549954935135,1549954936000,5,'ACQUIRED',NULL,NULL,'0','0');
+/*!40000 ALTER TABLE `QRTZ_FIRED_TRIGGERS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `QRTZ_JOB_DETAILS`
+--
+
+DROP TABLE IF EXISTS `QRTZ_JOB_DETAILS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_JOB_DETAILS` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `JOB_NAME` varchar(200) NOT NULL,
+  `JOB_GROUP` varchar(200) NOT NULL,
+  `DESCRIPTION` varchar(250) DEFAULT NULL,
+  `JOB_CLASS_NAME` varchar(250) NOT NULL,
+  `IS_DURABLE` varchar(1) NOT NULL,
+  `IS_NONCONCURRENT` varchar(1) NOT NULL,
+  `IS_UPDATE_DATA` varchar(1) NOT NULL,
+  `REQUESTS_RECOVERY` varchar(1) NOT NULL,
+  `JOB_DATA` blob,
+  PRIMARY KEY (`SCHED_NAME`,`JOB_NAME`,`JOB_GROUP`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_JOB_DETAILS`
+--
+
+LOCK TABLES `QRTZ_JOB_DETAILS` WRITE;
+/*!40000 ALTER TABLE `QRTZ_JOB_DETAILS` DISABLE KEYS */;
+INSERT INTO `QRTZ_JOB_DETAILS` VALUES ('SchedulerFactory','com.goat.job.HelloJob','2',NULL,'com.goat.job.HelloJob','0','0','0','0',_binary '�\�\0sr\0org.quartz.JobDataMap���迩�\�\0\0xr\0&org.quartz.utils.StringKeyDirtyFlagMap�\�\��\�](\0Z\0allowsTransientDataxr\0org.quartz.utils.DirtyFlagMap\�.�(v\n\�\0Z\0dirtyL\0mapt\0Ljava/util/Map;xp\0sr\0java.util.HashMap\��\�`\�\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0\0x\0');
+/*!40000 ALTER TABLE `QRTZ_JOB_DETAILS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `QRTZ_LOCKS`
+--
+
+DROP TABLE IF EXISTS `QRTZ_LOCKS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_LOCKS` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `LOCK_NAME` varchar(40) NOT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`LOCK_NAME`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_LOCKS`
+--
+
+LOCK TABLES `QRTZ_LOCKS` WRITE;
+/*!40000 ALTER TABLE `QRTZ_LOCKS` DISABLE KEYS */;
+/*!40000 ALTER TABLE `QRTZ_LOCKS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `QRTZ_PAUSED_TRIGGER_GRPS`
+--
+
+DROP TABLE IF EXISTS `QRTZ_PAUSED_TRIGGER_GRPS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_PAUSED_TRIGGER_GRPS` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `TRIGGER_GROUP` varchar(200) NOT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_GROUP`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_PAUSED_TRIGGER_GRPS`
+--
+
+LOCK TABLES `QRTZ_PAUSED_TRIGGER_GRPS` WRITE;
+/*!40000 ALTER TABLE `QRTZ_PAUSED_TRIGGER_GRPS` DISABLE KEYS */;
+/*!40000 ALTER TABLE `QRTZ_PAUSED_TRIGGER_GRPS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `QRTZ_SCHEDULER_STATE`
+--
+
+DROP TABLE IF EXISTS `QRTZ_SCHEDULER_STATE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_SCHEDULER_STATE` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `INSTANCE_NAME` varchar(200) NOT NULL,
+  `LAST_CHECKIN_TIME` bigint(13) NOT NULL,
+  `CHECKIN_INTERVAL` bigint(13) NOT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`INSTANCE_NAME`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_SCHEDULER_STATE`
+--
+
+LOCK TABLES `QRTZ_SCHEDULER_STATE` WRITE;
+/*!40000 ALTER TABLE `QRTZ_SCHEDULER_STATE` DISABLE KEYS */;
+/*!40000 ALTER TABLE `QRTZ_SCHEDULER_STATE` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `QRTZ_SIMPLE_TRIGGERS`
+--
+
+DROP TABLE IF EXISTS `QRTZ_SIMPLE_TRIGGERS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_SIMPLE_TRIGGERS` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `TRIGGER_NAME` varchar(200) NOT NULL,
+  `TRIGGER_GROUP` varchar(200) NOT NULL,
+  `REPEAT_COUNT` bigint(7) NOT NULL,
+  `REPEAT_INTERVAL` bigint(12) NOT NULL,
+  `TIMES_TRIGGERED` bigint(10) NOT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
+  CONSTRAINT `QRTZ_SIMPLE_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) REFERENCES `QRTZ_TRIGGERS` (`sched_name`, `trigger_name`, `trigger_group`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_SIMPLE_TRIGGERS`
+--
+
+LOCK TABLES `QRTZ_SIMPLE_TRIGGERS` WRITE;
+/*!40000 ALTER TABLE `QRTZ_SIMPLE_TRIGGERS` DISABLE KEYS */;
+/*!40000 ALTER TABLE `QRTZ_SIMPLE_TRIGGERS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `QRTZ_SIMPROP_TRIGGERS`
+--
+
+DROP TABLE IF EXISTS `QRTZ_SIMPROP_TRIGGERS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_SIMPROP_TRIGGERS` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `TRIGGER_NAME` varchar(200) NOT NULL,
+  `TRIGGER_GROUP` varchar(200) NOT NULL,
+  `STR_PROP_1` varchar(512) DEFAULT NULL,
+  `STR_PROP_2` varchar(512) DEFAULT NULL,
+  `STR_PROP_3` varchar(512) DEFAULT NULL,
+  `INT_PROP_1` int(11) DEFAULT NULL,
+  `INT_PROP_2` int(11) DEFAULT NULL,
+  `LONG_PROP_1` bigint(20) DEFAULT NULL,
+  `LONG_PROP_2` bigint(20) DEFAULT NULL,
+  `DEC_PROP_1` decimal(13,4) DEFAULT NULL,
+  `DEC_PROP_2` decimal(13,4) DEFAULT NULL,
+  `BOOL_PROP_1` varchar(1) DEFAULT NULL,
+  `BOOL_PROP_2` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
+  CONSTRAINT `QRTZ_SIMPROP_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) REFERENCES `QRTZ_TRIGGERS` (`sched_name`, `trigger_name`, `trigger_group`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_SIMPROP_TRIGGERS`
+--
+
+LOCK TABLES `QRTZ_SIMPROP_TRIGGERS` WRITE;
+/*!40000 ALTER TABLE `QRTZ_SIMPROP_TRIGGERS` DISABLE KEYS */;
+/*!40000 ALTER TABLE `QRTZ_SIMPROP_TRIGGERS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `QRTZ_TRIGGERS`
+--
+
+DROP TABLE IF EXISTS `QRTZ_TRIGGERS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_TRIGGERS` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `TRIGGER_NAME` varchar(200) NOT NULL,
+  `TRIGGER_GROUP` varchar(200) NOT NULL,
+  `JOB_NAME` varchar(200) NOT NULL,
+  `JOB_GROUP` varchar(200) NOT NULL,
+  `DESCRIPTION` varchar(250) DEFAULT NULL,
+  `NEXT_FIRE_TIME` bigint(13) DEFAULT NULL,
+  `PREV_FIRE_TIME` bigint(13) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `TRIGGER_STATE` varchar(16) NOT NULL,
+  `TRIGGER_TYPE` varchar(8) NOT NULL,
+  `START_TIME` bigint(13) NOT NULL,
+  `END_TIME` bigint(13) DEFAULT NULL,
+  `CALENDAR_NAME` varchar(200) DEFAULT NULL,
+  `MISFIRE_INSTR` smallint(2) DEFAULT NULL,
+  `JOB_DATA` blob,
+  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
+  KEY `SCHED_NAME` (`SCHED_NAME`,`JOB_NAME`,`JOB_GROUP`),
+  CONSTRAINT `QRTZ_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `JOB_NAME`, `JOB_GROUP`) REFERENCES `QRTZ_JOB_DETAILS` (`sched_name`, `job_name`, `job_group`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_TRIGGERS`
+--
+
+LOCK TABLES `QRTZ_TRIGGERS` WRITE;
+/*!40000 ALTER TABLE `QRTZ_TRIGGERS` DISABLE KEYS */;
+INSERT INTO `QRTZ_TRIGGERS` VALUES ('SchedulerFactory','com.goat.job.HelloJob','2','com.goat.job.HelloJob','2',NULL,1549954936000,1549954935000,5,'ACQUIRED','CRON',1549538493000,0,NULL,0,'');
+/*!40000 ALTER TABLE `QRTZ_TRIGGERS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Current Database: `rabc`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `rabc` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `rabc`;
+
+--
+-- Table structure for table `QRTZ_BLOB_TRIGGERS`
+--
+
+DROP TABLE IF EXISTS `QRTZ_BLOB_TRIGGERS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_BLOB_TRIGGERS` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `TRIGGER_NAME` varchar(200) NOT NULL,
+  `TRIGGER_GROUP` varchar(200) NOT NULL,
+  `BLOB_DATA` blob,
+  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
+  CONSTRAINT `QRTZ_BLOB_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) REFERENCES `QRTZ_TRIGGERS` (`sched_name`, `trigger_name`, `trigger_group`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_BLOB_TRIGGERS`
+--
+
+LOCK TABLES `QRTZ_BLOB_TRIGGERS` WRITE;
+/*!40000 ALTER TABLE `QRTZ_BLOB_TRIGGERS` DISABLE KEYS */;
+/*!40000 ALTER TABLE `QRTZ_BLOB_TRIGGERS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `QRTZ_CALENDARS`
+--
+
+DROP TABLE IF EXISTS `QRTZ_CALENDARS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_CALENDARS` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `CALENDAR_NAME` varchar(200) NOT NULL,
+  `CALENDAR` blob NOT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`CALENDAR_NAME`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_CALENDARS`
+--
+
+LOCK TABLES `QRTZ_CALENDARS` WRITE;
+/*!40000 ALTER TABLE `QRTZ_CALENDARS` DISABLE KEYS */;
+/*!40000 ALTER TABLE `QRTZ_CALENDARS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `QRTZ_CRON_TRIGGERS`
+--
+
+DROP TABLE IF EXISTS `QRTZ_CRON_TRIGGERS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_CRON_TRIGGERS` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `TRIGGER_NAME` varchar(200) NOT NULL,
+  `TRIGGER_GROUP` varchar(200) NOT NULL,
+  `CRON_EXPRESSION` varchar(200) NOT NULL,
+  `TIME_ZONE_ID` varchar(80) DEFAULT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
+  CONSTRAINT `QRTZ_CRON_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) REFERENCES `QRTZ_TRIGGERS` (`sched_name`, `trigger_name`, `trigger_group`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_CRON_TRIGGERS`
+--
+
+LOCK TABLES `QRTZ_CRON_TRIGGERS` WRITE;
+/*!40000 ALTER TABLE `QRTZ_CRON_TRIGGERS` DISABLE KEYS */;
+INSERT INTO `QRTZ_CRON_TRIGGERS` VALUES ('MyScheduler','TASK_1','DEFAULT','0/1 * * * * ?','Asia/Shanghai'),('MyScheduler','TASK_11','DEFAULT','0/5 * * * * ?','Asia/Shanghai'),('MyScheduler','TASK_2','DEFAULT','0/10 * * * * ?','Asia/Shanghai'),('MyScheduler','TASK_3','DEFAULT','0/1 * * * * ?','Asia/Shanghai');
+/*!40000 ALTER TABLE `QRTZ_CRON_TRIGGERS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `QRTZ_FIRED_TRIGGERS`
+--
+
+DROP TABLE IF EXISTS `QRTZ_FIRED_TRIGGERS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_FIRED_TRIGGERS` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `ENTRY_ID` varchar(95) NOT NULL,
+  `TRIGGER_NAME` varchar(200) NOT NULL,
+  `TRIGGER_GROUP` varchar(200) NOT NULL,
+  `INSTANCE_NAME` varchar(200) NOT NULL,
+  `FIRED_TIME` bigint(13) NOT NULL,
+  `SCHED_TIME` bigint(13) NOT NULL,
+  `PRIORITY` int(11) NOT NULL,
+  `STATE` varchar(16) NOT NULL,
+  `JOB_NAME` varchar(200) DEFAULT NULL,
+  `JOB_GROUP` varchar(200) DEFAULT NULL,
+  `IS_NONCONCURRENT` varchar(1) DEFAULT NULL,
+  `REQUESTS_RECOVERY` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`ENTRY_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_FIRED_TRIGGERS`
+--
+
+LOCK TABLES `QRTZ_FIRED_TRIGGERS` WRITE;
+/*!40000 ALTER TABLE `QRTZ_FIRED_TRIGGERS` DISABLE KEYS */;
+/*!40000 ALTER TABLE `QRTZ_FIRED_TRIGGERS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `QRTZ_JOB_DETAILS`
+--
+
+DROP TABLE IF EXISTS `QRTZ_JOB_DETAILS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_JOB_DETAILS` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `JOB_NAME` varchar(200) NOT NULL,
+  `JOB_GROUP` varchar(200) NOT NULL,
+  `DESCRIPTION` varchar(250) DEFAULT NULL,
+  `JOB_CLASS_NAME` varchar(250) NOT NULL,
+  `IS_DURABLE` varchar(1) NOT NULL,
+  `IS_NONCONCURRENT` varchar(1) NOT NULL,
+  `IS_UPDATE_DATA` varchar(1) NOT NULL,
+  `REQUESTS_RECOVERY` varchar(1) NOT NULL,
+  `JOB_DATA` blob,
+  PRIMARY KEY (`SCHED_NAME`,`JOB_NAME`,`JOB_GROUP`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_JOB_DETAILS`
+--
+
+LOCK TABLES `QRTZ_JOB_DETAILS` WRITE;
+/*!40000 ALTER TABLE `QRTZ_JOB_DETAILS` DISABLE KEYS */;
+INSERT INTO `QRTZ_JOB_DETAILS` VALUES ('MyScheduler','TASK_1','DEFAULT',NULL,'cc.mrbird.job.util.ScheduleJob','0','0','0','0',_binary '�\�\0sr\0org.quartz.JobDataMap���迩�\�\0\0xr\0&org.quartz.utils.StringKeyDirtyFlagMap�\�\��\�](\0Z\0allowsTransientDataxr\0org.quartz.utils.DirtyFlagMap\�.�(v\n\�\0Z\0dirtyL\0mapt\0Ljava/util/Map;xpsr\0java.util.HashMap\��\�`\�\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0\rJOB_PARAM_KEYsr\0cc.mrbird.job.domain.Job�R���\0L\0beanNamet\0Ljava/lang/String;L\0\ncreateTimet\0Ljava/util/Date;L\0cronExpressionq\0~\0	L\0jobIdt\0Ljava/lang/Long;L\0\nmethodNameq\0~\0	L\0paramsq\0~\0	L\0remarkq\0~\0	L\0statusq\0~\0	xpt\0testTasksr\0java.util.Datehj�KYt\0\0xpw\0\0a\�\�ppxt\0\r0/1 * * * * ?sr\0java.lang.Long;�\�̏#\�\0J\0valuexr\0java.lang.Number����\��\0\0xp\0\0\0\0\0\0\0t\0testt\0mrbirdt\0有参任务调度测试t\01x\0'),('MyScheduler','TASK_11','DEFAULT',NULL,'cc.mrbird.job.util.ScheduleJob','0','0','0','0',_binary '�\�\0sr\0org.quartz.JobDataMap���迩�\�\0\0xr\0&org.quartz.utils.StringKeyDirtyFlagMap�\�\��\�](\0Z\0allowsTransientDataxr\0org.quartz.utils.DirtyFlagMap\�.�(v\n\�\0Z\0dirtyL\0mapt\0Ljava/util/Map;xpsr\0java.util.HashMap\��\�`\�\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0\rJOB_PARAM_KEYsr\0cc.mrbird.job.domain.Job�R���\0L\0beanNamet\0Ljava/lang/String;L\0\ncreateTimet\0Ljava/util/Date;L\0cronExpressionq\0~\0	L\0jobIdt\0Ljava/lang/Long;L\0\nmethodNameq\0~\0	L\0paramsq\0~\0	L\0remarkq\0~\0	L\0statusq\0~\0	xpt\0testTasksr\0java.util.Datehj�KYt\0\0xpw\0\0a\��Pxt\0\r0/5 * * * * ?sr\0java.lang.Long;�\�̏#\�\0J\0valuexr\0java.lang.Number����\��\0\0xp\0\0\0\0\0\0\0t\0test2pt\0测试异常t\01x\0'),('MyScheduler','TASK_2','DEFAULT',NULL,'cc.mrbird.job.util.ScheduleJob','0','0','0','0',_binary '�\�\0sr\0org.quartz.JobDataMap���迩�\�\0\0xr\0&org.quartz.utils.StringKeyDirtyFlagMap�\�\��\�](\0Z\0allowsTransientDataxr\0org.quartz.utils.DirtyFlagMap\�.�(v\n\�\0Z\0dirtyL\0mapt\0Ljava/util/Map;xpsr\0java.util.HashMap\��\�`\�\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0\rJOB_PARAM_KEYsr\0cc.mrbird.job.domain.Job�R���\0L\0beanNamet\0Ljava/lang/String;L\0\ncreateTimet\0Ljava/util/Date;L\0cronExpressionq\0~\0	L\0jobIdt\0Ljava/lang/Long;L\0\nmethodNameq\0~\0	L\0paramsq\0~\0	L\0remarkq\0~\0	L\0statusq\0~\0	xpt\0testTasksr\0java.util.Datehj�KYt\0\0xpw\0\0a\�2�xt\00/10 * * * * ?sr\0java.lang.Long;�\�̏#\�\0J\0valuexr\0java.lang.Number����\��\0\0xp\0\0\0\0\0\0\0t\0test1pt\0无参任务调度测试t\01x\0'),('MyScheduler','TASK_3','DEFAULT',NULL,'cc.mrbird.job.util.ScheduleJob','0','0','0','0',_binary '�\�\0sr\0org.quartz.JobDataMap���迩�\�\0\0xr\0&org.quartz.utils.StringKeyDirtyFlagMap�\�\��\�](\0Z\0allowsTransientDataxr\0org.quartz.utils.DirtyFlagMap\�.�(v\n\�\0Z\0dirtyL\0mapt\0Ljava/util/Map;xpsr\0java.util.HashMap\��\�`\�\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0\rJOB_PARAM_KEYsr\0cc.mrbird.job.domain.Job�R���\0L\0beanNamet\0Ljava/lang/String;L\0\ncreateTimet\0Ljava/util/Date;L\0cronExpressionq\0~\0	L\0jobIdt\0Ljava/lang/Long;L\0\nmethodNameq\0~\0	L\0paramsq\0~\0	L\0remarkq\0~\0	L\0statusq\0~\0	xpt\0testTasksr\0java.util.Datehj�KYt\0\0xpw\0\0aϹ��xt\0\r0/1 * * * * ?sr\0java.lang.Long;�\�̏#\�\0J\0valuexr\0java.lang.Number����\��\0\0xp\0\0\0\0\0\0\0t\0testt\0hello worldt\0+有参任务调度测试,每隔一秒触发t\01x\0');
+/*!40000 ALTER TABLE `QRTZ_JOB_DETAILS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `QRTZ_LOCKS`
+--
+
+DROP TABLE IF EXISTS `QRTZ_LOCKS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_LOCKS` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `LOCK_NAME` varchar(40) NOT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`LOCK_NAME`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_LOCKS`
+--
+
+LOCK TABLES `QRTZ_LOCKS` WRITE;
+/*!40000 ALTER TABLE `QRTZ_LOCKS` DISABLE KEYS */;
+INSERT INTO `QRTZ_LOCKS` VALUES ('MyScheduler','STATE_ACCESS'),('MyScheduler','TRIGGER_ACCESS');
+/*!40000 ALTER TABLE `QRTZ_LOCKS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `QRTZ_PAUSED_TRIGGER_GRPS`
+--
+
+DROP TABLE IF EXISTS `QRTZ_PAUSED_TRIGGER_GRPS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_PAUSED_TRIGGER_GRPS` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `TRIGGER_GROUP` varchar(200) NOT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_GROUP`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_PAUSED_TRIGGER_GRPS`
+--
+
+LOCK TABLES `QRTZ_PAUSED_TRIGGER_GRPS` WRITE;
+/*!40000 ALTER TABLE `QRTZ_PAUSED_TRIGGER_GRPS` DISABLE KEYS */;
+/*!40000 ALTER TABLE `QRTZ_PAUSED_TRIGGER_GRPS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `QRTZ_SCHEDULER_STATE`
+--
+
+DROP TABLE IF EXISTS `QRTZ_SCHEDULER_STATE`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_SCHEDULER_STATE` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `INSTANCE_NAME` varchar(200) NOT NULL,
+  `LAST_CHECKIN_TIME` bigint(13) NOT NULL,
+  `CHECKIN_INTERVAL` bigint(13) NOT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`INSTANCE_NAME`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_SCHEDULER_STATE`
+--
+
+LOCK TABLES `QRTZ_SCHEDULER_STATE` WRITE;
+/*!40000 ALTER TABLE `QRTZ_SCHEDULER_STATE` DISABLE KEYS */;
+INSERT INTO `QRTZ_SCHEDULER_STATE` VALUES ('MyScheduler','DESKTOP-2NM366J1550830466998',1550833363920,15000);
+/*!40000 ALTER TABLE `QRTZ_SCHEDULER_STATE` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `QRTZ_SIMPLE_TRIGGERS`
+--
+
+DROP TABLE IF EXISTS `QRTZ_SIMPLE_TRIGGERS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_SIMPLE_TRIGGERS` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `TRIGGER_NAME` varchar(200) NOT NULL,
+  `TRIGGER_GROUP` varchar(200) NOT NULL,
+  `REPEAT_COUNT` bigint(7) NOT NULL,
+  `REPEAT_INTERVAL` bigint(12) NOT NULL,
+  `TIMES_TRIGGERED` bigint(10) NOT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
+  CONSTRAINT `QRTZ_SIMPLE_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) REFERENCES `QRTZ_TRIGGERS` (`sched_name`, `trigger_name`, `trigger_group`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_SIMPLE_TRIGGERS`
+--
+
+LOCK TABLES `QRTZ_SIMPLE_TRIGGERS` WRITE;
+/*!40000 ALTER TABLE `QRTZ_SIMPLE_TRIGGERS` DISABLE KEYS */;
+/*!40000 ALTER TABLE `QRTZ_SIMPLE_TRIGGERS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `QRTZ_SIMPROP_TRIGGERS`
+--
+
+DROP TABLE IF EXISTS `QRTZ_SIMPROP_TRIGGERS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_SIMPROP_TRIGGERS` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `TRIGGER_NAME` varchar(200) NOT NULL,
+  `TRIGGER_GROUP` varchar(200) NOT NULL,
+  `STR_PROP_1` varchar(512) DEFAULT NULL,
+  `STR_PROP_2` varchar(512) DEFAULT NULL,
+  `STR_PROP_3` varchar(512) DEFAULT NULL,
+  `INT_PROP_1` int(11) DEFAULT NULL,
+  `INT_PROP_2` int(11) DEFAULT NULL,
+  `LONG_PROP_1` bigint(20) DEFAULT NULL,
+  `LONG_PROP_2` bigint(20) DEFAULT NULL,
+  `DEC_PROP_1` decimal(13,4) DEFAULT NULL,
+  `DEC_PROP_2` decimal(13,4) DEFAULT NULL,
+  `BOOL_PROP_1` varchar(1) DEFAULT NULL,
+  `BOOL_PROP_2` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
+  CONSTRAINT `QRTZ_SIMPROP_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) REFERENCES `QRTZ_TRIGGERS` (`sched_name`, `trigger_name`, `trigger_group`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_SIMPROP_TRIGGERS`
+--
+
+LOCK TABLES `QRTZ_SIMPROP_TRIGGERS` WRITE;
+/*!40000 ALTER TABLE `QRTZ_SIMPROP_TRIGGERS` DISABLE KEYS */;
+/*!40000 ALTER TABLE `QRTZ_SIMPROP_TRIGGERS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `QRTZ_TRIGGERS`
+--
+
+DROP TABLE IF EXISTS `QRTZ_TRIGGERS`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `QRTZ_TRIGGERS` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `TRIGGER_NAME` varchar(200) NOT NULL,
+  `TRIGGER_GROUP` varchar(200) NOT NULL,
+  `JOB_NAME` varchar(200) NOT NULL,
+  `JOB_GROUP` varchar(200) NOT NULL,
+  `DESCRIPTION` varchar(250) DEFAULT NULL,
+  `NEXT_FIRE_TIME` bigint(13) DEFAULT NULL,
+  `PREV_FIRE_TIME` bigint(13) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `TRIGGER_STATE` varchar(16) NOT NULL,
+  `TRIGGER_TYPE` varchar(8) NOT NULL,
+  `START_TIME` bigint(13) NOT NULL,
+  `END_TIME` bigint(13) DEFAULT NULL,
+  `CALENDAR_NAME` varchar(200) DEFAULT NULL,
+  `MISFIRE_INSTR` smallint(2) DEFAULT NULL,
+  `JOB_DATA` blob,
+  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
+  KEY `SCHED_NAME` (`SCHED_NAME`,`JOB_NAME`,`JOB_GROUP`),
+  CONSTRAINT `QRTZ_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `JOB_NAME`, `JOB_GROUP`) REFERENCES `QRTZ_JOB_DETAILS` (`sched_name`, `job_name`, `job_group`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `QRTZ_TRIGGERS`
+--
+
+LOCK TABLES `QRTZ_TRIGGERS` WRITE;
+/*!40000 ALTER TABLE `QRTZ_TRIGGERS` DISABLE KEYS */;
+INSERT INTO `QRTZ_TRIGGERS` VALUES ('MyScheduler','TASK_1','DEFAULT','TASK_1','DEFAULT',NULL,1550813670000,-1,5,'PAUSED','CRON',1550813670000,0,NULL,2,_binary '�\�\0sr\0org.quartz.JobDataMap���迩�\�\0\0xr\0&org.quartz.utils.StringKeyDirtyFlagMap�\�\��\�](\0Z\0allowsTransientDataxr\0org.quartz.utils.DirtyFlagMap\�.�(v\n\�\0Z\0dirtyL\0mapt\0Ljava/util/Map;xpsr\0java.util.HashMap\��\�`\�\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0\rJOB_PARAM_KEYsr\0cc.mrbird.job.domain.Job�R���\0L\0beanNamet\0Ljava/lang/String;L\0\ncreateTimet\0Ljava/util/Date;L\0cronExpressionq\0~\0	L\0jobIdt\0Ljava/lang/Long;L\0\nmethodNameq\0~\0	L\0paramsq\0~\0	L\0remarkq\0~\0	L\0statusq\0~\0	xpt\0testTasksr\0java.util.Datehj�KYt\0\0xpw\0\0a\�\�ppxt\0\r0/1 * * * * ?sr\0java.lang.Long;�\�̏#\�\0J\0valuexr\0java.lang.Number����\��\0\0xp\0\0\0\0\0\0\0t\0testt\0mrbirdt\0有参任务调度测试t\01x\0'),('MyScheduler','TASK_11','DEFAULT','TASK_11','DEFAULT',NULL,1550813670000,-1,5,'PAUSED','CRON',1550813670000,0,NULL,2,_binary '�\�\0sr\0org.quartz.JobDataMap���迩�\�\0\0xr\0&org.quartz.utils.StringKeyDirtyFlagMap�\�\��\�](\0Z\0allowsTransientDataxr\0org.quartz.utils.DirtyFlagMap\�.�(v\n\�\0Z\0dirtyL\0mapt\0Ljava/util/Map;xpsr\0java.util.HashMap\��\�`\�\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0\rJOB_PARAM_KEYsr\0cc.mrbird.job.domain.Job�R���\0L\0beanNamet\0Ljava/lang/String;L\0\ncreateTimet\0Ljava/util/Date;L\0cronExpressionq\0~\0	L\0jobIdt\0Ljava/lang/Long;L\0\nmethodNameq\0~\0	L\0paramsq\0~\0	L\0remarkq\0~\0	L\0statusq\0~\0	xpt\0testTasksr\0java.util.Datehj�KYt\0\0xpw\0\0a\��Pxt\0\r0/5 * * * * ?sr\0java.lang.Long;�\�̏#\�\0J\0valuexr\0java.lang.Number����\��\0\0xp\0\0\0\0\0\0\0t\0test2pt\0测试异常t\01x\0'),('MyScheduler','TASK_2','DEFAULT','TASK_2','DEFAULT',NULL,1550813670000,-1,5,'PAUSED','CRON',1550813670000,0,NULL,2,_binary '�\�\0sr\0org.quartz.JobDataMap���迩�\�\0\0xr\0&org.quartz.utils.StringKeyDirtyFlagMap�\�\��\�](\0Z\0allowsTransientDataxr\0org.quartz.utils.DirtyFlagMap\�.�(v\n\�\0Z\0dirtyL\0mapt\0Ljava/util/Map;xpsr\0java.util.HashMap\��\�`\�\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0\rJOB_PARAM_KEYsr\0cc.mrbird.job.domain.Job�R���\0L\0beanNamet\0Ljava/lang/String;L\0\ncreateTimet\0Ljava/util/Date;L\0cronExpressionq\0~\0	L\0jobIdt\0Ljava/lang/Long;L\0\nmethodNameq\0~\0	L\0paramsq\0~\0	L\0remarkq\0~\0	L\0statusq\0~\0	xpt\0testTasksr\0java.util.Datehj�KYt\0\0xpw\0\0a\�2�xt\00/10 * * * * ?sr\0java.lang.Long;�\�̏#\�\0J\0valuexr\0java.lang.Number����\��\0\0xp\0\0\0\0\0\0\0t\0test1pt\0无参任务调度测试t\01x\0'),('MyScheduler','TASK_3','DEFAULT','TASK_3','DEFAULT',NULL,1550813670000,-1,5,'PAUSED','CRON',1550813670000,0,NULL,2,_binary '�\�\0sr\0org.quartz.JobDataMap���迩�\�\0\0xr\0&org.quartz.utils.StringKeyDirtyFlagMap�\�\��\�](\0Z\0allowsTransientDataxr\0org.quartz.utils.DirtyFlagMap\�.�(v\n\�\0Z\0dirtyL\0mapt\0Ljava/util/Map;xpsr\0java.util.HashMap\��\�`\�\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0\rJOB_PARAM_KEYsr\0cc.mrbird.job.domain.Job�R���\0L\0beanNamet\0Ljava/lang/String;L\0\ncreateTimet\0Ljava/util/Date;L\0cronExpressionq\0~\0	L\0jobIdt\0Ljava/lang/Long;L\0\nmethodNameq\0~\0	L\0paramsq\0~\0	L\0remarkq\0~\0	L\0statusq\0~\0	xpt\0testTasksr\0java.util.Datehj�KYt\0\0xpw\0\0aϹ��xt\0\r0/1 * * * * ?sr\0java.lang.Long;�\�̏#\�\0J\0valuexr\0java.lang.Number����\��\0\0xp\0\0\0\0\0\0\0t\0testt\0hello worldt\0+有参任务调度测试,每隔一秒触发t\01x\0');
+/*!40000 ALTER TABLE `QRTZ_TRIGGERS` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `admin_user`
+--
+
+DROP TABLE IF EXISTS `admin_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `admin_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户表主键',
+  `tenantid` int(11) NOT NULL COMMENT '租户id，0为系统用户',
+  `name` varchar(20) NOT NULL COMMENT '用户名',
+  `psw` varchar(32) NOT NULL COMMENT '用户密码MD5加密',
+  `email` varchar(32) NOT NULL COMMENT '用户邮箱',
+  `creator` int(11) NOT NULL COMMENT '创建人，0为初始化',
+  `createtime` timestamp NOT NULL COMMENT '创建时间',
+  `flag` int(1) NOT NULL DEFAULT '1' COMMENT '用户状态，1启用，0禁用',
+  `logintime` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后登录时间',
+  `updateuser` int(11) DEFAULT NULL COMMENT '更新者id',
+  `updatetime` timestamp NULL DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admin_user`
+--
+
+LOCK TABLES `admin_user` WRITE;
+/*!40000 ALTER TABLE `admin_user` DISABLE KEYS */;
+INSERT INTO `admin_user` VALUES (-1,0,'root','E10ADC3949BA59ABBE56E057F20F883E','admin@raye.wang',0,'2018-03-05 21:59:11',1,'2017-04-07 22:23:15',-1,'2017-12-19 03:04:59');
+/*!40000 ALTER TABLE `admin_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `base_admin_permission`
+--
+
+DROP TABLE IF EXISTS `base_admin_permission`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `base_admin_permission` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '菜单名称',
+  `pid` int(11) DEFAULT NULL COMMENT '父菜单id',
+  `descpt` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '描述',
+  `url` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '菜单url',
+  `create_time` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '添加时间',
+  `update_time` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '更新时间',
+  `del_flag` int(1) DEFAULT NULL COMMENT '删除标志（0:删除 1：存在）',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `base_admin_permission`
+--
+
+LOCK TABLES `base_admin_permission` WRITE;
+/*!40000 ALTER TABLE `base_admin_permission` DISABLE KEYS */;
+INSERT INTO `base_admin_permission` VALUES (1,'系统管理',0,'系统管理','','2018-11-30 10:27:34','2018-11-30 10:27:34',1),(2,'账号管理',1,'账号管理','/user/userManage','2018-11-30 11:44:41','2018-11-30 11:56:34',1),(3,'角色管理',1,'角色管理','/role/roleManage','2018-11-30 11:45:27','2018-11-30 11:45:27',1),(7,'权限管理',1,'权限管理','/permission/permissionManage','2018-11-30 11:48:35','2018-11-30 15:13:38',1),(9,'基本设置',0,'基本设置','','2018-11-30 12:10:32','2018-11-30 12:10:32',1),(10,'服务类目管理',9,'服务类目管理','/goodsCategory/goodsCategoryManage','2018-12-04 11:47:07','2018-12-04 11:47:07',1),(11,'服务类型管理',9,'服务类型管理','/serviceType/serviceTypeManage','2018-12-04 11:47:59','2018-12-04 11:47:59',1),(12,'支付方式',9,'支付方式','/payplatform/payplatManage','2018-12-04 11:48:44','2018-12-04 11:48:44',1),(13,'银行管理',9,'银行管理','/bank/bankManage','2018-12-04 11:49:13','2018-12-04 11:49:13',1),(14,'省市区管理',9,'省市区管理','/position/positionManage','2018-12-04 11:49:36','2018-12-04 11:50:02',1);
+/*!40000 ALTER TABLE `base_admin_permission` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `base_admin_role`
+--
+
+DROP TABLE IF EXISTS `base_admin_role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `base_admin_role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '权限角色ID',
+  `role_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '角色名称',
+  `role_desc` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '角色描述',
+  `permissions` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '权限',
+  `create_time` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '创建时间',
+  `update_time` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '更新时间',
+  `role_status` int(1) NOT NULL DEFAULT '1' COMMENT '1：有效 \r\n            0：无效',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统用户角色表';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `base_admin_role`
+--
+
+LOCK TABLES `base_admin_role` WRITE;
+/*!40000 ALTER TABLE `base_admin_role` DISABLE KEYS */;
+INSERT INTO `base_admin_role` VALUES (1,'系统管理员','系统管理员','1,9','2018-11-21 15:54:07','2018-11-21 15:54:07',1),(2,'普通管理员','普通管理员','9','2018-11-21 15:11:44','2018-12-03 19:09:57',1);
+/*!40000 ALTER TABLE `base_admin_role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `base_admin_user`
+--
+
+DROP TABLE IF EXISTS `base_admin_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `base_admin_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `sys_user_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '系统用户名称',
+  `sys_user_pwd` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL COMMENT '系统用户密码',
+  `role_id` int(255) DEFAULT NULL COMMENT '角色',
+  `user_phone` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '手机号',
+  `reg_time` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '登记时间',
+  `user_status` int(1) NOT NULL DEFAULT '0' COMMENT '状态（0：无效；1：有效）',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统管理员帐号';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `base_admin_user`
+--
+
+LOCK TABLES `base_admin_user` WRITE;
+/*!40000 ALTER TABLE `base_admin_user` DISABLE KEYS */;
+INSERT INTO `base_admin_user` VALUES (1,'admin','3ef7164d1f6167cb9f2658c07d3c2f0a',1,'13411182215','2018-11-22 10:57:33',1),(2,'jackson','6565673a6caee66a6acbd51415bddbda',2,'19563648695','2018-11-22 10:57:33',1),(4,'alice','5e1030d25f5ca46aac4c0369b908d762',2,'11111111111','2018-11-22 11:01:58',1);
+/*!40000 ALTER TABLE `base_admin_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `menu`
+--
+
+DROP TABLE IF EXISTS `menu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `name` varchar(32) NOT NULL COMMENT '菜单名称',
+  `url` varchar(500) DEFAULT NULL COMMENT '网址',
+  `icon` varchar(20) DEFAULT NULL COMMENT '显示的图标',
+  `menutype` enum('0','1','2') NOT NULL DEFAULT '0' COMMENT '类型，0 菜单，1 连接网址,2 隐藏连接',
+  `display` int(11) NOT NULL DEFAULT '1' COMMENT '显示排序',
+  `parentid` int(11) NOT NULL DEFAULT '0' COMMENT '父级的id，引用本表id字段',
+  `creator` int(11) NOT NULL DEFAULT '0' COMMENT '创建者id，0为超级管理员',
+  `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updateuser` int(11) DEFAULT NULL COMMENT '更新者id',
+  `updatetime` timestamp NULL DEFAULT NULL COMMENT '更新时间',
+  `flag` enum('0','1') NOT NULL DEFAULT '1' COMMENT '是否启用，0 禁用，1启用',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `menu`
+--
+
+LOCK TABLES `menu` WRITE;
+/*!40000 ALTER TABLE `menu` DISABLE KEYS */;
+INSERT INTO `menu` VALUES (1,'系统首页','/admin/index',NULL,'2',1,0,0,'2017-03-31 20:16:57',0,NULL,'1'),(2,'修改密码','/admin/user/updatepass','fa-wrench','2',0,0,0,'2017-04-05 21:33:39',0,NULL,'1'),(3,'系统配置','12','fa-wrench','0',1,0,0,'2017-03-31 20:16:43',0,'2017-04-05 20:30:53','1'),(4,'菜单配置','/admin/menu','fa-list','0',1,3,0,'2017-03-31 20:16:45',0,'2017-04-05 20:31:10','1'),(5,'角色管理','/admin/role',NULL,'0',2,3,0,'2017-03-31 20:16:48',0,NULL,'1'),(6,'角色权限','/admin/role/menu',NULL,'2',0,3,0,'2017-03-31 20:16:52',0,NULL,'1'),(7,'用户管理','/admin/user',NULL,'1',2,3,0,'2017-03-31 20:16:54',0,NULL,'1'),(8,'新增菜单','/admin/menu/edit',NULL,'2',0,4,0,'2017-03-31 20:17:01',0,NULL,'1'),(9,'删除菜单','/admin/menu/delete',NULL,'2',0,4,0,'2017-03-31 20:17:04',0,NULL,'1'),(10,'编辑角色','/admin/role/edit',NULL,'2',0,5,0,'2017-03-31 20:17:06',0,NULL,'1'),(11,'删除角色','/admin/role/delete',NULL,'2',0,5,0,'2017-03-31 20:17:07',0,NULL,'1'),(12,'角色资源管理','/admin/role/menu',NULL,'2',0,5,0,'2017-03-31 20:17:08',0,NULL,'1'),(13,'编辑用户','/admin/user/edit',NULL,'2',0,7,0,'2017-03-31 20:17:09',0,NULL,'1'),(14,'删除用户','/admin/user/delete',NULL,'2',0,7,0,'2017-03-31 20:17:10',0,NULL,'1'),(15,'用户角色管理','/admin/user/role',NULL,'2',0,7,0,'2017-03-31 20:17:12',0,NULL,'1'),(16,'菜单配置','',NULL,'2',0,7,20,'2017-04-02 11:38:28',0,NULL,'1');
+/*!40000 ALTER TABLE `menu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `role`
+--
+
+DROP TABLE IF EXISTS `role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '角色表主键',
+  `name` varchar(20) NOT NULL COMMENT '角色名称',
+  `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `creator` int(11) DEFAULT '0' COMMENT '用户id，0为角色，有关联时则为用户的单独权限',
+  `description` varchar(200) DEFAULT NULL COMMENT '角色描述',
+  `updateuser` int(11) DEFAULT NULL COMMENT '更新者id',
+  `updatetime` timestamp NULL DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role`
+--
+
+LOCK TABLES `role` WRITE;
+/*!40000 ALTER TABLE `role` DISABLE KEYS */;
+INSERT INTO `role` VALUES (1,'超级用户','2018-03-05 23:00:43',-1,'拥有系统所有权限',-1,'2018-03-05 09:00:44');
+/*!40000 ALTER TABLE `role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `role_menu`
+--
+
+DROP TABLE IF EXISTS `role_menu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `role_menu` (
+  `roleid` int(11) NOT NULL COMMENT '角色id',
+  `menuid` int(11) NOT NULL COMMENT '菜单id',
+  `flag` int(1) NOT NULL DEFAULT '1' COMMENT '1为有权限，0为没有权限（防止以后会出现角色有权限但是个人没有权限的情况）',
+  `creator` int(11) NOT NULL COMMENT '创建人，0为初始化',
+  `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (`menuid`,`roleid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role_menu`
+--
+
+LOCK TABLES `role_menu` WRITE;
+/*!40000 ALTER TABLE `role_menu` DISABLE KEYS */;
+/*!40000 ALTER TABLE `role_menu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_dept`
+--
+
+DROP TABLE IF EXISTS `t_dept`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `t_dept` (
+  `DEPT_ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '部门ID',
+  `PARENT_ID` bigint(20) NOT NULL COMMENT '上级部门ID',
+  `DEPT_NAME` varchar(100) NOT NULL COMMENT '部门名称',
+  `ORDER_NUM` bigint(20) DEFAULT NULL COMMENT '排序',
+  `CREATE_TIME` datetime DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`DEPT_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_dept`
+--
+
+LOCK TABLES `t_dept` WRITE;
+/*!40000 ALTER TABLE `t_dept` DISABLE KEYS */;
+INSERT INTO `t_dept` VALUES (1,0,'开发部',NULL,'2018-01-04 15:42:26'),(2,1,'开发一部',NULL,'2018-01-04 15:42:34'),(3,1,'开发二部',NULL,'2018-01-04 15:42:29'),(4,0,'市场部',NULL,'2018-01-04 15:42:36'),(5,0,'人事部',NULL,'2018-01-04 15:42:32'),(6,0,'测试部',NULL,'2018-01-04 15:42:38');
+/*!40000 ALTER TABLE `t_dept` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_dict`
+--
+
+DROP TABLE IF EXISTS `t_dict`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `t_dict` (
+  `DICT_ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '字典ID',
+  `KEYY` bigint(20) NOT NULL COMMENT '键',
+  `VALUEE` varchar(100) NOT NULL COMMENT '值',
+  `FIELD_NAME` varchar(100) NOT NULL COMMENT '字段名称',
+  `TABLE_NAME` varchar(100) NOT NULL COMMENT '表名',
+  PRIMARY KEY (`DICT_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_dict`
+--
+
+LOCK TABLES `t_dict` WRITE;
+/*!40000 ALTER TABLE `t_dict` DISABLE KEYS */;
+INSERT INTO `t_dict` VALUES (1,0,'男','ssex','t_user'),(2,1,'女','ssex','t_user'),(3,2,'保密','ssex','t_user'),(4,1,'有效','status','t_user'),(5,0,'锁定','status','t_user'),(6,0,'菜单','type','t_menu'),(7,1,'按钮','type','t_menu'),(30,0,'正常','status','t_job'),(31,1,'暂停','status','t_job'),(32,0,'成功','status','t_job_log'),(33,1,'失败','status','t_job_log');
+/*!40000 ALTER TABLE `t_dict` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_job`
+--
+
+DROP TABLE IF EXISTS `t_job`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `t_job` (
+  `JOB_ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '任务id',
+  `BEAN_NAME` varchar(100) NOT NULL COMMENT 'spring bean名称',
+  `METHOD_NAME` varchar(100) NOT NULL COMMENT '方法名',
+  `PARAMS` varchar(200) DEFAULT NULL COMMENT '参数',
+  `CRON_EXPRESSION` varchar(100) NOT NULL COMMENT 'cron表达式',
+  `STATUS` char(2) NOT NULL COMMENT '任务状态  0：正常  1：暂停',
+  `REMARK` varchar(200) DEFAULT NULL COMMENT '备注',
+  `CREATE_TIME` datetime DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`JOB_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_job`
+--
+
+LOCK TABLES `t_job` WRITE;
+/*!40000 ALTER TABLE `t_job` DISABLE KEYS */;
+INSERT INTO `t_job` VALUES (1,'testTask','test','mrbird','0/1 * * * * ?','1','有参任务调度测试','2018-02-24 16:26:14'),(2,'testTask','test1',NULL,'0/10 * * * * ?','1','无参任务调度测试','2018-02-24 17:06:23'),(3,'testTask','test','hello world','0/1 * * * * ?','1','有参任务调度测试,每隔一秒触发','2018-02-26 09:28:26'),(11,'testTask','test2',NULL,'0/5 * * * * ?','1','测试异常','2018-02-26 11:15:30');
+/*!40000 ALTER TABLE `t_job` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_job_log`
+--
+
+DROP TABLE IF EXISTS `t_job_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `t_job_log` (
+  `LOG_ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '任务日志id',
+  `JOB_ID` bigint(20) NOT NULL COMMENT '任务id',
+  `BEAN_NAME` varchar(100) NOT NULL COMMENT 'spring bean名称',
+  `METHOD_NAME` varchar(100) NOT NULL COMMENT '方法名',
+  `PARAMS` varchar(200) DEFAULT NULL COMMENT '参数',
+  `STATUS` char(2) NOT NULL COMMENT '任务状态    0：成功    1：失败',
+  `ERROR` text COMMENT '失败信息',
+  `TIMES` decimal(11,0) DEFAULT NULL COMMENT '耗时(单位：毫秒)',
+  `CREATE_TIME` datetime DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`LOG_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2476 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_job_log`
+--
+
+LOCK TABLES `t_job_log` WRITE;
+/*!40000 ALTER TABLE `t_job_log` DISABLE KEYS */;
+INSERT INTO `t_job_log` VALUES (2448,3,'testTask','test','hello world','0',NULL,0,'2018-03-20 15:31:50'),(2449,3,'testTask','test','hello world','0',NULL,1,'2018-03-20 15:31:51'),(2450,3,'testTask','test','hello world','0',NULL,2,'2018-03-20 15:31:52'),(2451,3,'testTask','test','hello world','0',NULL,0,'2018-03-20 15:31:53'),(2452,3,'testTask','test','hello world','0',NULL,2,'2018-03-20 15:31:54'),(2453,3,'testTask','test','hello world','0',NULL,1,'2018-03-20 15:31:55'),(2454,3,'testTask','test','hello world','0',NULL,0,'2018-03-20 15:31:56'),(2455,3,'testTask','test','hello world','0',NULL,1,'2018-03-20 15:31:57'),(2456,3,'testTask','test','hello world','0',NULL,1,'2018-03-20 15:31:59'),(2457,3,'testTask','test','hello world','0',NULL,1,'2018-03-20 15:31:59'),(2458,3,'testTask','test','hello world','0',NULL,1,'2018-03-20 15:32:00'),(2459,3,'testTask','test','hello world','0',NULL,0,'2018-03-20 15:32:01'),(2460,3,'testTask','test','hello world','0',NULL,5,'2018-03-20 15:32:02'),(2461,3,'testTask','test','hello world','0',NULL,1,'2018-03-20 15:32:03'),(2462,3,'testTask','test','hello world','0',NULL,1,'2018-03-20 15:32:04'),(2463,3,'testTask','test','hello world','0',NULL,1,'2018-03-20 15:32:05'),(2464,3,'testTask','test','hello world','0',NULL,1,'2018-03-20 15:32:06'),(2465,11,'testTask','test2',NULL,'1','java.lang.NoSuchMethodException: cc.mrbird.job.task.TestTask.test2()',0,'2018-03-20 15:32:26'),(2466,2,'testTask','test1',NULL,'0',NULL,1,'2018-04-02 15:26:40'),(2467,2,'testTask','test1',NULL,'0',NULL,1,'2018-04-02 15:26:50'),(2468,2,'testTask','test1',NULL,'0',NULL,1,'2018-04-02 15:27:20'),(2469,2,'testTask','test1',NULL,'0',NULL,3,'2018-04-02 17:29:20'),(2470,2,'testTask','test1',NULL,'0',NULL,1,'2018-04-02 17:29:30'),(2471,2,'testTask','test1',NULL,'0',NULL,1,'2018-04-02 17:29:40'),(2472,2,'testTask','test1',NULL,'0',NULL,14,'2018-04-02 17:29:50'),(2473,2,'testTask','test1',NULL,'0',NULL,1,'2018-04-02 17:30:00'),(2474,2,'testTask','test1',NULL,'0',NULL,0,'2018-04-02 17:30:10'),(2475,2,'testTask','test1',NULL,'0',NULL,1,'2018-04-02 17:30:20');
+/*!40000 ALTER TABLE `t_job_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_log`
+--
+
+DROP TABLE IF EXISTS `t_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `t_log` (
+  `ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '日志ID',
+  `USERNAME` varchar(50) DEFAULT NULL COMMENT '操作用户',
+  `OPERATION` text COMMENT '操作内容',
+  `TIME` decimal(11,0) DEFAULT NULL COMMENT '耗时',
+  `METHOD` text COMMENT '操作方法',
+  `PARAMS` text COMMENT '方法参数',
+  `IP` varchar(64) DEFAULT NULL COMMENT '操作者IP',
+  `CREATE_TIME` datetime DEFAULT NULL COMMENT '创建时间',
+  `location` varchar(50) DEFAULT NULL COMMENT '操作地点',
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=900 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_log`
+--
+
+LOCK TABLES `t_log` WRITE;
+/*!40000 ALTER TABLE `t_log` DISABLE KEYS */;
+INSERT INTO `t_log` VALUES (730,'MrBird','恢复任务',55,'cc.mrbird.job.controller.JobController.resumeJob()','jobIds: 3','127.0.0.1','2018-03-19 10:07:32',NULL),(731,'MrBird','执行任务',40,'cc.mrbird.job.controller.JobController.runJob()','jobIds: 3','127.0.0.1','2018-03-19 10:07:36',NULL),(733,'MrBird','暂停任务',10,'cc.mrbird.job.controller.JobController.pauseJob()','jobIds: 3','127.0.0.1','2018-03-19 10:07:53',NULL),(734,'MrBird','恢复任务',17,'cc.mrbird.job.controller.JobController.resumeJob()','jobIds: 1','127.0.0.1','2018-03-19 10:08:02',NULL),(735,'MrBird','执行任务',13,'cc.mrbird.job.controller.JobController.runJob()','jobIds: 1','127.0.0.1','2018-03-19 10:08:05',NULL),(737,'MrBird','暂停任务',11,'cc.mrbird.job.controller.JobController.pauseJob()','jobIds: 1','127.0.0.1','2018-03-19 10:08:27',NULL),(738,'MrBird','执行任务',14,'cc.mrbird.job.controller.JobController.runJob()','jobIds: 11','127.0.0.1','2018-03-19 10:08:34',NULL),(840,'MrBird','删除用户',255,'cc.mrbird.system.controller.UserController.deleteUsers()','ids: 165,166','127.0.0.1','2018-03-20 18:34:26',NULL),(841,'MrBird','修改用户',348,'cc.mrbird.system.controller.UserController.updateUser()','user: cc.mrbird.system.domain.User@5adf3b3b  roles: [Ljava.lang.Long;@75a9cd18','127.0.0.1','2018-03-21 09:05:12',NULL),(842,'MrBird','删除调度日志',79,'cc.mrbird.job.controller.JobLogController.deleteJobLog()','ids: 2447','127.0.0.1','2018-03-22 18:52:10','XX内网IP'),(843,'MrBird','修改用户',18805,'cc.mrbird.system.controller.UserController.updateUser()','user: cc.mrbird.system.domain.User@1a6c90df  rolesSelect: [Ljava.lang.Long;@4d9b2e06','127.0.0.1','2018-03-27 09:20:05','XX内网IP'),(844,'MrBird','修改用户',5222,'cc.mrbird.system.controller.UserController.updateUser()','user: cc.mrbird.system.domain.User@655c7201  rolesSelect: [Ljava.lang.Long;@1840d3a4','127.0.0.1','2018-03-27 09:20:23','XX内网IP'),(845,'MrBird','修改用户',6989,'cc.mrbird.system.controller.UserController.updateUser()','user: cc.mrbird.system.domain.User@3691c744  rolesSelect: [Ljava.lang.Long;@1cb15d59','127.0.0.1','2018-03-27 09:21:09','XX内网IP'),(846,'MrBird','新增任务',361,'cc.mrbird.job.controller.JobController.addJob()','job: cc.mrbird.job.domain.Job@41ea2910','127.0.0.1','2018-03-27 15:24:30','XX内网IP'),(847,'MrBird','修改任务',429,'cc.mrbird.job.controller.JobController.updateJob()','job: cc.mrbird.job.domain.Job@7cb0d614','127.0.0.1','2018-03-27 15:25:31','XX内网IP'),(848,'MrBird','修改任务',273,'cc.mrbird.job.controller.JobController.updateJob()','job: cc.mrbird.job.domain.Job@4937e65d','127.0.0.1','2018-03-27 17:43:09','XX内网IP'),(849,'MrBird','修改任务',712,'cc.mrbird.job.controller.JobController.updateJob()','job: cc.mrbird.job.domain.Job@aa7781d','127.0.0.1','2018-03-27 17:43:31','XX内网IP'),(850,'MrBird','新增任务',294,'cc.mrbird.job.controller.JobController.addJob()','job: cc.mrbird.job.domain.Job@5543ec34','127.0.0.1','2018-03-28 14:36:44','XX内网IP'),(851,'MrBird','修改任务',353,'cc.mrbird.job.controller.JobController.updateJob()','job: cc.mrbird.job.domain.Job@3fccec56','127.0.0.1','2018-03-28 14:37:06','XX内网IP'),(852,'MrBird','修改任务',262,'cc.mrbird.job.controller.JobController.updateJob()','job: cc.mrbird.job.domain.Job@2ed43da1','127.0.0.1','2018-03-28 14:41:50','XX内网IP'),(853,'MrBird','删除任务',589,'cc.mrbird.job.controller.JobController.deleteJob()','ids: 18,19','127.0.0.1','2018-03-29 10:26:30','XX内网IP'),(854,'MrBird','新增任务',548,'cc.mrbird.job.controller.JobController.addJob()','job: cc.mrbird.job.domain.Job@b404b16','127.0.0.1','2018-03-29 10:27:11','XX内网IP'),(855,'MrBird','修改任务',442,'cc.mrbird.job.controller.JobController.updateJob()','job: cc.mrbird.job.domain.Job@49f25426','127.0.0.1','2018-03-29 10:29:18','XX内网IP'),(856,'MrBird','删除任务',520,'cc.mrbird.job.controller.JobController.deleteJob()','ids: 20','127.0.0.1','2018-03-29 10:41:20','XX内网IP'),(857,'MrBird','修改用户',449,'cc.mrbird.system.controller.UserController.updateUser()','user: cc.mrbird.system.domain.User@68355f70  rolesSelect: [Ljava.lang.Long;@80ce783','127.0.0.1','2018-03-29 16:18:26','XX内网IP'),(858,'MrBird','修改用户',686,'cc.mrbird.system.controller.UserController.updateUser()','user: cc.mrbird.system.domain.User@784012be  rolesSelect: [Ljava.lang.Long;@368eb59f','127.0.0.1','2018-03-29 16:18:37','XX内网IP'),(859,'MrBird','删除用户',200,'cc.mrbird.system.controller.UserController.deleteUsers()','ids: 41,68,92,125,161,162','127.0.0.1','2018-04-02 17:29:50','XX内网IP'),(860,'MrBird','访问系统',1,'cc.mrbird.system.controller.LoginController.index()','model: {user=cc.mrbird.system.domain.User@6add90d1}','127.0.0.1','2019-02-22 13:35:44','XX内网IP'),(861,'MrBird','获取用户信息',30,'cc.mrbird.system.controller.UserController.userList()','request: cc.mrbird.common.domain.QueryRequest@6dd8e181  user: cc.mrbird.system.domain.User@167105f5','127.0.0.1','2019-02-22 13:35:49','XX内网IP'),(862,'MrBird','获取角色信息',0,'cc.mrbird.system.controller.RoleController.index()','','127.0.0.1','2019-02-22 13:35:50','XX内网IP'),(863,'MrBird','获取菜单信息',0,'cc.mrbird.system.controller.MenuController.index()','','127.0.0.1','2019-02-22 13:35:51','XX内网IP'),(864,'MrBird','获取部门信息',0,'cc.mrbird.system.controller.DeptController.index()','','127.0.0.1','2019-02-22 13:35:51','XX内网IP'),(865,'MrBird','访问系统',0,'cc.mrbird.system.controller.LoginController.index()','model: {user=cc.mrbird.system.domain.User@194718c8}','127.0.0.1','2019-02-22 13:37:50','XX内网IP'),(866,'MrBird','获取字典信息',1,'cc.mrbird.system.controller.DictController.index()','','127.0.0.1','2019-02-22 13:37:59','XX内网IP'),(867,'MrBird','获取在线用户信息',2,'cc.mrbird.system.controller.SessionController.online()','','127.0.0.1','2019-02-22 13:38:05','XX内网IP'),(868,'MrBird','获取在线用户信息',0,'cc.mrbird.system.controller.SessionController.online()','','127.0.0.1','2019-02-22 13:38:10','XX内网IP'),(869,'MrBird','获取天气信息',1,'cc.mrbird.web.controller.WeatherController.weather()','','127.0.0.1','2019-02-22 13:38:16','XX内网IP'),(870,'MrBird','获取每日一文信息',1,'cc.mrbird.web.controller.ArticleController.index()','','127.0.0.1','2019-02-22 13:38:32','XX内网IP'),(871,'MrBird','获取热门电影信息',2,'cc.mrbird.web.controller.MovieController.movieHot()','','127.0.0.1','2019-02-22 13:38:36','XX内网IP'),(872,'MrBird','获取即将上映电影信息',0,'cc.mrbird.web.controller.MovieController.movieComing()','','127.0.0.1','2019-02-22 13:38:43','XX内网IP'),(873,'MrBird','获取即将上映电影信息',0,'cc.mrbird.web.controller.MovieController.movieComing()','','127.0.0.1','2019-02-22 13:38:46','XX内网IP'),(874,'MrBird','获取One--绘画信息',2,'cc.mrbird.web.controller.OneIsAllController.paintIndex()','','127.0.0.1','2019-02-22 13:38:49','XX内网IP'),(875,'MrBird','获取One--文章信息',0,'cc.mrbird.web.controller.OneIsAllController.yuwenIndex()','','127.0.0.1','2019-02-22 13:38:52','XX内网IP'),(876,'MrBird','获取One--文章信息',0,'cc.mrbird.web.controller.OneIsAllController.yuwenIndex()','','127.0.0.1','2019-02-22 13:38:58','XX内网IP'),(877,'MrBird','获取One--散文信息',0,'cc.mrbird.web.controller.OneIsAllController.essayIndex()','','127.0.0.1','2019-02-22 13:38:58','XX内网IP'),(878,'MrBird','获取定时任务信息',2,'cc.mrbird.job.controller.JobController.index()','','127.0.0.1','2019-02-22 13:39:03','XX内网IP'),(879,'MrBird','获取调度日志信息',3,'cc.mrbird.job.controller.JobLogController.index()','','127.0.0.1','2019-02-22 13:39:24',NULL),(880,'MrBird','获取调度日志信息',0,'cc.mrbird.job.controller.JobLogController.index()','','127.0.0.1','2019-02-22 13:39:26','XX内网IP'),(881,'MrBird','获取调度日志信息',0,'cc.mrbird.job.controller.JobLogController.index()','','127.0.0.1','2019-02-22 13:39:27','XX内网IP'),(882,'MrBird','获取调度日志信息',0,'cc.mrbird.job.controller.JobLogController.index()','','127.0.0.1','2019-02-22 13:39:27','XX内网IP'),(883,'MrBird','获取调度日志信息',0,'cc.mrbird.job.controller.JobLogController.index()','','127.0.0.1','2019-02-22 13:39:25',NULL),(884,'MrBird','获取调度日志信息',0,'cc.mrbird.job.controller.JobLogController.index()','','127.0.0.1','2019-02-22 13:39:26',NULL),(885,'MrBird','获取调度日志信息',0,'cc.mrbird.job.controller.JobLogController.index()','','127.0.0.1','2019-02-22 13:39:26',NULL),(886,'MrBird','获取角色信息',0,'cc.mrbird.system.controller.RoleController.index()','','127.0.0.1','2019-02-22 13:39:30','XX内网IP'),(887,'MrBird','获取菜单信息',0,'cc.mrbird.system.controller.MenuController.index()','','127.0.0.1','2019-02-22 13:40:03',NULL),(888,'MrBird','获取用户信息',11,'cc.mrbird.system.controller.UserController.userList()','request: cc.mrbird.common.domain.QueryRequest@71c2c33b  user: cc.mrbird.system.domain.User@2632d1bd','127.0.0.1','2019-02-22 13:40:05',NULL),(889,'MrBird','获取字典信息',0,'cc.mrbird.system.controller.DictController.index()','','127.0.0.1','2019-02-22 13:40:14',NULL),(890,'MrBird','获取部门信息',0,'cc.mrbird.system.controller.DeptController.index()','','127.0.0.1','2019-02-22 13:40:24',NULL),(891,'MrBird','获取字典信息',0,'cc.mrbird.system.controller.DictController.index()','','127.0.0.1','2019-02-22 13:40:35','XX内网IP'),(892,'MrBird','新增字典',129,'cc.mrbird.system.controller.DictController.addDict()','dict: cc.mrbird.system.domain.Dict@63d42bb1','127.0.0.1','2019-02-22 13:53:09','XX内网IP'),(893,'MrBird','删除字典',125,'cc.mrbird.system.controller.DictController.deleteDicts()','ids: 37','127.0.0.1','2019-02-22 13:53:19','XX内网IP'),(894,'MrBird','更换主题',75,'cc.mrbird.system.controller.UserController.updateTheme()','user: cc.mrbird.system.domain.User@4601a515','127.0.0.1','2019-02-22 13:57:54',NULL),(895,'MrBird','更换主题',87,'cc.mrbird.system.controller.UserController.updateTheme()','user: cc.mrbird.system.domain.User@2c7334a6','127.0.0.1','2019-02-22 13:57:56',NULL),(896,'MrBird','访问系统',0,'cc.mrbird.system.controller.LoginController.index()','model: {user=cc.mrbird.system.domain.User@16319264}','127.0.0.1','2019-02-22 13:58:15','XX内网IP'),(897,'MrBird','获取用户信息',10,'cc.mrbird.system.controller.UserController.userList()','request: cc.mrbird.common.domain.QueryRequest@4717bd4b  user: cc.mrbird.system.domain.User@2656c59f','127.0.0.1','2019-02-22 13:58:22',NULL),(898,'MrBird','获取角色信息',0,'cc.mrbird.system.controller.RoleController.index()','','127.0.0.1','2019-02-22 13:58:45',NULL),(899,'MrBird','获取菜单信息',0,'cc.mrbird.system.controller.MenuController.index()','','127.0.0.1','2019-02-22 14:00:04',NULL);
+/*!40000 ALTER TABLE `t_log` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_menu`
+--
+
+DROP TABLE IF EXISTS `t_menu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `t_menu` (
+  `MENU_ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '菜单/按钮ID',
+  `PARENT_ID` bigint(20) NOT NULL COMMENT '上级菜单ID',
+  `MENU_NAME` varchar(50) NOT NULL COMMENT '菜单/按钮名称',
+  `URL` varchar(100) DEFAULT NULL COMMENT '菜单URL',
+  `PERMS` text COMMENT '权限标识',
+  `ICON` varchar(50) DEFAULT NULL COMMENT '图标',
+  `TYPE` char(2) NOT NULL COMMENT '类型 0菜单 1按钮',
+  `ORDER_NUM` bigint(20) DEFAULT NULL COMMENT '排序',
+  `CREATE_TIME` datetime NOT NULL COMMENT '创建时间',
+  `MODIFY_TIME` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`MENU_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_menu`
+--
+
+LOCK TABLES `t_menu` WRITE;
+/*!40000 ALTER TABLE `t_menu` DISABLE KEYS */;
+INSERT INTO `t_menu` VALUES (1,0,'系统管理',NULL,NULL,'zmdi zmdi-settings','0',1,'2017-12-27 16:39:07',NULL),(2,0,'系统监控',NULL,NULL,'zmdi zmdi-shield-security','0',2,'2017-12-27 16:45:51','2018-01-17 17:08:28'),(3,1,'用户管理','user','user:list','','0',1,'2017-12-27 16:47:13','2018-04-25 09:00:01'),(4,1,'角色管理','role','role:list','','0',2,'2017-12-27 16:48:09','2018-04-25 09:01:12'),(5,1,'菜单管理','menu','menu:list','','0',3,'2017-12-27 16:48:57','2018-04-25 09:01:30'),(6,1,'部门管理','dept','dept:list','','0',4,'2017-12-27 16:57:33','2018-04-25 09:01:40'),(8,2,'在线用户','session','session:list','','0',1,'2017-12-27 16:59:33','2018-04-25 09:02:04'),(10,2,'系统日志','log','log:list','','0',3,'2017-12-27 17:00:50','2018-04-25 09:02:18'),(11,3,'新增用户',NULL,'user:add',NULL,'1',NULL,'2017-12-27 17:02:58',NULL),(12,3,'修改用户',NULL,'user:update',NULL,'1',NULL,'2017-12-27 17:04:07',NULL),(13,3,'删除用户',NULL,'user:delete',NULL,'1',NULL,'2017-12-27 17:04:58',NULL),(14,4,'新增角色',NULL,'role:add',NULL,'1',NULL,'2017-12-27 17:06:38',NULL),(15,4,'修改角色',NULL,'role:update',NULL,'1',NULL,'2017-12-27 17:06:38',NULL),(16,4,'删除角色',NULL,'role:delete',NULL,'1',NULL,'2017-12-27 17:06:38',NULL),(17,5,'新增菜单',NULL,'menu:add',NULL,'1',NULL,'2017-12-27 17:08:02',NULL),(18,5,'修改菜单',NULL,'menu:update',NULL,'1',NULL,'2017-12-27 17:08:02',NULL),(19,5,'删除菜单',NULL,'menu:delete',NULL,'1',NULL,'2017-12-27 17:08:02',NULL),(20,6,'新增部门',NULL,'dept:add',NULL,'1',NULL,'2017-12-27 17:09:24',NULL),(21,6,'修改部门',NULL,'dept:update',NULL,'1',NULL,'2017-12-27 17:09:24',NULL),(22,6,'删除部门',NULL,'dept:delete',NULL,'1',NULL,'2017-12-27 17:09:24',NULL),(23,8,'踢出用户',NULL,'user:kickout',NULL,'1',NULL,'2017-12-27 17:11:13',NULL),(24,10,'删除日志',NULL,'log:delete',NULL,'1',NULL,'2017-12-27 17:11:45',NULL),(58,0,'网络资源',NULL,NULL,'zmdi zmdi-globe-alt','0',NULL,'2018-01-12 15:28:48','2018-01-22 19:49:26'),(59,58,'天气查询','weather','weather:list','','0',NULL,'2018-01-12 15:40:02','2018-04-25 09:02:57'),(61,58,'每日一文','article','article:list','','0',NULL,'2018-01-15 17:17:14','2018-04-25 09:03:08'),(64,1,'字典管理','dict','dict:list','','0',NULL,'2018-01-18 10:38:25','2018-04-25 09:01:50'),(65,64,'新增字典',NULL,'dict:add',NULL,'1',NULL,'2018-01-18 19:10:08',NULL),(66,64,'修改字典',NULL,'dict:update',NULL,'1',NULL,'2018-01-18 19:10:27',NULL),(67,64,'删除字典',NULL,'dict:delete',NULL,'1',NULL,'2018-01-18 19:10:47',NULL),(81,58,'影视资讯',NULL,NULL,NULL,'0',NULL,'2018-01-22 14:12:59',NULL),(82,81,'正在热映','movie/hot','movie:hot','','0',NULL,'2018-01-22 14:13:47','2018-04-25 09:03:48'),(83,81,'即将上映','movie/coming','movie:coming','','0',NULL,'2018-01-22 14:14:36','2018-04-25 09:04:05'),(86,58,'One 一个',NULL,NULL,NULL,'0',NULL,'2018-01-26 09:42:41','2018-01-26 09:43:46'),(87,86,'绘画','one/painting','one:painting','','0',NULL,'2018-01-26 09:47:14','2018-04-25 09:04:17'),(88,86,'语文','one/yuwen','one:yuwen','','0',NULL,'2018-01-26 09:47:40','2018-04-25 09:04:30'),(89,86,'散文','one/essay','one:essay','','0',NULL,'2018-01-26 09:48:05','2018-04-25 09:04:42'),(101,0,'任务调度',NULL,NULL,'zmdi zmdi-alarm','0',NULL,'2018-02-24 15:52:57',NULL),(102,101,'定时任务','job','job:list','','0',NULL,'2018-02-24 15:53:53','2018-04-25 09:05:12'),(103,102,'新增任务',NULL,'job:add',NULL,'1',NULL,'2018-02-24 15:55:10',NULL),(104,102,'修改任务',NULL,'job:update',NULL,'1',NULL,'2018-02-24 15:55:53',NULL),(105,102,'删除任务',NULL,'job:delete',NULL,'1',NULL,'2018-02-24 15:56:18',NULL),(106,102,'暂停任务',NULL,'job:pause',NULL,'1',NULL,'2018-02-24 15:57:08',NULL),(107,102,'恢复任务',NULL,'job:resume',NULL,'1',NULL,'2018-02-24 15:58:21',NULL),(108,102,'立即执行任务',NULL,'job:run',NULL,'1',NULL,'2018-02-24 15:59:45',NULL),(109,101,'调度日志','jobLog','jobLog:list','','0',NULL,'2018-02-24 16:00:45','2018-04-25 09:05:25'),(110,109,'删除日志',NULL,'jobLog:delete',NULL,'1',NULL,'2018-02-24 16:01:21',NULL);
+/*!40000 ALTER TABLE `t_menu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_role`
+--
+
+DROP TABLE IF EXISTS `t_role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `t_role` (
+  `ROLE_ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '角色ID',
+  `ROLE_NAME` varchar(100) NOT NULL COMMENT '角色名称',
+  `REMARK` varchar(100) DEFAULT NULL COMMENT '角色描述',
+  `CREATE_TIME` datetime NOT NULL COMMENT '创建时间',
+  `MODIFY_TIME` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`ROLE_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_role`
+--
+
+LOCK TABLES `t_role` WRITE;
+/*!40000 ALTER TABLE `t_role` DISABLE KEYS */;
+INSERT INTO `t_role` VALUES (1,'管理员','管理员','2017-12-27 16:23:11','2018-02-24 16:01:45'),(2,'测试账号','测试账号','2017-12-27 16:25:09','2018-01-23 09:11:11'),(3,'注册账户','注册账户，只可查看，不可操作','2017-12-29 16:00:15','2018-02-24 17:33:45'),(23,'用户管理员','负责用户的增删改操作','2018-01-09 15:32:41',NULL),(24,'系统监控员','可查看系统监控信息，但不可操作','2018-01-09 15:52:01','2018-03-07 19:05:33'),(25,'用户查看','查看用户，无相应操作权限','2018-01-09 15:56:30',NULL),(63,'影院工作者','可查看影视信息','2018-02-06 08:48:28','2018-03-07 19:05:26'),(64,'天气预报员','可查看天气预报信息','2018-02-27 08:47:04',NULL),(65,'文章审核','文章类','2018-02-27 08:48:01','2018-03-13 11:20:34');
+/*!40000 ALTER TABLE `t_role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_role_menu`
+--
+
+DROP TABLE IF EXISTS `t_role_menu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `t_role_menu` (
+  `ROLE_ID` bigint(20) NOT NULL COMMENT '角色ID',
+  `MENU_ID` bigint(20) NOT NULL COMMENT '菜单/按钮ID'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_role_menu`
+--
+
+LOCK TABLES `t_role_menu` WRITE;
+/*!40000 ALTER TABLE `t_role_menu` DISABLE KEYS */;
+INSERT INTO `t_role_menu` VALUES (3,58),(3,59),(3,61),(3,81),(3,82),(3,83),(3,86),(3,87),(3,88),(3,89),(3,1),(3,3),(3,4),(3,5),(3,6),(3,64),(3,2),(3,8),(3,10),(3,101),(3,102),(3,109),(63,58),(63,81),(63,82),(63,83),(24,8),(24,2),(24,10),(65,86),(65,88),(65,89),(65,58),(65,61),(2,81),(2,61),(2,24),(2,82),(2,83),(2,58),(2,59),(2,2),(2,8),(2,10),(23,11),(23,12),(23,13),(23,3),(23,1),(25,1),(25,3),(1,59),(1,2),(1,3),(1,67),(1,1),(1,4),(1,5),(1,6),(1,20),(1,21),(1,22),(1,10),(1,8),(1,58),(1,66),(1,11),(1,12),(1,64),(1,13),(1,14),(1,65),(1,15),(1,16),(1,17),(1,18),(1,23),(1,81),(1,82),(1,83),(1,19),(1,24),(1,61),(1,86),(1,87),(1,88),(1,89),(1,101),(1,102),(1,103),(1,104),(1,105),(1,106),(1,107),(1,108),(1,109),(1,110),(64,59),(64,58);
+/*!40000 ALTER TABLE `t_role_menu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_user`
+--
+
+DROP TABLE IF EXISTS `t_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `t_user` (
+  `USER_ID` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+  `USERNAME` varchar(50) NOT NULL COMMENT '用户名',
+  `PASSWORD` varchar(128) NOT NULL COMMENT '密码',
+  `DEPT_ID` bigint(20) DEFAULT NULL COMMENT '部门ID',
+  `EMAIL` varchar(128) DEFAULT NULL COMMENT '邮箱',
+  `MOBILE` varchar(20) DEFAULT NULL COMMENT '联系电话',
+  `STATUS` char(1) NOT NULL COMMENT '状态 0锁定 1有效',
+  `CRATE_TIME` datetime NOT NULL COMMENT '创建时间',
+  `MODIFY_TIME` datetime DEFAULT NULL COMMENT '修改时间',
+  `LAST_LOGIN_TIME` datetime DEFAULT NULL COMMENT '最近访问时间',
+  `SSEX` char(1) DEFAULT NULL COMMENT '性别 0男 1女',
+  `THEME` varchar(10) DEFAULT NULL COMMENT '主题',
+  `AVATAR` varchar(100) DEFAULT NULL COMMENT '头像',
+  `DESCRIPTION` varchar(100) DEFAULT NULL COMMENT '描述',
+  PRIMARY KEY (`USER_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=167 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_user`
+--
+
+LOCK TABLES `t_user` WRITE;
+/*!40000 ALTER TABLE `t_user` DISABLE KEYS */;
+INSERT INTO `t_user` VALUES (4,'MrBird','42ee25d1e43e9f57119a00d0a39e5250',5,'mrbird@hotmail.com','13455533222','1','2017-12-27 15:47:19','2018-03-21 09:05:12','2019-02-22 13:58:15','0','indigo','default.jpg','我是作者。'),(6,'tester','243e29429b340192700677d48c09d992',6,'tester@qq.com','13888888888','1','2017-12-27 17:35:14','2018-03-27 09:21:08','2018-01-23 09:17:27','1','teal','default.jpg',NULL),(23,'scott','ac3af72d9f95161a502fd326865c2f15',6,'scott@qq.com','15134627380','1','2017-12-29 16:16:39','2018-03-29 16:18:36','2018-03-20 17:59:04','0','blue-grey','default.jpg','我是scott，嗯嗯'),(24,'smith','228208eafc74e48c44619cc543fc0efe',3,'smith@qq.com','13364754932','1','2017-12-29 16:21:31','2018-02-27 08:48:16','2018-02-27 08:48:27','1','teal','default.jpg',NULL),(25,'allen','83baac97928a113986054efacaeec1d2',3,'allen@qq.com','13427374857','0','2017-12-29 16:21:54','2018-01-17 11:28:16',NULL,'1','indigo','default.jpg',NULL),(26,'martin','b26c9edca9a61016bca1f6fb042e679e',4,'martin@qq.com','15562736678','1','2017-12-29 16:22:24','2018-01-25 09:23:15','2018-01-25 17:24:50','1','teal','default.jpg',NULL),(27,'ford','0448f0dcfd856b0e831842072b532141',6,'ford@qq.com','15599998373','0','2017-12-29 16:22:52','2018-03-13 11:19:56','2018-03-08 16:31:59','0','cyan','default.jpg',NULL),(91,'系统监控员','7c28d1cd33414ac15832f7be92668b7a',6,'xtjk@qq.com','18088736652','1','2018-01-09 15:52:56',NULL,'2018-01-09 15:53:12','0','cyan','default.jpg',NULL);
+/*!40000 ALTER TABLE `t_user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_user_role`
+--
+
+DROP TABLE IF EXISTS `t_user_role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `t_user_role` (
+  `USER_ID` bigint(20) NOT NULL COMMENT '用户ID',
+  `ROLE_ID` bigint(20) NOT NULL COMMENT '角色ID'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_user_role`
+--
+
+LOCK TABLES `t_user_role` WRITE;
+/*!40000 ALTER TABLE `t_user_role` DISABLE KEYS */;
+INSERT INTO `t_user_role` VALUES (27,3),(24,65),(26,3),(26,23),(26,24),(25,3),(91,24),(4,1),(6,1),(6,2),(6,3),(6,25),(6,63),(23,2),(23,3),(23,23),(23,24),(23,25);
+/*!40000 ALTER TABLE `t_user_role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tenant`
+--
+
+DROP TABLE IF EXISTS `tenant`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `tenant` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '租户主键id',
+  `tenantname` varchar(32) NOT NULL COMMENT '租户名称',
+  `account` varchar(32) NOT NULL COMMENT '租户联系人',
+  `phone` varchar(12) NOT NULL COMMENT '租户手机号',
+  `begintime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '租户有效期开始时间',
+  `endtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '租户有效期结束时间',
+  `flag` int(11) NOT NULL DEFAULT '1' COMMENT '租户状态，0  未启用  1 启用  与时间共同控制&&',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tenant`
+--
+
+LOCK TABLES `tenant` WRITE;
+/*!40000 ALTER TABLE `tenant` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tenant` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_role`
+--
+
+DROP TABLE IF EXISTS `user_role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `user_role` (
+  `userid` int(11) NOT NULL COMMENT '用户id',
+  `roleid` int(11) NOT NULL COMMENT '角色id',
+  `creator` int(11) NOT NULL COMMENT '创建人，0为初始化',
+  `createtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (`userid`,`roleid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_role`
+--
+
+LOCK TABLES `user_role` WRITE;
+/*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
+INSERT INTO `user_role` VALUES (-1,1,-1,'2018-03-05 23:37:04');
+/*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Current Database: `security_db`
 --
 
@@ -2026,6 +4820,85 @@ LOCK TABLES `sys_user_roles` WRITE;
 UNLOCK TABLES;
 
 --
+-- Current Database: `springTransactional`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `springTransactional` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `springTransactional`;
+
+--
+-- Table structure for table `account`
+--
+
+DROP TABLE IF EXISTS `account`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `account` (
+  `username` varchar(50) NOT NULL,
+  `balance` int(11) DEFAULT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `account`
+--
+
+LOCK TABLES `account` WRITE;
+/*!40000 ALTER TABLE `account` DISABLE KEYS */;
+/*!40000 ALTER TABLE `account` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `book`
+--
+
+DROP TABLE IF EXISTS `book`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `book` (
+  `isbn` varchar(50) NOT NULL,
+  `book_name` varchar(100) DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  PRIMARY KEY (`isbn`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `book`
+--
+
+LOCK TABLES `book` WRITE;
+/*!40000 ALTER TABLE `book` DISABLE KEYS */;
+INSERT INTO `book` VALUES ('1','haha',10);
+/*!40000 ALTER TABLE `book` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `book_stock`
+--
+
+DROP TABLE IF EXISTS `book_stock`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `book_stock` (
+  `isbn` varchar(50) NOT NULL,
+  `stock` int(11) DEFAULT NULL,
+  PRIMARY KEY (`isbn`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `book_stock`
+--
+
+LOCK TABLES `book_stock` WRITE;
+/*!40000 ALTER TABLE `book_stock` DISABLE KEYS */;
+/*!40000 ALTER TABLE `book_stock` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Current Database: `test2`
 --
 
@@ -2034,323 +4907,76 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `test2` /*!40100 DEFAULT CHARACTER SET 
 USE `test2`;
 
 --
--- Table structure for table `QRTZ_BLOB_TRIGGERS`
+-- Table structure for table `account`
 --
 
-DROP TABLE IF EXISTS `QRTZ_BLOB_TRIGGERS`;
+DROP TABLE IF EXISTS `account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `QRTZ_BLOB_TRIGGERS` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_general_ci NOT NULL,
-  `TRIGGER_NAME` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `TRIGGER_GROUP` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `BLOB_DATA` blob,
-  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
-  CONSTRAINT `QRTZ_BLOB_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) REFERENCES `QRTZ_TRIGGERS` (`sched_name`, `trigger_name`, `trigger_group`)
+CREATE TABLE `account` (
+  `username` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `balance` int(11) DEFAULT NULL,
+  PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `QRTZ_BLOB_TRIGGERS`
+-- Dumping data for table `account`
 --
 
-LOCK TABLES `QRTZ_BLOB_TRIGGERS` WRITE;
-/*!40000 ALTER TABLE `QRTZ_BLOB_TRIGGERS` DISABLE KEYS */;
-/*!40000 ALTER TABLE `QRTZ_BLOB_TRIGGERS` ENABLE KEYS */;
+LOCK TABLES `account` WRITE;
+/*!40000 ALTER TABLE `account` DISABLE KEYS */;
+INSERT INTO `account` VALUES ('goat',0);
+/*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `QRTZ_CALENDARS`
+-- Table structure for table `book`
 --
 
-DROP TABLE IF EXISTS `QRTZ_CALENDARS`;
+DROP TABLE IF EXISTS `book`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `QRTZ_CALENDARS` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_general_ci NOT NULL,
-  `CALENDAR_NAME` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `CALENDAR` blob NOT NULL,
-  PRIMARY KEY (`SCHED_NAME`,`CALENDAR_NAME`)
+CREATE TABLE `book` (
+  `isbn` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `book_name` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  PRIMARY KEY (`isbn`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `QRTZ_CALENDARS`
+-- Dumping data for table `book`
 --
 
-LOCK TABLES `QRTZ_CALENDARS` WRITE;
-/*!40000 ALTER TABLE `QRTZ_CALENDARS` DISABLE KEYS */;
-/*!40000 ALTER TABLE `QRTZ_CALENDARS` ENABLE KEYS */;
+LOCK TABLES `book` WRITE;
+/*!40000 ALTER TABLE `book` DISABLE KEYS */;
+INSERT INTO `book` VALUES ('1','haha',10),('2','gg',20);
+/*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `QRTZ_CRON_TRIGGERS`
+-- Table structure for table `book_stock`
 --
 
-DROP TABLE IF EXISTS `QRTZ_CRON_TRIGGERS`;
+DROP TABLE IF EXISTS `book_stock`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `QRTZ_CRON_TRIGGERS` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_general_ci NOT NULL,
-  `TRIGGER_NAME` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `TRIGGER_GROUP` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `CRON_EXPRESSION` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `TIME_ZONE_ID` varchar(80) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
-  CONSTRAINT `QRTZ_CRON_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) REFERENCES `QRTZ_TRIGGERS` (`sched_name`, `trigger_name`, `trigger_group`)
+CREATE TABLE `book_stock` (
+  `isbn` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `stock` int(11) DEFAULT NULL,
+  PRIMARY KEY (`isbn`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `QRTZ_CRON_TRIGGERS`
+-- Dumping data for table `book_stock`
 --
 
-LOCK TABLES `QRTZ_CRON_TRIGGERS` WRITE;
-/*!40000 ALTER TABLE `QRTZ_CRON_TRIGGERS` DISABLE KEYS */;
-INSERT INTO `QRTZ_CRON_TRIGGERS` VALUES ('SchedulerFactory','com.goat.job.HelloJob','123','0/1 * * * * ?','Asia/Shanghai');
-/*!40000 ALTER TABLE `QRTZ_CRON_TRIGGERS` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `QRTZ_FIRED_TRIGGERS`
---
-
-DROP TABLE IF EXISTS `QRTZ_FIRED_TRIGGERS`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `QRTZ_FIRED_TRIGGERS` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_general_ci NOT NULL,
-  `ENTRY_ID` varchar(95) COLLATE utf8mb4_general_ci NOT NULL,
-  `TRIGGER_NAME` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `TRIGGER_GROUP` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `INSTANCE_NAME` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `FIRED_TIME` bigint(13) NOT NULL,
-  `SCHED_TIME` bigint(13) NOT NULL,
-  `PRIORITY` int(11) NOT NULL,
-  `STATE` varchar(16) COLLATE utf8mb4_general_ci NOT NULL,
-  `JOB_NAME` varchar(200) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `JOB_GROUP` varchar(200) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `IS_NONCONCURRENT` varchar(1) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `REQUESTS_RECOVERY` varchar(1) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`SCHED_NAME`,`ENTRY_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `QRTZ_FIRED_TRIGGERS`
---
-
-LOCK TABLES `QRTZ_FIRED_TRIGGERS` WRITE;
-/*!40000 ALTER TABLE `QRTZ_FIRED_TRIGGERS` DISABLE KEYS */;
-INSERT INTO `QRTZ_FIRED_TRIGGERS` VALUES ('SchedulerFactory','NON_CLUSTERED1543218299106','com.goat.job.HelloJob','123','NON_CLUSTERED',1543218339396,1543218331000,5,'EXECUTING','com.goat.job.HelloJob','123','0','0');
-/*!40000 ALTER TABLE `QRTZ_FIRED_TRIGGERS` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `QRTZ_JOB_DETAILS`
---
-
-DROP TABLE IF EXISTS `QRTZ_JOB_DETAILS`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `QRTZ_JOB_DETAILS` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_general_ci NOT NULL,
-  `JOB_NAME` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `JOB_GROUP` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `DESCRIPTION` varchar(250) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `JOB_CLASS_NAME` varchar(250) COLLATE utf8mb4_general_ci NOT NULL,
-  `IS_DURABLE` varchar(1) COLLATE utf8mb4_general_ci NOT NULL,
-  `IS_NONCONCURRENT` varchar(1) COLLATE utf8mb4_general_ci NOT NULL,
-  `IS_UPDATE_DATA` varchar(1) COLLATE utf8mb4_general_ci NOT NULL,
-  `REQUESTS_RECOVERY` varchar(1) COLLATE utf8mb4_general_ci NOT NULL,
-  `JOB_DATA` blob,
-  PRIMARY KEY (`SCHED_NAME`,`JOB_NAME`,`JOB_GROUP`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `QRTZ_JOB_DETAILS`
---
-
-LOCK TABLES `QRTZ_JOB_DETAILS` WRITE;
-/*!40000 ALTER TABLE `QRTZ_JOB_DETAILS` DISABLE KEYS */;
-INSERT INTO `QRTZ_JOB_DETAILS` VALUES ('SchedulerFactory','com.goat.job.HelloJob','123',NULL,'com.goat.job.HelloJob','0','0','0','0',_binary '�\�\0sr\0org.quartz.JobDataMap���迩�\�\0\0xr\0&org.quartz.utils.StringKeyDirtyFlagMap�\�\��\�](\0Z\0allowsTransientDataxr\0org.quartz.utils.DirtyFlagMap\�.�(v\n\�\0Z\0dirtyL\0mapt\0Ljava/util/Map;xp\0sr\0java.util.HashMap\��\�`\�\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0\0x\0');
-/*!40000 ALTER TABLE `QRTZ_JOB_DETAILS` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `QRTZ_LOCKS`
---
-
-DROP TABLE IF EXISTS `QRTZ_LOCKS`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `QRTZ_LOCKS` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_general_ci NOT NULL,
-  `LOCK_NAME` varchar(40) COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`SCHED_NAME`,`LOCK_NAME`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `QRTZ_LOCKS`
---
-
-LOCK TABLES `QRTZ_LOCKS` WRITE;
-/*!40000 ALTER TABLE `QRTZ_LOCKS` DISABLE KEYS */;
-/*!40000 ALTER TABLE `QRTZ_LOCKS` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `QRTZ_PAUSED_TRIGGER_GRPS`
---
-
-DROP TABLE IF EXISTS `QRTZ_PAUSED_TRIGGER_GRPS`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `QRTZ_PAUSED_TRIGGER_GRPS` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_general_ci NOT NULL,
-  `TRIGGER_GROUP` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_GROUP`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `QRTZ_PAUSED_TRIGGER_GRPS`
---
-
-LOCK TABLES `QRTZ_PAUSED_TRIGGER_GRPS` WRITE;
-/*!40000 ALTER TABLE `QRTZ_PAUSED_TRIGGER_GRPS` DISABLE KEYS */;
-/*!40000 ALTER TABLE `QRTZ_PAUSED_TRIGGER_GRPS` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `QRTZ_SCHEDULER_STATE`
---
-
-DROP TABLE IF EXISTS `QRTZ_SCHEDULER_STATE`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `QRTZ_SCHEDULER_STATE` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_general_ci NOT NULL,
-  `INSTANCE_NAME` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `LAST_CHECKIN_TIME` bigint(13) NOT NULL,
-  `CHECKIN_INTERVAL` bigint(13) NOT NULL,
-  PRIMARY KEY (`SCHED_NAME`,`INSTANCE_NAME`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `QRTZ_SCHEDULER_STATE`
---
-
-LOCK TABLES `QRTZ_SCHEDULER_STATE` WRITE;
-/*!40000 ALTER TABLE `QRTZ_SCHEDULER_STATE` DISABLE KEYS */;
-/*!40000 ALTER TABLE `QRTZ_SCHEDULER_STATE` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `QRTZ_SIMPLE_TRIGGERS`
---
-
-DROP TABLE IF EXISTS `QRTZ_SIMPLE_TRIGGERS`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `QRTZ_SIMPLE_TRIGGERS` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_general_ci NOT NULL,
-  `TRIGGER_NAME` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `TRIGGER_GROUP` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `REPEAT_COUNT` bigint(7) NOT NULL,
-  `REPEAT_INTERVAL` bigint(12) NOT NULL,
-  `TIMES_TRIGGERED` bigint(10) NOT NULL,
-  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
-  CONSTRAINT `QRTZ_SIMPLE_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) REFERENCES `QRTZ_TRIGGERS` (`sched_name`, `trigger_name`, `trigger_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `QRTZ_SIMPLE_TRIGGERS`
---
-
-LOCK TABLES `QRTZ_SIMPLE_TRIGGERS` WRITE;
-/*!40000 ALTER TABLE `QRTZ_SIMPLE_TRIGGERS` DISABLE KEYS */;
-/*!40000 ALTER TABLE `QRTZ_SIMPLE_TRIGGERS` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `QRTZ_SIMPROP_TRIGGERS`
---
-
-DROP TABLE IF EXISTS `QRTZ_SIMPROP_TRIGGERS`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `QRTZ_SIMPROP_TRIGGERS` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_general_ci NOT NULL,
-  `TRIGGER_NAME` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `TRIGGER_GROUP` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `STR_PROP_1` varchar(512) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `STR_PROP_2` varchar(512) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `STR_PROP_3` varchar(512) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `INT_PROP_1` int(11) DEFAULT NULL,
-  `INT_PROP_2` int(11) DEFAULT NULL,
-  `LONG_PROP_1` bigint(20) DEFAULT NULL,
-  `LONG_PROP_2` bigint(20) DEFAULT NULL,
-  `DEC_PROP_1` decimal(13,4) DEFAULT NULL,
-  `DEC_PROP_2` decimal(13,4) DEFAULT NULL,
-  `BOOL_PROP_1` varchar(1) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `BOOL_PROP_2` varchar(1) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
-  CONSTRAINT `QRTZ_SIMPROP_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) REFERENCES `QRTZ_TRIGGERS` (`sched_name`, `trigger_name`, `trigger_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `QRTZ_SIMPROP_TRIGGERS`
---
-
-LOCK TABLES `QRTZ_SIMPROP_TRIGGERS` WRITE;
-/*!40000 ALTER TABLE `QRTZ_SIMPROP_TRIGGERS` DISABLE KEYS */;
-/*!40000 ALTER TABLE `QRTZ_SIMPROP_TRIGGERS` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `QRTZ_TRIGGERS`
---
-
-DROP TABLE IF EXISTS `QRTZ_TRIGGERS`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
-CREATE TABLE `QRTZ_TRIGGERS` (
-  `SCHED_NAME` varchar(120) COLLATE utf8mb4_general_ci NOT NULL,
-  `TRIGGER_NAME` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `TRIGGER_GROUP` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `JOB_NAME` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `JOB_GROUP` varchar(200) COLLATE utf8mb4_general_ci NOT NULL,
-  `DESCRIPTION` varchar(250) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `NEXT_FIRE_TIME` bigint(13) DEFAULT NULL,
-  `PREV_FIRE_TIME` bigint(13) DEFAULT NULL,
-  `PRIORITY` int(11) DEFAULT NULL,
-  `TRIGGER_STATE` varchar(16) COLLATE utf8mb4_general_ci NOT NULL,
-  `TRIGGER_TYPE` varchar(8) COLLATE utf8mb4_general_ci NOT NULL,
-  `START_TIME` bigint(13) NOT NULL,
-  `END_TIME` bigint(13) DEFAULT NULL,
-  `CALENDAR_NAME` varchar(200) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `MISFIRE_INSTR` smallint(2) DEFAULT NULL,
-  `JOB_DATA` blob,
-  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
-  KEY `SCHED_NAME` (`SCHED_NAME`,`JOB_NAME`,`JOB_GROUP`),
-  CONSTRAINT `QRTZ_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `JOB_NAME`, `JOB_GROUP`) REFERENCES `QRTZ_JOB_DETAILS` (`sched_name`, `job_name`, `job_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `QRTZ_TRIGGERS`
---
-
-LOCK TABLES `QRTZ_TRIGGERS` WRITE;
-/*!40000 ALTER TABLE `QRTZ_TRIGGERS` DISABLE KEYS */;
-INSERT INTO `QRTZ_TRIGGERS` VALUES ('SchedulerFactory','com.goat.job.HelloJob','123','com.goat.job.HelloJob','123',NULL,1543218332000,1543218331000,5,'WAITING','CRON',1543218104000,0,NULL,0,'');
-/*!40000 ALTER TABLE `QRTZ_TRIGGERS` ENABLE KEYS */;
+LOCK TABLES `book_stock` WRITE;
+/*!40000 ALTER TABLE `book_stock` DISABLE KEYS */;
+INSERT INTO `book_stock` VALUES ('1',2),('2',7);
+/*!40000 ALTER TABLE `book_stock` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -2405,7 +5031,7 @@ CREATE TABLE `emp` (
 
 LOCK TABLES `emp` WRITE;
 /*!40000 ALTER TABLE `emp` DISABLE KEYS */;
-INSERT INTO `emp` VALUES (33,'aaaaa',NULL,NULL,NULL,NULL,NULL,NULL),(7369,'SMITH','CLERK',7902,'1980-12-17',800,NULL,20),(7499,'ALLEN','SALESMAN',7698,'1981-02-20',1600,300,30),(7521,'WARD','SALESMAN',7698,'1981-02-22',1250,500,30),(7566,'JONES','MANAGER',7839,'1981-04-02',2975,NULL,20),(7654,'MARTIN','SALESMAN',7698,'1981-09-28',1250,1400,30),(7698,'BLAKE','MANAGER',7839,'1981-05-01',2850,NULL,30),(7782,'CLARK','MANAGER',7839,'1981-06-09',2450,NULL,10),(7788,'SCOTT','ANALYST',7566,'1987-07-03',3000,NULL,20),(7839,'KING','PRESIDENT',NULL,'1981-11-17',5000,NULL,10),(7844,'TURNER','SALESMAN',7698,'1981-09-08',1500,0,30),(7876,'ADAMS','CLERK',7788,'1987-07-13',1100,NULL,20),(7900,'JAMES','CLERK',7698,'1981-12-03',950,NULL,30),(7902,'FORD','ANALYST',7566,'1981-12-03',3000,NULL,20),(7934,'MILLER','CLERK',7782,'1981-01-23',1300,NULL,10);
+INSERT INTO `emp` VALUES (33,'2222',NULL,NULL,NULL,NULL,NULL,NULL),(7369,'SMITH','CLERK',7902,'1980-12-17',800,NULL,20),(7499,'ALLEN','SALESMAN',7698,'1981-02-20',1600,300,30),(7521,'WARD','SALESMAN',7698,'1981-02-22',1250,500,30),(7566,'JONES','MANAGER',7839,'1981-04-02',2975,NULL,20),(7654,'MARTIN','SALESMAN',7698,'1981-09-28',1250,1400,30),(7698,'BLAKE','MANAGER',7839,'1981-05-01',2850,NULL,30),(7782,'CLARK','MANAGER',7839,'1981-06-09',2450,NULL,10),(7788,'SCOTT','ANALYST',7566,'1987-07-03',3000,NULL,20),(7839,'KING','PRESIDENT',NULL,'1981-11-17',5000,NULL,10),(7844,'TURNER','SALESMAN',7698,'1981-09-08',1500,0,30),(7876,'ADAMS','CLERK',7788,'1987-07-13',1100,NULL,20),(7900,'JAMES','CLERK',7698,'1981-12-03',950,NULL,30),(7902,'FORD','ANALYST',7566,'1981-12-03',3000,NULL,20),(7934,'MILLER','CLERK',7782,'1981-01-23',1300,NULL,10);
 /*!40000 ALTER TABLE `emp` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2520,6 +5146,8 @@ CREATE TABLE `user` (
   `age` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `version` int(11) NOT NULL DEFAULT '1' COMMENT '乐观锁版本',
+  `password` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `username` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -2530,7 +5158,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (24,33,'goat',1),(23,33,'goat',1),(22,33,'goat',1);
+INSERT INTO `user` VALUES (24,33,'goat',1,NULL,NULL),(23,33,'goat',1,NULL,NULL),(22,33,'goat',1,NULL,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -2544,4 +5172,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-07 13:02:28
+-- Dump completed on 2019-02-23  7:09:40
