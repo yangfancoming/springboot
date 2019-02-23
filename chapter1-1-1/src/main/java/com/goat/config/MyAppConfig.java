@@ -1,5 +1,6 @@
 package com.goat.config;
 
+import com.goat.bean2.Dog;
 import com.goat.bean2.Person;
 import com.goat.service.HelloService;
 import org.springframework.context.annotation.Bean;
@@ -26,11 +27,21 @@ public class MyAppConfig {
     }
 
 
-    @Bean  // 给容器中注册一个bean！ 其类型为返回值类型，id 默认为函数名 自定义bean名称： @Bean("beanName")
+    @Bean  // 给容器中注册一个bean！ 其类型为返回值类型，id 默认为函数名 自定义bean名称(bean id)： @Bean("beanName")
     public Person person01(){
-        return new Person("goat",11);
+        return new Person("goat",123);
     }
 
+    /**  相当于传统方式 ：
+     <bean id="Dog01" class="com.goat.bean2.Dog">
+         <property name="lastName" value="halala"></property>
+         <property name="age" value="111"></property>
+     </bean>
+     */
+    @Bean
+    public Dog dog03(){
+        return new Dog("halala",111);
+    }
 
     /**
      @ConditionalOnProperty(name = "PROFILE", havingValue = "dev", matchIfMissing = true)

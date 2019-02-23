@@ -14,8 +14,7 @@ import org.testng.annotations.Test;
      * @Param:
      * @Return:
      * @Date:   2018/12/4
- *
- *
+
 */
 public class TestNG  {
 
@@ -30,7 +29,6 @@ public class TestNG  {
 //        Person person = new Person("duval yang",12);
         Person person = new Person("duval yang",17);
         kieSession.insert(person);
-
         kieSession.fireAllRules();
         kieSession.dispose();
     }

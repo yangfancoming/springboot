@@ -4,4 +4,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="testoService" class="com.goat.service.TestService"></bean>
+
+    <bean id="dog01" class="com.goat.bean2.Dog">
+        <property name="lastName" value="wahaha"></property>
+        <property name="age" value="123"></property>
+    </bean>
 </beans>

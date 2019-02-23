@@ -1,12 +1,15 @@
 package com.goat.controller;
 
 
+import com.goat.bean2.Dog;
+import com.goat.bean2.Person;
 import com.goat.service.HelloService;
 import com.goat.service.TestService;
 import com.goat.service.TestService2;
 import com.goat.utils.SpringContextUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,13 +28,20 @@ public class TestBean {
     @Autowired private TestService2 testService2;
     @Autowired private HelloService helloService;
 
-    //    http://localhost:1111/test0
+    //    http://localhost:1111/testbean/test0
     @GetMapping("/test0")
     public void test0() {
         String[] str= ac.getBeanDefinitionNames();
         for (String string : str) {
             System.out.println("***---***"+string);
         }
+    }
+
+    //    http://localhost:1111/testbean/test1
+    @GetMapping("/test1")
+    public void test1() {
+        String[] beanNamesForType = ac.getBeanNamesForType(Dog.class);
+        System.out.println(beanNamesForType);
     }
 
     /**
@@ -64,6 +74,13 @@ public class TestBean {
         testService.test();
     }
 
+    @GetMapping("/test44")
+    public void test44(){
+        ApplicationContext ac = new ClassPathXmlApplicationContext("classpath:beans.xml");
+        Dog dog = (Dog) ac.getBean("Dog01");
+        System.out.println(dog);
+    }
+
     /** sos 实测 该方法  可以在拦截器中 注入 bean
      * http://localhost:1111/testbean/test5
      * 通过 implements ApplicationContextAware 获取 该bean
@@ -74,6 +91,17 @@ public class TestBean {
         TestService testoService2 = (TestService) SpringContextUtil.getBean("testoService");
         assertThat(testoService1, sameInstance(testoService2)); // 判断两个对象 是否是同一个实例
         testoService1.test();
+    }
+
+    /**   http://localhost:1111/testbean/test55
+     Expected: sameInstance(<com.goat.bean2.Dog@5195507d>)
+     but: was <com.goat.bean2.Dog@6293e6e0>] with root cause
+    */
+    @GetMapping("/test55")
+    public void test55(){
+        Dog dog01 = (Dog) SpringContextUtil.getBean("dog01");
+        Dog dog03 = (Dog) SpringContextUtil.getBean("dog03");
+        assertThat(dog03, sameInstance(dog01)); // 判断两个对象 是否是同一个实例
     }
 
     /**   sos 实测 该方法  不能 在拦截器中 注入 bean

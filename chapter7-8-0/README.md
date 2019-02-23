@@ -32,9 +32,7 @@
 
 
 #  语法规则
-
     package 包名
-    
     rule "规则名"
     when
         (条件) - 也叫作规则的 LHS(Left Hand Side)
@@ -48,7 +46,6 @@
     规则的条件(LHS)是按照 DRL 语言编写的，条件eval(true)表示永远为真，
     即该条规则总会获得执行。而规则的结果(RHS)使用 Java 语言实现，
     简单地输出了 HelloWorld 字样。
-    
     
     
 # Drools Jar 包介绍：
