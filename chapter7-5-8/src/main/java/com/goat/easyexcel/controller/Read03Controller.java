@@ -7,6 +7,7 @@ import com.goat.easyexcel.model.ReadModel;
 import com.goat.easyexcel.util.FileUtil;
 import org.junit.Test;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
@@ -21,9 +22,10 @@ import java.util.List;
  * @ date 2019/2/23---20:56
  */
 @RestController
-public class Test03Controller extends BaseController {
+@RequestMapping("r03")
+public class Read03Controller extends BaseController {
 
-    /**   http://localhost:8758/test1
+    /**   http://localhost:8758/r03/test1
      * 03版本excel读数据量少于1千行数据，内部采用回调方法.
      * @throws IOException 简单抛出异常，真实环境需要catch异常,同时在finally中关闭流
      */
@@ -36,7 +38,7 @@ public class Test03Controller extends BaseController {
     }
 
 
-    /**   http://localhost:8758/test2
+    /**   http://localhost:8758/r03/test2
      * 03版本excel读数据量少于1千行数据转成javamodel，内部采用回调方法.
      * @throws IOException 简单抛出异常，真实环境需要catch异常,同时在finally中关闭流
      */
@@ -48,7 +50,7 @@ public class Test03Controller extends BaseController {
         print(data);
     }
 
-    /**   http://localhost:8758/test3
+    /**   http://localhost:8758/r03/test3
      * 03版本excel读数据量大于1千行数据，内部采用回调方法.
      * @throws IOException 简单抛出异常，真实环境需要catch异常,同时在finally中关闭流
      */
@@ -60,7 +62,7 @@ public class Test03Controller extends BaseController {
         inputStream.close();
     }
 
-    /**  http://localhost:8758/test4
+    /**  http://localhost:8758/r03/test4
      * 03版本excel读数据量大于1千行数据转成javamodel，内部采用回调方法.
      * @throws IOException 简单抛出异常，真实环境需要catch异常,同时在finally中关闭流
      */
