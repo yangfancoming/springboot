@@ -1,7 +1,12 @@
 
 # springboot  集成  JSP 外置Tomcat容器
-    第一步：工程的打包方式为war。
+    第一步：工程的打包方式为war。   <packaging>war</packaging>
     第二步：将spring-boot-starter-tomcat的范围设置为 provided，设置为provided是在打包时会将该包排除，因为要放到独立的tomcat中运行，是不需要的。
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                    <scope>provided</scope>
+                </dependency>
     第三步：修改代码，设置启动配置。需要集成 SpringBootServletInitializer，然后重写configure，将Spring Boot的入口类设置进去。
     @SpringBootApplication
     public class BootstrapApplication extends SpringBootServletInitializer {
