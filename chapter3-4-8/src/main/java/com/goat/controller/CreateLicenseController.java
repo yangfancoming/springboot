@@ -28,7 +28,7 @@ public class CreateLicenseController {
     // 测试地址：    http://localhost:8263/goat2
     @RequestMapping("/test2")
     public String index(ModelMap map) { //  ModelMap 也是一种渲染方式
-        map.addAttribute("hello", "http://blog.didispace.com");
+        map.addAttribute("hello", "123123");
         return "success";
     }
 
