@@ -1,0 +1,25 @@
+package com.goat.session;
+
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+
+
+@SpringBootApplication
+@ServletComponentScan
+public class SessionApplication extends SpringBootServletInitializer {
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(SessionApplication.class);
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(SessionApplication.class, args);
+    }
+
+}
