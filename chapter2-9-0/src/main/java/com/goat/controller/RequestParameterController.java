@@ -70,11 +70,12 @@ public class RequestParameterController {
 
     /**
      * 可以从请求参数中获取参数值
+     * http://localhost:8290/request/requestParam  则 不报错，也不会进入该controller 更没有任何提示
      * 	http://localhost:8290/request/requestParam?ownerId=223
      * 	http://localhost:8290/request/requestParam?ownerId111=223  则报错 Required int parameter 'ownerId' is not present
      * @param ownerId
      */
-    @RequestMapping(value="/requestParam", method = RequestMethod.GET)
+    @GetMapping("/requestParam")
     public Object requestParam(@RequestParam("ownerId") int ownerId) {
         return ownerId;
     }
@@ -83,7 +84,7 @@ public class RequestParameterController {
      * 	http://localhost:8290/request/requestParam11?ownerId111=223  则 不再报错
      * @param ownerId
      */
-    @RequestMapping(value="/requestParam11", method = RequestMethod.GET)
+    @GetMapping("/requestParam11")
     public Object requestParam11(@RequestParam(name = "ownerId111") int ownerId) {
         return ownerId;
     }
@@ -93,7 +94,7 @@ public class RequestParameterController {
      * http://localhost:8290/request/requestParam2?ownerId=223&a=4&c=5
      * @param map
      */
-    @RequestMapping(value="/requestParam2", method = RequestMethod.GET)
+    @GetMapping("/requestParam2")
     public Object requestParam2(@RequestParam Map<String,Object> map) {
         return map;
     }
@@ -102,7 +103,7 @@ public class RequestParameterController {
      * http://localhost:8290/request/requestParam2?username=223&password=4&age=5
      * @param user
      */
-    @RequestMapping(value="/requestParam22", method = RequestMethod.GET)
+    @GetMapping("/requestParam22")
     public Object requestParam22(@RequestParam User user) {
         return user;
     }
@@ -125,7 +126,7 @@ public class RequestParameterController {
      *	  测试方法在：查找 public void requestBodyString() throws Exception
      * @param body
      */
-    @RequestMapping(value = "/requestBodyString", method = RequestMethod.POST)
+    @RequestMapping("/requestBodyString")
     public Object requestBodyString(@RequestBody String body){
         return body;
     }
@@ -136,7 +137,7 @@ public class RequestParameterController {
      *	  测试方法在：查找 public void requestBodyBean() throws Exception
      * @param user
      */
-    @RequestMapping(value = "/requestBodyBean", method = RequestMethod.POST)
+    @RequestMapping("/requestBodyBean")
     public User requestBodyBean(@RequestBody User user){
         return user;
     }
