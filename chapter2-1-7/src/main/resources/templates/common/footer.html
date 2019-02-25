@@ -1,0 +1,21 @@
+<!--fuck 底部导航-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">  <b>Version</b> 1.1.0 </div>
+    <strong>Copyright &copy; 2019-2020 <a href="#">coming</a>.</strong> All rights reserved.
+</footer>
+
+
+<!--sos 注意 js 引入位置 -->
+<script th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
+<script th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
+<script th:src="@{/bower_components/jquery-ui/jquery-ui.min.js}"></script>
+
+<script th:src="@{/js/adminlte.min.js}"></script>
+<!--<script th:src="@{/js/pages/dashboard.js}"></script>-->
+<script th:src="@{/bower_components/fastclick/lib/fastclick.js}"></script>
+<script th:src="@{/bower_components/jquery-slimscroll/jquery.slimscroll.min.js}"></script>
+
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+</script>

@@ -28,4 +28,15 @@ public class HelloController {
         map.addAttribute("hello", "asdkfjdsfkdddd");
         return "main";
     }
+
+    // http://localhost:8217/hello/test3
+    @GetMapping("/test3")
+    public String test3() {
+        return "userList";
+    }
+    // http://localhost:8217/hello/test4
+    @GetMapping("/test4")
+    public String test4() {
+        return "roleList";
+    }
 }

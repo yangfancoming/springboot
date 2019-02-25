@@ -1,0 +1,44 @@
+<!--fuck 顶部导航-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<header class="main-header">
+    <!-- Logo -->
+    <a href="#" class="logo">
+        <span class="logo-lg"><b>goat</b>coming</span>
+    </a>
+
+    <nav class="navbar navbar-static-top">
+        <!-- 边栏切换按钮-->
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+            <span class="sr-only">Toggle navigation</span>
+        </a>
+
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+
+                <!-- User Account: style can be found in dropdown.less -->
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img th:src="@{/img/avatar.png}" class="user-image" alt="User Image">
+                        <span class="hidden-xs">杨帆</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!-- User image -->
+                        <li class="user-header">
+                            <img th:src="@{/img/avatar.png}" class="img-circle" alt="User Image">
+                            <p>山羊管理 <small>哇哈哈</small> </p>
+                        </li>
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="#" class="btn btn-default btn-flat">更改密码</a>
+                            </div>
+                            <div class="pull-right">
+                                <a href="#" class="btn btn-default btn-flat">注销</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
