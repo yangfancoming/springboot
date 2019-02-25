@@ -21,4 +21,11 @@ public class HelloController {
         map.addAttribute("hello", "asdkfjdsfkdddd");
         return "haha";
     }
+
+    // http://localhost:8217/hello/test2
+    @GetMapping("/test2")
+    public String test2(ModelMap map) {
+        map.addAttribute("hello", "asdkfjdsfkdddd");
+        return "main";
+    }
 }

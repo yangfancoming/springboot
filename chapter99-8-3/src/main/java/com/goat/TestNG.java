@@ -61,6 +61,7 @@ public class TestNG {
         System.err.println("groupBy:"+groupBy);
         //过滤出符合条件的数据
         List<Apple> filterList = list.stream().filter(a -> a.getName().equals("333")).collect(Collectors.toList());
+//        List<MesUpnMsgDto> filterList = miDto.stream().filter(a -> a.getNowNum() > 0L).collect(Collectors.toList());
         System.err.println("filterList:"+filterList);
     }
 

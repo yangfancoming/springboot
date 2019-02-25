@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html;charset=UTF-8"/>
+    <title>山羊来了</title>
+    <meta content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+    <link th:href="@{/bower_components/bootstrap/dist/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/bower_components/font-awesome/css/font-awesome.min.css}" rel="stylesheet"/>
+    <link th:href="@{/bower_components/Ionicons/css/ionicons.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/AdminLTE.min.css}" rel="stylesheet"/>
+    <link th:href="@{/plugins/iCheck/square/blue.css}" rel="stylesheet"/>
+    <!--皮肤-->
+    <link th:href="@{/css/skins/_all-skins.min.css}" rel="stylesheet"/>
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+
+<div class="wrapper">
+
+    <!--fuck 顶部导航-->
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="#" class="logo">
+            <span class="logo-lg"><b>goat</b>coming</span>
+        </a>
+
+        <nav class="navbar navbar-static-top">
+            <!-- 边栏切换按钮-->
+            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+
+                    <!-- User Account: style can be found in dropdown.less -->
+                    <li class="dropdown user user-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img th:src="@{/img/avatar.png}" class="user-image" alt="User Image">
+                            <span class="hidden-xs">杨帆</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- User image -->
+                            <li class="user-header">
+                                <img th:src="@{/img/avatar.png}" class="img-circle" alt="User Image">
+                                <p>山羊管理 <small>哇哈哈</small> </p>
+                            </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="#" class="btn btn-default btn-flat">更改密码</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="#" class="btn btn-default btn-flat">注销</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!--fuck 左侧菜单 -->
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img th:src="@{/img/user2-160x160.jpg}" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>Alexander Pierce</p>
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            </div>
+
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="header">左侧菜单导航</li>
+                <li class="active treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span>系统管理</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="active"><a href="#"><i class="fa fa-user"></i>用户管理</a></li>
+                        <li><a href="#"><i class="fa fa-circle-o"></i> 角色管理</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </aside>
+
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1> 试试看 <small> 看看吧 </small> </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
+                <li class="active">激活的</li>
+            </ol>
+        </section>
+
+        <!--主页面-->
+        <section class="content">
+            fuck
+        </section>
+
+
+    </div>
+
+
+    <!--fuck 底部导航-->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">  <b>Version</b> 1.1.0 </div>
+        <strong>Copyright &copy; 2019-2020 <a href="#">coming</a>.</strong> All rights reserved.
+    </footer>
+</div>
+
+
+<!--sos 注意 js 引入位置 -->
+<script th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
+<script th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
+<script th:src="@{/bower_components/jquery-ui/jquery-ui.min.js}"></script>
+
+<script th:src="@{/js/adminlte.min.js}"></script>
+<!--<script th:src="@{/js/pages/dashboard.js}"></script>-->
+<script th:src="@{/bower_components/fastclick/lib/fastclick.js}"></script>
+<script th:src="@{/bower_components/jquery-slimscroll/jquery.slimscroll.min.js}"></script>
+
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+
+</script>
+</body>
+</html>
