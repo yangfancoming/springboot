@@ -7,10 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @EnableRabbit
 @SpringBootApplication
-public class ProducerMQApplication {
+public class DemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProducerMQApplication.class, args);
+		SpringApplication.run(DemoApplication.class, args);
 	}
 
 }
