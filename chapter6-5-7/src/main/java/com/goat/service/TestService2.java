@@ -20,6 +20,7 @@ public class TestService2 extends OtherService{
     @Async("asyncTaskExecutor")
     public void saveAll2(List<MyMoney> lists) { //
         super.saveAll2(lists);
+        System.out.println(Thread.currentThread().getName()+"111111111111111111111111111111111111");
     }
     @Async("asyncTaskExecutor")
     public void saveAll22(List<MyMoney> lists) { //

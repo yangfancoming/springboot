@@ -36,11 +36,18 @@ public class JpaTestController {
 
     @Autowired
     TestService2 testService2;
-    //    http://localhost:8657/test/test1
+    /**  http://localhost:8657/test/test1
+     *   对象的创建  放在循环外面 否则报错：
+        进入自定义 错误 handler  Exception message - identifier of an instance of com.goat.domain.MyMoney was altered from 174 to 176;
+     正确的做法是 放在循环体里面
+    */
     @GetMapping("/test1")
     public void test1(){
-        List<MyMoney> lists = init();
-        testService2.saveAll2(lists);
+        // List<MyMoney> lists = init(); //  不能放在循环体外面
+        for (int i = 0; i <10 ; i++) {
+            List<MyMoney> lists = init();
+            testService2.saveAll2(lists); // 应该 放在循环体里面
+        }
     }
     //    http://localhost:8657/test/test2
     @GetMapping("/test2")

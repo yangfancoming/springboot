@@ -22,10 +22,10 @@ public class OtherService {
     TestRepository testRepository;
 
     @Transactional
-    public void saveAll2(List<MyMoney> lists) {
+    public void saveAll2(List<MyMoney> lists) { // 可以回滚
         System.out.println("进入 saveAll2 。。。。。。。。。。。");
         testRepository.saveAll(lists);
-        throw new RuntimeException("saveAll2  回滚测试。。。。。。。。。。。。。。");
+//        throw new RuntimeException("saveAll2  回滚测试。。。。。。。。。。。。。。");
     }
 
     public void saveAll22(List<MyMoney> lists) { // 不能回滚
