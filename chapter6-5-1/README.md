@@ -3,6 +3,10 @@
     
     @Async //这里进行标注为异步任务，在执行此方法的时候，会单独开启线程来执行
     @EnableAsync  使 @Async 生效 也就是说 去掉 @EnableAsync 则 @Async 无效 
+    注意：
+    @Transactional 注解 放在 @Async 方法上 事务是无效的，无法实现回滚 
+    @Async 方法中调用 通过@Autowired 注入的Service 带有 @Transactional 注解时，事务有效，可以回滚
+    
 # 异步任务 实现方式：
 
     异步任务方式一 ：使用线程池，创建新的线程去处理

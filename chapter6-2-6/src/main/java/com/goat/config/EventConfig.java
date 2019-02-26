@@ -8,7 +8,7 @@ import org.springframework.statemachine.annotation.OnTransitionStart;
 import org.springframework.statemachine.annotation.WithStateMachine;
 
 /**
- * 该配置实现了com.didispace.StateMachineConfig 类中定义的状态机监听器实现。
+ * 该配置实现了 StateMachineConfig 类中定义的状态机监听器实现。
  */
 @WithStateMachine
 public class EventConfig {

@@ -9,16 +9,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>chapter6-2-5</artifactId>
-
-
+    <artifactId>chapter6-2-4</artifactId>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.springframework.statemachine/spring-statemachine-core -->
         <dependency>
             <groupId>org.springframework.statemachine</groupId>
             <artifactId>spring-statemachine-core</artifactId>
-            <version>2.0.3.RELEASE</version>
+            <version>2.1.0.RELEASE</version>
         </dependency>
     </dependencies>
 </project>

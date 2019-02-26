@@ -30,13 +30,11 @@ public class StateMachineConfig extends EnumStateMachineConfigurerAdapter<States
     public void configure(StateMachineTransitionConfigurer<States, Events> transitions)throws Exception {
         transitions
             .withExternal()
-                .source(States.UNPAID) // source 来源状态
-                .target(States.WAITING_FOR_RECEIVE)//   target 目标状态
+                .source(States.UNPAID).target(States.WAITING_FOR_RECEIVE) // source 来源状态 target 目标状态
                 .event(Events.PAY)// 触发事件event
                 .and()
             .withExternal()
-                .source(States.WAITING_FOR_RECEIVE)
-                .target(States.DONE)
+                .source(States.WAITING_FOR_RECEIVE).target(States.DONE)
                 .event(Events.RECEIVE);
     }
 
