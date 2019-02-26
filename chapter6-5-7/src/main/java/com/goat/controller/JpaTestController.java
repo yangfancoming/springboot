@@ -40,15 +40,21 @@ public class JpaTestController {
      *   对象的创建  放在循环外面 否则报错：
         进入自定义 错误 handler  Exception message - identifier of an instance of com.goat.domain.MyMoney was altered from 174 to 176;
      正确的做法是 放在循环体里面
+
+     由于 testService2.saveAll2(lists) 方法 有 @Async("asyncTaskExecutor") 异步注解  因此 这里的 for循环 会是多线程的调用
+     从 插入 数据库 记录就可以看出 是多线程插入的结果
+
+
     */
     @GetMapping("/test1")
     public void test1(){
         // List<MyMoney> lists = init(); //  不能放在循环体外面
         for (int i = 0; i <10 ; i++) {
-            List<MyMoney> lists = init();
+            List<MyMoney> lists = init(); // 模仿 restTemplate 远程get数据  然后 save到本地数据库
             testService2.saveAll2(lists); // 应该 放在循环体里面
         }
     }
+
     //    http://localhost:8657/test/test2
     @GetMapping("/test2")
     public void test2(){

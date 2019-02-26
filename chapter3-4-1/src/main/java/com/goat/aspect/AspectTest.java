@@ -85,11 +85,14 @@ public class AspectTest {
         System.out.println(rvt);
     }
 
-    @AfterThrowing("execution(* com.goat.service..*(..))")
-    public void afterThrowing(){
-        System.out.println("哥是 异常增强。。。。。。。。。。。");
+    /**
+     声明ex时指定的类型会限制目标方法必须抛出指定类型的异常
+     此处将ex的类型声明为Throwable，意味着对目标方法抛出的异常不加限制
+    */
+    @AfterThrowing(throwing="ex",pointcut="execution(* com.goat.service..*(..))")
+    public void afterThrowing(Throwable ex){
+        System.out.println("哥是 异常增强。。。。。。。。。。。" + ex);
     }
-
 
 
     @Around("execution(* com.goat.service..*(..))")

@@ -36,11 +36,11 @@ public class AsyncTask {
         Thread.sleep(random.nextInt(1000));
         long end = System.currentTimeMillis();
         System.out.println("完成任务一，耗时：" + (end - start) + "毫秒");
+        if (true)  throw new IllegalArgumentException("111"); // 抛出自定义异常后 在 MyAsyncExceptionHandler 类中  会被拦截到！
         return new AsyncResult<>(user);
     }
 
-    @Async
-//    @Async("asyncTaskExecutor")
+    @Async("asyncTaskExecutor")
     public Future<String> doTaskTwo() throws Exception {
         System.out.println("f2 : " + Thread.currentThread().getName() + "   " + UUID.randomUUID().toString());
         System.out.println("开始做任务二");
@@ -105,11 +105,16 @@ public class AsyncTask {
         try {
             Thread.sleep(1000 * 1);
             future = new AsyncResult<>("success:" + i);
-            throw new IllegalArgumentException("a");
+            System.out.println("完成任务六，耗时：" );
+            if (true)  throw new IllegalArgumentException("a");
         } catch (InterruptedException e) {
             future = new AsyncResult<>("error");
         } catch(IllegalArgumentException e){
             future = new AsyncResult<>("error-IllegalArgumentException");
+        } catch (RuntimeException e){
+            future = new AsyncResult<>("error-RuntimeException");
+        }catch (Exception e){
+            future = new AsyncResult<>("error-Exception");
         }
         return future;
     }

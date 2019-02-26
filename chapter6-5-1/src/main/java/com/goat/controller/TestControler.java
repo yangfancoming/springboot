@@ -33,23 +33,17 @@ public class TestControler {
         Future<User> task1 = asyncTask.doTaskOne(user);
         Future<String> task2 = asyncTask.doTaskTwo();
         Future<String> task3 = asyncTask.doTaskThree("wahaha");
-        asyncTask.doTaskFour("wahaha");
-        asyncTask.doTaskFive();
+//        asyncTask.doTaskFour("wahaha");
+//        asyncTask.doTaskFive();
         Future<String> task6 = asyncTask.doTaskSix(11);
 
-        while(true) {
+        while(true) { //如果都执行完就可以跳出循环,isDone方法如果此任务完成，true
             if(task1.isDone() && task2.isDone() && task3.isDone()&& task6.isDone()) { // 三个任务都调用完成，退出循环等待
+                System.out.println("任务全部完成了！！！！！！！！");
                 break;
             }
             Thread.sleep(1000);
         }
-
-//        //如果都执行完就可以跳出循环,isDone方法如果此任务完成，true
-//        for (; ; ) {
-//            if (task4.isDone() && task5.isDone() && task6.isDone()) {
-//                break;
-//            }
-//        }
         long end = System.currentTimeMillis();
         System.out.println("任务全部完成，总耗时：" + (end - start) + "毫秒");
         return "启动计划任务！";
