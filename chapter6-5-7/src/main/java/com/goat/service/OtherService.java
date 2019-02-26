@@ -22,15 +22,19 @@ public class OtherService {
     TestRepository testRepository;
 
     @Transactional
-    public void saveAll2(List<MyMoney> lists) { // 可以回滚
+    public void saveAll2(List<MyMoney> lists,String code) { // 可以回滚
         System.out.println("进入 saveAll2 。。。。。。。。。。。");
         testRepository.saveAll(lists);
-//        throw new RuntimeException("saveAll2  回滚测试。。。。。。。。。。。。。。");
+        if (code.equals("3")) throw new RuntimeException("3 号 线程回滚。。。。。。。。。。。。。。");
     }
 
-    public void saveAll22(List<MyMoney> lists) { // 不能回滚
+    @Transactional
+    public List<MyMoney> saveAll22(List<MyMoney> lists,String code) { //doit 该方法带返回值 为啥就不能回滚了？？？ 上面的不带返回值的方法 为啥就能回滚呢？？？
         System.out.println("进入 saveAll22 。。。。。。。。。。。");
-        testRepository.saveAll(lists);
-        throw new RuntimeException("saveAll22  回滚测试。。。。。。。。。。。。。。");
+        List<MyMoney> myMonies = testRepository.saveAll(lists);
+        if (code.equals("3")) {
+            throw new RuntimeException("3 号 线程回滚。。。。。。。。。。。。。。");
+        }
+        return myMonies;
     }
 }

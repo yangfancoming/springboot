@@ -30,12 +30,22 @@ public class MyMoney {
     @Column(name = "col1")
     private String col1;
 
+    private String code;
+
     public MyMoney() {
     }
 
     public MyMoney(Long id, String col1) {
         this.id = id;
         this.col1 = col1;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public Long getVersion() {

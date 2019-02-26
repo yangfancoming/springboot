@@ -4,9 +4,7 @@ package com.goat.domain;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -22,6 +20,9 @@ public class OperLog  implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /** 日志主键 */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long operId;
 
     /** 操作模块 */
@@ -73,7 +74,7 @@ public class OperLog  implements Serializable {
      */
     private Timestamp endTime;
 
-    private String materialWarehouseCode;
+    private String code;
 
     public Long getOperId()
     {
@@ -231,12 +232,12 @@ public class OperLog  implements Serializable {
         this.endTime = endTime;
     }
 
-    public String getMaterialWarehouseCode() {
-        return materialWarehouseCode;
+    public String getCode() {
+        return code;
     }
 
-    public void setMaterialWarehouseCode(String materialWarehouseCode) {
-        this.materialWarehouseCode = materialWarehouseCode;
+    public void setCode(String code) {
+        this.code = code;
     }
 
 

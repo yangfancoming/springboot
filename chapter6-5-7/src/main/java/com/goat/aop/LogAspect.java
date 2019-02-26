@@ -14,7 +14,6 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
@@ -43,11 +42,47 @@ public class LogAspect {
         handleLog(joinPoint, rvt);
     }
 
-
+    /**
+     *  @AfterThrowing 拦截的方法 报异常后 进入该方法 注意如果异常方法中 try catch 了  则 不会进入该方法
+     * @param ex  异常信息
+     * @param
+     */
     @AfterThrowing(throwing="ex",pointcut = "logPointCut()")
-    public void afterThrowing(Throwable ex){
+    public void afterThrowing(JoinPoint joinPoint,Throwable ex){
         System.out.println("哥是 异常增强。。。。。。。。。。。" + ex);
+        errorLog(joinPoint, ex);
     }
+    protected void errorLog(final JoinPoint joinPoint, Throwable ex){
+        try {
+            Log controllerLog = null;
+            Signature signature = joinPoint.getSignature();
+            MethodSignature methodSignature = (MethodSignature) signature;
+            Method method = methodSignature.getMethod();
+            if (method != null){ // 是否存在注解，如果存在就获取
+                controllerLog = method.getAnnotation(Log.class);
+            }
+            // 获得注解
+            if (controllerLog == null) return;
+            OperLog operLog = new OperLog();
+            String className = joinPoint.getTarget().getClass().getName();  // 设置类名称
+            String methodName = joinPoint.getSignature().getName();  // 设置方法名称
+            operLog.setMethod(className + "." + methodName + "()");
+            getControllerMethodDescription(controllerLog, operLog);  // 处理设置注解上的参数
+            // 请求的方法参数值
+            Object[] args = joinPoint.getArgs();
+            //            operLog.setOperParam(args[0].toString()); // 设置 请求 ip
+            operLog.setCode(args[1].toString());// 设置 线程记录编号
+            operLog.setStatus("1"); // 设置运行状态为 失败
+            operLog.setErrorMsg(ex.getMessage());
+            operLogService.save(operLog);// 保存数据库
+        }
+        catch (Exception exp){
+            log.error("==通知异常==");
+            log.error("异常信息:{}", exp.getMessage());
+            exp.printStackTrace();
+        }
+    }
+
 
     protected void handleLog(final JoinPoint joinPoint, Object rvt){
         try {
@@ -68,8 +103,8 @@ public class LogAspect {
             getControllerMethodDescription(controllerLog, operLog);  // 处理设置注解上的参数
             // 请求的方法参数值
             Object[] args = joinPoint.getArgs();
-            operLog.setOperParam(args[0].toString()); // 设置 请求 ip
-            operLog.setMaterialWarehouseCode(args[1].toString());// 设置 料仓编号
+//            operLog.setOperParam(args[0].toString()); // 设置 请求 ip
+            operLog.setCode(args[1].toString());// 设置 线程记录编号
             operLogService.save(operLog);// 保存数据库
         }
         catch (Exception exp){
@@ -90,7 +125,7 @@ public class LogAspect {
         operLog.setAction(log.action()); // 设置action动作
         operLog.setTitle(log.title()); // 设置标题
         operLog.setOperTime(new Date()); // 设置操作时间
-        operLog.setMaterialWarehouseCode(log.code());//设置 料仓编号
+        operLog.setCode(log.code());//设置 料仓编号
         operLog.setStatus("0");//设置 运行状态 正常
     }
 }

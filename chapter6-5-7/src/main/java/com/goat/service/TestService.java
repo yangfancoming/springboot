@@ -36,7 +36,7 @@ public class TestService {
 
     @Async("asyncTaskExecutor")
     public void saveAll2(List<MyMoney> lists) { // 可以回滚
-        otherService.saveAll2(lists);
+        otherService.saveAll2(lists,"");
     }
 
 }
