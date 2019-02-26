@@ -8,5 +8,5 @@ package com.goat.enums;
  * @ date 2019/2/26---18:06
  */
 public enum Events {
-    EVENT1, EVENT2
+    E1, E2
 }

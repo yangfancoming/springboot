@@ -8,5 +8,5 @@ package com.goat.enums;
  * @ date 2019/2/26---18:06
  */
 public enum States {
-    STATE1, STATE2
+    SI, S1, S2
 }

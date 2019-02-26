@@ -24,7 +24,6 @@ import java.util.concurrent.Future;
 //public class TestService2 extends OtherService { //
 public class TestService2 {
 
-
     @Autowired OtherService otherService;
     @Log(title = "日志模块 函数")
     @Async("asyncTaskExecutor")
