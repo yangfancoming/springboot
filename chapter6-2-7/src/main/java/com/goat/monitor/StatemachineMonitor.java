@@ -13,21 +13,21 @@ public class StatemachineMonitor {
 
     @OnTransition
     public void anyTransition() {
-        System.out.println("--- OnTransition --- init");
+        System.out.println("进入monitor监视器--- OnTransition --- init");
     }
 
     @OnTransition(target = "Unlocked")
     public void toState1() {
-        System.out.println("--- OnTransition --- toState1");
+        System.out.println("进入monitor监视器--- OnTransition --- toState1");
     }
 
     @OnTransition(target = "Locked")
     public void toState2() {
-        System.out.println("--- OnTransition --- toState2");
+        System.out.println("进入monitor监视器--- OnTransition --- toState2");
     }
 
     @OnStateChanged(source = "Unlocked")
     public void fromState1() {
-        System.out.println("--- OnTransition --- fromState1");
+        System.out.println("进入monitor监视器--- OnTransition --- fromState1");
     }
 }
