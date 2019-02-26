@@ -29,7 +29,7 @@ public class OtherService {
     }
 
     @Transactional
-    public List<MyMoney> saveAll22(List<MyMoney> lists,String code) { //doit 该方法带返回值 为啥就不能回滚了？？？ 上面的不带返回值的方法 为啥就能回滚呢？？？
+    public List<MyMoney> saveAll22(List<MyMoney> lists,String code) {
         System.out.println("进入 saveAll22 。。。。。。。。。。。");
         List<MyMoney> myMonies = testRepository.saveAll(lists);
         if (code.equals("3")) {
