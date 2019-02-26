@@ -28,7 +28,7 @@ public class OtherService {
         throw new RuntimeException("saveAll2  回滚测试。。。。。。。。。。。。。。");
     }
 
-    public void saveAll22(List<MyMoney> lists) {
+    public void saveAll22(List<MyMoney> lists) { // 不能回滚
         System.out.println("进入 saveAll22 。。。。。。。。。。。");
         testRepository.saveAll(lists);
         throw new RuntimeException("saveAll22  回滚测试。。。。。。。。。。。。。。");

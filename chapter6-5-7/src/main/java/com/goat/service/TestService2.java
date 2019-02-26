@@ -18,11 +18,11 @@ import java.util.List;
 public class TestService2 extends OtherService{
 
     @Async("asyncTaskExecutor")
-    public void test21(List<MyMoney> lists) { //
+    public void saveAll2(List<MyMoney> lists) { //
         super.saveAll2(lists);
     }
     @Async("asyncTaskExecutor")
-    public void test22(List<MyMoney> lists) { //
+    public void saveAll22(List<MyMoney> lists) { //
         super.saveAll22(lists);
     }
 }
