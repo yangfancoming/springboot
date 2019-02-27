@@ -11,3 +11,14 @@
     退出动作：在退出状态时进行
     输入动作：依赖于当前状态和输入条件进行
     转移动作：在进行特定转移时进行
+    
+    
+    
+#    Could not autowire. No beans of 'StateMachine<States, Events>' type found.
+     @Autowired
+     private StateMachine<States, Events> stateMachine;       
+     解决： 是由于 注入的bean的依赖版本  与 springboot 版本 不一致 导致 springboot 不支持 所导致的  
+     
+     由 <version>2.0.3.RELEASE</version>  换成  <version>1.0.3.RELEASE</version> 就正常使用了
+     <version>2.0.3.RELEASE</version> 对应  springboot 2.0.4 
+     <version>1.0.3.RELEASE</version> 对应  springboot 1.3.9 

@@ -1,4 +1,4 @@
-package com.goat.config;
+package com.goat.monitor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +11,7 @@ import org.springframework.statemachine.annotation.WithStateMachine;
  * 该配置实现了 StateMachineConfig 类中定义的状态机监听器实现。
  */
 @WithStateMachine
-public class EventConfig {
+public class StatemachineMonitor {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
