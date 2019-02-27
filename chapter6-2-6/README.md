@@ -21,4 +21,4 @@
      
      由 <version>2.0.3.RELEASE</version>  换成  <version>1.0.3.RELEASE</version> 就正常使用了
      <version>2.0.3.RELEASE</version> 对应  springboot 2.0.4 
-     <version>1.0.3.RELEASE</version> 对应  springboot 1.3.9 
+     <version>1.0.3.RELEASE</version> 对应  springboot 1.3.0
