@@ -10,14 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 
 
-/**
- * <p>
- * 管理员表 服务实现类
- * </p>
- *
- * @author stylefeng123
- * @since 2018-02-22
- */
+
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> {
 
