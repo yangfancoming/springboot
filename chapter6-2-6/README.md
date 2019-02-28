@@ -22,3 +22,11 @@
      由 <version>2.0.3.RELEASE</version>  换成  <version>1.0.3.RELEASE</version> 就正常使用了
      <version>2.0.3.RELEASE</version> 对应  springboot 2.0.4 
      <version>1.0.3.RELEASE</version> 对应  springboot 1.3.0
+     
+     
+# Error processing bean 
+    状态机的 状态切换 初始状态  及 触发事件 出现了问题
+    
+# @OnTransition
+    在 @OnTransition 注解的 方法内 触发事件是无效的 
+    因为不要在 @OnTransition 注解的方法内 使用    stateMachine.sendEvent(Events.EVENTS0); 这类操作

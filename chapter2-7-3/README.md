@@ -20,3 +20,8 @@
     ResponseEntity<List> forEntity = restTemplate.getForEntity(HOST + "/warehouseStockContentLog/getWarehouseLog1", List.class);
     List<T> list = restTemplate.getForObject(HOST + "/warehouseStockContentLog/getWarehouseLog2", List.class);
     使用以上两种方式 返回结果 ，不管这个T是什么，接收到都被转化为 LinkedHashMap
+    
+# 多系统之间 传输 json 数据问题：
+     传输的 json 最终都要转成实体类 就涉及到 实体类主键id问题
+     如果 是 接收的 json 转实体类中 的主键 id    与  数据库接收方 数据库 表中 对应的记录主键id 相同 
+     那么 接收的该条实体类 则  update 本库表中 对应的记录   而不是  insert ！
