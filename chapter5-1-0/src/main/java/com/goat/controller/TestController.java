@@ -26,7 +26,7 @@ public class TestController {
     @RequestMapping(value = "/test1")
     public Person test1(){
         Person p = new Person(123L,"goat",222,"222");
-        return personService.save(p);
+        return personService.update(p);
     }
 
     //    http://localhost:8510/test/test2

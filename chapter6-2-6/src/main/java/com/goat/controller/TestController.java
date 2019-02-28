@@ -34,9 +34,19 @@ public class TestController {
     public void test3()   {
         stateMachine.sendEvent(Events.RECEIVE);  //通过调用用sendEvent(Events.RECEIVE)来完成收货操作
     }
+
     //    http://localhost:8626/test/test4
     @RequestMapping("/test4")
     public void test4()   {
+        stateMachine.stop();  // 停止状态机
+    }
+
+    //    http://localhost:8626/test/test5
+    @RequestMapping("/test5")
+    public void test5()   {
+        stateMachine.start();
+        stateMachine.sendEvent(Events.PAY);
+        stateMachine.sendEvent(Events.RECEIVE);
         stateMachine.stop();  // 停止状态机
     }
 }

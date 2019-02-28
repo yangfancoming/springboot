@@ -30,7 +30,6 @@ public class TestControler {
     @GetMapping("test1")
     public void test1() {
         bookService.updateBookStockByIsb("1");
-
     }
 
     //    http://localhost:8331/test/test2
@@ -62,7 +61,6 @@ public class TestControler {
     @GetMapping("test5")
     public void test5() {
         bookService.checkout("goat", Arrays.asList("1","2"));
-
     }
 
     /*     http://localhost:8331/test/test6
@@ -80,7 +78,6 @@ public class TestControler {
     @GetMapping("test6")
     public void test6() {
         bookService.checkoutNew("goat", Arrays.asList("1","2"));
-
     }
 
     /*  http://localhost:8331/test/test7

@@ -22,7 +22,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     @CachePut(value = "people", key = "#p.id") /** 主要用户更新方法，保证被调用，又希望结果被缓存，不论缓存中是否存在该数据，均进入该方法*/
-    public Person save(Person p) {
+    public Person update(Person p) {
         System.out.println("为id、key为:" + p.getId() + "数据做了缓存");
         return p;
     }

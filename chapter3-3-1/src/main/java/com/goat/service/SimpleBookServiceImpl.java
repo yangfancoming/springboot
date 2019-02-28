@@ -24,14 +24,14 @@ public class SimpleBookServiceImpl extends CommonServiceImpl {
      5.数据库引擎 或 表引擎 不是 InnoDB ！
      */
 
-    // 事务不会 回滚
+    // 没有注解 事务不会 回滚
     public void insertBad(){
         jdbcTemplate.update("insert book values ('2','gg',30)");
         int i = 10/0; // 触发 除零异常
         System.out.println(i);
     }
 
-    // 事务可以 回滚
+    // 增加 注解后 事务可以 回滚
     @Transactional
     public void insertGood(){
         jdbcTemplate.update("insert book values ('2','gg',30)");

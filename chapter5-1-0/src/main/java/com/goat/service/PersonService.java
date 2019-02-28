@@ -4,7 +4,7 @@ package com.goat.service;
 import com.goat.bean.Person;
 
 public interface PersonService {
-    Person save(Person person);
+    Person update(Person person);
 
     void remove(Long id);
 
