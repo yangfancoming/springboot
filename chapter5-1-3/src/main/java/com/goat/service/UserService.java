@@ -14,8 +14,8 @@ import org.springframework.stereotype.Service;
  * @Description: TODO
  * @date 2018/11/14---9:58
  *
- * 使用方法参数时我们可以直接使用“#参数名”或者“#p参数index”
- * @CacheConfig: 类级别的注解：如果我们在此类中定义 cacheNames，则此类中的所有方法上 @Cacheable 的cacheNames默认都是此值。当然@Cacheable也可以覆盖定义cacheNames的值
+ * 使用方法参数时可以直接使用“#参数名”或者“#p参数index”
+ * @CacheConfig: 类级别的注解：如果在此类中定义 cacheNames，则此类中的所有方法上 @Cacheable 的cacheNames默认都是此值。当然@Cacheable也可以覆盖定义cacheNames的值
  */
 
 @Service
@@ -66,11 +66,12 @@ public class UserService {
      * 	这里不同于@Cacheable：@Cacheable如果缓存没有值，从则执行方法并缓存数据，如果缓存有值，则从缓存中获取值
      * 	@CachePut缓存新增的数据到缓存usercache中
      */
-    @CachePut(value = "usercache", key = "#p0")
-    public User save(int age,String name) {
+    @CachePut(value = "usercache", key = "#p1")
+    public User update(int age,String name) {
         System.out.println("添加lisi用户");
         return new User(age, name);
     }
+
 
     /**
          condition和unless 只满足特定条件才进行缓存：

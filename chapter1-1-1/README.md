@@ -22,8 +22,8 @@
 
 
 #### @Configuration 和 @Value 使用场景
-    如果说，我们只是在某个业务逻辑中需要获取一下配置文件中的某项值，使用@Value；
-    如果说，我们专门编写了一个javaBean来和配置文件进行映射，我们就直接使用@ConfigurationProperties；
+    如果说，只是在某个业务逻辑中需要获取一下配置文件中的某项值，使用@Value；
+    如果说，专门编写了一个javaBean来和配置文件进行映射，就直接使用@ConfigurationProperties；
 
 
 #### @ConfigurationProperties @PropertySource   @ImportResource   @Bean

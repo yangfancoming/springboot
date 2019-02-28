@@ -14,7 +14,6 @@ public class TestControler {
     @Autowired
     UserService userService;
 
-
 //    http://localhost:8513/test1
     @GetMapping( "/test1")
     public User test1(){
@@ -48,10 +47,10 @@ public class TestControler {
         userService.clearAll();
     }
 
-    //    http://localhost:8513/test4
+    //    http://localhost:8513/test4?age=321&name=titi
     @GetMapping( "/test4")
-    public User test4(){
-        User goat = userService.save(321, "goat");
+    public User test4(Integer age,String name){
+        User goat = userService.update(age, name);
         return goat;
     }
     //    http://localhost:8513/test5

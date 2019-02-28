@@ -21,7 +21,6 @@ public class RedisServiceImpl implements IRedisService {
     @Resource
     private RedisTemplate redisTemplate;
 
-
     // 这里的注入 免去了  ValueOperations<Serializable, Object> operations = redisTemplate.opsForValue();
     // 原理 请参看  redisTemplate如何注入到ValueOperations.html
     @Resource(name = "redisTemplate")

@@ -9,11 +9,11 @@
       1.一个master可以有多个slave
       2.除了多个slave连到相同的master外，slave也可以连接其他slave形成图状结构
       3.主从复制不会阻塞master。也就是说当一个或多个slave与master进行初次同步数据时，master可以继续处理client发来的请求。相反slave在初次同步数据时则会阻塞不能处理client的请求。
-      4.主从复制可以用来提高系统的可伸缩性,我们可以用多个slave 专门用于client的读请求，比如sort操作可以使用slave来处理。也可以用来做简单的数据冗余
+      4.主从复制可以用来提高系统的可伸缩性,goat可以用多个slave 专门用于client的读请求，比如sort操作可以使用slave来处理。也可以用来做简单的数据冗余
       5.可以在master禁用数据持久化，只需要注释掉master 配置文件中的所有save配置，然后只在slave上配置数据持久化。
       6.可以用于读写分离和容灾恢复。
 
-      我们来了解下redis的Setinel系统：
+      goat来了解下redis的Setinel系统：
       Redis 的 Sentinel 系统用于管理多个 Redis 服务器（instance）， 该系统执行以下三个任务：
       监控（Monitoring）： Sentinel 会不断地检查你的主服务器和从服务器是否运作正常。
       提醒（Notification）： 当被监控的某个 Redis 服务器出现问题时， Sentinel 可以通过 API 向管理员或者其他应用程序发送通知。
