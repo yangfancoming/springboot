@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 //@RequestMapping("hello")
 public class HelloController {
 
-    // http://localhost:8268/hello/test0
-    @GetMapping("/test0")
+    // http://localhost:8268/index
+    @GetMapping("/index")
     public String test0() {
-        return "test0";
+        return "index";
     }
 
     // http://localhost:8268/hello/test1
