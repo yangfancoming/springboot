@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>开始使用layui</title>
+    <link th:href="@{/plugins/layui/css/layui.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<button class="layui-btn layui-btn-primary" onclick="test1()">提示层</button>
+<button class="layui-btn" onclick="test2()">加载层</button>
+<button class="layui-btn layui-btn-normal" onclick="test3()">loading层</button>
+<button class="layui-btn layui-btn-warm" onclick="test4()">询问框</button>
+<button class="layui-btn layui-btn-danger" onclick="test5()" >小tips</button>
+<button class="layui-btn layui-btn-disabled" onclick="test6()">tips层</button>
+
+<script th:src="@{/plugins/layui/layui.all.js}"></script>
+
+
+<script th:inline="none">
+
+    function test1(){
+        layer.msg('玩命提示中');
+    }
+    function test2(){
+        var index = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
+        console.log(index)
+    }
+
+    function test3(){
+        var index = layer.load(1, {
+            shade: [0.1,'#fff'] //0.1透明度的白色背景
+        });
+        console.log(index)
+    }
+    function test4(){
+        layer.confirm('您是如何看待前端开发？', {
+            btn: ['重要','奇葩']
+        }, function(){
+            layer.msg('的确很重要', {icon: 1});
+        }, function(){
+            layer.msg('也可以这样', { time: 20000, btn: ['明白了', '知道了'] });
+        });
+    }
+
+    function test5(){ //小tips
+        layer.tips('我是另外一个tips，只不过我长得跟之前那位稍有些不一样。', '吸附元素选择器', {
+            tips: [1, '#3595CC'],
+            time: 4000
+        });
+    }
+
+    function test6(){  //tips层
+        layer.tips('Hi，我是tips', '吸附元素选择器，如#id');
+    }
+
+
+
+
+</script>
+
+
+</body>
+
+</html>

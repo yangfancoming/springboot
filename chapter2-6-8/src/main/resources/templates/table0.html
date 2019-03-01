@@ -9,12 +9,6 @@
 </head>
 <body>
 
-<button class="layui-btn layui-btn-primary">原始按钮</button>
-<button class="layui-btn">默认按钮</button>
-<button class="layui-btn layui-btn-normal">百搭按钮</button>
-<button class="layui-btn layui-btn-warm" onclick="test()">暖色按钮</button>
-<button class="layui-btn layui-btn-danger">警告按钮</button>
-<button class="layui-btn layui-btn-disabled">禁用按钮</button>
 
 <!--简单数据表格-->
 <table class="layui-hide" id="test"></table>
@@ -23,17 +17,6 @@
 
 
 <script th:inline="none">
-
-    function test(){
-        layer.confirm('您是如何看待前端开发？', {
-            btn: ['重要','奇葩']
-        }, function(){
-            layer.msg('的确很重要', {icon: 1});
-        }, function(){
-            layer.msg('也可以这样', { time: 20000, btn: ['明白了', '知道了'] });
-        });
-    }
-
 
     layui.use('table', function(){
         var table = layui.table;

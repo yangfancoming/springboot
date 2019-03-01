@@ -14,28 +14,22 @@ public class HelloController {
         return "index";
     }
 
-    // http://localhost:8268/hello/test1
-    @GetMapping("/test1")
-    public String test1() {
-        return "menu1";
-    }
     // http://localhost:8268/table0
     @GetMapping("/table0")
     public String table0() {
-        return "example/table0";
+        return "table0";
     }
 
-    // http://localhost:8268/hello/welcome
-    @GetMapping("/welcome")
-    public String test2() {
-        return "welcome";
+    // http://localhost:8268/table1
+    @GetMapping("/table1")
+    public String table1() {
+        return "table1";
     }
 
-
-    // http://localhost:8268/example
-    @GetMapping("/example")
-    public String example() {
-        return "example/index";
+    // http://localhost:8268/layer
+    @GetMapping("/layer")
+    public String layer() {
+        return "layer";
     }
 
 }
