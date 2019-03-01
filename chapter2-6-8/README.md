@@ -19,3 +19,12 @@
      2.或者在<script type="text/javascript" >  加上 th:inline="none"
      <script type="text/javascript"  th:inline="none">
      但是这样的话，前面在base中使用[[@{}]]的标签也不能解析了，所以还是使用第一种方案，以后可以根据情况来解决。
+     
+     
+     
+#  引用新版本报错 layui.element is not a function
+    解决方法：
+        旧版本引用 var element=layui.element();
+        新版本引用 var element=layui.element;
+        新版本里面的后面括号已经去掉了···，
+    

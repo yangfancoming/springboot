@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>开始使用layui</title>
+    <link th:href="@{/plugins/layui/css/layui.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<button class="layui-btn layui-btn-primary">原始按钮</button>
+<button class="layui-btn">默认按钮</button>
+<button class="layui-btn layui-btn-normal">百搭按钮</button>
+<button class="layui-btn layui-btn-warm" onclick="test()">暖色按钮</button>
+<button class="layui-btn layui-btn-danger">警告按钮</button>
+<button class="layui-btn layui-btn-disabled">禁用按钮</button>
+
+<!--简单数据表格-->
+<table class="layui-hide" id="test"></table>
+
+<script th:src="@{/plugins/layui/layui.all.js}"></script>
+
+
+<script th:inline="none">
+
+    function test(){
+        layer.confirm('您是如何看待前端开发？', {
+            btn: ['重要','奇葩']
+        }, function(){
+            layer.msg('的确很重要', {icon: 1});
+        }, function(){
+            layer.msg('也可以这样', { time: 20000, btn: ['明白了', '知道了'] });
+        });
+    }
+
+
+    layui.use('table', function(){
+        var table = layui.table;
+        //渲染表格
+        table.render({
+            elem: '#test'
+            ,url:'json/table0.json' // sos 注意这里的访问方式
+            ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            ,cols: [[
+                {field:'id', width:80, title: 'ID', sort: true}
+                ,{field:'username', width:80, title: '用户名'}
+                ,{field:'sex', width:80, title: '性别', sort: true}
+                ,{field:'city', width:80, title: '城市'}
+                ,{field:'sign', title: '签名', width: '30%', minWidth: 100} //minWidth：局部定义当前单元格的最小宽度，layui 2.2.1 新增
+                ,{field:'experience', title: '积分', sort: true}
+                ,{field:'score', title: '评分', sort: true}
+                ,{field:'classify', title: '职业'}
+                ,{field:'wealth', width:137, title: '财富', sort: true}
+            ]]
+        });
+    });
+
+</script>
+
+
+</body>
+
+</html>

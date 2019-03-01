@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>开始使用layui</title>
+    <link th:href="@{/plugins/layui/css/layui.css}" rel="stylesheet"/>
+</head>
+<body class="layui-layout-body">
+
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header ">
+            <div class="layui-logo">通用后台管理系统</div>
+
+
+            <!--fuck 顶部导航-->
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="">待办<span class="layui-badge">9</span></a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <img th:src="@{/static/images/head.png}" class="layui-nav-img" > 大唐官府
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">基本资料</a></dd>
+                        <dd><a href="">安全设置</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="">退出</a></li>
+            </ul>
+        </div>
+
+        <!--fuck 左侧导航-->
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <ul class="layui-nav layui-nav-tree "  lay-filter="test">
+                <!--<ul class="layui-nav layui-nav-tree layui-nav-side "  lay-filter="test">-->
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;">所有商品</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;">列表一</a></dd>
+                            <dd><a href="javascript:;">列表二</a></dd>
+                            <dd><a href="javascript:;">列表三</a></dd>
+                            <dd><a href="">超链接</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">解决方案</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;">列表一</a></dd>
+                            <dd><a href="javascript:;">列表二</a></dd>
+                            <dd><a href="">超链接</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item"><a href="">云市场</a></li>
+                    <li class="layui-nav-item"><a href="">发布商品</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="layui-body">
+            <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">我的首页</li>
+                </ul>
+                <div class="layui-tab-content layui-body" >
+                    <div class="layui-tab-item layui-show">内容不一样是要有，因为你可以监听tab事件（阅读下文档就是了）</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部 -->
+        <div class="layui-footer">Copyright © 2018 EasyWeb All rights reserved. <span class="pull-right">Version 2.0</span></div>
+
+    </div>
+<script th:src="@{/plugins/layui/layui.all.js}"></script>
+<script>
+
+
+</script>
+</body>
+
+</html>

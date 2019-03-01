@@ -1,0 +1,7 @@
+spring:
+  thymeleaf:
+    cache: false #关闭缓存 （ 开发阶段建议关闭）
+    prefix: classpath:/templates/ #添加路径前缀
+    mode: LEGACYHTML5 # 模板编码 默认值是HTML5，是一个很严格的检查，改为LEGACYHTML5可以得到一个可能更友好亲切的格式要求 但是需要 nekohtml 依赖
+server:
+  port: 8938
