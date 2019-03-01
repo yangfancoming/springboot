@@ -11,19 +11,14 @@
 
 
 <!--开启分页-->
-<!--<div class="layui-btn-group demoTable">-->
-<div class="layui-btn-group demoTable" lay-filter="filterdemo">
-    <button class="layui-btn" data-type="getCheckData">获取选中行数据</button>
-    <button class="layui-btn" data-type="getCheckLength">获取选中数目</button>
-    <button class="layui-btn" data-type="isAll">验证是否全选</button>
-</div>
+
 
 <div class="layui-btn-group demoTable">
     <button class="layui-btn" data-type="getCheckData">获取选中行数据</button>
     <button class="layui-btn" data-type="getCheckLength">获取选中数目</button>
     <button class="layui-btn" data-type="isAll">验证是否全选</button>
 </div>
-<table class="layui-hide" id="test2"></table>
+<table class="layui-hide" id="test2" lay-filter="myid"></table>
 
 
 <script th:src="@{/layui.all.js}"></script>
@@ -34,10 +29,10 @@
     layui.use('table', function(){
         var table = layui.table;
         //监听表格复选框选择
-        table.on('checkbox(filterdemo)', function(obj){  console.log(obj)  });
+        // table.on('checkbox(tableid)', function(obj){  console.log(obj)  });
 
         //监听工具条
-        table.on('tool(demo)', function(obj){
+        table.on('tool(myid)', function(obj){ //sos  tool(myid) 要与  <table class="layui-hide" lay-filter="myid"> 中的 lay-filter 属性对应
             var data = obj.data;
             if(obj.event === 'detail'){
                 layer.msg('ID：'+ data.id + ' 的查看操作');
@@ -51,19 +46,20 @@
             }
         });
 
+
         var $ = layui.$, active = {
             getCheckData: function(){ //获取选中数据
-                var checkStatus = table.checkStatus('idTest')
+                var checkStatus = table.checkStatus('tableid')  //sos  table.checkStatus('tableid')  要与   table.render({  id:'tableid', 中的 id 属性对应
                     ,data = checkStatus.data;
                 layer.alert(JSON.stringify(data));
             }
             ,getCheckLength: function(){ //获取选中数目
-                var checkStatus = table.checkStatus('idTest')
+                var checkStatus = table.checkStatus('tableid')
                     ,data = checkStatus.data;
                 layer.msg('选中了：'+ data.length + ' 个');
             }
             ,isAll: function(){ //验证是否全选
-                var checkStatus = table.checkStatus('idTest');
+                var checkStatus = table.checkStatus('tableid');
                 layer.msg(checkStatus.isAll ? '全选': '未全选')
             }
         };
@@ -74,6 +70,7 @@
         });
 
         table.render({
+            id:'tableid',
             elem: '#test2' ,// 被渲染元素 id
             url:'table1.json', // 请求数据
             page: true , // 支持分页

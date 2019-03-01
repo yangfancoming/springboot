@@ -7,32 +7,17 @@
     <title>开始使用layui</title>
     <link th:href="@{/css/layui.css}" rel="stylesheet"/>
 </head>
-<body>
+<body class="layui-layout-body">
 
-<fieldset class="layui-elem-field site-demo-button" style="margin-top: 30px;">
-    <legend>按钮主题</legend>
-    <div>
-        <button class="layui-btn layui-btn-primary">原始按钮</button>
-        <button class="layui-btn">默认按钮</button>
-        <button class="layui-btn layui-btn-normal">百搭按钮</button>
-        <button class="layui-btn layui-btn-warm">暖色按钮</button>
-        <button class="layui-btn layui-btn-danger">警告按钮</button>
-        <button class="layui-btn layui-btn-disabled">禁用按钮</button>
-    </div>
-</fieldset>
-<br/>
-<fieldset class="layui-elem-field site-demo-button">
-    <legend>还可以是圆角按钮</legend>
-    <div>
-        <button class="layui-btn layui-btn-primary layui-btn-radius">原始按钮</button>
-        <button class="layui-btn layui-btn-radius">默认按钮</button>
-        <button class="layui-btn layui-btn-normal layui-btn-radius">百搭按钮</button>
-        <button class="layui-btn layui-btn-warm layui-btn-radius">暖色按钮</button>
-        <button class="layui-btn layui-btn-danger layui-btn-radius">警告按钮</button>
-        <button class="layui-btn layui-btn-disabled layui-btn-radius">禁用按钮</button>
-    </div>
-</fieldset>
+    <div class="layui-layout layui-layout-admin">
+        <!-- 头部 -->
+        <!--<div class="layui-header">-->
+            <!--<% include("./layout/header.html"){} %>-->
+        <!--</div>-->
+        <!--顶部导航-->
+        <div class="layui-header" data-th-include="common/header"></div>
 
+    </div>
 <script th:src="@{/layui.all.js}"></script>
 <script>
     //由于模块都一次性加载，因此不用执行 layui.use() 来加载对应模块，直接使用即可：
@@ -41,6 +26,7 @@
             ,form = layui.form;
         layer.msg('Hello World');
     }();
+
 </script>
 </body>
 
