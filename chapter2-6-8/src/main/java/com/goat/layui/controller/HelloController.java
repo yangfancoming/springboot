@@ -37,5 +37,11 @@ public class HelloController {
         return "layDate";
     }
 
+    // http://localhost:8268/select
+    @GetMapping("/select")
+    public String select() {
+        return "select";
+    }
+
 
 }
