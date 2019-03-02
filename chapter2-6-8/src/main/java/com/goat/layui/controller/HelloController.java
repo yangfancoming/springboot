@@ -31,5 +31,11 @@ public class HelloController {
     public String layer() {
         return "layer";
     }
+    // http://localhost:8268/layDate
+    @GetMapping("/layDate")
+    public String layDate() {
+        return "layDate";
+    }
+
 
 }

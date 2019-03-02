@@ -13,8 +13,9 @@
 <button class="layui-btn" onclick="test2()">加载层</button>
 <button class="layui-btn layui-btn-normal" onclick="test3()">loading层</button>
 <button class="layui-btn layui-btn-warm" onclick="test4()">询问框</button>
-<button class="layui-btn layui-btn-danger" onclick="test5()" >小tips</button>
-<button class="layui-btn layui-btn-disabled" onclick="test6()">tips层</button>
+<button class="layui-btn layui-btn-danger" id="test5" onclick="test5()" >小tips</button>
+<button class="layui-btn layui-btn-danger" id="test6" onclick="test6()">tips层</button>
+<button class="layui-btn layui-btn-disabled"  >禁用</button>
 
 <script th:src="@{/plugins/layui/layui.all.js}"></script>
 
@@ -46,14 +47,14 @@
     }
 
     function test5(){ //小tips
-        layer.tips('我是另外一个tips，只不过我长得跟之前那位稍有些不一样。', '吸附元素选择器', {
+        layer.tips('我是另外一个tips，只不过我长得跟之前那位稍有些不一样。', '#test6', {
             tips: [1, '#3595CC'],
             time: 4000
         });
     }
 
     function test6(){  //tips层
-        layer.tips('Hi，我是tips', '吸附元素选择器，如#id');
+        layer.tips('Hi，我是tips', '#test5');
     }
 
 
