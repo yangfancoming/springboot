@@ -1,8 +1,8 @@
  [
 		{
-			"title": "文章列表",
+			"title": "用户管理",
 			"icon": "icon-text",
-			"href": "page/news/newsList.html",
+			"href": "/news",
 			"spread": false
 		},
 		{

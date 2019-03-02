@@ -26,5 +26,10 @@ public class HelloController {
         return "login/login";
     }
 
+    // http://localhost:8983/login
+    @GetMapping("/news")
+    public String news() {
+        return "news/newsList";
+    }
 
 }
