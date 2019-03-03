@@ -21,3 +21,13 @@
    
 #  前后 接收是list  可是后台返回一个对象  就会这个错误！ 
     Uncaught TypeError: Cannot create property 'LAY_TABLE_INDEX' on number '4'
+    
+# org.apache.ibatis.builder.IncompleteElementException: Could not find result map com.goat.domain.Menu
+# Caused by: java.lang.IllegalArgumentException: Result Maps collection does not contain value for com.goat.domain.Menu
+
+
+# MyBatis中resultType和resultMap的区别
+    MyBatis中在查询进行select映射的时候，返回类型可以用resultType，也可以用resultMap，resultType是直接表示返回类型的，而resultMap则是对外部ResultMap的引用，但是resultType跟resultMap不能同时存在。
+    在MyBatis进行查询映射时，其实查询出来的每一个属性都是放在一个对应的Map里面的，其中键是属性名，值则是其对应的值。
+    ①当提供的返回类型属性是resultType时，MyBatis会将Map里面的键值对取出赋给resultType所指定的对象对应的属性。所以其实MyBatis的每一个查询映射的返回类型都是ResultMap，只是当提供的返回类型属性是resultType的时候，MyBatis对自动的给把对应的值赋给resultType所指定对象的属性。
+    ②当提供的返回类型是resultMap时，因为Map不能很好表示领域模型，就需要自己再进一步的把它转化为对应的对象，这常常在复杂查询中很有作用。

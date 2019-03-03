@@ -44,11 +44,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Override
     public List<User> findUserWithDept(User user) {
-        try {
-            return this.userMapper.findUserWithDept(user);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ArrayList<>();
-        }
+        return userMapper.findUserWithDept(user);
+
     }
 }

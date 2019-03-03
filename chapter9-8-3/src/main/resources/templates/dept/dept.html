@@ -15,7 +15,7 @@
          <div class="layui-field-box">
          	<div class="layui-row layui-col-space10">
          		<div class="layui-col-md12">
-         			<ul id="demo1" ></ul>
+         			<ul id="myTree" ></ul>
          		</div>
          	</div>
 		  </div>
@@ -65,7 +65,7 @@
         var layer = layui.layer ,$ = layui.jquery;
 
         layui.tree({
-            elem: '#demo1' //指定元素
+            elem: '#myTree' //指定元素 树形结构 元素id
             ,target: '_blank' //是否新选项卡打开（比如节点返回href才有效）
             ,click: function(item){ //点击节点回调
                 layer.msg('当前节名称：'+ item.name + '<br>全部参数：'+ JSON.stringify(item));

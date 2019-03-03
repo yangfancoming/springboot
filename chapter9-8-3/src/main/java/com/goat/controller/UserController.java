@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
 public class UserController extends BaseController   {
 
     private final ResultGenerator generator = new ResultGenerator();
+
 	@Autowired
 	private IUserService userService;
 
@@ -39,7 +39,7 @@ public class UserController extends BaseController   {
 	@RequestMapping("/list")
 	public RestResult userList(QueryRequest request, User user) {
 		PageHelper.startPage(request.getPageNum(), request.getPageSize());
-		List<User> list = this.userService.findUserWithDept(user);
+		List<User> list = userService.findUserWithDept(user);
 		PageInfo<User> pageInfo = new PageInfo<>(list);
         RestResult datang = generator.getSuccessResult("datang", pageInfo.getList(), pageInfo.getTotal());
         return datang;

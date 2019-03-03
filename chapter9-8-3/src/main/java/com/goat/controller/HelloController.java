@@ -57,9 +57,16 @@ public class HelloController {
     public String deptLeft() {
         return "dept/deptLeft";
     }
+
     // http://localhost:8983/dept/deptRight
     @GetMapping("/dept/deptRight")
     public String deptRight() {
         return "dept/deptRight";
+    }
+
+    // http://localhost:8983/menu/menu
+    @GetMapping("/menu/menu")
+    public String menu() {
+        return "menu/menu";
     }
 }
