@@ -44,4 +44,11 @@ public class HelloController {
         return "user/userList";
     }
 
+
+    // http://localhost:8983/dept
+    @GetMapping("/dept")
+    public String dept() {
+        return "dept/dept";
+    }
+
 }

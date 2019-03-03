@@ -7,8 +7,8 @@ server:
   port: 8938
 
 
-mybatis:
+#mybatis:
   # 指定全局配置文件位置
-  config-location: classpath:mapper/system/mybatis-config.xml
+#  config-location: classpath:mapper/system/mybatis-config.xml
   # 指定sql映射文件位置
-  mapper-locations: classpath:mapper/system/mapper/*.xml
+#  mapper-locations: classpath:mapper/system/mapper/*.xml
