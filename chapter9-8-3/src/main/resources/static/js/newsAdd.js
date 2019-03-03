@@ -54,14 +54,10 @@ layui.use(['form','layer','layedit','laydate','upload'],function(){
 
     form.verify({
         newsName : function(val){
-            if(val == ''){
-                return "文章标题不能为空";
-            }
+            if(val == ''){  return "文章标题不能为空";}
         },
         content : function(val){
-            if(val == ''){
-                return "文章内容不能为空";
-            }
+            if(val == ''){ return "文章内容不能为空"; }
         }
     })
     form.on("submit(addNews)",function(data){
