@@ -54,9 +54,15 @@
 		</div>
 		<!-- 底部 -->
         <!--fuck js footer  -->
-        <div data-th-include="common/footer"></div>
-	</div>
+        <!--<div data-th-include="common/footer"></div>-->
 
+        <!-- 底部 -->
+        <div class="layui-footer footer">
+            <p><span>copyright @2018 山羊来了</span>　　<a onclick="donation()" class="layui-btn layui-btn-danger layui-btn-sm">捐赠作者</a></p>
+        </div>
+
+    </div>
+    <script th:src="@{/plugins/layui/layui.js}" type="text/javascript" charset="utf-8"></script>
     <script th:src="@{/js/index.js}" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>
