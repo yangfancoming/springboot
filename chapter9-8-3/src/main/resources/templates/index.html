@@ -13,20 +13,8 @@
         <!--fuck  顶部导航 -->
         <div data-th-include="common/layHeader"></div>
 
-		<!-- 左侧导航 -->
-		<div class="layui-side layui-bg-black">
-			<div class="user-photo">
-                <a class="img" title="我的头像" ><img th:src="@{/images/userface3.jpg}" class="userAvatar"></a>
-				<p>你好！<span class="userName">大唐官府</span>, 欢迎登录</p>
-			</div>
-
-			<div class="navBar layui-side-scroll" id="navBar">
-				<ul class="layui-nav layui-nav-tree">
-					<li class="layui-nav-item layui-this">
-						<a href="javascript:;" data-url="page/main.html"><i class="layui-icon" data-icon=""></i><cite>后台首页</cite></a>
-					</li>
-				</ul>
-			</div>
+		<!--fuck 左侧导航 -->
+        <div data-th-include="common/aside"></div>
 		</div>
 
 		<!-- 右侧内容 -->
@@ -52,9 +40,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- 底部 -->
-        <!--fuck js footer  -->
-        <!--<div data-th-include="common/footer"></div>-->
 
         <!-- 底部 -->
         <div class="layui-footer footer">
