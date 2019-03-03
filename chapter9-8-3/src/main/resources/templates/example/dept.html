@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>部门管理</title>
+    <div data-th-include="common/header"></div>
+</head>
+
+<style>
+
+    #frameContentLeft{
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        height: 100%;
+        overflow: hidden;
+        vertical-align: center;
+    }
+
+    #frameContentRight {
+        position: fixed;
+        top: 10px;
+        left: 150px;
+        height: 100%;
+        width: 90%;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+    }
+</style>
+
+<body class="childrenBody">
+
+<div>
+    <iframe id="frameContentLeft"  th:src="@{/dept/deptLeft}"></iframe>
+    <iframe id="frameContentRight" th:src="@{/dept/deptRight}"></iframe>
+</div>
+
+<script th:src="@{/plugins/layui/layui.js}" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/js/userList.js}" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
