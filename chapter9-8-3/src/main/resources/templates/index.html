@@ -1,38 +1,58 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
-    <!--切换分支-->
-	<title>山羊 后台管理系统 </title>
-    <link th:href="@{/icon/favicon.ico}" rel="icon"/>
-
+	<title>后台管理系统</title>
     <!--fuck css header -->
     <div data-th-include="common/header"></div>
+    <link th:href="@{/icon/favicon.ico}" rel="icon"/>
+
 </head>
 <body class="main_body">
 	<div class="layui-layout layui-layout-admin">
 
-        <!--fuck 顶部导航-->
+        <!--fuck  顶部导航 -->
         <div data-th-include="common/layHeader"></div>
 
-        <!--fuck 左侧菜单-->
-        <div data-th-include="common/aside"></div>
+		<!-- 左侧导航 -->
+		<div class="layui-side layui-bg-black">
+			<div class="user-photo">
+                <a class="img" title="我的头像" ><img th:src="@{/images/userface3.jpg}" class="userAvatar"></a>
+				<p>你好！<span class="userName">大唐官府</span>, 欢迎登录</p>
+			</div>
+
+			<div class="navBar layui-side-scroll" id="navBar">
+				<ul class="layui-nav layui-nav-tree">
+					<li class="layui-nav-item layui-this">
+						<a href="javascript:;" data-url="page/main.html"><i class="layui-icon" data-icon=""></i><cite>后台首页</cite></a>
+					</li>
+				</ul>
+			</div>
+		</div>
 
 		<!-- 右侧内容 -->
 		<div class="layui-body layui-form">
 			<div class="layui-tab mag0" lay-filter="bodyTab" id="top_tabs_box">
-
-                <!--fuck pager-->
-                <div data-th-include="common/pager"></div>
-
+				<ul class="layui-tab-title top_tab" id="top_tabs">
+					<li class="layui-this" lay-id=""><i class="layui-icon">&#xe68e;</i> <cite>后台首页</cite></li>
+				</ul>
+				<ul class="layui-nav closeBox">
+				  <li class="layui-nav-item">
+				    <a href="javascript:;"><i class="layui-icon caozuo">&#xe643;</i> 页面操作</a>
+				    <dl class="layui-nav-child">
+					  <dd><a href="javascript:;" class="refresh refreshThis"><i class="layui-icon">&#x1002;</i> 刷新当前</a></dd>
+				      <dd><a href="javascript:;" class="closePageOther"><i class="seraph icon-prohibit"></i> 关闭其他</a></dd>
+				      <dd><a href="javascript:;" class="closePageAll"><i class="seraph icon-guanbi"></i> 关闭全部</a></dd>
+				    </dl>
+				  </li>
+				</ul>
 				<div class="layui-tab-content clildFrame">
 					<div class="layui-tab-item layui-show">
-                        <iframe th:src="@{/news}"></iframe>
+						<iframe src="page/main.html"></iframe>
 					</div>
 				</div>
 			</div>
 		</div>
-
+		<!-- 底部 -->
         <!--fuck js footer  -->
         <div data-th-include="common/footer"></div>
 	</div>

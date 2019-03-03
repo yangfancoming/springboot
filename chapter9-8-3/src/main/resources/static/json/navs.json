@@ -8,15 +8,15 @@
          {
            "title": "用户管理",
            "icon": "&#xe61c;",
-           "href": "/1111",
+           "href": "/news",
            "spread": false
          },
          {
            "title": "角色管理",
            "icon": "&#xe609;",
-           "href": "page/login/login.html",
-           "spread": false,
-           "target": "_blank"
+           "href": "/user",
+           "spread": false
+
          },
          {
            "title": "菜单管理",

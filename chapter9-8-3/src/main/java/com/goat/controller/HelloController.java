@@ -37,4 +37,11 @@ public class HelloController {
     public String newsAdd() {
         return "news/newsAdd";
     }
+
+    // http://localhost:8983/user
+    @GetMapping("/user")
+    public String user() {
+        return "user/userList";
+    }
+
 }
