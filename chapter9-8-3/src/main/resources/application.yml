@@ -5,3 +5,10 @@ spring:
     mode: LEGACYHTML5 # 模板编码 默认值是HTML5，是一个很严格的检查，改为LEGACYHTML5可以得到一个可能更友好亲切的格式要求 但是需要 nekohtml 依赖
 server:
   port: 8938
+
+
+mybatis:
+  # 指定全局配置文件位置
+  config-location: classpath:mapper/system/mybatis-config.xml
+  # 指定sql映射文件位置
+  mapper-locations: classpath:mapper/system/mapper/*.xml

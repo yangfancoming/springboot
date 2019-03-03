@@ -8,7 +8,7 @@ layui.use(['form','layer','table','laytpl'],function(){
     //用户列表
     var tableIns = table.render({
         elem: '#userList',
-        url : '../../json/userList.json',
+        url : '/user/list',
         cellMinWidth : 95,
         page : true,
         height : "full-125",
@@ -17,30 +17,41 @@ layui.use(['form','layer','table','laytpl'],function(){
         id : "userListTable",
         cols : [[
             {type: "checkbox", fixed:"left", width:50},
-            {field: 'userName', title: '用户名', minWidth:100, align:"center"},
-            {field: 'userEmail', title: '用户邮箱', minWidth:200, align:'center',templet:function(d){
-                return '<a class="layui-blue" href="mailto:'+d.userEmail+'">'+d.userEmail+'</a>';
+            {field: 'userId', title: '编号', minWidth:100, align:"center"},
+            {field: 'username', title: '用户名', minWidth:100, align:"center"},
+            {field: 'email', title: '用户邮箱', minWidth:200, align:'center',templet:function(d){
+                return '<a class="layui-blue" href="mailto:'+d.email+'">'+d.email+'</a>';
             }},
-            {field: 'userSex', title: '用户性别', align:'center'},
-            {field: 'userStatus', title: '用户状态',  align:'center',templet:function(d){
-                return d.userStatus == "0" ? "正常使用" : "限制使用";
+            {field: 'ssex', title: '用户性别', align:'center'},
+            {field: 'status', title: '用户状态',  align:'center',templet:function(d){
+                return d.status == "0" ? "正常使用" : "限制使用";
             }},
-            {field: 'userGrade', title: '用户等级', align:'center',templet:function(d){
-                if(d.userGrade == "0"){
+            {field: 'deptId', title: '用户等级', align:'center',templet:function(d){
+                if(d.deptId == "0"){
                     return "注册会员";
-                }else if(d.userGrade == "1"){
+                }else if(d.deptId == "1"){
                     return "中级会员";
-                }else if(d.userGrade == "2"){
+                }else if(d.deptId == "2"){
                     return "高级会员";
-                }else if(d.userGrade == "3"){
+                }else if(d.deptId == "3"){
                     return "钻石会员";
-                }else if(d.userGrade == "4"){
+                }else if(d.deptId == "4"){
                     return "超级会员";
                 }
             }},
-            {field: 'userEndTime', title: '最后登录时间', align:'center',minWidth:150},
+            {field: 'lastLoginTime', title: '最后登录时间', align:'center',minWidth:150},
             {title: '操作', minWidth:175, templet:'#userListBar',fixed:"right",align:"center"}
-        ]]
+        ]],
+
+        done: function(res, curr, count){
+            //如果是异步请求数据方式，res即为你接口返回的信息。
+            //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
+            console.log(res);
+            //得到当前页码
+            console.log(curr);
+            //得到数据总量
+            console.log(count);
+        }
     });
 
     //搜索【此功能需要后台配合，所以暂时没有动态效果演示】
@@ -68,12 +79,12 @@ layui.use(['form','layer','table','laytpl'],function(){
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
                 if(edit){
-                    body.find(".userName").val(edit.userName);  //登录名
-                    body.find(".userEmail").val(edit.userEmail);  //邮箱
-                    body.find(".userSex input[value="+edit.userSex+"]").prop("checked","checked");  //性别
-                    body.find(".userGrade").val(edit.userGrade);  //会员等级
-                    body.find(".userStatus").val(edit.userStatus);    //用户状态
-                    body.find(".userDesc").text(edit.userDesc);    //用户简介
+                    body.find(".username").val(edit.username);  //登录名
+                    body.find(".email").val(edit.email);  //邮箱
+                    body.find(".ssex input[value="+edit.ssex+"]").prop("checked","checked");  //性别
+                    body.find(".deptId").val(edit.deptId);  //会员等级
+                    body.find(".status").val(edit.status);    //用户状态
+                    // body.find(".userDesc").text(edit.userDesc);    //用户简介
                     form.render();
                 }
                 setTimeout(function(){
