@@ -47,7 +47,7 @@ public class Menu implements Serializable {
 	private String icon;
 
     @TableField(value = "TYPE")
-	private String type;
+	private String type; // 1 按钮   0 菜单
 
     @TableField(value = "ORDER_NUM")
 	private Long orderNum;

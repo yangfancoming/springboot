@@ -5,11 +5,13 @@ import com.goat.domain.Menu;
 import com.goat.resultmodel.RestResult;
 import com.goat.resultmodel.ResultGenerator;
 import com.goat.service.IMenuService;
+import com.goat.vo.MenuVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -21,20 +23,35 @@ public class MenuController extends BaseController {
 	private IMenuService menuService;
 
 
-
+	// http://localhost:8983/menu/list
 	@RequestMapping("/list")
-	@ResponseBody
-	public RestResult getMenu(String userName) {
+	public RestResult list(String userName) {
         List<Menu> menus = menuService.findUserMenus("MrBird");
-        return generator.getSuccessResult("添加角色成功",menus,1);
+        return generator.getSuccessResult("查询菜单列表成功",menus,1);
 	}
 
-	@RequestMapping("/getMenu")
-	@ResponseBody
-	public RestResult getMenu(Long menuId) {
-        Menu menu = menuService.findById(menuId);
-        return generator.getSuccessResult("添加角色成功",menu,1);
+    // http://localhost:8983/menu/getMenu
+	@RequestMapping("/getMenu/{id}")
+	public RestResult getMenu(@PathVariable(name = "id") Long id) {
+        Menu menu = menuService.getById(id);
+        return generator.getSuccessResult("查询单个菜单成功",menu,1);
 	}
+
+    // http://localhost:8983/menu/tree
+    @RequestMapping("/tree")
+    public RestResult tree() {
+        List<Menu> menuTree = menuService.getMenuTree();
+        List<MenuVo> list = new ArrayList<>();
+        for (Menu temp:menuTree){
+            MenuVo menuVo = new MenuVo();
+            menuVo.setId(temp.getMenuId());
+            menuVo.setName(temp.getMenuName());
+            menuVo.setChildren(null);
+            menuVo.setSpread(false);
+            list.add(menuVo);
+        }
+        return generator.getSuccessResult("查询树成功",list,list.size());
+    }
 //
 //	@RequestMapping("menu/menuButtonTree")
 //	@ResponseBody

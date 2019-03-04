@@ -51,7 +51,7 @@ public class DemoServiceImpl implements IDemoService {
      * @return
      */
     @Override
-    @CachePut(value = "pageCache",key = "#user.id")
+    @CachePut(value = "pageCache",key = "#user.id") // 用于 新增 和 修改 方法
     @Transactional
     public User insertData(User user) {
         User result = baseDao.save(user);
@@ -65,7 +65,7 @@ public class DemoServiceImpl implements IDemoService {
      */
     @Override
     @Transactional
-    @CacheEvict(value = "pageCache",key = "#myId")
+    @CacheEvict(value = "pageCache",key = "#myId") // 用于删除方法
     public void deleteById(Long id) {
         baseDao.deleteById(id);
     }

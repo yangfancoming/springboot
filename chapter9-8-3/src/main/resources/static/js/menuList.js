@@ -29,7 +29,7 @@ layui.use(['form','layer','table','laytpl'],function(){
             {type: "checkbox", fixed:"left", width:50},
             {field: 'menuId', title: '编号', minWidth:100, align:"center"},
             {field: 'parentId', title: '上级编号', minWidth:100, align:"center"},
-            {field: 'menuName', title: '菜单名', minWidth:100, align:"center"},
+            {field: 'menuName', title: '菜单名称', minWidth:100, align:"center"},
             {field: 'url', title: '菜单地址', minWidth:80, align:'center' },
             {field: 'perms', title: '权限', align:'center'},
             {field: 'icon', title: '图标',minWidth:100, align:'center'},
@@ -71,7 +71,7 @@ layui.use(['form','layer','table','laytpl'],function(){
         var index = layui.layer.open({
             title : "添加用户",
             type : 2,
-            area: ['800px', '600px'], //指定 弹出框 大小
+            area: ['600px', '400px'], //指定 弹出框 大小
             content : "/menu/menuAdd",
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);

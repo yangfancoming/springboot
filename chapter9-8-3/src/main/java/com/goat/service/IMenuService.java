@@ -4,6 +4,7 @@ package com.goat.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.goat.domain.Menu;
+import com.goat.vo.MenuVo;
 
 import java.util.List;
 
@@ -17,11 +18,11 @@ public interface IMenuService extends IService<Menu> {
 
 //	Tree<Menu> getMenuButtonTree();
 //
-//	Tree<Menu> getMenuTree();
+	List<Menu> getMenuTree();
 //
 //	Tree<Menu> getUserMenu(String userName);
 	
-	Menu findById(Long menuId);
+//	Menu findById(Long menuId);
 
 //	Menu findByNameAndType(String menuName, String type);
 //

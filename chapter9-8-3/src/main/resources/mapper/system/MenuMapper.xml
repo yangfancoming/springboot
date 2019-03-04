@@ -14,7 +14,13 @@
     <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
     <result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
   </resultMap>
-  
+
+
+
+    <select id="findMenu1" resultType="com.goat.domain.Menu">
+        select * from t_menu where PARENT_ID = 0
+    </select>
+
   <select id="findUserPermissions" resultType="com.goat.domain.Menu">
   	select m.perms from t_role r
         left join t_user_role ur on(r.role_id = ur.role_id) 
