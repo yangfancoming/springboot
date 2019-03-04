@@ -60,6 +60,7 @@ public class OperLog  implements Serializable {
 
     /** 错误消息 */
     private String errorMsg;
+    private Integer records;
 
     /** 操作时间 */
     private Date operTime;
@@ -75,6 +76,15 @@ public class OperLog  implements Serializable {
     private Timestamp endTime;
 
     private String code;
+
+
+    public Integer getRecords() {
+        return records;
+    }
+
+    public void setRecords(Integer records) {
+        this.records = records;
+    }
 
     public Long getOperId()
     {

@@ -14,10 +14,13 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 import java.util.Date;
+import java.util.List;
+import java.util.concurrent.Future;
 
 
 @Aspect
@@ -105,6 +108,13 @@ public class LogAspect {
             Object[] args = joinPoint.getArgs();
 //            operLog.setOperParam(args[0].toString()); // 设置 请求 ip
             operLog.setCode(args[1].toString());// 设置 线程记录编号
+
+
+            if (rvt instanceof AsyncResult){ // sos 获取返回 数据条数
+                Future<List<Object>> temp = (Future<List<Object>>) rvt;
+                operLog.setRecords(temp.get().size());
+            }
+
             operLogService.save(operLog);// 保存数据库
         }
         catch (Exception exp){

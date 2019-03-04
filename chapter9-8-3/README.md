@@ -31,3 +31,10 @@
     在MyBatis进行查询映射时，其实查询出来的每一个属性都是放在一个对应的Map里面的，其中键是属性名，值则是其对应的值。
     ①当提供的返回类型属性是resultType时，MyBatis会将Map里面的键值对取出赋给resultType所指定的对象对应的属性。所以其实MyBatis的每一个查询映射的返回类型都是ResultMap，只是当提供的返回类型属性是resultType的时候，MyBatis对自动的给把对应的值赋给resultType所指定对象的属性。
     ②当提供的返回类型是resultMap时，因为Map不能很好表示领域模型，就需要自己再进一步的把它转化为对应的对象，这常常在复杂查询中很有作用。
+    
+    
+#  push 到 GitHub时报错：
+    	Push failed: springboot: unable to access 'https://github.com/yangfancoming/springboot.git/': OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443
+    	解决方法：
+    	是因为Git的Http代理的问题，Git支持三种协议：git://、ssh://和http://，本来push的时候应该走ssh隧道的，但是因为设置了http代理，所以就走了http的代理，于是就提交不了了。 
+        OK，找到原因了，那就取消http代理吧：  在命令行执行命令： git config --global --unset http.proxy 
