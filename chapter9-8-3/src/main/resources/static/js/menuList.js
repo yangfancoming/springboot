@@ -24,20 +24,20 @@ layui.use(['form','layer','table','laytpl'],function(){
         height : "full-125",
         limits : [10,15,20,25],
         limit : 20,
-        id : "userListTable",
+        // id : "userListTable",
         cols : [[
             {type: "checkbox", fixed:"left", width:50},
             {field: 'menuId', title: '编号', minWidth:100, align:"center"},
             {field: 'parentId', title: '上级编号', minWidth:100, align:"center"},
             {field: 'menuName', title: '菜单名', minWidth:100, align:"center"},
-            {field: 'url', title: '菜单地址', minWidth:200, align:'center' },
+            {field: 'url', title: '菜单地址', minWidth:80, align:'center' },
             {field: 'perms', title: '权限', align:'center'},
-            {field: 'icon', title: '图标', align:'center'},
+            {field: 'icon', title: '图标',minWidth:100, align:'center'},
             {field: 'type', title: '类型', align:'center'},
             {field: 'orderNum', title: '排序', align:'center'},
             {field: 'status', title: '用户状态',  align:'center'},
-            {field: 'createTime', title: '创建时间', align:'center',minWidth:150},
-            {field: 'modifyTime', title: '更改时间', align:'center',minWidth:150},
+            {field: 'createTime', title: '创建时间', align:'center',minWidth:180,templet: "<div>{{layui.util.toDateString(d.ordertime, 'yyyy-MM-dd HH:mm:ss')}}</div>"},
+            {field: 'modifyTime', title: '更改时间', align:'center',minWidth:180,templet: "<div>{{layui.util.toDateString(d.ordertime, 'yyyy-MM-dd HH:mm:ss')}}</div>"},
             {title: '操作', minWidth:175, templet:'#userListBar',fixed:"right",align:"center"}
         ]],
 
@@ -67,11 +67,12 @@ layui.use(['form','layer','table','laytpl'],function(){
     });
 
     //添加用户
-    function addUser(edit){
+    function addMenu(edit){
         var index = layui.layer.open({
             title : "添加用户",
             type : 2,
-            content : "userAdd.html",
+            area: ['800px', '600px'], //指定 弹出框 大小
+            content : "/menu/menuAdd",
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
                 if(edit){
@@ -90,15 +91,14 @@ layui.use(['form','layer','table','laytpl'],function(){
                 },500)
             }
         })
-        layui.layer.full(index);
         window.sessionStorage.setItem("index",index);
         //改变窗口大小时，重置弹窗的宽高，防止超出可视区域（如F12调出debug的操作）
         $(window).on("resize",function(){
             layui.layer.full(window.sessionStorage.getItem("index"));
         })
     }
-    $(".addNews_btn").click(function(){
-        addUser();
+    $(".addMenu_btn").click(function(){
+        addMenu();
     })
 
     //批量删除
@@ -111,12 +111,8 @@ layui.use(['form','layer','table','laytpl'],function(){
                 newsId.push(data[i].newsId);
             }
             layer.confirm('确定删除选中的用户？', {icon: 3, title: '提示信息'}, function (index) {
-                // $.get("删除文章接口",{
-                //     newsId : newsId  //将需要删除的newsId作为参数传入
-                // },function(data){
                 tableIns.reload();
                 layer.close(index);
-                // })
             })
         }else{
             layer.msg("请选择需要删除的用户");
@@ -129,7 +125,7 @@ layui.use(['form','layer','table','laytpl'],function(){
             data = obj.data;
 
         if(layEvent === 'edit'){ //编辑
-            addUser(data);
+            addMenu(data);
         }else if(layEvent === 'usable'){ //启用禁用
             var _this = $(this),
                 usableText = "是否确定禁用此用户？",

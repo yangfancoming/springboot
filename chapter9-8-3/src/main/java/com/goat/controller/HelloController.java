@@ -69,4 +69,10 @@ public class HelloController {
     public String menu() {
         return "menu/menu";
     }
+
+    // http://localhost:8983/menu/menu
+    @GetMapping("/menu/menuAdd")
+    public String menuAdd() {
+        return "menu/menuAdd";
+    }
 }
