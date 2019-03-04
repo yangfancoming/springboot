@@ -53,11 +53,32 @@ public class MenuController extends BaseController {
         return generator.getSuccessResult("查询树成功",list,list.size());
     }
 
-    // http://localhost:8983/menu/test
-    @RequestMapping("/test")
+    // http://localhost:8983/menu/tree2
+    @RequestMapping("/tree2")
     public RestResult test() {
         List<Menu> menus = menuService.testMenuList();
-        return generator.getSuccessResult("查询菜单列表成功",menus,1);
+        List<MenuVo> haha = getChild(menus);
+//        System.out.println(haha);
+        return generator.getSuccessResult("查询菜单列表成功",haha,1);
+    }
+
+    /**
+     * 将  完成递归 数据库 菜单集合 也通过递归 转换成 对应 VO
+     * @param menus  数据库 菜单集合
+     * @return  对应 VO
+    */
+    public List<MenuVo> getChild(List<Menu> menus){
+        List<MenuVo> list = new ArrayList<>(); // 最终结果
+	    for (Menu menu : menus){
+	        // 由于 menus 数据库表 菜单集合 已经完成递归操作 所以 这里的遍历出的每一个 menu 都是 顶级菜单  所以 直接添加 到 VO list
+            MenuVo menuVo = new MenuVo(menu.getMenuId(), menu.getParentId(), menu.getMenuName(), "", null, null, false);
+            list.add(menuVo);
+            // 添加 顶级菜单 后  判断该 菜单下 是否有 子集合  如果有 则 递归调用
+            if (menu.getChildren() != null){
+                menuVo.setChildren(getChild(menu.getChildren())); // 递归 调用
+            }
+        }
+	    return list;
     }
 //
 //	@RequestMapping("menu/menuButtonTree")

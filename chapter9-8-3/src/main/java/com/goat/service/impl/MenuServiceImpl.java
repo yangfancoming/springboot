@@ -38,18 +38,15 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
     public List<Menu> testMenuList() {
         // 原始的数据
         List<Menu> rootMenu = menuMapper.selectList(null);
-
         // 最后的结果
         List<Menu> menuList = new ArrayList<>();
-        // 先找到所有的一级菜单
+        // 先找到所有的顶级菜单 在本项目中 menu 表中 标识为 parentId = 0
         for (int i = 0; i < rootMenu.size(); i++) {
-            // 一级菜单没有parentId
-            if (rootMenu.get(i).getMenuId() != 0) {
+            if (rootMenu.get(i).getParentId() == 0) {
                 menuList.add(rootMenu.get(i));
             }
         }
-
-        // 为一级菜单设置子菜单，getChild是递归调用的
+        // 为顶级菜单设置子菜单，getChild 是递归调用的
         for (Menu menu : menuList) {
             menu.setChildren(getChild(menu.getMenuId(), rootMenu));
         }
@@ -57,8 +54,8 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
     }
 
     private List<Menu> getChild(Long id, List<Menu> rootMenu) {
-        // 子菜单
-        List<Menu> childList = new ArrayList<>();
+
+        List<Menu> childList = new ArrayList<>();  // 子菜单
         for (Menu menu : rootMenu) {
             // 遍历所有节点，将父菜单id与传过来的id比较
             if ( menu.getParentId()!=0 )
@@ -77,13 +74,5 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
         }
         return childList;
     }
-
-
-    //	@Override
-//	public Menu findById(Long id) {
-//		return menuMapper.selectById(id);
-//	}
-
-
 
 }

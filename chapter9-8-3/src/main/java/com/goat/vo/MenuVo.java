@@ -26,6 +26,7 @@ public class MenuVo implements Serializable {
     */
 
 	private Long id;
+    private Long parentId; // 该字段不能为 null 或 ""  必须 有数
 
 	private String name;
 
@@ -36,6 +37,27 @@ public class MenuVo implements Serializable {
 	private String href;
 
 	private Boolean spread;
+
+    public MenuVo() {
+    }
+
+    public MenuVo(Long id, Long parentId, String name, String alias, List<MenuVo> children, String href, Boolean spread) {
+        this.id = id;
+        this.parentId = parentId;
+        this.name = name;
+        this.alias = alias;
+        this.children = children;
+        this.href = href;
+        this.spread = spread;
+    }
+
+    public Long getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
+    }
 
     public Long getId() {
         return id;
