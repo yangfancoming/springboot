@@ -60,9 +60,13 @@ public class RedisConfig extends CachingConfigurerSupport {
      * 自定义生成key的规则
      * 注解默认  key   名称生成规则结果：usercache3::goat3
      * 自定义 keyGenerator 生成规则结果：usercache3::com.goat.service.UserServicefindUser3goat3
+     * 注意：在Spring @Cacheable(value="someValue",key="myDefineKey",keyGenerator="wiselyKeyGenerator")
+     * 注解中, key 和 keyGenerator 这两个属性是互斥的
+     *
      */
-    @Override
-    public KeyGenerator keyGenerator() {
+//    @Override
+    @Bean
+    public KeyGenerator myKeyGenerator() {
         return (o, method, objects)->{
             StringBuilder sb = new StringBuilder(); //格式化缓存key字符串
             sb.append(o.getClass().getName());//追加类名
