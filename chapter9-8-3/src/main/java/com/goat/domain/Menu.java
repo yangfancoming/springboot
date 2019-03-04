@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @TableName("t_menu")
 public class Menu implements Serializable {
@@ -32,7 +33,7 @@ public class Menu implements Serializable {
 	private Long menuId;
 
     @TableField(value = "PARENT_ID")
-	private Long parentId;
+	private Long parentId; // 该字段不能为 null 或 ""  必须 有数
 
     @TableField(value = "MENU_NAME")
 	private String menuName;
@@ -58,7 +59,18 @@ public class Menu implements Serializable {
     @TableField(value = "MODIFY_TIME")
 	private Date modifyTime;
 
-	/**
+    @TableField(exist = false)
+    private List<Menu> children;
+
+    public List<Menu> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<Menu> children) {
+        this.children = children;
+    }
+
+    /**
 	 * @return MENU_ID
 	 */
 	public Long getMenuId() {

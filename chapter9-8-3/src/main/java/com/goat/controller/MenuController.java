@@ -52,6 +52,13 @@ public class MenuController extends BaseController {
         }
         return generator.getSuccessResult("查询树成功",list,list.size());
     }
+
+    // http://localhost:8983/menu/test
+    @RequestMapping("/test")
+    public RestResult test() {
+        List<Menu> menus = menuService.testMenuList();
+        return generator.getSuccessResult("查询菜单列表成功",menus,1);
+    }
 //
 //	@RequestMapping("menu/menuButtonTree")
 //	@ResponseBody
