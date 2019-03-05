@@ -2,9 +2,7 @@ package com.goat.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * @author yuanqi.jing 返回消息模板DTO
- */
+
 @JsonIgnoreProperties(value={"enMsg"})
 public class ValidMessageDTO {
 
@@ -53,11 +51,4 @@ public class ValidMessageDTO {
 	public void setEnMsg(String enMsg) {
 		this.enMsg = enMsg;
 	}
-
-	/*
-	 * public String toJson(){
-	 * 
-	 * return JSONObject.fromObject(this).toString(); }
-	 */
-
 }

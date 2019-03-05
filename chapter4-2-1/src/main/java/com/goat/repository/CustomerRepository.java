@@ -17,6 +17,7 @@ import java.util.List;
  */
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
+    //接口方法的名称，符合约定则无需实现即可访问
     List<Customer> findByLastName(String lastName);
     List<Customer> findByLastNameOrFirstName(String lastName,String firstName);
 }

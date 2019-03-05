@@ -11,9 +11,13 @@ import java.util.List;
  * @date 2018/8/23---17:27
  */
 public class School {
+
     private String id;
+
     private String name;
+
     private List<User> students = new ArrayList<>();
+
     public String getId() {
         return id;
     }

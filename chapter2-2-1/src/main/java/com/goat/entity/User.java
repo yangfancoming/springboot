@@ -1,12 +1,14 @@
-package com.goat.model;
+package com.goat.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import java.io.Serializable;
 import java.util.Date;
 
-//@JsonIgnoreProperties({ "password", "age" }) // @JsonIgnoreProperties 转换实体时忽略json中不存在的字段
+@JsonIgnoreProperties(ignoreUnknown = true) // 将这个注解写在类上之后，就会忽略类中不存在的字段。这个注解还可以指定要忽略的字段 eg：@JsonIgnoreProperties({ "temp1", "temp2" })
 //@JsonNaming(PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy.class)
 //@JsonSerialize(using = UserSerializer.class)
 //@JsonDeserialize (using = UserDeserializer.class)
@@ -26,7 +28,6 @@ public class User implements Serializable {
 	@JsonView(AllUserFieldView.class)
 	private int age;
 
-	// @JsonIgnore
 	@JsonView(AllUserFieldView.class)
 	private String password;
 
@@ -34,6 +35,16 @@ public class User implements Serializable {
 	 @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@JsonView(AllUserFieldView.class)
 	private Date birthday;
+
+
+    private String temp1;
+
+    private String temp2;
+
+    @JsonIgnore     //注解用来忽略某些字段
+    private String temp3;
+
+    private String temp4;
 
 	public String getUserName() {
 		return userName;
@@ -67,4 +78,35 @@ public class User implements Serializable {
 		this.birthday = birthday;
 	}
 
+    public String getTemp1() {
+        return temp1;
+    }
+
+    public void setTemp1(String temp1) {
+        this.temp1 = temp1;
+    }
+
+    public String getTemp2() {
+        return temp2;
+    }
+
+    public void setTemp2(String temp2) {
+        this.temp2 = temp2;
+    }
+
+    public String getTemp3() {
+        return temp3;
+    }
+
+    public void setTemp3(String temp3) {
+        this.temp3 = temp3;
+    }
+
+    public String getTemp4() {
+        return temp4;
+    }
+
+    public void setTemp4(String temp4) {
+        this.temp4 = temp4;
+    }
 }

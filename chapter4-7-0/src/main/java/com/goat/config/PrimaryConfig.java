@@ -21,8 +21,6 @@ import java.util.Map;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(entityManagerFactoryRef="entityManagerFactoryPrimary",transactionManagerRef="transactionManagerPrimary",basePackages= { "com.goat.domain.p" }) //设置Repository所在位置
-
-
 public class PrimaryConfig {
 
     @Autowired @Qualifier("primaryDataSource")
