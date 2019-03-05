@@ -9,9 +9,15 @@
 </head>
 <body>
 
+<%--区域滚动--%>
+<marquee>
+    <p style="font-size: 100px">Hello JSP!!</p>
+    <img src="${pageContext.servletContext.contextPath}/doge.gif">
+</marquee>
+<br>
 ${msg}
-
-
+${pageContext.servletContext.contextPath}
+<br>
 <select style="width:500px;" class="js-example-basic-single"  name="state">
     <option value="AL">Alabama</option>
     <option value="WY">Wyoming</option>

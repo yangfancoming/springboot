@@ -12,7 +12,7 @@ import java.util.Date;
 @JsonIgnoreProperties(ignoreUnknown = true) // 将这个注解写在类上之后，就会忽略类中不存在的字段。这个注解还可以指定要忽略的字段 eg：@JsonIgnoreProperties({ "temp1", "temp2" })
 //@JsonNaming(PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy.class)
 //@JsonSerialize(using = UserSerializer.class)
-//@JsonDeserialize (using = UserDeserializer.class)
+//@JsonDeserialize(using = UserDeserializer.class)
 
 /**
  //配置序列化的时候,不序列化id  sex
@@ -51,7 +51,7 @@ public class TestUser implements Serializable {
 
     private String temp2;
 
-    @JsonIgnore     //注解用来忽略某些字段
+    @JsonIgnore //作用是json序列化时将java bean中的一些属性忽略掉,序列化和反序列化都受影响。
     private String temp3;
 
     private String temp4;

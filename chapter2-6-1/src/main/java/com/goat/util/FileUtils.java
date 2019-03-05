@@ -1,4 +1,4 @@
-package com.goat.controller;
+package com.goat.util;
 
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
