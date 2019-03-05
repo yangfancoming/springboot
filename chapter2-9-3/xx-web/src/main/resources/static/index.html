@@ -7,6 +7,11 @@
 <body>
 <h2>前台系统</h2>
 
+<button type="button" onclick="hello1()"> hello1 </button>
+<button type="button" onclick="hello2()"> hello2 </button>
+<button type="button" onclick="what1()"> what1</button>
+<button type="button" onclick="hello3()"> hello3</button>
+
 <p id="info"></p>
 
 </body>
@@ -14,16 +19,57 @@
 <script src="jquery-1.7.js"></script>
 
 <script>
-    $.ajax({
-        url: 'http://localhost:2932/hello',
-        type: "POST",
-        success: function (data) {
-            $("#info").html("跨域访问成功:"+data);
-        },
-        error: function (data) {
-            $("#info").html("跨域失败!!",data);
-        }
-    })
+
+    function hello1(){
+        $.ajax({
+            url: 'http://localhost:2932/hello1',
+            type: "POST",
+            success: function (data) {
+                $("#info").html("跨域访问成功:"+data);
+            },
+            error: function (data) {
+                $("#info").html("跨域失败!!",data);
+            }
+        })
+    }
+    function hello2(){
+        $.ajax({
+            url: 'http://localhost:2932/hello2',
+            type: "POST",
+            success: function (data) {
+                $("#info").html("跨域访问成功:"+data);
+            },
+            error: function (data) {
+                $("#info").html("跨域失败!!",data);
+            }
+        })
+    }
+
+    function what1(){
+        $.ajax({
+            url: 'http://localhost:2932/what1',
+            type: "POST",
+            success: function (data) {
+                $("#info").html("跨域访问成功:"+data);
+            },
+            error: function (data) {
+                $("#info").html("跨域失败!!",data);
+            }
+        })
+    }
+
+    function hello3(){
+        $.ajax({
+            url: 'http://localhost:2932/hello3',
+            type: "POST",
+            success: function (data) {
+                $("#info").html("跨域访问成功:"+data);
+            },
+            error: function (data) {
+                $("#info").html("跨域失败!!",data);
+            }
+        })
+    }
 </script>
 
 </html>

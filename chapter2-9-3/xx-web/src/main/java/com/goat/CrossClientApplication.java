@@ -5,9 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class CrossApplication  {
+public class CrossClientApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CrossApplication.class, args);
+        SpringApplication.run(CrossClientApplication.class, args);
     }
 }
