@@ -15,7 +15,7 @@ import java.util.List;
  根据实体类中的属性查询，定义方法名的规则为：find + By + 属性名（首字母大写）
  根据实体类中的属性进行模糊查询，定义方法名的规则为：find + By + 属性名（首字母大写） + Like，
 
- 注意： @Query 注解中的 sql 语句  表明 必须是 实体类名！！！ 直接写表明会报错的！！
+ 注意： @Query 注解中的 sql 语句  表明 必须是 实体类名！！！ 直接写表明会报错的！！ 除非注解中 增加 nativeQuery = true 参数
 
  */
 
@@ -31,6 +31,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("select u from User u where u.name = :name")
     List<User> findUser(@Param("name") String name);
 
+    // doit 增加   @Query(nativeQuery = true)  返回 实体类的示例
 
     /**  doit
               @Query(value = "update Dictionary   d set d.valued = :batchNum  where d.deleteState =  0 and d.keyd = :keyd")
