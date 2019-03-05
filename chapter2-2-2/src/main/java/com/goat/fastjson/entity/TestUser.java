@@ -1,5 +1,6 @@
-package com.goat.entity;
+package com.goat.fastjson.entity;
 
+import com.alibaba.fastjson.annotation.JSONType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -12,7 +13,16 @@ import java.util.Date;
 //@JsonNaming(PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy.class)
 //@JsonSerialize(using = UserSerializer.class)
 //@JsonDeserialize (using = UserDeserializer.class)
-public class User implements Serializable {
+
+/**
+ //配置序列化的时候,不序列化id  sex
+ @JSONType(ignores ={"id", "sex"})
+
+ // 配置序列化的时候,序列化name 和sex
+ @JSONType(includes={"name","sex"})
+ */
+@JSONType(ignores ={"id", "sex"})
+public class TestUser implements Serializable {
 
 	private static final long serialVersionUID = 6222176558369919436L;
 
@@ -45,6 +55,9 @@ public class User implements Serializable {
     private String temp3;
 
     private String temp4;
+
+
+
 
 	public String getUserName() {
 		return userName;

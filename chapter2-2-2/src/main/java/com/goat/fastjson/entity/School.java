@@ -1,15 +1,11 @@
-package com.goat.entity;
+package com.goat.fastjson.entity;
+
+import com.goat.entity.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by 64274 on 2018/8/23.
- *
- * @author 山羊来了
- * @Description: TODO
- * @date 2018/8/23---17:27
- */
+
 public class School {
 
     private String id;
