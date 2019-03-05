@@ -82,3 +82,8 @@ docker-compose start
 
 #停止已经处于运行状态的容器，但不删除它。通过 docker-compose start 可以再次启动这些容器。
 docker-compose stop
+
+
+# 注意事项：
+     运行 docker-compose up -d 命令  其目录下的 yml 文件名 必须为 docker-compose.yml   这是必须的！！！
+    
