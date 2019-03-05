@@ -1,0 +1,6 @@
+spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/views/
+server:
+  port: 8138

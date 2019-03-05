@@ -9,8 +9,6 @@ package com.goat.config;
  */
 
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.config.Registry;
 import org.apache.http.config.RegistryBuilder;
 import org.apache.http.conn.HttpClientConnectionManager;
@@ -23,7 +21,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.MediaType;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -33,11 +30,8 @@ import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
 
 import java.nio.charset.Charset;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import java.util.TimeZone;
 
 /**
  * HTTP 封装类
@@ -124,7 +118,5 @@ public class RestTemplateConfig {
         connectionManager.setDefaultMaxPerRoute(maxConnectPerRoute); // 每个主机的并发
         return connectionManager;
     }
-
-
 
 }
