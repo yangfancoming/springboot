@@ -1,20 +1,15 @@
 package com.goat.controller;
 
-
 import com.goat.bean.User;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
-
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
-
 
     @GetMapping("/list")
     public List<User> users(){
@@ -24,7 +19,6 @@ public class UserController {
         return users;
     }
 
-
     // 如果请求中没有 username 参数 则报错：  Required String parameter 'username' is not present
 //    @JsonView(User.UserSimpleView.class) // 根据注解 没有返回 password 字段属性  只返回一个 username 属性
     @PostMapping("/user1")
@@ -33,7 +27,6 @@ public class UserController {
         users.add(new User(111,username,"1111"));
         return users;
     }
-
 
     @GetMapping("/{id}")
     public User getUserById(@PathVariable Integer id){
