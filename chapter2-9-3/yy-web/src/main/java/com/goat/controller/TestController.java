@@ -21,15 +21,15 @@ public class TestController {
         return "Hello World1";
     }
 
-    //  使用注解 @CrossOrigin
+
     @RequestMapping("/hello2")
-    @CrossOrigin
+    @CrossOrigin  //  方式三：
     public String hello2( ){
         return "Hello World2";
     }
 
 
-    @RequestMapping("/hello3")
+    @RequestMapping("/hello3")   //  方式四：
     public String hello3(HttpServletResponse response){
         response.addHeader("Access-Control-Allow-Origin", "http://localhost:8080");
         return "Hello World3";

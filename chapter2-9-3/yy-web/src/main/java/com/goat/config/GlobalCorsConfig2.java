@@ -8,6 +8,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 /**
+ *  方式二：
  在任意配置类，返回一个新的CorsFilter Bean，并添加映射路径和具体的CORS配置信息。
  */
 @Configuration

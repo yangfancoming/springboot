@@ -4,8 +4,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletResponse;
-
 /**
  * Created by 64274 on 2019/3/5.
  *
@@ -14,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  * @ date 2019/3/5---15:49
  */
 @RestController
-@CrossOrigin
+@CrossOrigin // 方式三：
 public class WhatController {
 
     @RequestMapping("/what1")
