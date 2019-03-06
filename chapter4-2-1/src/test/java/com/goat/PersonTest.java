@@ -53,7 +53,7 @@ public class PersonTest extends TestCommon  {
 
 
     /**
-         * @Description: 功能描述：(这里用一句话描述这个方法的作用)
+         * @Description: 忽略不存在的外键
          * @author: 杨帆
          * @Param:
          * @Return:
@@ -64,7 +64,7 @@ public class PersonTest extends TestCommon  {
      *
      *  解决办法：
      * 1. 检查为什么子表中没有主表中ID对应的记录
-     * 2. 如果子表中没有主表ID对应的记录也可以正常加载数据，那么需要在主表字段上加一个@NotFound Annotation。
+     * 2. 如果子表中没有主表ID对应的记录也可以正常加载数据，那么需要在主表字段上加一个 @NotFound Annotation。
      * 示例如下：
      * @OneToOne(optional=false)
      * @JoinColumn(name="business_id")

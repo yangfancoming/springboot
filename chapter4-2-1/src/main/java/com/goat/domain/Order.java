@@ -1,5 +1,8 @@
 package com.goat.domain;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import javax.persistence.*;
 
 /**
@@ -31,6 +34,7 @@ public class Order {
 //    @ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.REMOVE) //
 //    @ManyToOne(fetch = FetchType.LAZY) // 多对一  设置为 懒加载
     @JoinColumn(name="customer_id") // 本表中指向另一个表的外键。
+    @NotFound(action= NotFoundAction.IGNORE)
     private Customer customer;
 
     public Long getId() {

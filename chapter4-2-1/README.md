@@ -35,4 +35,4 @@
     
     3.SpringBoot启动类加注解  @EnableJpaAuditing
     
-    
+# 报错： javax.persistence.EntityNotFoundException: Unable to find com.goat.domain.Customer with id 2
