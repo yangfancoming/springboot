@@ -1,5 +1,7 @@
 package com.goat;
 
+import java.math.BigDecimal;
+
 /**
  * Created by 64274 on 2018/12/14.
  *
@@ -11,6 +13,7 @@ public class Apple {
     Integer id;
     String name;
     float  money;
+//    BigDecimal money;
     Integer num;
 
     public Apple(Integer id, String name, float money, Integer num) {

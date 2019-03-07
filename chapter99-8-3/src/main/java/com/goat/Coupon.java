@@ -11,11 +11,30 @@ public class Coupon {
     private Integer couponId;
     private Integer price;
     private String name;
+    private Integer group;
+
+    public Coupon() {
+    }
 
     public Coupon(Integer couponId, Integer price, String name) {
         this.couponId = couponId;
         this.price = price;
         this.name = name;
+    }
+
+    public Coupon(Integer couponId, Integer price, String name, Integer group) {
+        this.couponId = couponId;
+        this.price = price;
+        this.name = name;
+        this.group = group;
+    }
+
+    public Integer getGroup() {
+        return group;
+    }
+
+    public void setGroup(Integer group) {
+        this.group = group;
     }
 
     public Integer getCouponId() {
