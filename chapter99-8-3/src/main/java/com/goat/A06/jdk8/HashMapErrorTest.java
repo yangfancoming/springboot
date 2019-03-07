@@ -7,10 +7,9 @@ import java.util.*;
  *与HashSet类似，如果可变对象作为HashMap/Hashtable的key,并且程序修改了作为key 的可变对象
  *程序再也无法准确访问到Map中被修改过当地key
  */
-public class HashMapErrorTest
-{
-	public static void main(String[] args)
-	{
+public class HashMapErrorTest{
+
+	public static void main(String[] args){
 		HashMap ht = new HashMap();
 	
 		// 此处的A类与前一个程序的A类是同一个类

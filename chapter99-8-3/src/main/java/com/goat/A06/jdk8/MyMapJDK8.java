@@ -24,9 +24,9 @@ public class MyMapJDK8 {
         map.put("疯狂Java讲义" , 109);
         map.put("疯狂iOS讲义" , 99);
         map.put("疯狂Ajax讲义" , 79);
-        //        map.put("Java" , 79);  //   computeIfAbsent 不起作用
-        map.put("Java" , "");  //   computeIfAbsent 不起作用
-        //        map.put("Java" , null);  //   computeIfAbsent 起作用
+//        map.put("Java" , 79);  //   computeIfAbsent 不起作用
+//        map.put("Java" , "");  //   computeIfAbsent 不起作用
+        map.put("Java" , null);  //   computeIfAbsent 起作用
         System.out.println(map);
     }
 
