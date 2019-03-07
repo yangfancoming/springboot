@@ -24,7 +24,6 @@ import java.util.ListIterator;
 public class MyArrayList {
     ArrayList c = new ArrayList();
     ArrayList cc = new ArrayList();
-    List list = new ArrayList();
     /**
      * 在执行目标测试方法testTest()前执行
      */
@@ -90,7 +89,7 @@ public class MyArrayList {
     @Test
     public void set(){  // fuck List作为Collection的子类 具有的特有功能  根据索引修改元素，返回被修改的元素
         // 将第二个元素替换成新的字符串对象
-        c.set(1, new String("疯狂Java讲义"));
+        c.set(1, "疯狂Java讲义");
     }
     @Test
     public void subList(){
@@ -129,9 +128,9 @@ public class MyArrayList {
     @Test
     public void remove(){
         List books = new ArrayList();
-        books.add(new String("轻量级Java EE企业应用实战"));
-        books.add(new String("疯狂Java讲义"));
-        books.add(new String("疯狂Android讲义"));
+        books.add("轻量级Java EE企业应用实战");
+        books.add("疯狂Java讲义");
+        books.add("疯狂Android讲义");
 
         System.out.println(books);
 

@@ -34,6 +34,7 @@ public class MyLinkedList {
         linkedList.addFirst("纳尼1？");
         System.out.println(linkedList);
     }
+
     @Test
     public void addLast(){ // 在集合最后一个位置添加元素   fuck linkedList 作为 List 的子类 具有的特有功能
         linkedList.addLast("纳尼2？");
@@ -44,15 +45,18 @@ public class MyLinkedList {
     public void getFirst(){ // 获取集合第一个元素   fuck linkedList 作为 List 的子类 具有的特有功能
         System.out.println(linkedList.getFirst());
     }
+
     @Test
     public void getLast(){ // 获取集合最后一个元素   fuck linkedList 作为 List 的子类 具有的特有功能
         System.out.println(linkedList.getLast());
     }
+
     @Test
     public void removeFirst(){ // 删除第一个元素   fuck linkedList 作为 List 的子类 具有的特有功能
         linkedList.removeFirst();
         System.out.println(linkedList);
     }
+
     @Test
     public void removeLast(){ // 删除最后一个元素   fuck linkedList 作为 List 的子类 具有的特有功能
         linkedList.removeLast();

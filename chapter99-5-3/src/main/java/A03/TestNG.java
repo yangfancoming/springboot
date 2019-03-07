@@ -12,10 +12,15 @@ import org.testng.annotations.Test;
 
 public class TestNG {
 
-
+    @Test
+    public void person(){
+        Person p = new Person();
+        System.out.println(p);
+    }
     @Test
     public void my_hashCode(){
         Person person1 = new Person();
+        System.out.println(person1);
         System.out.println(person1.hashCode()); // 326549596
 
         Person person2 = new Person();

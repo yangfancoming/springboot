@@ -8,8 +8,8 @@ package com.goat.A04;
  * @ date 2018/12/19---20:51
  */
 public class Student implements Comparable<Student>{
-    public Integer Age = 0;
-    public String Name = "";
+    public Integer Age;
+    public String Name;
 
     public Integer getAge() {
         return Age;

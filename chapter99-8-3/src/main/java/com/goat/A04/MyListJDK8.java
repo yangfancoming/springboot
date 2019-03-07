@@ -63,7 +63,7 @@ public class MyListJDK8 {
     public void comparingInt(){
         // 使用目标类型为Comparator的 Lambda 表达式对List集合排序
         books.sort((o1, o2)->((String)o1).length() - ((String)o2).length());
-        books.sort(   (o1, o2)->((String)o2).length() - ((String)o1).length()   );
+        books.sort((o1, o2)->((String)o2).length() - ((String)o1).length());
         System.out.println(books);
     }
     @Test
