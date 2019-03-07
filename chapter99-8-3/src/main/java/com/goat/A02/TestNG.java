@@ -34,10 +34,8 @@ public class TestNG {
         System.out.println(books.stream()
                 .filter(a->((String)a).contains("疯狂"))
                 .count()); // 输出4
-    }
 
-    @Test
-    public void test2() {  // 统计书名包含“Java”子串的图书数量
+        // 统计书名包含“Java”子串的图书数量
         System.out.println(books.stream()
                 .filter(ele->((String)ele).contains("Java") )
                 .count()); // 输出2

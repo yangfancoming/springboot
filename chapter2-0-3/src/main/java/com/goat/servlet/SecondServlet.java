@@ -21,7 +21,7 @@ public class SecondServlet extends HttpServlet {
         System.out.println("进入 SecondServlet 。。。。。。。。。。。。。。。。。");
 //        resp.getWriter().append("SecondServlet");
 //        req.getRequestDispatcher("/WEB-INF/index").forward(req,resp); //doit  这里为什么404？ 将请求分发到 index.jsp 页面  然后 forward 进行跳转
-//        req.getRequestDispatcher("index.jsp").forward(req,resp); //doit  这里为什么404？ 将请求分发到 index.jsp 页面  然后 forward 进行跳转
+//        req.getRequestDispatcher("index.jsp").forward(req,resp); //doit  同上
     }
 }
 

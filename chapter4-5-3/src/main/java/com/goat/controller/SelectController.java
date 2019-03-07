@@ -15,7 +15,7 @@ import java.util.List;
  * @ author  山羊来了
  * @ date 2018/9/28
  */
-@RestController //该 注解不能被继承
+@RestController
 public class SelectController extends BaseController {
 
     // 测试地址：    http://localhost:8453/test1
