@@ -12,24 +12,12 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RateLimit {
 
-    /**
-     * 限流唯一标示
-     *
-     * @return
-     */
+    /*** 限流唯一标示 */
     String key() default "";
 
-    /**
-     * 限流时间
-     *
-     * @return
-     */
+    /*** 限流时间 */
     int time();
 
-    /**
-     * 限流次数
-     *
-     * @return
-     */
+    /*** 限流次数 */
     int count();
 }

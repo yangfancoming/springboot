@@ -28,7 +28,8 @@ public class HelloController {
         article.setId(1);
         article.setTitle("山羊来了");
         //  构建一个索引功能 Index.Builder(要保存的数据).index(保存的位置).type(保存的类型)
-        Index build = new Index.Builder(article).index("goat").type("news").build();
+        Index build = new Index.Builder(article).index("goat").type("" +
+                "").build();
         jestClient.execute(build);
         System.out.println("数据索引成功！");
     }
@@ -40,7 +41,7 @@ public class HelloController {
      * @Date:   2018/8/22
 */
 
-//    http://localhost:8080/hello/search   搜索
+//    http://localhost:8731/hello/search   搜索
     @RequestMapping("/search")
     public void search() throws IOException {
         // 搜索 title内容 为山羊的 数据

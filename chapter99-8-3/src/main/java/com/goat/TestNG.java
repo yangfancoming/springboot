@@ -85,6 +85,26 @@ public class TestNG {
         System.err.println("filterList:"+filterList);
     }
 
+    /**
+     分组求和使用
+     */
+    @Test
+    public void te11st1() {
+        Foo foo1 = new Foo(1, 2);
+        Foo foo2 = new Foo(2, 23);
+        Foo foo3 = new Foo(2, 6);
+        List<Foo> list = new ArrayList<>(4);
+        list.add(foo1);
+        list.add(foo2);
+        list.add(foo3);
+        Map<Integer, IntSummaryStatistics> collect = list.stream().collect(Collectors.groupingBy(Foo::getCode, Collectors.summarizingInt(Foo::getCount)));
+        IntSummaryStatistics statistics1 = collect.get(1);
+        IntSummaryStatistics statistics2 = collect.get(2);
+        System.out.println(statistics1); // 包含  getSum 总和  getAverage 平均值  getMax getMin getCount
+        System.out.println(statistics2);
+
+    }
+
     @Test
     public void te1st1() {
         Coupon coupon1 = new Coupon(1,100,"优惠券1",1);
@@ -100,21 +120,68 @@ public class TestNG {
             System.out.println(sum);
         }
 
-
         // 如果分组后，分组内并不想是对象，而是对象的属性，也可以做到的
         Map<Integer, List<String>> resultList2 = couponList.stream().collect(Collectors.groupingBy(Coupon::getCouponId,Collectors.mapping(Coupon::getName,Collectors.toList())));
 
         Map<Integer, List<Integer>> resultList3 = couponList.stream().collect(Collectors.groupingBy(Coupon::getGroup,Collectors.mapping(Coupon::getPrice,Collectors.toList())));
-
 
         System.out.println(resultList1);
         System.out.println(resultList2);
         System.out.println(resultList3);
     }
 
+    /**
+     分组求和使用
+     */
     @Test
     public void te1st12() {
+        Wx wx1 = new Wx("X00012100318",100L);
+        Wx wx2 = new Wx("X00012100319",200L);
+        Wx wx3 = new Wx("X00012100318",300L);
+        Wx wx4 = new Wx("X00012100320",400L);
+        Wx wx5 = new Wx("X00012100320",500L);
+        List<Wx> wxs =  Arrays.asList(wx1,wx2,wx3,wx4,wx5);
+        Map<String, LongSummaryStatistics> collect = wxs.stream().collect(Collectors.groupingBy(Wx::getPn, Collectors.summarizingLong(Wx::getCount)));
+        Set set = collect.keySet();
+        List<Wx> lists = new ArrayList<>();
+        for (Object key : set ){
+            Wx temp = new Wx(key.toString(),collect.get(key).getSum());
+            lists.add(temp);
+        }
+        System.out.println(wxs);
+    }
+
+    @Test
+    public void te1st123() {
+        Map<String, Object> map1 = new HashMap<>();
+        map1.put("pn", "X00012100318");
+        map1.put("count", 100);
+
+        Map<String, Object> map2 = new HashMap<>();
+        map2.put("pn", "X00012100319");
+        map2.put("count", 200);
+
+        Map<String, Object> map3 = new HashMap<>();
+        map3.put("pn", "X00012100318");
+        map3.put("count", 300);
+
+        Map<String, Object> map4 = new HashMap<>();
+        map4.put("pn", "X00012100320");
+        map4.put("count", 400);
+
+        Map<String, Object> map5 = new HashMap<>();
+        map5.put("pn", "X00012100320");
+        map5.put("count", 500);
+
+        List<Map<String, Object>> listMap = new ArrayList<>();
+        listMap.add(map1);
+        listMap.add(map2);
+        listMap.add(map3);
+        listMap.add(map4);
+        listMap.add(map5);
+
 
     }
+
 
 }

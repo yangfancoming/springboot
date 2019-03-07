@@ -15,10 +15,7 @@ import java.io.Serializable;
 @Component
 public class Commons {
 
-    /**
-     * 读取限流脚本
-     * @return
-     */
+    /*** 读取限流脚本 */
     @Bean
     public DefaultRedisScript<Number> redisluaScript() {
         DefaultRedisScript<Number> redisScript = new DefaultRedisScript<>();
@@ -27,10 +24,7 @@ public class Commons {
         return redisScript;
     }
 
-    /**
-     * RedisTemplate
-     * @return
-     */
+    /*** RedisTemplate */
     @Bean
     public RedisTemplate<String, Serializable> limitRedisTemplate(LettuceConnectionFactory redisConnectionFactory) {
         RedisTemplate<String, Serializable> template = new RedisTemplate<>();

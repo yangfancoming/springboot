@@ -45,6 +45,11 @@ public class MyArrayList {
         cc.add(11);
         System.out.println("----------------cc---------------------");
     }
+    @Test
+    public void clear0(){
+        c.clear();
+        System.out.println(c) ;
+    }
 
     @Test
     public void clear(){ // 按 下标 删除  返回删除的元素  fuck List作为Collection的子类 具有的特有功能  按索引删除元素 返回被删除的元素

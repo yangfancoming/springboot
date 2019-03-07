@@ -10,6 +10,7 @@ import io.searchbox.annotations.JestId;
  * @date 2018/8/22---13:54
  */
 public class Article {
+
     @JestId // 用来标识主键
     private Integer id;
     private String  title;
