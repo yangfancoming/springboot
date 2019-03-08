@@ -148,7 +148,7 @@ public class TestNG {
             Wx temp = new Wx(key.toString(),collect.get(key).getSum());
             lists.add(temp);
         }
-        System.out.println(wxs);
+        System.out.println(lists);
     }
 
     @Test
