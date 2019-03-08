@@ -9,13 +9,28 @@ package com.goat;
  */
 public class Wx {
 
+    public Wx(String code, String pn, Long count) {
+        this.code = code;
+        this.pn = pn;
+        this.count = count;
+    }
+
     public Wx(String pn, Long count) {
         this.pn = pn;
         this.count = count;
     }
 
+    String code;
     String pn;
     Long count;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public String getPn() {
         return pn;

@@ -131,10 +131,10 @@ public class TestNG {
     }
 
     /**
-     分组求和使用
+     分组求和使用  通过 pn 分组后  求和 count
      */
     @Test
-    public void te1st12() {
+    public void te1st121() {
         Wx wx1 = new Wx("X00012100318",100L);
         Wx wx2 = new Wx("X00012100319",200L);
         Wx wx3 = new Wx("X00012100318",300L);
@@ -151,6 +151,31 @@ public class TestNG {
         System.out.println(lists);
     }
 
+    /**
+      多级分组求和使用  通过 code 分组后  再通过 pn 分组 求和 count
+     */
+    @Test
+    public void te1st12() {
+        Wx wx1 = new Wx("CK201903060010","X00012100318",100L);
+        Wx wx2 = new Wx("CK201903060010","X00012100319",200L);
+        Wx wx3 = new Wx("CK201903060010","X00012100318",300L);
+        Wx wx4 = new Wx("CK201903060020","X00012100320",400L);
+        Wx wx5 = new Wx("CK201903060020","X00012100320",500L);
+        Wx wx6 = new Wx("CK201903060020","X00012100318",600L);
+        List<Wx> wxs =  Arrays.asList(wx1,wx2,wx3,wx4,wx5,wx6);
+        List<Wx> lists = new ArrayList<>();
+        Map<String, List<Wx>> collect = wxs.stream().collect(Collectors.groupingBy(Wx::getCode));
+        Set set = collect.keySet();
+        for (Object key : set ){
+            Map<String, LongSummaryStatistics> collect1 = collect.get(key).stream().collect(Collectors.groupingBy(Wx::getPn, Collectors.summarizingLong(Wx::getCount)));
+            Set set1 = collect1.keySet();
+            for (Object key1 : set1 ){
+                Wx temp = new Wx(key.toString(),key1.toString(),collect1.get(key1).getSum());
+                lists.add(temp);
+            }
+        }
+        System.out.println(collect);
+    }
     @Test
     public void te1st123() {
         Map<String, Object> map1 = new HashMap<>();
