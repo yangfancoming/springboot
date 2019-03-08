@@ -27,5 +27,14 @@ public class TestNg {
         String s = StringUtils.removeStart(header, HEADER_PREFIX);
         System.out.println(s);
     }
+    @Test
+    public void test1()  {
+
+        Object o = "";
+        if ( ((Boolean) o).booleanValue()){
+            System.out.println(111);
+        }
+
+    }
 
 }
