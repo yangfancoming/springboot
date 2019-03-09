@@ -112,50 +112,46 @@
         </script>
         <script>
 
-            // layui.use(['tree', 'layer','jquery'], function(){
-            //     var layer = layui.layer ;
-            //     $ = layui.jquery;
-            //     $.ajax({
-            //         type: "post",dataType: 'json',
-            //         url: '/menu/tree2',
-            //         success: function (d) {
-            //             console.log(d.data,111)
-            //             layui.tree({
-            //                 elem: '#myTree' , //指定元素 树形结构 元素id
-            //                 target: '_blank' , //是否新选项卡打开（比如节点返回href才有效）
-            //                 nodes: d.data,
-            //                 click: function(item){ //点击节点回调
-            //                     layer.msg('当前节名称：'+ item.name + '<br>全部参数：'+ JSON.stringify(item));
-            //                     console.log(item);
-            //                 },
-            //             })
-            //         }
-            //     })
-            // });
-            // base: '/js/'  这里js 前面必须要加个 /
-            layui.config({   base: '/js/',  }).extend({authtree: 'authtree', });
-
-            // GET http://localhost:8983/menu/authtree.js 404 (Not Found)
-            layui.use(['jquery', 'authtree', 'form', 'layer'], function(){
-                var $ = layui.jquery;
-                var authtree = layui.authtree;
-                var form = layui.form;
-                var layer = layui.layer;
-                // 一般来说，权限数据是异步传递过来的
+            layui.use(['tree', 'layer','jquery'], function(){
+                var layer = layui.layer ;
+                $ = layui.jquery;
                 $.ajax({
-                    url : "/json/tree.json", //获取菜单json地址
-                    dataType: 'json',
-                    success: function(data){
-                        var trees = data.data.trees;
-                        // 如果后台返回的不是树结构，请使用 authtree.listConvert 转换
-                        authtree.render('#LAY-auth-tree-index', trees, {
-                            inputname: 'authids[]',
-                            layfilter: 'lay-check-auth',
-                            autowidth: true,
-                        });
+                    type: "post",dataType: 'json',
+                    url: '/menu/tree2',
+                    success: function (d) {
+                        console.log(d.data,111)
+                        layui.tree({
+                            elem: '#myTree' , //指定元素 树形结构 元素id
+
+                            target: '_blank' , //是否新选项卡打开（比如节点返回href才有效）
+                            nodes: d.data,
+                            click: function(item){ //点击节点回调
+                                layer.msg('当前节名称：'+ item.name + '<br>全部参数：'+ JSON.stringify(item));
+                                console.log(item);
+                            },
+                        })
                     }
-                });
+                })
             });
+            // sos base: '/js/'  这里js 前面必须要加个 /
+            // layui.config({   base: '/js/',  }).extend({authtree: 'authtree', });
+            //
+            // // GET http://localhost:8983/menu/authtree.js 404 (Not Found)
+            // layui.use(['jquery', 'authtree', 'form', 'layer'], function(){
+            //     var $ = layui.jquery;
+            //     var authtree = layui.authtree;
+            //     $.ajax({
+            //         url: '/menu/tree2',
+            //         type: "post",dataType: 'json',
+            //         success: function(res){
+            //             var trees = res.data.trees;
+            //             // 如果后台返回的不是树结构，请使用 authtree.listConvert 转换
+            //             authtree.render('#LAY-auth-tree-index', trees, {
+            //                 inputname: 'authids[]',layfilter: 'lay-check-auth',autowidth: true,
+            //             });
+            //         }
+            //     });
+            // });
 
         </script>
     </body>
