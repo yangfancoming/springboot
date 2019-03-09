@@ -80,6 +80,15 @@ public class MenuController extends BaseController {
         }
 	    return list;
     }
+
+    // $.post("save",data.field,function(res){
+    @RequestMapping("/save")
+    public RestResult save(Menu menu) {
+        System.out.println(menu);
+        menuService.save(menu);
+        return null;
+    }
+
 //
 //	@RequestMapping("menu/menuButtonTree")
 //	@ResponseBody
@@ -164,24 +173,7 @@ public class MenuController extends BaseController {
 //		return true;
 //	}
 //
-//	@Log("新增菜单/按钮")
-//	@RequiresPermissions("menu:add")
-//	@RequestMapping("menu/add")
-//	@ResponseBody
-//	public ResponseBo addMenu(Menu menu) {
-//		String name = "";
-//		if (Menu.TYPE_MENU.equals(menu.getType()))
-//			name = "菜单";
-//		else
-//			name = "按钮";
-//		try {
-//			this.menuService.addMenu(menu);
-//			return ResponseBo.ok("新增" + name + "成功！");
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			return ResponseBo.error("新增" + name + "失败，请联系网站管理员！");
-//		}
-//	}
+
 //
 //	@Log("删除菜单")
 //	@RequiresPermissions("menu:delete")

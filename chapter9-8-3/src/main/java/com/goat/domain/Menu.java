@@ -35,28 +35,28 @@ public class Menu implements Serializable {
     @TableField(value = "PARENT_ID")
 	private Long parentId; // 该字段不能为 null 或 ""  必须 有数
 
-    @TableField(value = "MENU_NAME")
+    @TableField(value = "MENU_NAME") // 菜单名称
 	private String menuName;
 
-    @TableField(value = "URL")
+    @TableField(value = "URL") // 菜单地址
 	private String url;
 
-    @TableField(value = "PERMS")
+    @TableField(value = "PERMS") // 权限标识
 	private String perms;
 
-    @TableField(value = "ICON")
+    @TableField(value = "ICON") // 图标
 	private String icon;
 
     @TableField(value = "TYPE")
 	private String type; // 1 按钮   0 菜单
 
-    @TableField(value = "ORDER_NUM")
+    @TableField(value = "ORDER_NUM") // 排序
 	private Long orderNum;
 
-    @TableField(value = "CREATE_TIME")
+    @TableField(value = "CREATE_TIME") // 创建时间
 	private Date createTime;
 
-    @TableField(value = "MODIFY_TIME")
+    @TableField(value = "MODIFY_TIME") // 修改时间
 	private Date modifyTime;
 
     @TableField(exist = false)

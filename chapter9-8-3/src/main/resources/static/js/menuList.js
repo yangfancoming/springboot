@@ -4,17 +4,6 @@ layui.use(['form','layer','table','laytpl'],function(){
         $ = layui.jquery,
         table = layui.table;
 
-    // private Long menuId;
-    // private Long parentId;
-    // private String menuName;
-    // private String url;
-    // private String perms;
-    // private String icon;
-    // private String type;
-    // private Long orderNum;
-    // private Date createTime;
-    // private Date modifyTime;
-
     //菜单列表
     var tableIns = table.render({
         elem: '#menuList',
@@ -24,7 +13,6 @@ layui.use(['form','layer','table','laytpl'],function(){
         height : "full-125",
         limits : [10,15,20,25],
         limit : 20,
-        // id : "userListTable",
         cols : [[
             {type: "checkbox", fixed:"left", width:50},
             {field: 'menuId', title: '编号', minWidth:100, align:"center"},
@@ -35,7 +23,6 @@ layui.use(['form','layer','table','laytpl'],function(){
             {field: 'icon', title: '图标',minWidth:100, align:'center'},
             {field: 'type', title: '类型', align:'center'},
             {field: 'orderNum', title: '排序', align:'center'},
-            {field: 'status', title: '用户状态',  align:'center'},
             {field: 'createTime', title: '创建时间', align:'center',minWidth:180,templet: "<div>{{layui.util.toDateString(d.ordertime, 'yyyy-MM-dd HH:mm:ss')}}</div>"},
             {field: 'modifyTime', title: '更改时间', align:'center',minWidth:180,templet: "<div>{{layui.util.toDateString(d.ordertime, 'yyyy-MM-dd HH:mm:ss')}}</div>"},
             {title: '操作', minWidth:175, templet:'#userListBar',fixed:"right",align:"center"}
@@ -43,10 +30,8 @@ layui.use(['form','layer','table','laytpl'],function(){
 
         done: function(res, curr, count){
             console.log(res);
-            //得到当前页码
-            console.log(curr);
-            //得到数据总量
-            console.log(count);
+            console.log(curr); //得到当前页码
+            console.log(count);  //得到数据总量
         }
     });
 
@@ -66,16 +51,14 @@ layui.use(['form','layer','table','laytpl'],function(){
         }
     });
 
-    //添加用户
+    //添加 菜单
     function addMenu(edit){
         var index = layui.layer.open({
-            title : "添加用户",
-            type : 2,
-            area: ['600px', '400px'], //指定 弹出框 大小
-            content : "/menu/menuAdd",
+            title : "新增菜单", type : 2, content : "/menu/menuAdd",
+            area: ['600px', '500px'], //指定 弹出框 大小
             success : function(layero, index){
                 var body = layui.layer.getChildFrame('body', index);
-                if(edit){
+                if(edit){ // 如果是 编辑操作 则会把当条数据传过来
                     body.find(".username").val(edit.username);  //登录名
                     body.find(".email").val(edit.email);  //邮箱
                     body.find(".ssex input[value="+edit.ssex+"]").prop("checked","checked");  //性别
@@ -85,9 +68,7 @@ layui.use(['form','layer','table','laytpl'],function(){
                     form.render();
                 }
                 setTimeout(function(){
-                    layui.layer.tips('点击此处返回用户列表', '.layui-layer-setwin .layui-layer-close', {
-                        tips: 3
-                    });
+                    layui.layer.tips('点击此处返回用户列表', '.layui-layer-setwin .layui-layer-close', {  tips: 3 });
                 },500)
             }
         })
@@ -97,6 +78,7 @@ layui.use(['form','layer','table','laytpl'],function(){
             layui.layer.full(window.sessionStorage.getItem("index"));
         })
     }
+    // 新增菜单 按钮
     $(".addMenu_btn").click(function(){
         addMenu();
     })

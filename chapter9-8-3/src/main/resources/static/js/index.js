@@ -1,5 +1,6 @@
 var $,tab,dataStr,layer;
 layui.config({ base : "js/" }).extend({ "bodyTab" : "bodyTab"})
+layui.config({ base : "js/" }).extend({ authtree: 'authtree'})
 
 layui.use(['bodyTab','form','element','layer','jquery'],function(){
 	var form = layui.form,
