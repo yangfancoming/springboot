@@ -1,15 +1,22 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<title>菜单管理</title>
-</head>
-<body >
-<form >
-    菜单管理菜单管理菜单管理菜单管理菜单管理菜单管理
 
+<body>
 
-</form>
-<!--<script th:src="@{/plugins/layui/layui.js}" type="text/javascript" charset="utf-8"></script>-->
-<!--<script th:src="@{/js/menuList.js}" type="text/javascript" charset="utf-8"></script>-->
+    <form >
+        菜单管理菜单管理菜单管理菜单管理菜单管理菜单管理
+    </form>
+
+    <table id="dg"></table>
+
+    <script >
+            $('#dg').datagrid({
+                url:'/json/datagrid_data1.json', method: 'get',
+                // url:'/menu/list', method: 'get',
+                columns:[ [ // fuck 这里的 两个 中括号 是必须要 分开的 否则 thymeleaf 加载 js 时会报错
+                    {field:'productid',title:'代码',width:100},
+                    {field:'productname',title:'名称',width:100},
+                ] ]
+            });
+
+    </script>
 </body>
-</html>
+

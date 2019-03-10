@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @Component 添加到Spring组件中
  */
 @Component
-public class ResultGenerator {
+public class ResultGenerator<T> {
 
     private static final String SUCCESS = "success";
     //成功
@@ -39,6 +39,15 @@ public class ResultGenerator {
                 .setMessage(message)
                 .setTotal(total)
                 .setData(data);
+    }
+
+    //成功，自定义消息及数据
+    public  RestResult getSuccessUiResult(String message,Iterable<T> rows,long total) {
+        return new RestResult()
+                .setCode(ResultCode.SUCCESS)
+                .setMessage(message)
+                .setTotal(total)
+                .setRows(rows);
     }
     //失败，附带消息
     public  RestResult getFailResult(String message) {

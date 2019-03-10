@@ -1,0 +1,48 @@
+
+<body>
+
+    <form >
+
+    </form>
+
+    <table id="userList"></table>
+
+    <script >
+            $('#userList').datagrid({
+                url:'/user/list', method: 'get',pagination: true,
+                columns:[ [ // fuck 这里的 两个 中括号 是必须要 分开的 否则 thymeleaf 加载 js 时会报错
+                    {field:'userId',title:'代码'},
+                    {field:'username',title:'代码'},
+                    {field:'deptId',title:'代码'},
+                    {field:'deptName',title:'代码'},
+                    {field:'email',title:'代码'},
+                    {field:'mobile',title:'代码'},
+                    {field:'status',title:'名称'},
+                    {field:'crateTime',title:'名称'},
+                    {field:'modifyTime',title:'名称'},
+                    {field:'lastLoginTime',title:'名称'},
+                    {field:'ssex',title:'名称'},
+                    {field:'avatar',title:'名称'},
+                    {field:'description',title:'名称'},
+                ] ],
+
+            });
+
+    </script>
+</body>
+
+<!--private Long userId;-->
+<!--private String username;-->
+<!--private String password;-->
+<!--private Long deptId;-->
+<!--private String deptName;-->
+<!--private String email;-->
+<!--private String mobile;-->
+<!--private String status = STATUS_VALID;-->
+<!--private Date crateTime;-->
+<!--private Date modifyTime;-->
+<!--private Date lastLoginTime;-->
+<!--private String ssex;-->
+<!--private String theme;-->
+<!--private String avatar;-->
+<!--private String description;-->

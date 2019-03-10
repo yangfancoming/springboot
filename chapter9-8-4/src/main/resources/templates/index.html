@@ -38,7 +38,7 @@
 </body>
 </html>
 
-<script>
+<script >
 
     /**
      * EasyUI Tree中默认方法是 post 会导致浏览器 控制台报错：  405 (Method Not Allowed)
@@ -52,19 +52,19 @@
             lines: true,
             url:'/menu/tree2',
             onClick: function(node){ // tree 节点 点击事件
-
                 var myTab = $('#myTab');
                 // 禁止重复打开选项卡
                 if(myTab.tabs('getTab',node.text) != null) {
                     myTab.tabs('select',node.text); return;
                 }
 
-                // 添加选项卡
+                // 添加选项卡 sos href 只能引入 <body> 标签内的内容 所以 <script> 内的脚本 必须写在 <body> 标签内 因此，被引用页面 只写<body> 标签
                 myTab.tabs('add',{
                     title: node.text,closable:true,
-                    href:node.url, // 从URL加载远程数据内容填充到选项卡面板
+                    href:node.url, // 从URL加载远程数据内容填充到选项卡面板  对应 后台 MyMvcConfig url 页面跳转映射
                 });
             },
+
             loadFilter: function(data){ // 使用 loadFilter 函数处理来自Web Services 的JSON数据。
                 console.log(data,11111111)
                 return data.data;

@@ -1,6 +1,7 @@
 package com.goat.easyui.controller;
 
 
+import com.github.pagehelper.PageHelper;
 import com.goat.easyui.domain.Menu;
 import com.goat.easyui.resultmodel.RestResult;
 import com.goat.easyui.resultmodel.ResultGenerator;
@@ -38,8 +39,9 @@ public class MenuController   {
     // http://localhost:8984/menu/tree
     @RequestMapping("/tree")
     public RestResult tree() {
+        PageHelper.startPage(1, 10);
         List<Menu> menuTree = menuService.getMenuTree();
-        return generator.getSuccessResult("查询树成功",menuTree,menuTree.size());
+        return generator.getSuccessUiResult("查询树成功",menuTree,menuTree.size());
     }
 
     // http://localhost:8983/menu/tree2
