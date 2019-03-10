@@ -11,9 +11,30 @@
 </head>
 <body class="easyui-layout">
     <div data-options="region:'north',title:'顶部导航',split:true" style="height:100px;"></div>
+
     <div data-options="region:'south',title:'底部导航',split:true" style="height:100px;"></div>
+
     <div data-options="region:'east',iconCls:'icon-reload',title:'East',split:true" style="width:100px;"></div>
-    <div data-options="region:'west',title:'左侧导航',split:true" style="width:200px;"></div>
+
+    <div data-options="region:'west',title:'左侧导航',split:true" style="width:200px;">
+        <ul id="tt"></ul>
+    </div>
+
     <div data-options="region:'center',title:'主体内容'" style="padding:5px;background:#eee;"></div>
 </body>
 </html>
+
+<script>
+
+    /**
+     * EasyUI Tree中默认方法是 post 会导致浏览器 控制台报错：  405 (Method Not Allowed)
+     * 解决方法： 加上 method: 'get',  指定 使用 get 方式 请求本地json 文件 就可以了！
+    */
+    $(function () {
+        $('#tt').tree({
+            method: 'get',
+            url:'/json/tree_data.json'
+        });
+    })
+
+</script>
