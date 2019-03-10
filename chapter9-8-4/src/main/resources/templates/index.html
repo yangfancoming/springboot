@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>后台管理系统</title>
+    <link th:href="@{/themes/default/easyui.css}" rel="stylesheet"/>
+    <link th:href="@{/themes/icon.css}" rel="stylesheet"/>
+
+    <script th:src="@{/js/jquery-1.7.2.min.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/js/jquery.easyui.min.js}" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'north',title:'顶部导航',split:true" style="height:100px;"></div>
+    <div data-options="region:'south',title:'底部导航',split:true" style="height:100px;"></div>
+    <div data-options="region:'east',iconCls:'icon-reload',title:'East',split:true" style="width:100px;"></div>
+    <div data-options="region:'west',title:'左侧导航',split:true" style="width:200px;"></div>
+    <div data-options="region:'center',title:'主体内容'" style="padding:5px;background:#eee;"></div>
+</body>
+</html>
