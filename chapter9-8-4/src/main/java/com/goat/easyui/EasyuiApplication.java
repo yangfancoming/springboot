@@ -8,7 +8,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 
 @SpringBootApplication
-@MapperScan("com.goat.dao")
+@MapperScan("com.goat.easyui.dao")
 public class EasyuiApplication extends SpringBootServletInitializer {
 
     @Override

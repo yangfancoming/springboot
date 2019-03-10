@@ -2,7 +2,6 @@ package com.goat.dao;
 
 
 import com.goat.domain.Menu;
-import com.goat.vo.MenuVo;
 
 import java.util.List;
 

@@ -1,12 +1,12 @@
 package com.goat.fastjson.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Date;
 
 /**
      通过 @JSONField 定制序列化
-
      ordinal	指定字段的顺序
      name	字段key值
      format	配置日期格式化
@@ -32,8 +32,13 @@ public class Person {
     private String temp2;
 
     private String temp3;
-
+    /**
+     @JsonProperty 此注解用于属性上，作用是把该属性的名称序列化为另外一个名称，如把trueName属性序列化为name，@JsonProperty("name")
+     该注解 项目重启后 生效
+    */
+    @JsonProperty("text")
     private String temp4;
+
 
 
     public Person(int age, String fullName, Date dateOfBirth) {

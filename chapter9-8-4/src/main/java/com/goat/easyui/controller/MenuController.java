@@ -1,7 +1,10 @@
 package com.goat.easyui.controller;
 
 
-
+import com.goat.easyui.domain.Menu;
+import com.goat.easyui.resultmodel.RestResult;
+import com.goat.easyui.resultmodel.ResultGenerator;
+import com.goat.easyui.service.IMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,76 +16,48 @@ import java.util.List;
 @RestController
 @RequestMapping("/menu")
 public class MenuController   {
-//
-//    private final ResultGenerator generator = new ResultGenerator();
-//	@Autowired
-//	private IMenuService menuService;
-//
-//
-//	// http://localhost:8983/menu/list
-//	@RequestMapping("/list")
-//	public RestResult list(String userName) {
-//        List<Menu> menus = menuService.findUserMenus("MrBird");
-//        return generator.getSuccessResult("查询菜单列表成功",menus,1);
-//	}
-//
-//    // http://localhost:8983/menu/getMenu
-//	@RequestMapping("/getMenu/{id}")
-//	public RestResult getMenu(@PathVariable(name = "id") Long id) {
-//        Menu menu = menuService.getById(id);
-//        return generator.getSuccessResult("查询单个菜单成功",menu,1);
-//	}
-//
-//    // http://localhost:8983/menu/tree
-//    @RequestMapping("/tree")
-//    public RestResult tree() {
-//        List<Menu> menuTree = menuService.getMenuTree();
-//        List<MenuVo> list = new ArrayList<>();
-//        for (Menu temp:menuTree){
-//            MenuVo menuVo = new MenuVo();
-//            menuVo.setId(temp.getMenuId());
-//            menuVo.setName(temp.getMenuName());
-//            menuVo.setChildren(null);
-//            menuVo.setSpread(false);
-//            list.add(menuVo);
-//        }
-//        return generator.getSuccessResult("查询树成功",list,list.size());
-//    }
-//
-//    // http://localhost:8983/menu/tree2
-//    @RequestMapping("/tree2")
-//    public RestResult test() {
-//        List<Menu> menus = menuService.testMenuList();
-//        List<MenuVo> haha = getChild(menus);
-////        System.out.println(haha);
-//        return generator.getSuccessResult("查询菜单列表成功",haha,1);
-//    }
-//
-//    /**
-//     * 将  完成递归 数据库 菜单集合 也通过递归 转换成 对应 VO
-//     * @param menus  数据库 菜单集合
-//     * @return  对应 VO
-//    */
-//    public List<MenuVo> getChild(List<Menu> menus){
-//        List<MenuVo> list = new ArrayList<>(); // 最终结果
-//	    for (Menu menu : menus){
-//	        // 由于 menus 数据库表 菜单集合 已经完成递归操作 所以 这里的遍历出的每一个 menu 都是 顶级菜单  所以 直接添加 到 VO list
-//            MenuVo menuVo = new MenuVo(menu.getMenuId(), menu.getParentId(), menu.getMenuName(), "", null, null, false);
-//            list.add(menuVo);
-//            // 添加 顶级菜单 后  判断该 菜单下 是否有 子集合  如果有 则 递归调用
-//            if (menu.getChildren() != null){
-//                menuVo.setChildren(getChild(menu.getChildren())); // 递归 调用
-//            }
-//        }
-//	    return list;
-//    }
-//
-//    // $.post("save",data.field,function(res){
-//    @RequestMapping("/save")
-//    public RestResult save(Menu menu) {
-//        System.out.println(menu);
-//        menuService.save(menu);
-//        return null;
-//    }
+
+    private final ResultGenerator generator = new ResultGenerator();
+	@Autowired
+	private IMenuService menuService;
+
+
+	// http://localhost:8984/menu/list
+	@RequestMapping("/list")
+	public RestResult list(String userName) {
+        List<Menu> menus = menuService.findUserMenus("MrBird");
+        return generator.getSuccessResult("查询菜单列表成功",menus,1);
+	}
+
+    // http://localhost:8984/menu/getMenu
+	@RequestMapping("/getMenu/{id}")
+	public RestResult getMenu(@PathVariable(name = "id") Long id) {
+        Menu menu = menuService.getById(id);
+        return generator.getSuccessResult("查询单个菜单成功",menu,1);
+	}
+
+    // http://localhost:8984/menu/tree
+    @RequestMapping("/tree")
+    public RestResult tree() {
+        List<Menu> menuTree = menuService.getMenuTree();
+        return generator.getSuccessResult("查询树成功",menuTree,menuTree.size());
+    }
+
+    // http://localhost:8983/menu/tree2
+    @RequestMapping("/tree2")
+    public RestResult test() {
+        List<Menu> menus = menuService.testMenuList();
+//        System.out.println(haha);
+        return generator.getSuccessResult("查询菜单列表成功",menus,1);
+    }
+
+
+    // $.post("save",data.field,function(res){
+    @RequestMapping("/save")
+    public RestResult save(Menu menu) {
+        System.out.println(menu);
+        menuService.save(menu);
+        return null;
+    }
 
 }
