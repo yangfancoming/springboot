@@ -1,6 +1,7 @@
 package com.goat.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import java.io.Serializable;
@@ -35,6 +36,15 @@ public class User implements Serializable {
 	@JsonView(AllUserFieldView.class)
 	private Date birthday;
 
+    /**
+     @JsonProperty 此注解用于属性上，作用是把该属性的名称序列化为另外一个名称，如把trueName属性序列化为name，@JsonProperty("name")
+     该注解 项目重启后 生效
+     */
+    @JsonProperty("text")
+	 private String temp1;
+	 private String temp2;
+
+
 	public String getUserName() {
 		return userName;
 	}
@@ -67,4 +77,19 @@ public class User implements Serializable {
 		this.birthday = birthday;
 	}
 
+    public String getTemp1() {
+        return temp1;
+    }
+
+    public void setTemp1(String temp1) {
+        this.temp1 = temp1;
+    }
+
+    public String getTemp2() {
+        return temp2;
+    }
+
+    public void setTemp2(String temp2) {
+        this.temp2 = temp2;
+    }
 }

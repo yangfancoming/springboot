@@ -17,10 +17,24 @@
     <div data-options="region:'east',iconCls:'icon-reload',title:'East',split:true" style="width:100px;"></div>
 
     <div data-options="region:'west',title:'左侧导航',split:true" style="width:200px;">
-        <ul id="tt"></ul>
+        <ul id="myTree"></ul>
     </div>
 
-    <div data-options="region:'center',title:'主体内容'" style="padding:5px;background:#eee;"></div>
+    <div data-options="region:'center',title:'主体内容'" style="padding:5px;background:#eee;">
+        <!--data-options="fit:true" 设置为true时，选项卡的大小将铺满它所在的容器 -->
+        <div id="myTab" class="easyui-tabs" style="width:500px;height:250px;" data-options="fit:true">
+            <div title="Tab1" style="padding:20px;display:none;">
+                tab1
+            </div>
+            <div title="Tab2" data-options="closable:true" style="overflow:auto;padding:20px;display:none;">
+                tab2
+            </div>
+            <div title="Tab3" data-options="iconCls:'icon-reload',closable:true" style="padding:20px;display:none;">
+                tab3
+            </div>
+        </div>
+
+    </div>
 </body>
 </html>
 
@@ -33,10 +47,24 @@
      *   url:'/menu/tree'   请求后台数据
      */
     $(function () {
-        $('#tt').tree({
+        $('#myTree').tree({
             method: 'get', animate: true,
-            // lines: true,
+            lines: true,
             url:'/menu/tree2',
+            onClick: function(node){ // tree 节点 点击事件
+
+                var myTab = $('#myTab');
+                // 禁止重复打开选项卡
+                if(myTab.tabs('getTab',node.text) != null) {
+                    myTab.tabs('select',node.text); return;
+                }
+
+                // 添加选项卡
+                myTab.tabs('add',{
+                    title: node.text,closable:true,
+                    href:node.url, // 从URL加载远程数据内容填充到选项卡面板
+                });
+            },
             loadFilter: function(data){ // 使用 loadFilter 函数处理来自Web Services 的JSON数据。
                 console.log(data,11111111)
                 return data.data;
