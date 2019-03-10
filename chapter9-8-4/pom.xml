@@ -66,12 +66,16 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
+        <!--<dependency>-->
+            <!--<groupId>com.github.pagehelper</groupId>-->
+            <!--<artifactId>pagehelper</artifactId>-->
+            <!--<version>5.0.0</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper</artifactId>
-            <version>5.0.0</version>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.10</version>
         </dependency>
-
 
         <!--引入内嵌 Tomcat  否则报错：Unregistering JMX-exposed beans on shutdown-->
         <dependency>

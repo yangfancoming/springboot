@@ -3,7 +3,7 @@ package com.goat.easyui.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-
+import com.goat.easyui.domain.QueryRequest;
 import com.goat.easyui.domain.User;
 import com.goat.easyui.resultmodel.RestResult;
 import com.goat.easyui.resultmodel.ResultGenerator;
@@ -12,9 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 @RestController
@@ -47,9 +45,9 @@ public class UserController {
     */
     // http://localhost:8984/user/list
     @RequestMapping("/list")
-    public RestResult userList() {
-        PageHelper.startPage(1,10);
-        List<User> list = userService.selectUserList();
+    public RestResult userList(QueryRequest request) {
+//        PageHelper.startPage(request.getPage(), request.getRows());
+        List<User> list = userService.findByPage(request.getPage(), request.getRows());
         PageInfo<User> pageInfo = new PageInfo<>(list);
         return generator.getSuccessUiResult("datang", pageInfo.getList(), pageInfo.getTotal());
     }

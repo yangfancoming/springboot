@@ -34,9 +34,11 @@
 	    </if>
   		order by u.user_id
   </select>
-  
-    
 
 
+
+    <select id="findByPage" resultMap="BaseResultMap">
+        select *  from t_user
+    </select>
   
 </mapper>

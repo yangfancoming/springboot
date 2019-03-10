@@ -1,7 +1,6 @@
 package com.goat.easyui.service.impl;
 
 
-
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.goat.easyui.dao.MenuMapper;
 import com.goat.easyui.domain.Menu;
@@ -32,6 +31,10 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 	public List<Menu> findUserMenus(String userName) {
 		return menuMapper.findUserMenus(userName);
 	}
+
+
+
+
 
 
     @Override
