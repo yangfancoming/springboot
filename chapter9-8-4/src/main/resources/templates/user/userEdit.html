@@ -1,46 +1,32 @@
 
-
-    <form id="fm" method="post">
-        <div class="fitem">
-            <label>指标名称：</label>
-            <input class="easyui-textbox" value="利润率" />
-            <label>是否公用：</label>
-            <select class="easyui-combobox">
-                <option value="0">是</option>
-                <option value="1">否</option>
-            </select>
+<div class="easyui-panel"   style="width:100%;padding:30px 60px;">
+    <form id="ff" class="easyui-form" method="post" data-options="novalidate:true">
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" name="name" style="width:100%" data-options="label:'用户名：',required:true">
         </div>
-        <div class="fitem">
-            <label>维护部门：</label>
-            <select class="easyui-combobox">
-                <option value="">财务部</option>
-                <option value="">人事部</option>
-            </select>
-            <label>维护角色：</label>
-            <select class="easyui-combobox">
-                <option value="0">主办会计</option>
-                <option value="1">行政总监</option>
-                <option value="2">总经理</option>
-            </select>
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" name="email" style="width:100%" data-options="label:'Email：',required:true,validType:'email'">
         </div>
-        <div class="fitem">
-            <label>审核部门：</label>
-            <select class="easyui-combobox">
-                <option value="">总经办</option>
-                <option value="">行政部</option>
-            </select>
-        </div>
-        <div class="fitem">
-            <label>备注说明：</label>
-            <input class="easyui-textbox" multiline="true" style="width:452px;height:52px;" value="考核项目的实际利润情况"  />
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" name="subject" style="width:100%" data-options="label:'部门：',required:true">
         </div>
 
-        <!-- 弹出框按钮组-->
-        <div style="text-align:center;padding:5px">
-            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">保存</a>
-            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">取消</a>
+        <div style="margin-bottom:20px">
+            <select class="easyui-combobox" name="language" label="性别：" style="width:100%">
+                <option value="ar">男</option>
+                <option value="bg">女</option>
+            </select>
+        </div>
+
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" name="message" style="width:100%;height:60px" data-options="label:'备注：',multiline:true">
         </div>
     </form>
+    <div style="text-align:center;padding:5px 0">
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" style="width:80px">提交</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()" style="width:80px">取消</a>
+    </div>
+</div>
 
 
 <script >
