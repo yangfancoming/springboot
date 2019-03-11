@@ -1,0 +1,71 @@
+
+
+    <form id="fm" method="post">
+        <div class="fitem">
+            <label>指标名称：</label>
+            <input class="easyui-textbox" value="利润率" />
+            <label>是否公用：</label>
+            <select class="easyui-combobox">
+                <option value="0">是</option>
+                <option value="1">否</option>
+            </select>
+        </div>
+        <div class="fitem">
+            <label>维护部门：</label>
+            <select class="easyui-combobox">
+                <option value="">财务部</option>
+                <option value="">人事部</option>
+            </select>
+            <label>维护角色：</label>
+            <select class="easyui-combobox">
+                <option value="0">主办会计</option>
+                <option value="1">行政总监</option>
+                <option value="2">总经理</option>
+            </select>
+        </div>
+        <div class="fitem">
+            <label>审核部门：</label>
+            <select class="easyui-combobox">
+                <option value="">总经办</option>
+                <option value="">行政部</option>
+            </select>
+        </div>
+        <div class="fitem">
+            <label>备注说明：</label>
+            <input class="easyui-textbox" multiline="true" style="width:452px;height:52px;" value="考核项目的实际利润情况"  />
+        </div>
+
+        <!-- 弹出框按钮组-->
+        <div style="text-align:center;padding:5px">
+            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">保存</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">取消</a>
+        </div>
+    </form>
+
+
+<script >
+    //关闭弹出框
+    $("#saveBtn, #cancelBtn").click(function(e) {
+        e.preventDefault();
+        $("#dlg").dialog("close");
+    });
+</script>
+
+
+
+
+<!--private Long userId;-->
+<!--private String username;-->
+<!--private String password;-->
+<!--private Long deptId;-->
+<!--private String deptName;-->
+<!--private String email;-->
+<!--private String mobile;-->
+<!--private String status = STATUS_VALID;-->
+<!--private Date crateTime;-->
+<!--private Date modifyTime;-->
+<!--private Date lastLoginTime;-->
+<!--private String ssex;-->
+<!--private String theme;-->
+<!--private String avatar;-->
+<!--private String description;-->
