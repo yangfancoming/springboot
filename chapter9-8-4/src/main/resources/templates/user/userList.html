@@ -9,7 +9,7 @@
 
     <script >
             $('#userList').datagrid({
-                url:'/user/list', method: 'get',pagination: true,
+                url:'/user/list', method: 'get',pagination: true,rowStyler:rowStyleFormatter,
                 columns:[ [ // fuck 这里的 两个 中括号 是必须要 分开的 否则 thymeleaf 加载 js 时会报错
                     {field:'userId',title:'编号',checkbox:true}, // 给表格添加复选框
                     {field:'username',title:'用户名',align:'center'},
@@ -21,12 +21,53 @@
                     {field:'crateTime',title:'创建时间',align:'center'},
                     {field:'modifyTime',title:'修改时间',align:'center'},
                     {field:'lastLoginTime',title:'最后登录',align:'center'},
-                    {field:'ssex',title:'性别',align:'center'},
-                    {field:'avatar',title:'头像',align:'center'},
-                    {field:'description',title:'备注',align:'center'},
+                    {field:'ssex',title:'性别',align:'center',formatter:ssexFormatter},
+                    {field:'avatar',title:'头像',align:'center',styler:stylerFormatter},
+                    {field:'description',title:'备注',align:'center',width:80,formatter:titleFormatter},
+                    // {title:'操作',align:'center',formatter:operFormatter},
                 ] ],
-
             });
+            // 分别为当前列的值，当前整行的记录和当前行的索引
+            // 性别 、状态 等 需要文字转换的列
+            function ssexFormatter(value , record , index){
+                if(value == 0){
+                    return '<span style=color:red; >男</span>' ;
+                } else if( value == 1){
+                    return '<span style=color:green; >女</span>' ;
+                }
+            }
+
+            // 单元格内容过长  鼠标悬停提示
+            function titleFormatter(value , record , index){
+                return '<span title="'+value+'">'+value+'</span>';
+            }
+
+            function operFormatter(value , record , rowIndex){
+                return '<button onclick="getRowDataFromIndex('+rowIndex+');">编辑    </button>|<button onclick="getRowDataFromIndex('+rowIndex+');">删除 </button>';
+            }
+
+            /**
+                 注意：rowStyler是datagrid的属性，而不是列的属性，如果放在列属性中，是不会起任何作用的。
+                 使用rowStyler来实现对datagrid行样式进行修改 对列表中部门id 小于4 的行，背景显示为灰色，其余行的背景显示为黄色。
+            */
+            function rowStyleFormatter(value , record , index){
+                if(record.deptId < 4){
+                    return 'background:gray';
+                }else{
+                    return 'background:yellow';
+                }
+            }
+
+            function stylerFormatter(value , record , index){
+                if(value == "default.jpg"){
+                    return 'color:blue';
+                }else{
+                    return 'color:red';
+                }
+            }
+
+
+
 
     </script>
 </body>
