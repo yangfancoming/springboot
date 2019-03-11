@@ -11,19 +11,19 @@
             $('#userList').datagrid({
                 url:'/user/list', method: 'get',pagination: true,
                 columns:[ [ // fuck 这里的 两个 中括号 是必须要 分开的 否则 thymeleaf 加载 js 时会报错
-                    {field:'userId',title:'代码'},
-                    {field:'username',title:'代码'},
-                    {field:'deptId',title:'代码'},
-                    {field:'deptName',title:'代码'},
-                    {field:'email',title:'代码'},
-                    {field:'mobile',title:'代码'},
-                    {field:'status',title:'名称'},
-                    {field:'crateTime',title:'名称'},
-                    {field:'modifyTime',title:'名称'},
-                    {field:'lastLoginTime',title:'名称'},
-                    {field:'ssex',title:'名称'},
-                    {field:'avatar',title:'名称'},
-                    {field:'description',title:'名称'},
+                    {field:'userId',title:'编号',checkbox:true}, // 给表格添加复选框
+                    {field:'username',title:'用户名',align:'center'},
+                    {field:'deptId',title:'部门编号',align:'center'},
+                    {field:'deptName',title:'部门名称',align:'center'},
+                    {field:'email',title:'Email',align:'center'},
+                    {field:'mobile',title:'手机',align:'center'},
+                    {field:'status',title:'状态',align:'center'},
+                    {field:'crateTime',title:'创建时间',align:'center'},
+                    {field:'modifyTime',title:'修改时间',align:'center'},
+                    {field:'lastLoginTime',title:'最后登录',align:'center'},
+                    {field:'ssex',title:'性别',align:'center'},
+                    {field:'avatar',title:'头像',align:'center'},
+                    {field:'description',title:'备注',align:'center'},
                 ] ],
 
             });

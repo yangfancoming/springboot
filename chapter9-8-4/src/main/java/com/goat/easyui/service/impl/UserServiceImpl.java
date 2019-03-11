@@ -47,6 +47,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     public Page<User> findByPage(Integer pageNo, Integer pageSize) {
         PageHelper.startPage(pageNo,pageSize);
+//        PageHelper.startPage(2,20);
         return userMapper.findByPage();
     }
 }

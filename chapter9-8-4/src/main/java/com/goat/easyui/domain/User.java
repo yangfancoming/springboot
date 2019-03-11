@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -68,13 +69,18 @@ public class User implements Serializable {
     private String status = STATUS_VALID;
 
     @TableField(value = "CRATE_TIME")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date crateTime;
 
     @TableField(value = "MODIFY_TIME")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date modifyTime;
 
-    @TableField(value = "LAST_LOGIN_TIME")
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date lastLoginTime;
+
+    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
+    private Date birthday;
 
     @TableField(value = "SSEX")
     private String ssex;
@@ -91,7 +97,15 @@ public class User implements Serializable {
     @TableField(exist = false)
 	private String roleName;
 
-	/**
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    /**
 	 * @return USER_ID
 	 */
 	public Long getUserId() {
