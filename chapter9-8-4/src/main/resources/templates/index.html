@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>后台管理系统</title>
+    <meta charset="utf-8">
     <link th:href="@{/themes/default/easyui.css}" rel="stylesheet"/>
     <link th:href="@{/themes/icon.css}" rel="stylesheet"/>
     <link th:href="@{/themes/common.css}" rel="stylesheet"/>
@@ -19,7 +20,26 @@
     <div data-options="region:'east',iconCls:'icon-reload',title:'East',split:true" style="width:100px;"></div>
 
     <div data-options="region:'west',title:'左侧导航',split:true" style="width:200px;">
-        <ul id="myTree"></ul>
+
+        <div class="easyui-accordion" fit="true" id="navmenu">
+            <!--<div title="指标体系">-->
+                <!--<ul class="navmenu">-->
+                    <!--<li class="active"><a href="#">首页</a></li>-->
+                    <!--<li><a href="#" data-url="html/page01.html">组织机构管理</a></li>-->
+                    <!--<li><a href="#" data-url="html/page02.html">指标库列表</a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <!--<div title="绩效考核"></div>-->
+            <!--<div title="报表管理"></div>-->
+            <!--<div title="系统管理"></div>-->
+            <!--<div title="组件示例">-->
+                <!--<ul class="navmenu">-->
+                    <!--<li><a href="#" data-url="html/demo01.html">锁定行和列</a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        </div>
+
+        <!--<ul id="myTree"></ul>-->
     </div>
 
     <div data-options="region:'center',title:'主体内容'" style="padding:5px;background:#eee;">
@@ -49,7 +69,9 @@
      *   url:'/menu/tree'   请求后台数据
      */
     $(function () {
-        $('#myTree').tree({
+
+        /**    不使用 手风琴插件  而直接使用 tree 来显示 左侧菜单的方式   样式有点low .....
+         $('#myTree').tree({
             method: 'get', animate: true,
             lines: true,
             url:'/menu/tree2',
@@ -72,6 +94,54 @@
                 return data.data;
             }
         });
-    })
+        */
+
+
+        $.ajax({
+            type : 'GET', dataType : "json", url : '/menu/getMenusById/0',
+            success : function(data) {
+                $.each(data.rows, function(i, n) { //加载父类节点即一级菜单
+                    if (i == 0) {//显示第一个一级菜单下的二级菜单   selected : true,
+                        $('#navmenu').accordion('add', {
+                            title : n.text,iconCls : n.iconCls,selected : true,
+                            content : '<div style="padding:10px"><ul name="'+n.text+'"></ul></div>',
+                        });
+                    }else {
+                        $('#navmenu').accordion('add', { //  selected : false,
+                            title : n.text,iconCls : n.iconCls,selected : false,
+                            content : '<div style="padding:10px"><ul name="'+n.text+'"></ul></div>',
+                        });
+                    }
+                });
+            }
+        });
+
+    });
+
+    //异步加载子节点，即二级菜单
+    $('#navmenu').accordion({
+        onSelect : function(title, index) { // title 系统管理 系统监控 ...  index 0 1 2 ....
+            $("ul[name='" + title + "']").tree({
+                url : '/menu/getMenusByName/'+ title,animate : true,lines : true,method: 'get',
+                onClick: function(node){// 在用户点击一个子节点即二级菜单时触发addTab()方法,用于添加tabs
+                    var myTab = $('#myTab');
+                    // 禁止重复打开选项卡
+                    if(myTab.tabs('getTab',node.text) != null) {
+                        myTab.tabs('select',node.text); return;
+                    }
+                    // 添加选项卡 sos href 只能引入 <body> 标签内的内容 所以 <script> 内的脚本 必须写在 <body> 标签内 因此，被引用页面 只写<body> 标签
+                    myTab.tabs('add',{
+                        title: node.text,closable:true,
+                        href:node.url, // 从URL加载远程数据内容填充到选项卡面板  对应 后台 MyMvcConfig url 页面跳转映射
+                    });
+                },
+                loadFilter: function(data){
+                    return data.rows;
+                }
+            });
+        }
+    });
+
+
 
 </script>

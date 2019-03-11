@@ -38,6 +38,8 @@
     <script >
             $('#userList').datagrid({
                 url:'/user/list', method: 'get',pagination: true,rowStyler:rowStyleFormatter,toolbar:'#toolbar2',
+                striped:true,rownumbers:true,
+                fit:true,// 想easyui占满容器要配置panel的fit属性
                 columns:[ [ // fuck 这里的 两个 中括号 是必须要 分开的 否则 thymeleaf 加载 js 时会报错
                     {field:'userId',title:'编号',checkbox:true}, // 给表格添加复选框
                     {field:'username',title:'用户名',align:'center'},

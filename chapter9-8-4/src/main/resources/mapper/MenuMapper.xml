@@ -17,9 +17,14 @@
 
 
 
-    <select id="findMenu1" resultType="com.goat.easyui.domain.Menu">
-        select * from t_menu where PARENT_ID = 0
+    <select id="getMenusById" parameterType="Integer" resultType="com.goat.easyui.domain.Menu">
+        select * from t_menu where PARENT_ID = #{userId}
     </select>
+
+    <select id="getMenusByName" parameterType="String" resultType="com.goat.easyui.domain.Menu">
+        select * from t_menu where  PARENT_ID = (select MENU_ID from t_menu where MENU_NAME = #{MenuName})
+    </select>
+
 
   <select id="findUserPermissions" resultType="com.goat.easyui.domain.Menu">
   	select m.perms from t_role r

@@ -18,7 +18,8 @@ public interface IMenuService extends IService<Menu> {
 
 //	Tree<Menu> getMenuButtonTree();
 //
-	List<Menu> getMenuTree();
+	List<Menu> getMenusById(Integer id);
+    List<Menu> getMenusByName(String menuName);
 	List<Menu> testMenuList();
 
 

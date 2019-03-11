@@ -7,9 +7,7 @@ import com.goat.easyui.resultmodel.RestResult;
 import com.goat.easyui.resultmodel.ResultGenerator;
 import com.goat.easyui.service.IMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,15 +31,21 @@ public class MenuController   {
 	@RequestMapping("/getMenu/{id}")
 	public RestResult getMenu(@PathVariable(name = "id") Long id) {
         Menu menu = menuService.getById(id);
-        return generator.getSuccessResult("查询单个菜单成功",menu,1);
+        return generator.getSuccessResult("查询顶级菜单成功",menu,1);
 	}
 
-    // http://localhost:8984/menu/tree
-    @RequestMapping("/tree")
-    public RestResult tree() {
-        PageHelper.startPage(1, 10);
-        List<Menu> menuTree = menuService.getMenuTree();
-        return generator.getSuccessUiResult("查询树成功",menuTree,menuTree.size());
+    // http://localhost:8984/menu/getParentMenus/0
+    @GetMapping("/getMenusById/{id}")
+    public RestResult tree(@PathVariable Integer id) {
+        List<Menu> menuTree = menuService.getMenusById(id);
+        return generator.getSuccessUiResult("查询顶级菜单成功",menuTree,menuTree.size());
+    }
+
+    // http://localhost:8984/menu/getMenusByName/我的
+    @GetMapping("/getMenusByName/{menuName}")
+    public RestResult tree(@PathVariable String menuName) {
+        List<Menu> menuTree = menuService.getMenusByName(menuName);
+        return generator.getSuccessUiResult("查询顶级菜单成功",menuTree,menuTree.size());
     }
 
     // http://localhost:8983/menu/tree2

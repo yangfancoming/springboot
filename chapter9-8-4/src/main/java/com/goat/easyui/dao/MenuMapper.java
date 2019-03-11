@@ -10,5 +10,6 @@ public interface MenuMapper extends SuperMapper<Menu> {
 	
 
 	List<Menu> findUserMenus(String userName);
-    List<Menu> findMenu1();
+    List<Menu> getMenusById(Integer id);
+    List<Menu> getMenusByName(String menuName);
 }

@@ -22,12 +22,17 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 	private MenuMapper menuMapper;
 
     @Override
-    public List<Menu> getMenuTree() {
-        List<Menu> menu = menuMapper.findMenu1();
+    public List<Menu> getMenusById(Integer id) {
+        List<Menu> menu = menuMapper.getMenusById(id);
         return menu;
     }
 
-	@Override
+    @Override
+    public List<Menu> getMenusByName(String menuName) {
+        return menuMapper.getMenusByName(menuName);
+    }
+
+    @Override
 	public List<Menu> findUserMenus(String userName) {
 		return menuMapper.findUserMenus(userName);
 	}
