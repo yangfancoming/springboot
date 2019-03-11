@@ -20,7 +20,7 @@ public interface IMenuService extends IService<Menu> {
 //
 	List<Menu> getMenusById(Integer id);
     List<Menu> getMenusByName(String menuName);
-	List<Menu> testMenuList();
+	List<Menu> getRecursiveMenu();
 
 
 //

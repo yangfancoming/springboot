@@ -48,12 +48,12 @@ public class MenuController   {
         return generator.getSuccessUiResult("查询顶级菜单成功",menuTree,menuTree.size());
     }
 
-    // http://localhost:8983/menu/tree2
-    @RequestMapping("/tree2")
-    public RestResult test() {
-        List<Menu> menus = menuService.testMenuList();
+    // http://localhost:8983/getRecursiveMenu
+    @RequestMapping("/getRecursiveMenu")
+    public RestResult getRecursiveMenu() {
+        List<Menu> menus = menuService.getRecursiveMenu();
 //        System.out.println(haha);
-        return generator.getSuccessResult("查询菜单列表成功",menus,1);
+        return generator.getSuccessUiResult("查询菜单列表成功",menus,1);
     }
 
 

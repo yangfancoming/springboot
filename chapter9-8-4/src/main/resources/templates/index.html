@@ -97,7 +97,9 @@
         */
 
 
-        $.ajax({
+        /**  使用 手风琴插件  异步加载 左侧菜单
+
+         $.ajax({
             type : 'GET', dataType : "json", url : '/menu/getMenusById/0',
             success : function(data) {
                 $.each(data.rows, function(i, n) { //加载父类节点即一级菜单
@@ -116,10 +118,10 @@
             }
         });
 
-    });
+         });
 
-    //异步加载子节点，即二级菜单
-    $('#navmenu').accordion({
+         //异步加载子节点，即二级菜单
+         $('#navmenu').accordion({
         onSelect : function(title, index) { // title 系统管理 系统监控 ...  index 0 1 2 ....
             $("ul[name='" + title + "']").tree({
                 url : '/menu/getMenusByName/'+ title,animate : true,lines : true,method: 'get',
@@ -140,6 +142,52 @@
                 }
             });
         }
+        .
+         */
+
+
+        // 使用手风琴 插件  同步加载 左侧菜单 方法
+        $.ajax({
+            type : 'GET', dataType : "json", url : '/menu/getRecursiveMenu',
+            success : function(data) {
+                data = data.rows;
+                $.each(data, function(i, n) {// 加载父类节点及一级菜单
+                    var id = n.id;
+                    $('#navmenu').accordion('add', {
+                        title : n.text,iconCls : n.iconCls,selected : true,
+                        content : '<div style="padding:10px"><ul id="tree-'+ id + '" name="'+n.text+'"></ul></div>'
+                    });
+
+                    $.parser.parse(); // 解析整个页面
+
+                    if (!n.children || n.children.length == 0) {   // 第二层生成树节点
+                        return true;
+                    }
+                    $("#tree-" + id).tree({
+                        data : n.children, animate : true,
+                        lines : true,// 显示虚线效果
+                        onClick : function(node) {
+                            var myTab = $('#myTab');
+                            if(myTab.tabs('getTab',node.text) != null) { // 禁止重复打开选项卡
+                                myTab.tabs('select',node.text); return;
+                            }
+                            // 添加选项卡 sos href 只能引入 <body> 标签内的内容 所以 <script> 内的脚本 必须写在 <body> 标签内 因此，被引用页面 只写<body> 标签
+                            myTab.tabs('add',{
+                                title: node.text,closable:true,
+                                href:node.url, // 从URL加载远程数据内容填充到选项卡面板  对应 后台 MyMvcConfig url 页面跳转映射
+                            });
+                        }
+                    });
+                });
+            }
+        });
+
+
+
+
+
+
+
     });
 
 

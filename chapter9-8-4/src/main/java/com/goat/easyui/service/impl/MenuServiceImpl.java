@@ -43,7 +43,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
 
 
     @Override
-    public List<Menu> testMenuList() {
+    public List<Menu> getRecursiveMenu() {
         // 原始的数据
         List<Menu> rootMenu = menuMapper.selectList(null);
         // 最后的结果
