@@ -29,8 +29,13 @@ import java.util.Date;
  * “W”字符只能用在月份字段中，该字段指定了离指定日期最近的那个星期日。
  * “#”字符只能用在星期字段，该字段指定了第几个星期value在某月中
  */
-@Service
+//@Service
 public class EmpServiceImpl   {
+
+    @Scheduled(fixedRate = 5 * 1000)
+    public void test0() {
+        System.out.println("固定每5秒执行一次");
+    }
 
     @Scheduled(fixedRate = 5 * 1000)
     public void test() {
