@@ -18,6 +18,7 @@ public class StatemachineMonitor {
     @OnTransition(target = "UNPAID")
     public void create() {
         logger.info("订单创建，待支付");
+        throw new RuntimeException("123");
     }
 
     @OnTransition(source = "UNPAID", target = "WAITING_FOR_RECEIVE")

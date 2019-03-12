@@ -49,6 +49,18 @@ public class TestController {
         stateMachine.sendEvent(Events.RECEIVE);
         stateMachine.stop();  // 停止状态机
     }
+
+    //    http://localhost:8626/test/test6
+    @RequestMapping("/test6")
+    public void test6()   {
+
+        for (int i = 0; i < 3; i++) {
+            stateMachine.start();
+            stateMachine.sendEvent(Events.PAY);
+            stateMachine.sendEvent(Events.RECEIVE);
+            stateMachine.stop();  // 停止状态机
+        }
+    }
 }
 /**
  *         stateMachine.start();

@@ -26,6 +26,19 @@ public class TestController {
         stateMachine2.sendEvent(RegEventEnum.REGISTER_SUCCESS);
         stateMachine2.sendEvent(RegEventEnum.UN_REGISTER);
         stateMachine2.sendEvent(RegEventEnum.CONNECT);
+    }
+
+    //    http://localhost:8625/test/test3
+    @RequestMapping("/test3")
+    public void test3()   {
+        for (int i = 0; i < 3; i++) {
+            stateMachine2.start();
+            stateMachine2.sendEvent(RegEventEnum.CONNECT);
+            stateMachine2.sendEvent(RegEventEnum.REGISTER);
+            stateMachine2.sendEvent(RegEventEnum.REGISTER_SUCCESS);
+            stateMachine2.sendEvent(RegEventEnum.UN_REGISTER);
+            stateMachine2.sendEvent(RegEventEnum.CONNECT);
+        }
 
     }
 }

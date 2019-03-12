@@ -115,7 +115,7 @@ public class TestNG {
 
         // 按照某个属性分组  后  再 计算分组中 按照价格属性 求每个分组 价格属性之和！
         Map<Integer, List<Coupon>> resultList1 = couponList.stream().collect(Collectors.groupingBy(Coupon::getCouponId));
-        for (int i = 1; i <= resultList1.size(); i++) { // Map循环必须要从1开始！！！
+        for (int i = 1; i <= resultList1.size(); i++) { // Map循环必须要从1开始！！！ doit 不是吧？
             int sum = resultList1.get(i).stream().mapToInt(Coupon::getPrice).sum();
             System.out.println(sum);
         }
