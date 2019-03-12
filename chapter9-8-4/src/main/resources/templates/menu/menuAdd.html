@@ -1,25 +1,11 @@
-<!--private Long userId;-->
-<!--private String username;-->
-<!--private String password;-->
-<!--private Long deptId;-->
-<!--private String deptName;-->
-<!--private String email;-->
-<!--private String mobile;-->
-<!--private String status = STATUS_VALID;-->
-<!--private Date crateTime;-->
-<!--private Date modifyTime;-->
-<!--private Date lastLoginTime;-->
-<!--private String ssex;-->
-<!--private String theme;-->
-<!--private String avatar;-->
-<!--private String description;-->
+
 <div class="easyui-panel"   style="width:100%;padding:30px 60px;">
     <form id="ff" class="easyui-form" method="post" data-options="novalidate:true">
         <div style="margin-bottom:20px">
-            <input class="easyui-textbox" name="username" style="width:100%" data-options="label:'用户名：',required:true">
+            <input class="easyui-textbox" name="username" style="width:100%" data-options="label:'菜单名称：',required:true">
         </div>
         <div style="margin-bottom:20px">
-            <input class="easyui-textbox" name="password" style="width:100%" data-options="label:'密码：',required:true">
+            <input class="easyui-textbox" name="password" style="width:100%" data-options="label:'：',required:true">
         </div>
         <div style="margin-bottom:20px">
             <input class="easyui-textbox" name="email" style="width:100%" value="123@qq.com" data-options="label:'Email：',required:true,validType:'email'">
@@ -29,7 +15,7 @@
         </div>
 
         <div style="margin-bottom:20px">
-            <select class="easyui-combobox" name="ssex" label="性别：" data-options="editable:false" style="width:100%">
+            <select class="easyui-combobox" name="ssex" label="菜单类型：" data-options="editable:false" style="width:100%">
                 <option value="1">男</option>
                 <option value="0">女</option>
             </select>
@@ -47,15 +33,10 @@
 
 
 <script >
-    //关闭弹出框
-    // $("#saveBtn, #cancelBtn").click(function(e) {
-    //     e.preventDefault();
-    //     $("#dlg").dialog("close");
-    // });
 
     function submitForm(){
         $('#ff').form('submit',{
-            url:'/user/save', method: 'post',
+            url:'/menu/save', method: 'get',
             onSubmit:function(){             // do some check     return false to prevent submit;
                 return $(this).form('enableValidation').form('validate');
             },
@@ -63,6 +44,8 @@
                 alert(data)
             },
         });
+
+
     }
     function clearForm(){
         $('#ff').form('clear');
