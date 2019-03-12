@@ -1,22 +1,88 @@
 
 <body>
-
-    <form >
-        菜单管理菜单管理菜单管理菜单管理菜单管理菜单管理
+    <form>
+        <!-- 数据表工具栏 -->
+        <div class="toolbar" id="toolbar2">
+            <div class="search-div">
+                <label>员工编号：</label>
+                <input type="text" class="easyui-textbox" />
+                <label>用户名称：</label>
+                <input type="text" class="easyui-textbox" />
+                <a href="#" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
+            </div>
+        </div>
     </form>
 
-    <table id="dg"></table>
+    <div id="tbList" fit="true"></div>
 
     <script >
-            $('#dg').datagrid({
-                url:'/json/datagrid_data1.json', method: 'get',
-                // url:'/menu/list', method: 'get',
-                columns:[ [ // fuck 这里的 两个 中括号 是必须要 分开的 否则 thymeleaf 加载 js 时会报错
-                    {field:'productid',title:'代码',width:100},
-                    {field:'productname',title:'名称',width:100},
-                ] ]
+        $(function(){
+            $('#tbList').treegrid({
+                url: '/menu/getRecursiveMenu',method:'get', //请求方式
+                title: '菜单列表', rownumbers: true,animate: true,resizable: true,
+                idField:'id',           //定义标识树节点的键名字段
+                treeField:'text',       //定义树节点的字段
+                fit:true,               //网格自动撑满
+                fitColumns:true,        //设置为 true，则会自动扩大或缩小列的尺寸以适应网格的宽度并且防止水平滚动。
+                columns:[ [
+                    {field:'id',title:'编码',width:100},
+                    {field:'text',title:'名称',width:100},
+                    {field:'iconCls',title:'图标',width:100},
+                    {field:'state',title:'状态',width:100},
+                    {field:'_parentId',title:'所属父级',width:100,hidden: true},
+                ] ],
+                // frozenColumns: [ [
+                //     { field: 'iconCls', title: '图标', width: 200 }
+                // ] ],
+                toolbar: [{  text: "添加",iconCls: 'icon-add',handler: add },'-',
+                   { text: "修改",  iconCls: 'icon-edit',handler: modify }, '-',
+                   { text: "删除", iconCls: 'icon-remove',handler: remove}
+               ],
+                loadFilter: function(data){
+                    return data.rows;
+                }
             });
 
+
+            function add() {
+
+            }
+            function modify() {
+
+            }
+            function remove() {
+
+            }
+        });
     </script>
 </body>
+<!--_parentId （必须）：记得前面有“_” ，他是用来记录父级节点，没有这个属性，是没法展示父级节点-->
+<!--其次就是这个父级节点必须存在，不然信息也是展示不出来，在后台遍历组合的时候，如果父级节点不存在或为0时，此时 _parentId 应该不赋值。如果赋值 “0” 则显示不出来-->
+<!--state：是否展开-->
+<!--checked：是否选中（用于复选框）-->
+<!--iconCls：选项前面的图标，如果自己不设定，父级节点默认为文件夹图标，子级节点为文件图标-->
 
+
+
+<!--{-->
+<!--title: 'FormMethod', field: '请求方式', width: 80,-->
+<!--formatter: function (value, row, index) {-->
+<!--return new Object(row["FormMethodDictionary"]).Name;-->
+<!--}-->
+<!--},-->
+<!--{-->
+<!--title: 'OperationType', field: '操作类型', width: 80,-->
+<!--formatter: function (value, row, index) {-->
+<!--return new Object(row["OperationTypeDictionary"]).Name;-->
+<!--}-->
+<!--},-->
+<!--{-->
+<!--field: 'IsShow', title: '显示', width: 25, align: 'center', formatter: function (colData) {-->
+<!--return colData ? "√" : "X";-->
+<!--}-->
+<!--},-->
+<!--{-->
+<!--field: 'IsLink', title: '链接', width: 25, align: 'center', formatter: function (colData) {-->
+<!--return colData ? "√" : "X";-->
+<!--}-->
+<!--},-->

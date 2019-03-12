@@ -38,7 +38,7 @@ public class MenuController   {
     @GetMapping("/getMenusById/{id}")
     public RestResult tree(@PathVariable Integer id) {
         List<Menu> menuTree = menuService.getMenusById(id);
-        return generator.getSuccessUiResult("查询顶级菜单成功",menuTree,menuTree.size());
+        return generator.getSuccessUiResult("查询菜单ID成功",menuTree,menuTree.size());
     }
 
     // http://localhost:8984/menu/getMenusByName/我的
