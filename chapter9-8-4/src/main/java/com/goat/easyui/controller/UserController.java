@@ -9,6 +9,7 @@ import com.goat.easyui.resultmodel.RestResult;
 import com.goat.easyui.resultmodel.ResultGenerator;
 import com.goat.easyui.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -50,6 +51,14 @@ public class UserController {
         List<User> list = userService.findByPage(request.getPage(), request.getRows());
         PageInfo<User> pageInfo = new PageInfo<>(list);
         return generator.getSuccessUiResult("datang", pageInfo.getList(), pageInfo.getTotal());
+    }
+
+    // http://localhost:8984/user/list
+    @PostMapping("/save")
+    public RestResult saveUser(User user) {
+        boolean save = userService.save(user);
+        System.out.println(save);
+        return generator.getSuccessResult();
     }
 //
 //

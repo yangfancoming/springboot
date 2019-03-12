@@ -1,45 +1,3 @@
-
-<div class="easyui-panel"   style="width:100%;padding:30px 60px;">
-    <form id="ff" class="easyui-form" method="post" data-options="novalidate:true">
-        <div style="margin-bottom:20px">
-            <input class="easyui-textbox" name="name" style="width:100%" data-options="label:'用户名：',required:true">
-        </div>
-        <div style="margin-bottom:20px">
-            <input class="easyui-textbox" name="email" style="width:100%" data-options="label:'Email：',required:true,validType:'email'">
-        </div>
-        <div style="margin-bottom:20px">
-            <input class="easyui-textbox" name="subject" style="width:100%" data-options="label:'部门：',required:true">
-        </div>
-
-        <div style="margin-bottom:20px">
-            <select class="easyui-combobox" name="language" label="性别：" style="width:100%">
-                <option value="ar">男</option>
-                <option value="bg">女</option>
-            </select>
-        </div>
-
-        <div style="margin-bottom:20px">
-            <input class="easyui-textbox" name="message" style="width:100%;height:60px" data-options="label:'备注：',multiline:true">
-        </div>
-    </form>
-    <div style="text-align:center;padding:5px 0">
-        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" style="width:80px">提交</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()" style="width:80px">取消</a>
-    </div>
-</div>
-
-
-<script >
-    //关闭弹出框
-    $("#saveBtn, #cancelBtn").click(function(e) {
-        e.preventDefault();
-        $("#dlg").dialog("close");
-    });
-</script>
-
-
-
-
 <!--private Long userId;-->
 <!--private String username;-->
 <!--private String password;-->
@@ -55,3 +13,61 @@
 <!--private String theme;-->
 <!--private String avatar;-->
 <!--private String description;-->
+<div class="easyui-panel"   style="width:100%;padding:30px 60px;">
+    <form id="ff" class="easyui-form" method="post" data-options="novalidate:true">
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" name="username" style="width:100%" data-options="label:'用户名：',required:true">
+        </div>
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" name="password" style="width:100%" data-options="label:'密码：',required:true">
+        </div>
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" name="email" style="width:100%" value="123@qq.com" data-options="label:'Email：',required:true,validType:'email'">
+        </div>
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" name="deptName" style="width:100%" data-options="label:'部门：',required:true">
+        </div>
+
+        <div style="margin-bottom:20px">
+            <select class="easyui-combobox" name="ssex" label="性别：" data-options="editable:false" style="width:100%">
+                <option value="1">男</option>
+                <option value="0">女</option>
+            </select>
+        </div>
+
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" name="description" style="width:100%;height:60px" data-options="label:'备注：',multiline:true">
+        </div>
+    </form>
+    <div style="text-align:center;padding:5px 0">
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" style="width:80px">提交</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()" style="width:80px">取消</a>
+    </div>
+</div>
+
+
+<script >
+    //关闭弹出框
+    // $("#saveBtn, #cancelBtn").click(function(e) {
+    //     e.preventDefault();
+    //     $("#dlg").dialog("close");
+    // });
+
+    function submitForm(){
+        $('#ff').form('submit',{
+            url:'/user/save', method: 'post',
+            onSubmit:function(){             // do some check     return false to prevent submit;
+                return $(this).form('enableValidation').form('validate');
+            },
+            success:function(data){
+                alert(data)
+            },
+        });
+
+
+    }
+    function clearForm(){
+        $('#ff').form('clear');
+        $("#dlg").dialog("close");
+    }
+</script>
