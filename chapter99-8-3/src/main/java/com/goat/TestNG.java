@@ -3,6 +3,7 @@ package com.goat;
 
 import org.testng.annotations.Test;
 
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -90,18 +91,24 @@ public class TestNG {
      */
     @Test
     public void te11st1() {
-        Foo foo1 = new Foo(1, 2);
-        Foo foo2 = new Foo(2, 23);
-        Foo foo3 = new Foo(2, 6);
-        List<Foo> list = new ArrayList<>(4);
-        list.add(foo1);
-        list.add(foo2);
-        list.add(foo3);
+        Foo foo1 = new Foo(1, 1);
+        Foo foo2 = new Foo(1, 2);
+        Foo foo3 = new Foo(2, 3);
+        Foo foo4 = new Foo(2, 4);
+        Foo foo5 = new Foo(3, 5);
+        Foo foo6 = new Foo(3, 6);
+        List<Foo> list = Arrays.asList(foo1,foo2,foo3,foo4,foo5,foo6);
+
         Map<Integer, IntSummaryStatistics> collect = list.stream().collect(Collectors.groupingBy(Foo::getCode, Collectors.summarizingInt(Foo::getCount)));
-        IntSummaryStatistics statistics1 = collect.get(1);
-        IntSummaryStatistics statistics2 = collect.get(2);
-        System.out.println(statistics1); // 包含  getSum 总和  getAverage 平均值  getMax getMin getCount
-        System.out.println(statistics2);
+        Set<Integer> sets = collect.keySet();
+        for (Object key : sets ){
+            long sum = collect.get(key).getSum();
+            System.out.println(sum);
+        }
+//        IntSummaryStatistics statistics1 = collect.get(1);
+//        IntSummaryStatistics statistics2 = collect.get(2);
+//        System.out.println(statistics1); // 包含  getSum 总和  getAverage 平均值  getMax getMin getCount
+//        System.out.println(statistics2);
 
     }
 

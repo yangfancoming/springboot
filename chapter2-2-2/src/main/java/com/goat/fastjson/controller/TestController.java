@@ -3,10 +3,16 @@ package com.goat.fastjson.controller;
 import com.alibaba.fastjson.JSON;
 import com.goat.fastjson.entity.Person;
 import com.goat.fastjson.entity.TestUser;
+import com.goat.fastjson.utils.JsonUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import sun.misc.IOUtils;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -49,5 +55,22 @@ public class TestController {
         String jsonOutput = JSON.toJSONString(listOfPersons);
         return jsonOutput;
     }
+/**
+ {
+ "age": 30,
+ "comment": "哈哈哈",
+ "name": "小明",
+ "sex": 1
+ }
+*/
+    // http://localhost:8222/test/test3
+    @GetMapping("/test3")
+    public void test3() throws IOException {
+        // 读取项目路径下的文件 json/person.json
+        Person person = JsonUtils.readJsonFromClassPath("person.json", Person.class);
+        System.out.println(person.toString());
+    }
+
+
 
 }

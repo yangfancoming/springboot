@@ -17,7 +17,11 @@ public class Person {
      
     @JSONField(name = "AGE")
     private int age;
- 
+
+    private String name;
+    private String comment;
+    private Integer sex;
+
     @JSONField(name = "FULL NAME" ,ordinal = 2)
     private String fullName;
  
@@ -35,6 +39,18 @@ public class Person {
     private String temp4;
 
 
+    public Person(int age, String name, String comment, Integer sex, String fullName, Date dateOfBirth, String temp1, String temp2, String temp3, String temp4) {
+        this.age = age;
+        this.name = name;
+        this.comment = comment;
+        this.sex = sex;
+        this.fullName = fullName;
+        this.dateOfBirth = dateOfBirth;
+        this.temp1 = temp1;
+        this.temp2 = temp2;
+        this.temp3 = temp3;
+        this.temp4 = temp4;
+    }
 
     public Person(int age, String fullName, Date dateOfBirth) {
         super();
@@ -51,6 +67,30 @@ public class Person {
         this.temp2 = temp2;
         this.temp3 = temp3;
         this.temp4 = temp4;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
     }
 
     public String getTemp1() {

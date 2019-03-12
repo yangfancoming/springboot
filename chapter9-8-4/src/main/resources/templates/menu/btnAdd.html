@@ -8,9 +8,9 @@
             <input class="easyui-textbox" name="password" style="width:100%" data-options="label:'权限标识：',required:true">
         </div>
         <div style="margin-bottom:20px">
-            <input class="easyui-textbox" name="password" style="width:100%" data-options="label:'上级菜单：',required:true">
+            <label for="myTreeGrid">上级菜单：</label>
+            <div id="myTreeGrid" fit="true" name="myTreeGrid" ></div>
         </div>
-
 
     </form>
     <div style="text-align:center;padding:5px 0">
@@ -33,10 +33,47 @@
             },
         });
 
-
     }
     function clearForm(){
         $('#ff').form('clear');
-        $("#dlg").dialog("close");
+        $("#btn_dlg").dialog("close");
     }
+
+
+    $(function(){
+        $('#myTreeGrid').tree({
+            method: 'get', animate: true,lines: true,
+            checkbox:true, onlyLeafCheck: true,
+            url:'/menu/getRecursiveMenu',
+            onClick: function(node){ // tree 节点 点击事件
+
+            },
+
+            loadFilter: function(data){ // 使用 loadFilter 函数处理来自Web Services 的JSON数据。
+                console.log(data,11111111)
+                return data.rows;
+            },
+
+        });
+
+        // $('#treegrid').treegrid({
+        //     url: '/menu/getRecursiveMenu',method:'get', //请求方式
+        //     idField:'id',           //定义标识树节点的键名字段
+        //     treeField:'text',       //定义树节点的字段
+        //     fit:true,               //网格自动撑满
+        //     columns:[ [
+        //         {field:'id',title:'编码'},
+        //         {field:'text',title:'名称'},
+        //         // {field:'iconCls',title:'图标'},
+        //         // {field:'state',title:'状态'},
+        //         {field:'_parentId',title:'所属父级',hidden: true},
+        //     ] ],
+        //
+        //     loadFilter: function(data){
+        //         console.log(data)
+        //         return data.rows;
+        //     }
+        // });
+
+    });
 </script>

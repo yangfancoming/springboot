@@ -5,13 +5,11 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.goat.entity.User;
+import com.goat.fastjson.entity.Person;
 import com.goat.fastjson.entity.School;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 /**
@@ -66,6 +64,14 @@ public class TestNG {
         String string = JSON.toJSONString(user);
         System.out.println(string);
     }
+    @Test
+    public static void javaBean2Json1() {
+        Person person = new Person(1, "2", new Date(), "3", "4", "5", "6");
+        String string = JSON.toJSONString(person);
+        System.out.println(string);
+    }
+
+
     @Test
     public static void javaBean2JsonObject() {
         User user = new User("17051801", "lucy");
