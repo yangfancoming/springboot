@@ -38,16 +38,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         return userMapper.findUserWithDept(user);
     }
 
-    /**
-     * 分页查询
-     * @param pageNo 页号
-     * @param pageSize 每页显示记录数
-     * @return
-     */
 
-    public Page<User> findByPage(Integer pageNo, Integer pageSize) {
-        PageHelper.startPage(pageNo,pageSize);
-//        PageHelper.startPage(2,20);
-        return userMapper.findByPage();
-    }
+
 }

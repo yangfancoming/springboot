@@ -16,6 +16,5 @@ import java.util.List;
 public interface IRoleService extends IService<Role> {
 
     List<Role> selectRoleList();
-    Page<Role> findByPage(Integer pageNo, Integer pageSize);
 
 }

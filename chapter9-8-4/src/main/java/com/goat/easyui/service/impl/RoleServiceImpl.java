@@ -26,9 +26,4 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
         return null;
     }
 
-
-    public Page<Role> findByPage(Integer pageNo, Integer pageSize) {
-        PageHelper.startPage(pageNo,pageSize);
-        return roleMapper.findByPage();
-    }
 }

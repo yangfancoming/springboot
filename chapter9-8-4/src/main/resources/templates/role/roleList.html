@@ -33,10 +33,10 @@
 
         $('#roleList').datagrid({
                 url:'/role/list', method: 'get',pagination: true,toolbar:'#toolbar2',
-                striped:true,rownumbers:true,
-                fit:true,// 想easyui占满容器要配置panel的fit属性
-                columns:[ [ // fuck 这里的 两个 中括号 是必须要 分开的 否则 thymeleaf 加载 js 时会报错
-                    {field:'roleId',title:'编号',checkbox:true}, // 给表格添加复选框
+                striped:true,rownumbers:true, fit:true,
+                columns:[ [
+                    {field:'123',checkbox:true,}, // 给表格添加复选框
+                    {field:'roleId',title:'编号',align:'center'},
                     {field:'roleName',title:'角色名称',align:'center'},
                     {field:'createTime',title:'创建时间',align:'center'},
                     {field:'modifyTime',title:'修改时间',align:'center'},
