@@ -55,7 +55,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
         return menuList;
     }
 
-    // P1=顶级菜单id=0  P2=所有记录（不含顶级菜单）
+    // P1=顶级菜单id=0  P2=所有记录（不含顶级菜单） P3=是否返回按钮菜单
     private List<Menu> getChild(Long id, List<Menu> collect) {
         List<Menu> childList = new ArrayList<>();  // 子菜单
         for (Menu menu : collect) {
@@ -66,7 +66,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
         }
         // 把子菜单的子菜单再循环一遍
         for (Menu menu : childList) {
-            if ( menu.getType().equals(0) ){ // 只要菜单 type=0 不要 按钮 type=1
+            if (menu.getType().equals(0) ){ // 只要菜单 type=0 不要 按钮 type=1
                 menu.setChildren(getChild(menu.getMenuId(), collect));  // 递归
             }
         }
