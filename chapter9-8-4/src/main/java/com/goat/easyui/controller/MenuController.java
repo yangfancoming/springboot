@@ -1,13 +1,15 @@
 package com.goat.easyui.controller;
 
 
-import com.github.pagehelper.PageHelper;
 import com.goat.easyui.domain.Menu;
 import com.goat.easyui.resultmodel.RestResult;
 import com.goat.easyui.resultmodel.ResultGenerator;
 import com.goat.easyui.service.IMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -48,7 +50,7 @@ public class MenuController   {
         return generator.getSuccessUiResult("查询顶级菜单成功",menuTree,menuTree.size());
     }
 
-    // http://localhost:8983/getRecursiveMenu
+    // http://localhost:8984/menu/getRecursiveMenu
     @RequestMapping("/getRecursiveMenu")
     public RestResult getRecursiveMenu() {
         List<Menu> menus = menuService.getRecursiveMenu();
