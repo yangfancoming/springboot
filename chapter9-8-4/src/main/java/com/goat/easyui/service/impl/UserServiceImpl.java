@@ -2,8 +2,6 @@ package com.goat.easyui.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import com.goat.easyui.dao.UserMapper;
 import com.goat.easyui.domain.User;
 import com.goat.easyui.service.IUserService;
@@ -20,7 +18,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
 	@Autowired
 	private UserMapper userMapper;
-
 
     @Override
     public List<User> selectUserList() {
