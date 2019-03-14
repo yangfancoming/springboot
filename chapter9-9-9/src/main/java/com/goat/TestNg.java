@@ -4,7 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -42,10 +42,15 @@ public class TestNg {
     @Test
     public void test2()  {
 
-        List<String> list = Arrays.asList("asd","dfc","3ds");
-        for (String str: list){
-            str = "11";
+        List<Person> list = new ArrayList<>();
+        list.add(new Person("111",111));
+        list.add(new Person("222",222));
+
+        for (Person temp : list){
+            temp.setAge(321);
         }
+
+
         System.out.println(list);
 
     }

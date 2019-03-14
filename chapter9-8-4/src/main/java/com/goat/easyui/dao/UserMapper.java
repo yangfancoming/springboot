@@ -13,7 +13,7 @@ public interface UserMapper extends SuperMapper<User> {
 
 	List<User> selectUserList();
 
-    Page<User> findByPage();
+//    Page<User> findByPage();
 
 	User findUserProfile(User user);
 

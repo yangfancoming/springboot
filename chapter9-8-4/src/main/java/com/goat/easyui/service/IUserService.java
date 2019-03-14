@@ -1,6 +1,7 @@
 package com.goat.easyui.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.github.pagehelper.Page;
 import com.goat.easyui.domain.User;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public interface IUserService extends IService<User> {
     User findByName(String userName);
     List<User> findUserWithDept(User user);
 
+    Page findByPage(Integer pageNo, Integer pageSize);
 
 
 }

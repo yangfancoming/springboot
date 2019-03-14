@@ -2,6 +2,8 @@ package com.goat.easyui.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.goat.easyui.dao.UserMapper;
 import com.goat.easyui.domain.User;
 import com.goat.easyui.service.IUserService;
@@ -34,7 +36,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     public List<User> findUserWithDept(User user) {
         return userMapper.findUserWithDept(user);
     }
-
+    @Override
+    public Page findByPage(Integer pageNo, Integer pageSize) {
+        PageHelper.startPage(pageNo,pageSize);
+        return userMapper.findByPage();
+    }
 
 
 }

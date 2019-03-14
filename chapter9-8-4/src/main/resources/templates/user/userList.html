@@ -3,7 +3,7 @@
 
     <form>
         <!-- 数据表工具栏 -->
-        <div class="toolbar" id="toolbar2">
+        <div class="toolbar" id="toolbar1">
             <div class="search-div">
                 <label>员工编号：</label>
                 <input type="text" class="easyui-textbox" />
@@ -32,7 +32,7 @@
         }
 
         $('#userList').datagrid({
-                url:'/user/list', method: 'get',pagination: true,rowStyler:rowStyleFormatter,toolbar:'#toolbar2',
+                url:'/user/list', method: 'get',pagination: true,rowStyler:rowStyleFormatter,toolbar:'#toolbar1',
                 striped:true,rownumbers:true,
                 fit:true,// 想easyui占满容器要配置panel的fit属性
                 columns:[ [ // fuck 这里的 两个 中括号 是必须要 分开的 否则 thymeleaf 加载 js 时会报错

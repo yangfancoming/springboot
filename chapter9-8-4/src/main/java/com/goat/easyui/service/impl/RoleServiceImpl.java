@@ -2,6 +2,8 @@ package com.goat.easyui.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.goat.easyui.dao.RoleMapper;
 import com.goat.easyui.domain.Role;
 import com.goat.easyui.service.IRoleService;
@@ -24,4 +26,10 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
         return null;
     }
 
+
+    @Override
+    public Page findByPage(Integer pageNo, Integer pageSize) {
+        PageHelper.startPage(pageNo,pageSize);
+        return roleMapper.findByPage();
+    }
 }

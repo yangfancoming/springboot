@@ -28,7 +28,8 @@
         $(function(){
             $('#tbList').treegrid({
                 url: '/menu/getRecursiveMenu',method:'get', //请求方式
-                title: '菜单列表', rownumbers: true,animate: true,resizable: true,striped:true,
+                // title: '菜单列表',
+                rownumbers: true,animate: true,resizable: true,striped:true,toolbar:'#toolbar2',
                 idField:'id',           //定义标识树节点的键名字段
                 treeField:'text',       //定义树节点的字段
                 fit:true,               //网格自动撑满

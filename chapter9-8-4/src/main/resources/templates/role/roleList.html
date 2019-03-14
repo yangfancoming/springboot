@@ -1,23 +1,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 
-    <form>
-        <!-- 数据表工具栏 -->
-        <div class="toolbar" id="toolbar2">
-            <div class="search-div">
-                <label>角色编号：</label>
-                <input type="text" class="easyui-textbox" />
-                <label>角色名称：</label>
-                <input type="text" class="easyui-textbox" />
-                <a href="#" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
-            </div>
-            <div class="ctrl-div">
-                <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" id="addBtn" onclick="role_add()">新增</a>
-                <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" id="editBtn">编辑</a>
-                <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true">批量删除</a>
-            </div>
+<form>
+    <!-- 数据表工具栏 -->
+    <div class="toolbar" id="toolbar3">
+        <div class="search-div">
+            <label>角色：</label>
+            <input type="text" class="easyui-textbox" />
+            <label>菜单名称：</label>
+            <input type="text" class="easyui-textbox" />
+            <a href="#" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
         </div>
-    </form>
+    </div>
+</form>
 
     <!--fuck  表格 -->
     <table id="roleList"></table>
@@ -32,7 +27,7 @@
         }
 
         $('#roleList').datagrid({
-                url:'/role/list', method: 'get',pagination: true,toolbar:'#toolbar2',
+                url:'/role/list', method: 'get',pagination: true,toolbar:'#toolbar3',
                 striped:true,rownumbers:true, fit:true,
                 columns:[ [
                     {field:'123',checkbox:true,}, // 给表格添加复选框
@@ -43,8 +38,24 @@
                     {field:'remark',title:'备注',align:'center'},
                     // {title:'操作',align:'center',formatter:operFormatter},
                 ] ],
+            toolbar: [{  text: "添加菜单",iconCls: 'icon-add',handler: add },'-',
+                { text: "添加按钮",  iconCls: 'icon-add',handler: addBtn }, '-',
+                { text: "修改",  iconCls: 'icon-edit',handler: modify }, '-',
+                { text: "删除", iconCls: 'icon-remove',handler: remove}
+            ],
             });
+        function add() {
+            $("#role_dlg").dialog("open");
+        }
 
+        function addBtn() {
+        }
+        function modify() {
+
+        }
+        function remove() {
+
+        }
     </script>
 </body>
 
