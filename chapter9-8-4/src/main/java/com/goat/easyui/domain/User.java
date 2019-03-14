@@ -68,7 +68,7 @@ public class User implements Serializable {
     @TableField(value = "STATUS")
     private String status = STATUS_VALID;
 
-    @TableField(value = "CRATE_TIME")
+    @TableField(value = "CREATE_TIME")
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date crateTime;
 

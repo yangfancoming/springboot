@@ -8,6 +8,7 @@ import com.goat.easyui.resultmodel.RestResult;
 import com.goat.easyui.resultmodel.ResultGenerator;
 import com.goat.easyui.service.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,13 +23,27 @@ public class RoleController  {
 	@Autowired
 	private IRoleService roleService;
 
-
+//    @RequestMapping("/list")
+//    public RestResult userList(QueryRequest request) {
+//        //        PageHelper.startPage(request.getPage(), request.getRows());
+//        List<User> list = userService.findByPage(request.getPage(), request.getRows());
+//        PageInfo<User> pageInfo = new PageInfo<>(list);
+//        return generator.getSuccessUiResult("datang", pageInfo.getList(), pageInfo.getTotal());
+//    }
     @RequestMapping("/list")
     @ResponseBody
     public RestResult roleList(QueryRequest request, Role role) {
         List<Role> list = roleService.findByPage(request.getPage(), request.getRows());
         PageInfo<Role> pageInfo = new PageInfo<>(list);
         return generator.getSuccessUiResult("datang", pageInfo.getList(), pageInfo.getTotal());
+    }
+
+    // http://localhost:8984/role/save
+    @PostMapping("/save")
+    public RestResult saveUser(Role role) {
+        boolean save = roleService.save(role);
+        System.out.println(save);
+        return generator.getSuccessResult();
     }
 //    @RequestMapping("/list")
 //    public RestResult userList(QueryRequest request) {

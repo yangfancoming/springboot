@@ -24,7 +24,7 @@
 
     function submitForm(){
         $('#ff').form('submit',{
-            url:'/menu/save', method: 'get',
+            url:'/menu/save', method: 'post',
             onSubmit:function(){             // do some check     return false to prevent submit;
                 return $(this).form('enableValidation').form('validate');
             },

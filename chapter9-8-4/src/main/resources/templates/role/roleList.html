@@ -1,5 +1,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
+<!--<div id="back_zjwh_datagrid_div"  style="padding-bottom:10px;background:#eee;" data-options=" fit:true" >-->
 
 <form>
     <!-- 数据表工具栏 -->
@@ -11,6 +12,11 @@
             <input type="text" class="easyui-textbox" />
             <a href="#" class="easyui-linkbutton" iconCls="icon-search">搜索</a>
         </div>
+        <div class="ctrl-div">
+            <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" id="addBtn" onclick="add()">新增</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" id="editBtn">编辑</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true">批量删除</a>
+        </div>
     </div>
 </form>
 
@@ -18,44 +24,50 @@
     <table id="roleList"></table>
 
     <!--fuck  对话框 -->
-    <div id="role_dlg"  class="easyui-dialog" title="新增/编辑"  style="width:420px;height:500px;padding:10px;"  cache="false"
+    <div id="role_dlg"  class="easyui-dialog" title="新增角色"  style="width:420px;height:300px;padding:10px;"  cache="false"
          data-options="modal:true,closed:true,resizable:true,iconCls:'icon-save',href:'role/add'" ></div>
+<!--</div>-->
 
     <script type="text/javascript">
-        function role_add(){
-            $("#role_dlg").dialog("open");
-        }
 
         $('#roleList').datagrid({
-                url:'/role/list', method: 'get',pagination: true,toolbar:'#toolbar3',
-                striped:true,rownumbers:true, fit:true,
-                columns:[ [
-                    {field:'123',checkbox:true,}, // 给表格添加复选框
-                    {field:'roleId',title:'编号',align:'center'},
-                    {field:'roleName',title:'角色名称',align:'center'},
-                    {field:'createTime',title:'创建时间',align:'center'},
-                    {field:'modifyTime',title:'修改时间',align:'center'},
-                    {field:'remark',title:'备注',align:'center'},
-                    // {title:'操作',align:'center',formatter:operFormatter},
-                ] ],
-            toolbar: [{  text: "添加菜单",iconCls: 'icon-add',handler: add },'-',
-                { text: "添加按钮",  iconCls: 'icon-add',handler: addBtn }, '-',
-                { text: "修改",  iconCls: 'icon-edit',handler: modify }, '-',
-                { text: "删除", iconCls: 'icon-remove',handler: remove}
-            ],
+            url:'/role/list', method: 'get',toolbar:'#toolbar3', // sos 每个页面的该属性 id 必须不能相同
+            striped:true,rownumbers:true, fit:true,
+            pagination: true,
+            columns:[ [
+                {field:'123',checkbox:true,}, // 给表格添加复选框
+                {field:'roleId',title:'编号',align:'center'},
+                {field:'roleName',title:'角色名称',align:'center'},
+                {field:'createTime',title:'创建时间',align:'center'},
+                {field:'modifyTime',title:'修改时间',align:'center'},
+                {field:'remark',title:'备注',align:'center'},
+                {field:'1323',title:'操作',align:'center',width:200,formatter:actions}, // sos 操作列 注意：必须要有 field属性 其值可以随便写 否则报错：Uncaught TypeError: Cannot read property 'width' of null
+            ] ],
+            // doit 妈的 这里不能使用这种工具栏 因为 一旦加上   分页栏就被顶到下面 看不见了。。。。
+            // toolbar: [{  text: "添加",iconCls: 'icon-add',handler: add },'-',
+            //     { text: "修改",  iconCls: 'icon-edit',handler: modify }, '-',
+            //     { text: "删除", iconCls: 'icon-remove',handler: remove}
+            // ],
             });
         function add() {
             $("#role_dlg").dialog("open");
         }
 
-        function addBtn() {
-        }
+
         function modify() {
 
         }
         function remove() {
 
         }
+        function actions(val,row,index){
+            return "<a href='javascript:void(0);' class='easyui-linkbutton l-btn l-btn-small' style='width:60px' onclick='edit(\""+row.id+"\")'>修改</a>&nbsp;&nbsp;"+
+                "<a href='javascript:void(0);' class='easyui-linkbutton l-btn l-btn-small' style='width:60px'  onclick='disableOne(\""+row.id+"\")'>禁用</a>";
+        }
+
+        // function actions(value , record , rowIndex){
+        //     return '<button onclick="getRowDataFromIndex('+rowIndex+');">编辑    </button>|<button onclick="getRowDataFromIndex('+rowIndex+');">删除 </button>';
+        // }
     </script>
 </body>
 
