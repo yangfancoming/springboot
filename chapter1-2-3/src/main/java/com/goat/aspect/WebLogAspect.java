@@ -15,6 +15,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
+import java.util.Enumeration;
 
 
 @Aspect
@@ -35,6 +36,12 @@ public class WebLogAspect {
         // 接收到请求，记录请求内容
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
+        Enumeration<String> pNames = request.getParameterNames(); // 获取请求参数
+        while (pNames.hasMoreElements()){
+            String s = pNames.nextElement();
+            String parameter = request.getParameter(s);
+            System.out.println(s + "---" + parameter);
+        }
         // 记录下请求内容
         logger.info("URL : " + request.getRequestURL().toString());
         logger.info("HTTP_METHOD : " + request.getMethod());

@@ -17,6 +17,9 @@ import org.springframework.stereotype.Component;
     4、第二个* 号：表示类名，* 号表示所有的类。
     5、*(..): 最后这个星号表示方法名，* 号表示所有的方法，后面括弧里面表示方法的参数，两个句点表示任何参数。
 
+private static final String aspect =  "execution(* com.goat.con123fig..*(..))";
+"execution(* com.goat.test..*(..))"   拦截 test 包下   （.. 当前test包及其所有子包 ）  *(..)中  * 任意方法名  (..) 任意参数
+
 （1）Before ---在所拦截方法执行前执行；
 （2）After  ---在所拦截方法执行后执行；
 （3）AfterRuturning   ---在所拦截方法返回值后，执行；
@@ -44,10 +47,6 @@ import org.springframework.stereotype.Component;
 @Component  // 定义组件
 public class AspectTest {
 
-//    private static final String aspect =  "execution(* com.goat.con123fig..*(..))";
-//"execution(* com.goat.test..*(..))"   拦截 test 包下   （.. 当前test包及其所有子包 ）  *(..)中  * 任意方法名  (..) 任意参数
-
-
     // 定义切入点
     @Before("execution(* com.goat.service..*(..))")
     public void myBefore(){
@@ -58,7 +57,6 @@ public class AspectTest {
     public void myBefore2(){
         System.out.println("哥是前置增强2。。。。。。。。。。。");
     }
-
 
     /**
          * @Description: 功能描述： 拦截指定方法
