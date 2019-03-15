@@ -14,7 +14,6 @@
         </div>
         <div class="ctrl-div">
             <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" id="addBtn" onclick="add()">新增</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" id="editBtn">编辑</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true">批量删除</a>
         </div>
     </div>
@@ -30,7 +29,7 @@
 
     <script type="text/javascript">
 
-        $('#roleList').datagrid({
+        var dataGrid = $('#roleList').datagrid({
             url:'/role/list', method: 'get',toolbar:'#toolbar3', // sos 每个页面的该属性 id 必须不能相同
             striped:true,rownumbers:true, fit:true,
             pagination: true,
@@ -41,33 +40,42 @@
                 {field:'createTime',title:'创建时间',align:'center'},
                 {field:'modifyTime',title:'修改时间',align:'center'},
                 {field:'remark',title:'备注',align:'center'},
-                {field:'1323',title:'操作',align:'center',width:200,formatter:actions}, // sos 操作列 注意：必须要有 field属性 其值可以随便写 否则报错：Uncaught TypeError: Cannot read property 'width' of null
+                {field:'operate',title:'操作',align:'center',width:200,formatter:actions}, // sos 操作列 注意：必须要有 field属性 其值可以随便写 否则报错：Uncaught TypeError: Cannot read property 'width' of null
             ] ],
             // doit 妈的 这里不能使用这种工具栏 因为 一旦加上   分页栏就被顶到下面 看不见了。。。。
             // toolbar: [{  text: "添加",iconCls: 'icon-add',handler: add },'-',
             //     { text: "修改",  iconCls: 'icon-edit',handler: modify }, '-',
             //     { text: "删除", iconCls: 'icon-remove',handler: remove}
             // ],
-            });
+            onLoadSuccess:function(data){
+                $("a[name='opera']").linkbutton({text:'编辑',plain:true,iconCls:'icon-add'});
+                $("a[name='opera1']").linkbutton({text:'删除',plain:true,iconCls:'icon-remove'});
+            }
+        });
         function add() {
             $("#role_dlg").dialog("open");
         }
-
-
-        function modify() {
-
-        }
-        function remove() {
-
-        }
-        function actions(val,row,index){
-            return "<a href='javascript:void(0);' class='easyui-linkbutton l-btn l-btn-small' style='width:60px' onclick='edit(\""+row.id+"\")'>修改</a>&nbsp;&nbsp;"+
-                "<a href='javascript:void(0);' class='easyui-linkbutton l-btn l-btn-small' style='width:60px'  onclick='disableOne(\""+row.id+"\")'>禁用</a>";
+        // val指当前单元格的值,row,当前行对象,index当前行的索引 '{0}'
+        function actions(val, row, index) {
+            var str =  $.formatString('<a href="#" name="opera" class="easyui-linkbutton" onclick="modify(\'{0}\')"></a>', row.roleId);
+            var str1 =  $.formatString('<a href="#" name="opera1" class="easyui-linkbutton" onclick="remove(\'{0}\')"></a>', row.roleId);
+            return str + str1;
         }
 
-        // function actions(value , record , rowIndex){
-        //     return '<button onclick="getRowDataFromIndex('+rowIndex+');">编辑    </button>|<button onclick="getRowDataFromIndex('+rowIndex+');">删除 </button>';
-        // }
+        function modify(val) {
+            console.log(val);
+        }
+        function remove(id) {
+            alert(id)
+        }
+
+        $.formatString = function(str) {
+            for ( var i = 0; i < arguments.length - 1; i++) {
+                str = str.replace("{" + i + "}", arguments[i + 1]);
+            }
+            return str;
+        };
+
     </script>
 </body>
 
