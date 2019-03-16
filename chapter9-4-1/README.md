@@ -40,3 +40,23 @@ docker run --name hello -p 8941:8941  b719b9a8835e
     功能为暴漏容器运行时的监听端口给外部，但是EXPOSE并不会使容器访问主机的端口
     如果想使得容器与主机的端口有映射关系，必须在容器启动的时候加上 -P参数     
     
+# 创建自定义网络 
+    docker network create --driver bridge --subnet 172.14.0.0/16 mysqlnet
+    报错：conflicts with network 961f6712a2403f634a2f7c06ee37db14600ec65c73aef3b51c50b28bdeb8e883 (br-961f6712a240): networks have overlapping IPv4
+    解决方法：
+    先用ip a命令检查network，看是否存在br-a36fdb655730的虚拟网卡。 如果有 则 删除虚拟网卡之后，再重启docker
+    删除虚拟网卡  虚拟网桥 
+    ifconfig br-961f6712a240 down
+    brctl delbr br-961f6712a240
+    
+    docker network rm  网桥ID
+    
+    linux brctl command not found
+    解决方法： yum install bridge-utils
+    
+    
+     
+     
+
+
+    
