@@ -8,10 +8,7 @@ import com.goat.easyui.resultmodel.RestResult;
 import com.goat.easyui.resultmodel.ResultGenerator;
 import com.goat.easyui.service.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,6 +40,18 @@ public class RoleController  {
     public RestResult saveUser(Role role) {
         boolean save = roleService.save(role);
         System.out.println(save);
+        return generator.getSuccessResult();
+    }
+    // http://localhost:8984/role/delete/66
+    @DeleteMapping("/deleteId/{id}")
+    public RestResult deleteById(@PathVariable Long id) {
+        roleService.removeById(id);
+        return generator.getSuccessResult();
+    }
+    // http://localhost:8984/role/delete/66
+    @DeleteMapping("/deleteIds/{ids}")
+    public RestResult deleteById(@PathVariable List<Long> ids) {
+        roleService.removeByIds(ids);
         return generator.getSuccessResult();
     }
 //    @RequestMapping("/list")
@@ -92,19 +101,9 @@ public class RoleController  {
 //		}
 //	}
 //
-//	@Log("删除角色")
-//	@RequiresPermissions("role:delete")
-//	@RequestMapping("role/delete")
-//	@ResponseBody
-//	public ResponseBo deleteRoles(String ids) {
-//		try {
-//			this.roleService.deleteRoles(ids);
-//			return ResponseBo.ok("删除角色成功！");
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			return ResponseBo.error("删除角色失败，请联系网站管理员！");
-//		}
-//	}
+
+
+
 //
 //	@Log("修改角色")
 //	@RequiresPermissions("role:update")
