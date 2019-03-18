@@ -1,7 +1,6 @@
 package com.goat.logstash.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,16 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
-    private final Logger logger = LoggerFactory.getLogger(getClass()) ;
-
-    //   http://localhost:8124/hello
+//    private final Logger logger = LoggerFactory.getLogger(getClass()) ;
+private org.apache.log4j.Logger logger = Logger.getLogger(getClass());
+    //   http://localhost:8125/hello
     @GetMapping("/hello")
     public String hello(){
         logger.debug("wahaha");
         return "wahaha";
     }
 
-    //   http://localhost:8124/hello2
+    //   http://localhost:8125/hello2
     @GetMapping("/hello2")
     public String hello2(){
        if (1>0)  throw new RuntimeException("123");

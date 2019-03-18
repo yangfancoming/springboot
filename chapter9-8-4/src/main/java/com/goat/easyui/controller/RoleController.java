@@ -20,13 +20,6 @@ public class RoleController  {
 	@Autowired
 	private IRoleService roleService;
 
-//    @RequestMapping("/list")
-//    public RestResult userList(QueryRequest request) {
-//        //        PageHelper.startPage(request.getPage(), request.getRows());
-//        List<User> list = userService.findByPage(request.getPage(), request.getRows());
-//        PageInfo<User> pageInfo = new PageInfo<>(list);
-//        return generator.getSuccessUiResult("datang", pageInfo.getList(), pageInfo.getTotal());
-//    }
     @RequestMapping("/list")
     @ResponseBody
     public RestResult roleList(QueryRequest request, Role role) {
@@ -54,13 +47,6 @@ public class RoleController  {
         roleService.removeByIds(ids);
         return generator.getSuccessResult();
     }
-//    @RequestMapping("/list")
-//    public RestResult userList(QueryRequest request) {
-//        //        PageHelper.startPage(request.getPage(), request.getRows());
-//        List<User> list = userService.findByPage(request.getPage(), request.getRows());
-//        PageInfo<User> pageInfo = new PageInfo<>(list);
-//        return generator.getSuccessUiResult("datang", pageInfo.getList(), pageInfo.getTotal());
-//    }
 
 	
 //	@RequestMapping("role/getRole")
