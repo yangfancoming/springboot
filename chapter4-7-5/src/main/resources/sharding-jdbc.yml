@@ -1,0 +1,22 @@
+dataSources:
+  db_master: !!com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    jdbcUrl: jdbc:mysql://172.16.163.135:3307/sphere?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    username: goat
+    password: 12345
+  db_slave: !!com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    jdbcUrl: jdbc:mysql://172.16.163.135:3308/sphere?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    username: goat
+    password: 12345
+masterSlaveRule:
+  name: db_ms
+  masterDataSourceName: db_master
+  slaveDataSourceNames: [db_slave]
+
+
+
+#  这份配置文档是从官方网站获取的，值得注意的是，在Sharding-JDBC的连接池配置中，需要自行手动指定具体数据库实现类，
+#  如上述的!!com.zaxxer.hikari.HikariDataSource（类名前面的两个感叹号不能去掉，那是代表实现类的意思）。
+#  另外由于不同的连接池可能对于数据库配置字段有所区别，比如HikariDataSource的配置数据库地址字段为jdbcUrl，
+#  需要根据实际情况修改上述配置文档的字段。这份配置文档可支持一主多从配置。配置好后将此yml文件放到与application.properties同个目录下。

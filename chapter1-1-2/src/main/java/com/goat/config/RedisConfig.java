@@ -31,9 +31,7 @@ public class RedisConfig extends CachingConfigurerSupport {
     该模板默认采用JdkSerializationRedisSerializer的二进制数据序列化方式，
     为了方便演示本示例采用Jackson2JsonRedisSerializer来序列化和反序列化redis的value值，
     使用StringRedisSerializer来序列化和反序列化redis的key值。
-
     */
-
 
     // 代码优化：  IDEA 建议 增加 private final
     private final StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
