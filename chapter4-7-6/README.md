@@ -1,0 +1,1 @@
+ #   database0作为主库，database1和database2作为从库。主库进行增删改操作，从库进行查询操作
