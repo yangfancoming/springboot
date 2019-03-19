@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.goat.model.MyTable;
 import com.goat.repository.MyTableRepository;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,6 +58,17 @@ public class TestController {
     public void test3(@RequestBody String jsonStr) throws IOException {
         JavaType type = mapper.getTypeFactory().constructParametricType(List.class, MyTable.class);
         List<MyTable> list = mapper.readValue(jsonStr, type);
+        System.out.println(list);
+    }
+
+    /**  如果 解析的实体类中 有日期字段  那么需要加上 setDateFormat("yyyy-MM-dd HH:mm:ss")
+        以为不同系统的 默认 日期格式 可能不同 eg： 2019年3月19日21:01:35 或者  2019-3-19 21:01:37  或者 2019/3/19 21:01:37
+        这样依赖  在linux系统部署后 如果日期不同 那么就会报错
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "test4", produces = MediaType.APPLICATION_JSON_VALUE)
+    public void test4(@RequestBody String result) {
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+        List<MyTable> list = gson.fromJson(result, new TypeToken<List<MyTable>>() {}.getType());
         System.out.println(list);
     }
 
