@@ -1,7 +1,6 @@
 package com.goat.task;
 
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
@@ -28,6 +27,15 @@ import java.util.Date;
  * “L”字符指定在月或者星期中的某天（最后一天）。即“Last ”的缩写。但是在星期和月中“Ｌ”表示不同的意思，如：在月子段中“L”指月份的最后一天-1月31日，2月28日，如果在星期字段中则简单的表示为“7”或者“SAT”。如果在星期字段中在某个value值得后面，则表示“某月的最后一个星期value”,如“6L”表示某月的最后一个星期五。
  * “W”字符只能用在月份字段中，该字段指定了离指定日期最近的那个星期日。
  * “#”字符只能用在星期字段，该字段指定了第几个星期value在某月中
+ *
+ * cron：cron表达式，指定任务在特定时间执行;
+ * fixedDelay：表示上一次任务执行完成后多久再次执行，参数类型为long，单位ms;
+ * fixedDelayString：与fixedDelay含义一样，只是参数类型变为String;
+ * fixedRate：表示按一定的频率执行任务，参数类型为long，单位ms;
+ * fixedRateString: 与fixedRate的含义一样，只是将参数类型变为String;
+ * initialDelay：表示延迟多久再第一次执行任务，参数类型为long，单位ms;
+ * initialDelayString：与initialDelay的含义一样，只是将参数类型变为String;
+
  */
 //@Service
 public class EmpServiceImpl   {

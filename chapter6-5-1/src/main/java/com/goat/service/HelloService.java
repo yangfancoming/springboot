@@ -1,5 +1,7 @@
 package com.goat.service;
 
+import org.springframework.stereotype.Service;
+
 /**
  * Created by 64274 on 2018/11/30.
  *
@@ -8,6 +10,7 @@ package com.goat.service;
  * @date 2018/11/30---13:19
  */
 // 这里没加  @service 注解哦
+@Service
 public class HelloService {
 
     public void hello(){

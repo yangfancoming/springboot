@@ -49,6 +49,16 @@ public class TestControler {
         return "启动计划任务！";
     }
 
+    // 异步任务测试   http://localhost:8651/asyn_test2
+    @GetMapping("/asyn_test2")
+    public String asyn_test2() throws Exception {
+        asyncTask.doTaskFour("wahaha");
+        for (int i = 0; i < 10; i++) {
+            asyncTask.doTaskFive();
+        }
+        return "启动计划任务！";
+    }
+
     @Autowired
     private SyncTask syncTask;
 
