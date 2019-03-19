@@ -6,15 +6,24 @@
 - ==chapter0-0-1 springboot 共享model==
 - ==chapter0-0-5 springboot Helloworld==
 - ==chapter0-0-6 springboot 自定义jar包==
-- ==chapter0-0-7 springboot 引入自定义jar包并以可运行jar方式启动==
+- ==chapter0-0-7 springboot 引入自定义jar包并以可运行jar方式启动 + SpringMVC 扩展==
 - ==chapter0-0-8 springboot 引入自定义jar包并以war包方式启动==
 - ==chapter0-1-0 springboot Utils 积累常用工具类==
 - ==chapter0-1-2 springboot 自定义banner==
 - ==chapter1-1-1 springboot 读取配置文件 +  获取bean的几种方式==
 - ==chapter1-1-2 springboot  javaconfig配置集合(其他模块共享该配置)==
+- ==chapter1-1-4 springboot  国际化 i18n==
+- ==chapter1-1-6 springboot 多环境profile打包 ==
+
+
+
+日志相关
+
 - ==chapter1-2-1 springboot  与 日志==
 - ==chapter1-2-3 springboot  与 日志 log4j + AOP统一处理请求日志==
-- ==chapter1-2-5 springboot  自定义starter==
+- ==chapter1-2-4 springboot  日志输出至Logstash xml方式==
+- ==chapter1-2-5 springboot  日志输出至Logstash  properties方式==    失败
+- ==chapter1-2-6 springboot  自定义starter==
 - ==chapter1-2-7 springboot  注解开发==
 - 
 
@@ -24,12 +33,12 @@
 
 
 
-日期和时间处理
+日期和时间处理  基于 restTemplate
 
 - ==chapter1-3-5 springboot  公共接口和model==
 - ==chapter1-3-6 springboot  生产者 Provider==
 - ==chapter1-3-7 springboot  消费者 Consumer==
-- 
+- ==chapter1-3-8 springboot  全局 日期格式处理==
 
 
 
@@ -51,7 +60,7 @@ Web开发
 - ==chapter2-1-6 springboot  中使用 Bootstrap + Thymeleaf==
 - ==chapter2-1-7 springboot  中使用 Bootstrap + AdminLTE 模板==
 - ==chapter2-1-8 springboot  集成 Kaptcha 验证码==
-- ==chapter2-2-1 springboot  集成 fastjson  相关操作总结==
+- ==chapter2-2-2 springboot  集成 fastjson  相关操作总结==
 - ==chapter2-2-3 springboot  集成 Jackson 相关操作总结==
 - ==chapter2-2-5 springboot  集成 Gson  相关操作总结==
 - ==chapter2-3-1 springboot  集成 WebSocket==
@@ -87,7 +96,7 @@ Web开发
 - ==chapter2-8-2 springboot  集成  JSP 中使用 百度地图==
 - ==chapter2-9-0 springboot  集成  前后台交互  方式 总结==
 - ==chapter2-9-3 springboot  集成  跨域==
-- 
+- ==chapter2-9-5 springboot  集成  Redis + Lua 限流==
 
 异常管理
 
@@ -143,6 +152,9 @@ AOP
 - ==chapter4-5-3：springboot 集成 MongoDB  使用 MongoRepository==
 - ==chapter4-6-0：springboot 集成 Oracle==
 - ==chapter4-7-0：springboot 集成 多数据源 基于 JPA和Mybatis==
+- ==chapter4-7-5：springboot 集成 mysql读写分离  基于 IO.shardingJDBC==
+- ==chapter4-7-6：springboot 集成 mysql读写分离  基于 DD.shardingJDBC==
+- ==chapter4-7-7：springboot 集成 mysql分库分表  基于 DD.shardingJDBC==
 
 
 
@@ -211,6 +223,10 @@ excel 相关操作
 - ==chapter7-5-6：springboot 集成 EasyPoi 操作Excel
 - chapter7-5-8：springboot 集成 Alibaba EasyExcel
 
+
+
+ 
+
 其他语言
 
 
@@ -223,12 +239,19 @@ excel 相关操作
 - ==chapter8-0-1：springboot 集成 Guava基础案例==
 - ==chapter8-0-3：springboot 集成 Groovy==
 - ==chapter8-0-5：springboot 集成 Lua==
+- ==chapter8-0-7：springboot 集成 Kotlin Web开发==
 - ==chapter8-0-8：springboot 集成 Kotlin==
 - ==chapter8-1-0：springboot 集成  阿里云短信==
 - ==chapter8-1-1：springboot 集成 Oss  使用阿里云存储==
 - ==chapter8-1-2：springboot 集成  Java调用 Lua脚本  通过LuaJava==
 - ==chapter8-1-4：springboot 集成  Java调用 Python脚本  通过命令行==
+
+
+
+文件上传/下载
+
 - ==chapter8-2-0：springboot 集成 FastDFS==
+- ==chapter8-2-3：springboot 实现 图片上传(加水印)==
 
 
 
@@ -258,7 +281,10 @@ excel 相关操作
 - ==chapter9-5-1：springboot 集成23种设计模式==
 - ==chapter9-5-5：springboot  代码重构 实例 ==
 - ==chapter9-6-1：springboot 集成 微信订阅号==
+- ==chapter9-8-0：springboot  dubbo 后台 为 Rbac 提供服务 ==
+- ==chapter9-8-1：springboot  dubbo  API    为 Rbac 提供服务 ==
 - ==chapter9-8-3：springboot 架构 Layui ==
+- ==chapter9-8-4：springboot 架构 Easyui==
   
 
 测试功能
