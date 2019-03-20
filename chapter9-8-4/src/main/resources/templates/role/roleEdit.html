@@ -1,6 +1,6 @@
 
 <div class="easyui-panel"   style="width:100%;padding:30px 60px;">
-    <form id="role_form" class="easyui-form" method="post" data-options="novalidate:true">
+    <form id="role_edit_form" class="easyui-form" method="post" data-options="novalidate:true">
         <div style="margin-bottom:20px">
             <input class="easyui-textbox" name="roleName" style="width:100%" data-options="label:'角色名称：',required:true">
         </div>
@@ -18,10 +18,14 @@
 
 
 <script >
+    // $(function () {
+    //     console.log(111111111111111)
+    // });
+
 
     function submitForm(){
         $('#role_form').form('submit',{
-            url:'/role/save', method: 'post',
+            url:'/role/edit', method: 'post',
             onSubmit:function(){             // do some check     return false to prevent submit;
                 return $(this).form('enableValidation').form('validate');
             },

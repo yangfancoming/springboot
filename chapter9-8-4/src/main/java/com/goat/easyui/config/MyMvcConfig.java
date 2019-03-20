@@ -20,6 +20,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
 
         registry.addViewController("/role").setViewName("role/roleList");
         registry.addViewController("/role/add").setViewName("role/roleAdd");
+        registry.addViewController("/role/edit").setViewName("role/ ");
     }
 
 }

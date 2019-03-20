@@ -52,6 +52,14 @@ public class RoleController  {
         return generator.getSuccessResult();
     }
 
+    @PutMapping("/edit/{id}")
+    public RestResult updateRole(@PathVariable Long id) {
+        Role role = roleService.getById(id);
+        System.out.println(role);
+        //        roleService.updateById(role);
+        return generator.getSuccessResult();
+    }
+
 	
 //	@RequestMapping("role/getRole")
 //	@ResponseBody
@@ -94,18 +102,4 @@ public class RoleController  {
 
 
 
-//
-//	@Log("修改角色")
-//	@RequiresPermissions("role:update")
-//	@RequestMapping("role/update")
-//	@ResponseBody
-//	public ResponseBo updateRole(Role role, Long[] menuId) {
-//		try {
-//			this.roleService.updateRole(role, menuId);
-//			return ResponseBo.ok("修改角色成功！");
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			return ResponseBo.error("修改角色失败，请联系网站管理员！");
-//		}
-//	}
 }
