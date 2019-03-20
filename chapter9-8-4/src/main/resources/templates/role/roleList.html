@@ -66,11 +66,17 @@
         function modify(val) {console.log(val); }
         function remove(id) { alert(id) }
 
+
+        // 删除功能
         function remove1(){
             var ids = [];
             var rows = $('#roleList').datagrid('getSelections');
             for(var i=0; i<rows.length; i++){
                 ids.push(rows[i].roleId);
+            }
+            if (ids.length == 0){
+                $.messager.alert('警告','请至少选择一条');
+                return
             }
 
             $.ajax({
@@ -79,7 +85,7 @@
                 contentType:"application/json",//设置请求参数类型为json字符串
                 data:JSON.stringify(ids),//将json对象转换成json字符串发送
                 success:function(result){
-                    console.log(result.msg);
+                    $('#roleList').datagrid('reload');//刷新
                 }
             });
         }

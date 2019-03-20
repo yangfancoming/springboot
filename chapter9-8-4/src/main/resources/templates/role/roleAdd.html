@@ -26,14 +26,13 @@
                 return $(this).form('enableValidation').form('validate');
             },
             success:function(data){
-                console.log(data)
-                console.log(data.code,11)
-                if (data.code==0){
+                var u = eval('('+data+')'); // eval() 函数可计算某个字符串，并执行其中的的 JavaScript 代码。
+                console.log(u.code,22)
+                if (u.code==0){
                     $("#role_dlg").dialog("close");
                 } else {
                     $.messager.alert('警告','删除失败！');
                 }
-
             },
         });
 

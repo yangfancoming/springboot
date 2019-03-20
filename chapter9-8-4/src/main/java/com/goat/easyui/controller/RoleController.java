@@ -35,12 +35,16 @@ public class RoleController  {
         System.out.println(save);
         return generator.getSuccessResult();
     }
+
+
     // http://localhost:8984/role/delete/66
     @DeleteMapping("/deleteId/{id}")
     public RestResult deleteById(@PathVariable Long id) {
         roleService.removeById(id);
         return generator.getSuccessResult();
     }
+
+
     // http://localhost:8984/role/delete/66
     @DeleteMapping("/deleteIds/{ids}")
     public RestResult deleteById(@PathVariable List<Long> ids) {
