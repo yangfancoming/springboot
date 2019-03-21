@@ -1,8 +1,8 @@
 
-package com.goat.A.A03;
+package com.goat.A.A03.example01;
 
 /**
- 大臣是天天要面见皇帝，今天见的皇帝和昨天的，前天不一样那就出问题了！
+可以看到 for循环 输出的 emperor 地址都是一样的
  */
 public class Minister {
 
@@ -10,6 +10,7 @@ public class Minister {
 		for (int day = 0; day < 3; day++) {
 			Emperor emperor = Emperor.getInstance();
 			emperor.say();
+            System.out.println(emperor);
 		}
 	}
 
