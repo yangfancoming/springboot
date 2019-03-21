@@ -30,7 +30,7 @@
 
     <!--fuck  编辑 对话框 -->
     <div id="role_edit_dlg"  class="easyui-dialog" title="编辑角色"  style="width:420px;height:300px;padding:10px;"  cache="false"
-         data-options="modal:true,closed:true,resizable:true,iconCls:'icon-save',href:'role/edit'" ></div>
+         data-options="modal:true,closed:true,resizable:true,iconCls:'icon-save'" ></div>
 <!--</div>-->
 
     <script type="text/javascript">
@@ -69,8 +69,14 @@
         }
 
         function modify(val) {
-            $("#role_edit_form").form('load',"/role/edit/"+val+"");
-            console.log(val,1111);
+            $.ajax({
+                url:"/role/edit/" + val,
+                type:"get", dataType:"json",
+                success:function(result){
+                    console.log(result,1111);
+                }
+            });
+
             $("#role_edit_dlg").dialog("open");
         }
         function remove(id) { alert(id) }
