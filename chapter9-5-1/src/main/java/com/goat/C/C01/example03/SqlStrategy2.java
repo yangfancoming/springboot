@@ -18,7 +18,6 @@ public class SqlStrategy2 implements SqlStrategy {
 			sql.append("'");
 			orNeed = true;
 		}
-		
 		return sql.toString();
 	}
 

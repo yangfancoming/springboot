@@ -9,15 +9,18 @@ public class TestNG {
 
     @Test
     public void test() {
+
         Context context;
-
-        context = new Context(new ConcreteStrategyA());
+        Strategy strategyA = new ConcreteStrategyA();
+        context = new Context(strategyA);
         context.contextInterface();
 
-        context = new Context(new ConcreteStrategyB());
+        Strategy strategyB = new ConcreteStrategyB();
+        context = new Context(strategyB);
         context.contextInterface();
 
-        context = new Context(new ConcreteStrategyC());
+        Strategy strategyC = new ConcreteStrategyC();
+        context = new Context(strategyC);
         context.contextInterface();
     }
 
