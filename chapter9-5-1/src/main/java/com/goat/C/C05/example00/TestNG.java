@@ -1,4 +1,4 @@
-package com.goat.C.C05;
+package com.goat.C.C05.example00;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
