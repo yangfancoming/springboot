@@ -3,7 +3,7 @@ package com.goat.C.C01.example01;
 
 import com.goat.C.C01.example01.hero.DiRenJie;
 import com.goat.C.C01.example01.hero.Hero;
-import com.goat.C.C01.example01.hero.LuBanQiHao;
+import com.goat.C.C01.example01.hero.LuBan;
 import com.goat.C.C01.example01.hero.XiangYu;
 import com.goat.C.C01.example01.skill.GunSkill;
 import com.goat.C.C01.example01.skill.SkillBehavior;
@@ -18,7 +18,7 @@ public class TestNG {
         mDi.performSkill();
         Hero mXiang = new XiangYu();
         mXiang.performSkill();
-        Hero mLu = new LuBanQiHao();
+        Hero mLu = new LuBan();
         mLu.performSkill();
     }
 

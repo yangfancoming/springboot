@@ -2,8 +2,6 @@ package com.goat.C.C01.example03;
 
 
 /**
- * @author Jeff Lee
- * @since 2015-7-19 19:45:57
  * 数据库操作工具类
  */
 public class QueryUtil {

@@ -2,9 +2,7 @@ package com.goat.C.C01.example03;
 
 
 /**
- * @author Jeff Lee
- * @since 2015-7-19 19:33:11
- * SQL策略实现类2 
+ * SQL策略实现类2
  */
 public class SqlStrategy2 implements SqlStrategy {
 

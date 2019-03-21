@@ -1,11 +1,7 @@
 package com.goat.C.C01.example03;
 
 
-/**
- * @author Jeff Lee
- * @since 2015-7-19 19:19:19
- * SQL策略实现类1 
- */
+/*** SQL策略实现类1 */
 public class SqlStrategy1 implements SqlStrategy {
 
 	@Override

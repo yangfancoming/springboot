@@ -14,13 +14,15 @@ public abstract class Hero {
     public SkillBehavior mBehavior;
 
     public Hero(){
-        System.out.print("英雄出生 ");
+        System.out.print("英雄出生");
     }
+
     public void performSkill(){
         if(mBehavior != null){
             mBehavior.useSkill();
         }
     }
+
     public void setSkillBehavior(SkillBehavior behavior){
         mBehavior = behavior;
     }

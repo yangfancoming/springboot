@@ -1,4 +1,4 @@
-package com.goat.C.C01.example02;
+package com.goat.C.C01.example00;
 
 /**
  * Created by 64274 on 2018/11/5.

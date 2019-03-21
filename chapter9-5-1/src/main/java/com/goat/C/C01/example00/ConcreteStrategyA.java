@@ -1,4 +1,4 @@
-package com.goat.C.C01.example02;
+package com.goat.C.C01.example00;
 
 /**
  * Created by 64274 on 2018/11/5.
@@ -7,9 +7,9 @@ package com.goat.C.C01.example02;
  * @Description: 封装了集体的算法和行为 继承于Strategy
  * @date 2018/11/5---9:25
  */
-public class ConcreteStrategyB implements Strategy {
+public class ConcreteStrategyA implements Strategy {
     @Override
     public void algorithmInterface() {
-        System.out.println("策略B的具体算法实现");
+        System.out.println("策略A的具体算法实现");
     }
 }

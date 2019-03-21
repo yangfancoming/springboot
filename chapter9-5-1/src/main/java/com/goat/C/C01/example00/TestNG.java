@@ -1,4 +1,4 @@
-package com.goat.C.C01.example02;
+package com.goat.C.C01.example00;
 
 
 import org.testng.annotations.Test;
