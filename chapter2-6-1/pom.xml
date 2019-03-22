@@ -27,6 +27,8 @@
     <build>
         <plugins>
             <!--设置maven-war-plugins插件，否则外部依赖无法打进war包-->
+            <!-- 但是 如果 指定目录下 没有 lib目录的话 package打包时会报错 failed: basedir E:\Code\J2EE_code\MySpringBoot\springboot\chapter2-6-1\lib does not exist -> [Help 1] -->
+            <!-- 解决方式 将下面代码注释掉-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
