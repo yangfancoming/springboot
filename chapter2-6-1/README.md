@@ -30,3 +30,11 @@
     Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[]]
      解决方法： 查看控制台 报警告 LogBack 和 log4j 两个日志冲突  因为在pom.xml文件中 早就已经解决过 该依赖冲突问题
      把 target 目录删除 重新启动项目后 OK！！！
+
+#  springboot 配置 外置Tomcat  打war 部署到 Tomcat 目录下 报错：
+    unable to register MBean
+    解决方法：  
+    spring.jmx.enabled=false 或
+    spring:
+      jmx:
+        enabled: false
