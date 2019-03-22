@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class JspController {
 
     //    http://localhost:8261/hello
+    // linux部署后   http://172.16.163.135:8080/123/hello
     @RequestMapping("/hello")
     @ResponseBody
     public String hello() {
+        System.out.println("哇哈哈，哇哈哈");
         return "hello jsp ";
     }
 
@@ -20,6 +22,7 @@ public class JspController {
     //    http://localhost:8261/A-01
     @RequestMapping("/A-01")
     public String A01() {
+        System.out.println("啦啦啦啦，啦啦啦啦");
         return "A-01";
     }
 

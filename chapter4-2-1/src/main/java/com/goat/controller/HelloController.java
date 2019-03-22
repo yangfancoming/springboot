@@ -21,6 +21,7 @@ public class HelloController {
 
     // sos 注入 @Service  工具类   值得借鉴
     @Autowired CommonNativeSqls commonNativeSqls;
+
     @Autowired
     public UserRepository userRepository;
     @PersistenceContext
