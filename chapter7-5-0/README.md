@@ -30,7 +30,7 @@
             <url>http://repo2.maven.org/maven2/</url>
         </mirror>
         
-# war和war exploded的区别 
+# war 和war exploded 的区别 
     （1）war 模式 这种可以称之为是发布模式，看名字也知道，这是先打成war包，再发布；
     （2）war exploded 模式 是直接把文件夹、jsp页面 、classes等等移到Tomcat 部署文件夹里面，进行加载部署。因此这种方式支持热部署，一般在开发的时候也是用这种方式。
     （3）在平时开发的时候，使用热部署的话，应该对Tomcat进行相应的设置，这样的话修改的jsp界面什么的东西才可以及时的显示出来。
