@@ -46,7 +46,7 @@
 
 Web开发
 
-- hapter2-0-0 springboot  中的SpringMVC  相关操作总结
+- ==chapter2-0-0 springboot  中的SpringMVC  相关操作总结
 - ==chapter2-0-2 springboot  打jar包方式的静态资源映射规则(webjars)==
 - ==chapter2-0-3 springboot  集成  servlet、Filter、 Listener、interceptor 的两种方式==
 - ==chapter2-0-4 springboot  集成  HttpSession==
@@ -187,6 +187,7 @@ AOP
 - ==chapter5-4-2：springboot 集成  SpringCloud eureka、Ribbon、feign、zuul 等全家桶==
 - ==chapter5-5-0：springboot 集成  SpringCloud  Alibaba==
 - ==chapter5-6-0：springboot 集成  Alibaba fescar==
+- ==chapter5-6-5：springboot 集成  Apollo 分布式配置中心==
 
 
 
@@ -206,9 +207,10 @@ AOP
 
 - ==chapter6-3-1：springboot 集成 Scheduled==
 - ==chapter6-4-1：springboot 集成 Quartz==
-- ==chapter6-5-1：springboot  异步任务==
+- ==chapter6-5-1：springboot  异步任务 @Async==
 - ==chapter6-5-5：springboot  重试机制==
 - ==chapter6-5-7：springboot  @Async与@Retryable结合==
+- ==chapter6-5-8：springboot  @Async与@Scheduled结合==
 - ==chapter6-6-0：springboot  Batch 批处理1 ==
 - ==chapter6-6-1：springboot  Batch 批处理2 ==
 - ==chapter7-3-1：springboot 集成 ElasticSearch  使用 JestClient 操作==
@@ -285,7 +287,13 @@ excel 相关操作
 - ==chapter9-8-1：springboot  dubbo  API    为 Rbac 提供服务 ==
 - ==chapter9-8-3：springboot 架构 Layui ==
 - ==chapter9-8-4：springboot 架构 Easyui==
-  
+
+
+
+版本控制
+
+- ==chapter9-9-1：springboot 集成Git 版本控制==
+- 
 
 测试功能
 
