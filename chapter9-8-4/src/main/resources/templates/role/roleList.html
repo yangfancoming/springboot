@@ -1,6 +1,5 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
-<!--<div id="back_zjwh_datagrid_div"  style="padding-bottom:10px;background:#eee;" data-options=" fit:true" >-->
 
 <form>
     <!-- 数据表工具栏 -->
@@ -14,8 +13,7 @@
         </div>
         <div class="ctrl-div">
             <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"  id="addBtn" onclick="add()">新增</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" id="editBtn" onclick="modify()">编辑</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="remove1()">删除</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="remove()">删除</a>
         </div>
     </div>
 </form>
@@ -27,10 +25,9 @@
     <div id="role_dlg"  class="easyui-dialog" title="新增角色"  style="width:420px;height:300px;padding:10px;"  cache="false"
          data-options="modal:true,closed:true,resizable:true,iconCls:'icon-save',href:'role/add'" ></div>
 
-
     <!--fuck  编辑 对话框 -->
-    <div id="role_edit_dlg"  class="easyui-dialog" title="编辑角色"  style="width:420px;height:300px;padding:10px;"  cache="false"
-         data-options="modal:true,closed:true,resizable:true,iconCls:'icon-save',href:'role/edit'" ></div>
+    <div id="role_edit_dlg"  title="编辑角色"  style="width:420px;height:300px;padding:10px;" cache="false"></div>
+
 <!--</div>-->
 
     <script type="text/javascript">
@@ -54,7 +51,7 @@
             //     { text: "删除", iconCls: 'icon-remove',handler: remove}
             // ],
             onLoadSuccess:function(data){
-                $("a[name='opera']").linkbutton({text:'编辑',plain:true,iconCls:'icon-add'});
+                $("a[name='opera']").linkbutton({text:'编辑',plain:true,iconCls:'icon-edit'});
                 $("a[name='opera1']").linkbutton({text:'删除',plain:true,iconCls:'icon-remove'});
             }
         });
@@ -69,21 +66,21 @@
         }
 
         function modify(val) {
-            $.ajax({
-                url:"/role/edit/" + val,
-                type:"get", dataType:"json",
-                success:function(result){
-                    console.log(result,1111);
-                }
+            $('#role_edit_dlg').dialog({
+                href: 'role/edit/' + val,
+                modal: true,iconCls:'icon-edit', closed: false,
             });
-
-            $("#role_edit_dlg").dialog("open");
+            // $.ajax({
+            //     url:"/role/edit/" + val,
+            //     type:"get", dataType:"json",
+            //     success:function(result){
+            //         console.log(result,1111);
+            //     }
+            // });
         }
-        function remove(id) { alert(id) }
-
 
         // 删除功能
-        function remove1(){
+        function remove(){
             var ids = [];
             var rows = $('#roleList').datagrid('getSelections');
             for(var i=0; i<rows.length; i++){
@@ -106,7 +103,7 @@
         }
 
         $.formatString = function(str) {
-            for ( var i = 0; i < arguments.length - 1; i++) {
+            for ( let i = 0; i < arguments.length - 1; i++) {
                 str = str.replace("{" + i + "}", arguments[i + 1]);
             }
             return str;

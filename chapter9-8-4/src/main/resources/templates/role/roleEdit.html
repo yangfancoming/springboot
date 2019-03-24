@@ -5,8 +5,7 @@
         </div>
 
         <div style="margin-bottom:20px">
-            <!--<input class="easyui-textbox" name="remark" style="width:100%;height:60px" data-options="label:'备注：',multiline:true">-->
-            <input class="easyui-textbox" name="remark" th:value="${goat.remark}" data-options="label:'备注：',multiline:true">
+            <input class="easyui-textbox" name="remark" style="width:100%;height:60px" th:value="${goat.remark}" data-options="label:'备注：',multiline:true">
         </div>
     </form>
     <div style="text-align:center;padding:5px 0">
@@ -15,13 +14,7 @@
     </div>
 </div>
 
-
 <script >
-    // $(function () {
-    //     console.log(111111111111111)
-    // });
-
-
     function submitForm(){
         $('#role_edit_form').form('submit',{
             url:'/role/edit', method: 'post',
@@ -41,8 +34,8 @@
 
     }
     function clearForm(){
-        $('#role_form').form('clear');
-        $("#role_dlg").dialog("close");
+        $('#role_edit_form').form('clear');
+        $("#role_edit_dlg").dialog('close');
     }
 </script>
 
