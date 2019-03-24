@@ -1,0 +1,44 @@
+<div class="easyui-panel" style="width:100%;padding:30px 60px;" xmlns:th="http://www.w3.org/1999/xhtml">
+    <form id="role_edit_form" class="easyui-form" method="post" data-options="novalidate:true">
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" name="roleName" th:value="${goat.roleName}"  style="width:100%" data-options="label:'角色名称：',required:true">
+        </div>
+
+        <div style="margin-bottom:20px">
+            <input class="easyui-textbox" name="remark" style="width:100%;height:60px" th:value="${goat.remark}" data-options="label:'备注：',multiline:true">
+        </div>
+    </form>
+    <div style="text-align:center;padding:5px 0">
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()" style="width:80px">提交</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()" style="width:80px">取消</a>
+    </div>
+</div>
+
+<script >
+    function submitForm(){
+        $('#role_edit_form').form('submit',{
+            url:'/role/edit', method: 'post',
+            onSubmit:function(){             // do some check     return false to prevent submit;
+                return $(this).form('enableValidation').form('validate');
+            },
+            success:function(data){
+                let u = eval('('+data+')'); // eval() 函数可计算某个字符串，并执行其中的的 JavaScript 代码。
+                console.log(u.code,22)
+                if (u.code==0){
+                    $("#role_dlg").dialog("close");
+                } else {
+                    $.messager.alert('警告','删除失败！');
+                }
+            },
+        });
+
+    }
+    function clearForm(){
+        $('#role_edit_form').form('clear');
+        $("#role_edit_dlg").dialog('close');
+    }
+</script>
+
+
+<!--JSON.parse(jsonstr); //可以将json字符串转换成json对象 -->
+<!--JSON.stringify(jsonobj); //可以将json对象转换成json对符串 -->

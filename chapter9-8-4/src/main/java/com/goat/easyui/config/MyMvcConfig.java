@@ -12,15 +12,18 @@ public class MyMvcConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         // http://localhost:8983/hello/index
         registry.addViewController("/index").setViewName("index");
+
         registry.addViewController("/menu").setViewName("menu/menuList");
         registry.addViewController("/menu/addMenu").setViewName("menu/menuAdd");
         registry.addViewController("/menu/addBtn").setViewName("menu/btnAdd");
+
         registry.addViewController("/user").setViewName("user/userList");
         registry.addViewController("/user/add").setViewName("user/userEdit");
 
         registry.addViewController("/role").setViewName("role/roleList");
         registry.addViewController("/role/add").setViewName("role/roleAdd");
-//        registry.addViewController("/role/edit").setViewName("role/roleEdit");
+
+        registry.addViewController("/dept").setViewName("dept/deptList");
     }
 
 }

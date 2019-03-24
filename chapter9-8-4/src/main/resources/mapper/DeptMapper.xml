@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.goat.easyui.dao.DeptMapper">
+
+
+    <resultMap id="deptMap" type="com.goat.easyui.domain.Dept">
+        <result column="DEPT_ID" jdbcType="DECIMAL" property="deptId" />
+        <result column="PARENT_ID" jdbcType="DECIMAL" property="parentId" />
+        <result column="DEPT_NAME" jdbcType="VARCHAR" property="deptName" />
+        <result column="ORDER_NUM" jdbcType="DECIMAL" property="orderNum" />
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    </resultMap>
+  
+
+    <select id="findByPage" resultMap="deptMap">
+        select *  from t_dept
+    </select>
+</mapper>
