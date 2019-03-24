@@ -46,7 +46,7 @@ public class JpaTestController {
 
     @GetMapping("/test3")
     public void test3(){
-        testService.update("567",1L);// 触发事务2
+        testService.update("567",1L,2L);// 触发事务2
     }
 
     //    http://localhost:8420/test/test4

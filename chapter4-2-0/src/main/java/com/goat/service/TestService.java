@@ -26,7 +26,6 @@ public class TestService extends BaseService {
         return testRepository.findById(id);
     }
 
-
     /**
      * 在更新数据时，jpa 提供的 两个方法  可以实现 @version 字段的自增+1
      <S extends T> S save(S var1);
@@ -48,8 +47,13 @@ public class TestService extends BaseService {
         输了一瓶脉动 得到的教训啊。。。
      * * */
     @Transactional
-    public void update(String num,Long id) {
-        testRepository.updateMoney(num,id);
+    public void update(String num,Long id,Long version) {
+        testRepository.updateMoney(num,id,version);
+    }
+
+    @Transactional
+    public void update2(String num,Long id,Long version) {
+        testRepository.updateMoney2(num,id,version);
     }
 }
 
