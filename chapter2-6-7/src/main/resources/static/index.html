@@ -16,24 +16,24 @@
     <div id="app">
         <el-button @click="visible = true">Button</el-button>
         <el-dialog :visible.sync="visible" title="Hello world">
-            <p>Try Element</p>
+            <p>123</p>
         </el-dialog>
 
-
-        <div>{{message}}</div>
-        <input type="text" v-model="message">
-
+        <!-- 插值表达式 -->
+        <div>{{msg}}</div>
+        <!-- v-model -->
+        <input type="text" v-model="msg">
+        <!-- v-text -->
+        <h4 type="text" v-text="msg"/>
     </div>
 </body>
 
 <script>
     new Vue({
-        el: '#app',
-        data: function() {
-            return {
-                message:'hello vue.js.',
-                visible: false
-            }
+        el: '#app',// 指定挂载区域
+        data:{ // data中的所有属性 #app绑定区域中 都可以直接使用
+            msg:'data中的属性哦',
+            visible: false
         }
     })
 </script>
