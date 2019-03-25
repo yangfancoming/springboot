@@ -1,10 +1,12 @@
 package com.goat.service.impl;
 
 import com.goat.dao.EmpDao;
+import com.goat.entity.Emp;
 import com.goat.service.IEmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,12 +20,19 @@ import java.util.Map;
 public class EmpServiceImpl implements IEmpService {
 
     @Autowired
-    EmpDao baseDao;
+    EmpDao empDao;
 
 
     @Override
     public Map findById(Integer id) {
-        Map map = baseDao.findMapById(id);
+        Map map = empDao.findMapById(id);
         return map;
     }
+
+    @Override
+    public List<Emp> findListLastNameLike(String name) {
+        List<Emp> list = empDao.findListLastNameLike(name);
+        return list;
+    }
+
 }

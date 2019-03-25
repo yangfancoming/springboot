@@ -3,6 +3,7 @@ package com.goat.dao;
 
 import com.goat.entity.Emp;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,16 +17,18 @@ public  interface EmpDao {
 
     Map findMapById(Integer id);
 
+    List<Emp> findListLastNameLike(String id);
+
     Emp findObjectById(Integer id);
 
-
     Integer saveMap(Map map);
-    Integer saveObject(Emp emp);
 
+    Integer saveObject(Emp emp);
 
     Integer deleteById(Integer id);
 
     Integer updateMapById(Map emp);
+
     Integer updateObjectById(Emp emp);
 
 }

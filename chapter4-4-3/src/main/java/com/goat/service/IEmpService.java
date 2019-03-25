@@ -1,5 +1,8 @@
 package com.goat.service;
 
+import com.goat.entity.Emp;
+
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -11,4 +14,6 @@ import java.util.Map;
  */
 public interface IEmpService {
     Map findById(Integer id);
+
+    List<Emp> findListLastNameLike(String name);
 }

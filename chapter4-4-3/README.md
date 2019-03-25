@@ -1,11 +1,11 @@
-单个参数：mybatis不会做特殊处理，
-	#{任意参数名}：取出参数值。
-	
-多个参数：mybatis会做特殊处理。
-	多个参数会被封装成 一个map，
-		key：param1...paramN,或者参数的索引也可以
-		value：传入的参数值
-	#{}就是从map中获取指定的key的值；
+    单个参数：mybatis不会做特殊处理，
+        #{任意参数名}：取出参数值。
+        
+    多个参数：mybatis会做特殊处理。
+        多个参数会被封装成 一个map，
+            key：param1...paramN,或者参数的索引也可以
+            value：传入的参数值
+        #{}就是从map中获取指定的key的值；
 	
 	异常：
 	org.apache.ibatis.binding.BindingException: 
@@ -18,34 +18,34 @@
 		取值：#{param1},#{param2}  正确
 
 
-POJO：
-如果多个参数正好是我们业务逻辑的数据模型，我们就可以直接传入pojo；
-	#{属性名}：取出传入的pojo的属性值	
+    POJO：
+    如果多个参数正好是我们业务逻辑的数据模型，我们就可以直接传入pojo；
+        #{属性名}：取出传入的pojo的属性值	
+    
+    Map：
+    如果多个参数不是业务模型中的数据，没有对应的pojo，不经常使用，为了方便，我们也可以传入map
+        #{key}：取出map中对应的值
+    
+    TO：
+    如果多个参数不是业务模型中的数据，但是经常要使用，推荐来编写一个TO（Transfer Object）数据传输对象
+    Page{
+        int index;
+        int size;
+    }
 
-Map：
-如果多个参数不是业务模型中的数据，没有对应的pojo，不经常使用，为了方便，我们也可以传入map
-	#{key}：取出map中对应的值
-
-TO：
-如果多个参数不是业务模型中的数据，但是经常要使用，推荐来编写一个TO（Transfer Object）数据传输对象
-Page{
-	int index;
-	int size;
-}
-
-========================思考================================	
-public Employee getEmp(@Param("id")Integer id,String lastName);
-	取值：id==>#{id/param1}   lastName==>#{param2}
-
-public Employee getEmp(Integer id,@Param("e")Employee emp);
-	取值：id==>#{param1}    lastName===>#{param2.lastName/e.lastName}
-
-##特别注意：如果是Collection（List、Set）类型或者是数组，
-		 也会特殊处理。也是把传入的list或者数组封装在map中。
-			key：Collection（collection）,如果是List还可以使用这个key(list)
-				数组(array)
-public Employee getEmpById(List<Integer> ids);
-	取值：取出第一个id的值：   #{list[0]}
+    ========================思考================================	
+    public Employee getEmp(@Param("id")Integer id,String lastName);
+        取值：id==>#{id/param1}   lastName==>#{param2}
+    
+    public Employee getEmp(Integer id,@Param("e")Employee emp);
+        取值：id==>#{param1}    lastName===>#{param2.lastName/e.lastName}
+    
+    ##特别注意：如果是Collection（List、Set）类型或者是数组，
+             也会特殊处理。也是把传入的list或者数组封装在map中。
+                key：Collection（collection）,如果是List还可以使用这个key(list)
+                    数组(array)
+    public Employee getEmpById(List<Integer> ids);
+        取值：取出第一个id的值：   #{list[0]}
 	
 ========================结合源码，mybatis怎么处理参数==========================
 总结：参数多时会封装map，为了不混乱，我们可以使用@Param来指定封装时使用的key；
