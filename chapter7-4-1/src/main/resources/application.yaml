@@ -5,7 +5,8 @@ spring:
   data:
     elasticsearch:
 #      cluster-nodes: http://172.16.163.135:9300  不能加  http://
-      cluster-nodes: 172.16.163.135:9300
+#      cluster-nodes: 192.168.235.207:9300
+      cluster-nodes: 192.168.235.207:9300
       cluster-name: elasticsearch
 server:
   port: 8741

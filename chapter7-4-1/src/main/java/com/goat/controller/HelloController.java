@@ -18,7 +18,7 @@ public class HelloController {
 
 
     // doit 访问这里 就是报错 None of the configured nodes are available: [{#transport#-1}{MoE3kZeuQV2rPw5xzPPHXw}{172.16.163.135}{172.16.163.135:9200}]
-//    http://localhost:8034/hello/create   创建索引
+//    http://localhost:8741/hello/create   创建索引
 //    http://172.16.163.135:9300/goat/news/1   查询已经操作的索引
     @RequestMapping("/create")
     public void create() {

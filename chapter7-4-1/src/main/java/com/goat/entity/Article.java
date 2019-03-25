@@ -7,7 +7,8 @@ import org.springframework.data.elasticsearch.annotations.Document;
  * Created by 64274 on 2018/8/22.
  *
  * @author 山羊来了
- * @Description: TODO
+ * indexName 索引名称 可以理解为数据库名 必须为小写 不然会报
+ * type 类型 可以理解为表名
  * @date 2018/8/22---13:54
  */
 @Document(indexName = "gaga",type = "news")

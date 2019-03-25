@@ -3,9 +3,11 @@ package com.goat.controller;
 
 import com.goat.entity.Article;
 import io.searchbox.client.JestClient;
+import io.searchbox.client.JestResult;
 import io.searchbox.core.Index;
 import io.searchbox.core.Search;
 import io.searchbox.core.SearchResult;
+import io.searchbox.indices.CreateIndex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,18 +22,31 @@ public class HelloController {
     @Autowired private JestClient jestClient;
 
 
-//    http://localhost:8731/hello/create   创建索引
-//    http://172.16.163.135:9200/goat/news/1   查询已经操作的索引
+
+    /**
+     *     http://localhost:8731/hello/create   创建索引
+     *     http://172.16.163.135:9200/goat/news/1   查询已经操作的索引
+    构建一个索引功能 Index.Builder(要保存的数据).index(保存的位置).type(保存的类型)
+    */
     @RequestMapping("/create")
     public void create() throws IOException {
         Article article = new Article();
         article.setId(1);
         article.setTitle("山羊来了");
-        //  构建一个索引功能 Index.Builder(要保存的数据).index(保存的位置).type(保存的类型)
-        Index build = new Index.Builder(article).index("goat").type("" +
-                "").build();
-        jestClient.execute(build);
-        System.out.println("数据索引成功！");
+
+
+//
+//        String json = "{" +
+//                "\"id\":\"123\"," +
+//                "\"title\":\"山羊来了\"," +
+//                "}";
+
+        JestResult jestResult = jestClient.execute(new CreateIndex.Builder("GOAT").build());
+        System.out.println("createIndex:{}" + jestResult.isSucceeded());
+
+//        Index build = new Index.Builder(json).index("goat").type("").build();
+//        jestClient.execute(build);
+//        System.out.println("数据索引成功！");
     }
 
 /**
