@@ -1,21 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--
- 将 interface 文件  与 xml 映射文件 进行绑定
- interface中的函数名 对应 xml 中的 id
- xml 可以理解为 interface 的实现类！！！
+ xml 可以理解为 Dao接口的实现类！！！
+ id: 唯一标识  在多个 xml 中 可以重复  但是在调用时 需要指定 namespace
 -->
 <mapper namespace="com.goat.dao.EmpDao">
 
-<!--
-id: 唯一标识  在多个 xml 中 可以重复  但是在调用时 需要指定 namespace
--->
+    <!--
+        resultType 常用于自动映射结果集
+        resultMap 自定义结果集映射规则
+        resultMap 与 resultType 只能二选一 两者不能同时使用
+     -->
+    <resultMap id="myEmp" type="com.goat.entity.Emp">
+        <id column="EMPNO"  property="empno" />
+        <result column="ENAME"  property="ename" />
+        <result column="JOB"  property="job" />
+        <result column="MGR"  property="mgr" />
+        <result column="HIREDATE"  property="hiredate" />
+        <result column="SAL"  property="sal" />
+        <result column="COMM"  property="comm" />
+        <result column="DEPTNO"  property="deptno" />
+    </resultMap>
 
-    <select id="findMapById" parameterType="java.util.Map" resultType="java.util.Map">
+
+    <!--
+        parameterType="java.util.Map" 可以省略  因为 单个参数：mybatis不会做特殊处理，#{任意参数名}：都可以取出参数值。
+        resultType="java.util.Map 可以写成 map  因为 mybatis 已经为 jdk中常用的类 起了别名了
+     -->
+    <select id="findMapById" parameterType="java.util.Map" resultType="map" >
+        SELECT * FROM emp WHERE EMPNO = #{id}
+    </select>
+
+    <select id="findMapById2"  resultMap="myEmp" >
         SELECT * FROM emp WHERE EMPNO = #{id}
     </select>
 
     <select id="findListLastNameLike" resultType="Emp">
+        SELECT * FROM emp where ENAME like CONCAT(CONCAT('%', #{name}),'%')
+    </select>
+
+    <select id="findListLastNameLike2" resultType="Emp">
         SELECT * FROM emp where ENAME like CONCAT(CONCAT('%', #{name}),'%')
     </select>
 

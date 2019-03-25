@@ -24,7 +24,13 @@ public class EmpServiceImpl implements IEmpService {
 
 
     @Override
-    public Map findById(Integer id) {
+    public Map findMapById(Integer id) {
+        Map map = empDao.findMapById(id);
+        return map;
+    }
+
+    @Override
+    public Map findMapById2(Integer id) {
         Map map = empDao.findMapById(id);
         return map;
     }
@@ -32,6 +38,12 @@ public class EmpServiceImpl implements IEmpService {
     @Override
     public List<Emp> findListLastNameLike(String name) {
         List<Emp> list = empDao.findListLastNameLike(name);
+        return list;
+    }
+
+    @Override
+    public Map<Integer, Emp> findListLastNameLike2(String name) {
+        Map<Integer, Emp> list = empDao.findListLastNameLike2(name);
         return list;
     }
 

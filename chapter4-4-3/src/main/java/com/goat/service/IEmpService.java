@@ -13,7 +13,11 @@ import java.util.Map;
  * @date 2018/8/20---17:48
  */
 public interface IEmpService {
-    Map findById(Integer id);
+
+    Map findMapById(Integer id);
+    Map findMapById2(Integer id);
 
     List<Emp> findListLastNameLike(String name);
+
+    Map<Integer,Emp> findListLastNameLike2(String name);
 }

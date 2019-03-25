@@ -2,6 +2,7 @@ package com.goat.dao;
 
 
 import com.goat.entity.Emp;
+import org.apache.ibatis.annotations.MapKey;
 
 import java.util.List;
 import java.util.Map;
@@ -17,7 +18,10 @@ public  interface EmpDao {
 
     Map findMapById(Integer id);
 
-    List<Emp> findListLastNameLike(String id);
+    List<Emp> findListLastNameLike(String name);
+
+    @MapKey("empno") // 告诉mybatis 使用 Emp对象中的empno属性 作为 key
+    Map<Integer, Emp> findListLastNameLike2(String name);
 
     Emp findObjectById(Integer id);
 
