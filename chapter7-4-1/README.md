@@ -1,5 +1,7 @@
-# 报错：
-    org.elasticsearch.client.transport.NoNodeAvailableException: None of the configured nodes are available: [{#transport#-1}{-hIYBxAGQke0Rj9bWHiHTA}{192.168.235.207}{192.168.235.207:9300}]
+# 启动项目报错：
+     Adding transport node : 192.168.235.207:9300
+     failed to load elasticsearch nodes : org.elasticsearch.client.transport.NoNodeAvailableException: None of the configured nodes are available: [{#transport#-1}{-hIYBxAGQke0Rj9bWHiHTA}{192.168.235.207}{192.168.235.207:9300}]
+     应该是 spring data elasticsearch  3.0.9.RELEASE  与  elasticsearch 5.6.10 版本不对应的问题
 # 入门使用
     使用 postman 工具 
     1.PUT 类型  

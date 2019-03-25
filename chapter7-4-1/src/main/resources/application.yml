@@ -1,12 +1,13 @@
 # ES
 # 浏览器 输入  http://172.16.163.135:9200/   即可看到 cluster-name  "elasticsearch"
 #sos 这里 又必须写成 172.16.163.135:9300 否则报错 Caused by: java.lang.IllegalArgumentException: Invalid cluster node http://172.16.163.135:9300 in http://172.16.163.135:9300! Must be in the format host:port!
-spring:
-  data:
-    elasticsearch:
-#      cluster-nodes: http://172.16.163.135:9300  不能加  http://
+#spring:
+#  data:
+#    elasticsearch:
+##      cluster-nodes: http://172.16.163.135:9300  不能加  http://
+##      cluster-nodes: 192.168.235.207:9300
 #      cluster-nodes: 192.168.235.207:9300
-      cluster-nodes: 192.168.235.207:9300
-      cluster-name: elasticsearch
+#      cluster-name: elasticsearch
+
 server:
   port: 8741
