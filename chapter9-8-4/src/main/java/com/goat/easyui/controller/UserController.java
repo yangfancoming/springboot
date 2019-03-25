@@ -8,12 +8,15 @@ import com.goat.easyui.domain.User;
 import com.goat.easyui.resultmodel.RestResult;
 import com.goat.easyui.resultmodel.ResultGenerator;
 import com.goat.easyui.service.IUserService;
+import com.goat.easyui.utils.GoatInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -46,9 +49,11 @@ public class UserController {
     */
     // http://localhost:8984/user/list
     @RequestMapping("/list")
-    public RestResult userList(QueryRequest request) {
+    public RestResult userList(HttpServletRequest request) throws Exception {
+        Map mv1 = GoatInfo.getInfo(request);
 //        PageHelper.startPage(request.getPage(), request.getRows());
-        List<User> list = userService.findByPage(request.getPage(), request.getRows());
+//        List<User> list = userService.findByPage(request.getPage(), request.getRows());
+        List<User> list = userService.findByPage(1, 10);
         PageInfo<User> pageInfo = new PageInfo<>(list);
         return generator.getSuccessUiResult("datang", pageInfo.getList(), pageInfo.getTotal());
     }
