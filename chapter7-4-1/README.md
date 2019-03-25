@@ -8,6 +8,7 @@
     2.raw 
     3.json 格式    
     4.url   http://192.168.235.207:9200/megacorp/employee/3
+    4.url   http://172.16.163.135:9200/megacorp/employee/3
     body： 
     {
         "first_name" :  "Douglas",

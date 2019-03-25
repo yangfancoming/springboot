@@ -32,10 +32,10 @@ public class HelloController {
     }
 
 
-    //   http://localhost:8125/hello3
+    //   http://localhost:8124/hello3
     @GetMapping("/hello3")
     public void hello3(){
-        for(int i=0;i<100;i++) {
+        for(int i=0;i<5;i++) {
             logger.info("输出info  ");
             logger.debug("输出debug+skkkw嗡嗡嗡kw");
             logger.error("输出error  嗡嗡嗡我");
