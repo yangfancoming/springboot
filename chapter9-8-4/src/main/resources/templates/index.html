@@ -12,7 +12,7 @@
     <script th:src="@{/js/jquery.easyui.min.js}" type="text/javascript" charset="utf-8"></script>
 
 </head>
-<body class="easyui-layout">
+<body class="easyui-layout" >
     <div data-options="region:'north',title:'顶部导航',split:true" style="height:100px;"></div>
 
     <div data-options="region:'south',title:'底部导航',split:true" style="height:100px;"></div>
@@ -20,31 +20,12 @@
     <div data-options="region:'east',iconCls:'icon-reload',title:'East',split:true" style="width:100px;"></div>
 
     <div data-options="region:'west',title:'左侧导航',split:true" style="width:200px;">
-
-        <div class="easyui-accordion" fit="true" id="navmenu">
-            <!--<div title="指标体系">-->
-                <!--<ul class="navmenu">-->
-                    <!--<li class="active"><a href="#">首页</a></li>-->
-                    <!--<li><a href="#" data-url="html/page01.html">组织机构管理</a></li>-->
-                    <!--<li><a href="#" data-url="html/page02.html">指标库列表</a></li>-->
-                <!--</ul>-->
-            <!--</div>-->
-            <!--<div title="绩效考核"></div>-->
-            <!--<div title="报表管理"></div>-->
-            <!--<div title="系统管理"></div>-->
-            <!--<div title="组件示例">-->
-                <!--<ul class="navmenu">-->
-                    <!--<li><a href="#" data-url="html/demo01.html">锁定行和列</a></li>-->
-                <!--</ul>-->
-            <!--</div>-->
-        </div>
-
-        <!--<ul id="myTree"></ul>-->
+        <div class="easyui-accordion" fit="true" id="navmenu"></div>
     </div>
 
-    <div data-options="region:'center',title:'主体内容'" style="padding:5px;background:#eee;">
+    <div data-options="region:'center',title:'主体内容'"  style="padding:5px;background:#eee;">
         <!--data-options="fit:true" 设置为true时，选项卡的大小将铺满它所在的容器 -->
-        <div id="myTab" class="easyui-tabs" style="width:500px;height:250px;" data-options="fit:true">
+        <div id="myTab" class="easyui-tabs"  data-options="fit:true">
             <div title="Tab1" style="padding:20px;display:none;">
                 tab1
             </div>
@@ -55,7 +36,6 @@
                 tab3
             </div>
         </div>
-
     </div>
 </body>
 </html>

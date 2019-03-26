@@ -1,7 +1,4 @@
-<html xmlns:th="http://www.thymeleaf.org">
 <body>
-
-<!--<script th:src="@{/js/jquery-1.7.2.min.js}" type="text/javascript" charset="utf-8"></script>-->
 
 <form id="userform" class="easyui-form" method="post">
     <!-- 数据表工具栏 -->
@@ -23,34 +20,23 @@
     </div>
 </form>
 
-    <!--fuck  表格 -->
-    <table id="userList"></table>
+
+<table id="userList" ></table> <!--fuck  表格 -->
+
 
     <!--fuck  对话框 -->
     <div id="dlg"  class="easyui-dialog" title="新增/编辑"  style="width:420px;height:500px;padding:10px;"  cache="false"
          data-options="modal:true,closed:true,resizable:true,iconCls:'icon-save',href:'user/add'" ></div>
 
     <script type="text/javascript">
-        $.fn.serializeObject = function() {
-            var o = {};
-            var a = this.serializeArray();
-            $.each(a, function() {
-                if (o[this.name] !== undefined) {
-                    if (!o[this.name].push) {
-                        o[this.name] = [o[this.name]];
-                    }
-                    o[this.name].push(this.value || '');
-                } else {
-                    o[this.name] = this.value || '';
-                }
-            });
-            return o;
-        };
+
+
 
         function submitForm(){
-
-            let obj=$("#userform").serializeObject();
-            console.log(obj)
+            let obj1= {name:$('#userform input[name = username]').val()}
+            let obj2= {name:$('#userform input[name = userId]').val()}
+            console.log(obj1)
+            console.log(obj2)
             // dg.datagrid('load', obj);
             // $('#userform').form('submit',{
             //     url:'/user/list',
@@ -70,10 +56,10 @@
         }
 
       let dg = $('#userList').datagrid({
-            url:'/user/list', method: 'post',rowStyler:rowStyleFormatter,toolbar:'#toolbar1',
-            striped:true,rownumbers:true,
+            url:'/user/list', method: 'post',rowStyler:rowStyleFormatter,
+            toolbar:'#toolbar1',
+            striped:true,rownumbers:true, fit:true,// 想easyui占满容器要配置panel的fit属性
             pagination: true,
-            fit:true,// 想easyui占满容器要配置panel的fit属性
             columns:[ [ // fuck 这里的 两个 中括号 是必须要 分开的 否则 thymeleaf 加载 js 时会报错
                 {field:'userId',title:'编号',checkbox:true}, // 给表格添加复选框
                 {field:'username',title:'用户名',align:'center'},
