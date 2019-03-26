@@ -1,12 +1,7 @@
-package com.goat.B.B05;
+package com.goat.B.B05.example01;
 
-import com.goat.B.B05.color.Color;
-import com.goat.B.B05.color.Gray;
-import com.goat.B.B05.color.White;
-import com.goat.B.B05.shape.Rectangle;
-import com.goat.B.B05.shape.Shape;
-import com.goat.B.B05.shape.Square;
-
+import com.goat.B.B05.example01.color.*;
+import com.goat.B.B05.example01.shape.*;
 /**
  * Created by 64274 on 2019/3/26.
  *
@@ -14,7 +9,7 @@ import com.goat.B.B05.shape.Square;
  * @ author  山羊来了
  * @ date 2019/3/26---15:29
  */
-public class Client {
+public class App {
 
     public static void main(String[] args) {
         //白色

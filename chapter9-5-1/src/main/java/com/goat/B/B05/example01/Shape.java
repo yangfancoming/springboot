@@ -1,6 +1,5 @@
-package com.goat.B.B05.shape;
+package com.goat.B.B05.example01;
 
-import com.goat.B.B05.color.Color;
 
 /**
  * Created by 64274 on 2019/3/26.

@@ -1,4 +1,4 @@
-package com.goat.B.B05.color;
+package com.goat.B.B05.example01;
 
 /**
  * Created by 64274 on 2019/3/26.
