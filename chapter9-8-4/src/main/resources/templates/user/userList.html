@@ -1,16 +1,18 @@
 <body>
 
-<form id="userform" class="easyui-form" method="post">
+<!-- sos 大坑：在 toolbar search-div ctrl-div 等标签内 提交表单时  无法拿到表单中的name属性 控件的值！！！-->
+
     <!-- 数据表工具栏 -->
     <div class="toolbar" id="toolbar1">
         <div class="search-div">
-            <label>员工编号：</label>
-            <input type="text" name="userId" class="easyui-textbox" />
-
-            <label>用户名称：</label>
-            <input type="text" name="username"  class="easyui-textbox" />
-            <!--<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" onclick="submitForm()" style="width:80px">搜索</a>-->
-            <button  class="easyui-linkbutton" iconCls="icon-search" onclick="submitForm()" style="width:80px">搜索</button>
+            <form id="userform" class="easyui-form" method="get">
+                <label>员工编号：</label>
+                <input type="text" name="userId" class="easyui-textbox" />
+                <label>用户名称：</label>
+                <input type="text" name="username"  class="easyui-textbox" />
+                <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" onclick="submitForm()" style="width:80px">搜索</a>
+                <!--<button  class="easyui-linkbutton" iconCls="icon-search" onclick="submitForm()" style="width:80px">搜索</button>-->
+            </form>
         </div>
         <div class="ctrl-div">
             <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" id="addBtn" onclick="user_add()">新增</a>
@@ -18,7 +20,7 @@
             <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true">批量删除</a>
         </div>
     </div>
-</form>
+
 
 
 <table id="userList" ></table> <!--fuck  表格 -->
@@ -30,24 +32,25 @@
 
     <script type="text/javascript">
 
-
+        //给表单绑定将表单转换成json对象方法
+        $.serializeObject = function(form) {
+            let o = {};
+            $.each(form.serializeArray(), function() {
+                if (o[this['name']]) {
+                    o[this['name']] = o[this['name']] + "," + this['value'];
+                } else {
+                    o[this['name']] = this['value'];
+                }
+            });
+            return o;
+        };
 
         function submitForm(){
-            let obj1= {name:$('#userform input[name = username]').val()}
-            let obj2= {name:$('#userform input[name = userId]').val()}
-            console.log(obj1)
-            console.log(obj2)
-            // dg.datagrid('load', obj);
-            // $('#userform').form('submit',{
-            //     url:'/user/list',
-            //     onSubmit:function(){
-            //         return $(this).form('enableValidation').form('validate');
-            //
-            //     },
-            //     success:function(data){
-            //         console.log(data)
-            //     },
-            // });
+            // let obj = $("#userform").serializeArray();// 此方法可以将表单信息序列化成 数组
+            let obj = $.serializeObject($("#userform")); // 此方法可以将表单信息序列化成 json 对象  后台直接使用 user 对象接收
+            // let obj = $("#userform").serialize(); //  转换成 id=123&cx=lklj 字符串
+            console.log(obj,111111111)
+            dg.datagrid('load', obj);
         }
 
 
@@ -56,7 +59,8 @@
         }
 
       let dg = $('#userList').datagrid({
-            url:'/user/list', method: 'post',rowStyler:rowStyleFormatter,
+            url:'/user/list1', method: 'get',rowStyler:rowStyleFormatter,
+            // url:'/user/list2', method: 'get',rowStyler:rowStyleFormatter,
             toolbar:'#toolbar1',
             striped:true,rownumbers:true, fit:true,// 想easyui占满容器要配置panel的fit属性
             pagination: true,

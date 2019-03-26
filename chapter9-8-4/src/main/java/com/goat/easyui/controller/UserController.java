@@ -1,15 +1,14 @@
 package com.goat.easyui.controller;
 
 
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.goat.easyui.domain.QueryRequest;
 import com.goat.easyui.domain.User;
 import com.goat.easyui.resultmodel.RestResult;
 import com.goat.easyui.resultmodel.ResultGenerator;
 import com.goat.easyui.service.IUserService;
 import com.goat.easyui.utils.GoatInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,11 +47,19 @@ public class UserController {
          return jsonMap;
     */
     // http://localhost:8984/user/list
-    @RequestMapping("/list")
-    public RestResult userList(HttpServletRequest request) throws Exception {
-        Map mv1 = GoatInfo.getInfo(request);
+    @GetMapping("/list1")
+    public RestResult userList(User user) {
 //        PageHelper.startPage(request.getPage(), request.getRows());
 //        List<User> list = userService.findByPage(request.getPage(), request.getRows());
+        List<User> list = userService.findByPage(1, 10);
+        PageInfo<User> pageInfo = new PageInfo<>(list);
+        return generator.getSuccessUiResult("datang", pageInfo.getList(), pageInfo.getTotal());
+    }
+
+
+    @GetMapping("/list2") //doit 这种方法 失败
+    public RestResult userList(HttpServletRequest request) throws Exception {
+        Map mv1 = GoatInfo.getInfo(request);
         List<User> list = userService.findByPage(1, 10);
         PageInfo<User> pageInfo = new PageInfo<>(list);
         return generator.getSuccessUiResult("datang", pageInfo.getList(), pageInfo.getTotal());
