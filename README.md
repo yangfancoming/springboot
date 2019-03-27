@@ -53,7 +53,8 @@ Web开发
 - ==chapter2-0-5 springboot  中的SpringMVC   返回各种数据类型总结 JPA==
 - ==chapter2-0-7 springboot  中的SpringMVC 扩展与接管 无后台==
 - ==chapter2-0-8 springboot  集成 MockMvc和Swagger2==
-- ==chapter2-1-0 springboot  中使用 JavaScript ==
+- ==chapter2-1-0 springboot  中使用  ES6==
+- ==chapter2-1-2 springboot  中使用 JavaScript  ==
 - ==chapter2-1-3 springboot  中使用 JQuery ==
 - ==chapter2-1-4 springboot  中使用 Select2==
 - ==chapter2-1-5 springboot  中使用 Bootstrap + JSP==
@@ -240,6 +241,7 @@ excel 相关操作
 - ==chapter7-9-0：springboot 集成 Scala==
 - ==chapter8-0-1：springboot 集成 Guava基础案例==
 - ==chapter8-0-3：springboot 集成 Groovy==
+- ==chapter8-0-4：springboot 集成 GraphQL==
 - ==chapter8-0-5：springboot 集成 Lua==
 - ==chapter8-0-7：springboot 集成 Kotlin Web开发==
 - ==chapter8-0-8：springboot 集成 Kotlin==
