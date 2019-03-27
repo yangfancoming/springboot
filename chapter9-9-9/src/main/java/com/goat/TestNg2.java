@@ -1,5 +1,6 @@
 package com.goat;
 
+import org.apache.commons.lang3.StringUtils;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class TestNg2 {
         Arrays.stream(ids.split(",")).forEach(o ->System.out.println(Long.valueOf(o)));
     }
 
+
     @Test
     public void test1(){
 
@@ -33,7 +35,36 @@ public class TestNg2 {
         System.out.println(list);
     }
 
+    @Test
+    public void test3(){
+        boolean temp = verifications("11,22", "11");
+        System.out.println(temp);
+    }
 
+    public static boolean verifications(String rules,String code) {
+        if(StringUtils.isBlank(rules)||StringUtils.isBlank(code)){
+            return false;
+        }
+        boolean res = false; // 将 boolean 改成 Boolean 提示就消失了呢？
+        String[] rule = rules.split(",");
+        for(String r:rule){
+            res = verification(r,code);
+            if(res) return true;
+        }
+        return res; // doit  为什么这里  会提示  Value 'res' is always 'false'
+    }
+
+    private static boolean verification(String rule, String code) {
+        byte[] rb = rule.toUpperCase().getBytes();
+        byte[] cb = code.toUpperCase().getBytes();
+        for(int i = 0;i<rb.length;i++){
+            if(rb[i]=='?') continue;
+            if(cb.length <= i || rb[i] != cb[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 
 }
