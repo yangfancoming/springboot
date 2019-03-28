@@ -6,9 +6,7 @@ package com.goat.E;
  */
 public abstract class Task {
 
-  /**
-   * Execute with callback
-   */
+  /*** Execute with callback*/
   public final void executeWith(Callback callback,String para) {
       execute();
       callback.call2(para);

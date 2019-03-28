@@ -13,8 +13,8 @@ public class App {
    * Program entry point
    */
   public static void main(String[] args) {
-//    Task task = new SimpleTask();
-      SimpleTask task = new SimpleTask();
+    Task task = new SimpleTask();
+//      SimpleTask task = new SimpleTask();
       Callback impl = new Impl();
       task.executeWith(impl,"heihei");
   }

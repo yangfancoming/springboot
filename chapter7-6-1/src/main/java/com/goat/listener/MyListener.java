@@ -21,6 +21,5 @@ public class MyListener implements ApplicationListener {
     @Override
     public void onApplicationEvent(ApplicationEvent event) {
         System.out.println("收到事件：" + event);
-
     }
 }
