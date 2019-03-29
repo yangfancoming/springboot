@@ -40,4 +40,9 @@
 
 
 # 外键 问题：
+    Caused by: javax.persistence.EntityNotFoundException: Unable to find com.sim.wms.entity.Dictionary with id 310
+    根本原因：由于后来加上的实体、对象在之前的数据没有关联上，所以造成脏数据、故根本的解决方法，就是将之前的测试数据删除，重新添加数据就行了。
     
+    解决办法：
+    　　1. 检查为什么子表中没有主表中ID对应的记录
+    　　2. 如果子表中没有主表ID对应的记录也可以正常加载数据，那么需要在主表字段上加一个@NotFound Annotation
