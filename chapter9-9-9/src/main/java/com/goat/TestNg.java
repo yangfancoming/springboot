@@ -32,13 +32,12 @@ public class TestNg {
     }
     @Test
     public void test1()  {
-
         Object o = "";
         if ( ((Boolean) o).booleanValue()){
             System.out.println(111);
         }
-
     }
+
     @Test
     public void test2()  {
 

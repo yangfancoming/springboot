@@ -22,5 +22,40 @@ public class TestNG  {
     }
 
 
+/** 执行结果   捕获异常后  循环可以继续执行  doit  做一下 excel导入100条数据  成功的插入， 插入不成功的 给予提示
+ 0
+ 1
+ 2
+ 异常数据是第3条
+ 4
+*/
+
+    @Test
+    public void test3()  {
+
+        for (int i = 0; i < 5; i++) {
+            try {
+                if (i ==3) throw new RuntimeException("123");
+                System.out.println(i);
+            } catch (Exception e) {
+                System.out.println("异常数据是第"+i+"条");
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /** 执行结果  只执行到 2   发生异常后 没能继续执行
+     0
+     1
+     2
+    */
+    @Test
+    public void test4()  {
+
+        for (int i = 0; i < 5; i++) {
+            if (i ==3) throw new RuntimeException("123");
+            System.out.println(i);
+        }
+    }
 
 }
