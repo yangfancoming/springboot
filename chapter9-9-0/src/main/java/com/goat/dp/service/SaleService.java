@@ -56,13 +56,13 @@ public class SaleService {
 
     HashMap<String, IDiscountStrategy> map = new HashMap<>();
 
-    // 通过构造方法 进行  Spring注入
+    // sos 通过构造方法 进行  Spring注入 所有该接口的实现类！
     public SaleService(List<IDiscountStrategy> list) {
         for (IDiscountStrategy temp:list){
-            map.put(temp.type(),temp);
+            map.put(temp.type(),temp);// sos 这里有点难理解
         }
     }
-    // 继续升级
+    // 继续升级  通过 Spring注入和 Map 方式 干掉了  if else
     public void sale3(String type,double price){
         Double discount = map.get(type).discount(price);
         System.out.println("本次 打折后价格为："+ discount);
