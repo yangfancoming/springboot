@@ -19,6 +19,7 @@ public class StartController {
 
     @Autowired
     ApplicationContext applicationContext;
+
     //   http://localhost:8761/test
     @GetMapping("/test")
     public String test(){

@@ -52,12 +52,11 @@ public class StatemachineConfigurer extends EnumStateMachineConfigurerAdapter<Tu
     public void configure(StateMachineTransitionConfigurer<TurnstileStates, TurnstileEvents> transitions) throws Exception {
         transitions
                 .withExternal()
-                .source(TurnstileStates.Unlocked).target(TurnstileStates.Locked)
-                .event(TurnstileEvents.COIN).action(customerPassAndLock())
+                .source(TurnstileStates.Unlocked).target(TurnstileStates.Locked).event(TurnstileEvents.COIN).action(customerPassAndLock())
+
                 .and()
                 .withExternal()
-                .source(TurnstileStates.Locked).target(TurnstileStates.Unlocked)
-                .event(TurnstileEvents.PUSH).action(turnstileUnlock());
+                .source(TurnstileStates.Locked).target(TurnstileStates.Unlocked) .event(TurnstileEvents.PUSH).action(turnstileUnlock());
     }
 //    machineid定义了状态机的Id名称，那么我们在 @WithStateMachine() 注解就可以定义name等于同样的id，即可被该监听器监听状态变迁
     @Override

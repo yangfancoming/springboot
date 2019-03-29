@@ -44,6 +44,24 @@ public class TestNG  {
         }
     }
 
+    /** 执行结果   try catch 在 for 循环外部 则 无法继续下一次循环!!!
+     0
+     1
+     2
+     */
+    @Test
+    public void test33()  {
+
+        try {
+            for (int i = 0; i < 5; i++) {
+                if (i ==3) throw new RuntimeException("123");
+                System.out.println(i);
+            }
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
+    }
+
     /** 执行结果  只执行到 2   发生异常后 没能继续执行
      0
      1
