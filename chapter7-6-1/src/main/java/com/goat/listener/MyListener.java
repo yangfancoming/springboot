@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @ author  山羊来了
  * @ date 2019/2/20---20:54
  */
-@Component // 必须加注解
+//@Component // 必须加注解
 public class MyListener implements ApplicationListener {
     /**
      * Handle an application event.
