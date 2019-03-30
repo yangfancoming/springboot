@@ -7,8 +7,9 @@ import com.goat.dp.strategy.VIPStrategyImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by 64274 on 2019/3/28.
@@ -54,7 +55,7 @@ public class SaleService {
         }
     }
 
-    HashMap<String, IDiscountStrategy> map = new HashMap<>();
+    Map<String, IDiscountStrategy> map = new ConcurrentHashMap<>();
 
     // sos 通过构造方法 进行  Spring注入 所有该接口的实现类！
     public SaleService(List<IDiscountStrategy> list) {
@@ -62,6 +63,7 @@ public class SaleService {
             map.put(temp.type(),temp);// sos 这里有点难理解
         }
     }
+
     // 继续升级  通过 Spring注入和 Map 方式 干掉了  if else
     public void sale3(String type,double price){
         Double discount = map.get(type).discount(price);

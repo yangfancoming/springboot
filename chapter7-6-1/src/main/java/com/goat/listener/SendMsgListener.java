@@ -16,15 +16,20 @@ public class SendMsgListener implements ApplicationListener<MsgEvent> {
 
     @Override
     public void onApplicationEvent(MsgEvent event) {
-        long startTime=System.currentTimeMillis();
-        System.out.println("监听到 ---- 给 wms 推送 msg 事件  给wms发送 msg " + startTime);
         try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
+            long startTime=System.currentTimeMillis();
+            System.out.println("监听到 ---- 给 wms 推送 msg 事件  给wms发送 msg " + startTime);
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            long endTime=System.currentTimeMillis();
+            System.out.println("监听到 ---- 给 wms 推送 msg 事件  给wms发送 msg  结束 " + endTime);
+            System.out.println("总耗时： " + (float)(endTime-startTime)/1000);
+            throw new RuntimeException("123");// 抛出异常后  时候还会执行 LogEvent
+        } catch (RuntimeException e) {
             e.printStackTrace();
         }
-        long endTime=System.currentTimeMillis();
-        System.out.println("监听到 ---- 给 wms 推送 msg 事件  给wms发送 msg  结束 " + endTime);
-        System.out.println("总耗时： " + (float)(endTime-startTime)/1000);
     }
 }
