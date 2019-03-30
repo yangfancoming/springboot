@@ -7,8 +7,8 @@ package A03;
  * @Description: TODO
  * @date 2018/6/27---15:21
  */
-public class Dog
-{
+public class Dog {
+
     private String name;
 
     public void makeSound(){

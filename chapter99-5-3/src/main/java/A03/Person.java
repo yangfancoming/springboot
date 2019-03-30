@@ -26,11 +26,51 @@ public class Person {
 
     public int height;  // 0
 
+    /**
+     *  当方法的局部变量和类成员变量重名时，根据“就近原则” 使用局部变量
+     *  如果 需要访问本类中的成员变量，则需要 this 引用
 
-    @Override
-    public String toString() {
-        return "Person{" + "name='" + name + '\'' + ", age=" + age + ", married=" + married + ", height=" + height + '}';
+    */
+    public void sayHi(String name){
+        System.out.println(name + "你好，我是" + this.name);
+        System.out.println(this);// 地址值
     }
 
+//    @Override
+//    public String toString() {
+//        return "Person{" + "name='" + name + '\'' + ", age=" + age + ", married=" + married + ", height=" + height + '}';
+//    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public boolean isMarried() {
+        return married;
+    }
+
+    public void setMarried(boolean married) {
+        this.married = married;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
 }
 

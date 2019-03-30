@@ -62,7 +62,6 @@ public class TestNG {
         System.out.println(dog.toString());// base.model.Dog@1376c05c
     }
 
-
     /**
      * @Description: 功能描述：
      * @author: 杨帆
@@ -86,7 +85,7 @@ public class TestNG {
     @Test
     public void  test(){
         String str1 = "hello"; // 常量池存储
-        String str2 = "he" + new String("llo"); // "he"  常量池存储   new String("llo") 因为是new出来的 都是堆存储
+        String str2 = "he" + "llo"; // "he"  常量池存储   new String("llo") 因为是new出来的 都是堆存储
         System.out.println(str1 == str2); //  false
     }
     @Test
@@ -105,8 +104,8 @@ public class TestNG {
     @Test
     public void test3()  {
         // 下面程序中s1和s2是两个不同对象
-        String s1 = new String("Hello");
-        String s2 = new String("Hello");
+        String s1 = "Hello";
+        String s2 = "Hello";
 
         // String重写了hashCode()方法——改为根据字符序列计算hashCode值，
         // 因为s1和s2的字符序列相同，所以它们的hashCode方法返回值相同

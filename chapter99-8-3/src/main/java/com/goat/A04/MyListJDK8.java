@@ -16,7 +16,7 @@ import java.util.*;
  * Description:
  * java8新增加
  * void replaceAll(UnaryOperator operator) 根据指定规则重新设置List集合的所有元素
- * void  sort(Comparator c)                根据Comparator参数对List集合的元素排序，可以用lambda作为参数
+ * void  sort(Comparator c)                根据Comparator参数对List集合的元素排序，可以用 lambda 作为参数
  * sos List 三个子类的特点：
  * ArrayList ：
  * 1. 底层是数组 查改快   增删慢
