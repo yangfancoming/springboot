@@ -1,15 +1,14 @@
-package com.goat.jvm;
+package com.goat;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.scheduling.annotation.EnableScheduling;
 
 
 @SpringBootApplication
-public class JVMApplication {
+public class ConcurrentApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JVMApplication.class, args);
+		SpringApplication.run(ConcurrentApplication.class, args);
 	}
 
 }

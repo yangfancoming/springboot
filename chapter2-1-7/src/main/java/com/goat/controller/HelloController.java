@@ -19,10 +19,10 @@ public class HelloController {
     @GetMapping("/test1")
     public String test1(ModelMap map) {
         map.addAttribute("hello", "asdkfjdsfkdddd");
-        return "haha";
+        return "login";
     }
 
-    // http://localhost:8217/hello/test2
+    //  http://localhost:8217/hello/test2
     @GetMapping("/test2")
     public String test2(ModelMap map) {
         map.addAttribute("hello", "asdkfjdsfkdddd");
