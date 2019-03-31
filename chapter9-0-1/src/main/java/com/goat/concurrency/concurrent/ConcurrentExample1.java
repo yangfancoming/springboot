@@ -9,7 +9,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
-/** 并发模拟 工具类  */
+/** 并发模拟 工具类
+ *
+ * 可以看到 执行结果是错误的 正确的结果应该是：5000
+ * */
 
 @UnThreadSafe
 public class ConcurrentExample1 {
@@ -21,7 +24,7 @@ public class ConcurrentExample1 {
     public static int threadTotal = 200;
     public static int count = 0;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         final Logger myLog = LoggerFactory.getLogger(ConcurrentExample1.class);
         ExecutorService exec = Executors.newCachedThreadPool();// 定义线程池
         final Semaphore semp = new Semaphore(threadTotal); // 信号量 运行同时并发执行的线程数
@@ -38,6 +41,8 @@ public class ConcurrentExample1 {
                 countDownLatch.countDown();
             });
         }
+
+        countDownLatch.await();
         exec.shutdown(); // 关闭线程池
         myLog.info("size:{}", count);
 
