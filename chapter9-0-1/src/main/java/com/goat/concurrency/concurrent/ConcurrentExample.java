@@ -12,7 +12,7 @@ import org.junit.Test;
  * */
 
 @UnThreadSafe
-public class ConcurrentExample1 extends BaseExample {
+public class ConcurrentExample extends BaseExample {
 
     public static int count = 0;
 

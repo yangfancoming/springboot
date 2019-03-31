@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.util.concurrent.atomic.AtomicLong;
 
 @ThreadSafe
-public class AtomicExample1 extends BaseExample {
+public class MyAtomicLong extends BaseExample {
 
     private static AtomicLong count = new AtomicLong(0);
 
