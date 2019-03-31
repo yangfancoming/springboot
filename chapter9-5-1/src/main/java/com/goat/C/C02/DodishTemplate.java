@@ -10,6 +10,7 @@ package com.goat.C.C02;
 public abstract class DodishTemplate {
 
     public Boolean spit = false;// 默认不往菜里吐痰
+
     protected final void dodish(){  // 具体的整个过程
         pourOil();
         preparation();
