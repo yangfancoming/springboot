@@ -1,6 +1,6 @@
 package com.goat.dp.strategy;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by 64274 on 2019/3/28.
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
  * @ author  山羊来了
  * @ date 2019/3/28---18:38
  */
-@Service
+@Component
 public class VIP2StrategyImpl implements IDiscountStrategy {
 
     @Override

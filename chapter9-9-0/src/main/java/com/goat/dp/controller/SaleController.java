@@ -32,7 +32,7 @@ public class SaleController {
         saleService.sale2(type,price);
         return "";
     }
-
+    //   http://localhost:8990/test2?type=VIP2&price=100
     @GetMapping("test2")
     public String test2(String type,Double price){
         saleService.sale3(type,price);
