@@ -1,4 +1,4 @@
-package com.goat.C.C06;
+package com.goat.C.C06.example01;
 
 /**
  * Created by 64274 on 2019/4/1.
