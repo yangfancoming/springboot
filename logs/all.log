@@ -1,0 +1,15 @@
+2019-03-15 13:55:14,128  INFO WebLogAspect:45 - URL : http://localhost:8123/hello
+2019-03-15 13:55:14,133  INFO WebLogAspect:46 - HTTP_METHOD : GET
+2019-03-15 13:55:14,133  INFO WebLogAspect:47 - IP : 0:0:0:0:0:0:0:1
+2019-03-15 13:55:14,143  INFO WebLogAspect:48 - CLASS_METHOD : com.goat.web.HelloController.hello
+2019-03-15 13:55:14,143  INFO WebLogAspect:49 - ARGS : [goat]
+2019-03-15 13:56:18,853  INFO WebLogAspect:45 - URL : http://localhost:8123/hello
+2019-03-15 13:56:18,855  INFO WebLogAspect:46 - HTTP_METHOD : GET
+2019-03-15 13:56:18,855  INFO WebLogAspect:47 - IP : 0:0:0:0:0:0:0:1
+2019-03-15 13:56:18,856  INFO WebLogAspect:48 - CLASS_METHOD : com.goat.web.HelloController.hello
+2019-03-15 13:56:18,856  INFO WebLogAspect:49 - ARGS : [goat]
+2019-03-15 13:57:21,335  INFO WebLogAspect:46 - URL : http://localhost:8123/hello
+2019-03-15 13:57:21,923  INFO WebLogAspect:47 - HTTP_METHOD : GET
+2019-03-15 13:57:21,924  INFO WebLogAspect:48 - IP : 0:0:0:0:0:0:0:1
+2019-03-15 13:57:21,925  INFO WebLogAspect:49 - CLASS_METHOD : com.goat.web.HelloController.hello
+2019-03-15 13:57:21,925  INFO WebLogAspect:50 - ARGS : [goat]

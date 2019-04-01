@@ -13,19 +13,13 @@ public abstract class Commond {
     private Barbecue barbecue;
 
     public Commond(Barbecue barbecue) {
-        super();
         this.barbecue = barbecue;
     }
 
     public abstract void excuteCommond();
 
-
-
     public Barbecue getBarbecue() {
         return barbecue;
     }
 
-    public void setBarbecue(Barbecue barbecue) {
-        this.barbecue = barbecue;
-    }
 }

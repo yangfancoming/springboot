@@ -1,0 +1,42 @@
+2019-03-14 14:44:21,685  INFO WebLogAspect:38 - URL : http://localhost:8123/hello
+2019-03-14 14:44:21,690  INFO WebLogAspect:39 - HTTP_METHOD : GET
+2019-03-14 14:44:21,691  INFO WebLogAspect:40 - IP : 0:0:0:0:0:0:0:1
+2019-03-14 14:44:21,703  INFO WebLogAspect:41 - CLASS_METHOD : com.goat.web.HelloController.hello
+2019-03-14 14:44:21,704  INFO WebLogAspect:42 - ARGS : [goat]
+2019-03-14 14:44:24,866  INFO WebLogAspect:49 - RESPONSE : Hello goat
+2019-03-14 14:44:24,866  INFO WebLogAspect:50 - SPEND TIME : 3181
+2019-03-14 14:45:18,174  INFO WebLogAspect:38 - URL : http://localhost:8123/hello
+2019-03-14 14:45:18,178  INFO WebLogAspect:39 - HTTP_METHOD : GET
+2019-03-14 14:45:18,178  INFO WebLogAspect:40 - IP : 0:0:0:0:0:0:0:1
+2019-03-14 14:45:18,183  INFO WebLogAspect:41 - CLASS_METHOD : com.goat.web.HelloController.hello
+2019-03-14 14:45:18,184  INFO WebLogAspect:42 - ARGS : [goat]
+2019-03-14 14:45:20,999  INFO WebLogAspect:50 - RESPONSE : Hello goat123
+2019-03-14 14:45:21,000  INFO WebLogAspect:51 - SPEND TIME : 2827
+2019-03-14 14:51:49,579  INFO WebLogAspect:38 - URL : http://localhost:8123/hello
+2019-03-14 14:51:49,584  INFO WebLogAspect:39 - HTTP_METHOD : GET
+2019-03-14 14:51:49,585  INFO WebLogAspect:40 - IP : 0:0:0:0:0:0:0:1
+2019-03-14 14:51:49,586  INFO WebLogAspect:41 - CLASS_METHOD : com.goat.web.HelloController.hello
+2019-03-14 14:51:49,587  INFO WebLogAspect:42 - ARGS : [goat]
+2019-03-14 14:51:53,193  INFO WebLogAspect:61 - RESPONSE : Hello goat123
+2019-03-14 14:51:53,194  INFO WebLogAspect:62 - SPEND TIME : 3675
+2019-03-14 14:54:59,215  INFO WebLogAspect:39 - URL : http://localhost:8123/hello2
+2019-03-14 14:54:59,217  INFO WebLogAspect:40 - HTTP_METHOD : GET
+2019-03-14 14:54:59,218  INFO WebLogAspect:41 - IP : 0:0:0:0:0:0:0:1
+2019-03-14 14:54:59,220  INFO WebLogAspect:42 - CLASS_METHOD : com.goat.web.HelloController.hello2
+2019-03-14 14:54:59,220  INFO WebLogAspect:43 - ARGS : []
+2019-03-14 14:55:13,867  INFO WebLogAspect:70 - RESPONSE : com.goat.model.Foo@20482d0f
+2019-03-14 14:55:13,867  INFO WebLogAspect:71 - SPEND TIME : 14652
+2019-03-14 14:55:37,514  INFO WebLogAspect:39 - URL : http://localhost:8123/hello2
+2019-03-14 14:55:37,514  INFO WebLogAspect:40 - HTTP_METHOD : GET
+2019-03-14 14:55:37,515  INFO WebLogAspect:41 - IP : 0:0:0:0:0:0:0:1
+2019-03-14 14:55:37,516  INFO WebLogAspect:42 - CLASS_METHOD : com.goat.web.HelloController.hello2
+2019-03-14 14:55:37,516  INFO WebLogAspect:43 - ARGS : []
+2019-03-14 14:55:43,053  INFO WebLogAspect:70 - RESPONSE : com.goat.model.Foo@7a620dac
+2019-03-14 14:55:43,053  INFO WebLogAspect:71 - SPEND TIME : 5539
+2019-03-14 14:55:55,226  INFO WebLogAspect:39 - URL : http://localhost:8123/hello2
+2019-03-14 14:55:55,227  INFO WebLogAspect:40 - HTTP_METHOD : GET
+2019-03-14 14:55:55,229  INFO WebLogAspect:41 - IP : 0:0:0:0:0:0:0:1
+2019-03-14 14:55:55,229  INFO WebLogAspect:42 - CLASS_METHOD : com.goat.web.HelloController.hello2
+2019-03-14 14:55:55,229  INFO WebLogAspect:43 - ARGS : []
+2019-03-14 14:55:56,953  INFO WebLogAspect:70 - RESPONSE : com.goat.model.Foo@58e560d6
+2019-03-14 14:55:56,954  INFO WebLogAspect:71 - SPEND TIME : 1728

@@ -13,6 +13,7 @@ public class MuttonCommod extends Commond{
     public MuttonCommod(Barbecue barbecue) {
         super(barbecue);
     }
+
     @Override
     public void excuteCommond() {
         super.getBarbecue().makeMutton();

@@ -1,0 +1,7 @@
+2019-02-25 09:23:30,950  INFO WebLogAspect:38 - URL : http://localhost:8123/hello
+2019-02-25 09:23:31,010  INFO WebLogAspect:39 - HTTP_METHOD : GET
+2019-02-25 09:23:31,010  INFO WebLogAspect:40 - IP : 0:0:0:0:0:0:0:1
+2019-02-25 09:23:31,012  INFO WebLogAspect:41 - CLASS_METHOD : com.goat.web.HelloController.hello
+2019-02-25 09:23:31,013  INFO WebLogAspect:42 - ARGS : [null]
+2019-02-25 09:23:34,014  INFO WebLogAspect:49 - RESPONSE : Hello null
+2019-02-25 09:23:34,016  INFO WebLogAspect:50 - SPEND TIME : 3065

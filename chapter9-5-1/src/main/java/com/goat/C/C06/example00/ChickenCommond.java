@@ -13,6 +13,7 @@ public class ChickenCommond extends Commond{
     public ChickenCommond(Barbecue barbecue) {
         super(barbecue);
     }
+
     @Override
     public void excuteCommond() {
         super.getBarbecue().makeChicken();

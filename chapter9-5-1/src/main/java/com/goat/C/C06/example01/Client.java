@@ -21,7 +21,6 @@ public class Client {
         xiaoAi.setCommand(lightOnCommand);
         xiaoAi.doCommand();
 
-        System.out.println("-------------------------------------------------");
         System.out.println("小爱同学帮我关一下灯！");
         LightOffCommand lightOffCommand = new LightOffCommand(light);
         xiaoAi.setCommand(lightOffCommand);
