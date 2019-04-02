@@ -1,5 +1,6 @@
 
 
+
 工程配置
 
 - ==chapter0-0-0 springboot 空项目==
@@ -276,6 +277,18 @@ excel 相关操作
 
 
 
+JVM
+
+- ==chapter8-5-0：springboot 集成 JVM==
+
+
+
+高并发 
+
+- ==chapter9-0-1：springboot 集成 高并发 ==
+
+
+
 - ==chapter9-1-1：Mysql 积累和总结==
 - ==chapter9-1-2：Mysql  各种配置==
 - ==chapter9-3-1：springboot 集成 HessianServer==
@@ -289,6 +302,7 @@ excel 相关操作
 - ==chapter9-8-1：springboot  dubbo  API    为 Rbac 提供服务 ==
 - ==chapter9-8-3：springboot 架构 Layui ==
 - ==chapter9-8-4：springboot 架构 Easyui==
+- ==chapter9-9-0：springboot 架构 设计模式实战==
 
 
 
@@ -301,3 +315,4 @@ excel 相关操作
 
 - ==chapter9-9-6：springboot 集成 TestNG==
 - ==chapter9-9-9：提供测试代码 编写==
+  
