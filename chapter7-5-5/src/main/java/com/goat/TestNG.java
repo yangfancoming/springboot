@@ -21,6 +21,7 @@ public class TestNG  {
         ReadExcel.readExcel("src/123.xlsx");
     }
 
+    /**  异常继续执行*/
 
 /** 执行结果   捕获异常后  循环可以继续执行  doit  做一下 excel导入100条数据  成功的插入， 插入不成功的 给予提示
  0

@@ -51,3 +51,8 @@
     
     JDK动态代理是通过接口中的方法名，在动态生成的代理类中调用业务实现类的同名方法；
     CGlib动态代理是通过继承业务类，生成的动态代理类是业务类的子类，通过重写业务方法进行代理；
+    
+    
+# 报错：  return  代码  后 报错：
+    Could not commit JPA transaction RollbackException: Transaction marked as rollbackOnly
+    解决： 问题出在 controller中 ， 把 controller 方法上的    @Transactional 注解去掉 就可以了。。。。
