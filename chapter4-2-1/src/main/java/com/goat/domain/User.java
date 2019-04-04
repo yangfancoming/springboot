@@ -1,10 +1,18 @@
 package com.goat.domain;
 
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
 
-
+/**  @DynamicUpdate  是的作用并不是 更新指定字段，而是更新变化的字段
+如果请求过来的字段被封装成对象 再去使用 save() 方法，请求 url中没有涉及到的字段默认为null
+ 如果这个字段在数据库中已经有值了，那么当然会被 null 覆盖，因为 你save()的对象中 这个字段为null 和数据库中的值不同。
+*/
 @Entity
 @Table(name = "user")
+@DynamicUpdate
+@DynamicInsert
 public class User {
 
     @Id

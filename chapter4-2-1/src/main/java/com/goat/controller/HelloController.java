@@ -59,6 +59,6 @@ public class HelloController {
     public void haha111(){
         User user = userRepository.findByName("FFF");
         user.setAge(null);
-//        User save = userRepository.save(user);
+        userRepository.save(user);
     }
 }
