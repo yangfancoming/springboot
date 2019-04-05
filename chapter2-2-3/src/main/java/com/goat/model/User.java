@@ -1,8 +1,6 @@
 package com.goat.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.*;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,6 +9,7 @@ import java.util.Date;
 //@JsonNaming(PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy.class)
 //@JsonSerialize(using = UserSerializer.class)
 //@JsonDeserialize (using = UserDeserializer.class)
+@JsonInclude(JsonInclude.Include.NON_NULL) // 如果该字段为 null 则不会返回  也可以用在 属性上
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 6222176558369919436L;
@@ -27,13 +26,11 @@ public class User implements Serializable {
 	@JsonView(AllUserFieldView.class)
 	private int age;
 
-	// @JsonIgnore
 	@JsonView(AllUserFieldView.class)
 	private String password;
 
-	// @JsonProperty("bth")
-	 @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	@JsonView(AllUserFieldView.class)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") //  2019-04-05 07:22:49
+    @JsonView(AllUserFieldView.class)
 	private Date birthday;
 
     /**
@@ -42,7 +39,11 @@ public class User implements Serializable {
      */
     @JsonProperty("text")
 	 private String temp1;
+
 	 private String temp2;
+
+    @JsonIgnore // 作用：在json序列化时将java bean中的一些属性忽略掉，序列化和反序列化都受影响
+    private String temp3;
 
 
 	public String getUserName() {
@@ -91,5 +92,13 @@ public class User implements Serializable {
 
     public void setTemp2(String temp2) {
         this.temp2 = temp2;
+    }
+
+    public String getTemp3() {
+        return temp3;
+    }
+
+    public void setTemp3(String temp3) {
+        this.temp3 = temp3;
     }
 }

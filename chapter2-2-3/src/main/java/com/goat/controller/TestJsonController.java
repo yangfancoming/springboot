@@ -31,7 +31,7 @@ public class TestJsonController {
 		user.setUserName("mrbird");
 		user.setAge(25);
 		user.setPassword("123456");
-		user.setBirthday(new Date());
+		user.setBirthday(new Date()); // 2019-04-05 07:22:49
 		return user;
 	}
 
