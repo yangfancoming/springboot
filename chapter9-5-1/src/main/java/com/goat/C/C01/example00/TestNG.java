@@ -1,9 +1,6 @@
 package com.goat.C.C01.example00;
 
-
-import org.testng.annotations.Test;
-
-
+import org.junit.Test;
 
 public class TestNG {
 

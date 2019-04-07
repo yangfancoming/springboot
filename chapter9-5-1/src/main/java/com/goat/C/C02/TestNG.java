@@ -1,7 +1,7 @@
 package com.goat.C.C02;
 
-import org.testng.annotations.Test;
 
+import org.junit.Test;
 
 /**
      * @Description:  模板方法 设计模式

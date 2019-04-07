@@ -1,6 +1,7 @@
 package com.goat.M.example01;
 
-import org.testng.annotations.Test;
+
+import org.junit.Test;
 
 /**
  * Created by 64274 on 2018/12/14.

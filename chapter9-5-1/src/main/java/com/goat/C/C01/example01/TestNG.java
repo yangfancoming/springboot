@@ -7,7 +7,7 @@ import com.goat.C.C01.example01.hero.LuBan;
 import com.goat.C.C01.example01.hero.XiangYu;
 import com.goat.C.C01.example01.skill.GunSkill;
 import com.goat.C.C01.example01.skill.SkillBehavior;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 
 public class TestNG {

@@ -1,6 +1,7 @@
 package com.goat.B.B03.example02;
 
-import org.testng.annotations.Test;
+
+import org.junit.Test;
 
 /**
  * Created by 64274 on 2018/7/7.
@@ -12,8 +13,8 @@ import org.testng.annotations.Test;
  * 代理角色: 要持有真实角色的引用
  * 二者实现同一个接口
  */
-public class TestNG
-{
+public class TestNG {
+
     @Test
     public void test(){
 

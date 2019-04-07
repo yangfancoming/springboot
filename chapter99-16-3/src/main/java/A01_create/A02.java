@@ -1,7 +1,7 @@
 package A01_create;
 
 
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 /**
      * @Description:  （多线程 演示龟兔赛跑）

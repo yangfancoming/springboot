@@ -1,7 +1,8 @@
 package com.goat.C.C05.example00;
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 
 public class TestNG {
 
@@ -10,7 +11,7 @@ public class TestNG {
     private MyHandler h3 = new ConcrateHandler3();
 
 
-    @BeforeMethod
+    @Before
     public void before(){
         h1.setSuccessor(h2).setSuccessor(h3);
     }
