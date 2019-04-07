@@ -94,9 +94,10 @@ public class AspectTest {
 
 
     @Around("execution(* com.goat.service..*(..))")
-    public void around(ProceedingJoinPoint pjp){
-        System.out.println("哥是 环绕增强1。。。。。。。。。。。");
-        System.out.println(pjp.getArgs());
+    public void around(ProceedingJoinPoint pjp) throws Throwable {
+        System.out.println("哥是 环绕增强 调用目标方法前执行。。。。。。。。。。。");
+        pjp.proceed(); // 如果目标方法 出现异常 则 不会执行  System.out.println("哥是 环绕增强 调用目标方法后执行。。。。。。。。。。。");
+        System.out.println("哥是 环绕增强 调用目标方法后执行。。。。。。。。。。。");
     }
 
 }
