@@ -15,7 +15,7 @@ import java.util.stream.Stream;
  allMatch表示，判断条件里的元素，所有的都是，返回true
  noneMatch跟allMatch相反，判断条件里的元素，所有的都不是，返回true
  */
-public class Streams {
+public class StreamFilter {
 
     List<String> strs1 = Arrays.asList("d2", "a2", "b1", "b3", "c");
     List<String> strs2 = Arrays.asList("aaa3","aaa1", "bbb1", "aaa2", "bbb2", "bbb3" , "ccc", "ddd1", "ddd2");
@@ -33,20 +33,6 @@ public class Streams {
     @Test
     public void filtering(){
         strs2.stream().filter((s) -> s.startsWith("a")).forEach(System.out::println);
-    }
-
-    /**  排序
-     aaa1 aaa2 aaa3
-    */
-    @Test
-    public void sorting(){
-        strs2.stream().sorted().filter((s) -> s.startsWith("a")) .forEach(System.out::println);
-    }
-
-    @Test
-    public void counting(){
-        long count = strs2.stream() .filter((s) -> s.startsWith("b")).count();
-        System.out.println(count); // 3
     }
 
 }
