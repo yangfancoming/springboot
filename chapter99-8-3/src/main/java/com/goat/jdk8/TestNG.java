@@ -1,9 +1,9 @@
-package com.goat;
+package com.goat.jdk8;
 
 
+import com.goat.model.*;
 import org.testng.annotations.Test;
 
-import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
      * @Description:  list 分组  groupby
      * @Description:  list 过滤  filter
      * @Description:  list 求和
-     * @Description:  List转为Ma
+     * @Description:  List转为Map
      * @author: 杨帆
      * @Date:   2018/12/14
 */

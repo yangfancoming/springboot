@@ -1,7 +1,8 @@
-package com.goat.A04;
+package com.goat.jdk8;
 
 
 
+import com.goat.A04.Student;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 

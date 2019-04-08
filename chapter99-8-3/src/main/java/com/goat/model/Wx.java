@@ -1,4 +1,4 @@
-package com.goat;
+package com.goat.model;
 
 /**
  * Created by 64274 on 2019/3/7.
