@@ -33,6 +33,7 @@ public class StreamSorted {
         /** 3. 自然序排序  */
         strs2.stream().sorted().forEach(System.out::println);
     }
+
     @Test
     public void sorting(){
         strs2.stream().sorted().filter((s) -> s.startsWith("a")).forEach(System.out::println);

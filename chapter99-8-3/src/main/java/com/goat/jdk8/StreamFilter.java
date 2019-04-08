@@ -10,11 +10,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/**
- anyMatch表示，判断的条件里，任意一个元素成功，返回true
- allMatch表示，判断条件里的元素，所有的都是，返回true
- noneMatch跟allMatch相反，判断条件里的元素，所有的都不是，返回true
- */
+
 public class StreamFilter {
 
     List<String> strs1 = Arrays.asList("d2", "a2", "b1", "b3", "c");
