@@ -2,8 +2,9 @@ package com.goat.A04;
 
 
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ public class MyArrayList {
     /**
      * 在执行目标测试方法testTest()前执行
      */
-    @BeforeMethod
+    @Before
     public void testBefore() {
         c.add("周永康");
         c.add("孙悟空");

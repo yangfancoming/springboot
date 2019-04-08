@@ -2,8 +2,9 @@ package com.goat.A03;
 
 
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -20,7 +21,7 @@ import java.util.TreeSet;
 public class MySet {
     Set<String> s = new HashSet<>();
     Set<String> ss = new TreeSet<>();
-    @BeforeMethod
+    @Before
     public void testBefore() {
         s.add("周永康"); // 由于是 HashSet 集合 重复元素 将被忽略！
         s.add("周永康");

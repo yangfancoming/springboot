@@ -2,8 +2,8 @@ package com.goat.A02;
 
 
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.*;
 
@@ -47,7 +47,7 @@ public class MyCollection
     /**
      * 在执行目标测试方法testTest()前执行
      */
-    @BeforeMethod
+    @Before
     public void testBefore() {
         c.add(true);
         c.add(123);

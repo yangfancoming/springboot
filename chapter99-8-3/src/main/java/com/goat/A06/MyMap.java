@@ -2,8 +2,8 @@ package com.goat.A06;
 
 
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.*;
 
@@ -41,7 +41,7 @@ Collection<V> values()    获取集合中 所有的值！
 public class MyMap {
     Map map = new HashMap();
 
-    @BeforeMethod
+    @Before
     public void testBefore() {
         map.put("王宝" , 109);
         map.put("西安大咖" , 10);

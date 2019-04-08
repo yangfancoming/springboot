@@ -1,8 +1,8 @@
 package com.goat.A06;
 
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +18,7 @@ public class MapHere2 {
     List<Map<String,Object>> map4 = new ArrayList<>();
     List<Map<String,Object>> map5 = new ArrayList<>();
 
-    @BeforeMethod
+    @Before
     public void testBefore() {
         map.put("01","goat11"); // 如果map中没有对应的key 则返回null 如果map中已经存在本次put的key 那么覆盖原有的value并返回原有的value
         map.put("02","goat21");

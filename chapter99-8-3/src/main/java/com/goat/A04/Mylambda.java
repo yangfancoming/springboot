@@ -2,8 +2,10 @@ package com.goat.A04;
 
 
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+
+
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.*;
 
@@ -14,7 +16,7 @@ import java.util.*;
 public class Mylambda {
     List<String> list = new ArrayList();
 
-    @BeforeMethod
+    @Before
     public void testBefore() {
         list.add("AA");
         list.add("DDDD");

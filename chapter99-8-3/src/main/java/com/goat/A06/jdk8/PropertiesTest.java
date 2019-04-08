@@ -1,7 +1,7 @@
 package com.goat.A06.jdk8;
 
 
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import java.util.*;
 import java.io.*;

@@ -3,8 +3,8 @@ package com.goat.jdk8;
 
 
 import com.goat.A04.Student;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.*;
 
@@ -35,7 +35,7 @@ public class MyListJDK8 {
     List<Student> list = new ArrayList<>();
     List<Integer> l = new ArrayList<>();
 
-    @BeforeMethod
+    @Before
     public void testBefore() {
         books.add("AA");
         books.add("DDDD");

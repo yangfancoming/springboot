@@ -1,8 +1,7 @@
-package com.goat.A06.jdk8;
+package com.goat.jdk8;
 
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,10 +9,6 @@ import java.util.List;
 
 public class MyLambdaJDK8 {
 
-    @BeforeMethod
-    public void testBefore() {
-
-    }
 
     /**
      将一个字符串集合中的所有单词转为大写

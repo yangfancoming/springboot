@@ -1,8 +1,9 @@
 package com.goat.A02;
 
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -19,7 +20,7 @@ public class TestNG {
     Collection books = new HashSet();
 
     // 创建books集合、为books集合添加元素的代码与8.2.5小节的程序相同。
-    @BeforeMethod
+    @Before
     public void before(){
         books.add("轻量级Java EE企业应用实战");
         books.add("疯狂Java讲义");

@@ -1,9 +1,9 @@
-package com.goat.A06.jdk8;
+package com.goat.jdk8;
 
 
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,7 +19,7 @@ public class MyMapJDK8 {
 
     Map map = new HashMap();
 
-    @BeforeMethod
+    @Before
     public void testBefore() {
         map.put("疯狂Java讲义" , 109);
         map.put("疯狂iOS讲义" , 99);

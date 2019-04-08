@@ -2,7 +2,7 @@ package com.goat.jdk8;
 
 
 import com.goat.model.*;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import java.util.*;
 import java.util.stream.Collectors;

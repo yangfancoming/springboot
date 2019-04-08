@@ -1,9 +1,9 @@
 package com.goat.A06.example;
 
-import org.testng.annotations.Test;
+
+import org.junit.Test;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Created by 64274 on 2019/3/7.

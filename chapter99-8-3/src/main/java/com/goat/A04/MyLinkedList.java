@@ -2,8 +2,8 @@ package com.goat.A04;
 
 
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.LinkedList;
 
@@ -19,7 +19,7 @@ import java.util.LinkedList;
 public class MyLinkedList {
 
     LinkedList linkedList = new LinkedList();
-    @BeforeMethod
+    @Before
     public void testBefore() {
         linkedList.add("周永康");
         linkedList.add("孙悟空");
