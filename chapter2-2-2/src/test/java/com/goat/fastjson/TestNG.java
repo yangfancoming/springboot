@@ -7,7 +7,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.goat.entity.User;
 import com.goat.fastjson.entity.Person;
 import com.goat.fastjson.entity.School;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import java.util.*;
 

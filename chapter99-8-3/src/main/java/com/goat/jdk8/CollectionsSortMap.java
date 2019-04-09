@@ -70,7 +70,6 @@ public class CollectionsSortMap {
         Collections.sort(list, (o1, o2)-> -1);
         list.forEach(System.out::println);
 
-
         System.out.println("===================  1");
         Collections.sort(list, (o1, o2)-> 1);
         list.forEach(System.out::println);

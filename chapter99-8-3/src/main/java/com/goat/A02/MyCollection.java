@@ -39,8 +39,8 @@ import java.util.*;
 
 
  */
-public class MyCollection
-{
+public class MyCollection {
+
     Collection c = new ArrayList();
     Collection books = new HashSet();
 
