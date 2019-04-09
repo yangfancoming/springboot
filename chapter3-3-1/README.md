@@ -44,17 +44,7 @@
     指定MYSQL建表的时候使用InnoDB引擎(支持事务安全),使用MySQL5InnoDBDialect方言在生成表结构的时候可以指定表的"ENGINE=InnoDB",
     而如果使用方言MySQL5Dialect,则在生成表结构的时候默认使用的是 ENGINE=MyISAM，该引擎不支持事务，即使程序中使用事务，也不起作用
 
-    
-# JDK 动态代理 与 Cglib 动态代理
-    JDK 动态代理机制只能代理实现了接口的类，而不能实现接口的类 就不能对其实现JDK的动态代理，
-    Cglib 是针对类来实现代理的，他的原理是对指定的目标类生成一个子类，并覆盖其中方法实现增强，但因为采用的是继承，所以不能对final修饰的类进行代理。
-    
-    JDK动态代理是通过接口中的方法名，在动态生成的代理类中调用业务实现类的同名方法；
-    CGlib动态代理是通过继承业务类，生成的动态代理类是业务类的子类，通过重写业务方法进行代理；
-    
-# 静态代理 与 动态代理
-    静态代理：   需要生产目标代理对象
-    动态代理： 不需要生产目标代理对象
+
     
 # 报错：  return  代码  后 报错：
     Could not commit JPA transaction RollbackException: Transaction marked as rollbackOnly
