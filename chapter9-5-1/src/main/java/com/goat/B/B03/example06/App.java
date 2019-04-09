@@ -1,7 +1,6 @@
 package com.goat.B.B03.example06;
 
 
-import com.goat.B.B03.example05.Dao;
 import org.junit.Test;
 import org.springframework.cglib.proxy.Callback;
 import org.springframework.cglib.proxy.Enhancer;
@@ -32,11 +31,11 @@ public class App {
     */
     @Test
     public void testCglib() {
-        DaoProxy daoProxy = new DaoProxy();
-        DaoAnotherProxy daoAnotherProxy = new DaoAnotherProxy();
+        DaoProxy daoProxy = new DaoProxy(); // 创建代理对象 1
+        DaoAnotherProxy daoAnotherProxy = new DaoAnotherProxy(); // 创建代理对象 2
 
         Enhancer enhancer = new Enhancer();
-        enhancer.setSuperclass(MyDao.class);
+        enhancer.setSuperclass(MyDao.class); // setSuperclass 表示设置要代理的类
         enhancer.setCallbacks(new Callback[]{daoProxy, daoAnotherProxy, NoOp.INSTANCE});
         enhancer.setCallbackFilter(new DaoFilter());
         /**
@@ -45,7 +44,7 @@ public class App {
          即构造函数中调用方法也是会拦截的
         */
         enhancer.setInterceptDuringConstruction(false);
-        MyDao dao = (MyDao)enhancer.create();
+        MyDao dao = (MyDao)enhancer.create();// 返回一个动态代理类对象（它是业务类的子类，可以用业务类引用指向它）。最后通过动态代理类对象进行方法调用。
         dao.update(); // 对类A的B方法使用一种拦截策略
         dao.select(); // 类A的C方法使用另外一种拦截策略
     }
