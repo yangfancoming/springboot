@@ -15,6 +15,8 @@
 
         example05： 使用Cglib代码对类做代理的通用写法
         example06： 使用Cglib定义不同的拦截策略
+        example07： 静态代理
+        example08： JDK 动态代理
     
     
     Cglib 要点描述：
