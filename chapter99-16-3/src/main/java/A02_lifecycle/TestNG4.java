@@ -1,6 +1,7 @@
 package A02_lifecycle;
 
-import org.testng.annotations.Test;
+
+import org.junit.Test;
 
 /**
      * @Description: 功能描述：( 线程的各种状态 )

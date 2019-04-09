@@ -1,7 +1,8 @@
 package com.goat.example03;
 
 
-import org.testng.annotations.Test;
+
+import org.junit.Test;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

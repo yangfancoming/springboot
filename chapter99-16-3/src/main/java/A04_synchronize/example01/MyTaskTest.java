@@ -1,6 +1,7 @@
 package A04_synchronize.example01;
 
-import org.testng.annotations.Test;
+
+import org.junit.Test;
 
 /**
  * Created by 64274 on 2018/7/20.
@@ -26,7 +27,7 @@ synchronized (object) 实现同步的关键就在于 这个 object 上， 这就
 
 
  */
-@Test
+//@Test
 public class MyTaskTest {
 
     public static class test1{

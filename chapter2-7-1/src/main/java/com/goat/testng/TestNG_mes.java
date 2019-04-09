@@ -6,8 +6,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.goat.HttpClientApplication;
 import com.goat.pojo.HttpClientResult;
 import com.goat.utils.HttpClientUtils;
+import org.junit.Test;
 import org.springframework.test.context.ContextConfiguration;
-import org.testng.annotations.Test;
 
 import java.util.HashMap;
 import java.util.Map;

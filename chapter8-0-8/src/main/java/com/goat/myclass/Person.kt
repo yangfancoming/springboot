@@ -1,6 +1,6 @@
 package myclass
 
-import org.testng.annotations.Test
+import org.junit.Test
 
 /**
  * Created by 64274 on 2018/6/19.

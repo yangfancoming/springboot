@@ -1,7 +1,7 @@
 package com.goat.date;
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.junit.Test;
+
 
 import java.text.ParseException;
 
@@ -14,11 +14,6 @@ import java.text.ParseException;
 */
 public class DateUtilTest {
 
-
-    @BeforeMethod
-    public void beforeMethod(){
-
-    }
 
 
     @Test

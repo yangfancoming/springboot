@@ -3,7 +3,7 @@ package com.goat.ch01_basic.object;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import com.google.common.collect.ComparisonChain;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 /**
      * @Description:  常用 Object 方法

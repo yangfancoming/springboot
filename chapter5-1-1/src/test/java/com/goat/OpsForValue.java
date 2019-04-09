@@ -1,11 +1,11 @@
 package com.goat;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.testng.Assert;
 
 import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;

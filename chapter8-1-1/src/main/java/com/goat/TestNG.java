@@ -1,26 +1,20 @@
 package com.goat;
 
 
-import com.aliyun.oss.OSSClient;
-import com.aliyun.oss.model.ObjectMetadata;
-import com.aliyun.oss.model.PutObjectResult;
 import com.goat.config.AliyunOssConfig;
 import com.goat.utils.OssUtil;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.annotations.Test;
 
-import java.io.File;
 
 
 /**
  * Created by 64274 on 2018/7/27.
  *
  */
-@ContextConfiguration(classes= AliyunOssApplication.class)
-public class TestNG extends AbstractTestNGSpringContextTests {
+
+public class TestNG   {
 
     @Autowired private ApplicationContext ac;
 

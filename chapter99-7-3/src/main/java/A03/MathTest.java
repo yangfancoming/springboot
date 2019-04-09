@@ -2,7 +2,7 @@
 package A03;
 
 
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 public class MathTest {
 	public static void main(String[] args) {

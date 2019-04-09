@@ -2,15 +2,29 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>springboot</artifactId>
-        <groupId>com.goat.springboot.learing</groupId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
+    <!--<parent>-->
+        <!--<artifactId>springboot</artifactId>-->
+        <!--<groupId>com.goat.springboot.learing</groupId>-->
+        <!--<version>0.0.1-SNAPSHOT</version>-->
+    <!--</parent>-->
     <modelVersion>4.0.0</modelVersion>
-    <packaging>pom</packaging>
+    <!--<packaging>pom</packaging>-->
 
     <artifactId>chapter9-9-6</artifactId>
 
+
+    <groupId>com.goat.springboot.learing</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <dependencies>
+        <!--引入 TestNg -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.10</version>
+            <!--<scope>test</scope>-->
+        </dependency>
+
+    </dependencies>
 
 </project>

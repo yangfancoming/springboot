@@ -2,7 +2,7 @@ package com.goat.test;
 
 
 import com.goat.MyArrayTool;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 
 /**

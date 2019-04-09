@@ -1,6 +1,7 @@
 package A03;
 
-import org.testng.annotations.Test;
+
+import org.junit.Test;
 
 /**
     this 关键字的使用

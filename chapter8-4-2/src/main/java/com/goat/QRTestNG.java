@@ -2,7 +2,7 @@ package com.goat;
 
 import com.goat.utils.QRCodeUtil;
 import com.google.zxing.Result;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 
 public class QRTestNG {

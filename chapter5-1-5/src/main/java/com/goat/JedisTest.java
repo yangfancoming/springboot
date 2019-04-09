@@ -1,7 +1,8 @@
 package com.goat;
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 import redis.clients.jedis.Jedis;
 
 /**
@@ -15,7 +16,7 @@ public class JedisTest {
 
     Jedis jedis;
 
-    @BeforeMethod
+    @Before
     public void test(){
          jedis = new Jedis("172.16.163.135",6379); // 连接 redis 服务器
     }

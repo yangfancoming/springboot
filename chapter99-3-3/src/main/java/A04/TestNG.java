@@ -1,6 +1,7 @@
 package A04;
 
-import org.testng.annotations.Test;
+
+import org.junit.Test;
 
 /**
      * @Description: 功能描述： 3.4.1 基本数据类型

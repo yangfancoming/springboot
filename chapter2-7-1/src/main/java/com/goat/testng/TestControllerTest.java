@@ -7,8 +7,8 @@ import com.goat.HttpClientApplication;
 import com.goat.entity.User;
 import com.goat.pojo.HttpClientResult;
 import com.goat.utils.HttpClientUtils;
+import org.junit.Test;
 import org.springframework.test.context.ContextConfiguration;
-import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;

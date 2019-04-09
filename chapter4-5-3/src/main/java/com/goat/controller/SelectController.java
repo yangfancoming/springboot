@@ -1,9 +1,9 @@
 package com.goat.controller;
 
 import com.goat.entity.User;
+import org.junit.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.testng.Assert;
 
 import java.util.List;
 

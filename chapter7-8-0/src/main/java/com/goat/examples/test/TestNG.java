@@ -2,10 +2,10 @@ package com.goat.examples.test;
 
 
 import com.goat.entity.Person;
+import org.junit.Test;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
-import org.testng.annotations.Test;
 
 
 /**

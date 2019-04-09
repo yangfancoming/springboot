@@ -1,7 +1,7 @@
 package A01_create;
 
 
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 /**
      * @Description:   线程的创建方式

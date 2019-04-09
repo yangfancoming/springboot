@@ -1,8 +1,8 @@
 package com.goat;
 
-import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
+import org.junit.Test;
+
 
 /**
      * @Description: 功能描述： redis 字符串操作

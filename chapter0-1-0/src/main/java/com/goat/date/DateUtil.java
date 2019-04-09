@@ -1,6 +1,7 @@
 package com.goat.date;
 
-import org.testng.annotations.Test;
+
+import org.junit.Test;
 
 import java.sql.Timestamp;
 import java.text.ParseException;

@@ -1,15 +1,10 @@
 package com.goat.test;
 
 
-import com.goat.GuavaCacheApplication;
 import com.goat.entity.Person;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-
+import org.junit.Before;
+import org.junit.Test;
 import java.util.concurrent.ExecutionException;
-
 
 /**
      * @Description: 功能描述：
@@ -30,11 +25,10 @@ put 方法 使用cache.put(key, value)方法可以直接向缓存中插入值
      * @Date:   2018/9/10
 */
 
-@ContextConfiguration(classes= GuavaCacheApplication.class)
-public class TestNG extends AbstractTestNGSpringContextTests {
+public class TestNG   {
     Person person = new Person();
 
-    @BeforeMethod
+    @Before
     public void test(){
         person.setAge(11);
         person.setName("tSun");

@@ -1,6 +1,7 @@
 package com.goat.A01;
 
-import org.testng.annotations.Test;
+
+import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;

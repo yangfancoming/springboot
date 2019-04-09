@@ -3,7 +3,7 @@ package com.goat.test;
 
 import com.goat.CrcTool;
 import com.goat.MyStringTool;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 
 /**

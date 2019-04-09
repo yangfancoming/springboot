@@ -1,12 +1,7 @@
 package com.goat.entity;
-
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
-
 public class PropertyUtil {
-	
-	public static Logger logger = Logger.getLogger(PropertyUtil.class);
 	
 	/**
 	 * 配置文件信息
@@ -24,10 +19,10 @@ public class PropertyUtil {
 			try{
 				props.load(PropertyUtil.class.getResourceAsStream("/common.properties"));
 			}catch(Exception e){
-				logger.error("读取配置文件OaInfoConfig.properties出错！");
+                System.out.println("读取配置文件OaInfoConfig.properties出错！");
 			}
 			if(props.isEmpty()){
-			  logger.error("配置文件OaInfoConfig.properties不存在！");
+                System.out.println("配置文件OaInfoConfig.properties不存在！");
 			   return "";
 			}
 		}

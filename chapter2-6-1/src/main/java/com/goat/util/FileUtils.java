@@ -1,9 +1,9 @@
 package com.goat.util;
 
+import org.junit.Test;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;

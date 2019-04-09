@@ -1,4 +1,4 @@
-import org.testng.annotations.Test;
+import org.junit.Test;
 import utils.QrcodeUtil;
 import utils.ReadQRCode;
 

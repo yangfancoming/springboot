@@ -1,12 +1,9 @@
 package com.goat.entityManager;
 
 
-import com.goat.JPAApplication;
 import org.hibernate.SQLQuery;
 import org.hibernate.transform.Transformers;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,8 +14,7 @@ import java.util.Map;
 import java.util.Set;
 
 
-@ContextConfiguration(classes= JPAApplication.class)
-public class TestNG3 extends AbstractTestNGSpringContextTests {
+public class TestNG3  {
 
     @PersistenceContext
     private EntityManager entityManager;

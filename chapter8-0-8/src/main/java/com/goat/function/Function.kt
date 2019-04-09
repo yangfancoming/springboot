@@ -1,6 +1,6 @@
 package function
 
-import org.testng.annotations.Test
+import org.junit.Test
 
 /**
  * Created by 64274 on 2018/6/19.
@@ -11,7 +11,8 @@ class Function {
         return 1
     }
 
-    @Test fun testfoo() {
+    @Test
+    fun testfoo() {
         var value = foo("1",true,3)
         print(value) // 返回 1
     }

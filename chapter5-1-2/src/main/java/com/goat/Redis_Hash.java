@@ -1,6 +1,6 @@
 package com.goat;
 
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import java.util.List;
 import java.util.Map;

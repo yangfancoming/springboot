@@ -1,6 +1,6 @@
 package com.goat;
 
-import org.testng.annotations.Test;
+import org.junit.Test;
 import redis.clients.jedis.Jedis;
 
 

@@ -3,11 +3,9 @@ package com.goat;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.annotations.Test;
 
 
 /**
@@ -15,8 +13,7 @@ import org.testng.annotations.Test;
  *
  */
 
-@ContextConfiguration(classes= GuavaCacheApplication.class)
-public class TestNG extends AbstractTestNGSpringContextTests {
+public class TestNG   {
 
     @Autowired
     private ApplicationContext ac;

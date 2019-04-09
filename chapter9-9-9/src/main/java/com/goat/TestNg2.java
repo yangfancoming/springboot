@@ -1,7 +1,7 @@
 package com.goat;
 
 import org.apache.commons.lang3.StringUtils;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;

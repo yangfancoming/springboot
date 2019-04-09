@@ -3,7 +3,6 @@ package com.goat;
 
 
 
-import org.testng.annotations.Test;
 
 
 /**
@@ -13,13 +12,6 @@ import org.testng.annotations.Test;
 public class TestNG {
 
 
-
-    @Test
-    public void test0()  {
-
-
-
-    }
 
 
 

@@ -2,7 +2,7 @@ package com.goat.example02;
 
 
 import com.google.gson.Gson;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 
 public class TestNG {

@@ -2,7 +2,7 @@ package com.goat;
 
 
 import com.goat.utils.LicenseMake;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 
 /**

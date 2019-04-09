@@ -1,6 +1,7 @@
 package A09.example03;
 
-import org.testng.annotations.Test;
+
+import org.junit.Test;
 
 /**
      * @Description: 功能描述：

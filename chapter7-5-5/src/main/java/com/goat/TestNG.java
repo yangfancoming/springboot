@@ -3,8 +3,7 @@ package com.goat;
 
 import com.goat.util.CreateExcel;
 import com.goat.util.ReadExcel;
-import org.testng.annotations.Test;
-
+import org.junit.Test;
 
 
 public class TestNG  {

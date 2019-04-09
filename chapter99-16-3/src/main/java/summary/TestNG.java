@@ -1,7 +1,7 @@
 package summary;
 
 
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 /**
      * @Description: 功能描述：( 多线程 龟兔赛跑 来演示 线程常用方法 )

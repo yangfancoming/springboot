@@ -5,8 +5,8 @@ import com.goat.entity.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,7 +28,7 @@ public class TestNG {
 
     private final Gson gson = new Gson();
     private final HashMap<String, Object> map = new HashMap<>();
-    @BeforeMethod
+    @Before
     public void before(){
         map.put("name", "mafly");
         map.put("age", "18");

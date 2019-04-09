@@ -1,6 +1,7 @@
 package A03;
 
-import org.testng.annotations.Test;
+
+import org.junit.Test;
 
 /**
      * @Description: 功能描述： 5.1.3   对象、指针、引用 示例

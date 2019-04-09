@@ -1,7 +1,7 @@
 package A05_communication;
 
-import org.testng.annotations.Test;
 
+import org.junit.Test;
 
 /**
      * @Description:  线程通信

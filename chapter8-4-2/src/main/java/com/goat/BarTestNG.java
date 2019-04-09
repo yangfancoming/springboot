@@ -3,7 +3,7 @@ package com.goat;
 
 import com.goat.utils.BarCodeUtil;
 import com.google.zxing.BarcodeFormat;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 
 /**

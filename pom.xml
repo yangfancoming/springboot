@@ -90,7 +90,6 @@
         <module>chapter9-3-1</module>
         <module>chapter9-3-2</module>
         <module>chapter9-5-1</module>
-        <module>chapter9-9-6</module>
         <module>chapter9-9-9</module>
         <module>chapter4-7-0</module>
         <module>chapter9-6-1</module>
@@ -240,7 +239,7 @@
 
 
         <!--引入 TestNg -->
-        <dependency><groupId>org.testng</groupId><artifactId>testng</artifactId><version>RELEASE</version></dependency>
+        <!--<dependency><groupId>org.testng</groupId><artifactId>testng</artifactId><version>RELEASE</version></dependency>-->
         <!--引入 junit -->
         <dependency><groupId>junit</groupId><artifactId>junit</artifactId><version>4.12</version></dependency>
 

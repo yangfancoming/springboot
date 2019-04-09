@@ -1,7 +1,7 @@
 package com.goat;
 
-import org.testng.annotations.Test;
 
+import org.junit.Test;
 
 /**
      * @Description: 功能描述：jedis 对list的操作
