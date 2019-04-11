@@ -75,20 +75,5 @@ public class MyList {
         System.out.println("---原来的List2---");
         list2.parallelStream().forEachOrdered(System.out :: println);
     }
-    @Test
-    public void test4()  {
-
-    }
-    @Test
-    public void test5()  {
-
-    }
-
-    @Test
-    public void test6()  { //
-
-
-
-    }
 
 }

@@ -1,4 +1,4 @@
-package com.goat.jdk8;
+package com.goat.jdk8.stream;
 
 
 import org.junit.Test;
