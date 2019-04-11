@@ -77,7 +77,7 @@ public class TestNG {
         int sum = list.stream().mapToInt(Apple::getNum).sum();
         System.err.println("sum:"+sum);  //sum:100
 
-        //分组
+        //分组  以 Apple 对象 id属性进行分组
         Map<Integer, List<Apple>> groupBy = list.stream().collect(Collectors.groupingBy(Apple::getId));
         System.err.println("groupBy:"+groupBy);
         //过滤
@@ -137,9 +137,7 @@ public class TestNG {
         System.out.println(resultList3);
     }
 
-    /**
-     分组求和使用  通过 pn 分组后  求和 count
-     */
+    /** 分组求和使用  通过 pn 分组后  求和 count */
     @Test
     public void te1st121() {
         Wx wx1 = new Wx("X00012100318",100L);
@@ -147,20 +145,27 @@ public class TestNG {
         Wx wx3 = new Wx("X00012100318",300L);
         Wx wx4 = new Wx("X00012100320",400L);
         Wx wx5 = new Wx("X00012100320",500L);
-        List<Wx> wxs =  Arrays.asList(wx1,wx2,wx3,wx4,wx5);
+        /**  会报错 java.lang.UnsupportedOperationException
+         List<Wx> wxs =  Arrays.asList(wx1,wx2,wx3,wx4,wx5);
+         wxs.clear();
+         原因：  Arrays.asList(T... a) 返回一个受指定数组支持的固定大小的列表 该列表 不支持 add remove clear 等改动数组长度的操作
+         List<Wx> wxs = new ArrayList<>(temp); //解决方法 拷贝一下 就可以使用add()和remove()方法了。
+         */
+        List<Wx> list =  Arrays.asList(wx1,wx2,wx3,wx4,wx5);
+        List<Wx> wxs = new ArrayList<>(list);
         Map<String, LongSummaryStatistics> collect = wxs.stream().collect(Collectors.groupingBy(Wx::getPn, Collectors.summarizingLong(Wx::getCount)));
         Set set = collect.keySet();
-        List<Wx> lists = new ArrayList<>();
+        wxs.clear(); // 利用完 wxs 数组后 进行清空后  再次利用
         for (Object key : set ){
             Wx temp = new Wx(key.toString(),collect.get(key).getSum());
-            lists.add(temp);
+            wxs.add(temp);
         }
-        System.out.println(lists);
+        System.out.println(wxs);
     }
 
-    /**
-      多级分组求和使用  通过 code 分组后  再通过 pn 分组 求和 count
-     */
+
+
+    /** 多级分组求和使用  通过 code 分组后  再通过 pn 分组 求和 count*/
     @Test
     public void te1st12() {
         Wx wx1 = new Wx("CK201903060010","X00012100318",100L);
@@ -205,13 +210,8 @@ public class TestNG {
         map5.put("pn", "X00012100320");
         map5.put("count", 500);
 
-        List<Map<String, Object>> listMap = new ArrayList<>();
-        listMap.add(map1);
-        listMap.add(map2);
-        listMap.add(map3);
-        listMap.add(map4);
-        listMap.add(map5);
-
+        List<Map<String, Object>> listMap = Arrays.asList(map1,map2,map3,map4,map5);
+        System.out.println(listMap);
 
     }
 
