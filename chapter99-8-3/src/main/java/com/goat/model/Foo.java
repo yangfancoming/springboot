@@ -1,5 +1,8 @@
 package com.goat.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by 64274 on 2019/3/7.
  *
@@ -9,8 +12,13 @@ package com.goat.model;
  */
 public class Foo {
     private int code;
-
     private int count;
+    public String name;
+    public List<Bar> bars = new ArrayList<>();
+
+    public Foo(String name) {
+        this.name = name;
+    }
 
     public Foo(int code, int count) {
         this.code = code;
