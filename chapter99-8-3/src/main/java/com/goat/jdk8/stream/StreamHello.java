@@ -5,6 +5,7 @@ package com.goat.jdk8.stream;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -16,6 +17,12 @@ public class StreamHello {
     @Test
     public void test0(){
         Arrays.asList("a1", "a2", "a3").stream().findFirst().ifPresent(System.out::println);  // a1
+
+        List<String> list = Arrays.asList("a1", "a2", "a3");
+        System.out.println(list);
+        String s = list.stream().findFirst().get();
+        System.out.println(s);
+
     }
 
     /**
