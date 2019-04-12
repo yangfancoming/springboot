@@ -21,7 +21,7 @@ public class MyIntStreamList {
         System.out.println(foos);
 
         foos.stream()
-                .flatMap(f -> f.bars.stream())
+                .flatMap(f -> f.bars.stream()) // 返回 由通过将提供的映射函数应用于每个元素而产生的映射流的内容来替换该流的每个元素的结果的流。
                 .forEach(b -> System.out.println(b.name));
         System.out.println(foos);
 
@@ -37,4 +37,5 @@ public class MyIntStreamList {
                 .flatMap(f -> f.bars.stream())
                 .forEach(b -> System.out.println(b.name));
     }
+
 }
