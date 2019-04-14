@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Created by 64274 on 2019/4/13.
@@ -68,9 +69,14 @@ public class Demo1 {
         return result;
     }
 
+    /**  使用 stream 流简化 for循环  */
+    public static <T> List<T> filter2(List<T> list, Predicate<T> p){
+        return list.stream().filter(p).collect(Collectors.toList());
+    }
 
     Predicate<Apple> p2 = (Apple apple) -> apple.getWeight()>80;
     Predicate<Apple> p3 = (Apple apple) -> "green".equals(apple.getColor());
+    Predicate<Apple> p4 = a -> "green".equals(a.getColor()); // p3 简化版
 
     @Test
     public void test2(){
@@ -79,6 +85,9 @@ public class Demo1 {
 
         List<Apple> filter2 =  filter(inventory, p3);
         System.out.println(filter2);
+
+        List<Apple> filter3 =  filter2(inventory, p4);
+        System.out.println(filter3);
 
     }
 
