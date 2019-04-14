@@ -9,4 +9,16 @@
     1. expression 单条语句表达式   不需要写 return 关键字，解析器会自动计算结果 并返回
     2. statement  语句块       通过 { } 包裹多条语句 如果是需要返回结果的接口，那么必须显示加上 return 关键字
     3. refrence   方法引用
+        static方法的引用	ContainingClass::staticMethodName
+        特定对象的方法的引用	containingObject::instanceMethodName
+        特定类型的方法的引用	ContainingType::methodName
+        构造器的引用	ClassName::new
+        
+        
+    应用场景：
+        事件监听
+        条件过滤
+        启动线程
+        对象排序
+        动态代理
     
