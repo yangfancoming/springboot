@@ -8,11 +8,19 @@ package com.goat.model;
  * @ date 2018/12/14---10:54
  */
 public class Apple {
-    Integer id;
-    String name;
-    float  money;
-//    BigDecimal money;
-    Integer num;
+
+    private int weight = 0;
+    private String color = "";
+    private Integer id;
+    private String name;
+    private  float  money;
+    //    BigDecimal money;
+    private Integer num;
+
+    public Apple(int weight, String color) {
+        this.weight = weight;
+        this.color = color;
+    }
 
     public Apple(Integer id, String name, float money, Integer num) {
         this.id = id;
@@ -51,5 +59,21 @@ public class Apple {
 
     public void setNum(Integer num) {
         this.num = num;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 }
