@@ -5,7 +5,9 @@ package com.goat.jdk8.stream;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -22,9 +24,31 @@ public class StreamHello {
         System.out.println(list);
         String s = list.stream().findFirst().get();
         System.out.println(s);
-
     }
 
+    List<Integer> list = Arrays.asList(1, 2, 1, 3, 3, 2, 4);
+
+    @Test
+    public void test11(){
+        System.out.println("=======================外部迭代=========================");
+
+        for (Integer integer : list) { // 外部迭代 1
+            System.out.println(integer);
+        }
+        Iterator<Integer> iterator = list.iterator(); // 外部迭代 2
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+    }
+
+    @Test
+    public void test12(){
+        System.out.println("=======================内部迭代=========================");
+        Stream<Integer> stream = list.stream().filter(i -> { System.out.println("内部迭代惰性求值"); return i % 2 == 0; });
+        List<Integer> collect = stream.collect(Collectors.toList());
+        System.out.println(collect);
+
+    }
     /**
      * 在下面的例子中我们不需要创建一个collection对象也可以使用stream
      * 直接使用Stream.of()方法就能从一组对象创建一个stream对象
