@@ -47,8 +47,8 @@ public class StreamHello {
         Stream<Integer> stream = list.stream().filter(i -> { System.out.println("内部迭代惰性求值"); return i % 2 == 0; });
         List<Integer> collect = stream.collect(Collectors.toList());
         System.out.println(collect);
-
     }
+
     /**
      * 在下面的例子中我们不需要创建一个collection对象也可以使用stream
      * 直接使用Stream.of()方法就能从一组对象创建一个stream对象
