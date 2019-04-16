@@ -46,3 +46,10 @@
     解决办法：
     　　1. 检查为什么子表中没有主表中ID对应的记录
     　　2. 如果子表中没有主表ID对应的记录也可以正常加载数据，那么需要在主表字段上加一个@NotFound Annotation
+
+
+
+#报错：Parameter value element [null] did not match expected type [java.lang.String (n/a)]
+        @Query(value = " from InoutStorage where code in :codes group by code")
+        List<InoutStorage> findByInoutStorageCodeIn(@Param(value = "codes") List<String> codes);
+        造成报错的根本原因在于：调用该方法时传入的参数 codes 中含有 null 值, 过滤掉 null 值后再次测试，未出现问题。
