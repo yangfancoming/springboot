@@ -1,7 +1,6 @@
 package com.goat.jdk8.stream;
 
 
-import com.goat.A02.User;
 import org.junit.Test;
 
 import java.util.*;
@@ -45,22 +44,22 @@ public class StreamOperMap {
 
     @Test
     public void test(){
-        Map<Long,String> map1 = new HashMap<>();
-        map1.put(1L,"11");
-        map1.put(2L,"22");
-        Map<Long,String> map2 = new HashMap<>();
-        map2.put(3L,"33");
-        map2.put(4L,"44");
-        List<Map<Long,String>>  maps = new ArrayList<>();
+        Map<String,Long> map1 = new HashMap<>();
+        map1.put("11",1L);
+        map1.put("22",2L);
+        Map<String,Long> map2 = new HashMap<>();
+        map2.put("33",3L);
+        map2.put("44",4L);
+        List<Map<String,Long>>  maps = new ArrayList<>();
         maps.add(map1);
         maps.add(map2);
         System.out.println(maps);
 
-
-        List<String> collect = maps.stream().map(x->x.get(1L)).collect(Collectors.toList());
-        System.out.println(collect);
+        Long aLong = maps.stream().map(x->x.get("22")).findFirst().get();
+        System.out.println(aLong);
 
     }
+
 
     /* 对list<map>中map中某个指定的key的value的去重，得到新的list：去除了重复出现指定key的value值得map */
     @Test

@@ -85,7 +85,8 @@ public class MyMap {
         // 获取Map集合的所有key组成的集合，通过遍历key来实现遍历所有key-value对
         Set set = map.keySet();
         for (Object key : set ){
-            System.out.println(key + "-->" + map.get(key)); // map.get(key)方法获取指定key对应的value
+//            System.out.println(key + "-->" + map.get(key)); // map.get(key)方法获取指定key对应的value
+            System.out.println(key);
         }
     }
     /**

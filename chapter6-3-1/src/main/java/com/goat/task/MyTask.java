@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.text.SimpleDateFormat;
 
 
-@Component
+//@Component
 public class MyTask {
 
     @Scheduled(cron = "5 * * * * ? ")
