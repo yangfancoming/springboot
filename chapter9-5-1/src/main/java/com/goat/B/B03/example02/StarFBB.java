@@ -11,7 +11,6 @@ public class StarFBB implements Perform {
 
     private String starName;
 
-
     public StarFBB(String starName) {
         this.starName = starName;
     }

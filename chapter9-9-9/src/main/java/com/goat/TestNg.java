@@ -18,13 +18,12 @@ public class TestNg {
     public  static final String HEADER_PREFIX = "Bearer ";
     public  static final String header = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NDkyMDI0MDcsImlhdCI6MTU0OTE5ODgwNywidXNlcm5hbWUiOiJhZG1pbiJ9.cNeeQsYzIZShSrCWt7M2x-HoPCLLYdZ60_96mF_bjUo ";
 
-
-
     @Test
     public void test()  {
         String s = StringUtils.removeStart(header, HEADER_PREFIX);
         System.out.println(s);
     }
+
     @Test
     public void test1()  {
         Object o = "";

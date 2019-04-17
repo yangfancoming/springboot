@@ -13,7 +13,7 @@ import org.junit.Test;
  * 代理角色: 要持有真实角色的引用
  * 二者实现同一个接口
  */
-public class TestNG {
+public class App {
 
     @Test
     public void test(){
