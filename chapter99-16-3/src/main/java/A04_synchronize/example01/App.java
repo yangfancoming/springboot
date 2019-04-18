@@ -35,7 +35,7 @@ public class App {
         }
     }
     public static class test2{
-        //  同步锁
+        //  同步锁  （代码块）
         public static void main(String[] args) {
             MyTask2 myTask2 = new MyTask2();
             new Thread(myTask2,"线程1111").start();
@@ -44,9 +44,8 @@ public class App {
         }
     }
 
-
     public static class test3{
-        // 方法锁
+        // 同步锁  （锁方法）
         public static void main(String[] args) {
             MyTask3 myTask3 = new MyTask3();
             new Thread(myTask3,"线程1111").start();

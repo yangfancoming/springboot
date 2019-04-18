@@ -17,7 +17,7 @@ public class MyTask2 extends MyTaskTemplate implements Runnable  {
     public void run() {
         long startTime=System.currentTimeMillis();
         while (true) {
-            synchronized (this) {
+            synchronized (this) {   //该代码块 一次只能有一个线程进入
                 if (tickets <= 0) {
                     break;
                 }

@@ -21,6 +21,7 @@ public class MyTask3 implements Runnable {
     }
 
     private synchronized void gaga(){
+        //该方法 一次只能有一个线程进入
         if(tickets>0){
             try {
                 Thread.sleep(100);
