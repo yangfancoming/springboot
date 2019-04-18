@@ -1,17 +1,14 @@
 package A04_synchronize.example01;
 
-
-import org.junit.Test;
-
 /**
  * Created by 64274 on 2018/7/20.
  *
  * @author 山羊来了
- * @Description: TODO
+ * @Description: sos 涉及到多线程 demo 不能使用 junit 进行测试  必须是 psvm
  * @date 2018/7/20---13:29
  加入 sleep 后  售票出现了负数： 随机性和延时性 导致的
 
-卖出相同的票 ： CPU的操作必须是原子性的  eg： i++ 就不是原子性操作，因为他需要两部  1.先取出i的值  2.再将i加1
+卖出相同的票 ： CPU的操作必须是原子性的  eg： i++ 就不是原子性操作，因为他需要两部  1.先取出i的值  2.再将i加1 3.再赋值
 
 解决多线程安全问题：
 1. 是否是多线程环境
@@ -24,11 +21,9 @@ synchronized (object) 实现同步的关键就在于 这个 object 上， 这就
 
 同步方法的 锁对象 是： this
 静态方法的 锁对象 是： 类的字节码文件  Dog.Class
-
-
  */
-//@Test
-public class MyTaskTest {
+
+public class App {
 
     public static class test1{
         // 会出现  多线程问题

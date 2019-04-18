@@ -9,23 +9,25 @@ package A04_synchronize.example01;
  * @Description: TODO
  * @date 2018/7/20---13:25
  */
-public class MyTask2 extends Thread {
+public class MyTask2 extends MyTaskTemplate implements Runnable  {
+
     private   int tickets = 50;
+
     @Override
     public void run() {
+        long startTime=System.currentTimeMillis();
         while (true) {
             synchronized (this) {
                 if (tickets <= 0) {
                     break;
                 }
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                test(tickets);
                 System.out.println(Thread.currentThread().getName() + "抢到了" + tickets--);
             }
         }
+        long endTime=System.currentTimeMillis();
+        float excTime=(float)(endTime-startTime)/1000;
+        System.out.println(Thread.currentThread().getName()+ "------执行完成！   执行时间："+excTime+"s");
     }
 
 }

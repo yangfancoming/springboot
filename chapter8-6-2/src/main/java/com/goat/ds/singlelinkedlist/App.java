@@ -39,4 +39,25 @@ public class App {
         sl.addHead(11);
         sl.display();
     }
+
+    @Test
+    public void test4(){
+        Link all = new Link();
+        all.add(5);
+        all.add(6);
+        all.add(7);
+        all.add(8);
+        all.add(9);
+        System.out.println("链表长度:" + all.length());
+        System.out.println("链表是否为空:" + all.isEmpty());
+        System.out.println("链表查询数字9:" + all.contains(9));
+        System.out.println("下标为“1”修改后数据:" + all.set(1, 20));
+        System.out.println("获取下标为“1”的数据:" + all.get(1));
+        all.remove(9);// 删除数据
+        System.out.println("删除数据后链表长度:" + all.length());
+        System.out.println("输出链表所有数据:");
+        Link.print(all.toArray());
+    }
+
+
 }
