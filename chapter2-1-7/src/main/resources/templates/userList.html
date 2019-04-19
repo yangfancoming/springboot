@@ -27,7 +27,6 @@
 
         <!--主页面-->
         <section class="content">
-
             <!-- /.row -->
             <div class="row">
                 <div class="col-xs-12">
@@ -80,23 +79,17 @@
                                     <th>操作</th>
                                 </tr>
                                 </thead>
-
+                                <!--说明： th:each="obj,stat:${objects}" 分别代表单个实例,状态(可省略),待遍历对象-->
                                 <tbody>
-                                <tr>
-                                    <td>183</td>
-                                    <td>John Doe</td>
-                                    <td>11-7-2014</td>
-                                    <td><span class="label label-success">Approved</span></td>
-                                    <td>男的</td>
-                                    <td>
-                                        <a type="button" class="btn  btn-success"><i class="fa fa-search"></i>查看</a>
-                                        <a type="button" class="btn  btn-info"><i class="fa fa-edit"></i> 编辑</a>
-                                        <a type="button" class="btn  btn-danger"><i class="fa fa-remove"></i>删除</a>
-                                    </td>
-
+                                <tr th:each="user:${userList}" >
+                                    <td th:text="${user.userName}"></td>
+                                    <td th:text="${user.mail}"></td>
+                                    <th th:text="${user.index}"></th>
+                                    <th th:text="${user.count}"></th>
+                                    <th th:text="${user.size}"></th>
+                                    <th th:text="${user.even}"></th>
                                 </tr>
                                 </tbody>
-
                             </table>
                         </div>
                         <!-- /.box-body -->

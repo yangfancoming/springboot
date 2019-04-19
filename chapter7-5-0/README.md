@@ -50,3 +50,10 @@
       是因为 chapter0-1-0 的父项目 springboot 并没有install
       大致翻译一下：如果你有子项目引用了父项目的POM，但没有在父项目POM目录下执行安装操作，这个问题就会出现。
       针对子模块依赖兄弟子模块的情况，需要在父项目POM目录下至少执行一次安装。
+      
+      
+# 报错 
+     expected START_TAG or END_TAG not TEXT (position: TEXT seen ...</dependency>-->\n`\n        <d... @56:11).
+     expected START_TAG or END_TAG not TEXT (position: TEXT seen ...</dependency>-->\n`\n        <d... @56:11). 
+     原因： 依赖是通过复制过来的，存在空格， 
+     解决：将日志指示位置的代码code一遍。 去掉 指定位置的空格 或空行

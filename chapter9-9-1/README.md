@@ -26,8 +26,9 @@
     git config user.name
     git config user.email
     
- git add 123.log
- git rm --cached 123.log
- git rm --cached compiler.xml
- git rm --cached encodings.xml
- git rm --cached vcs.xml
+# 取消版本控制 命令
+     git add 123.log
+     git rm --cached 123.log
+     git rm --cached compiler.xml
+     git rm --cached encodings.xml
+     git rm --cached .gitignore

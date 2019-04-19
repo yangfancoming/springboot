@@ -8,7 +8,7 @@
     即在mybatis中dao接口与mapper配置文件在做映射绑定的时候出现问题
     简单说，就是接口与xml要么是找不到，要么是找到了却匹配不到
     解决方法：将  mybatis-plus.mapper-locations=classpath:/mapper/*Mapper.xml  配置改成
-    mybatis-plus.mapper-locations=classpath:/mapper/system/*Mapper.xml
+                  mybatis-plus.mapper-locations=classpath:/mapper/system/*Mapper.xml
     
     
     
