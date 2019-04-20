@@ -18,6 +18,14 @@
      更改为  
      resultType="com.goat.domain.User" 
      parameterType="com.goat.domain.User"
+     
+# mybatis plus 后台报错：
+    org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.goat.dao.UserMapper.findUserWithRole
+    原因：
+        请看清楚
+        第一种是 mybatis.mapper-locations=
+        第二种是 mybatis-plus.mapper-locations=
+     如果使用 mybatis plus 作为持久层的话 就不能使用 第一种  否则 项目无法找到xml sql文件 。必须使用第二种！！！
    
 #  前后 接收是list  可是后台返回一个对象  就会这个错误！ 
     Uncaught TypeError: Cannot create property 'LAY_TABLE_INDEX' on number '4'
