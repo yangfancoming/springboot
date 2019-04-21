@@ -1,9 +1,11 @@
 package com.goat.concurrency.atomic;
 
 import com.goat.concurrency.annoations.ThreadSafe;
+import com.goat.concurrency.model.Girl;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.atomic.AtomicStampedReference;
 
 /**
  * Created by 64274 on 2019/3/31.
@@ -26,5 +28,17 @@ public class MyAtomicReference{
         count.compareAndSet(3, 5); // 如果是 3 则 设置成 5  == 不执行
         System.out.println(count); // 输出 4
     }
+
+    @Test
+    public void test2()  {
+        AtomicReference<Girl> af = new AtomicReference<>(); // 主存
+        Girl girl1 =  new Girl("meila",23);
+        Girl girl2 =  new Girl("guai",43);
+        af.set(girl1);
+        System.out.println(af.compareAndSet(girl1, girl2) + "\t"+ af.get().toString()); // true
+        System.out.println(af.compareAndSet(girl1, girl2) + "\t"+ af.get().toString()); // false
+    }
+
+
 
 }
