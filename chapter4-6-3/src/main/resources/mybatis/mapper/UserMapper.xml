@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.goat.h2.mapper.UserMapper">
+    <resultMap id="user" type="com.goat.h2.domain.User">
+        <id column="id" property="id" />
+        <result column="age" property="age" />
+        <result column="password" property="password" />
+        <result column="createTime" property="createTime" />
+        <result column="updateTime" property="updateTime" />
+    </resultMap>
+    <select id="findAllUser" resultMap="user">
+        SELECT  *  from  USER
+    </select>
+
+    <insert id="save"  useGeneratedKeys="true" keyProperty="id" parameterType="com.goat.h2.domain.User">
+        INSERT  into user (userName , age , password ,createTime,updateTime) VALUES (
+        #{userName},#{age},#{password},CURRENT_TIMESTAMP
+        )
+    </insert>
+    
+    <select id="findUserById" parameterType="Integer" resultMap="user">
+        SELECT * FROM user WHERE  id = #{id}
+    </select>
+
+    <update id="edit" parameterType="com.goat.h2.domain.User">
+        update user set
+        userName = #{userName},
+        age = #{age},
+        password = #{password},
+        updateTime = CURRENT_TIMESTAMP
+        where  id = #{id}
+    </update>
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete from USER where id = #{id}
+    </delete>
+</mapper>

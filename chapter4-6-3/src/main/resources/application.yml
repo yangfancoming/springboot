@@ -1,0 +1,31 @@
+#server:
+#  port: 8463
+#spring:
+#  datasource:
+#    driver-class-name: org.h2.Driver
+#    url: jdbc:h2:~/test
+#    username:
+#    password:
+#    schema: classpath:db/init_table.sql
+#  h2:
+#    console:
+#      path: /h2-console
+#      enabled: true
+
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/ #添加路径前缀
+    suffix: .html
+    encoding: UTF-8
+    mode: HTML5
+##logging:
+##  level:
+##    root: debug
+#mybatis:
+#  config-location: classpath:mybatis-config.xml
+
+  mybatis:
+    # 指定mybatis全局配置文件位置
+    config-location: classpath:mybatis/mybatis-config.xml
+    # 指定mybatis sql映射文件位置
+    mapper-locations: classpath:mybatis/mapper/*.xml

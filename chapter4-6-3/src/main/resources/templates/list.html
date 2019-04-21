@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>用户信息</title>
+</head>
+<body>
+
+<a href="/toAdd" th:href="@{/toAdd}" >添加用户</a>
+
+<table >
+    <thead>
+    <th>序号</th>
+    <th>用户姓名</th>
+    <th>用户年龄</th>
+    <th>用户密码</th>
+    <th>用户创建时间</th>
+    <th>用户修改时间</th>
+    <th>修改</th>
+    <th>删除</th>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}" >
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.userName}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.password}"></td>
+        <!-- ${#dates.format(discusser.creatAt, 'yyyy-MM-dd')}"-->
+        <td th:text="${#dates.format(user.createTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+        <td th:text="${#dates.format(user.updateTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+        <td><a th:href="@{/toEdit(id=${user.id})}">edit</a></td>
+        <td><a th:href="@{/delete(id=${user.id})}">delete</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

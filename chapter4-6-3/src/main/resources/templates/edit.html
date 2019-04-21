@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/edit}"  th:object="${user}" method="post">
+    <input type="hidden" name="id" th:value="*{id}" />
+    <table>
+        <tr>
+            <td>姓名：</td>
+            <td><input type="text" name="userName" th:value="*{userName}" placeholder=""/></td>
+        </tr>   <tr>
+            <td>姓名：</td>
+            <td><input type="text" name="age" th:value="*{age}" placeholder="请输入数字"/></td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td><input type="text" name="password" th:value="*{password}" placeholder=""/></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="更新"/></td>
+        </tr>
+
+    </table>
+</form>
+</body>
+</html>
