@@ -16,10 +16,15 @@ public class Minister {
         }
     }
 
-
+    /** 可以看到 for循环 输出的 emperor 地址都是一样的  由于是天然的线程安全 所以在多线程的情况下 该单例也是安全的*/
     public static void main(String[] args) {
 
-
+        for (int i = 0; i < 10; i++) {
+            new Thread(()->{
+                Emperor instance = Emperor.getInstance();
+                System.out.println(instance);
+            },String.valueOf(i)).start();
+        }
     }
 
 }

@@ -10,12 +10,13 @@ public class Emperor {
 	private static  Emperor emperor ;
 
 	private Emperor(){
+        System.out.println("2222哥是构造方法！");
 	}
 
-	// 外部获取接口  因为该类是在类加载时就创建 因此天然的线程安全，所以在外部获取接口方法上 无需加 synchronized
-	public static synchronized Emperor getInstance(){
+//	public static synchronized Emperor getInstance(){
+	public static  Emperor getInstance(){
 	    if (emperor == null){
-	        emperor = new Emperor();
+	        emperor = new Emperor(); // //初始化一个皇帝  并不是在类加载时就创建  而是程序在运行中动态创建的 所以存在线程安全问题
         }
 		return emperor;
 	}
