@@ -14,4 +14,9 @@ public class MyData {
     public void set(){
         this.num = 30;
     }
+
+    // 验证 volatile 不保证原子性
+    public void addPlusPlus(){
+        this.num++;
+    }
 }

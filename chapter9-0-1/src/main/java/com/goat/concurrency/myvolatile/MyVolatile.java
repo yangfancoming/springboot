@@ -5,14 +5,14 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by 64274 on 2019/4/21.
  *
- * @ Description: 证明多线程间的可见性
+ * @ Description: 证明 volatile 在多线程间的可见性
  * @ author  山羊来了
  * @ date 2019/4/21---17:09
  */
 public class MyVolatile {
 
     /**
-     * 在没有 volatile 关键字 的情况下  多线程间是没有可见性的！
+     *  在没有 volatile 关键字 的情况下  多线程间是没有可见性的！
      *  主线死循环  无法结束  证明 主线程没有读取到 t1 线程更改后30的值
      *
      *   在使用 volatile 关键字 的情况下 多线程间 就存在可见性了！
