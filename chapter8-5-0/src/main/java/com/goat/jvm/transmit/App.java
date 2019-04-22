@@ -89,9 +89,20 @@ public class App {
     }
 
 
+    /**  4. 字符串 传递  特例
+     结果分析：  不能更改
+     其原理 同  1.传递基本类型数据  这就是 String 的 特殊之处
+     */
+    public static void changeStr(String c){
+        c = "222";
+    }
 
-
-
+    @Test
+    public void test4(){
+        String a = "111";
+        changeStr(a);
+        System.out.println(a);
+    }
 
 
     public static void change(int[] arg){
