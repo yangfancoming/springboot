@@ -12,10 +12,11 @@ import org.junit.Test;
 public class App {
 
     int xx[] = {3,1,5,7,2,4,9,6,10,8};
+    int xx1[] = {42,20,17,13,28,14,23,15};
 
     @Test
     public void test(){
-        bubbleSort.bubbleSort(xx);
+        bubbleSort.bubbleSort(xx1);
         System.out.println(xx);
     }
 
