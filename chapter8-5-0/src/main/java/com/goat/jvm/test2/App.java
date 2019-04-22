@@ -3,7 +3,7 @@ package com.goat.jvm.test2;
 
 import org.junit.Test;
 
-public class Mytest {
+public class App {
 
 
     /**
