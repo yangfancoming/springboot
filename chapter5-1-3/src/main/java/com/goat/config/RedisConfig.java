@@ -22,7 +22,6 @@ import java.time.Duration;
 @Configuration
 public class RedisConfig extends CachingConfigurerSupport {
 
-    // 代码优化：  IDEA 建议 增加 private final
     private final StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
     //使用Jackson2JsonRedisSerializer来序列化和反序列化redis的value值
     private final Jackson2JsonRedisSerializer j2 = new Jackson2JsonRedisSerializer(Object.class);

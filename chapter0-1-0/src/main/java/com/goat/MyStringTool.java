@@ -81,7 +81,6 @@ public class MyStringTool {
      */
     public static final Integer MARK = 2;
 
-    //  final表示这个方法不能被复写, 既然static方法本来就不具备复写的条件, 再加final就显得多余了
     //    public static final Byte[] hex2bytes(String hex) throws IllegalArgumentException {
     public static  Byte[] hex2bytes(String hex) throws IllegalArgumentException {
         if (hex.length() % MARK != 0) {
