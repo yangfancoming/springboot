@@ -59,8 +59,7 @@ public class Person implements BeanFactoryAware, BeanNameAware, InitializingBean
     // 这是BeanFactoryAware接口方法
     @Override
     public void setBeanFactory(BeanFactory arg0) throws BeansException {
-        System.out
-                .println("【BeanFactoryAware接口】调用BeanFactoryAware.setBeanFactory()");
+        System.out.println("【BeanFactoryAware接口】调用BeanFactoryAware.setBeanFactory()");
         this.beanFactory = arg0;
     }
 
@@ -73,14 +72,13 @@ public class Person implements BeanFactoryAware, BeanNameAware, InitializingBean
 
     // 这是InitializingBean接口方法
     @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out
-                .println("【InitializingBean接口】调用InitializingBean.afterPropertiesSet()");
+    public void afterPropertiesSet() {
+        System.out .println("【InitializingBean接口】调用InitializingBean.afterPropertiesSet()");
     }
 
     // 这是DiposibleBean接口方法
     @Override
-    public void destroy() throws Exception {
+    public void destroy() {
         System.out.println("【DiposibleBean接口】调用DiposibleBean.destory()");
     }
 
