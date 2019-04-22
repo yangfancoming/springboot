@@ -10,7 +10,7 @@ import org.junit.Test;
 
 */
 
-public class Mytest {
+public class App {
 
 
     /**  注释掉 子类中的 public static String str = "child hello world";

@@ -1,6 +1,5 @@
 package com.goat.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,8 +14,6 @@ import java.io.FileNotFoundException;
 /**
      * @Description:  单个文件上传
      * @author: 杨帆
-     * @Param:
-     * @Return:
      * @Date:   2018/12/18
 */
 @RestController
