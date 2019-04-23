@@ -1,4 +1,4 @@
-package com.goat.concurrency.queue;
+package com.goat.concurrency.queue.arrayblockingqueue;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
