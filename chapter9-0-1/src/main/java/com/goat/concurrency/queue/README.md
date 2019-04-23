@@ -8,3 +8,14 @@
     因此 BlockingQueue 应运而生：其好处是 我们不再需要关系 什么时候要阻塞线程，什么时候要唤醒线程。
     因为这一切 BlockingQueue 给你封装好了，直接拿来用！
     
+    
+    
+# JDK7提供了7个阻塞队列  分别是：
+    
+    ArrayBlockingQueue ：一个由数组结构组成的有界阻塞队列。
+    LinkedBlockingQueue ：一个由链表结构组成的有界阻塞队列。
+    PriorityBlockingQueue ：一个支持优先级排序的无界阻塞队列。
+    DelayQueue：一个使用优先级队列实现的无界阻塞队列。
+    SynchronousQueue：一个不存储元素的阻塞队列。
+    LinkedTransferQueue：一个由链表结构组成的无界阻塞队列。
+    LinkedBlockingDeque：一个由链表结构组成的双向阻塞队列。
