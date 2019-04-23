@@ -19,7 +19,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  * @ author  山羊来了
  * @ date 2019/2/12---20:18
  *
- 我们通过使用ThreadPoolTaskExecutor创建了一个线程池，同时设置了以下这些参数，说明如下表：
+ 我们通过使用 ThreadPoolTaskExecutor 创建了一个线程池，同时设置了以下这些参数，说明如下表：
 
  核心线程数10：线程池创建时候初始化的线程数
  最大线程数20：线程池最大的线程数，只有在缓冲队列满了之后才会申请超过核心线程数的线程

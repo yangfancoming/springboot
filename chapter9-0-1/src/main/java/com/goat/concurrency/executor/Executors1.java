@@ -32,7 +32,7 @@ public class Executors1 {
     /**
      无限线程的线程池
      缺陷：线程池的容量是Integer.MAX_VALUE
-     这里的 SynchronousQueue 只能存储一个任务，保证串行化要求。
+     这里的 SynchronousQueue 只能存储一个任务，保证串行化要求。 即理解为：私人订制！！！
      线程的最大上线是Integer.MAX_VALUE结果是0x7fffffff，服务器根本支持不了这么多线程，内存和CPU不支持。很容易造成服务器宕机。
      */
     @Test

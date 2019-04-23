@@ -32,5 +32,9 @@ public class App {
         service.submit(producer4);
         service.submit(consumer1);
         service.submit(consumer2);
+        /**
+         总的来说生产者的速度是会大于消费者的速度的，但是因为阻塞队列的缘故，所以我们不需要控制阻塞，当阻塞队列满的时候，生产者线程就会被阻塞，直到不再满。
+         反之亦然，当消费者线程多于生产者线程时，消费者速度大于生产者速度，当队列为空时，就会阻塞消费者线程，直到队列非空
+        */
     }
 }
