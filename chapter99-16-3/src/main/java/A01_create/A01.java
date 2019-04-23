@@ -6,9 +6,11 @@ import org.junit.Test;
 /**
      * @Description:   线程的创建方式
      * @author: 杨帆
-PS：如果不调用start()方法，那么线程永远不会被启动，在主方法没有调用start()之前，
-Thread对象只是一个实例，而不是一个真正的线程！ 只有start()了之后 才是真正的线程！
-
+注意：
+    run() 方法相当于普通方法调用，并不创建新的线程
+    start() 方法 才会创建新的线程
+    即：如果不调用start()方法，那么线程永远不会被启动，在主方法没有调用start()之前，
+    Thread对象只是一个实例，而不是一个真正的线程！ 只有start()了之后 才是真正的线程！
      * @Date:   2018/8/29
 */
 
@@ -20,14 +22,14 @@ public class A01 {
     @Test
     public void Thread1(){
         Thread t1 = new Thread(()->System.out.println("pong"));
-        t1.run();// run() 方法相当于普通方法调用，并不创建新的线程
+        t1.setName("t1");
+        t1.run();
         System.out.println("ping");
     }
 
     @Test
     public void Thread2(){
-        Thread t2 = new Thread(()->System.out.println("pong"));
-        t2.start(); // start() 方法 才会创建新的线程
+        new Thread(()->System.out.println("pong"),"t2").start();
         System.out.println("ping");
     }
 

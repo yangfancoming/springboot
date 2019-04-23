@@ -11,7 +11,7 @@ import org.junit.Test;
 
 public class A02 {
 
-     class Rabbit extends Thread {
+     class Rabbit extends Thread { //演示 继承 Thread 方式
          @Override
          public void run()  {
              for (int i = 0; i < 100; i++) {
@@ -19,7 +19,7 @@ public class A02 {
              }
          }
     }
-    class Tortoise implements Runnable  {
+    class Tortoise implements Runnable  { //演示 实现 Runnable 方式
         @Override
         public void run()  {
             for (int i = 0; i < 100; i++) {
@@ -34,7 +34,6 @@ public class A02 {
         new Rabbit().start();
         new Tortoise().run();
     }
-
 
     /**
          * @Description:  使用静态代理方式 创建线程
