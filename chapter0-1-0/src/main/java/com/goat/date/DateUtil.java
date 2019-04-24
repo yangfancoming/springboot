@@ -12,7 +12,7 @@ import java.util.Date;
 public class DateUtil {
 
 
-    // 创建时间戳的三种方式
+    /** 创建时间戳的三种方式 */
     @Test
     public void timestamp()  {
         Timestamp time1 = new Timestamp(System.currentTimeMillis());
