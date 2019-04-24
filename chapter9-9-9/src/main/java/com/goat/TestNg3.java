@@ -60,5 +60,13 @@ public class TestNg3 {
         System.out.println(a==b);
     }
 
+    @Test
+    public void test5() {
+
+        String a = "1";
+        String b = null;
+        System.out.println(a+b);
+
+    }
 
 }

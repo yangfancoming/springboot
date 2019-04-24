@@ -44,9 +44,6 @@ public class MyCollection {
     Collection c = new ArrayList();
     Collection books = new HashSet();
 
-    /**
-     * 在执行目标测试方法testTest()前执行
-     */
     @Before
     public void testBefore() {
         c.add(true);
@@ -58,6 +55,7 @@ public class MyCollection {
         books.add("疯狂Java讲义");
         System.out.println("-------------------------------------");
     }
+
     @Test
     public void add(){
         System.out.println("添加成功吗？"+c.add("郭美美"));
