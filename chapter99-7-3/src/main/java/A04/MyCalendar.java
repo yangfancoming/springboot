@@ -17,10 +17,6 @@ public class MyCalendar {
     Calendar c = Calendar.getInstance();
 
 	public static void main(String[] args) {
-		Calendar cal1 = Calendar.getInstance();
-		cal1.set(2003, 7, 23, 0, 0 , 0); // 2003-8-23
-		cal1.add(MONTH, 6); //2003-8-23 => 2004-2-23
-		System.out.println(cal1.getTime());
 
 
 		Calendar cal2 = Calendar.getInstance();
@@ -55,18 +51,32 @@ public class MyCalendar {
     @Test
     public void test1(){
         c.set(2003 , 10 , 23 , 19, 32, 23); //2003-11-23 12:32:23
-//        String format1 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
-        String format1 = new SimpleDateFormat("YYYY-mm-dd  hh:MM:ss").format(c.getTime());
+        String format1 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
+        String format2 = new SimpleDateFormat("YYYY-mm-dd  hh:MM:ss").format(c.getTime());
         System.out.println("分别设置年、月、日、小时、分钟、秒 \t" + format1);
+        System.out.println("分别设置年、月、日、小时、分钟、秒 \t" + format2);
 
 
+    }
+
+    @Test
+    public void year(){
         c.add(YEAR , -1); //2002-11-23 12:32:23
-        String format2 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
-        System.out.println("将Calendar的年前推1年 \t" + format2);
+        String format3 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
+        System.out.println("将Calendar的年前推1年 \t" + format3);
 
         c.roll(MONTH , -8); //2002-03-23 12:32:23
-        String format3 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
-        System.out.println("将Calendar的月前推8个月 \t"+ format3);
+        String format4 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
+        System.out.println("将Calendar的月前推8个月 \t"+ format4);
+
+    }
+
+    @Test
+    public void test3(){
+        c.set(2003, 7, 23, 0, 0 , 0);
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime())); // 2003-08-23  00:00:00
+        c.add(MONTH, 6);  // 增加6个月
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime())); // 2004-02-23  00:00:00
     }
 }
 
