@@ -2,7 +2,6 @@ package com.goat.controller;
 
 
 import com.goat.bean2.Dog;
-import com.goat.bean2.Person;
 import com.goat.service.HelloService;
 import com.goat.service.TestService;
 import com.goat.service.TestService2;
@@ -43,12 +42,21 @@ public class TestBean {
         String[] beanNamesForType = ac.getBeanNamesForType(Dog.class); // 根据 bean 的类型 从 IOC容器中获取 bean 的实例  数组
         System.out.println(beanNamesForType);
     }
-    //    http://localhost:1111/testbean/test11
-    @GetMapping("/test11")
-    public void test11() {
+
+    //    http://localhost:1111/testbean/testDog1
+    @GetMapping("/testDog1")
+    public void testDog1() {
 //      Dog beanNamesForType = ac.getBean(Dog.class);  // 根据 bean 的类型 从 IOC容器中获取 bean 的实例  单个
         Dog dog03 = ac.getBean("dog03",Dog.class); // 根据 bean 的类型 和 bean id  从 IOC容器中获取 bean 的实例  单个
         System.out.println(dog03);
+    }
+
+    //    http://localhost:1111/testbean/testDog2
+    @GetMapping("/testDog2")
+    public void testDog2() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+        Class cl=Class.forName("com.goat.bean2.Dog");
+        Object obj=cl.newInstance(); //通过 newInstance 创建一个无参数的 Dog 对象 (执行无参函数)
+        System.out.println(obj);
     }
     /**
      http://localhost:1111/testbean/test2
