@@ -14,4 +14,32 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-log4j2</artifactId>
             </dependency>
-     项目实际使用的是 LogBack 日志框架  但是 pom 中又引入的 log4j2 的日志框架 所以导致了 日志框架的冲突    
+     项目实际使用的是 LogBack 日志框架  但是 pom 中又引入的 log4j2 的日志框架 所以导致了 日志框架的冲突   
+     
+     
+     
+# SpringBoot中禁用Logback
+
+    你可以将排除项添加到spring-boot-starter和spring-boot-starter-web以解决冲突：
+    
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>

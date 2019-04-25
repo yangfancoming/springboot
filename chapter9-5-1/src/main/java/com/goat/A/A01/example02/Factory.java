@@ -17,7 +17,7 @@ public class Factory {
 
         //至于如何读取Properties还有如何反射这里就不解释了
         Properties p = new Properties();
-        InputStream in = Factory.class.getResourceAsStream("FactoryTest.properties");
+        InputStream in = Factory.class.getResourceAsStream("/FactoryTest.properties");
 //        InputStream in = Factory.class.getResourceAsStream("E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter9-5-1\\src\\main\\java\\com\\goat\\A\\A01\\example02\\FactoryTest.properties");
         p.load(in);
         in.close();
