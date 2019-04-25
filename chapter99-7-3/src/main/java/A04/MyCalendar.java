@@ -52,23 +52,69 @@ public class MyCalendar {
     public void test1(){
         c.set(2003 , 10 , 23 , 19, 32, 23); //2003-11-23 12:32:23
         String format1 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
-        String format2 = new SimpleDateFormat("YYYY-mm-dd  hh:MM:ss").format(c.getTime());
+        String format2 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
         System.out.println("分别设置年、月、日、小时、分钟、秒 \t" + format1);
         System.out.println("分别设置年、月、日、小时、分钟、秒 \t" + format2);
 
 
     }
-
     @Test
     public void year(){
-        c.add(YEAR , -1); //2002-11-23 12:32:23
+        c.add(YEAR , 1);
         String format3 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
-        System.out.println("将Calendar的年前推1年 \t" + format3);
+        System.out.println("将Calendar的年后推1年 \t" + format3);
 
-        c.roll(MONTH , -8); //2002-03-23 12:32:23
+
+        c.add(YEAR , -1); //2002-11-23 12:32:23
         String format4 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
-        System.out.println("将Calendar的月前推8个月 \t"+ format4);
+        System.out.println("将Calendar的年前推1年 \t" + format4);
 
+    }
+
+    /**
+     *
+     DAY_OF_MONTH  一个月中的第几天
+     DAY_OF_WEEK   一周中的第几天
+    */
+    @Test
+    public void month(){
+        c.add(MONTH , 1);
+        String format5 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
+        System.out.println("增加一个月 \t"+ format5);
+
+        c.add(MONTH , -8);
+        String format4 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
+        System.out.println("减少8个月 \t"+ format4);
+    }
+
+    @Test
+    public void week(){
+        c.add(WEEK_OF_YEAR , 1);
+        String format4 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
+        System.out.println("增加一个礼拜 \t"+ format4);
+
+        c.add(WEEK_OF_YEAR , 1);
+        String format5 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
+        System.out.println("增加一个礼拜 \t"+ format5);
+    }
+
+    @Test
+    public void day(){
+        c.add(DAY_OF_YEAR , 1);
+        String format4 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
+        System.out.println("增加一天 \t"+ format4);
+
+        c.add(DATE , 1);
+        String format5 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
+        System.out.println("增加一天 \t"+ format5);
+
+        c.add(DAY_OF_MONTH , 1);
+        String format6 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
+        System.out.println("增加一天 \t"+ format6);
+
+        c.add(DAY_OF_WEEK , 1);
+        String format7 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
+        System.out.println("增加一天 \t"+ format7);
     }
 
     @Test

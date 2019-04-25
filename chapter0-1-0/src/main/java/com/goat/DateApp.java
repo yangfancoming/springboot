@@ -17,7 +17,7 @@ public class DateApp {
     @Test
     public void test(){
 //        Date firstDayOfWeek = WeekUtil.getFirstDayOfWeek();
-//        String format = new SimpleDateFormat("yyyy-mm-dd  HH:mm:ss").format(firstDayOfWeek);
+//        String format = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(firstDayOfWeek);
 //        System.out.println(format);
     }
 }

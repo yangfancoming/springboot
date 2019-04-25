@@ -18,7 +18,7 @@ public class AsyncService {
 
     @Async("asyncTaskExecutor")
     public void test(){
-        SimpleDateFormat aDate=new SimpleDateFormat("yyyy-mm-dd  HH:mm:ss");
+        SimpleDateFormat aDate=new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
         long now= System.currentTimeMillis(); // 当前系统时间
         System.out.println(Thread.currentThread().getName() +"-------------"+ aDate.format(now));
     }

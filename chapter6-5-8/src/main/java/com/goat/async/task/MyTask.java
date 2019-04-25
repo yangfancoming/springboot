@@ -40,7 +40,7 @@ public class MyTask {
 //    @Scheduled(fixedRate = 2 * 1000)
 //    @Async("asyncTaskExecutor")
 //    public void test1() {
-//        SimpleDateFormat aDate=new SimpleDateFormat("yyyy-mm-dd  HH:mm:ss");
+//        SimpleDateFormat aDate=new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
 //        long now= System.currentTimeMillis(); // 当前系统时间
 //        System.out.println(Thread.currentThread().getName() +"-------------"+ aDate.format(now));
 //    }

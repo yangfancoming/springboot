@@ -34,7 +34,7 @@ public class DateUtil {
     */
     @Test
     public void simpleDateFormat ()  {
-        SimpleDateFormat aDate=new SimpleDateFormat("yyyy-mm-dd  HH:mm:ss");
+        SimpleDateFormat aDate=new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
         long now=System.currentTimeMillis(); // 当前系统时间
         System.out.println(aDate.format(now)); // 2018-08-12  20:08:52
         SimpleDateFormat myFmt=new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒"); // 2018年12月12日 20时08分52秒
