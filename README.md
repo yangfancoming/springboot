@@ -66,6 +66,7 @@ Web开发
 - ==chapter2-2-5 springboot  集成 Gson  相关操作总结==
 - ==chapter2-3-1 springboot  集成 WebSocket==
 - ==chapter2-3-2 springboot  集成 WebSocket2==
+- ==chapter2-3-3 springboot  集成 WebSocket3==
 - ==chapter2-3-8 springboot  集成 Mina server==
 - ==chapter2-3-9 springboot  集成 Mina client==
 - ==chapter2-4-1 springboot  集成 WebService 服务端==
@@ -152,6 +153,8 @@ AOP
 - ==chapter4-5-2：springboot 集成 MongoDB  使用 MongoTemplate==
 - ==chapter4-5-3：springboot 集成 MongoDB  使用 MongoRepository==
 - ==chapter4-6-0：springboot 集成 Oracle==
+- ==chapter4-6-3：springboot 集成 H2 + mybatis==
+- ==chapter4-6-4：springboot 集成 H2 + jdbc==
 - ==chapter4-7-0：springboot 集成 多数据源 基于 JPA和Mybatis==
 - ==chapter4-7-5：springboot 集成 mysql读写分离  基于 IO.shardingJDBC==
 - ==chapter4-7-6：springboot 集成 mysql读写分离  基于 DD.shardingJDBC==
@@ -294,6 +297,10 @@ JVM
 高并发 
 
 - ==chapter9-0-1：springboot 集成 高并发 ==
+
+
+
+
 
 
 
