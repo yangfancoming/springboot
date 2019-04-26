@@ -1,4 +1,4 @@
-package com.goat.B.B02;
+package com.goat.B.B02.example00;
 
 /**
  * Created by 64274 on 2019/3/21.
@@ -10,6 +10,7 @@ package com.goat.B.B02;
 public class ConcreteDecoratorA extends Decorator {
 
     private String addedState;
+
     @Override
     public void operation() {
         // 首先运行原Component的operation()，再执行本类的功能，如addedState，相当于对原Component进行了装饰
