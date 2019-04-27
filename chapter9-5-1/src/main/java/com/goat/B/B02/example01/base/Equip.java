@@ -1,6 +1,4 @@
-package com.goat.B.B02.example01.equip;
-
-import com.goat.B.B02.example01.IAttribute;
+package com.goat.B.B02.example01.base;
 
 /**
  * Created by 64274 on 2019/4/26.

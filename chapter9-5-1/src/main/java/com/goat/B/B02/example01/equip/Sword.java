@@ -1,6 +1,7 @@
 package com.goat.B.B02.example01.equip;
 
-import com.goat.B.B02.example01.IAttribute;
+import com.goat.B.B02.example01.base.Equip;
+import com.goat.B.B02.example01.base.IAttribute;
 
 /**
  * Created by 64274 on 2019/4/26.
@@ -16,6 +17,7 @@ public class Sword extends Equip {
     public Sword(IAttribute attribute){
         super.attribute = attribute;
     }
+
     @Override
     public float getDefense() {
         return super.attribute.getDefense() + defense;

@@ -1,6 +1,6 @@
 package com.goat.B.B02.example01.role;
 
-import com.goat.B.B02.example01.IAttribute;
+import com.goat.B.B02.example01.base.IAttribute;
 
 /**
  * Created by 64274 on 2019/4/26.

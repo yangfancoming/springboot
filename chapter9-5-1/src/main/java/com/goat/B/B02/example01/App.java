@@ -1,5 +1,6 @@
 package com.goat.B.B02.example01;
 
+import com.goat.B.B02.example01.base.IAttribute;
 import com.goat.B.B02.example01.equip.Bow;
 import com.goat.B.B02.example01.equip.Shoe;
 import com.goat.B.B02.example01.equip.Sword;
