@@ -11,12 +11,15 @@ import com.goat.B.B02.example01.base.IAttribute;
  * @ date 2019/4/26---15:06
  */
 public class Shoe extends Equip {
+
     private float defense = 70;
     private float power = 10;
     private String describe = "鞋子";
+
     public Shoe(IAttribute attribute){
         super.attribute = attribute;
     }
+
     @Override
     public float getDefense() {
         return super.attribute.getDefense() + defense;

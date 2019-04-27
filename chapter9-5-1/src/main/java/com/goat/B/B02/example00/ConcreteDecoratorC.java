@@ -8,6 +8,7 @@ package com.goat.B.B02.example00;
  * @ date 2019/3/21---15:59
  */
 public class ConcreteDecoratorC extends Decorator {
+
     @Override
     public void operation() {
         super.operation();

@@ -10,11 +10,11 @@ package com.goat.B.B02.example01.base;
 public interface IAttribute {
 
     //获取防御力方法
-    public float  getDefense();
+    float  getDefense();
 
     //获取攻击力方法
-    public float  getPower();
+     float  getPower();
 
     //获取描述
-    public String getDescribe();
+     String getDescribe();
 }

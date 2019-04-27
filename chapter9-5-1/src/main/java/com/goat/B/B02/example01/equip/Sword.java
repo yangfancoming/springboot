@@ -11,9 +11,11 @@ import com.goat.B.B02.example01.base.IAttribute;
  * @ date 2019/4/26---15:07
  */
 public class Sword extends Equip {
+
     private float defense = 20;
     private float power = 40;
     private String describe = "剑";
+
     public Sword(IAttribute attribute){
         super.attribute = attribute;
     }
