@@ -21,30 +21,33 @@ import java.util.Map;
  */
 public class MyTest {
 
+    /* 在集合中 存储了不同类型的数据  导致在使用集合时 容易报错 */
     @Test
     public void test(){
         List strList = new ArrayList();  // ① 表示 创建的 strList 集合 可以保存任何类型
-        strList.add("疯狂Java讲义");
-        strList.add("疯狂Android讲义");
-        // 下面代码将引起运行时错误 java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.String
-        strList.add(5);    // ②
-        strList.forEach(str -> System.out.println(((String)str).length())); // ③
+        strList.add("天晴");
+        strList.add("下雨");
+        strList.add(50);    // ② 引起运行时错误 java.lang.ClassCastException: java.lang.Integer cannot be cast to java.lang.String
+        strList.forEach(System.out::println);
+        strList.forEach(str -> System.out.println(str)); // 但是 使用这两种方式遍历 就可以在遍历时不指定元素类型。。。。 可以正常遍历
+        System.out.println("...............");
+        strList.forEach(str -> System.out.println(((String)str).length())); // ③ 一旦在遍历时 指定了元素类型  那么如果集合中有元素类型不同则会报错
     }
 
+    /* 解决方法： 在创建集合时 就指定 集合可以存储的元素类型 这样在编译阶段就保证集合的元素类型 安全 */
     @Test
     public void test2(){
         List<String> strList = new ArrayList<>();  // ① 表示 创建的 strList 集合 只可以保存String类型
-        strList.add("疯狂Java讲义");
-        strList.add("疯狂Android讲义");
-        // 下面代码将引起编译错误
-//        strList.add(5);    // ②
+        strList.add("天晴");
+        strList.add("下雨");
+//        strList.add(5);    // ② 将引起编译错误
         strList.forEach(str -> System.out.println(str.length())); // ③ 遍历books集合，集合元素就是String类型
     }
 
     @Test
     public void test3(){
         Map<String , List<String>> schoolsInfo = new HashMap<>();
-        List<String> schools = new ArrayList<>(); // Java自动推断出ArrayList的<>里应该是String
+        List<String> schools = new ArrayList<>();
         schools.add("斜月三星洞");
         schools.add("西天取经路");
         schoolsInfo.put("孙悟空" , schools);
