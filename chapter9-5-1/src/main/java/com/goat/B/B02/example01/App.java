@@ -58,4 +58,14 @@ public class App {
         pringMsg(attribute2);
     }
 
+
+    @Test
+    public void test(){
+        //创建法师
+        IAttribute attribute = new Mage();
+        attribute = new Shoe(attribute);//鞋子
+        attribute = new Wand(attribute);//法杖
+        pringMsg(attribute);
+
+    }
 }
