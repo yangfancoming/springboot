@@ -11,6 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class MyData {
 
+//     int num = 0;
     volatile int num = 0;
 
     public void set(){

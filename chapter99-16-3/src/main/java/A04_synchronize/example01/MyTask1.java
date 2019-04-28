@@ -6,7 +6,7 @@ package A04_synchronize.example01;
  * Created by 64274 on 2018/7/20.
  *
  * @author 山羊来了
- * @Description: TODO
+ * @Description: 卖票  电影票 示例
  * @date 2018/7/20---13:25
  *
  */
