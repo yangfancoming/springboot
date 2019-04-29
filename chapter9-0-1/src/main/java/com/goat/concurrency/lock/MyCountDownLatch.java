@@ -17,34 +17,25 @@ public class MyCountDownLatch {
 
     public static void main(String[] args) {
         final CountDownLatch latch = new CountDownLatch(2);
-
-        new Thread(()->{
-            try {
-                System.out.println("子线程"+Thread.currentThread().getName()+"正在执行");
-                Thread.sleep(3000);
-                System.out.println("子线程"+Thread.currentThread().getName()+"执行完毕");
-                latch.countDown(); //将count值减1
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
-
-        new Thread(()->{
-            try {
-                System.out.println("子线程"+Thread.currentThread().getName()+"正在执行");
-                Thread.sleep(3000);
-                System.out.println("子线程"+Thread.currentThread().getName()+"执行完毕");
-                latch.countDown(); //将count值减1
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
+        new Thread(()->doWork(latch)).start();
+        new Thread(()->doWork(latch)).start();
 
         try {
             System.out.println("等待2个子线程执行完毕...");
             latch.await();  //调用await()方法的线程会被挂起，它会等待直到count值为0才继续执行
             System.out.println("2个子线程已经执行完毕");
             System.out.println("继续执行主线程");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void doWork(CountDownLatch latch){
+        try {
+            System.out.println("子线程"+Thread.currentThread().getName()+"正在执行");
+            Thread.sleep(3000);
+            System.out.println("子线程"+Thread.currentThread().getName()+"执行完毕");
+            latch.countDown(); //将count值减1
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
