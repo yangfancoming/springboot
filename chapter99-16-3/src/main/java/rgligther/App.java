@@ -3,7 +3,7 @@ package rgligther;
 /**
  * Created by 64274 on 2019/4/22.
  *
- * @ Description: TODO
+ * @ Description: 红绿灯 模拟
  * @ author  山羊来了
  * @ date 2019/4/22---10:04
  */
