@@ -45,10 +45,11 @@ public class App {
     public void test1(){
         // 一个镶嵌1颗红宝石，1颗蓝宝石的武器
         System.out.println(" 一个镶嵌1颗红宝石，1颗蓝宝石,1颗黄宝石的武器");
-        IEquip armEquip = new ArmEquip();
-        IEquip yellowGemDecorator = new YellowGemDecorator(armEquip);
-        IEquip blueGemDecorator = new BlueGemDecorator(yellowGemDecorator);
-        IEquip equip = new RedGemDecorator(blueGemDecorator);
+        IEquip armEquip = new ArmEquip(); // 创建 一个 武器
+        IEquip yellowGemDecorator = new YellowGemDecorator(armEquip); // 给武器装饰  黄宝石
+        IEquip blueGemDecorator = new BlueGemDecorator(yellowGemDecorator); // 给武器装饰  蓝宝石
+        IEquip redGemDecorator = new RedGemDecorator(blueGemDecorator); // 给武器装饰  红宝石
+        IEquip equip = new RedGemDecorator(redGemDecorator); // 给武器装饰  红宝石
         System.out.println("攻击力  : " + equip.caculateAttack());
         System.out.println("描述 :" + equip.description());
         System.out.println("-------");

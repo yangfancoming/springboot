@@ -7,4 +7,6 @@ package com.goat.B.B02.example02;
  * @ author  山羊来了
  * @ date 2019/4/29---9:39
  */
-public interface IEquipDecorator extends IEquip   {}
+public interface IEquipDecorator extends IEquip   {
+
+}
