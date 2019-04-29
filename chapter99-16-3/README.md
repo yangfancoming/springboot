@@ -12,4 +12,7 @@
     
     
     静态方法是线程安全的
-    http://localhost:8080/wms/home
+
+    
+    
+    A09 线程相关类 ThreadLocal
