@@ -1,4 +1,4 @@
-package A04_synchronize.example2;
+package A04_synchronize.example02;
 
 /**
  * Created by Brian on 2016/4/11.

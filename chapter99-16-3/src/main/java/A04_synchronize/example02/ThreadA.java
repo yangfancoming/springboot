@@ -1,12 +1,12 @@
-package A04_synchronize.example1;
+package A04_synchronize.example02;
 
 /**
  * Created by Brian on 2016/4/11.
  */
 public class ThreadA extends Thread {
-    private HasLocalNum numRef;
+    private HasSelfPrivateNum numRef;
 
-    public ThreadA(HasLocalNum numRef) {
+    public ThreadA(HasSelfPrivateNum numRef) {
         super();
         this.numRef = numRef;
     }
