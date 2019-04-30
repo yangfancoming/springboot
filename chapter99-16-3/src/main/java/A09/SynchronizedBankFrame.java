@@ -4,6 +4,12 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
+/**
+ThreadLocal 和 同步机制都是为了解决多线程中相同变量的访问冲突问题。
+ 前者采用以 空间换时间 的方式
+ 后者采用以 时间换空间 的方式
+*/
+
 public class SynchronizedBankFrame extends JFrame {
 
 	private static final long serialVersionUID = 2671056183299397274L;
