@@ -6,14 +6,23 @@ package A03;
  * @author 山羊来了
  * @Description: TODO
  * @date 2018/6/26---16:47
- * 类属性  sos “0值概念 ” 默认值
- * int short byte ==== 0
+ * 类属性  sos “0值概念 ” 基本类型    默认值
+ *  int short byte ==== 0
  * long           ==== 0L
  * boolean        ==== false
  * char          ==== '\0'
  * float        ====  0.0F
  * double       ==== 0.0
  * 所有引用类型 null  （String,Integer....）
+ *  基本数据类型  占字节长度
+ * byte     1字节
+ * short    2字节
+ * int      4字节
+ * long     8字节
+ * char     2字节（C语言中是1字节）可以存储一个汉字
+ * float    4字节
+ * double   8字节
+ * boolean  false/true(理论上占用1bit,1/8字节，实际处理按1byte处理)
  *
  */
 public class Person {

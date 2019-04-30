@@ -13,6 +13,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * @ date 2019/4/23---19:59
  */
 public class MyBlockingQueue extends Thread {
+
     public static BlockingQueue<String> queue = new LinkedBlockingQueue<>(3);
     private int index;
     public MyBlockingQueue(int i) {

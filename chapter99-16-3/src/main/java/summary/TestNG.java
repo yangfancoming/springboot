@@ -22,8 +22,8 @@ public class TestNG {
      class Mythread extends Thread {
          @Override
          public void run()  {
-             for (int i = 0; i < 100; i++) {
-                 System.out.println("Mythread.................." + i);
+             for (int i = 0; i < 10; i++) {
+                 System.out.println("Mythread 线程抢入.................." + i);
              }
          }
     }
@@ -69,9 +69,9 @@ public class TestNG {
     public void join() throws InterruptedException {
         Mythread t = new Mythread();
         t.start();
-        for (int i = 0; i < 100 ; i++) {
+        for (int i = 0; i < 10 ; i++) {
             System.out.println(Thread.currentThread().getName()+ i);
-            if(i == 30){
+            if(i == 4){
                 t.join(); // t 线程 抢入
             }
         }

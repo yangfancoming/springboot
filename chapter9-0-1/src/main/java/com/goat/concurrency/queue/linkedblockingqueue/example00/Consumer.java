@@ -1,5 +1,7 @@
 //package com.goat.concurrency.queue.linkedblockingqueue.example00;
 //
+//import javax.swing.*;
+//
 ///**
 // * Created by 64274 on 2019/4/29.
 // *
@@ -7,7 +9,15 @@
 // * @ author  山羊来了
 // * @ date 2019/4/29---17:34
 // */
-//public class Consumer extends ProducerAndConsumerFrame implements Runnable {
+//public class Consumer extends App implements Runnable {
+//
+//    private JTextArea consumerTextArea;
+//    private JTextArea storageTextArea;
+//
+//    public Consumer(JTextArea consumerTextArea, JTextArea storageTextArea) {
+//        this.consumerTextArea = consumerTextArea;
+//        this.storageTextArea = storageTextArea;
+//    }
 //
 //    @Override
 //    public void run() {

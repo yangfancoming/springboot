@@ -124,5 +124,12 @@ public class MyCalendar {
         c.add(MONTH, 6);  // 增加6个月
         System.out.println(new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime())); // 2004-02-23  00:00:00
     }
+
+    @Test
+    public void test4(){ // 获取当前时间
+        Calendar c = Calendar.getInstance();
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime())); // 2004-02-23  00:00:00
+    }
+
 }
 

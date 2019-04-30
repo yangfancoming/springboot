@@ -1,5 +1,6 @@
 //package com.goat.concurrency.queue.linkedblockingqueue.example00;
 //
+//import javax.swing.*;
 //import java.util.Random;
 //
 ///**
@@ -9,7 +10,15 @@
 // * @ author  山羊来了
 // * @ date 2019/4/29---17:31
 // */
-//public class Producer extends ProducerAndConsumerFrame implements Runnable {
+//public class Producer extends App implements Runnable {
+//
+//    private JTextArea producerTextArea;
+//    private JTextArea storageTextArea;
+//
+//    public Producer(JTextArea producerTextArea, JTextArea storageTextArea) {
+//        this.producerTextArea = producerTextArea;
+//        this.storageTextArea = storageTextArea;
+//    }
 //
 //    @Override
 //    public void run() {

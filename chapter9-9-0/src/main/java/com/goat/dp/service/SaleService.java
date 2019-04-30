@@ -21,14 +21,9 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class SaleService {
 
-    @Autowired
-    VIPStrategyImpl vipStrategy;
-
-    @Autowired
-    VIP1StrategyImpl vip1Strategy;
-
-    @Autowired
-    VIP2StrategyImpl vip2Strategy;
+    @Autowired VIPStrategyImpl vipStrategy;
+    @Autowired VIP1StrategyImpl vip1Strategy;
+    @Autowired VIP2StrategyImpl vip2Strategy;
 
     // 原始方式
     public void sale(String type,double price){
@@ -56,9 +51,7 @@ public class SaleService {
     }
 
     Map<String, IDiscountStrategy> map = new ConcurrentHashMap<>();
-
     // sos 通过构造方法 进行  Spring注入 所有该接口的实现类！
-
     public SaleService(List<IDiscountStrategy> list) {
         for (IDiscountStrategy temp:list){
             map.put(temp.type(),temp);// sos 这里有点难理解
