@@ -58,43 +58,36 @@ public class MyCollection {
 
     @Test
     public void add(){
-        System.out.println("添加成功吗？"+c.add("郭美美"));
-        System.out.println("c集合的元素个数为:" + c.size());
         Collection dd = new ArrayList();
-        String temp = "123";
-        ArrayList haha = new ArrayList();
-        dd.add(temp);
-        dd.add(haha);
-        System.out.println(haha);
+        dd.add("123");
+        dd.add(111);
+        System.out.println(dd);
     }
 
     @Test
-    public void clear(){
-        //清空集合中的所有元素
+    public void clear(){  //清空集合中的所有元素
         c.clear();
         System.out.println("c集合的元素个数为:" + c.size());
     }
     @Test
-    public void remove(){
-        // 删除 内容匹配的第一项
+    public void remove(){  // 删除 内容匹配的第一项
         c.remove("孙悟空");
         c.remove(123);
         c.remove(110);
         System.out.println("c集合的元素个数为:" + c.size());
     }
     @Test
-    public void removeAll(){
-        // 用c集合减去books集合里的元素
+    public void removeAll(){   // 用c集合减去books集合里的元素
         books.add(true);
         c.removeAll(books);
         System.out.println("c集合的元素：" + c);
     }
 
     @Test
-    public void contains(){
-        // 判断是否包含指定字符串
+    public void contains(){  // 判断是否包含指定字符串
         System.out.println("c集合的是否包含孙悟空字符串:" + c.contains("孙悟空"));
     }
+
     @Test
     public void containsAll(){
         books.clear();
