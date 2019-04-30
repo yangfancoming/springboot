@@ -9,24 +9,19 @@ import java.util.concurrent.FutureTask;
 /**
  * Created by 64274 on 2019/4/30.
  *
- * @ Description: 带有返回值的
+ * @ Description: 带有返回值的线程  线程返回值
  * @ author  山羊来了
  * @ date 2019/4/30---10:19
  */
 public class App2 extends JFrame{
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 2671056183299397274L;
     private JPanel contentPane;
     private JTextArea thread1TextArea;
     private JTextArea thread2TextArea;
     private JTextArea thread3TextArea;
 
-    /**
-     * Launch the application.
-     */
+
     public static void main(String[] args) {
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");

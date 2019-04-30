@@ -13,7 +13,7 @@ import java.lang.reflect.Method;
 
 /**
  * Created by 64274 on 2019/2/12.
- * sos 这种方式 只能拦截到 没有返回值的 带有@Async的异步方法，由返回值的 则无法拦截，控制台也不会报错
+ * sos 这种方式 只能拦截到 没有返回值的 带有@Async的异步方法，有返回值的 则无法拦截，控制台也不会报错
  * @ Description:  自定义异常处理类  对于Spring @Async注解的方法，进行异常处理的类
  * @ author  山羊来了
  * @ date 2019/2/12---21:58
