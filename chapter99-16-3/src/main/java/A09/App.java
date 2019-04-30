@@ -10,7 +10,7 @@ ThreadLocal 和 同步机制都是为了解决多线程中相同变量的访问�
  后者采用以 时间换空间 的方式
 */
 
-public class SynchronizedBankFrame extends JFrame {
+public class App extends JFrame {
 
 	private static final long serialVersionUID = 2671056183299397274L;
 	private JPanel contentPane;
@@ -25,7 +25,7 @@ public class SynchronizedBankFrame extends JFrame {
 	    }
 		EventQueue.invokeLater(()->{
             try {
-                SynchronizedBankFrame frame = new SynchronizedBankFrame();
+                App frame = new App();
                 frame.setVisible(true);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -36,7 +36,7 @@ public class SynchronizedBankFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public SynchronizedBankFrame() {
+	public App() {
 		setTitle("\u4F7F\u7528\u7EBF\u7A0B\u5C40\u90E8\u53D8\u91CF\u5B9E\u73B0\u7EBF\u7A0B\u540C\u6B65");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
