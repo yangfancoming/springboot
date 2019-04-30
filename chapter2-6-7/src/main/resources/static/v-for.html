@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!--sos 注解 ② 和 ③ 的引入顺序不能颠倒 否则 加载会报错-->
+
+    <!-- ① 引入 elementUI 样式-->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- ② 引入 vue.js-->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- ③ 引入 elementUI 组件-->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+</head>
+<body>
+    <div id="app">
+
+        <hr> <br>  <!--我是华丽的分割线-->
+        <li v-for="item in items">
+            {{ item }}
+        </li>
+
+        <hr> <br>  <!--我是华丽的分割线-->
+        <li v-for="item in options">
+           {{ item.text }} -------- {{ item.value }}
+        </li>
+
+
+        <hr> <br>  <!--我是华丽的分割线-->
+        <ul class="box">
+            <li v-for='value,index in msg'>值:{{value}}   索引:{{index}} </li>  <!--循环数组-->
+            <hr />
+            <li v-for='value,key,index in msg2'>值:{{value}} 键:{{key}}  索引:{{index}}</li><!--json数组-->
+        </ul>
+    </div>
+</body>
+
+<script>
+    new Vue({
+        el: '#app',// 指定挂载区域
+        data:{ // data中的所有属性 在id为app的标签内中 都可以直接使用
+            items: ['Foo','Bar'],
+            options: [
+                { text: '上海市', value: '20' },
+                { text: '湖北省', value: '43' },
+                { text: '河南省', value: '45' },
+                { text: '北京市', value: '10' }
+            ],
+            msg:['hello','ok','dome'],    //定义一个数组
+            msg2:{a:'ok',b:"hello"},　　　　//定义一个对象
+        }
+    })
+</script>
+</html>
