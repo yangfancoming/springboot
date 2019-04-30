@@ -2,21 +2,22 @@ package A09;
 
 import javax.swing.*;
 
-/** ÍùÕË»§Àï´æÇ® */
+
+/** å¾€è´¦æˆ·é‡Œå­˜é’± */
 public class Transfer implements Runnable {
 
-	private Bank bank;
-	private JTextArea textArea;
+    private Bank bank;
+    private JTextArea textArea;
 
-	public Transfer(Bank bank, JTextArea textArea) {
-		this.bank = bank;
-		this.textArea = textArea;
-	}
+    public Transfer(Bank bank, JTextArea textArea) {
+        this.bank = bank;
+        this.textArea = textArea;
+    }
 
-	public void run() {
-		for (int i = 0; i < 10; i++) {
-			bank.deposit(10); // Ã¿´ÎÍùÕË»§Àï´æÈë10Ôª
-			textArea.setText(textArea.getText() + "ÕË»§µÄÓà¶îÊÇ£º" + bank.getAccount() + "\n");
-		}
-	}
+    public void run() {
+        for (int i = 0; i < 10; i++) {
+            bank.deposit(10); // æ¯æ¬¡å¾€è´¦æˆ·é‡Œå­˜å…¥10å…ƒ
+            textArea.setText(textArea.getText() + "è´¦æˆ·çš„ä½™é¢æ˜¯ï¼š" + bank.getAccount() + "\n");
+        }
+    }
 }

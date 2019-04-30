@@ -2,14 +2,14 @@ package A09;
 
 public class Bank {
 
-    // Ê¹ÓÃThreadLocalÀàÀ´¹ÜÀí¹²Ïí±äÁ¿account£¬²¢ÖØĞ´initialValue()·½·¨£¬½«accountµÄ³õÊ¼ÖµÉèÎª100
+    // ä½¿ç”¨ThreadLocalç±»æ¥ç®¡ç†å…±äº«å˜é‡accountï¼Œå¹¶é‡å†™initialValue()æ–¹æ³•ï¼Œå°†accountçš„åˆå§‹å€¼è®¾ä¸º100
     private static ThreadLocal<Integer> account = ThreadLocal.withInitial(()->100);
-    
+
     public void deposit(int money) {
-        account.set(account.get() + money);// ÀûÓÃaccountµÄget()¡¢set()·½·¨ÊµÏÖ´æÇ®
+        account.set(account.get() + money);// åˆ©ç”¨accountçš„get()ã€set()æ–¹æ³•å®ç°å­˜é’±
     }
-    
-    public int getAccount() {// »ñµÃÕË»§Óà¶î
+
+    public int getAccount() {// è·å¾—è´¦æˆ·ä½™é¢
         return account.get();
     }
 }

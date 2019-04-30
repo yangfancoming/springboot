@@ -3,7 +3,7 @@ package com.goat.concurrency.lock.deadlock;
 /**
  * Created by 64274 on 2019/4/30.
  *
- * @ Description: TODO
+ * @ Description: 17 行 开始 都在等对方 释放锁 后自己进入  但是 谁也不会释放  导致谁也走不下去
  * @ author  山羊来了
  * @ date 2019/4/30---9:37
  */
@@ -17,6 +17,7 @@ public class Lock1 extends DeadLock implements Runnable {
             synchronized (o2) {// 为o2加锁
                 System.out.println(Thread.currentThread().getName() + "已经进入同步块o2");// 显示进入o2块
             }
+            System.out.println(Thread.currentThread().getName() + "注释掉上面代码  解决死锁");// 解决死锁
         }
     }
 }

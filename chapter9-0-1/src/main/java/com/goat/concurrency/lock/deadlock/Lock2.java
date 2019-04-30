@@ -3,7 +3,7 @@ package com.goat.concurrency.lock.deadlock;
 /**
  * Created by 64274 on 2019/4/30.
  *
- * @ Description: TODO
+ * @ Description: 17 行 开始 都在等对方 释放锁 后自己进入  但是 谁也不会释放  导致谁也走不下去
  * @ author  山羊来了
  * @ date 2019/4/30---9:37
  */
