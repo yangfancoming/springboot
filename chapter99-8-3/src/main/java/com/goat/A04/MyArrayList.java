@@ -101,12 +101,19 @@ public class MyArrayList {
         System.out.println(temp);// 内容只有 孙悟空
     }
 
-    /*遍历方式一*/
+
     @Test
-    public void for1(){  //
+    public void for1(){
+        /*遍历方式一*/
         Iterator iterator = c.iterator();
         while (iterator.hasNext()){
             System.out.println(iterator.next());
+        }
+        /*遍历方式二*/
+        c.forEach(System.out::println);
+        /*遍历方式三*/
+        for (Object o: c){
+            System.out.println(o);
         }
     }
 

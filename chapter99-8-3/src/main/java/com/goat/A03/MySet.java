@@ -14,22 +14,24 @@ import java.util.TreeSet;
  * Created by 64274 on 2018/7/21.
  *
  * @author 山羊来了
- * @Description: TODO
+ * @Description: Set 接口中没有定义新的方法 使用的都是 Collection 接口中声明过的方法
+ * 无序性： 不等于随机性 （每次遍历的结果都是一样的） 无序性指的是 按照顺序存入的两个元素的内存地址并不连续
+ * 不可重复性： 由于底层实现 是数据+ 链表实现   每添加一个元素计算出其 hashcode 根据 hashcode 放置到数组的某个位置  每次add()时 都判断对应的hashcode位置
+ * 是否已经存有元素 如果没有则 直接添加 如果有则再调用 equals() 方法如果返回true 则表明是重复元素 直接忽略 如果返回false则 添加到链表中
+ * 为什么要使用这种算法呢？ 因为 添加到1000个元素的时候 要判断第1000个元素 是否与前面999个元素相同 这样的话 效率会很低。
  * @date 2018/7/21---17:08
  *  * 1.Set 无序，不可重复
  */
 public class MySet {
-    Set<String> s = new HashSet<>();
+    Set s = new HashSet<>();
     Set<String> ss = new TreeSet<>();
     @Before
     public void testBefore() {
-        s.add("周永康"); // 由于是 HashSet 集合 重复元素 将被忽略！
-        s.add("周永康");
-        s.add("孙悟空");
-        s.add("三张");
-        s.add("李四");
-        s.add("王五");
-        s.add("王五");
+        s.add(456);
+        s.add(123);
+        s.add("AA");
+        s.add("CC");
+        s.add(129);
         System.out.println("----------------c---------------------");
 
         ss.add("A"); // 由于是 TreeSet 集合  集合的元素 将被自动排列  无法手动修改
@@ -40,9 +42,8 @@ public class MySet {
         System.out.println("----------------c---------------------");
     }
     @Test
-    public void HashSet(){  // 控制台的打印内容 可以看出 set集合是无序的！
+    public void HashSet(){  // [AA, CC, 129, 456, 123]  由于是 HashSet 集合 重复元素 将被忽略！
         System.out.println(s);
-        System.out.println(ss);
     }
 
 

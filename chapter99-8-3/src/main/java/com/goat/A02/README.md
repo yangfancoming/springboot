@@ -2,13 +2,16 @@
     |- - - -  Collection 接口： 单列集合  
         |- - - - List 接口 ： 存储有序、可重复的数据  ---> 存储 象棋 因为棋子中 有重复的
             |- - - - ArrayList 、 LinkedList 、 Vector
-                    ArrayList  线程不安全 效率高 底层 Object[] 实现
-                    Vector     线程安全   效率低 底层 Object[] 实现
-                    LinkedList 插入/删除 效率高 遍历效率低    底层双向链表实现
+                   |- - - - ArrayList  线程不安全 效率高 底层 Object[] 实现
+                   |- - - - Vector     线程安全   效率低 底层 Object[] 实现
+                   |- - - - LinkedList 插入/删除 效率高 遍历效率低    底层双向链表实现
 
           
         |- - - - Set 接口 ： 存储无序、不可重复的数据  --->  存储 每个班级的同学  因为每个同学都是不会重复的
-             |- - - - HashSet 、 LinkedHashSet 、 TreeSet       
+             |- - - - HashSet 、 LinkedHashSet 、 TreeSet     
+                   |- - - - HashSet 底层是数组+链表的方式存储  线程不安全  可以存储 null 值
+                         |- - - - LinkedHashSet     
+                   |- - - - TreeSet  底层是红黑树 存储    
 
     |- - - - Map 接口 ： 双列集合  存储键值对
         |- - - - HashMap 、 LinkedHashMap 、 TreeMap、HashTable   
