@@ -65,27 +65,34 @@ public class MyCollection {
     }
 
     @Test
+    public void contains(){  // 判断是否包含指定元素  因为使用equals()，所以判断的是内容不是地址！  若是要判断 是否包含类对象则该类必须重写 equals() 方法
+        System.out.println("c集合的是否包含孙悟空字符串:" + c.contains("孙悟空"));
+    }
+
+    @Test
+    public void clea1r(){  //c集合是否为空
+        System.out.println("c集合是否为空:" + c.isEmpty());
+    }
+
+    @Test
     public void clear(){  //清空集合中的所有元素
         c.clear();
         System.out.println("c集合的元素个数为:" + c.size());
     }
+
     @Test
-    public void remove(){  // 删除 内容匹配的第一项
+    public void remove(){  // 删除 内容匹配的第一项  成功删除返回true 没有找到要删除的元素 返回false
         c.remove("孙悟空");
         c.remove(123);
         c.remove(110);
         System.out.println("c集合的元素个数为:" + c.size());
     }
+
     @Test
-    public void removeAll(){   // 用c集合减去books集合里的元素
+    public void removeAll(){   // 用c集合减去books集合里的元素  只删除两个集合的交集
         books.add(true);
         c.removeAll(books);
         System.out.println("c集合的元素：" + c);
-    }
-
-    @Test
-    public void contains(){  // 判断是否包含指定字符串
-        System.out.println("c集合的是否包含孙悟空字符串:" + c.contains("孙悟空"));
     }
 
     @Test
@@ -93,70 +100,57 @@ public class MyCollection {
         books.clear();
         books.add(true);
         books.add(123);
-        System.out.println("c集合是否完全包含books集合？" + c.containsAll(books)); // 输出false
+        System.out.println("c集合是否完全包含books集合？" + c.containsAll(books)); // 输出 true
     }
 
-    // doit
-    @Test
-    public void contain1sAll(){
-//        List<Map<Object, Object>> list1 = new ArrayList<>();
-//        List<Map<Object, Object>> list2 = new ArrayList<>();
-//        list1.stream()
-//                .filter(map -> list2.stream().anyMatch(map1 -> map.get("id").equals(map1.get("id"))))
-//                .forEach(map -> {
-//                    // to do sth
-//                });
-    }
-    @Test
-    public void contain21sAll(){
-//        List<User> list1 = new ArrayList<>();
-//        List<User> list2 = new ArrayList<>();
-//        list1.stream()
-//                .filter(map -> list2.stream().anyMatch(map1 -> map.getName().equals(map1.get("id"))))
-//                .forEach(map -> {
-//                    // to do sth
-//                });
-    }
     @Test
     public void addAll(){
         c.addAll(books);// 将books集合添加到c集合中 （允许有重复值）
         System.out.println(c);
-
     }
+
     @Test
-    public void retainAll(){
-        // 控制books集合里只剩下c集合里也包含的元素,交集。
+    public void retainAll(){  // 控制books集合里只剩下c集合里也包含的元素,交集。
         books.add(123);
         books.retainAll(c); // 取两个集合中的交集  其返回值表示 原集合在取交集操作后，原集合是否发生变化 有变化返回true 无变化返回false
         System.out.println("books集合的元素:" + books);
     }
     @Test
-    public void forEach(){
-        // 控制books集合里只剩下c集合里也包含的元素,交集。
+    public void forEach(){  // 控制books集合里只剩下c集合里也包含的元素,交集。
         books.forEach(obj -> System.out.println("books迭代集合元素：" + obj));
         c.forEach(obj -> System.out.println("c迭代集合元素：" + obj));
     }
 
     @Test
-    public void toArray(){
-        // list 转数组
+    public void toArray(){  // list 转数组
         Object[] haha = c.toArray();
         for (int i = 0; i <c.size() ; i++) {
             System.out.println(haha[i].toString().length()+"--------" + haha[i]);
         }
     }
 
+    Iterator it = c.iterator();
     @Test
-    public void Iterator(){
-        Iterator it = c.iterator(); // 通过迭代器高效遍历元素
-        while (it.hasNext()){
-            System.out.println(it.next());
+    public void Iterator(){  // 通过迭代器高效遍历元素  其实就两个方法  hasNext() 和 next()
+        while (it.hasNext()){ // 判断 是否还有下一个元素
+            System.out.println(it.next()); // 两步走： 1.先指针下移一个元素  2.将指向元素返回
         }
     }
 
+    @Test
+    public void IteratorError(){ // iterator 遍历的错误写法 1
+        while (it.next()!= null){
+            System.out.println(it.next()); // 由于 next() 先指针下移 一次循环调用了2次 next()，指针下移了2次 因此循环会跳着输出。。。
+        }
+    }
+
+    @Test
+    public void IteratorError2(){ // iterator 遍历的错误写法 2
+        while (c.iterator().hasNext()){
+            System.out.println(c.iterator().next()); // 一直显示集合中的第一个元素。看源码知，因为每次调用 c.iterator() 都会 new 一个新的 迭代器。。。
+        }
+    }
     /**
-         * @Description: 功能描述：(这里用一句话描述这个方法的作用)
-         * @author: 杨帆
          * @Param:   it.next()  获取元素 并将指针移动到下一个元素位置
          * @Return:  需要注意的是  it.next() 执行一次 指针就移动一次 在循环中 要特别注意
          * @Date:   2018/8/6
