@@ -60,6 +60,7 @@ public class MyLinkedList {
 
     @Test
     public void test(){
-
+        linkedList.remove(2);
+        System.out.println(linkedList);
     }
 }

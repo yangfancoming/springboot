@@ -1,12 +1,11 @@
 package com.goat.A04;
 
 
-
-
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -46,62 +45,69 @@ public class MyArrayList {
         cc.add(11);
         System.out.println("----------------cc---------------------");
     }
+
     @Test
-    public void clear0(){
+    public void add(){  // fuck List作为Collection的子类 具有的特有功能  在指定位置 添加元素
+        // 将新字符串对象插入在第二个位置
+        c.add(1, "指定位置插入");
+    }
+
+    @Test
+    public void addAll(){  // fuck List作为Collection的子类 具有的特有功能  在指定位置插入 新集合
+        c.addAll(1, cc);
+        System.out.println(c);
+    }
+
+    @Test
+    public void clear(){
         c.clear();
         System.out.println(c) ;
     }
 
     @Test
-    public void clear(){ // 按 下标 删除  返回删除的元素  fuck List作为Collection的子类 具有的特有功能  按索引删除元素 返回被删除的元素
+    public void remove1(){ // 按 下标 删除  返回删除的元素  fuck List作为Collection的子类 具有的特有功能  按索引删除元素 返回被删除的元素
         System.out.println(c.remove(1)) ;
     }
     @Test
-    public void clear1(){ // 按 内容 删除  返回 是否删除成功
+    public void remove2(){ // 按 内容 删除  返回 是否删除成功
         System.out.println(c.remove("周永康"));
     }
+
     @Test
-    public void clear4(){ // 按 下标 删除
-        boolean fuck =  cc.remove( "7");
-        System.out.println(fuck);
-    }
-    @Test
-    public void clear2(){ // 按 内容 删除  sos（需要转成 Object ）
+    public void remove3(){ // 按 内容 删除  sos（需要转成 Object ）
         cc.remove((Object) 7);
     }
 
-
-
     @Test
-    public void add(){  // fuck List作为Collection的子类 具有的特有功能  在指定位置 添加元素
-        // 将新字符串对象插入在第二个位置
-        c.add(1, new String("疯狂Ajax讲义"));
-    }
-    @Test
-    public void indexOf(){  // List作为Collection的子类 具有的特有功能  返回第一次出现指定元素的索引，如不包含此元素 则返回 -1
+    public void indexOf(){  // fuck List作为Collection的子类 具有的特有功能  返回第一次出现指定元素的索引，如不包含此元素 则返回 -1
         // 判断指定元素在List集合中位置：输出1，表明位于第二位
-        System.out.println(c.indexOf("王五"));
+        System.out.println(c.indexOf("李四"));
+        System.out.println(c.lastIndexOf("李四"));
     }
 
     @Test
     public void get(){     // fuck List作为Collection的子类 具有的特有功能  获取指定位置的元素
-        for (int i = 0; i < cc.size(); i++) {
-            System.out.println(cc.get(i));
-        }
-        for(Object o:cc){
-            System.out.println(o);
-        }
+        System.out.println(cc.get(2));
     }
+
     @Test
     public void set(){  // fuck List作为Collection的子类 具有的特有功能  根据索引修改元素，返回被修改的元素
         // 将第二个元素替换成新的字符串对象
         c.set(1, "疯狂Java讲义");
     }
     @Test
-    public void subList(){
-        // 将books集合的第二个元素（包括） 到第三个元素（不包括）截取成子集合
-        List temp = c.subList(1, 2); // fuck  subList 前端是闭区间(包括) 后端是开区间(不包括)
+    public void subList(){  // 将books集合的第二个元素（包括） 到第三个元素（不包括）截取成子集合
+        List temp = c.subList(1, 2); // fuck  subList 前端是闭区间(包括) 后端是开区间(不包括) 类比 subString ！！！
         System.out.println(temp);// 内容只有 孙悟空
+    }
+
+    /*遍历方式一*/
+    @Test
+    public void for1(){  //
+        Iterator iterator = c.iterator();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
     }
 
     /**

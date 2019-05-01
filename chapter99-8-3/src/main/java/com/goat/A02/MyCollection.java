@@ -119,6 +119,10 @@ public class MyCollection {
     public void forEach(){  // 控制books集合里只剩下c集合里也包含的元素,交集。
         books.forEach(obj -> System.out.println("books迭代集合元素：" + obj));
         c.forEach(obj -> System.out.println("c迭代集合元素：" + obj));
+
+        for (Object b : c){ // 该种循环方式  通过断点源码  发现 使用仍然是 迭代器  Iterator
+            System.out.println(b);
+        }
     }
 
     @Test
@@ -156,7 +160,7 @@ public class MyCollection {
          * @Date:   2018/8/6
     */
     @Test
-    public void Iterator2(){
+    public void Iterator2(){  // iterator 遍历的错误写法 3
         Iterator it = c.iterator();
         while (it.hasNext()){
             String mark = it.next().toString();
@@ -167,6 +171,26 @@ public class MyCollection {
             else {
                 System.out.println(mark);
             }
+        }
+    }
+
+    @Test
+    public void forEachError(){ //
+        String[] arr = {"MM", "MM", "MM"};
+
+        // 循环方式一  使用的直接是数组地址  可以直接更改数组中的元素
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = "GG";
+        }
+
+        // 循环方式二 使用的是 迭代器 更改的是 迭代器返回的元素副本 因此不能修改数组中的元素
+        for (String s : arr){
+            s = "GG";
+        }
+
+        // 遍历显示结果
+        for (String s : arr){
+            System.out.println(s);
         }
     }
 }
