@@ -23,7 +23,12 @@ public class App {
         System.out.println(function.apply("gg"));
     }
 
-
+    /**
+     * 格式： MyFunction function = (x,y)->System.out.println(x + y);
+     *      -> lambda操作符 或 箭头操作符
+     *      ->左边：lambda形参列表 （其实就是接口中的抽象方法的形参列表）
+     *      ->右边：lambda体 （其实就是重写的抽象方法的具体实现方法体）
+    */
     @Test
     public void test1(){
        MyFunction function = (x,y)->System.out.println(x + y);

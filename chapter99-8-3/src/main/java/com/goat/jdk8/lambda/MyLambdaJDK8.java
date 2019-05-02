@@ -1,4 +1,4 @@
-package com.goat.jdk8;
+package com.goat.jdk8.lambda;
 
 
 import org.junit.Test;
@@ -11,8 +11,7 @@ public class MyLambdaJDK8 {
 
 
     /**
-     将一个字符串集合中的所有单词转为大写
-     传统方式 和 lambda 实现方式
+     将一个字符串集合中的所有单词转为大写 传统方式 和 lambda 实现方式
     */
     @Test
     public void toUpperCase1(){
@@ -27,7 +26,6 @@ public class MyLambdaJDK8 {
     public void toUpperCase2(){
         List<String> wordList = Arrays.asList("fuck","Shit","Egg","Nani","AJ");
         wordList.stream().map(w->w.toUpperCase()); // 这里不能实现 改变list中的内容
-//        wordList.stream().forEach(x->x.toUpperCase());
         System.out.println(wordList);
     }
 

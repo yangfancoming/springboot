@@ -15,13 +15,16 @@ public class Dog {
 
     public Dog() {
     }
+
     public Dog(String name, Integer age) {
         this.name = name;
         this.age = age;
     }
+
     private void fuck(){
         System.out.println("fuck!!!!!!!!!hahaha");
     }
+
     @Override
     public String toString() {
         return "Dog{" + "name='" + name + '\'' + ", age=" + age + '}';
