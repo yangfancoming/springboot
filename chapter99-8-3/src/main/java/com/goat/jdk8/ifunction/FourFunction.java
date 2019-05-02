@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 /**
  * Created by 64274 on 2019/4/15.
  *
- * @ Description: Java8新特性_四大内置核心函数式接口
+ * @ Description: Java8新特性_四大内置核心函数式接口  四大函数式接口
  * @ author  山羊来了
  * @ date 2019/4/15---9:33
  */
@@ -76,25 +76,27 @@ public class FourFunction {
 
     @Test
     public void predicate(){
-        List<String> strlist = filterStr(list,(s)->s.length()>5);
+        List<String> strlist = filterStr(list,s->s.length()>=5);// 断言条件 作为参数
         strlist.forEach(System.out::println);
     }
+
+    /*简化版 结合 stream */
+    @Test
+    public void predicate2(){
+        List<String> collect = list.stream().filter(s->s.length() > 5).collect(Collectors.toList());
+        collect.forEach(System.out::println);
+    }
+
 
     public List<String> filterStr(List<String> list, Predicate<String> pre){
         List<String> stringList = new ArrayList<>();
         for (String str:list){
-            if (pre.test(str)){
+            if (pre.test(str)){ // 断言条件 由参数传递进来！
                 stringList.add(str);
             }
         }
         return stringList;
     }
 
-    /*简化版*/
-    @Test
-    public void predicate2(){
-        List<String> collect = list.stream().filter(s->s.length() > 5).collect(Collectors.toList());
-        collect.forEach(System.out::println);
-    }
 
 }
