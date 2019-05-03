@@ -1,5 +1,6 @@
 package com.goat.jdk8.lambda;
 
+import com.goat.jdk8.reference.MyReference;
 import org.junit.Test;
 
 import java.util.function.Function;
@@ -8,7 +9,7 @@ import java.util.function.Function;
  lambda 三种编写方式：
  1. expression 单条语句表达式   不需要写 return 关键字，解析器会自动计算结果 并返回
  2. statement  语句块       通过 { } 包裹多条语句 如果是需要返回结果的接口，那么必须显示加上 return 关键字
- 3. reference   方法引用
+ 3. reference   方法引用  使用场景 ： 当要传递给Lambda体的操作，已经有实现的方法了，可以使用方法引用！
      static方法的引用	ContainingClass::staticMethodName
      特定对象的方法的引用	containingObject::instanceMethodName
      特定类型的方法的引用	ContainingType::methodName
@@ -60,7 +61,7 @@ public class App {
     }
 
     /**
-        方法引用： 由于 两个方法的  参数和返回值一样 所以才可以引用
+     方法引用： 由于 两个方法的  参数和返回值一样 所以才可以引用
      */
 
     /* 实例方法引用 */
