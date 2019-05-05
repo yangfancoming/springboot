@@ -22,6 +22,13 @@ public class Solution {
         System.out.println(Arrays.toString(twoSum(nums, target)));
     }
 
+    @Test
+    public void test1(){
+        int[] a = new int[] {7,1,3,2,11,34,6,9,32,8};
+        int target = 13;
+        System.out.println(Arrays.toString(twoSum(a, target)));
+    }
+
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; ++i) {
