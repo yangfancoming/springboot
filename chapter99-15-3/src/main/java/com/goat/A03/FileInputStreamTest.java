@@ -12,7 +12,7 @@ import java.io.*;
 public class FileInputStreamTest {
 
     String path1 = " E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter99-15-3\\src\\main\\resources\\copy01.txt";
-    String path2 = " E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter99-15-3\\src\\main\\resources\\copy02.txt";
+    String path2 = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter99-15-3\\src\\main\\resources\\copy02.txt";
 
     @Test
     public void test() throws IOException {
