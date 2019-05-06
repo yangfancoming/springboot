@@ -14,6 +14,9 @@ public class Pocker {
     private String face; // 面值
     private Suit suit; // 花色
 
+    private Boolean AP; // Active Or Passive ： 1-主动牌 2-被动牌
+    private String  type; // 类型：装备牌  锦囊牌  基本牌
+
     public Pocker(String face, Suit suit) {
         this.face = face;
         this.suit = suit;

@@ -42,11 +42,12 @@ public class App {
         System.out.println(collect);
 
 
+        // 创建 玩家集合
         List<Hero> heroes = new LinkedList<>();
         heroes.add(new ZYZ());
         heroes.add(new BS());
 
-        MyGM.dealPockes(heroes,4);
+        MyGM.dealPockes(heroes,4);// 给所有玩家发牌
         System.out.println(heroes);
     }
 

@@ -2,23 +2,42 @@ package com.goat.game.hero;
 
 import com.goat.game.poker.Pocker;
 
-import java.util.LinkedList;
 import java.util.List;
 
 /**
  * Created by 64274 on 2019/5/6.
  *
- * @ Description: TODO
+ * @ Description: 英雄 抽象类
  * @ author  山羊来了
  * @ date 2019/5/6---20:47
  */
 public abstract class Hero {
 
-    Integer hp;
+    String name; // 名称
 
-    List<Pocker> playerPockers = new LinkedList();
+    Boolean sex; //性别 1=男 0=女
+
+    Integer hp; // 血值
+
+    List<Pocker> playerPockers ;// 英雄手牌
 
     public abstract void skill();
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Boolean getSex() {
+        return sex;
+    }
+
+    public void setSex(Boolean sex) {
+        this.sex = sex;
+    }
 
     public Integer getHp() {
         return hp;

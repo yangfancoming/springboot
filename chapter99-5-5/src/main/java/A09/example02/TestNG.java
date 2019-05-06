@@ -69,6 +69,4 @@ public class TestNG {
         System.out.println("Weekday.MON.name() ====> " + Weekday.MON.name());
     }
 
-
-
 }
