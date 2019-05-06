@@ -1,5 +1,6 @@
 package com.goat.B.B05.example01.shape;
 
+import com.goat.B.B05.example01.Color;
 import com.goat.B.B05.example01.Shape;
 
 /**
@@ -11,7 +12,11 @@ import com.goat.B.B05.example01.Shape;
  */
 public class Circle extends Shape {
 
+    public Circle(Color color) {
+        super(color);
+    }
+
     public void draw() {
-        color.bepaint("正方形");
+        color.bepaint("圆形");
     }
 }

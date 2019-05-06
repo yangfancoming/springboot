@@ -8,10 +8,12 @@ package A09.example02;
  * @date 2018/9/11---10:43
  */
 public enum Weekday {
-//    SUN,MON,TUS,WED,THU,FRI,SAT
-SUN(0),MON(1),TUS(2),WED(3),THU(4),FRI(5),SAT(6);
+
+    //    SUN,MON,TUS,WED,THU,FRI,SAT
+    SUN(0),MON(1),TUS(2),WED(3),THU(4),FRI(5),SAT(6);
 
     private int value;
+
      Weekday(int value){
         this.value = value;
     }

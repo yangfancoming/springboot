@@ -12,14 +12,7 @@ public abstract class Shape {
 
    public Color color;
 
-    public Shape() {
-    }
-
     public Shape(Color color) {
-        this.color = color;
-    }
-
-    public void setColor(Color color) {
         this.color = color;
     }
 

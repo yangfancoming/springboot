@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Created by 64274 on 2019/3/28.
  *
- * @ Description: 策略模式 实战
+ * @ Description: 策略模式 实战  干掉if else
  * @ author  山羊来了
  * @ date 2019/3/28---18:28
  */
