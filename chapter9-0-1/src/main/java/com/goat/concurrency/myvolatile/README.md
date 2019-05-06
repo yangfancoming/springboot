@@ -20,7 +20,7 @@
         以及每使用前立即从内存刷新。
         因此 我们可以说volatile保证了线程操作时变量的可见性，而普通变量则不能保证这一点。
         
-![Image text](https://raw.githubusercontent.com/hongmaju/light7Local/master/img/productShow/20170518152848.png)
+![Image text](https://github.com/yangfancoming/springboot/blob/master/chapter9-0-1/src/main/img/cpu高速缓存.jpg)
 # CPU 高速缓存一致性 问题
     计算机在运行程序时，每条指令都是在CPU中执行的，在执行过程中势必会涉及到数据的读写。
     我们知道程序运行的数据是存储在主存中，这时就会有一个问题，读写主存中的数据没有CPU中执行指令的速度快，

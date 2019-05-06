@@ -4,7 +4,6 @@ package A04_synchronize.example01;
  * Created by 64274 on 2018/7/20.
  *
  * @author 山羊来了
- * @Description: sos 涉及到多线程 demo 不能使用 junit 进行测试  必须是 psvm
  * @date 2018/7/20---13:29
  加入 sleep 后  售票出现了负数： 随机性和延时性 导致的
 
