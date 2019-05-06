@@ -3,7 +3,7 @@ package com.goat.game.manager;
 import com.goat.game.constant.Constant;
 import com.goat.game.constant.Suit;
 import com.goat.game.hero.Hero;
-import com.goat.game.poker.Pocker;
+import com.goat.game.poker.Card;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -18,13 +18,13 @@ import java.util.Random;
  */
 public class MyGM {
 
-    public static LinkedList<Pocker> pockers = new LinkedList<>();
+    public static LinkedList<Card> pockers = new LinkedList<>();
 
     // 产牌
     public static void createPoker(){
         for (String f: Constant.face){
             for (Suit s: Suit.values()){
-                pockers.add(new Pocker(f, s));
+                pockers.add(new Card(f, s));
             }
         }
     }
@@ -45,7 +45,7 @@ public class MyGM {
     // 发牌  玩家集合 和 发牌数量
     public static void dealPockes(List<Hero> heroes,Integer count){
        for (Hero hero: heroes){
-           LinkedList<Pocker> temp = new LinkedList<>();
+           LinkedList<Card> temp = new LinkedList<>();
            for (int i = 0; i < count; i++) {
                temp.add(pockers.pop());
            }

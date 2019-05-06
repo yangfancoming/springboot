@@ -5,7 +5,7 @@ import com.goat.game.hero.BS;
 import com.goat.game.hero.Hero;
 import com.goat.game.hero.ZYZ;
 import com.goat.game.manager.MyGM;
-import com.goat.game.poker.Pocker;
+import com.goat.game.poker.Card;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -38,7 +38,7 @@ public class App {
         System.out.println(MyGM.pockers); // 查看 牌位
 
         //  洗牌后 按照花色分组  查看牌位
-        Map<Suit, List<Pocker>> collect = MyGM.pockers.stream().collect(Collectors.groupingBy(Pocker::getSuit));
+        Map<Suit, List<Card>> collect = MyGM.pockers.stream().collect(Collectors.groupingBy(Card::getSuit));
         System.out.println(collect);
 
 

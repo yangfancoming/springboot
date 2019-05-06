@@ -1,9 +1,5 @@
 package com.goat.game.hero;
 
-import com.goat.game.poker.Pocker;
-
-import java.util.List;
-
 /**
  * Created by 64274 on 2019/5/6.
  *
@@ -13,45 +9,24 @@ import java.util.List;
  */
 public abstract class Hero {
 
-    String name; // 名称
-
-    Boolean sex; //性别 1=男 0=女
-
-    Integer hp; // 血值
-
-    List<Pocker> playerPockers ;// 英雄手牌
+    protected  HeroInfo heroInfo;
+    protected HeroState heroState;
 
     public abstract void skill();
 
-    public String getName() {
-        return name;
+    public HeroInfo getHeroInfo() {
+        return heroInfo;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setHeroInfo(HeroInfo heroInfo) {
+        this.heroInfo = heroInfo;
     }
 
-    public Boolean getSex() {
-        return sex;
+    public HeroState getHeroState() {
+        return heroState;
     }
 
-    public void setSex(Boolean sex) {
-        this.sex = sex;
-    }
-
-    public Integer getHp() {
-        return hp;
-    }
-
-    public void setHp(Integer hp) {
-        this.hp = hp;
-    }
-
-    public List<Pocker> getPlayerPockers() {
-        return playerPockers;
-    }
-
-    public void setPlayerPockers(List<Pocker> playerPockers) {
-        this.playerPockers = playerPockers;
+    public void setHeroState(HeroState heroState) {
+        this.heroState = heroState;
     }
 }
