@@ -17,4 +17,9 @@ public abstract class MyTaskTemplate {
         }
         return tickets;
     }
+
+    public void cacul(long startTime,long endTime){
+        float excTime=(float)(endTime-startTime)/1000;
+        System.out.println(Thread.currentThread().getName()+ "------执行完成！   执行时间："+excTime+"s");
+    }
 }

@@ -16,7 +16,6 @@ public class MyTask1 extends MyTaskTemplate implements Runnable {
 
     @Override
     public void run() {
-        long startTime=System.currentTimeMillis();
         while (true){
             if(tickets<=0){
                 break;
@@ -24,8 +23,5 @@ public class MyTask1 extends MyTaskTemplate implements Runnable {
             test(tickets);
             System.out.println(Thread.currentThread().getName() + "抢到了" + tickets--);
         }
-        long endTime=System.currentTimeMillis();
-        float excTime=(float)(endTime-startTime)/1000;
-        System.out.println(Thread.currentThread().getName()+ "------执行完成！   执行时间："+excTime+"s");
     }
 }

@@ -12,8 +12,11 @@ import java.util.concurrent.locks.ReentrantLock;
  * @date 2018/7/20---13:25
  */
 public class MyTask4 extends MyTaskTemplate implements Runnable {
-    private   int tickets = 50;
+
+    private int tickets = 50;
+
     private Lock lock = new ReentrantLock();
+
     @Override
     public void run() {
         long startTime=System.currentTimeMillis();
@@ -27,8 +30,7 @@ public class MyTask4 extends MyTaskTemplate implements Runnable {
             lock.unlock();
         }
         long endTime=System.currentTimeMillis();
-        float excTime=(float)(endTime-startTime)/1000;
-        System.out.println(Thread.currentThread().getName()+ "------执行完成！   执行时间："+excTime+"s");
+        cacul(startTime,endTime);
     }
 
 }

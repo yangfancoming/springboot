@@ -12,7 +12,7 @@ package A04_synchronize.example01;
 
  */
 public class MyTask3 implements Runnable {
-    private   int tickets = 50;
+    private int tickets = 50;
     @Override
     public void run() {
         while (true){
@@ -20,8 +20,7 @@ public class MyTask3 implements Runnable {
         }
     }
 
-    private synchronized void gaga(){
-        //该方法 一次只能有一个线程进入
+    private synchronized void gaga(){ //该方法 一次只能有一个线程进入
         if(tickets>0){
             try {
                 Thread.sleep(100);

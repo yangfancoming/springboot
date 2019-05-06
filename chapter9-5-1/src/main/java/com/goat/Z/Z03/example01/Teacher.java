@@ -16,6 +16,5 @@ public class Teacher {
     public void command(StudentLeader StudentLeader ){
         System.out.println("老师接到命令，委托体育委员清点人数......");
         StudentLeader.counts();
-
     }
 }

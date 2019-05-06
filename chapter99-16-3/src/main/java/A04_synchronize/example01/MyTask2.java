@@ -11,7 +11,7 @@ package A04_synchronize.example01;
  */
 public class MyTask2 extends MyTaskTemplate implements Runnable  {
 
-    private   int tickets = 50;
+    private int tickets = 50;
 
     @Override
     public void run() {
@@ -26,8 +26,7 @@ public class MyTask2 extends MyTaskTemplate implements Runnable  {
             }
         }
         long endTime=System.currentTimeMillis();
-        float excTime=(float)(endTime-startTime)/1000;
-        System.out.println(Thread.currentThread().getName()+ "------执行完成！   执行时间："+excTime+"s");
+        cacul(startTime,endTime);
     }
 
 }
