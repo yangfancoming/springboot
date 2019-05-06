@@ -26,8 +26,7 @@ public class MyAtomicInteger {
     @Test
     public void test1(){
         AtomicInteger aci = new AtomicInteger(5);
-        // 模拟其他线程 更改 aci
-        aci.set(100);
+        aci.set(100); // 模拟其他线程 更改 aci
         System.out.println(aci.compareAndSet(5, 2019) + "\t 更改后的值为：" + aci.get());// 发现期望值冲突  更改失败
     }
 
