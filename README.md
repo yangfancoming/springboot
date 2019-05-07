@@ -141,7 +141,7 @@ AOP
 数据访问
 
 - ==chapter4-0-0：springboot 集成  Druid连接池及监控界面==
-- ==chapter4-1-1：springboot 中使用 JDBC==   
+- ==chapter4-1-1：springboot 中使用 JDBC ==   
 - ==chapter4-2-0：springboot 集成 JPA 乐观锁==  
 - ==chapter4-2-1：springboot 集成 JPA==  
 - ==chapter4-2-2：springboot 集成 JPA  复杂条件查询 ==  

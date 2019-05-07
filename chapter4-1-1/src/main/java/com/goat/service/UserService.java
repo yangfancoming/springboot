@@ -1,6 +1,9 @@
 package com.goat.service;
 
 
+import java.util.List;
+import java.util.Map;
+
 public interface UserService {
 
     /**
@@ -19,8 +22,9 @@ public interface UserService {
     /**
      * 获取用户总量
      */
-    Integer getAllUsers();
+    Integer getAllUsersCount();
 
+    List<Map<String, Object>> getAllUsers();
     /**
      * 删除所有用户
      */

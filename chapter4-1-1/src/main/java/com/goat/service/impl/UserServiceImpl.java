@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 /**
      * @Description: 功能描述：(这里用一句话描述这个方法的作用)
      * @author: 杨帆
@@ -29,8 +32,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Integer getAllUsers() {
+    public Integer getAllUsersCount() {
         return jdbcTemplate.queryForObject("select count(1) from emp", Integer.class);
+    }
+
+    @Override
+    public List<Map<String, Object>> getAllUsers() {
+        return jdbcTemplate.queryForList("select * from emp");
     }
 
     @Override
