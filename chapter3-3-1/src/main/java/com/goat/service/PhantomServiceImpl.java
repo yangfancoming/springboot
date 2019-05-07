@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,7 @@ public class PhantomServiceImpl {
     @Autowired
     public JdbcTemplate jdbcTemplate;
 
-
+//    @Transactional
     public List<Map<String, Object>> select() throws InterruptedException {
         TransactionStatus status = transactionUtil.begin();
         List<Map<String, Object>> maps1 = jdbcTemplate.queryForList("select * from book ");
@@ -43,6 +44,7 @@ public class PhantomServiceImpl {
         return maps2;
     }
 
+//    @Transactional
     public int insert(){
         TransactionStatus status = transactionUtil.begin();
         int update = jdbcTemplate.update("insert book(book_name,price) values ('gg',30)");//
@@ -67,3 +69,19 @@ public class PhantomServiceImpl {
  * 同时还需要知道，即便当前记录不存在，比如 id = 1 是不存在的，当前事务也会获得一把记录锁（因为InnoDB的行锁锁定的是索引，
  * 故记录实体存在与否没关系，存在就加 行X锁，不存在就加 next-key lock间隙X锁），其他事务则无法插入此索引的记录，故杜绝了幻读。
  * */
+
+
+
+/* sos
+    如果你一次执行单条查询语句，则没有必要启用事务支持，数据库默认支持SQL执行期间的读一致性；
+    如果你一次执行多条查询语句，例如统计查询，报表查询，在这种场景下，多条查询SQL必须保证整体的读一致性，
+    否则，在前条SQL查询之后，后条SQL查询之前，数据被其他用户改变，则该次整体的统计查询将会出现读数据不一致的状态，此时，应该启用事务支持。
+    但是 启用事务支持后： 两次读取数据是一致的  但是 这是幻读  因为实际数据库表中的数据记录数已经不一样了
+    但是 不秦勇事务：两次读取的数据时不一致的，后一次读取的数据时真实的。但是 这两次读取的数据是不一致的。
+
+    以上示例中：
+    方式一：  @Transactional
+    方式二：  transactionUtil.begin(); 和 transactionUtil.commit()
+    两种方式 实现效果是一样的  一个是 手动控制事务  一个是 依赖spring 动态代理 来实现 自动事务
+* */
+
