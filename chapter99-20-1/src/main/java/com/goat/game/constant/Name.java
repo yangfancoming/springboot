@@ -3,7 +3,7 @@ package com.goat.game.constant;
 /**
  * Created by 64274 on 2019/5/7.
  *
- * @ Description: TODO
+ * @ Description: 卡牌名称枚举类
  * @ author  山羊来了
  * @ date 2019/5/7---11:04
  */
