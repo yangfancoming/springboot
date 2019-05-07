@@ -1,6 +1,7 @@
 package com.goat.game.manager;
 
-import com.goat.game.constant.Constant;
+import com.goat.game.constant.Face;
+import com.goat.game.constant.Name;
 import com.goat.game.constant.Suit;
 import com.goat.game.hero.Hero;
 import com.goat.game.poker.Card;
@@ -31,15 +32,15 @@ public class MyGM {
     public static List<Card> ending(List<Card> pockers){
         pockers.remove(90); // 暂时先用 通过索引删除方式
 //        pockers.remove(new Card(Suit.方块,Constant.face[12])); // 删除一个 方块 K   doit  这里按照元素 对象删除 为什么不行？ 需要 重写 equals 方法？
-        pockers.add(new Card(Suit.红桃,Constant.face[11]));  // 增加一个 红桃 Q
-        pockers.add(new Card(Suit.方块,Constant.face[4]));    // 增加一个 方块 5
-        pockers.add(new Card(Suit.方块,Constant.face[11]));   // 增加一个 方块 Q
+        pockers.add(new Card(Suit.红桃, Face.face[11]));  // 增加一个 红桃 Q
+        pockers.add(new Card(Suit.方块, Face.face[4]));    // 增加一个 方块 5
+        pockers.add(new Card(Suit.方块, Face.face[11]));   // 增加一个 方块 Q
         return pockers;
     }
     /* 产牌  默认产生一副牌 */
     public static List<Card> createPoker(){
         for (Suit s: Suit.values()){
-            for (String f: Constant.face)
+            for (String f: Face.face)
                 pockers.add(new Card(s,f));
         }
         return pockers;
@@ -72,5 +73,14 @@ public class MyGM {
            }
            hero.getHeroState().setPlayerCards(temp);
        }
+    }
+
+
+    public static List<Card> createCard(){
+        pockers.add(new Card(Suit.红桃,Face.face[0], Name.决斗));
+        pockers.add(new Card(Suit.红桃,Face.face[0], Name.虎符));
+        pockers.add(new Card(Suit.红桃,Face.face[1], Name.闪));
+        pockers.add(new Card(Suit.红桃,Face.face[1], Name.闪));
+        return pockers;
     }
 }

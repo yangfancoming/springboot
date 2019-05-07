@@ -1,5 +1,6 @@
 package com.goat.game.poker;
 
+import com.goat.game.constant.Name;
 import com.goat.game.constant.Suit;
 
 /**
@@ -10,7 +11,7 @@ import com.goat.game.constant.Suit;
  */
 public  class Card {
 
-    private String name; // 名称 ：画地为牢
+    private Name name; // 名称 ：画地为牢
 
     private String face; // 面值 ：A
     private Suit suit; // 花色：黑桃
@@ -23,11 +24,18 @@ public  class Card {
         this.face = face;
     }
 
-    public String getName() {
+    public Card( Suit suit,String face,Name name) {
+        this.suit = suit;
+        this.face = face;
+        this.name = name;
+    }
+
+
+    public Name getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(Name name) {
         this.name = name;
     }
 
