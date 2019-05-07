@@ -29,6 +29,11 @@ public class MyGM {
         }
     }
 
+    // 翻译牌  通过 花色 和 面值  查找出对应的 牌名称
+    public static void translatePoker(List<Card> cards){
+
+    }
+
     // 洗牌
     public static void flushPockes(){
         Random random=new Random();  //创建随机对象
@@ -42,6 +47,7 @@ public class MyGM {
         }
     }
 
+
     // 发牌  玩家集合 和 发牌数量
     public static void dealPockes(List<Hero> heroes,Integer count){
        for (Hero hero: heroes){
@@ -49,7 +55,7 @@ public class MyGM {
            for (int i = 0; i < count; i++) {
                temp.add(pockers.pop());
            }
-           hero.setPlayerPockers(temp);
+           hero.getHeroState().setPlayerCards(temp);
        }
     }
 }

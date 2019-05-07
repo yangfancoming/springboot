@@ -41,6 +41,8 @@ public class App {
         Map<Suit, List<Card>> collect = MyGM.pockers.stream().collect(Collectors.groupingBy(Card::getSuit));
         System.out.println(collect);
 
+        // 翻译牌
+
 
         // 创建 玩家集合
         List<Hero> heroes = new LinkedList<>();

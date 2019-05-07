@@ -9,7 +9,7 @@ import com.goat.game.constant.Suit;
  * @ author  山羊来了
  * @ date 2019/5/6---15:16
  */
-public abstract class Card {
+public  class Card {
 
     private String name; // 名称 ：画地为牢
 

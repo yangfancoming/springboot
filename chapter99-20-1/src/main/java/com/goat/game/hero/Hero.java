@@ -9,8 +9,8 @@ package com.goat.game.hero;
  */
 public abstract class Hero {
 
-    protected  HeroInfo heroInfo;
-    protected HeroState heroState;
+    protected  HeroInfo heroInfo = new HeroInfo();
+    protected HeroState heroState = new HeroState();
 
     public abstract void skill();
 

@@ -5,6 +5,7 @@ import com.goat.game.poker.EquipCard;
 import com.goat.game.skill.ActiveSkill;
 import com.goat.game.skill.PassiveSkill;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -26,7 +27,7 @@ public class HeroState {
     //装备集合
 //    protected EquipmentStructure equipment;
 
-    List<Card> playerCards ;// 英雄手牌
+    List<Card> playerCards = new LinkedList<>();// 英雄手牌
     List<EquipCard> equipCards ;// 英雄装备牌 每个英雄最多4张
 
     //所中的判定牌集合
@@ -46,4 +47,92 @@ public class HeroState {
     //是否出过杀
     protected boolean usedSha ;
 
+
+    public int getCurHP() {
+        return curHP;
+    }
+
+    public void setCurHP(int curHP) {
+        this.curHP = curHP;
+    }
+
+    public boolean isDead() {
+        return isDead;
+    }
+
+    public void setDead(boolean dead) {
+        isDead = dead;
+    }
+
+    public boolean isAI() {
+        return isAI;
+    }
+
+    public void setAI(boolean AI) {
+        isAI = AI;
+    }
+
+    public List<Card> getPlayerCards() {
+        return playerCards;
+    }
+
+    public void setPlayerCards(List<Card> playerCards) {
+        this.playerCards = playerCards;
+    }
+
+    public List<EquipCard> getEquipCards() {
+        return equipCards;
+    }
+
+    public void setEquipCards(List<EquipCard> equipCards) {
+        this.equipCards = equipCards;
+    }
+
+    public int getAttDistance() {
+        return attDistance;
+    }
+
+    public void setAttDistance(int attDistance) {
+        this.attDistance = attDistance;
+    }
+
+    public int getDefDistance() {
+        return defDistance;
+    }
+
+    public void setDefDistance(int defDistance) {
+        this.defDistance = defDistance;
+    }
+
+    public List<ActiveSkill> getActiveSkills() {
+        return activeSkills;
+    }
+
+    public void setActiveSkills(List<ActiveSkill> activeSkills) {
+        this.activeSkills = activeSkills;
+    }
+
+    public List<PassiveSkill> getPassiveSkills() {
+        return passiveSkills;
+    }
+
+    public void setPassiveSkills(List<PassiveSkill> passiveSkills) {
+        this.passiveSkills = passiveSkills;
+    }
+
+    public int getExtDamage() {
+        return extDamage;
+    }
+
+    public void setExtDamage(int extDamage) {
+        this.extDamage = extDamage;
+    }
+
+    public boolean isUsedSha() {
+        return usedSha;
+    }
+
+    public void setUsedSha(boolean usedSha) {
+        this.usedSha = usedSha;
+    }
 }
