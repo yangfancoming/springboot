@@ -1,0 +1,85 @@
+html, body { 
+		margin: 0; 
+		padding: 0; 
+		font-family: Microsoft Yahei;
+		font-size: 14px;
+		height: 100%;
+		width: 100%;
+		/*background-color: black;*/
+	}
+	.contextmenu { 
+		display: none; 
+		position: absolute; 
+		width: 150px; 
+		margin: 0; 
+		padding: 0; 
+		background: #FFFFFF; 
+		border-radius: 5px; 
+		list-style: none; 
+		box-shadow: 0 15px 35px rgba(50,50,90,0.1),  0 5px 15px rgba(0,0,0,0.07); 
+		z-index: 999999; 
+	}
+	.contextmenu li {
+		position:relative;
+		user-select:none;
+		background-image: url(barrow.png);
+	}
+
+	.contextmenu li:hover { 
+		/*background-color: #99CCFF;*/
+		background-image: url(warrow.png);
+	}
+
+	a {
+		display: block; 
+		padding: 10px; 
+		text-decoration: none; 
+		color: #363C42;
+	}
+
+	a:hover { 
+		color: #FFF;
+		cursor: pointer; 
+		/*background-color: #99CCFF;*/
+	}
+	.contextmenu li ul {
+		display:none;
+		position: absolute; 
+		left: 150px; 
+		top: 0px; 
+		width:150px;
+		margin: 0; 
+		padding: 0; 
+		border-radius: 5px; 
+		list-style: none; 
+		box-shadow: 0 15px 35px rgba(50,50,90,0.1),  0 5px 15px rgba(0,0,0,0.07);
+	}
+	.contextmenu li:hover ul {
+		display: block;
+	}
+	.imgDiv{
+		height: 39px
+	}
+	.imgDing{
+		border-style: none; 
+		height: 20px;
+		width:20px;
+		margin-top: 8px;
+		margin-left: 8px;
+		cursor: pointer;
+	}
+	.hiddenMenu{
+		display:none;
+		position: absolute;  
+		width:150px;
+		margin: 0; 
+		padding: 0; 
+		border-radius: 5px; 
+		list-style: none; 
+		background: #FFFFFF; 
+		box-shadow: 0 15px 35px rgba(50,50,90,0.1),  0 5px 15px rgba(0,0,0,0.07);
+		user-select:none;
+	}
+	a.secondMenuBGC:hover{
+		background:#46A4FF;
+	}

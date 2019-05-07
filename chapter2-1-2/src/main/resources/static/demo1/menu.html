@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="menu.css">
+	<script src='jquery.min.js'></script>
+	<script src='menu.js'></script>
+</head>
+
+<body id="menuBody">
+	<ul class="contextmenu" id="menu">
+		<li class="arrow" id="firstli_0"><a>健康</a>
+		</li>
+		<li class="arrow" id="secondli_1"><a>快乐</a>
+		</li>
+		<li class="arrow" id="thirdli_2"><a>财富</a>
+		</li>
+	</ul>
+	<!--不显示的二级菜单-->
+	<ul class="hiddenMenu" id="firstMenu">
+		<div class="imgDiv"><img class="imgDing" src="ding.png" onclick="onDingClick('firstMenu')"></div>
+		<li><a class="secondMenuBGC">工具</a></li>
+		<li><a class="secondMenuBGC">书签</a></li>
+	</ul>
+	<ul class="hiddenMenu" id="secondMenu">
+		<div class="imgDiv"><img class="imgDing" src="ding.png" onclick="onDingClick('secondMenu')"></div>
+		<li><a class="secondMenuBGC">123</a></li>
+		<li><a class="secondMenuBGC">456</a></li>
+	</ul>
+	<ul class="hiddenMenu" id="thirdMenu">
+		<div class="imgDiv"><img class="imgDing" src="ding.png" onclick="onDingClick('thirdMenu')"></div>
+		<li><a class="secondMenuBGC">100万</a></li>
+		<li><a class="secondMenuBGC">1000万</a></li>
+	</ul>
+</body>
+
+</html>
