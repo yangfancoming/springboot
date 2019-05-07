@@ -2,6 +2,8 @@ package com.goat.game.poker;
 
 import com.goat.game.constant.Suit;
 
+import java.util.HashMap;
+
 /**
  * Created by 64274 on 2019/5/6.
  *
@@ -67,5 +69,10 @@ public  class Card {
     @Override
     public String toString() {
         return "{" + suit + face + '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 }

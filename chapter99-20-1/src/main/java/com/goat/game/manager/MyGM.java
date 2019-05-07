@@ -20,21 +20,38 @@ public class MyGM {
 
     public static LinkedList<Card> pockers = new LinkedList<>();
 
-    // 产牌
-    public static void createPoker(){
-        for (String f: Constant.face){
-            for (Suit s: Suit.values()){
-                pockers.add(new Card(f, s));
-            }
+    /* 产牌  参数：产生几副牌 */
+    public static List<Card> createPoker(Integer count){
+        for (int i = 0; i < count; i++) {
+            createPoker();
         }
+        return pockers;
     }
 
-    // 翻译牌  通过 花色 和 面值  查找出对应的 牌名称
+    /* 由于 正常扑克是52张牌 两副牌是104张  英雄杀中是106张牌 因为：两副牌 多了3张牌 少了一张牌 */
+    public static List<Card> ending(List<Card> pockers){
+        pockers.remove(pockers.size()-2); // 暂时先用 通过索引删除方式
+//        pockers.remove(new Card(Constant.face[12],Suit.方块)); // 删除一个 方块 K   doit  这里按照元素 对象删除 为什么不行？ 需要 重写 equals 方法？
+        pockers.add(new Card(Constant.face[11],Suit.红桃));  // 增加一个 红桃 Q
+        pockers.add(new Card(Constant.face[4],Suit.方块));    // 增加一个 方块 5
+        pockers.add(new Card(Constant.face[11],Suit.方块));   // 增加一个 方块 Q
+        return pockers;
+    }
+    /* 产牌  默认产生一副牌 */
+    public static List<Card> createPoker(){
+        for (String f: Constant.face){
+            for (Suit s: Suit.values())
+                pockers.add(new Card(f, s));
+        }
+        return pockers;
+    }
+
+    /* 翻译牌  通过 花色 和 面值  查找出对应的 牌名称 */
     public static void translatePoker(List<Card> cards){
 
     }
 
-    // 洗牌
+    /* 洗牌 */
     public static void flushPockes(){
         Random random=new Random();  //创建随机对象
         for(int i=0;i<100;i++){
@@ -47,8 +64,7 @@ public class MyGM {
         }
     }
 
-
-    // 发牌  玩家集合 和 发牌数量
+    /* 发牌  玩家集合 和 发牌数量 */
     public static void dealPockes(List<Hero> heroes,Integer count){
        for (Hero hero: heroes){
            LinkedList<Card> temp = new LinkedList<>();

@@ -25,15 +25,19 @@ public class App {
     @Test
     public void test1(){
         Suit[] values = Suit.values();
-        System.out.println(values);
-
         for (Suit s: values){
             System.out.println(s.name() + "-------" + s.value);
         }
     }
-
+    @Test
+    public void test2(){
+        List<Card> poker = MyGM.createPoker(2);// 产牌
+        System.out.println(poker);
+        List<Card> ending = MyGM.ending(poker);
+        System.out.println(ending);
+    }
     public static void main(String[] args) {
-        MyGM.createPoker(); // 产牌
+        MyGM.createPoker(2); // 产牌
         MyGM.flushPockes(); // 洗牌
         System.out.println(MyGM.pockers); // 查看 牌位
 

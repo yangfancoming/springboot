@@ -63,4 +63,10 @@ public class MyLinkedList {
         linkedList.remove(2);
         System.out.println(linkedList);
     }
+
+    @Test
+    public void test2(){
+        linkedList.remove("李四");
+        System.out.println(linkedList);
+    }
 }
