@@ -29,13 +29,15 @@ public class App {
             System.out.println(s.name() + "-------" + s.value);
         }
     }
+
     @Test
     public void test2(){
         List<Card> poker = MyGM.createPoker(2);// 产牌
         System.out.println(poker);
-        List<Card> ending = MyGM.ending(poker);
+        List<Card> ending = MyGM.ending(poker); // 完成卡牌最后拼装
         System.out.println(ending);
     }
+
     public static void main(String[] args) {
         MyGM.createPoker(2); // 产牌
         MyGM.flushPockes(); // 洗牌

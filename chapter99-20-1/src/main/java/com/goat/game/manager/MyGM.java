@@ -22,26 +22,25 @@ public class MyGM {
 
     /* 产牌  参数：产生几副牌 */
     public static List<Card> createPoker(Integer count){
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < count; i++)
             createPoker();
-        }
         return pockers;
     }
 
     /* 由于 正常扑克是52张牌 两副牌是104张  英雄杀中是106张牌 因为：两副牌 多了3张牌 少了一张牌 */
     public static List<Card> ending(List<Card> pockers){
-        pockers.remove(pockers.size()-2); // 暂时先用 通过索引删除方式
-//        pockers.remove(new Card(Constant.face[12],Suit.方块)); // 删除一个 方块 K   doit  这里按照元素 对象删除 为什么不行？ 需要 重写 equals 方法？
-        pockers.add(new Card(Constant.face[11],Suit.红桃));  // 增加一个 红桃 Q
-        pockers.add(new Card(Constant.face[4],Suit.方块));    // 增加一个 方块 5
-        pockers.add(new Card(Constant.face[11],Suit.方块));   // 增加一个 方块 Q
+        pockers.remove(90); // 暂时先用 通过索引删除方式
+//        pockers.remove(new Card(Suit.方块,Constant.face[12])); // 删除一个 方块 K   doit  这里按照元素 对象删除 为什么不行？ 需要 重写 equals 方法？
+        pockers.add(new Card(Suit.红桃,Constant.face[11]));  // 增加一个 红桃 Q
+        pockers.add(new Card(Suit.方块,Constant.face[4]));    // 增加一个 方块 5
+        pockers.add(new Card(Suit.方块,Constant.face[11]));   // 增加一个 方块 Q
         return pockers;
     }
     /* 产牌  默认产生一副牌 */
     public static List<Card> createPoker(){
-        for (String f: Constant.face){
-            for (Suit s: Suit.values())
-                pockers.add(new Card(f, s));
+        for (Suit s: Suit.values()){
+            for (String f: Constant.face)
+                pockers.add(new Card(s,f));
         }
         return pockers;
     }

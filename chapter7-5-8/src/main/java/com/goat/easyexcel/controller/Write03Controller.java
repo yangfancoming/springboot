@@ -75,7 +75,7 @@ public class Write03Controller extends BaseController {
 
      */
     @GetMapping("test2")
-    public void simpleReadJavaModelV2003() throws IOException {
+    public void simpleReadJavaModelV2003() {
 
     }
 
@@ -83,7 +83,7 @@ public class Write03Controller extends BaseController {
 
      */
     @GetMapping("test3")
-    public void saxReadListStringV2003() throws IOException {
+    public void saxReadListStringV2003() {
 
     }
 
@@ -91,7 +91,7 @@ public class Write03Controller extends BaseController {
 
      */
     @GetMapping("test4")
-    public void saxReadJavaModelV2003() throws IOException {
+    public void saxReadJavaModelV2003() {
 
     }
 

@@ -2,12 +2,9 @@ package com.goat.game.poker;
 
 import com.goat.game.constant.Suit;
 
-import java.util.HashMap;
-
 /**
  * Created by 64274 on 2019/5/6.
- *
- * @ Description: TODO
+ * @ Description: 卡牌总类
  * @ author  山羊来了
  * @ date 2019/5/6---15:16
  */
@@ -21,9 +18,9 @@ public  class Card {
     private Boolean AP; // Active Or Passive ： 1-主动牌 2-被动牌
     private String  type; // 类型：装备牌  锦囊牌  基本牌
 
-    public Card(String face, Suit suit) {
-        this.face = face;
+    public Card( Suit suit,String face) {
         this.suit = suit;
+        this.face = face;
     }
 
     public String getName() {

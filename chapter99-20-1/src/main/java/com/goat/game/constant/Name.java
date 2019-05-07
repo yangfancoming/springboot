@@ -49,7 +49,6 @@ public enum Name {
     霸王弓(141),
     盘龙棍(151),
 
-
     ;
 
     public int value;

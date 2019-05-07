@@ -11,8 +11,7 @@ import com.goat.game.constant.Suit;
  */
 public class EquipCard extends Card {
 
-
-    public EquipCard(String face, Suit suit) {
-        super(face, suit);
+    public EquipCard(Suit suit, String face) {
+        super(suit, face);
     }
 }
