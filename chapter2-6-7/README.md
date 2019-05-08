@@ -5,3 +5,5 @@
     http://localhost:8267/10.v-for中key属性注意事项.html
     http://localhost:8267/11.v-if和v-show的使用和特点.html
     http://localhost:8267/13.品牌列表案例1.html
+    http://localhost:8267/14.品牌列表案例2.html
+    http://localhost:8267/15.过滤器的基本使用.html
