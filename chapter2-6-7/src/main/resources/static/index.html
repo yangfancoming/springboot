@@ -2,47 +2,39 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <!--sos 注解 ② 和 ③ 的引入顺序不能颠倒 否则 加载会报错-->
-
-    <!-- ① 引入 elementUI 样式-->
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <!-- ② 引入 vue.js-->
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <!-- ③ 引入 elementUI 组件-->
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-
+    <script src="vue.js"></script>
 </head>
 <body>
     <div id="app">
 
-        <h3>插值表达式</h3>
-        <div>{{msg}}</div>
-        <h3>v-model</h3>
-        <input type="text" v-model="msg">  <!--  v-model 只推荐使用在表单控件上  -->
-        <h3>v-text</h3>
-        <h4 type="text" v-text="msg"/>
+        <!--插值表达式2   doit 为啥  以下 obj 三行 放在 msg 三行 下面 就显示不出来了呢？ -->
+        <div>{{obj}}</div>
+        <div>{{obj.name}}</div>
+        <div>{{obj.age}}</div>
 
         <hr> <br>  <!--我是华丽的分割线-->
 
-        <h3>插值表达式2</h3>
-        <div>{{obj}}</div>
-        <div>{{obj.name}}</div>
-        <hr> <br>   <!--我是华丽的分割线-->
-        <el-button @click="visible = true">Button</el-button>
-        <el-dialog :visible.sync="visible" title="Hello world">
-            <p>123</p>
-        </el-dialog>
+        <!--插值表达式-->
+        <div>===={{msg}}+++++++</div>
+        <input type="text" v-model="msg">  <!--  v-model 只推荐使用在表单控件上  -->
+        <h4 type="text" v-text="msg"/>  <!-- v-text  -->
+
+        <!--   v-text 与 {{}}} 对比
+        1.  v-text 没有闪烁问题
+        2.{{}}} 可以增加 其他内容 === ++  这些
+        -->
+
+
 
     </div>
 </body>
 
 <script>
-    new Vue({
-        el: '#app',// 指定挂载区域
-        data:{ // data中的所有属性 在id为app的标签内中 都可以直接使用
-            // msg:'data中的属性哦',
+    let vm = new Vue({
+        el: '#app',// 指定挂载区域 (id为app的标签内中)
+        data:{ // data中的所有属性,存放的是el中要用到的数据, 在el中均可以直接使用 --- 程序员再也不用手动操作 dom元素了。。。
             msg:['hello','ok','dome'],    //定义一个数组
-            obj:{name:"123",age:11},
+            obj:{ name:"123",age:11 },
             visible: false,
         }
     })

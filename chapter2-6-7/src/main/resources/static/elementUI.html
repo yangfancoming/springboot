@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!--sos 注解 ② 和 ③ 的引入顺序不能颠倒 否则 加载会报错-->
+    <!--sos MVVM 中 M 为 new Vue 中的 data V 为 el挂载的标签  VM 为 new Vue 返回值 -->
+
+    <!-- ① 引入 elementUI 样式-->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- ② 引入 vue.js-->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- ③ 引入 elementUI 组件-->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <el-button @click="visible = true">Button</el-button>
+        <el-dialog :visible.sync="visible" title="Hello world">
+            <p>123</p>
+        </el-dialog>
+
+    </div>
+</body>
+
+<script>
+    let vm = new Vue({
+        el: '#app',// 指定挂载区域 (id为app的标签内中)
+        data:{ // data中的所有属性,存放的是el中要用到的数据, 在el中均可以直接使用 --- 程序员再也不用手动操作 dom元素了。。。
+            msg:['hello','ok','dome'],    //定义一个数组
+            obj:{ name:"123",age:11 },
+            visible: false,
+        }
+    })
+</script>
+</html>
