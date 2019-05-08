@@ -2,6 +2,7 @@ package com.goat.service;//
 
 import com.goat.exception.BookStockException;
 import com.goat.exception.UserAccountException;
+import com.sun.xml.internal.bind.v2.model.core.ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -56,6 +57,17 @@ public class CommonServiceImpl {
         System.out.println("线程1  第二次查询出记录数为：" + maps2.size());
     }
 
+    public void selectOne() throws InterruptedException {
+        Map maps1 = jdbcTemplate.queryForObject("select id from book where id = 1", Map.class);
+        System.out.println("线程1  第一次查询出记录数为：" + maps1.size());
+        Thread.sleep(8000);
+        System.out.println(maps1);
+    }
+
+    public void updateOne(){
+        int update = jdbcTemplate.update("update book set book_name = 'test'  where id = 1");
+        System.out.println(update);
+    }
 }
 
 

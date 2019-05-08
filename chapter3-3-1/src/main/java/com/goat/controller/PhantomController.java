@@ -32,6 +32,6 @@ public class PhantomController {
     //    http://localhost:8331/phantom/test22
     @GetMapping("test22")
     public void test22() {
-        System.out.println(phantomService.insert());
+        phantomService.insert();
     }
 }

@@ -5,46 +5,62 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by 64274 on 2019/5/7.
- *
+ * 在 REPEATABLE_READ  情况下：
  先  http://localhost:8331/phantom/test2  触发线程1 查询操作后  线程1 进入 8秒睡眠  eg：查出3条
  再  http://localhost:8331/phantom/test2  触发线程2 插入操作  eg：插入1条 并提交事务  此时 数据库表中 实际有4条记录了
  再  8秒 后 线程1 恢复睡眠  继续查询操作  发现 只查询出了3条！！！ 产生了幻读。。。。
- 运行结果：
-     线程1  第一次查询出记录数为：3
+
+ REPEATABLE_READ
+     线程1  第一次查询出记录数为：9
      线程2 插入记录数为：1
-     1
-     线程1  第二次查询出记录数为：3
+     线程1  第二次查询出记录数为：9
+
+ READ_COMMITTED
+     线程1  第一次查询出记录数为：8
+     线程2 插入记录数为：1
+     线程1  第二次查询出记录数为：9
+
+ SERIALIZABLE
+     线程1  第一次查询出记录数为：7
+     线程1  第二次查询出记录数为：7
+     线程2 插入记录数为：1
+
  * @ date 2019/5/7---13:29
  */
 @Service
-public class PhantomServiceImpl {
+public class PhantomServiceImpl extends CommonServiceImpl {
 
     @Autowired
-    TransactionUtil transactionUtil;
+    public TransactionUtil transactionUtil;
 
-    @Autowired
-    CommonServiceImpl commonService;
-
-    @Autowired
-    public JdbcTemplate jdbcTemplate;
-
-//    @Transactional
+    @Transactional(isolation = Isolation.REPEATABLE_READ) //  设置事务隔离级别为：可重复读  6 1 6
+//    @Transactional(isolation = Isolation.READ_COMMITTED) //  设置事务隔离级别为：读已提交  5 1 6
+//    @Transactional(isolation = Isolation.SERIALIZABLE) //  设置事务隔离级别为：串行化
     public void select() throws InterruptedException {
-        TransactionStatus status = transactionUtil.begin();
-        commonService.test();
-        transactionUtil.commit(status); // 提交事务
+        //        TransactionStatus status = transactionUtil.begin();
+        test();
+        //        transactionUtil.commit(status); // 提交事务
     }
 
-//    @Transactional
+    @Transactional(isolation = Isolation.REPEATABLE_READ) //  设置事务隔离级别为：可重复读  6 1 6
+//    @Transactional(isolation = Isolation.READ_COMMITTED) //  设置事务隔离级别为：读已提交 5 1 6
+//    @Transactional(isolation = Isolation.SERIALIZABLE) //  设置事务隔离级别为：串行化
     public int insert(){
-        TransactionStatus status = transactionUtil.begin();
-        int update = jdbcTemplate.update("insert book(book_name,price) values ('gg',30)");//
-        transactionUtil.commit(status); // 提交事务  插入数据库！
+//        TransactionStatus status = transactionUtil.begin();
+        int update = jdbcTemplate.update("insert book(book_name,price) values ('test',30)");//
+//        transactionUtil.commit(status); // 提交事务  插入数据库！
         System.out.println("线程2 插入记录数为：" + update);
         return update;
+    }
+
+    @Transactional(isolation = Isolation.REPEATABLE_READ) //  设置事务隔离级别为：可重复读
+    public void selectOn11e() throws InterruptedException {
+        selectOne();
     }
 }
 

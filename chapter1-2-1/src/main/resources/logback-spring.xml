@@ -75,7 +75,7 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
 		表示当前logger的appender-ref和rootLogger的appender-ref都有效
     -->
     <!-- hibernate logger -->
-    <logger name="com.atguigu" level="debug" />
+    <logger name="com.goat" level="debug" />
     <!-- Spring framework logger -->
     <logger name="org.springframework" level="debug" additivity="false"></logger>
 
@@ -83,9 +83,9 @@ debug：当此属性设置为true时，将打印出logback内部日志信息，�
 
     <!--
     root与logger是父子关系，没有特别定义则默认为root，任何一个类只会和一个logger对应，
-    要么是定义的logger，要么是root，判断的关键在于找到这个logger，然后判断这个logger的appender和level。
+    要么是定义的logger，要么是root，判断的关键在于找到这个logger，然后判断这个logger的 appender 和 level。
     -->
-    <root level="info">
+    <root level="error">
         <appender-ref ref="stdout" />
         <appender-ref ref="appLogAppender" />
     </root>
