@@ -1,8 +1,7 @@
-package com.goat.service;//
+package com.goat.service;
 
 import com.goat.exception.BookStockException;
 import com.goat.exception.UserAccountException;
-import com.sun.xml.internal.bind.v2.model.core.ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
