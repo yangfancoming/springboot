@@ -5,10 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by 64274 on 2019/5/7.
@@ -30,18 +26,16 @@ public class PhantomServiceImpl {
     TransactionUtil transactionUtil;
 
     @Autowired
+    CommonServiceImpl commonService;
+
+    @Autowired
     public JdbcTemplate jdbcTemplate;
 
 //    @Transactional
-    public List<Map<String, Object>> select() throws InterruptedException {
+    public void select() throws InterruptedException {
         TransactionStatus status = transactionUtil.begin();
-        List<Map<String, Object>> maps1 = jdbcTemplate.queryForList("select * from book ");
-        System.out.println("线程1  第一次查询出记录数为：" + maps1.size());
-        Thread.sleep(8000);
-        List<Map<String, Object>> maps2 = jdbcTemplate.queryForList("select * from book ");
-        System.out.println("线程1  第二次查询出记录数为：" + maps2.size());
+        commonService.test();
         transactionUtil.commit(status); // 提交事务
-        return maps2;
     }
 
 //    @Transactional

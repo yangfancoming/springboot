@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Map;
+
 
 @Service
 public class CommonServiceImpl {
@@ -45,6 +48,13 @@ public class CommonServiceImpl {
     }
 
 
+    public void test() throws InterruptedException {
+        List<Map<String, Object>> maps1 = jdbcTemplate.queryForList("select * from book ");
+        System.out.println("线程1  第一次查询出记录数为：" + maps1.size());
+        Thread.sleep(8000);
+        List<Map<String, Object>> maps2 = jdbcTemplate.queryForList("select * from book ");
+        System.out.println("线程1  第二次查询出记录数为：" + maps2.size());
+    }
 
 }
 

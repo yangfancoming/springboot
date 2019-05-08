@@ -1,4 +1,4 @@
-package com.goat.leetcode.temp;
+package com.goat.leetcode._001;
 
 import org.junit.Test;
 
@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 
-public class Solution {
+public class App {
     /**
      *   给定一个整型数组和一个整数 target 如果数组中 任意两个元素之和 等于 target 则返回 两个元素的索引
      *   思路：
