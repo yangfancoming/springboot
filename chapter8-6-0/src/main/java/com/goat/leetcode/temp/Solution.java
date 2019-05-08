@@ -1,4 +1,4 @@
-package com.goat.leetcode.array._001;
+package com.goat.leetcode.temp;
 
 import org.junit.Test;
 
