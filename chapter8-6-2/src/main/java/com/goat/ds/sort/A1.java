@@ -7,7 +7,7 @@ package com.goat.ds.sort;
  * @ author  山羊来了
  * @ date 2019/4/22---12:51
  */
-public class bubbleSort {
+public class A1 {
 
 
     /**
@@ -39,7 +39,7 @@ public class bubbleSort {
     }
 
 
-    public static void select_sort(int array[],int lenth){
+    public static int[] select_sort(int[] array,int lenth){
 
         for(int i=0;i<lenth-1;i++){
 
@@ -55,6 +55,8 @@ public class bubbleSort {
                 array[minIndex] = temp;
             }
         }
+
+        return array;
     }
 
 

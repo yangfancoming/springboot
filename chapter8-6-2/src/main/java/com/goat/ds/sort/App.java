@@ -15,25 +15,26 @@ public class App {
     int xx1[] = {42,20,17,13,28,14,23,15};
 
     @Test
-    public void test(){
-        bubbleSort.bubbleSort(xx1);
+    public void test(){ // 冒泡排序
+        A1.bubbleSort(xx1);
         System.out.println(xx);
     }
 
     @Test
-    public void test2(){
-
-    }
-
-    @Test
-    public void test3(){
-        bubbleSort.insertSort(xx);
+    public void test2(){ // 选择排序
+        A1.select_sort(xx,xx.length);
         System.out.println(xx);
     }
 
     @Test
-    public void test4(){
-        bubbleSort.twoInsertSort(xx);
+    public void test3(){ // 插入排序
+        A1.insertSort(xx);
+        System.out.println(xx);
+    }
+
+    @Test
+    public void test4(){ // 二分插入排序
+        A1.twoInsertSort(xx);
         System.out.println(xx);
     }
 }
