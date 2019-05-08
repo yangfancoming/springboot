@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="assets/vue.js"></script>
+    <link rel="stylesheet" href="assets/boot-strap.css">
+</head>
+<body>
+    <div id="app">
+
+        <div class="panel panel-primary">
+            <div class="panel-body form-inline">
+                <label>ID:<input type="text" class="form-control" v-model="id"> </label> <!--绑定 data中的 id 属性-->
+                <label>Name:<input type="text" class="form-control" v-model="name"></label> <!--绑定 data中的 name 属性-->
+                <label><input type="button" value="Add" class="btn btn-primary" @click="add"> </label>
+                <label>Search Name <input type="text" class="form-control" v-model="keywords"> </label> <!--绑定 data中的 keywords 属性-->
+            </div>
+        </div>
+
+        
+        <table class="table table-hover table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Ctime</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+            <!--
+                之前，v-for中的数据都是直接从data上的list中直接渲染过来的
+                现在我们自定义了一个search方法，同时把所有关键字，通过传参的形式传递给了search方法
+                在search方法内部，通过执行for循环，把所有符合搜索关键词的数据保存到一个新的数组中，返回
+           -->
+                <tr v-for="item in search(keywords)" :key="item.id">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.ctime}}</td>
+                    <td>
+                        <a href="" @click.prevent="del(item.id)" >Delete</a>  <!--prevent 阻止默认行为 如果不阻止 它会刷新页面  可以试试。。。-->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+    <script>
+        var vm = new Vue({
+                el: '#app',
+                data:{
+                    id: "", name: "",keywords:'',
+                    list: [
+                        { id:1, name:"宝马", ctime: new Date() },
+                        { id:2, name:"奔驰", ctime: new Date() },
+                    ]
+                },
+                methods: {
+                    add(){
+                        let car = {id:this.id, name:this.name, ctime:new Date()} // 点击添加按钮  1.创建一个 对象   2.添加到 list中
+                        this.list.push(car)
+                        this.id = this.name = ""; // 添加记录后  清空2个输入框的内容
+                    },
+                    del(id){
+                        this.list.some((item, i)=>{
+                            console.log(item.name)
+                            if(item.id==id){
+                                this.list.splice(i, 1)
+                                return true;//在数组的some方法中。如果return true，就会立即终止这个后续循环  否则就算删除了 还会循环数组后面的数据
+                            }
+                        })
+                    },
+                    search(keywords){
+                        //在ES6中，为字符串提供了一个新的方法。String.prototype.includes('要包含合法的字符串') 如果包含，则返回true，否则返回false
+                        let newList = this.list.filter(item=>{ // 返回所有满足条件的记录
+                            if(item.name.includes(keywords)){
+                                return item
+                            }
+                        })
+                        return newList
+                    }
+                  
+        }
+    }
+        );
+    </script>
+</body>
+</html>
