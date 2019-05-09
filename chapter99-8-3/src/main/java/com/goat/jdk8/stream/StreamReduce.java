@@ -19,10 +19,9 @@ public class StreamReduce {
     List<Integer> numList = Arrays.asList(1,2,3,4,5);
 
     @Test
-    public void reduce(){
+    public void reduce(){  // "aaa1#aaa2#bbb1#bbb2#bbb3#ccc#ddd1#ddd2"
         Optional<String> reduced = strs2.stream().sorted().reduce((s1, s2) -> s1 + "#" + s2);
         reduced.ifPresent(System.out::println);
-        // "aaa1#aaa2#bbb1#bbb2#bbb3#ccc#ddd1#ddd2"
     }
 
     /**   Optional<T> reduce(BinaryOperator<T> accumulator);
