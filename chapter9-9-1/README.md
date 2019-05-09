@@ -33,5 +33,15 @@
      git rm --cached encodings.xml
      git rm --cached .gitignore
      
-     
-     测试
+# 创建和 删除 分支
+    git branch -a   查看所有分支
+
+    git branch devMy   # 创建一个新分支
+    git checkout devMy  # 切换到新分支
+    或者 git checkout -b devMy   # 创建并切换分支
+    git branch -d devMy  删除分支 
+    
+    git checkout master  切换回主分支前 必须要提交所有暂存区的文件后 才能实现切换
+    
+    删除远程分支：
+    $ git push origin -d devMy
