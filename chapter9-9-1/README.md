@@ -32,3 +32,6 @@
      git rm --cached compiler.xml
      git rm --cached encodings.xml
      git rm --cached .gitignore
+     
+     
+     测试
