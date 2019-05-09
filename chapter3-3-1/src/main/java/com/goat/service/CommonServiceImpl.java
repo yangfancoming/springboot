@@ -5,6 +5,7 @@ import com.goat.exception.UserAccountException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -56,17 +57,40 @@ public class CommonServiceImpl {
         System.out.println("线程1  第二次查询出记录数为：" + maps2.size());
     }
 
-    public void selectOne() throws InterruptedException {
+    public void selectOne() {
         Map maps1 = jdbcTemplate.queryForObject("select id from book where id = 1", Map.class);
-        System.out.println("线程1  第一次查询出记录数为：" + maps1.size());
-        Thread.sleep(8000);
-        System.out.println(maps1);
+        System.out.println("线程1  第一次查询出记录数为：" +maps1);
     }
 
     public void updateOne(){
         int update = jdbcTemplate.update("update book set book_name = 'test'  where id = 1");
         System.out.println(update);
     }
+
+
+    /* 循环中 读取 更改： 再循环中 读取后 更改 某一字段后  再读取 可以读取到 更改后的记录 */
+    @Transactional
+    public void forTest(){
+        for (int i = 1; i <= 2; i++) {
+            // 查询
+            List<Map<String, Object>> maps1 = jdbcTemplate.queryForList("select * from book where isbn = 1");
+            System.out.println("线程1  第1次查询出记录数为：" + maps1);
+            // 修改
+            int update = jdbcTemplate.update("update book set book_name = 'test11'  where isbn = 1");
+            System.out.println(update);
+            // 再查询
+            List<Map<String, Object>> maps2 = jdbcTemplate.queryForList("select * from book where isbn = 1");
+            System.out.println("线程1  第2次查询出记录数为：" + maps2);
+        }
+    }
 }
 
+ /**  无事务和有事务   运行结果一致：
+  线程1  第1次查询出记录数为：[{isbn=1, book_name=haha, price=10}]
+  1
+  线程1  第2次查询出记录数为：[{isbn=1, book_name=test, price=10}]
+  线程1  第1次查询出记录数为：[{isbn=1, book_name=test, price=10}]
+  1
+  线程1  第2次查询出记录数为：[{isbn=1, book_name=test, price=10}]
+ */
 

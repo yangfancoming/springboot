@@ -34,4 +34,12 @@ public class PhantomController {
     public void test22() {
         phantomService.insert();
     }
+
+
+    //    http://localhost:8331/phantom/test1
+    @GetMapping("test1")
+    public void test1()   {
+        phantomService.forTest();
+    }
+
 }
