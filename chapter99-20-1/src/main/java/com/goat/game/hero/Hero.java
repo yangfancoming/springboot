@@ -1,5 +1,9 @@
 package com.goat.game.hero;
 
+import com.goat.game.poker.Card;
+
+import java.util.List;
+
 /**
  * Created by 64274 on 2019/5/6.
  *
@@ -9,24 +13,23 @@ package com.goat.game.hero;
  */
 public abstract class Hero {
 
-    protected  HeroInfo heroInfo = new HeroInfo();
-    protected HeroState heroState = new HeroState();
+//    //人物名称
+//    protected String name ;
+//    //血量上限
+//    protected Integer maxHP;
+//    //人物性别 真-男；假-女
+//    protected Boolean sex;
 
-    public abstract void skill();
+    protected List<Card> playerCards;
+//    protected  HeroInfo heroInfo = new HeroInfo();
+//    protected HeroState heroState = new HeroState();
 
-    public HeroInfo getHeroInfo() {
-        return heroInfo;
+
+    public List<Card> getPlayerCards() {
+        return playerCards;
     }
 
-    public void setHeroInfo(HeroInfo heroInfo) {
-        this.heroInfo = heroInfo;
-    }
-
-    public HeroState getHeroState() {
-        return heroState;
-    }
-
-    public void setHeroState(HeroState heroState) {
-        this.heroState = heroState;
+    public void setPlayerCards(List<Card> playerCards) {
+        this.playerCards = playerCards;
     }
 }

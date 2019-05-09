@@ -2,6 +2,7 @@ package com.goat.game.poker;
 
 import com.goat.game.constant.Name;
 import com.goat.game.constant.Suit;
+import com.goat.game.constant.Type;
 
 /**
  * Created by 64274 on 2019/5/6.
@@ -17,7 +18,7 @@ public  class Card {
     private Suit suit; // 花色：黑桃
 
     private Boolean AP; // Active Or Passive ： 1-主动牌 2-被动牌
-    private String  type; // 类型：装备牌  锦囊牌  基本牌
+    private Type type; // 类型：装备牌  锦囊牌  基本牌
 
     public Card( Suit suit,String face) {
         this.suit = suit;
@@ -30,6 +31,13 @@ public  class Card {
         this.name = name;
     }
 
+    public Card(Suit suit, String face, Name name, Boolean AP, Type type) {
+        this.name = name;
+        this.face = face;
+        this.suit = suit;
+        this.AP = AP;
+        this.type = type;
+    }
 
     public Name getName() {
         return name;
@@ -47,11 +55,11 @@ public  class Card {
         this.AP = AP;
     }
 
-    public String getType() {
+    public Type getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Type type) {
         this.type = type;
     }
 

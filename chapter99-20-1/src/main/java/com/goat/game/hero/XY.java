@@ -1,9 +1,8 @@
 package com.goat.game.hero;
 
-import com.goat.game.poker.Card;
 import com.goat.game.skill.IActiveSkill;
 import com.goat.game.skill.IPassiveSkill;
-import com.goat.game.skill.impl.QiangYun;
+import com.goat.game.skill.impl.BaWang;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,29 +10,26 @@ import java.util.List;
 /**
  * Created by 64274 on 2019/5/6.
  *
- * @ Description: 朱元璋
+ * @ Description: 项羽
  * @ author  山羊来了
- * @ date 2019/5/6---21:39
+ * @ date 2019/5/6---21:40
  */
-public class ZYZ extends Hero {
+public class XY extends Hero {
 
-    protected final String name = "朱元璋" ;
-    protected final Boolean sex = true;
+    protected final String name = "项羽" ;
+    protected final Boolean sex = false;
 
     protected Integer curHP = 4;
     protected Integer maxHP = 4;
     protected Boolean isDead = false;
-
 
     //主动技能
     protected List<IActiveSkill> activeSkills;
     //被动技能
     protected List<IPassiveSkill> passiveSkills = new ArrayList<>();
 
-    public ZYZ() {
+    public XY() {
         this.activeSkills = null;
-        this.passiveSkills.add(new QiangYun()); //
+        this.passiveSkills.add(new BaWang()); //
     }
-
-
 }

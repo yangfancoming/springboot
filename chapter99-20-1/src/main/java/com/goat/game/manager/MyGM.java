@@ -3,6 +3,7 @@ package com.goat.game.manager;
 import com.goat.game.constant.Face;
 import com.goat.game.constant.Name;
 import com.goat.game.constant.Suit;
+import com.goat.game.constant.Type;
 import com.goat.game.hero.Hero;
 import com.goat.game.poker.Card;
 
@@ -51,10 +52,10 @@ public class MyGM {
 
     }
 
-    /* 洗牌 */
-    public static void flushPockes(){
+    /* 洗牌  参数：洗牌次数 */
+    public static void flushPockes(int count){
         Random random=new Random();  //创建随机对象
-        for(int i=0;i<100;i++){
+        for(int i=0;i<count;i++){
             //随机产生两个索引值
             int a=random.nextInt(pockers.size());
             int b=random.nextInt(pockers.size());
@@ -71,16 +72,52 @@ public class MyGM {
            for (int i = 0; i < count; i++) {
                temp.add(pockers.pop());
            }
-           hero.getHeroState().setPlayerCards(temp);
+           hero.setPlayerCards(temp);
+//           hero.getHeroState().setPlayerCards(temp);
        }
     }
 
 
-    public static List<Card> createCard(){
-        pockers.add(new Card(Suit.红桃,Face.face[0], Name.决斗));
-        pockers.add(new Card(Suit.红桃,Face.face[0], Name.虎符));
-        pockers.add(new Card(Suit.红桃,Face.face[1], Name.闪));
-        pockers.add(new Card(Suit.红桃,Face.face[1], Name.闪));
+    public static List<Card> createCards(){
+        pockers.add(new Card(Suit.红桃,Face.face[0], Name.决斗,true, Type.锦囊牌));
+        pockers.add(new Card(Suit.红桃,Face.face[0], Name.虎符,true, Type.装备牌));
+        pockers.add(new Card(Suit.红桃,Face.face[1], Name.闪,false, Type.基本牌));
+        pockers.add(new Card(Suit.红桃,Face.face[1], Name.闪,false, Type.基本牌));
+
+        pockers.add(new Card(Suit.红桃,Face.face[2], Name.药,true, Type.基本牌));
+        pockers.add(new Card(Suit.红桃,Face.face[2], Name.探囊取物,true, Type.锦囊牌));
+
+        pockers.add(new Card(Suit.红桃,Face.face[3], Name.药,true, Type.基本牌));
+        pockers.add(new Card(Suit.红桃,Face.face[3], Name.探囊取物,true, Type.锦囊牌));
+
+
+        pockers.add(new Card(Suit.红桃,Face.face[4], Name.霸王弓,true, Type.装备牌));
+        pockers.add(new Card(Suit.红桃,Face.face[4], Name.赤兔,true, Type.装备牌));
+
+        pockers.add(new Card(Suit.红桃,Face.face[5], Name.杀,true, Type.基本牌));
+        pockers.add(new Card(Suit.红桃,Face.face[5], Name.药,true, Type.基本牌));
+
+        pockers.add(new Card(Suit.红桃,Face.face[6], Name.药,true, Type.基本牌));
+        pockers.add(new Card(Suit.红桃,Face.face[6], Name.无中生有,true, Type.锦囊牌));
+
+        pockers.add(new Card(Suit.红桃,Face.face[7], Name.药,true, Type.基本牌));
+        pockers.add(new Card(Suit.红桃,Face.face[7], Name.无中生有,true, Type.锦囊牌));
+
+        pockers.add(new Card(Suit.红桃,Face.face[8], Name.药,true, Type.基本牌));
+        pockers.add(new Card(Suit.红桃,Face.face[8], Name.无中生有,true, Type.锦囊牌));
+
+        pockers.add(new Card(Suit.红桃,Face.face[9], Name.杀,true, Type.基本牌));
+        pockers.add(new Card(Suit.红桃,Face.face[9], Name.杀,true, Type.基本牌));
+
+        pockers.add(new Card(Suit.红桃,Face.face[10], Name.杀,true, Type.基本牌));
+        pockers.add(new Card(Suit.红桃,Face.face[10], Name.无中生有,true, Type.锦囊牌));
+
+        pockers.add(new Card(Suit.红桃,Face.face[11], Name.药,true, Type.基本牌));
+        pockers.add(new Card(Suit.红桃,Face.face[11], Name.无懈可击,true, Type.锦囊牌));
+        pockers.add(new Card(Suit.红桃,Face.face[11], Name.狼牙棒,true, Type.装备牌));
+
+        pockers.add(new Card(Suit.红桃,Face.face[12], Name.闪,false, Type.基本牌));
+        pockers.add(new Card(Suit.红桃,Face.face[12], Name.的卢,true, Type.装备牌));
         return pockers;
     }
 }

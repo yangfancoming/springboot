@@ -1,7 +1,7 @@
 package com.goat.game;
 
 import com.goat.game.constant.Suit;
-import com.goat.game.hero.BS;
+import com.goat.game.hero.XY;
 import com.goat.game.hero.Hero;
 import com.goat.game.hero.ZYZ;
 import com.goat.game.manager.MyGM;
@@ -39,25 +39,28 @@ public class App {
     }
 
     public static void main(String[] args) {
-        MyGM.createPoker(2); // 产牌
-        MyGM.flushPockes(); // 洗牌
+        MyGM.createCards(); // 产牌
+        MyGM.flushPockes(100); // 洗牌
         System.out.println(MyGM.pockers); // 查看 牌位
 
         //  洗牌后 按照花色分组  查看牌位
-        Map<Suit, List<Card>> collect = MyGM.pockers.stream().collect(Collectors.groupingBy(Card::getSuit));
-        System.out.println(collect);
-
-        // 翻译牌
+//        Map<Suit, List<Card>> collect = MyGM.pockers.stream().collect(Collectors.groupingBy(Card::getSuit));
+//        System.out.println(collect);
 
 
         // 创建 玩家集合
         List<Hero> heroes = new LinkedList<>();
         heroes.add(new ZYZ());
-        heroes.add(new BS());
+        heroes.add(new XY());
 
-        MyGM.dealPockes(heroes,4);// 给所有玩家发牌
+        // 给所有玩家发牌
+        MyGM.dealPockes(heroes,4);
         System.out.println(heroes);
     }
 
+    @Test
+    public void test3(){
+
+    }
 
 }

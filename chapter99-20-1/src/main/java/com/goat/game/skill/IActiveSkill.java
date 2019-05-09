@@ -7,4 +7,4 @@ package com.goat.game.skill;
  * @ author  山羊来了
  * @ date 2019/5/6---22:59
  */
-public interface ActiveSkill {}
+public interface IActiveSkill {}

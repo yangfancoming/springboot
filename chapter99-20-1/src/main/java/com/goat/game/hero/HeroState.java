@@ -2,8 +2,8 @@ package com.goat.game.hero;
 
 import com.goat.game.poker.Card;
 import com.goat.game.poker.EquipCard;
-import com.goat.game.skill.ActiveSkill;
-import com.goat.game.skill.PassiveSkill;
+import com.goat.game.skill.IActiveSkill;
+import com.goat.game.skill.IPassiveSkill;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -39,9 +39,9 @@ public class HeroState {
     //防御距离
     protected int defDistance ;
     //主动技能
-    protected List<ActiveSkill> activeSkills;
+    protected List<IActiveSkill> activeSkills;
     //被动技能
-    protected List<PassiveSkill> passiveSkills;
+    protected List<IPassiveSkill> passiveSkills;
     //额外伤害值
     protected int extDamage;
     //是否出过杀
@@ -104,19 +104,19 @@ public class HeroState {
         this.defDistance = defDistance;
     }
 
-    public List<ActiveSkill> getActiveSkills() {
+    public List<IActiveSkill> getActiveSkills() {
         return activeSkills;
     }
 
-    public void setActiveSkills(List<ActiveSkill> activeSkills) {
+    public void setActiveSkills(List<IActiveSkill> activeSkills) {
         this.activeSkills = activeSkills;
     }
 
-    public List<PassiveSkill> getPassiveSkills() {
+    public List<IPassiveSkill> getPassiveSkills() {
         return passiveSkills;
     }
 
-    public void setPassiveSkills(List<PassiveSkill> passiveSkills) {
+    public void setPassiveSkills(List<IPassiveSkill> passiveSkills) {
         this.passiveSkills = passiveSkills;
     }
 
