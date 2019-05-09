@@ -8,7 +8,7 @@ import java.util.Arrays;
 /**
  * Created by 64274 on 2018/8/7.
  * @author 山羊来了
- * @Description: TODO
+ * @Description: 可变参数  基本 数组求和
  * @date 2018/8/7---13:23
  *
  * 可变参数： 数据类型... 形参名称   其中形参为数组类型  可以接收可变参数个数
