@@ -12,18 +12,4 @@
     <artifactId>chapter0-1-0</artifactId>
 
 
-    <dependencies>
-
-        <!--SpringBoot 貌似不支持该依赖-->
-         <!--https://mvnrepository.com/artifact/org.docx4j/docx4j-->
-        <!--<dependency>-->
-            <!--<groupId>org.docx4j</groupId>-->
-            <!--<artifactId>docx4j</artifactId>-->
-            <!--<version>3.2.1</version>-->
-        <!--</dependency>-->
-
-
-
-
-    </dependencies>
 </project>

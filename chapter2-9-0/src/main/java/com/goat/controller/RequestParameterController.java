@@ -98,6 +98,8 @@ public class RequestParameterController {
     public Object requestParam2(@RequestParam Map<String,Object> map) {
         return map;
     }
+
+
     /**
      * 多个请求参数填入到 实体类 spring会自动封装
      * http://localhost:8290/request/requestParam2?username=223&password=4&age=5

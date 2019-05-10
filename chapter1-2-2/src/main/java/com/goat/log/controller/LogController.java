@@ -1,4 +1,4 @@
-package com.goat.controller;
+package com.goat.log.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,19 +17,23 @@ public class LogController {
 
 //    private static final Logger LOG = LoggerFactory.getLogger(LogController.class);
     private  final Logger logger = LoggerFactory.getLogger(getClass());
-    //  http://localhost:8121/test
+    //  http://localhost:8122/test
     @GetMapping("/test")
     public void test(){
         logger.info("==========print log==========");
     }
 
-    //  http://localhost:8121/test1
+    //  http://localhost:8122/test1
+
+    /**
+     springboot 默认设置输出的日志级别 为 info 级别  因此 控制台只输出 info 及更高级别的日志输出
+     更改默认日志打印级别： 在配置文件中 打开 logging.level.com.goat.log = trace 注释 可以看到 所有日志 全部输入
+    */
     @GetMapping("/test1")
     public void test1(){
         // 日志级别： 由低到高
         logger.trace("这是  trace.................");
         logger.debug("这是  debug.................");
-        // springboot 默认设置输出的日志级别 为 info级别  因此 控制台只输出 info及更高级别的日志输出
         logger.info("这是  info.................");
         logger.warn("这是  warn.................");
         logger.error("这是  error.................");
