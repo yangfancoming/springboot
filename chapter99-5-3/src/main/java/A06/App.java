@@ -13,5 +13,8 @@ public class App {
         // Sub{color='红色', size=5.6, name='null'}  name 属性使用的是子类的！
         Sub s = new Sub(5.6 , "测试对象" , "红色");
         System.out.println(s);
+
+        s.accessBase();
+        s.accessOwner();
     }
 }

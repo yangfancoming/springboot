@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box">
-                            <form action="areaManagerController/list.do" method="post" name="Form" id="Form">
+                            <form action="/hello/test5" method="get" name="Form" id="Form">
                                 <table id="quertTable" class="table table-striped table-bordered table-hover">
                                     <tr>
                                         <td style="width: 70px; text-align: right; padding-top: 13px;">省份：</td>
@@ -82,12 +82,11 @@
                                 <!--说明： th:each="obj,stat:${objects}" 分别代表单个实例,状态(可省略),待遍历对象-->
                                 <tbody>
                                 <tr th:each="user:${userList}" >
-                                    <td th:text="${user.userName}"></td>
-                                    <td th:text="${user.mail}"></td>
-                                    <th th:text="${user.index}"></th>
-                                    <th th:text="${user.count}"></th>
-                                    <th th:text="${user.size}"></th>
-                                    <th th:text="${user.even}"></th>
+                                    <td th:text="${user.id}"></td>
+                                    <td th:text="${user.name}"></td>
+                                    <th th:text="${user.age}"></th>
+                                    <th th:text="${user.username}"></th>
+                                    <th th:text="${user.password}"></th>
                                 </tr>
                                 </tbody>
                             </table>

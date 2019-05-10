@@ -18,6 +18,14 @@ public class Sub extends Base {
         this.color = color;
     }
 
+    public void accessOwner() {
+        System.out.println("我是子类的："+ name);
+    }
+
+    public void accessBase() {
+        System.out.println("我是父类的："+ super.name); // 通过super来限定访问从父类继承得到的a实例变量
+    }
+
     @Override
     public String toString() {
         return "Sub{" + "color='" + color + '\'' + ", size=" + size + ", name='" + name + '\'' + '}';
