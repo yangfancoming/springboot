@@ -12,6 +12,9 @@
     因为 加入了 logback-spring.xml 配置文件 Springboot 就会扫描到 并加载该文件  只是把xml文件中的内容全部注释掉 是不行的 
     如果不想使用 该xml 配置文件了 那么要将其改名 改成 非 logback-spring.xml 就可以了 
     
+    如果想使用 自定的xml 日志配置文件 logback-spring.xml  那么 Springboot 就不再使用其自带的默认配置了 
+    具体日志实现框架 对应的文件名 见 ： 日志实现文件名规则.png
+    
 #springboot 刚一启动 控制台 就出现 警告：
     SLF4J: Class path contains multiple SLF4J bindings.
     SLF4J: Found binding in [jar:file:/F:/Package/Java%20Environment/apache-maven-3.3.9/repository/ch/qos/logback/logback-classic/1.1.3/logback-classic-1.1.3.jar!/org/slf4j/impl/StaticLoggerBinder.class]
