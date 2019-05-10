@@ -1,16 +1,20 @@
 package com.goat.game;
 
 import com.goat.game.constant.Suit;
-import com.goat.game.hero.XY;
 import com.goat.game.hero.Hero;
+import com.goat.game.hero.XY;
 import com.goat.game.hero.ZYZ;
 import com.goat.game.manager.MyGM;
 import com.goat.game.poker.Card;
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 /**
@@ -38,15 +42,10 @@ public class App {
         System.out.println(ending);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         MyGM.createCards(); // 产牌
         MyGM.flushPockes(100); // 洗牌
         System.out.println(MyGM.pockers); // 查看 牌位
-
-        //  洗牌后 按照花色分组  查看牌位
-//        Map<Suit, List<Card>> collect = MyGM.pockers.stream().collect(Collectors.groupingBy(Card::getSuit));
-//        System.out.println(collect);
-
 
         // 创建 玩家集合
         List<Hero> heroes = new LinkedList<>();
@@ -56,11 +55,27 @@ public class App {
         // 给所有玩家发牌
         MyGM.dealPockes(heroes,4);
         System.out.println(heroes);
+
+        //  洗牌后 按照花色分组  查看牌位
+//        Map<Boolean, List<Card>> collect = MyGM.pockers.stream().collect(Collectors.groupingBy(Card::getAP));
+//        System.out.println(collect);
+
+        for (Hero hero:heroes){
+            System.out.println(hero.getName()+ hero.getPlayerCards());
+        }
+
     }
 
     @Test
-    public void test3(){
-
+    public void test3() throws IOException {
+        int i = new Random().nextInt(9);
+        String in = "" ;
+        do {
+            if (i%2==0){
+                System.out.println("项羽先出牌：");
+                in = new BufferedReader(new InputStreamReader(System.in)).readLine();// 得到命令行输入
+            }
+        } while (!in.equals("exit"));
     }
 
 }

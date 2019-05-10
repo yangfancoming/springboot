@@ -14,11 +14,13 @@ import java.util.List;
 public abstract class Hero {
 
 //    //人物名称
-//    protected String name ;
+    protected String name ;
 //    //血量上限
-//    protected Integer maxHP;
+    protected Integer maxHP;
 //    //人物性别 真-男；假-女
-//    protected Boolean sex;
+    protected Boolean sex;
+    protected Integer curHP  ;
+    protected Boolean isDead  ;
 
     protected List<Card> playerCards;
 //    protected  HeroInfo heroInfo = new HeroInfo();
@@ -31,5 +33,45 @@ public abstract class Hero {
 
     public void setPlayerCards(List<Card> playerCards) {
         this.playerCards = playerCards;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getMaxHP() {
+        return maxHP;
+    }
+
+    public void setMaxHP(Integer maxHP) {
+        this.maxHP = maxHP;
+    }
+
+    public Boolean getSex() {
+        return sex;
+    }
+
+    public void setSex(Boolean sex) {
+        this.sex = sex;
+    }
+
+    public Integer getCurHP() {
+        return curHP;
+    }
+
+    public void setCurHP(Integer curHP) {
+        this.curHP = curHP;
+    }
+
+    public Boolean getDead() {
+        return isDead;
+    }
+
+    public void setDead(Boolean dead) {
+        isDead = dead;
     }
 }

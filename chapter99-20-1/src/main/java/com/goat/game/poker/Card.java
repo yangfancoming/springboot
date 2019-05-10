@@ -81,7 +81,7 @@ public  class Card {
 
     @Override
     public String toString() {
-        return "{" + suit + face + '}';
+        return "Card{" + "name=" + name + ", face='" + face + '\'' + ", suit=" + suit + ", AP=" + AP + ", type=" + type + '}' + '\n';
     }
 
     @Override

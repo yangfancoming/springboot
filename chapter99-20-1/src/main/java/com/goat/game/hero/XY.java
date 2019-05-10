@@ -32,4 +32,36 @@ public class XY extends Hero {
         this.activeSkills = null;
         this.passiveSkills.add(new BaWang()); //
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public Boolean getSex() {
+        return sex;
+    }
+
+    public Integer getCurHP() {
+        return curHP;
+    }
+
+    public void setCurHP(Integer curHP) {
+        this.curHP = curHP;
+    }
+
+    public Integer getMaxHP() {
+        return maxHP;
+    }
+
+    public void setMaxHP(Integer maxHP) {
+        this.maxHP = maxHP;
+    }
+
+    public Boolean getDead() {
+        return isDead;
+    }
+
+    public void setDead(Boolean dead) {
+        isDead = dead;
+    }
 }

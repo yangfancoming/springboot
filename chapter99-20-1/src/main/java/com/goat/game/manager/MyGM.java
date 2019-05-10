@@ -48,9 +48,7 @@ public class MyGM {
     }
 
     /* 翻译牌  通过 花色 和 面值  查找出对应的 牌名称 */
-    public static void translatePoker(List<Card> cards){
 
-    }
 
     /* 洗牌  参数：洗牌次数 */
     public static void flushPockes(int count){
@@ -73,7 +71,6 @@ public class MyGM {
                temp.add(pockers.pop());
            }
            hero.setPlayerCards(temp);
-//           hero.getHeroState().setPlayerCards(temp);
        }
     }
 
