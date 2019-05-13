@@ -3,7 +3,7 @@ package com.goat.B.B07;
 /**
  * Created by 64274 on 2019/4/25.
  *
- * @ Description: TODO
+ * @ Description: 形状抽象类
  * @ author  山羊来了
  * @ date 2019/4/25---18:45
  */

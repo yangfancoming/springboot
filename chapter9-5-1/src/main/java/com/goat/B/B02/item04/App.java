@@ -26,15 +26,17 @@ public class App {
     public void test() {
         Pancake tornCake = new TornCake();
         Pancake egg = new Egg(tornCake);
-        Pancake ham =new Ham(egg);
-        System.out.println(ham.getDesc() + ham.price());
+        Pancake ham = new Ham(egg);
+        System.out.println(tornCake.getDesc() + tornCake.price());// 【手抓饼】4.0
+        System.out.println(egg.getDesc() + egg.price());// 【手抓饼】煎蛋6.0
+        System.out.println(ham.getDesc() + ham.price());// 【手抓饼】煎蛋火腿7.5
     }
 
     @Test
     public void test1() {
         Pancake roujiamo = new Roujiamo();
         Pancake egg = new Egg(roujiamo);
-        Pancake ham =new Ham(egg);
+        Pancake ham = new Ham(egg);
         System.out.println(ham.getDesc() + ham.price());
     }
 }

@@ -3,7 +3,7 @@ package com.goat.B.B07;
 /**
  * Created by 64274 on 2019/4/25.
  *
- * @ Description: TODO
+ * @ Description: 圆形
  * @ author  山羊来了
  * @ date 2019/4/25---18:45
  */
@@ -15,6 +15,7 @@ public class Circle extends Shape{
         this.color = color;
     }
 
+    @Override
     public void draw() {
         System.out.println("画了一个" + color +"的圆形");
     }

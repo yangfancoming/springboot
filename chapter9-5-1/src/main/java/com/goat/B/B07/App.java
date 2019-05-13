@@ -10,19 +10,19 @@ package com.goat.B.B07;
 public class App {
 
     public static void main(String[] args) {
-        Shape shape1 = FlyweightFactory.getShape("红色");
+        Shape shape1 = FlyweightFactory.getShape("red");
         shape1.draw();
 
-        Shape shape2 = FlyweightFactory.getShape("灰色");
+        Shape shape2 = FlyweightFactory.getShape("gray");
         shape2.draw();
 
-        Shape shape3 = FlyweightFactory.getShape("绿色");
+        Shape shape3 = FlyweightFactory.getShape("green");
         shape3.draw();
 
-        Shape shape4 = FlyweightFactory.getShape("红色");
+        Shape shape4 = FlyweightFactory.getShape("red");
         shape4.draw();
 
-        Shape shape5 = FlyweightFactory.getShape("灰色");
+        Shape shape5 = FlyweightFactory.getShape("gray");
         shape5.draw();
 
         System.out.println("一共绘制了"+FlyweightFactory.getSum()+"中颜色的圆形");
