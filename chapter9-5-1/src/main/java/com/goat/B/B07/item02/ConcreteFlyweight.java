@@ -1,4 +1,4 @@
-package com.goat.B.B07.test;
+package com.goat.B.B07.item02;
 
 public class ConcreteFlyweight extends Flyweight {
 

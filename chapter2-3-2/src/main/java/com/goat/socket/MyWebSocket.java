@@ -1,7 +1,5 @@
 package com.goat.socket;
 
-
-import com.goat.date.TimeUtil;
 import com.goat.httpUtil.HtmlUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +8,7 @@ import org.springframework.stereotype.Component;
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
+import java.util.Date;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 
@@ -71,7 +70,7 @@ public class MyWebSocket {
     /*** 收到客户端消息后调用的方法 (客户端发送过来的消息) */
     @OnMessage
     public void onMessage(String message) throws IOException {
-        String date = "<font color='green'>" + TimeUtil.getDateNow(TimeUtil.DATE_PATTERN) + "</font></br>";
+        String date = "<font color='green'>" + new Date() + "</font></br>";
         for (MyWebSocket item : webSocketSet) {  // 群发消息
             item.sendMessage(date + message);
         }

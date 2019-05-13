@@ -2,7 +2,6 @@ package com.goat;
 
 
 import com.goat.service.UserService;
-import com.goat.service.impl.UserServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +33,8 @@ public class UserServiceTest {
 
     @Test
     public void getAllUsers() {
-        Integer count =  userService.getAllUsers();
-        System.out.println(count);
+//        Integer count =  userService.getAllUsers();
+//        System.out.println(count);
     }
 
 
