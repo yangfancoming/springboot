@@ -15,7 +15,7 @@ public class CacheObj<K, V> {
 	/** 上次访问时间 */
 	private long lastAccess; 
 	/** 访问次数 */
-	protected long accessCount;
+	public long accessCount;
 	/** 对象存活时长，0表示永久存活*/
 	private long ttl;
 	

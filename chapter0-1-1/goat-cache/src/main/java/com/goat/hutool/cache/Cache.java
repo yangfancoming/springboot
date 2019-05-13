@@ -11,20 +11,12 @@ import java.util.Iterator;
  * @param <K> 键类型
  * @param <V> 值类型
  */
-public interface Cache<K, V> extends Iterable<V> {
+public interface Cache<K, V>  {
 
-	/**
-	 * 返回缓存容量，<code>0</code>表示无大小限制
-	 * 
-	 * @return 返回缓存容量，<code>0</code>表示无大小限制
-	 */
+	/*** 返回缓存容量，<code>0</code>表示无大小限制 */
 	int capacity();
 
-	/**
-	 * 缓存失效时长， <code>0</code> 表示没有设置，单位毫秒
-	 * 
-	 * @return 缓存失效时长， <code>0</code> 表示没有设置，单位毫秒
-	 */
+	/*** 缓存失效时长， <code>0</code> 表示没有设置，单位毫秒*/
 	long timeout();
 
 	/**
@@ -76,8 +68,8 @@ public interface Cache<K, V> extends Iterable<V> {
 	 * 
 	 * @return 缓存迭代器
 	 */
-	@Override
-	Iterator<V> iterator();
+//	@Override
+//	Iterator<V> iterator();
 
 	/**
 	 * 返回包含键和值得迭代器

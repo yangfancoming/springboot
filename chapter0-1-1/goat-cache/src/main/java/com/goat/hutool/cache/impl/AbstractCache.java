@@ -10,17 +10,10 @@ import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
 
 /**
- * 超时和限制大小的缓存的默认实现<br>
- * 继承此抽象缓存需要：<br>
- * <ul>
- * <li>创建一个新的Map</li>
- * <li>实现 <code>prune</code> 策略</li>
- * </ul>
- * 
- * @author Looly,jodd
- *
- * @param <K> 键类型
- * @param <V> 值类型
+ * 超时和限制大小的缓存的默认实现
+ * 继承此抽象缓存需要：
+ * 创建一个新的Map
+ * 实现 prune 策略
  */
 public abstract class AbstractCache<K, V> implements Cache<K, V> {
 
@@ -30,9 +23,9 @@ public abstract class AbstractCache<K, V> implements Cache<K, V> {
 	private final ReadLock readLock = cacheLock.readLock();
 	private final WriteLock writeLock = cacheLock.writeLock();
 
-	/** 返回缓存容量，<code>0</code>表示无大小限制 */
+	/** 返回缓存容量，0 表示无大小限制 */
 	protected int capacity;
-	/** 缓存失效时长， <code>0</code> 表示无限制，单位毫秒 */
+	/** 缓存失效时长， 0 表示无限制，单位毫秒 */
 	protected long timeout;
 
 	/** 每个对象是否有单独的失效时长，用于决定清理过期对象是否有必要。 */
@@ -150,7 +143,7 @@ public abstract class AbstractCache<K, V> implements Cache<K, V> {
 
 	// ---------------------------------------------------------------- get end
 
-	@Override
+//	@Override
 	@SuppressWarnings("unchecked")
 	public Iterator<V> iterator() {
 		CacheObjIterator<K, V> copiedIterator = (CacheObjIterator<K, V>) this.cacheObjIterator();

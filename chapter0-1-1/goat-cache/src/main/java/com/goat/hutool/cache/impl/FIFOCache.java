@@ -23,7 +23,6 @@ public class FIFOCache<K, V> extends AbstractCache<K, V> {
 
 	/**
 	 * 构造，默认对象不过期
-	 * 
 	 * @param capacity 容量
 	 */
 	public FIFOCache(int capacity) {
@@ -32,18 +31,15 @@ public class FIFOCache<K, V> extends AbstractCache<K, V> {
 
 	/**
 	 * 构造
-	 * 
 	 * @param capacity 容量
 	 * @param timeout 过期时长
 	 */
 	public FIFOCache(int capacity, long timeout) {
-		if(Integer.MAX_VALUE == capacity) {
-			capacity -= 1;
-		}
-		
-		this.capacity = capacity;
-		this.timeout = timeout;
-		cacheMap = new LinkedHashMap<>(capacity + 1, 1.0f, false);
+        if (capacity>10000)
+            capacity = 10000;
+        this.capacity = capacity;
+        this.timeout = timeout;
+        cacheMap = new LinkedHashMap<>(capacity + 1, 1.0f, false);
 	}
 
 	/**
