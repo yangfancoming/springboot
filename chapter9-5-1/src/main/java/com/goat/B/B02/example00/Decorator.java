@@ -6,7 +6,7 @@ package com.goat.B.B02.example00;
  */
 public abstract class Decorator extends Component {
 
-    protected Component component;
+    private Component component;
 
     public void setComponent(Component component) {
         this.component = component;
