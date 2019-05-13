@@ -1,4 +1,4 @@
-package com.goat.B.B02.item03.Garnish;
+package com.goat.B.B02.item03.garnish;
 
 import com.goat.B.B02.item03.base.Pancake;
 

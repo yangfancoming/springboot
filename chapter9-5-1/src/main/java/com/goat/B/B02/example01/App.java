@@ -13,7 +13,7 @@ import org.junit.Test;
 /**
  * Created by 64274 on 2019/4/26.
  *
- * @ Description: TODO
+ * @ Description: 抽象类 + 接口 模式
  * @ author  山羊来了
  * @ date 2019/4/26---15:07
  */

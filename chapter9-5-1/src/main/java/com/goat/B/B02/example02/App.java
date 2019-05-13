@@ -10,7 +10,7 @@ import org.junit.Test;
 /**
  * Created by 64274 on 2019/4/29.
  *
- * @ Description: TODO
+ * @ Description: 双接口 模式
  * @ author  山羊来了
  * @ date 2019/4/29---9:41
  */

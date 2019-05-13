@@ -1,10 +1,10 @@
 package com.goat.B.B02.item03;
 
 
-import com.goat.B.B02.item03.Garnish.Cucumber;
-import com.goat.B.B02.item03.Garnish.Egg;
-import com.goat.B.B02.item03.Garnish.Ham;
-import com.goat.B.B02.item03.Garnish.MeatFloss;
+import com.goat.B.B02.item03.garnish.Cucumber;
+import com.goat.B.B02.item03.garnish.Egg;
+import com.goat.B.B02.item03.garnish.Ham;
+import com.goat.B.B02.item03.garnish.MeatFloss;
 import com.goat.B.B02.item03.base.Pancake;
 import com.goat.B.B02.item03.base.Roujiamo;
 import com.goat.B.B02.item03.base.TornCake;
@@ -14,9 +14,10 @@ import org.junit.Test;
  * Created by 64274 on 2019/5/13.
  *
  * @ Description:
- *  分为 主体 和 配菜
+ *  分为 主体（被装饰者） 和 配菜（装饰者）
  *  主体： 手抓饼 和 肉夹馍
  *  配菜： 鸡蛋 、 火腿 、 肉松 、 黄瓜丝
+ *  根据 客户选择的主体和配菜  计算总价格。
  * @ author  山羊来了
  * @ date 2019/5/13---9:04
  */

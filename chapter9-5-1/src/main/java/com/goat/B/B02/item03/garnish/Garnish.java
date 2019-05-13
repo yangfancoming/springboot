@@ -1,11 +1,11 @@
-package com.goat.B.B02.item03.Garnish;
+package com.goat.B.B02.item03.garnish;
 
 import com.goat.B.B02.item03.base.Pancake;
 
 /**
  * Created by 64274 on 2019/5/13.
  *
- * @ Description: TODO
+ * @ Description: 配菜父类 装饰者
  * @ author  山羊来了
  * @ date 2019/5/13---9:03
  */
