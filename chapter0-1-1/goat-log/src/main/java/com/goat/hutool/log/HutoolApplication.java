@@ -1,4 +1,4 @@
-package com.goat.hutu;
+package com.goat.hutool.log;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
