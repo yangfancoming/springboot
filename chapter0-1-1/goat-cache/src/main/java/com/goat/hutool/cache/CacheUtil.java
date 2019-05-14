@@ -51,7 +51,7 @@ public class CacheUtil {
     }
 
     /**
-     * 创建LRU (least recently used)最近最久未使用缓存.
+     * 创建LRU (least recently used)最近最少使用.
      *
      * @param <K> Key类型
      * @param <V> Value类型
