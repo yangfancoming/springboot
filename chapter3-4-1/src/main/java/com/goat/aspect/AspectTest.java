@@ -47,15 +47,19 @@ private static final String aspect =  "execution(* com.goat.con123fig..*(..))";
 @Component  // 定义组件
 public class AspectTest {
 
+    /**
+     * sos 多个 @Before 的执行顺序 可以通过 方法名控制  myBefore2() 先于 myBefore3() 执行
+
+    */
     // 定义切入点
     @Before("execution(* com.goat.service..*(..))")
-    public void myBefore(){
-        System.out.println("哥是前置增强1。。。。。。。。。。。");
+    public void myBefore3(){
+        System.out.println("哥是前置增强2。。。。。。。。。。。");
     }
 
     @Before("execution(* com.goat.service..*(..))")
     public void myBefore2(){
-        System.out.println("哥是前置增强2。。。。。。。。。。。");
+        System.out.println("哥是前置增强3。。。。。。。。。。。");
     }
 
     /**

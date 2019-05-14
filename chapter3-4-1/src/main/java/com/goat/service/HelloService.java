@@ -19,6 +19,9 @@ public class HelloService {
 
     public String sayHiService2(){
         System.out.println("sayHiService2");
+       if (true){
+           throw  new RuntimeException("123");
+       }
         return "HelloService...........2";
     }
 }

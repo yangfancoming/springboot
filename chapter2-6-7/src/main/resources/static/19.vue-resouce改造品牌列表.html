@@ -42,8 +42,7 @@
         
     </div>
     <script>
-        //设置根URL
-        //如果我们通过全局配置了请求的数据接口根域名，则在每次单独泛起http请求的时候，请求的url的路径，应该以相对路径开头，即开头不能带有/
+        //设置根URL BaseUrl 如果我们通过全局配置了请求的数据接口根域名，则在每次单独泛起http请求的时候，请求的url的路径，应该以相对路径开头，即开头不能带有/
         Vue.http.options.root = 'http://www.liulongbin.top:3005';
         Vue.http.options.emulateJSON=true;
         var vm = new Vue( {
