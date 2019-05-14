@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="assets/vue.js"></script>
+    <script src="https://cdn.staticfile.org/vue-resource/1.5.1/vue-resource.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="Get method" @click="getInfo">
+        <input type="button" value="Post method" @click="postInfo">
+        <input type="button" value="Jsonp 请求" @click="jsonpInfo">
+    </div>
+    <script>
+        let vm = new Vue({
+                el: '#app',
+                data: {  },
+                methods: {
+
+                    getInfo(){
+                        this.$http.get('https://api.apiopen.top/recommendPoetry').then(function(result){
+                            console.log(result)  //通过result.body拿到服务器返回的成功的数据
+                        })
+                    },
+
+                    postInfo(){
+                        //手动发起的post请求默认没有表单格式，有的服务器处理不了
+                        //通过设置post方法第三个参数{emulateJSON: true}设置提交的内容类型为普通表单数据格式
+                        //三个参数，第一个参数是url地址，第二个参数是提交的数据内容，第三个是提交的格式
+                        this.$http.post('https://api.apiopen.top/recommendPoetry',{},{emulateJSON:true}).then(result=>{
+                            console.log(result.body)
+                        })
+                    },
+
+                    jsonpInfo(){
+                        this.$http.jsonp('https://api.apiopen.top/recommendPoetry').then(result=>{
+                            console.log(result.body)
+                        })
+                    }
+                },
+            }
+        );
+    </script>
+</body>
+</html>

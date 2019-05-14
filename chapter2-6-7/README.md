@@ -8,3 +8,5 @@
     http://localhost:8267/14.品牌列表案例2.html
     http://localhost:8267/15.过滤器的基本使用.html
     http://localhost:8267/16.生命周期函数演示.html
+    http://localhost:8267/17.vue-resouce基本使用.html
+    http://localhost:8267/19.vue-resouce改造品牌列表.html
