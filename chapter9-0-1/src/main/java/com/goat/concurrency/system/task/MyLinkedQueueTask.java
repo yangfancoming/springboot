@@ -20,7 +20,7 @@ public class MyLinkedQueueTask {
     private ThreadPoolTaskExecutor threadPoolTaskExecutor;
 
 
-    @Scheduled(fixedDelay = 2000)
+//    @Scheduled(fixedDelay = 2000)
     public void doJob() {
 
         int coreLen = threadPoolTaskExecutor.getCorePoolSize();

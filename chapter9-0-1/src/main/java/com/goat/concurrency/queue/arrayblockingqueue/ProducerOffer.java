@@ -15,12 +15,11 @@ public class ProducerOffer implements Runnable {
     private BlockingQueue<Integer> blockingQueue;
     private static int element = 0;
 
-
     public ProducerOffer(BlockingQueue<Integer> blockingQueue) {
         this.blockingQueue = blockingQueue;
     }
 
-
+    @Override
     public void run() {
         try {
             while(element < 20) {

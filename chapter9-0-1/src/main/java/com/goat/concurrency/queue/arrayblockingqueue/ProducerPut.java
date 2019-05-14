@@ -13,13 +13,11 @@ import java.util.concurrent.BlockingQueue;
 public class ProducerPut implements Runnable {
 
     private BlockingQueue<Integer> blockingQueue;
-
     private static int element = 0;
 
     public ProducerPut(BlockingQueue<Integer> blockingQueue) {
         this.blockingQueue = blockingQueue;
     }
-
 
     @Override
     public void run() {
