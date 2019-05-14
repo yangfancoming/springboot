@@ -3,7 +3,6 @@ package com.goat.hutool.cache.impl;
 import com.goat.hutool.cache.Cache;
 import com.goat.hutool.cache.CacheObj;
 
-import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
@@ -74,8 +73,7 @@ public abstract class AbstractCache<K, V> implements Cache<K, V> {
 			}
 
 			if (false == co.isExpired()) {
-				// 命中
-				return true;
+				return true;	// 命中
 			}
 		} finally {
 			readLock.unlock();
@@ -143,24 +141,6 @@ public abstract class AbstractCache<K, V> implements Cache<K, V> {
 
 	// ---------------------------------------------------------------- get end
 
-//	@Override
-	@SuppressWarnings("unchecked")
-	public Iterator<V> iterator() {
-		CacheObjIterator<K, V> copiedIterator = (CacheObjIterator<K, V>) this.cacheObjIterator();
-		return new CacheValuesIterator<>(copiedIterator);
-	}
-
-	@Override
-	public Iterator<CacheObj<K, V>> cacheObjIterator() {
-		CopiedIter<CacheObj<K, V>> copiedIterator;
-		readLock.lock();
-		try {
-			copiedIterator = CopiedIter.copyOf(this.cacheMap.values().iterator());
-		} finally {
-			readLock.unlock();
-		}
-		return new CacheObjIterator<>(copiedIterator);
-	}
 
 	// ---------------------------------------------------------------- prune start
 	/**
@@ -267,16 +247,6 @@ public abstract class AbstractCache<K, V> implements Cache<K, V> {
 	// ---------------------------------------------------------------- common end
 
 	/**
-	 * 对象移除回调。默认无动作
-	 * 
-	 * @param key 键
-	 * @param cachedObject 被缓存的对象
-	 */
-	protected void onRemove(K key, V cachedObject) {
-		// ignore
-	}
-
-	/**
 	 * 移除key对应的对象
 	 * 
 	 * @param key 键
@@ -284,17 +254,13 @@ public abstract class AbstractCache<K, V> implements Cache<K, V> {
 	 */
 	private void remove(K key, boolean withMissCount) {
 		writeLock.lock();
-		CacheObj<K, V> co;
 		try {
-			co = cacheMap.remove(key);
+			cacheMap.remove(key);
 			if (withMissCount) {
 				this.missCount--;
 			}
 		} finally {
 			writeLock.unlock();
-		}
-		if (null != co) {
-			onRemove(co.key, co.obj);
 		}
 	}
 }

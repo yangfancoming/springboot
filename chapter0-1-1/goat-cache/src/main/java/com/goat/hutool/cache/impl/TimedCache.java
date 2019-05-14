@@ -59,7 +59,6 @@ public class TimedCache<K, V> extends AbstractCache<K, V> {
 			co = values.next();
 			if (co.isExpired()) {
 				values.remove();
-				onRemove(co.key, co.obj);
 				count++;
 			}
 		}

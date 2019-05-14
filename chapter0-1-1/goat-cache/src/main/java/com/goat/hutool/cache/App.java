@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
  * @ author  山羊来了
  * @ date 2019/5/13---14:48
  */
-public class MyTest {
+public class App {
 
     Cache<String,String> fifoCache = CacheUtil.newFIFOCache(3);
     Cache<String,String> fifoCache2 = CacheUtil.newFIFOCache(3,TimeUnit.SECONDS.toSeconds(2));

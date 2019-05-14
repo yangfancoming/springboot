@@ -1,8 +1,6 @@
 package com.goat.hutool.cache;
 
 
-import java.util.Iterator;
-
 /**
  * 缓存接口
  * 
@@ -63,21 +61,6 @@ public interface Cache<K, V>  {
 	 */
 	V get(K key, boolean isUpdateLastAccess);
 
-	/**
-	 * 返回缓存迭代器
-	 * 
-	 * @return 缓存迭代器
-	 */
-//	@Override
-//	Iterator<V> iterator();
-
-	/**
-	 * 返回包含键和值得迭代器
-	 * 
-	 * @return 缓存对象迭代器
-	 * @since 4.0.10
-	 */
-	Iterator<CacheObj<K, V>> cacheObjIterator();
 
 	/**
 	 * 从缓存中清理过期对象，清理策略取决于具体实现
