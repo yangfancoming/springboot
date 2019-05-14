@@ -18,7 +18,7 @@ public class App {
     */
     @Test
     public void testCglib() {
-        BookFacadeImpl bookFacadeImpl = new BookFacadeImpl(); // 业务实现类对象
+        BookFacadeImpl bookFacadeImpl = new BookFacadeImpl(); // 业务实现类对象 (被代理)
         BookFacadeProxy proxy = new BookFacadeProxy(); // 代理类对象
         BookFacade bookfacade = (BookFacade) proxy.bind(bookFacadeImpl);
         bookfacade.addBook();

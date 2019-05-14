@@ -11,11 +11,11 @@ import org.junit.Test;
  * 1.  代理角色要持有真实角色的引用
  * 2.  二者实现同一个接口
  */
-public class TestNG {
+public class App {
     @Test
     public void test(){
-        Matchmaking matchmaking1 = new Matchmaking(new Bob());
-        Matchmaking matchmaking2 = new Matchmaking(new Tom());
+        Matchmaking matchmaking1 = new Matchmaking(new Shihanzhi());
+        Matchmaking matchmaking2 = new Matchmaking(new Yangfan());
         matchmaking1.marry();
         matchmaking2.marry();
     }

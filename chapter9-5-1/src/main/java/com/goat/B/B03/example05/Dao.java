@@ -3,17 +3,17 @@ package com.goat.B.B03.example05;
 /**
  * Created by 64274 on 2019/4/9.
  *
- * @ Description: TODO
+ * @ Description: 被代理对象
  * @ author  山羊来了
  * @ date 2019/4/9---18:10
  */
 public class Dao {
 
     public void update() {
-        System.out.println("PeopleDao.update()");
+        System.out.println("UserDao.update()");
     }
 
     public void select() {
-        System.out.println("PeopleDao.select()");
+        System.out.println("UserDao.select()");
     }
 }

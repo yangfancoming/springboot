@@ -7,10 +7,10 @@ package com.goat.B.B03.example01;
  * @Description: 真实角色 (被代理对象)
  * @date 2018/7/20---14:50
  */
-public class Bob implements Marry {
+public class Shihanzhi implements Marry {
 
     @Override
     public void marry() {
-        System.out.println("我是鲍勃，我终于结婚啦！");
+        System.out.println("我是石涵之，我终于结婚啦！");
     }
 }

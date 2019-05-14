@@ -14,8 +14,9 @@ import java.lang.reflect.Proxy;
 public class BookFacadeProxy implements InvocationHandler {
 
     private Object target; //这其实业务实现类对象，用来调用具体的业务方法
+
     /**
-     * 绑定业务对象并返回一个代理类
+     * 绑定业务对象并返回一个动态创建的代理类
      */
     public Object bind(Object target) {
         this.target = target;  //接收业务实现类对象参数
@@ -23,7 +24,6 @@ public class BookFacadeProxy implements InvocationHandler {
         //创建代理对象时，需要传递该业务类的类加载器（用来获取业务实现类的元数据，在包装方法是调用真正的业务方法）、接口、handler实现类
         Object o = Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), this);
         return o;
-
     }
 
     /**

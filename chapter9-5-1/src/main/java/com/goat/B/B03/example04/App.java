@@ -6,7 +6,7 @@ import org.junit.Test;
 /**
  * Created by 64274 on 2019/4/7.
  *
- * @ Description: TODO
+ * @ Description: 静态代理 技术
  * @ author  山羊来了
  * @ date 2019/4/7---11:26
  */
