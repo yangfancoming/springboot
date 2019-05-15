@@ -13,7 +13,7 @@ import javax.servlet.http.*;
 @WebServlet(name = "sessionDemo03",urlPatterns = "/sessionDemo03")
 public class SessionDemo03 extends HttpServlet {
 
-    //   http://localhost:8204/sessionDemo02
+    //   http://localhost:8204/sessionDemo03
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("进入 sessionDemo02...........doPost");
     }

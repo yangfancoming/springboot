@@ -23,6 +23,7 @@ public class SessionDemo02 extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         System.out.println("进入 sessionDemo02...........doGet");
+
         HttpSession session = request.getSession();
         Object msg = session.getAttribute("msg");
         System.out.println(msg.toString());
