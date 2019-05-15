@@ -44,7 +44,7 @@ public class App {
          即构造函数中调用方法也是会拦截的
         */
         enhancer.setInterceptDuringConstruction(false);
-        MyDao dao = (MyDao)enhancer.create();// 返回一个动态代理类对象（它是业务类的子类，可以用业务类引用指向它）。最后通过动态代理类对象进行方法调用。
+        MyDao dao = (MyDao)enhancer.create();// 使用字节码技术动态创建子类的实例（它是业务类的子类，可以用业务类引用指向它）。最后通过动态代理类对象进行方法调用。
         dao.update(); // 对类A的B方法使用一种拦截策略
         dao.select(); // 类A的C方法使用另外一种拦截策略
     }

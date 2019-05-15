@@ -22,9 +22,9 @@ public class DaoProxy implements MethodInterceptor {
     */
     @Override
     public Object intercept(Object object, Method method, Object[] args, MethodProxy proxy) throws Throwable {
-        System.out.println("cglib动态代理 前置增强");
-        proxy.invokeSuper(object, args);
-        System.out.println("cglib动态代理 后置增强");
+        System.out.println("cglib动态代理 前置增强  记录日志");
+        proxy.invokeSuper(object, args); // UserDao.update() select
+        System.out.println("cglib动态代理 后置增强  记录日志");
         return object;
     }
 
