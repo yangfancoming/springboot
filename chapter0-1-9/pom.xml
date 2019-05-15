@@ -9,14 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>chapter0-1-2</artifactId>
+    <artifactId>chapter0-1-9</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>4.5.9</version>
-        </dependency>
 
-    </dependencies>
 </project>
