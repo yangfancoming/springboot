@@ -12,11 +12,11 @@ public class Emperor {
 
     // private 构造函数 保证了该类不能被其他类new出来
 	private Emperor(){
-        System.out.println("1111哥是构造方法！");
+        System.out.println("1111哥是 饿汉式  构造方法！");
 	}
 
 	// 外部获取接口  因为该类是在类加载时就创建 因此天然的线程安全，所以在外部获取接口方法上 无需加 synchronized
-	public static  Emperor getInstance(){
+	public static Emperor getInstance(){
 		return emperor;
 	}
 	
