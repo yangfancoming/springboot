@@ -22,19 +22,19 @@ public class App {
 
     @Test
     public void test2(){ // 选择排序
-        A1.select_sort(xx,xx.length);
+//        A1.select_sort(xx,xx.length);
         System.out.println(xx);
     }
 
     @Test
     public void test3(){ // 插入排序
-        A1.insertSort(xx);
+//        A1.insertSort(xx);
         System.out.println(xx);
     }
 
     @Test
     public void test4(){ // 二分插入排序
-        A1.twoInsertSort(xx);
+//        A1.twoInsertSort(xx);
         System.out.println(xx);
     }
 }

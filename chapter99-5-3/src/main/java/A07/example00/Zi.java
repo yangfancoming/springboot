@@ -11,6 +11,7 @@ public class Zi extends Fu {
     int num = 5;
 
     //重写父类方法
+    @Override
     void show() {
         System.out.println("Zi show num");
     }

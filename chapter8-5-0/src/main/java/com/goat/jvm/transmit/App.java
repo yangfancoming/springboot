@@ -60,15 +60,6 @@ public class App {
     }
 
 
-    @Test
-    public void test(){
-        int xx[] = {3,1,5,7,2,4,9,6,10,8};
-        bubbleSort(xx);
-        System.out.println(xx);
-    }
-
-
-
     /**  3.对象传递
      *
      结果分析：  可以更改
@@ -110,19 +101,5 @@ public class App {
     }
 
 
-    public static int[] bubbleSort(int[] numbers){
-        int temp;
-        int size = numbers.length;
-        for(int i = 0 ; i < size-1; i ++) {
-            for(int j = 0 ;j < size-1-i ; j++) {
-                if(numbers[j] > numbers[j+1]){  //交换两数位置
-                    temp = numbers[j];
-                    numbers[j] = numbers[j+1];
-                    numbers[j+1] = temp;
-                }
-            }
-        }
-        return numbers;
-    }
 
 }

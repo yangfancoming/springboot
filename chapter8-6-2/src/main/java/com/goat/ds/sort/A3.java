@@ -14,4 +14,46 @@ public class A3 {
 
      从头到尾依次扫描未排序序列，将扫描到的每个元素插入有序序列的适当位置。（如果待插入的元素与有序序列中的某个元素相等，则将待插入元素插入到相等元素的后面。）
     */
+
+
+    /**
+     * 直接插入排序
+     */
+    public static void insertSort(int[] a) {
+        for (int i = 1; i < a.length; i++) {
+            int temp = a[i];   // 待插入元素
+            int j;
+            for (j = i - 1; j >= 0 && a[j] > temp; j--) {
+                a[j + 1] = a[j];  // 将大于temp的往后移动一位
+            }
+            a[j + 1] = temp;
+        }
+    }
+
+
+    /**
+     * 二分插入排序
+     */
+    public static void twoInsertSort(int[] a) {
+        for (int i = 0; i < a.length; i++) {
+            int temp = a[i];
+            int left = 0;
+            int right = i - 1;
+            int mid;
+            while (left <= right) {
+                mid = (left + right) / 2;
+                if (temp < a[mid]) {
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
+                }
+            }
+            for (int j = i - 1; j >= left; j--) {
+                a[j + 1] = a[j];
+            }
+            if (left != i) {
+                a[left] = temp;
+            }
+        }
+    }
 }
