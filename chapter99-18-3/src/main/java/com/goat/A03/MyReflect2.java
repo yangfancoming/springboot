@@ -19,29 +19,35 @@ import java.lang.reflect.*;
  */
 public class MyReflect2 {
 
+    public static final String path = "com.goat.A03.Dog";
+
     @Test
     public void test0() throws ClassNotFoundException {
-        Class<?> aClass = Class.forName("MyReflect.example02.Dog");
+        Class<?> aClass = Class.forName(path);
         System.out.println(aClass);
     }
+
     @Test
     public void test1() {
         Dog dog = new Dog("hahagou",12);
         Class<? extends Dog> aClass = dog.getClass();
         System.out.println(aClass);
     }
+
     @Test
-    public void test2() throws IllegalAccessException, InstantiationException {
-        Class<Dog> dogClass = Dog.class; //
+    public void newInstance() throws IllegalAccessException, InstantiationException {
+        Class<Dog> dogClass = Dog.class;
         Dog dog = dogClass.newInstance(); // 通过class对象 调用默认无参构造函数 来 实例化类对象  （如果没有提供无参构造方法 则会报错）
         System.out.println(dog.getName());
         System.out.println(dog.getAge());
         System.out.println(dog.married);
     }
+
     @Test
-    public void test3() throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
+    public void getConstructor() throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         Class<Dog> dogClass = Dog.class;
         Constructor<?>[] constructors = dogClass.getConstructors(); // 获取 指定类的所有构造函数
+        System.out.println(constructors);
         Constructor<Dog> constructor1 = dogClass.getConstructor(String.class, Integer.class); // 获取指定构造函数
 
         Dog dog1 = constructor1.newInstance("山羊来了111", 111); // 使用反射获取指定构造函数 来创建类对象
@@ -56,6 +62,7 @@ public class MyReflect2 {
     public void test4()  {
         Class<Dog> dogClass = Dog.class;
         Field[] publicfields1 = dogClass.getFields();  // 该方法只能获取 类中 public属性  private属性是获取不到的！
+        System.out.println(publicfields1);
         getDeclaredFields(dogClass);
     }
 
@@ -68,7 +75,7 @@ public class MyReflect2 {
     }
 
     @Test
-    public void test5() throws IllegalAccessException,  InvocationTargetException {
+    public void getMethods() throws IllegalAccessException,  InvocationTargetException {
         Class<Dog> dogClass = Dog.class;
         Package aPackage = dogClass.getPackage();// 获取类所在包名
         System.out.println(aPackage.getName());
@@ -81,15 +88,16 @@ public class MyReflect2 {
             }
         }
     }
+
     @Test
-    public void test6() throws IllegalAccessException, InvocationTargetException, ClassNotFoundException {
-        Class<?> aClass = Class.forName("MyReflect.example02.Dog");
+    public void getDeclaredMethods() throws IllegalAccessException, InvocationTargetException, ClassNotFoundException, InstantiationException {
+        Class<?> aClass = Class.forName(path);
         Method[] declaredMethods = aClass.getDeclaredMethods(); // 获取 本类中定义的方法  包括 私有和公有 但不包括父类的
         for(Method method:declaredMethods){  // 遍历对象中的所有方法
             System.out.println(method.getName());
             if(method.getName().equals("fuck")){ // 判断出指定方式
                 method.setAccessible(true); // 设置权限  使其可以访问 类中的私有方法  否则 报权限错误
-                method.invoke(new Dog()); // 通过反射 调用类中的方法
+                method.invoke(aClass.newInstance()); // 通过反射 调用类中的方法
             }
         }
     }
