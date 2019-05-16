@@ -14,6 +14,24 @@ public class A3 {
 
      从头到尾依次扫描未排序序列，将扫描到的每个元素插入有序序列的适当位置。（如果待插入的元素与有序序列中的某个元素相等，则将待插入元素插入到相等元素的后面。）
     */
+    /**
+     *插入排序
+     */
+    public static void chaRu(int []array) {
+        int temp;
+        System.out.println("\n插入排序：");
+        for(int i=1;i<array.length;i++) {
+            int j=i;
+            temp = array[i];
+            while( j>0 && temp < array[j-1]) {
+                array[j] = array[j-1];
+                j--;
+            }
+            array[j] = temp;
+            System.out.print("第"+i+"次：");
+//            show(array);
+        }
+    }
 
 
     /**
