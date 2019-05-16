@@ -18,4 +18,6 @@ public class App {
         HostInfo hostInfo = SystemUtil.getHostInfo();
         System.out.println(hostInfo);
     }
+
+
 }

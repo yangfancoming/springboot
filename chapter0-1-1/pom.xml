@@ -11,6 +11,7 @@
     <modules>
         <module>goat-log</module>
         <module>goat-cache</module>
+        <module>goat-core</module>
     </modules>
 
 
