@@ -1,4 +1,4 @@
-package com.goat.example03;
+package com.goat.A03;
 
 public class Car {
 	private String brand;
