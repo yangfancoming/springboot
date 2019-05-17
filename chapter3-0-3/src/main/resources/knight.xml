@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--使用Spring将 SlayDragonQuest 注入到 BraveKnight 中-->
+    <bean id="BraveKnight" class="com.goat.spring.di.knight.BraveKnight">
+        <!--<constructor-arg ref="RescueDamselQuest" />-->
+        <constructor-arg ref="SlayDragonQuest" />
+    </bean>
+
+    <!--No matching constructor found in class 'DamselRescuingKnight'DamselRescuingKnight(...):Bean:-->
+    <!--<bean id="DamselRescuingKnight" class="com.goat.spring.di.knight.DamselRescuingKnight">-->
+        <!--<constructor-arg ref="RescueDamselQuest" />-->
+    <!--</bean>-->
+
+    <!--bean的声明使用了Spring表达式语言（Spring Expression Language） ， 将System.out（这是一个PrintStream）-->
+    <bean id="RescueDamselQuest" class="com.goat.spring.di.quest.RescueDamselQuest"/>
+
+    <bean id="SlayDragonQuest" class="com.goat.spring.di.quest.SlayDragonQuest"/>
+</beans>
