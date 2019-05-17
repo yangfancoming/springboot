@@ -18,7 +18,7 @@ import java.util.Properties;
 public class KaptchaConfig {
     @Bean
     public DefaultKaptcha getDefaultKaptcha(){
-        DefaultKaptcha defaultKaptcha = new DefaultKaptcha();
+
         Properties properties = new Properties();
         properties.setProperty("kaptcha.border", "yes"); //  图片边框
         properties.setProperty("kaptcha.border.color", "105,179,90"); // 边框颜色
@@ -31,8 +31,8 @@ public class KaptchaConfig {
         properties.setProperty("kaptcha.textproducer.char.length", "4");  // 验证码长度
         properties.setProperty("kaptcha.noise.impl", "com.google.code.kaptcha.impl.NoNoise"); // 噪点生成对象
         properties.setProperty("kaptcha.textproducer.font.names", "宋体,楷体,微软雅黑"); // 字体
-        Config config = new Config(properties);
-        defaultKaptcha.setConfig(config);
+        DefaultKaptcha defaultKaptcha = new DefaultKaptcha();
+        defaultKaptcha.setConfig(new Config(properties));
         return defaultKaptcha;
     }
 }

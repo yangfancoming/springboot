@@ -76,7 +76,8 @@ public class KaptchaController {
 		}
 		return andView;
 	}
-	
+
+
 	@RequestMapping("/toIndex")
 	public String toIndex() {
 		return "index";
