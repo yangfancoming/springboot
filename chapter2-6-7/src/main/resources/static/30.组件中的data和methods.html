@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="assets/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <comp1> </comp1>
+        <comp2> </comp2>
+    </div>
+
+    <template id="temp1">
+        <h1>{{msg1}} </h1>
+    </template>
+
+    <template id="temp2">
+        <h1>{{msg2}} </h1>
+    </template>
+
+    <script>
+
+        //  全局组件 使用 data 属性
+        // 1 组件可以有自己的data数据
+        // 2 组件的data必须是一个方法，并且方法必须返回一个对象
+        // 3 组件中的data数据使用方法和实例中的data使用方法是一样的
+        Vue.component('comp1',{
+            template:'#temp1', // 指定自定义模板 id
+            data: function(){
+                return {
+                    msg1: '这是组件中的data定义的数据'
+                }
+            }
+        })
+
+        //  私有组件 使用 data 属性
+        new Vue({
+            el: '#app',
+            components: {
+                //定义私有组件 login 对应   <login></login>  #temp 对应  <template id="temp">
+                comp2 : {
+                    template: '#temp2',
+                    data: function(){
+                        return {
+                            msg2: 'sadfasdfasdfsdf'
+                        }
+                    }
+                }
+            },
+
+        })
+    </script>
+</body>
+</html>

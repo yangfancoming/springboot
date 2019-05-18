@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="assets/vue.js"></script>
+</head>
+
+<body>
+
+
+    <div id="app">
+        <mycom3></mycom3>   <!--引入组件-->
+    </div>
+
+    <!-- 自定义组件模板-->
+    <template id="temp1">
+        <div>
+            <h1>这是在外部定义的组件结构</h1>
+        </div>
+    </template>
+
+    <script>
+        Vue.component('mycom3', {
+            template:'#temp1' // 指定自定义模板 id
+        })
+        new Vue({
+            el: '#app',
+        })
+    </script>
+</body>
+
+</html>

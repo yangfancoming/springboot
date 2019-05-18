@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="assets/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <counter> </counter>
+        <counter> </counter>
+        <counter> </counter>
+    </div>
+
+    <template id='temp1'>
+        <div>
+            <input type="button" value="+1" @click="increment">
+            <h3>{{count}}</h3>
+        </div>
+    </template>
+    
+    <script> 
+        //计数器组件
+        let dataObj={count:0}
+        Vue.component('counter',{
+            template:'#temp1',
+            data: function(){
+                return {  count:0 }  // 使用这种方式 使得 3个组件 都有自己独立的内容 更改一个 并不会互相影响
+                // return dataObj  // 这种情况 下 会导致 3个 组件 共享同一个变量 更改一个 其他2个组件的内容也更改
+
+
+            },
+            methods: {
+                increment(){
+                    this.count++
+                }
+            }
+        })
+
+        new Vue({
+            el: '#app',
+        })
+    </script>
+</body>
+
+</html>         

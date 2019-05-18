@@ -5,7 +5,6 @@ import com.goat.concurrency.model.Girl;
 import org.junit.Test;
 
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.concurrent.atomic.AtomicStampedReference;
 
 /**
  * Created by 64274 on 2019/3/31.

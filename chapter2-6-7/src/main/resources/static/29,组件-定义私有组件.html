@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="assets/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <login></login>
+    </div>
+  
+    <template id="temp">
+        <h1>这是个私有的组件 </h1>
+    </template>
+    <script>
+
+
+        var vm = new Vue({
+            el: '#app',
+            components: {
+                //定义私有组件 login 对应   <login></login>  #temp 对应  <template id="temp">
+                login : {
+                   template: '#temp'
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
