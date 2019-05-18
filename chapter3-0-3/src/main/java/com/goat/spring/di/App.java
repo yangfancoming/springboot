@@ -1,5 +1,6 @@
 package com.goat.spring.di;
 
+import com.goat.spring.di.config.KnightConfig;
 import com.goat.spring.di.knight.BraveKnight;
 import com.goat.spring.di.knight.DamselRescuingKnight;
 import com.goat.spring.di.knight.Knight;
@@ -25,9 +26,9 @@ import static org.mockito.Mockito.*;
 public class App {
     @Test
     public void test0() {
-//        ApplicationContext ac = new AnnotationConfigApplicationContext(KnightConfig.class);
-//        Knight knight = (Knight) ac.getBean("knight"); //
-//        knight.embarkOnQuest();
+        ApplicationContext ac = new AnnotationConfigApplicationContext(KnightConfig.class);
+        Knight knight = (Knight) ac.getBean("knight"); //
+        knight.embarkOnQuest();
     }
 
     @Test
