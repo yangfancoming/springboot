@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="assets/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <a href="" @click.prevent="flag=true" >Login</a>
+        <a href="" @click.prevent="flag=false">Sign Up</a>
+
+        <login  v-if="flag"></login>
+        <signup v-else="flag"></signup>
+    </div>
+    <script>
+
+        // 结合v-if  v-else 进行组件切换 的缺点：在只有两个组件的情况下还可以，但是一旦两个以上组件 就难以应付了
+
+        Vue.component('login', {template:'<h3>登陆组件</h3>', } )
+        Vue.component('signup', {template:'<h3>注册组件</h3>', } )
+
+        new Vue({
+                el:'#app',
+                data: { flag:'ture' },
+            }
+        )
+    </script>
+</body>
+</html>
