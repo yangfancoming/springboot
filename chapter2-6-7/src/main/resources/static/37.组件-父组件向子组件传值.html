@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="assets/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--父组件，可以在引用子组件的时候，通过属性绑定（v:bind）的形式，把需要传递给子组件的数据传递到子组件内部-->
+        <com1 :parentmsg="msg"> </com1>
+    </div>
+
+    <template id="temp1">
+        <div>
+            <h1 @click="change"> 这是子组件 {{parentmsg}}</h1>
+        </div>
+    </template>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data:{ msg: '123父组件中的数据' },
+            components:{
+                'com1':{
+                    template: '#temp1',  //子组件中，默认无法访问到父组件中的data和methods
+                    //注意，组件中的所有props中的数据都是通过父组件传递给子组件的
+                    props: ['parentmsg'] ,// propes中的数据是只可读 把父组件传递过来的parentmsg属性， 数组中，定义一下，这样才能用这个数据,
+                    //注意子组件中的data数据，并不是通过父组件传递过来的，而是子组件自有的，比如：子组件通过Ajax请求回来的值，可以放到data中
+                    data(){   //data 中的数据可读可写
+                        return { title: '123',content: 'qqq' }
+                    },
+                    methods: {
+                        change(){ this.parentmsg='被修改'} // 尝试修改 props 的只读属性  控制台会报警告！
+                    },
+                }
+            }
+        })
+    </script>
+</body>
+</html>
