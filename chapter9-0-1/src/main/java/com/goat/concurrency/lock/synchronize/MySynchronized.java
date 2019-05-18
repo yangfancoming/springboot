@@ -1,4 +1,4 @@
-package com.goat.concurrency.lock;
+package com.goat.concurrency.lock.synchronize;
 
 import com.goat.concurrency.model.Phone;
 

@@ -12,7 +12,9 @@ package A04_synchronize.example01;
 
  */
 public class MyTask3 implements Runnable {
+
     private int tickets = 50;
+
     @Override
     public void run() {
         while (true){
