@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="../assets/vue.js"></script>
+    <script src="../assets/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <router-link to="/login">登陆</router-link>
+        <router-link to="/register">注册 </router-link>
+        <router-view> </router-view>
+    </div>
+
+    <script>
+        let login = { template: '<h1>登陆</h1>' }
+        let register = { template: '<h1>注册</h1>' }
+
+        let router = new VueRouter({
+            routes: [
+                { path: '/', redirect: '/login' },
+                { path: '/login', component: login },
+                { path: '/register', component: register }
+            ],
+        })
+
+       new Vue({
+            el: '#app',router,
+            watch: {
+                //this.$route.path
+                '$route.path': function(newVal, oldVal){
+                    console.log(newVal+'---'+oldVal)
+                    if (newVal == '/login'){
+                        console.log('欢迎进入登陆页面')
+                    }else if(newVal == '/register'){
+                        console.log('欢迎进入注册页面')
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
