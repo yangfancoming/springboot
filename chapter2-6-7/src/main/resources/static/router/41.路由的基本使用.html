@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../assets/vue.js"></script>
+    <script src="../assets/vue-router.js"></script>
+</head>
+<body>
+    <div id="app">
+
+        <!--路由跳转方式一：注意要加#号 代表只执行 前端路由的跳转 而不是后端路由-->
+        <a href="#/login">登陆</a>
+        <a href="#/register">注册</a>
+        <br><br>
+
+        <!--路由跳转方式二： router-link 默认渲染为一个a标签 可以用tag修改 -->
+        <router-link to="/login" tag="span">登陆</router-link>
+        <router-link to="/register">注册</router-link>
+
+            <router-view>  </router-view>   <!--在这是vue-router提供的元素，专门用来当作占位符 将来路由规则 匹配到的组件 就会在这里展示-->
+    </div>
+    <script>
+
+        let login = { template:  '<h1>login</h1>' }
+        let register = {  template: '<h1>注册</h1>' }
+
+        /*
+            1. 创建一个路由对象， 当导入vue-router之后，在windows 全局对象中，就有了一个路由的构造函数叫做VueRouter
+            在new路由对象的时候，可以为构造函数传递一个配置对象
+            每个路由规则都是一个对象，这个规则的对象必须有两个必须的属性
+            属性1：path 表示监听哪个路由链接地址
+            属性2：component，表示如果路由是前面匹配到的 path，则展示component属性对应的组件
+        */
+        let routerObj = new VueRouter({
+            routes:[   //路由匹配规则
+                { path:'/', redirect: '/login'}, // 设置默认页面 跳转到 /login 页面
+                { path: '/login', component: login }, // 注意：component 的属性值 (login) 必须是一个组件的模板对象 不能是组件的引用名称
+                { path: '/register', component: register} ],
+            linkActiveClass: 'myactive'        
+        })
+
+        new Vue({
+            el: '#app',
+            router: routerObj //2. 将路由规则对象， 注册到vm实例上，用来舰艇URL地址的变化，然后展示对应的组件
+        })
+
+    /*
+        总结 前端路由 执行流程：
+        1. 点击路由按钮 登录/注册 后   更改前端url #/login 或 #/register
+        2. 触发vue-router的监听事件，再触发路由的规则匹配
+        3. 匹配成功后 将对应组件 在  <router-view>  </router-view>  中进行显示！
+    */
+
+    </script>
+
+
+</body>
+</html>

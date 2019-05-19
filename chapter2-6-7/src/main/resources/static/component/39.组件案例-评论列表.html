@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../assets/vue.js"></script>
+    <link rel="stylesheet" href="../assets/boot-strap.css">
+</head>
+<body>
+
+    <div id="app">
+        <comment-box @update="loadComments" :parentmsg="list"></comment-box>
+        <ul class="list-group">
+            <li class="list-group-item" v-for="item in list" :key="item.id">
+                <span class="badge">评论人:{{ item.user }}</span> {{ item.content }}
+            </li>
+        </ul>
+    </div>
+
+    <template id='temp1' >
+        <div>
+            <div class="form-group">
+                <label>评论人：</label>
+                <input type="text"  class="form-control" v-model="user">
+            </div>
+            <div class="form-group">
+                <label>评论内容：</label>
+                <textarea class="form-control" v-model="content"></textarea>
+            </div>
+            <div class="form-group" >
+                <input type="button" value="发表评论" class="btn btn-primary" @click="postComment">
+            </div>
+        </div>
+    </template>
+
+
+    <script>
+        let commentBox = {
+            template: '#temp1',
+            data(){
+                return {  user: '',content: '' }
+            },
+            props: ['parentmsg'] ,
+            methods: {
+                postComment(){
+                    this.parentmsg.unshift({id: Date.now(), user: this.user, content: this.content})
+                    this.content = this.user = ''
+                    this.$emit('update')
+
+                }
+            },
+        }
+
+        new Vue({
+            el: '#app',
+            data: {
+                list: [
+                    {id: 1, user:'李白', content: '天生我才必有用'},
+                    {id: 2, user:'林则徐', content:'岂因祸福避趋之'},
+                    {id: 3, user:'蛤', content:'苟利国家生死以'}
+                ]
+            },
+
+            methods: {
+                loadComments(){
+                    alert('触发  子组件调用父组件方法')
+                }
+            },
+            components:{
+                'comment-box':commentBox
+            }
+
+        })
+    </script>
+    
+</body>
+</html>
