@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../assets/vue.js"></script>
+    <script src="../assets/vue-router.js"></script>
+</head>
+<body>
+
+
+    <div id="app">
+        <!-- 使用 $route.query 方式传递参数-->
+        <router-link to='/login?id=10&name=哈哈'> 登陆 </router-link>
+        
+        <router-link to="/register"> 注册 </router-link>
+        
+        <router-view>  </router-view>
+        
+    </div>
+
+    <script>
+
+        let login= {
+            template: '<h1>登陆 {{$route.query.id}}  {{$route.query.name}}</h1>',
+            created() {
+                console.log(this.$route.query.id)  // 使用 $route.query 方式 取出参数
+                console.log(this.$route.query.name)
+            },
+        }
+        let register = { template: '<h1>注册</h1>' }
+
+        let router = new VueRouter({
+            routes: [
+                { path: '/login', component: login },
+                { path: '/register', component: register }
+            ]
+        })
+
+        new Vue({
+            el : '#app',
+            router,
+        })
+      
+    </script>
+</body>
+</html>
