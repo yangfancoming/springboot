@@ -1,8 +1,6 @@
-package com.goat.spring.chapter_02.autoconfig;
+package com.goat.spring.chapter_02.javaconfig;
 
 import com.goat.spring.chapter_02.ICompactDisc;
-import org.springframework.stereotype.Component;
-
 
 /**  CD 盘
      如果没有显示指定 bean 的ID 那么Spring会根据类名为其指定一个ID （sgtPeppers）
@@ -11,12 +9,11 @@ import org.springframework.stereotype.Component;
      @Component("MycomId"): 显示指定该bean的 ID 也可以是 @Named("MycomId")
      * @Date:   2018/7/25
 */
-@Component("MycomId")
-public class CompactDiscImpl implements ICompactDisc {
+public class CompactDiscImpl2 implements ICompactDisc {
 
   @Override
   public void play() {
-    System.out.println("*******************播放 CD ");
+    System.out.println("*******************播放 CD 1111");
   }
   
 }

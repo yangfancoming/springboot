@@ -1,4 +1,4 @@
-package com.goat.spring.chapter_02.autoconfig;
+package com.goat.spring.chapter_02;
 
 /**
  * Created by 64274 on 2019/5/20.

@@ -1,11 +1,8 @@
-package com.goat.spring.chapter_02.autoconfig;
+package com.goat.spring.chapter_02.javaconfig;
 
 import com.goat.spring.chapter_02.ICompactDisc;
 import com.goat.spring.chapter_02.IMediaPlayer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 
 /**
@@ -18,21 +15,19 @@ import java.util.List;
         表明没有明确指定要选择哪个bean进行自动装配。 在第3章中， 我们会进一步讨论自动装配中的歧义性
      * @Date:   2018/7/25
 */
-@Component
-public class MediaPlayerImpl implements IMediaPlayer {
+public class MediaPlayerImpl2 implements IMediaPlayer {
 
-    private List<ICompactDisc> cds;
+    private ICompactDisc cd;
 
     @Autowired(required = false)
-    public MediaPlayerImpl(List<ICompactDisc> cds) { //这表明当Spring创建CDPlayerbean的时候， 会通过这个构造器来进行实例化并且会传入一个可设置给CompactDisc类型的bean
-        this.cds = cds;
+    public MediaPlayerImpl2(ICompactDisc cd) { //这表明当Spring创建CDPlayerbean的时候， 会通过这个构造器来进行实例化并且会传入一个可设置给CompactDisc类型的bean
+        this.cd = cd;
     }
-
 
     @Override
     public void insert() {
-        System.out.println("插入 CD 盘。。。。。");
-        cds.get(0).play();
+        System.out.println("插入 CD 盘。。。。。11111");
+        cd.play();
     }
 
 }
