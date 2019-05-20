@@ -27,4 +27,5 @@ public class KnightConfig {
     public Knight knight() {
         return new BraveKnight(quest());
     }
+
 }

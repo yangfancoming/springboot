@@ -22,8 +22,8 @@ import static org.mockito.Mockito.*;
      只有knights.xml文件知道,在xml文件可以 用 任意实现了 Quest接口的类 进行替换 注入 后使用
  */
 
-
 public class App {
+
     @Test
     public void test0() {
         ApplicationContext ac = new AnnotationConfigApplicationContext(KnightConfig.class);

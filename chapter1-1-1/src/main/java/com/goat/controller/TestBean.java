@@ -80,7 +80,7 @@ public class TestBean {
      http://localhost:1111/testbean/test4
      通过启动类 FileSystemXmlApplicationContext  加载 该bean
      FileSystemXmlApplicationContext("beans.xml") 这种路径 虽然鼠标可以点击导航 但路径是不正确的 会报错  java.io.FileNotFoundException: beans.xml
-     ClassPathXmlApplicationContext 适用于 配置文件 在 其他磁盘或是其他非 项目路径下 的情况
+     FileSystemXmlApplicationContext 适用于 配置文件 在 其他磁盘或是其他非 项目路径下 的情况
      ClassPathXmlApplicationContext("beans.xml") 是正常的   ClassPathXmlApplicationContext 才是默认在 类路径下 查找配置文件
      */
     @GetMapping("/test4")
