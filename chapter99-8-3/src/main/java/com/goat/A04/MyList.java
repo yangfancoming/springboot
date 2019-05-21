@@ -3,11 +3,19 @@ package com.goat.A04;
 
 
 
+import com.goat.model.Book;
+import com.goat.model.Person;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -75,5 +83,31 @@ public class MyList {
         System.out.println("---原来的List2---");
         list2.parallelStream().forEachOrdered(System.out :: println);
     }
+
+    // 通过对象属性去重 distinctByKey()方法返回一个使用ConcurrentHashMap 来维护先前所见状态的 Predicate 实例，如下是一个完整的使用对象属性来进行去重的示例
+    @Test
+    public void distinctByKey1(){
+        List<Person> list = new ArrayList(Arrays.asList(new Person("a",12),new Person("a",12),
+                new Person("b",12),new Person("b",12)));
+        list.stream().filter(distinctByKey(b -> b.getName() )) .forEach(b -> System.out.println(b.getName()+ "," + b.getId()));
+    }
+
+    @Test
+    public void distinctByKey2(){
+        List<Book> list = new ArrayList<>();{
+            list.add(new Book("Core Java", 200));
+            list.add(new Book("Core Java", 300));
+            list.add(new Book("Learning Freemarker", 150));
+            list.add(new Book("Spring MVC", 200));
+            list.add(new Book("Hibernate", 300));
+        }
+        list.stream().filter(distinctByKey(b -> b.getName())) .forEach(b -> System.out.println(b.getName()+ "," + b.getPrice()));
+    }
+
+    private static <T> Predicate<T> distinctByKey(Function<? super T, ?> keyExtractor) {
+        Map<Object,Boolean> seen = new ConcurrentHashMap<>();
+        return t -> seen.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
+    }
+
 
 }
