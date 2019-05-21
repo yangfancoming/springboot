@@ -34,10 +34,4 @@ public class CDPlayerConfig {
   public MediaPlayerImpl2 cdPlayer1(List<ICompactDisc> compactDisc) {
     return new MediaPlayerImpl2(compactDisc.get(0));
   }
-
-  // 与上述 功能相同  只是写法不同 ，只是上述方法更易于理解
-//    @Bean
-//    public CDPlayer cdPlayer2() {
-//        return new CDPlayer(sgtPeppers());
-//    }
 }
