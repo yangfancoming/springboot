@@ -7,17 +7,13 @@ public class TestNg3 {
 
     @Test
     public void test() {
-
         int x = 105;
         int y = 50;
         int z = x%y;
         int z1 = x/y;
         System.out.println(z);
         System.out.println(z1);
-
     }
-
-
 
     @Test
     public void test1() {
@@ -51,7 +47,6 @@ public class TestNg3 {
         System.out.println(a==b);
     }
 
-
     @Test
     public void test4() {
         Long a = 1000l;
@@ -60,13 +55,19 @@ public class TestNg3 {
         System.out.println(a==b);
     }
 
-
     @Test
     public void test5() {
-
         String a = "1";
         String b = null;
         System.out.println(a+b);
+
+    }
+
+    @Test
+    public void test6() {
+
+        System.out.println(1 << 30);
+        System.out.println(1 << 4);
 
     }
 

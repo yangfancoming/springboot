@@ -14,4 +14,8 @@ public class MyLazy {
     public void sayHello() {
         System.out.println("hello, i am MyLazy");
     }
+
+    public static void test(){
+        System.out.println("11111");
+    }
 }
