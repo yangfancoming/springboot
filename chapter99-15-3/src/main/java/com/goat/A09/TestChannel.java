@@ -22,7 +22,6 @@ import java.nio.charset.CharsetEncoder;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Map;
-import java.util.Set;
 
 /**
  *1; 通道 channel: 用于源节点与目标节点的链接.在java NIO 中 负责缓冲区中数据的传输.
@@ -49,14 +48,13 @@ import java.util.Set;
  * transferFrom()
  * transferTo();
  *
- *
  * 5; 分散(Scatter)与 聚集(Gather)\
  *   分散读取 (Scattering reads) 将通道中的数据分散到缓冲区中
  *   聚集写入(gethering writes)  将缓冲区的数据 聚集到通道
  *
  * 6 字符集
- * 编码   字符串-字符数组  .
- * 解码   字符数组-字符串
+ * 编码   字符串 -> 字符数组  .
+ * 解码   字符数组 -> 字符串
  */
 public class TestChannel {
 
@@ -66,33 +64,28 @@ public class TestChannel {
     @Test
     public void test6() throws CharacterCodingException {
         Charset cs1= Charset.forName("GBK");
-        //获取编码器
-        CharsetEncoder ce=cs1.newEncoder();
-        //获取解码器
-        CharsetDecoder cd=cs1.newDecoder();
-        CharBuffer cbuf=CharBuffer.allocate(1024);
+
+        CharsetEncoder ce=cs1.newEncoder(); //获取编码器
+        CharsetDecoder cd=cs1.newDecoder(); //获取解码器
+        CharBuffer cbuf = CharBuffer.allocate(1024);
         cbuf.put("测试编码器");
         cbuf.flip();
-        //编码
-        ByteBuffer bBuf=ce.encode(cbuf);
+
+        ByteBuffer bBuf = ce.encode(cbuf); //编码
         for(int i=0;i<10;i++) {
             System.err.println(bBuf.get());
         }
         bBuf.flip();
-        //解码
-        CharBuffer cBuf2=cd.decode(bBuf);
+
+        CharBuffer cBuf2 = cd.decode(bBuf); //解码
         System.err.println(cBuf2.toString());
     }
 
     @Test  //字符集
     public void test5() {
-        Map<String ,Charset> map=	 Charset.availableCharsets();
-        Set<Map.Entry<String,Charset>> set= map.entrySet();
-        for (Map.Entry<String, Charset> entry : set) {
-            System.err.println(entry.getKey()+ "="+entry.getValue());
-        }
+        Map<String ,Charset> map = Charset.availableCharsets();
+        map.entrySet().forEach(entry -> System.out.println("key:value = " + entry.getKey() + ":" + entry.getValue()));
     }
-
 
     //分散聚集
     @Test
