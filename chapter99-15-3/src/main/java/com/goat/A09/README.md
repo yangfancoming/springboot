@@ -4,5 +4,9 @@
     3.前者  无       后者  选择器
     
     
-    
-# NIO
+#
+     四种主要的IO模型
+    1.3. 同步阻塞IO（Blocking IO）   BIO
+    1.4. 同步非阻塞NIO（None Blocking IO）  NIO
+    1.5. IO多路复用模型(I/O multiplexing） 
+    1.6. 异步IO模型（asynchronous IO）  AIO

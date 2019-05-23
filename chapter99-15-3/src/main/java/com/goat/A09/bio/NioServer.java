@@ -37,26 +37,22 @@ public class NioServer {
             if (socketChannel == null){
                 TimeUnit.SECONDS.sleep(1);
                 System.out.println("没人连接");
-                for (SocketChannel channel:list){
-                    int k = channel.read(byteBuffer);
-                    System.out.println(k);
-                    if (k!=0){
-                        byteBuffer.flip();
-                        System.out.println(new String(byteBuffer.array()));
-                    }
-                }
             }else {
-                System.out.println("有人连接");
+                System.out.println("来人连接了。。。。。。。。。。。。。。。");
                 socketChannel.configureBlocking(false);
                 list.add(socketChannel);
-                for (SocketChannel channel:list){
-                    int read = channel.read(byteBuffer);
-                    System.out.println(read+"=============");
-                    if (read!=0){
-                        byteBuffer.flip();
-                        System.out.println(new String(byteBuffer.array()));
-                    }
-                }
+            }
+            test(list,byteBuffer);
+        }
+
+    }
+    public static void test( List<SocketChannel> list,ByteBuffer byteBuffer) throws IOException {
+        for (SocketChannel channel:list){
+            int k = channel.read(byteBuffer);
+            if (k!=0){
+                System.out.println(k+"=============");
+                byteBuffer.flip();
+                System.out.println(new String(byteBuffer.array()));
             }
         }
     }
