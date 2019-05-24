@@ -69,7 +69,7 @@ public class StreamHello {
     /**  基本对象流
      基本类型流（primitive streams）使用方式与常规对象流类型（regular object streams）大部分相同，
      但是基本类型流（primitive streams）能使用一些特殊的lambda表达式，
-     比如：用IntFunction代替Function，用IntPredicate代替Predicate，
+     比如：用IntFunction代替Function，用IntPredicate代替 Predicate，
      同时基本类型流（primitive streams）中可以支持一些聚合方法，如：sum()，average()等。
      */
     @Test
