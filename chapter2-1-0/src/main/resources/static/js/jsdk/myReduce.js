@@ -69,13 +69,13 @@ let result = [
     { subject: 'chinese', score: 20 },
     { subject: 'english', score: 30 },
 ];
-// let hoho = (pre,cur)=> {return cur.score + prev}; // doit  这种方式为啥不行？
+// let hoho = (pre,cur)=> cur.score + prev ; // doit  这种方式为啥不行？
 let hoho = function(prev, cur) {
     return cur.score + prev;
 };
 
 let sum7 = result.reduce(hoho,0);
-console.log(sum7) //60
+console.log('对象里的属性求和',sum7) //60
 
 
 /**
