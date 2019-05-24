@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+<script>
+    /**
+     *  对象本身的两个方法
+     * get 扩展属性名(){} 用来得到当前属性值的回调函数
+     * set 扩展属性名(){} 用来监视当前属性值变化的回调函数
+     */
+    let person = {
+        firstName:'小猪',
+        lastName:'佩奇',
+        get fullName(){
+            return this.firstName + ' ' + this.lastName
+        },
+        set fullName(value){
+            let name = value.split(' ')
+            this.firstName = name[0]
+            this.lastName = name[1]
+        }
+    }
+    console.log(person)
+    person.fullName = '小狗 丹尼'
+    console.log(person)
+</script>
+</body>
+</html>

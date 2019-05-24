@@ -77,3 +77,12 @@ let hoho = function(prev, cur) {
 let sum7 = result.reduce(hoho,0);
 console.log(sum7) //60
 
+
+/**
+ Returns the average of two or more numbers.
+ Use `Array.prototype.reduce()` to add each value to an accumulator, initialized with a value of `0`, divide by the `length` of the array.
+*/
+const average = (...nums) => nums.reduce((acc, val) => acc + val, 0) / nums.length ;
+let average1 = average(...[1, 2, 3]);
+let average2 = average(1, 2, 9);
+console.log(average1,average2) //  2 4

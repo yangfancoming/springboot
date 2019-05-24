@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+
+<script>
+    /**
+     ES5给Object扩展了一些静态方法, 常用的2个:
+      Object.create(prototype, descriptors)
+     * 作用: 以指定对象为原型对象创建新的对象
+     * 为新的对象指定新的属性, 并对属性进行描述
+     */
+    let obj = { name:'小猪佩奇',age:18 }
+    let obj1 = Object.create(obj);
+    console.log(obj1); // 在浏览器中F12 可以看到 __proto__  属性 是obj  说明 obj1 继承了 obj 的属性
+
+    let rule = {
+        sex:{ // 当前属性名称
+            value:'boy',  // 值
+            writable:true,    // 是否可以被修改
+            enumerable:true,  // 是否可以被遍历
+            configurable:true,// 是否可以被删除
+        },
+    }
+    let obj2 = Object.create(obj,rule);
+    console.log(obj2,obj2.sex); // 在 obj 的基础上 给 obj1 添加属性
+    obj2.sex = 'girl'
+    console.log(obj2,'测试修改属性');
+
+    for (let i in  obj2){
+        console.log(i,'测试遍历属性')
+    }
+
+    delete obj2.sex
+    console.log(obj2,'测试删除属性');
+
+
+</script>
+</body>
+</html>

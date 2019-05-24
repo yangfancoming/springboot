@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+<script>
+    /**
+     ES5给Object扩展了一些静态方法, 常用的2个:
+     Object.defineProperties(object, descriptors)
+     * 作用: 为指定对象定义扩展多个属性
+     * get ：用来获取当前属性值的回调函数
+     * set ：修改当前属性值时触发的回调函数，并且实参即为修改后的值
+     * 存取器：setter,getter一个用来存值，一个用来取值
+     */
+    let obj = { firstName:'kobe',lastName:'bryant' }
+
+    let rule = {
+        fullName:{
+            // get:()=> {return this.firstName + ' '+ this.lastName} // doit 为啥这样不行？
+            get:function () { // 获取扩展属性的值  本方法会自动调用
+                return this.firstName + ' '+ this.lastName
+            },
+            set:function (data) { // 监听扩展属性，当扩展属性发生变化的时候会自动调用，自动调用后会将变化的值作为实参
+                let split = data.split(' ');
+                this.firstName = split[0]
+                this.lastName = split[1]
+            }
+        }
+    }
+
+    let obj1 = Object.defineProperties(obj,rule);
+    console.log(obj1); // 在浏览器中F12 可以看到多了一个  fullName:"kobe bryant" 属性
+    obj1.fullName = 'mike tyson';
+    console.log(obj1,'测试修改属性');
+
+</script>
+</body>
+</html>
