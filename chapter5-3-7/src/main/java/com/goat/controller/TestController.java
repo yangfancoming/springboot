@@ -33,7 +33,13 @@ public class TestController {
      * 提供者 sleep 1 秒  超时报错： com.alibaba.dubbo.remoting.TimeoutException
      * 提供者 sleep 0.5 秒  可以正常访问  推出 dubbo 默认超时是1秒
      * 解决方法：配置超时时间     @Reference(timeout = 2000)
+     * 　    当只针对某个服务时：@Reference(timeout=XXX)　　
+     * 　　　当针对所有服务时：  dubbo.consumer.timeout=XXX　在配置文件中全局配置
+     * 配置优先规则：
+     * 1.精确优先--- 方法级优先、接口级次之、提供方法次之
+     * 2.消费者设置优先---- 如果级别一样 则消费方设置优先，提供方配置次之
     */
+
     @RequestMapping("/sayHello/testTimeOut")
     public void testTimeOut() {
         String s = iTestService.testTimeOut();
@@ -48,7 +54,4 @@ public class TestController {
         return temp;
     }
 
-    public String hiError() {
-        return "hi,"+",sorry,error!";
-    }
 }
