@@ -8,4 +8,6 @@ public interface ITestService {
     User sayHello(Integer name);
 
     String testHystrix();
+
+    String testTimeOut();
 }
