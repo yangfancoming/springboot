@@ -10,4 +10,5 @@ public interface ITestService {
     String testHystrix();
 
     String testTimeOut();
+
 }

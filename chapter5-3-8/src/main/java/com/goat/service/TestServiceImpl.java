@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import java.util.concurrent.TimeUnit;
 
 
-//@Service(version = "1.0.0", timeout = 60000)
+
 @Service // 对外暴露服务实现  暴露类中的所有方法！
 public class TestServiceImpl extends ServiceImpl<UserMapper, User> implements ITestService {
 
