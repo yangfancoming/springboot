@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 
 //@Service(version = "1.0.0", timeout = 60000)
-@Service
+@Service // 对外暴露服务实现  暴露类中的所有方法！
 public class TestServiceImpl extends ServiceImpl<UserMapper, User> implements ITestService {
 
     @Value("${server.port}")
@@ -23,14 +23,11 @@ public class TestServiceImpl extends ServiceImpl<UserMapper, User> implements IT
         return baseMapper.selectById(id);
     }
 
-
     @HystrixCommand // sos 如果找到该注解  就需要添加  hystrix-javanica 依赖
     @Override
     public String testHystrix() {
         System.out.println("进入Dubbo 远程调用。。。。。。" + port);
         throw new RuntimeException("我是熔断器的测试。。。。。");
     }
-
-
 
 }

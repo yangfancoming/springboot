@@ -13,7 +13,10 @@ import com.alibaba.dubbo.config.annotation.Reference;
 @RestController
 public class ApiController {
 
-    // 这里是将  service 的接口声明 与 具体实现  进行拆分！
+    /**
+     *  声明需要调用的远程接口，生成远程服务代理类
+     *  这里注入的是接口！ 将 service 的接口声明 与 具体实现  进行拆分！
+    */
     @Reference
     public ITestService iTestService;
 

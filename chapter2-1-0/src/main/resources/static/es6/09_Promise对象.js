@@ -38,28 +38,3 @@ setTimeout(()=>{
     },1000)
 },1000)
 
-
-
-
-
- 
- //模拟一个发送ajax请求的函数
- function senAjax(i) {
-    let myPromise = new Promise((resolve,reject)=>{
-      setTimeout(()=>{
-        console.log(`第${i}次的请求成功了！`)
-        resolve()
-      },1000)
-    })
-   return myPromise
- }
-
- //第一次请求
-  senAjax(1)
-    .then(()=>{
-      return senAjax(2)
-      //then方法如果我们不手动返回Promise实例，程序会自动返回Promise实例，并且是成功状态
-    })
-    .then(()=>{
-    return senAjax(3)
-  })

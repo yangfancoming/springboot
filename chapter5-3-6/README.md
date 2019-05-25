@@ -1,3 +1,6 @@
+
+# api 项目 主要用来 存放多个项目 共用的 bean 和 service 接口 
+
 # 一 加入 maven 编译工具 
             <build>
                 <plugins>

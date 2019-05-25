@@ -1,6 +1,4 @@
 # dubbo服务发布者实现类注解@service所在的包  sos 这里注意： 包扫描的是  service 的上一层
-server:
-  port: 8537
 
 dubbo:
   scan:

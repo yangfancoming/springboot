@@ -17,3 +17,8 @@
     please check status of providers(disabled, not registered or in blacklist).
     
     是由于：提供者没有启动起来。也就是你的server端没有启动。请检查是否在Tomcat中启动失败.
+    
+    
+#  决定 RPC 通信效率的主要因素 
+    1. 序列化与反序列化的效率
+    2. 通信效率
