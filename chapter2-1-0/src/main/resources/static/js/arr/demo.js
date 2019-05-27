@@ -9,7 +9,7 @@ const all = (arr, fn = Boolean) => arr.every(fn);
 let result1 = all([4, 0, 3], x => x > 1); // true
 
 /** doit 使用默认值 fn = Boolean 后的输出结果 怎么解释？ */
-let result2 =all([1, 0, 3]); // true
+let result2 =all([1, 1, 3]); // true
 console.log('示例1\n',result1,result2)
 
 

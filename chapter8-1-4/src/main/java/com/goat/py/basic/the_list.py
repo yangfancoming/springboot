@@ -1,9 +1,22 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2019/2/18 11:14
 # @Author  : 64274
-# @Desc    : 
+# @Desc    :
 # @File    : test1.py
 # @Software: PyCharm
+
+classmates = ['Michael', 'Bob', 'Tracy']
+print('classmates =', classmates)
+print('len(classmates) =', len(classmates))
+print('classmates[0] =', classmates[0])
+print('classmates[1] =', classmates[1])
+print('classmates[2] =', classmates[2])
+print('classmates[-1] =', classmates[-1])
+classmates.pop()
+print('classmates =', classmates)
+
+
+
 
 # 列表 ： 创建一个列表，只要把逗号分隔的不同的数据项使用方括号括起来即可,且列表的数据项不需要具有相同的类型
 country = ['法国', '美国', '日本', '中国',123,True]

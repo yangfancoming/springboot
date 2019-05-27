@@ -6,7 +6,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by 64274 on 2019/4/29.
+ * Created by 64274 on 2019/4/29. CountDownLatch 闭锁
  * 需求：有三位运动员，他们一起参加万米赛跑，但是他们准备的时间不同，要等他们都准备好了再开始一起跑
  * countDownLatch 是采取阻塞主线程的方法实现了线程的统一。他内部有一个计数器，
  * 我们在执行完一次线程任务的时候需要手动的减一个数，在主线程中使用
@@ -25,8 +25,8 @@ public class CountDownLatchTest {
             int index = i;
             pool.submit(() -> {
                 try {
-                    TimeUnit.SECONDS.sleep(index);
-                    countDownLatch.countDown();
+                    TimeUnit.SECONDS.sleep(index); // 每次循环 增加睡眠时间
+                    countDownLatch.countDown(); // 每次循环减少计数器 (初始值=3)
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

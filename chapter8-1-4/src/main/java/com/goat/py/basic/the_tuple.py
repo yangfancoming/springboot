@@ -1,3 +1,18 @@
+
+# -*- coding: utf-8 -*-
+
+classmates = ('Michael', 'Bob', 'Tracy')
+print('classmates =', classmates)
+print('len(classmates) =', len(classmates))
+print('classmates[0] =', classmates[0])
+print('classmates[1] =', classmates[1])
+print('classmates[2] =', classmates[2])
+print('classmates[-1] =', classmates[-1])
+
+# cannot modify tuple:
+classmates[0] = 'Adam'
+
+
 # tuple（元组）可以使用下标索引来访问元组中的值
 tuple1=('两点水','twowter','liangdianshui',123,456)
 tuple2='两点水','twowter','liangdianshui',123,456
