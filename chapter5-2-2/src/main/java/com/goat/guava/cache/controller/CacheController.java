@@ -20,8 +20,11 @@ public class CacheController {
     @Autowired
     private CacheService cacheService;
 
-
-    //    http://localhost:8522/cache/test0
+    /** 缓存过期时间 测试
+     *  http://localhost:8522/cache/test0
+     *  可以发现 过一分钟后  再次请求 则 会访问 service
+     *  但是 在一分钟之内 重复请求 不会访问 service
+    */
     @GetMapping("test0")
     public void test0() {
         System.out.println("进入 controller");

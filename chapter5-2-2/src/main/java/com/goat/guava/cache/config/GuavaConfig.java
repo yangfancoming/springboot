@@ -25,13 +25,19 @@ public class GuavaConfig {
      * expireAfterAccess: 当缓存项在指定的时间段内没有被读或写就会被回收。
      * expireAfterWrite：当缓存项在指定的时间段内没有更新就会被回收,如果我们认为缓存数据在一段时间后数据不再可用，那么可以使用该种策略。
      * refreshAfterWrite：当缓存项上一次更新操作之后的多久会被刷新。
-     * @return
+     *
+     * 注意：
+     *  使用 new GuavaCacheManager("guavaCache" ) 构造方法 创建的缓存管理器 后
+     *  使用缓存注解时 @Cacheable(value = "test1", cacheManager = "firstCacheManager")
+     *  不能在指定 value值 否则报错：Cannot find cache named 'test1' for Builder
+     *
      */
 
     @Primary
     @Bean(name = "firstCacheManager")
     public CacheManager cacheManager() {
         GuavaCacheManager cacheManager = new GuavaCacheManager("guavaCache");
+//        GuavaCacheManager cacheManager = new GuavaCacheManager();
         CacheBuilder<Object, Object> cacheBuilder = CacheBuilder.newBuilder()
                 .maximumSize(100) // 设置 最大缓存数量
                 .expireAfterWrite(1,TimeUnit.MINUTES); // 设置 1分钟后 缓存过期

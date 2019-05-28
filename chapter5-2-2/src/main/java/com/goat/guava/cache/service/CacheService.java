@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CacheService {
 
-    @Cacheable(value = "guavaCache", cacheManager = "firstCacheManager")
+    @Cacheable(value = "test1", cacheManager = "firstCacheManager")
     public String cache1(){
         System.out.println("进入 service");
         return "hello";
