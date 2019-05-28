@@ -9,7 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>chapter5-2-1</artifactId>
+    <artifactId>chapter5-2-2</artifactId>
+
 
     <dependencies>
         <dependency>
@@ -18,14 +19,15 @@
             <version>19.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>com.goat.springboot.learing</groupId>-->
-            <!--<artifactId>chapter0-0-1</artifactId>-->
-            <!--<version>0.0.1-SNAPSHOT</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>4.2.6.RELEASE</version> <!--必须要指定版本呢  否则 GuavaCacheManager 灰红 -->
+        </dependency>
     </dependencies>
-
-
-
 </project>
