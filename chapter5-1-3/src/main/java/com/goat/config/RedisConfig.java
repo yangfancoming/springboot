@@ -17,6 +17,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+
 import java.time.Duration;
 
 @Configuration
@@ -26,17 +27,31 @@ public class RedisConfig extends CachingConfigurerSupport {
     //使用Jackson2JsonRedisSerializer来序列化和反序列化redis的value值
     private final Jackson2JsonRedisSerializer j2 = new Jackson2JsonRedisSerializer(Object.class);
 
-    /**采用RedisCacheManager作为缓存管理器*/
+    /** 2.x 配置方式  采用RedisCacheManager作为缓存管理器*/
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
         RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
-                .entryTtl(Duration.ofHours(1))
+                .entryTtl(Duration.ofHours(1))// 设置缓存有效期一小时
                 .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(stringRedisSerializer))
                 .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(j2));
         return RedisCacheManager
                 .builder(RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory))
                 .cacheDefaults(redisCacheConfiguration).build();
     }
+    /**  1.x 配置方式
+     @Bean
+     public CacheManager cacheManager(RedisTemplate redisTemplate) {
+         RedisCacheManager cacheManager= new RedisCacheManager(redisTemplate);
+         cacheManager.setDefaultExpiration(60);
+         Map<String,Long> expiresMap=new HashMap<>();
+         expiresMap.put("Product",5L);
+         cacheManager.setExpires(expiresMap);
+         return cacheManager;
+     }
+    */
+
+
+
     @Bean
     public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory) {
         StringRedisTemplate template = new StringRedisTemplate(factory);
