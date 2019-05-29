@@ -9,16 +9,38 @@ package com.goat.concurrency.lock.synchronize;
  */
 public class Number {
 
-    public synchronized void getOne(){
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
+    private Object lock1 = new Object();
+    private Object lock2 = new Object();
 
+//    public synchronized void getOne(){
+//        try {
+//            Thread.sleep(3000);
+//        } catch (InterruptedException e) {}
+//        System.out.println("one");
+//    }
+//
+//    public synchronized void getTwo(){
+//        System.out.println("two");
+//    }
+
+    public  void getOne(){
+        synchronized (lock1) {
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {}
+            System.out.println("one");
         }
-        System.out.println("one");
+
     }
 
-    public synchronized void getTwo(){
-        System.out.println("two");
+    public  void getTwo(){
+        synchronized (lock2) {
+            System.out.println("two");
+        }
     }
+
+    public void getThree(){
+        System.out.println("three");
+    }
+
 }
