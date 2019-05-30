@@ -24,6 +24,7 @@ public class ExcelListener extends AnalysisEventListener {
     public void doAfterAllAnalysed(AnalysisContext context) {
         doSomething();
     }
+
     public void doSomething(){
         for (Object o:data) {
             System.out.println(o);

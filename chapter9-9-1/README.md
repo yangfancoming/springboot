@@ -35,9 +35,10 @@
      
 # 创建和 删除 分支
     git branch -a   查看所有分支
-
+  
     git branch devMy   # 创建一个新分支
     git checkout devMy  # 切换到新分支
+    git checkout lampbelt  # 切换到新分支
     或者 git checkout -b devMy   # 创建并切换分支
     git branch -d devMy  删除分支 
     
