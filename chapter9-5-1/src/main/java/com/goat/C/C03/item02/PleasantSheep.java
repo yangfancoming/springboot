@@ -3,7 +3,7 @@ package com.goat.C.C03.item02;
 /**
  * Created by 64274 on 2019/5/30.
  *
- * @ Description: TODO
+ * @ Description: 喜羊羊是具体观察者，实现抽象观察者
  * @ author  山羊来了
  * @ date 2019/5/30---14:11
  */

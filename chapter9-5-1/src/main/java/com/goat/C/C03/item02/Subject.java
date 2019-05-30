@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by 64274 on 2019/5/30.
  *
- * @ Description: TODO
+ * @ Description: 抽象  被观察者
  * @ author  山羊来了
  * @ date 2019/5/30---14:10
  */
@@ -29,8 +29,6 @@ public abstract class Subject {
 
     /*** 通知所有观察者*/
     public void notifyObserver() {
-        for (Observer observer : observerList) {
-            observer.update("灰太狼要搞事情了");
-        }
+        observerList.forEach(x->x.update("灰太狼要搞事情了"));
     }
 }

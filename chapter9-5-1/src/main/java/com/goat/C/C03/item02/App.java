@@ -18,8 +18,8 @@ public class App {
         Observer lazySheep = new LazySheep();// 懒羊羊--观察者
         wolf.attach(lazySheep);  // 登记观察者
 
-        // 删除观察者
-        wolf.dettach(pleasantSheep);
+
+        wolf.dettach(pleasantSheep);  // 删除观察者
         wolf.invade(); // 灰太狼入侵
     }
 }
