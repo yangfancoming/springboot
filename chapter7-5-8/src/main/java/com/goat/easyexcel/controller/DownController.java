@@ -5,12 +5,10 @@ import com.alibaba.excel.metadata.Sheet;
 import com.alibaba.excel.support.ExcelTypeEnum;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -19,7 +17,6 @@ import static com.goat.easyexcel.util.DataUtil.createTestListStringHead;
 
 /**
  * Created by 64274 on 2019/2/23.
- *
  * @ Description:
  * sos 文件名 ==  @GetMapping("test2") 中的 test2
  * @ author  山羊来了
@@ -67,6 +64,7 @@ public class DownController {
         response.setHeader("Content-disposition", "attachment;filename="+fileName+".xlsx");
         response.setCharacterEncoding("utf-8");
         response.setContentType("multipart/form-data");
+
         writer.write0(createTestListStringHead(), sheet1);
         writer.finish();
         out.flush();
