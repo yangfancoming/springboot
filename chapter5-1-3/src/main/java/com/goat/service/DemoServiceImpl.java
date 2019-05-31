@@ -24,6 +24,7 @@ public class DemoServiceImpl implements IDemoService {
      * Cacheable 每次查询，将查询结果放入缓存中
      *           相同id，第二次查询时只从缓存中取数据，提高数据查询效率
      *           key = "#id" : 表示在redis中k-v(key:id,value:PageDemoDto)
+     *  @Cacheable(value = "pageCache",key = "123")  这里 key 写死后 不管传入什么参数 都会返回第一次 查询的结果
      */
     @Override
     @Cacheable(value = "pageCache",key = "#id")

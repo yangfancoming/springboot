@@ -3,6 +3,7 @@ package com.goat;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -45,6 +46,16 @@ public class TestNg5 {
         }
         return temp.stream().distinct().collect(Collectors.toList()).toString();
     }
-
+    @Test
+    public void test1(){
+//        int length = 2;
+        String[] content = new String[]{"1","2","3"};
+        List<String> ls = new ArrayList<>(content.length);
+//        for (int i = 0; i < content.length; i++) {
+//            ls.add(content[i]);
+//        }
+        Arrays.stream(content).forEach(s->ls.add(s));
+        System.out.println(ls);
+    }
 
 }
