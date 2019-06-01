@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -12,7 +13,6 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
-     * @Description:
      * @author: 杨帆
      * @Date:   2019/1/13
      *  在Oauth2的授权中 必须要增加 该类 实现 WebSecurityConfigurerAdapter
@@ -20,24 +20,25 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 */
 @Configuration
 @EnableWebSecurity // 启用 springsecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 
-    @Override
+    @Override //inMemoryAuthentication 从内存中获取
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        //inMemoryAuthentication 从内存中获取
         auth.inMemoryAuthentication().passwordEncoder(passwordEncoder())
-                .withUser("user1").password(passwordEncoder().encode("123456")).roles("USER");
+                .withUser("user1").password(passwordEncoder().encode("123456")).roles("USER").and()
+                .withUser("admin").password("123456").roles("ADMIN");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin();
         http
-            .requestMatchers().anyRequest()
-            .and()
-            .authorizeRequests()
-            .antMatchers("/oauth/*").permitAll();
+                .requestMatchers().anyRequest()
+                .and()
+                .authorizeRequests()
+                .antMatchers("/oauth/*").permitAll();
     }
 
     // 如果不配置 PasswordEncoder  则报错：  "There is no PasswordEncoder mapped for the id \"null\"",

@@ -34,7 +34,7 @@ public class AuthCodeTest {
     public final static Integer PORT = 3641;
     public final static String CLIENT_ID = "clientapp";
     public final static String CLIENT_SECRET = "112233";
-    public final static String CODE = "1D1LCZ";
+    public final static String CODE = "cESfM4";
     public final static String GRANT_TYPE = "authorization_code";
     public final static String REDIRECT_URI = "http://localhost:9001/callback";
     public final static String SCOPE = "read_userinfo";
@@ -124,7 +124,8 @@ public class AuthCodeTest {
     public void testController() {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        headers.add("authorization", "Bearer " + "0204f4dc-7485-4964-80bf-121b75fe861c");
+//        headers.add("authorization", "Bearer " + "0204f4dc-7485-4964-80bf-121b75fe861c");
+        headers.add("authorization", "Bearer " + "Y2xpZW50YXBwOjExMjIzMw");
         ResponseEntity<String> resp = rest.postForEntity("http://localhost:3641/api/userinfo", new HttpEntity<>(null, headers), String.class);
         System.out.println(resp);
     }
