@@ -10,8 +10,8 @@ package a01
 object FunctionApp {
 
   def main(args: Array[String]): Unit = {
-//    print(add(2,3))
-//    print(haha)   // 函数没有参数的时候  可以直接用函数名 进行调用
+    print(add(2,3))
+    print(haha)   // 函数没有参数的时候  可以直接用函数名 进行调用
     sayHi  // 调用无返回值函数
     sayName()
   }
