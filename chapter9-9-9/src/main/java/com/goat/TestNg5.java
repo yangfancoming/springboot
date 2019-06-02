@@ -58,4 +58,8 @@ public class TestNg5 {
         System.out.println(ls);
     }
 
+    public void test2(){
+
+    }
+
 }

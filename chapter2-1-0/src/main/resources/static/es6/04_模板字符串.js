@@ -11,7 +11,7 @@
 
   let p = {  name:'kobe',age:18 }
 
-  console.log('我的名字是:'+p.name+'我的年龄是：'+p.age)
+  console.log('我的名字是:'+ p.name + '我的年龄是：'+ p.age)
   
   console.log(`我的名字是：${p.name},我的年龄是：${p.age}`)
 
