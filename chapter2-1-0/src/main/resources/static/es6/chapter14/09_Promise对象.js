@@ -18,9 +18,9 @@
  ))
 
  3. promise实例对象的3个状态
- * pending: 初始化状态
- * fullfilled: 成功状态
- * rejected: 失败状态
+ pending: 初始化状态
+ fullfilled: 成功状态
+ rejected: 失败状态
 
  4. 应用:
  * 使用promise封装处理ajax请求
