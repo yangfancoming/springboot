@@ -46,3 +46,18 @@
     
     删除远程分支：
     $ git push origin -d devMy
+    
+    
+# 合并某分支到当前分支：git merge <name>
+    git merge master
+    
+    将develop分支合并到feature分支最简单的办法就是用下面这些命令：
+    方式一：
+    git checkout feature
+    git merge develop 
+    方式二： 你也可以把它们压缩在一行里。(个人还是喜欢上面的写法)
+    git merge develop feature
+    
+    git merge master lampbelt  将master分支 合并到 lampbelt分支
+    
+#    sos 切记 合并分支后 是合并在你本地的  必须要 push 到对应远程分支后 其他同事才能看到并拉取代码！！！
