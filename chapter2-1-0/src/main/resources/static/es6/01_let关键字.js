@@ -11,11 +11,11 @@
  * 使用let取代var是趋势
 */
 
-//先使用后定义 ： var 只声明不定义  function 既声明又定义
+//先使用后定义 ： let 只声明不定义  function 既声明又定义
 console.log(a) // undefined
 console.log(getA) // [Function: getA]
 console.log(b) // 直接报错： b is not defined
-var a = 1;
+let a = 1;
 function getA() {}
 
 let b = 1;
