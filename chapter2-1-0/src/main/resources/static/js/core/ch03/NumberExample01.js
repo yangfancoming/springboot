@@ -4,7 +4,7 @@ console.log(0.1 + 0.2);
 let result = Number.MAX_VALUE + 1;
 console.log(isFinite(result));    // false
 
-
+// 多分支 测试
 
 console.log(NaN == NaN);       //false
 console.log(isNaN(NaN));       //true
