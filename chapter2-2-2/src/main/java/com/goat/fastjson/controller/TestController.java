@@ -23,7 +23,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/test")
 public class TestController {
+
     private List<Person> listOfPersons = new ArrayList<>();
+
     // http://localhost:8222/test/test1
     @GetMapping("/test1")
     public TestUser test1(){
