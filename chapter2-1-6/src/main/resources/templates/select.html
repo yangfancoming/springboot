@@ -106,26 +106,19 @@
             type:'get', dataType: 'json',delay: 250,
             url: "/json/select.json", // 请求本地 json 文件
             contentType:"application/json",
-            data: function (params) {
+            data: function (params) { // 相当于   data: {  q: 111,page: 222},
                 console.log(params,1111111111)
                 return {
                     q: params.term, // search term 请求参数 ， 请求框中输入的参数
                     page: params.page
                 };
             },
-            processResults: function (data, params) {
-                console.log(data,2222)
-                params.page = params.page || 1;
-                /*var itemList = [];//当数据对象不是{id:0,text:'ANTS'}这种形式的时候，可以使用类似此方法创建新的数组对象
-                var arr = data.result.list
-                for(item in arr){
-                    itemList.push({id: item, text: arr[item]})
-                }*/
+            processResults: function (data, params) { // data 是请求返回值
+                let itemList = [];//当数据对象不是{id:0,text:'ANTS'}这种形式的时候，可以使用类似此方法创建新的数组对象
+                for ( let i = 0; i <data.length; i++)
+                    itemList.push({id: data[i].id, text: data[i].name})
                 return {
-                    results: data.items,//itemList
-                    pagination: {
-                        more: (params.page * 30) < data.total_count
-                    }
+                    results: itemList,//itemList 是将返回值修饰成 id 和 text 的结果集  用于渲染 select
                 };
             },
             cache: true

@@ -55,9 +55,8 @@ Web开发
 - ==chapter2-1-0 springboot  中使用  ES6==
 - ==chapter2-1-2 springboot  中使用 JavaScript  ==
 - ==chapter2-1-3 springboot  中使用 JQuery ==
-- ==chapter2-1-4 springboot  中使用 Select2==
 - ==chapter2-1-5 springboot  中使用 Bootstrap + JSP==
-- ==chapter2-1-6 springboot  中使用 Bootstrap + Thymeleaf==
+- ==chapter2-1-6 springboot  中使用 Bootstrap + Thymeleaf + Select2==
 - ==chapter2-1-7 springboot  中使用 Bootstrap + AdminLTE 模板==
 - ==chapter2-1-8 springboot  集成 Kaptcha 验证码==
 - ==chapter2-2-2 springboot  集成 fastjson  相关操作总结==
@@ -190,6 +189,7 @@ AOP
 - ==chapter5-1-6：springboot 集成 Dubbo Redis API ==
 - ==chapter5-1-7：springboot 集成 Dubbo Redis API Impl ==
 - ==chapter5-2-1：springboot 集成  guava cache==
+- ==chapter5-2-2：springboot 集成  guava cache  基于注解==
 
 
 
