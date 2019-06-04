@@ -1,6 +1,18 @@
-{
-  "id":0 , "text":"Gates",
-  "id":1 , "text":"Bush" ,
-  "id":2 , "text":"Carter"
-}
-
+[
+  {
+    "id":1,
+    "text":"heihei"
+  },
+  {
+    "id":2,
+    "text":"haha"
+  },
+  {
+    "id":1,
+    "text":"heihei"
+  },
+  {
+    "id":2,
+    "text":"haha"
+  }
+]

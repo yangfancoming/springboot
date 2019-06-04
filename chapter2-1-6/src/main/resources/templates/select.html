@@ -47,6 +47,9 @@
     <select id="sel_menu3" multiple="multiple" class="form-control"> </select>
 </div>
 
+<div class="col-md-2">
+    <select id="sel_menu4" multiple="multiple" class="form-control"> </select>
+</div>
 
 <!--sos 注意 js 引入位置 -->
 <script th:src="@{/plugins/jquery-3.3.1.min.js}"></script>
@@ -57,22 +60,43 @@
 
 <script type="text/javascript">
 
+    /**  select2 加载方式一： html 直接写 */
     $("#sel_menu1").select2({
         tags: true,
         maximumSelectionLength: 3  //最多能够选择的个数
     });
 
-    // 加载本地数据
+    /**  select2 加载方式二： 动态加载写死数据 */
     let data = [{ id: 0, text: 'enhancement' }, { id: 1, text: 'bug' }, { id: 2, text: 'duplicate' }, { id: 3, text: 'invalid' }, { id: 4, text: 'wontfix' }];
     $("#sel_menu2").select2({ data: data,placeholder:'请选择',allowClear:true  })
 
+    /**  select2 加载方式三： 动态加载本地 json 数据  只请求一次 */
+    let oneReq = [];
+    $.ajax({
+        type:"get", dataType:"json",
+        url: "/json/select.json", // 请求本地 json 文件
+        contentType:"application/json",
+        success:(data) =>{ oneReq = data; load()},
+        error:(data)=>{ }
+    });
 
-    $("#sel_menu3").select2({
+    function load() {
+        $("#sel_menu3").select2({
+            data: oneReq,
+            placeholder:'请选择',//默认文字提示
+            language: "zh-CN",//汉化
+            allowClear: true//允许清空
+        })
+    }
 
+    /**  select2 加载方式四： 动态请求后端数据 每次在select输入框中输入数据时 触发！ */
+    $("#sel_menu4").select2({
         ajax: {
             type:'get', dataType: 'json',delay: 250,
             url: "/json/select.json", // 请求本地 json 文件
+            contentType:"application/json",
             data: function (params) {
+                console.log(params,1111111111)
                 return {
                     q: params.term, // search term 请求参数 ， 请求框中输入的参数
                     page: params.page
@@ -101,8 +125,6 @@
         allowClear: true,//允许清空
         escapeMarkup: function (markup) { return markup; }, // 自定义格式化防止xss注入
         minimumInputLength: 1,//最少输入多少个字符后开始查询
-        formatResult: function formatRepo(repo){return repo.text;}, // 函数用来渲染结果
-        formatSelection: function formatRepoSelection(repo){return repo.text;} // 函数用于呈现当前的选择
     });
 
 
