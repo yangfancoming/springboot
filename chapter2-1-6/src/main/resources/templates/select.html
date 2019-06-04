@@ -11,9 +11,9 @@
 </head>
 <body>
 
-<button type="button" class="btn btn-default" onclick="test1()">默认</button>
-<button type="button" class="btn btn-primary">原始</button>
-<button type="button" class="btn btn-success">成功</button>
+<button type="button" class="btn btn-default" onclick="getSelect()">选中值</button>
+<button type="button" class="btn btn-primary" onclick="toggle()">开关</button>
+<button type="button" class="btn btn-success" onclick="clear()">清空</button>
 <button type="button" class="btn btn-info">信息</button>
 <button type="button" class="btn btn-warning">警告</button>
 <button type="button" class="btn btn-danger">危险</button>
@@ -59,6 +59,17 @@
 </html>
 
 <script type="text/javascript">
+
+    function getSelect(){
+        let reslist =$("#sel_menu2").select2("data"); //多选
+        console.log(reslist)
+    }
+
+    let mark = true;
+    function toggle(){ // 禁用 与 启动
+        $("#sel_menu2").prop("disabled", mark = !mark);
+    }
+
 
     /**  select2 加载方式一： html 直接写 */
     $("#sel_menu1").select2({
@@ -127,6 +138,22 @@
         minimumInputLength: 1,//最少输入多少个字符后开始查询
     });
 
+/**
+ 1.q: params.term 查询参数（params.term表示输入框中内容，q发生到服务器的参数名；所以这里你可以添加自定义参数，如：stype:'person'）
+
+ 2.processResults中results: data返回数据（返回最终数据给results，如果我的数据在data.res下，则返回data.res。这个与服务器返回json有关）
+
+ 3.minimumInputLength 最小需要输入多少个字符才进行查询，与之相关的maximumSelectionLength表示最大输入限制。
+
+ 4.escapeMarkup字符转义处理
+
+ 5.templateResult返回结果回调function formatRepo(repo){return repo.text},这样就可以将返回结果的的text显示到下拉框里，当然你可以return repo.text+"1";等
+
+ 6.templateSelection选中项回调function formatRepoSelection(repo){return repo.text}
+
+ 7.关于返回的 json的格式：select2默认json格式为[{id:1,text:'text'},{id:2,text:'text'}]，新版严格要求这样的格式，当然你可以添加列，如：[{id:1,text:'text',name:'liu'}]
 
 
-</script>
+*/
+
+</script><X></X>
