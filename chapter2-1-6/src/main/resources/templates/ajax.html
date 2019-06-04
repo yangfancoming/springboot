@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html;charset=UTF-8"/>
+    <title>山羊来了</title>
+    <meta content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link th:href="@{/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/plugins/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<button type="button" class="btn btn-default" onclick="test1()">默认</button>
+<button type="button" class="btn btn-primary">原始</button>
+<button type="button" class="btn btn-success">成功</button>
+<button type="button" class="btn btn-info">信息</button>
+<button type="button" class="btn btn-warning">警告</button>
+<button type="button" class="btn btn-danger">危险</button>
+<br>
+
+
+
+<!--sos 注意 js 引入位置 -->
+<script th:src="@{/plugins/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/plugins/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
+
+<script type="text/javascript">
+
+    $.ajax({
+        url: "/json/select.json", // 请求本地 json 文件
+        type: "GET",//请求方式为get
+        dataType: "json", //返回数据格式为json
+        success: function(data) {//请求成功完成后要执行的方法
+            console.log(data)
+        },
+        error : function() {
+            console.log("失败")
+        }
+    })
+
+</script>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html;charset=UTF-8"/>
+    <title>山羊来了</title>
+    <meta content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link th:href="@{/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/plugins/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+    <link th:href="@{/plugins/select2/select2.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<button type="button" class="btn btn-default" onclick="test1()">默认</button>
+<button type="button" class="btn btn-primary">原始</button>
+<button type="button" class="btn btn-success">成功</button>
+<button type="button" class="btn btn-info">信息</button>
+<button type="button" class="btn btn-warning">警告</button>
+<button type="button" class="btn btn-danger">危险</button>
+<br>
+
+<div class="col-md-2">
+    <select id="sel_menu1" multiple="multiple" class="form-control">
+        <optgroup label="系统设置">
+            <option value="1">用户管理</option>
+            <option value="2">角色管理</option>
+            <option value="3">部门管理</option>
+            <option value="4">菜单管理</option>
+        </optgroup>
+        <optgroup label="订单管理">
+            <option value="5">订单查询</option>
+            <option value="6">订单导入</option>
+            <option value="7">订单删除</option>
+            <option value="8">订单撤销</option>
+        </optgroup>
+        <optgroup label="基础数据">
+            <option value="9">基础数据维护</option>
+        </optgroup>
+    </select>
+</div>
+
+<div class="col-md-2">
+    <select id="sel_menu2" multiple="multiple" class="form-control"> </select>
+</div>
+
+<div class="col-md-2">
+    <select id="sel_menu3" multiple="multiple" class="form-control"> </select>
+</div>
+
+
+<!--sos 注意 js 引入位置 -->
+<script th:src="@{/plugins/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/plugins/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/plugins/select2/select2.js}"></script>
+</body>
+</html>
+
+<script type="text/javascript">
+
+    $("#sel_menu1").select2({
+        tags: true,
+        maximumSelectionLength: 3  //最多能够选择的个数
+    });
+
+    // 加载本地数据
+    let data = [{ id: 0, text: 'enhancement' }, { id: 1, text: 'bug' }, { id: 2, text: 'duplicate' }, { id: 3, text: 'invalid' }, { id: 4, text: 'wontfix' }];
+    $("#sel_menu2").select2({ data: data,placeholder:'请选择',allowClear:true  })
+
+
+    $("#sel_menu3").select2({
+
+        ajax: {
+            type:'get', dataType: 'json',delay: 250,
+            url: "/json/select.json", // 请求本地 json 文件
+            data: function (params) {
+                return {
+                    q: params.term, // search term 请求参数 ， 请求框中输入的参数
+                    page: params.page
+                };
+            },
+            processResults: function (data, params) {
+                console.log(data,2222)
+                params.page = params.page || 1;
+                /*var itemList = [];//当数据对象不是{id:0,text:'ANTS'}这种形式的时候，可以使用类似此方法创建新的数组对象
+                var arr = data.result.list
+                for(item in arr){
+                    itemList.push({id: item, text: arr[item]})
+                }*/
+                return {
+                    results: data.items,//itemList
+                    pagination: {
+                        more: (params.page * 30) < data.total_count
+                    }
+                };
+            },
+            cache: true
+        },
+        placeholder:'请选择',//默认文字提示
+        language: "zh-CN",
+        tags: true,//允许手动添加
+        allowClear: true,//允许清空
+        escapeMarkup: function (markup) { return markup; }, // 自定义格式化防止xss注入
+        minimumInputLength: 1,//最少输入多少个字符后开始查询
+        formatResult: function formatRepo(repo){return repo.text;}, // 函数用来渲染结果
+        formatSelection: function formatRepoSelection(repo){return repo.text;} // 函数用于呈现当前的选择
+    });
+
+
+
+</script>
