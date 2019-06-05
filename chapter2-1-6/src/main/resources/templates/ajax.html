@@ -12,8 +12,8 @@
 
 <button type="button" class="btn btn-default" onclick="test1()">发送单个参数</button>
 <button type="button" class="btn btn-primary" onclick="test2()">发送两个参数</button>
-<button type="button" class="btn btn-success" onclick="test3()">成功</button>
-<button type="button" class="btn btn-info" onclick="test4()">信息</button>
+<button type="button" class="btn btn-success" onclick="test3()">发送数组</button>
+<button type="button" class="btn btn-info" onclick="test4()">发送List</button>
 <button type="button" class="btn btn-warning" onclick="test5()">警告</button>
 <button type="button" class="btn btn-danger" onclick="test6()">危险</button>
 <br>
@@ -29,9 +29,9 @@
 <script type="text/javascript">
 
 
-    function test1() {
+    let test1 = ()=> {
         $.ajax({
-            type:"post", dataType:"json", url: "/ajax/test1", // 请求本地 json 文件
+            type:"post", dataType:"json", url: "/ajax/test1", 
             // contentType:"application/json", // 加上  后台接收为 null
             data: {"param": 123},
             success:(data) =>{ console.log(data)},
@@ -39,12 +39,50 @@
         });
     }
 
-    function test2() {
+    let test2 = () => {
         $.ajax({
-            type:"post", dataType:"json", url: "/ajax/test2", // 请求本地 json 文件
+            type:"post", dataType:"json", url: "/ajax/test2", 
             data: {"param1": 111,"param2": 222}, // sos 参数名称 param1  必须与后台形参对应上 否则接收不到！
             success:(data) =>{ console.log(data)},
             error:(data)=>{ }
+        });
+    }
+
+    let ids = [1,2,3,5];
+    let test3 = () => {
+        $.ajax({
+            type:"post", dataType:"json", url: "/ajax/test3", 
+            data: {"ids":JSON.stringify(ids)}, // sos  必须使用 JSON.stringify() 否则后台无法接收
+            // data: {"ids":ids}, // 后台无法接收
+            // data: JSON.stringify(ids), // 参数没有名字的传递方式，后台需要使用流的方式获取 request.getInputStream();
+            success:(data) =>{ console.log(data)},
+            error:(data)=>{ }
+        });
+    }
+
+    let test4 = () => {
+        $.ajax({
+            type:"post", dataType:"json", url: "/ajax/test4",
+            data: {  "pn": 1123,"ids":ids, },
+            success:(data) =>{ console.log(data)},
+            error:(data)=>{ }
+        });
+    }
+
+
+    let test5 = () => {
+        let list = [
+            {  "TYPE1": "111","TYPE2": "1,30", "TYPE3": "20" },
+            {  "TYPE1": "111","TYPE2": "1,30", "TYPE3": "20" }];
+
+        console.log(list);
+        $.ajax({
+            type: "post", url: "/ajax/test5",
+            dataType: 'json', async: false,
+            // data: JSON.stringify(list),
+            data: {"ids":JSON.stringify(list)},
+            success:(data) =>{ console.log(data) },
+            error:(data)=>{ console.log(data) }
         });
     }
 
