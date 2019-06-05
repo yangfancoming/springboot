@@ -1,4 +1,4 @@
-package com.goat.bootstrap.controller;
+package com.goat.thymeleaf.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

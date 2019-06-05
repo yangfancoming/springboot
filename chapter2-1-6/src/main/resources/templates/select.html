@@ -60,9 +60,13 @@
 
 <script type="text/javascript">
 
-    function getSelect(){
+
+    // 获取选中
+    let getSelect = () => {
         let reslist =$("#sel_menu2").select2("data"); //多选
         console.log(reslist)
+        for ( let i = 0; i <reslist.length; i++)
+            console.log(reslist[i].text + reslist[i].id)
     }
 
     let mark = true;
