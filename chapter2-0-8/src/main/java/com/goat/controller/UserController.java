@@ -117,9 +117,6 @@ public class UserController {
 //    // 使用这个方法测试，必须要先启动本项目 后 在 启动 mockMVC测试方法
 //    static Map<Integer, User> users = Collections.synchronizedMap(new HashMap<>());
 
-
-
-
     @RequestMapping(value="/{id}", method=RequestMethod.PUT)
     public Boolean putUser(@PathVariable Integer id, @ModelAttribute User user) {
         // 处理"/users/{id}"的PUT请求，用来更新User信息

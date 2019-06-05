@@ -14,7 +14,7 @@
 <button type="button" class="btn btn-default" onclick="getSelect()">选中值</button>
 <button type="button" class="btn btn-primary" onclick="toggle()">开关</button>
 <button type="button" class="btn btn-success" onclick="clear()">清空</button>
-<button type="button" class="btn btn-info">信息</button>
+<button type="button" class="btn btn-info" onclick="get()">请求</button>
 <button type="button" class="btn btn-warning">警告</button>
 <button type="button" class="btn btn-danger">危险</button>
 <br>
@@ -59,6 +59,20 @@
 </html>
 
 <script type="text/javascript">
+
+    // 请求后台
+    let get = () => {
+        let list2 =$("#sel_menu2").select2("data"); //多选
+        let list3 =$("#sel_menu3").select2("data"); //多选
+
+        $.ajax({
+            type:"post", dataType:"json", url: "/ajax/test1", // 请求本地 json 文件
+            contentType:"application/json",
+            data: {"param": 123},
+            success:(data) =>{ console.log(data)},
+            error:(data)=>{ }
+        });
+    }
 
 
     // 获取选中

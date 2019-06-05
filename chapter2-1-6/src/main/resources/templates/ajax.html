@@ -10,12 +10,12 @@
 </head>
 <body>
 
-<button type="button" class="btn btn-default" onclick="test1()">默认</button>
-<button type="button" class="btn btn-primary">原始</button>
-<button type="button" class="btn btn-success">成功</button>
-<button type="button" class="btn btn-info">信息</button>
-<button type="button" class="btn btn-warning">警告</button>
-<button type="button" class="btn btn-danger">危险</button>
+<button type="button" class="btn btn-default" onclick="test1()">发送单个参数</button>
+<button type="button" class="btn btn-primary" onclick="test2()">发送两个参数</button>
+<button type="button" class="btn btn-success" onclick="test3()">成功</button>
+<button type="button" class="btn btn-info" onclick="test4()">信息</button>
+<button type="button" class="btn btn-warning" onclick="test5()">警告</button>
+<button type="button" class="btn btn-danger" onclick="test6()">危险</button>
 <br>
 
 
@@ -28,16 +28,24 @@
 
 <script type="text/javascript">
 
-    $.ajax({
-        url: "/json/select.json", // 请求本地 json 文件
-        type: "GET",//请求方式为get
-        dataType: "json", //返回数据格式为json
-        success: function(data) {//请求成功完成后要执行的方法
-            console.log(data)
-        },
-        error : function() {
-            console.log("失败")
-        }
-    })
+
+    function test1() {
+        $.ajax({
+            type:"post", dataType:"json", url: "/ajax/test1", // 请求本地 json 文件
+            // contentType:"application/json", // 加上  后台接收为 null
+            data: {"param": 123},
+            success:(data) =>{ console.log(data)},
+            error:(data)=>{ }
+        });
+    }
+
+    function test2() {
+        $.ajax({
+            type:"post", dataType:"json", url: "/ajax/test2", // 请求本地 json 文件
+            data: {"param1": 111,"param2": 222}, // sos 参数名称 param1  必须与后台形参对应上 否则接收不到！
+            success:(data) =>{ console.log(data)},
+            error:(data)=>{ }
+        });
+    }
 
 </script>

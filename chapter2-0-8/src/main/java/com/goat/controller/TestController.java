@@ -68,7 +68,7 @@ public class TestController {
      * @param username
      * @param password
      */
-    @RequestMapping(value="/addUser4/{username}/{password}",method= RequestMethod.GET)
+    @GetMapping(value="/addUser4/{username}/{password}")
     public String addUser4(@PathVariable String username,@PathVariable String password) {
         return username + password;
     }
@@ -78,7 +78,7 @@ public class TestController {
      * @param user
      * @return
      */
-    @RequestMapping(value="/addUser5",method=RequestMethod.POST)
+    @PostMapping(value="/addUser5")
     public String addUser5(@ModelAttribute("user") User user) {
         return  user.getUsername() + user.getPassword();
     }
@@ -93,7 +93,7 @@ public class TestController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "username", value = "用户名", required = true, dataType = "query"),
             @ApiImplicitParam(name = "password", value = "密码", required = true,   dataType = "query") })
-    @RequestMapping(value="/addUser6",method=RequestMethod.GET)
+    @GetMapping(value="/addUser6")
     public String addUser6(@RequestParam("username") String username,@RequestParam("password") String password) {
         return username + password;
     }
@@ -107,7 +107,6 @@ public class TestController {
     public List<User> addUserJson2(@RequestBody List<User> users) {
         return users;
     }
-
 
 
 }
