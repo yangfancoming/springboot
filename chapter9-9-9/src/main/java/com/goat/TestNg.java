@@ -52,4 +52,22 @@ public class TestNg {
     }
 
 
+    /**  -128 --- 127  == 比较的值 在 1 字节范围内 则为true */
+    @Test
+    public void test3()  {
+        Long temp1 = 11L;
+        Long temp2 = 11L;
+        System.out.println(temp1 == temp2);// true
+        System.out.println(temp1.equals(temp2));// true
+    }
+
+    /**  -128 --- 127  == 比较的值 在 1 字节范围以外 则为 false */
+    @Test
+    public void test4()  {
+        Long temp1 = 300L;
+        Long temp2 = 300L;
+        System.out.println(temp1 == temp2); // false
+        System.out.println(temp1.equals(temp2)); // true
+    }
+
 }

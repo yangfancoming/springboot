@@ -27,4 +27,10 @@ public class TransferController {
         return "ajax";
     }
 
+
+    //    http://localhost:8216/transfer/form
+    @GetMapping("/form")
+    public String form() {
+        return "form";
+    }
 }

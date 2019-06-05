@@ -31,8 +31,11 @@ public class AjaxController {
         System.out.println(ids);
     }
 
-    //   http://localhost:8216/ajax/test4
-    // value 必须与 前端参数名称对应 否则 无法接收
+    /**
+     http://localhost:8216/ajax/test4
+     value 必须与 前端参数名称对应 否则 无法接收
+     必须要有 @RequestParam(value = "ids[]", required = false)  否则报错： No primary or default constructor found for interface java.util.List
+    */
     @RequestMapping("test4")
     public void test4(String pn,@RequestParam(value = "ids[]", required = false) List<String> ids) {
         System.out.println(pn);
@@ -40,7 +43,7 @@ public class AjaxController {
     }
 
     //   http://localhost:8216/ajax/test5
-    //  No primary or default constructor found for interface java.util.List
+    //
     @RequestMapping("test5")
     public void test5(List<String> ids) {
         System.out.println(ids);
