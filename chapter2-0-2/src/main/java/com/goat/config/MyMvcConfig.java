@@ -12,11 +12,12 @@ public class MyMvcConfig implements WebMvcConfigurer {
     @Autowired
     CustomInterceptor1 customInterceptor;
 
-    /** 视图跳转控制器
+    /** 视图跳转控制器  统一跳转 统一拦截
      * 自定义页面跳转 映射
      * 浏览器发送 /test 请求来到 success
-     *  测试地址： http://localhost:8263/mytest  直接跳转到  success.html 页面  这样就避免了
-     *  只是为了页面跳转 还要在写一个controller函数的尴尬！
+     *  测试地址： http://localhost:8263/mytest  直接跳转到  success.html 页面
+     *  这样就避免了 只是为了页面跳转 还要在写一个
+     *  避免、不用、不需要  为了页面跳转 再写一个controller函数的尴尬！
      * @param registry
      */
     @Override
