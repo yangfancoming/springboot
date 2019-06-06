@@ -2,12 +2,15 @@ package com.goat.config;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
 import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;
+import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.servlet.SimpleCookie;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -31,7 +34,7 @@ public class ShiroConfig {
 	public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         // 创建 ShiroFilterFactoryBean 并与 securityManager 进行关联
         ShiroFilterFactoryBean shiroBean = new ShiroFilterFactoryBean();
-        shiroBean.setSecurityManager(securityManager);
+        shiroBean.setSecurityManager(securityManager); // 必须设置 SecurityManager
         //拦截成功后的跳转页面： 如果不设置默认会自动寻找Web工程根目录下(templates/)的"/login.jsp"页面
 		shiroBean.setLoginUrl("/login"); // 请求被拦截后  跳转到 登录页面  (哥是登录页哦) 没有登陆的用户只能访问登陆页面
 		shiroBean.setSuccessUrl("/success");// 设置成功之后要跳转的链接
@@ -45,7 +48,6 @@ public class ShiroConfig {
      */
     @Bean
     protected ShiroFilterChainDefinition shiroFilterChainDefinition() {
-
         DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition(); // 为了保证顺序 使用 LinkedHashMap
         chainDefinition.addPathDefinition("/", "anon"); //  对应 LoginController  中  index 首页的跳转  不拦截
         chainDefinition.addPathDefinition("/static/**", "anon");
@@ -76,10 +78,11 @@ public class ShiroConfig {
 	public SecurityManager securityManager(MyShiroRealm myShiroRealm){
 		DefaultWebSecurityManager securityManager =  new DefaultWebSecurityManager(); // 1. 创建 DefaultWebSecurityManager 对象
 		securityManager.setRealm(myShiroRealm);  // 2.securityManager 关联 自定义realm
+        securityManager.setRememberMeManager(rememberMeManager());  // 3.记住我
 		return securityManager;
 	}
 
-	// 用于  thymeleaf 和 shiro 标签配合使用
+	/**  用于  thymeleaf 和 shiro 标签配合使用 （为了在thymeleaf里使用shiro的标签的bean）  */
     @Bean
 	public ShiroDialect getShiroDialect(){
 	    return new ShiroDialect();
@@ -96,6 +99,23 @@ public class ShiroConfig {
 		authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
 		return authorizationAttributeSourceAdvisor;
 	}
+
+    /** cookie管理对象;记住我功能 */
+    public CookieRememberMeManager rememberMeManager(){
+        CookieRememberMeManager cookieRememberMeManager = new CookieRememberMeManager();
+        cookieRememberMeManager.setCookie(rememberMeCookie());
+        //rememberMe cookie加密的密钥 建议每个项目都不一样 默认AES算法 密钥长度(128 256 512 位)
+        cookieRememberMeManager.setCipherKey(Base64.decode("3AvVhmFLUs0KTA3Kprsdag=="));
+        return cookieRememberMeManager;
+    }
+
+    /** cookie对象; */
+    public SimpleCookie rememberMeCookie(){
+        SimpleCookie simpleCookie = new SimpleCookie("rememberMe"); //这个参数是cookie的名称，对应前端的checkbox的name = rememberMe
+        simpleCookie.setMaxAge(2592000);  // 记住我cookie生效时间30天 ,单位秒;
+        return simpleCookie;
+    }
+
 //
 //	@Bean(name="simpleMappingExceptionResolver")
 //	public SimpleMappingExceptionResolver createSimpleMappingExceptionResolver() {

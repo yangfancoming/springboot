@@ -26,4 +26,8 @@
     创建 ShiroFilterFactoryBean  并与 SecurityManager 进行关联
     
     
-   
+#第三方
+
+ 
+   http://localhost:8351/login
+   http://localhost:8351/hello/success

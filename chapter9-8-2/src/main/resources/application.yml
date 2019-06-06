@@ -1,0 +1,14 @@
+spring:
+  thymeleaf:
+    cache: false #关闭缓存 （ 开发阶段建议关闭）
+    prefix: classpath:/templates/ #添加路径前缀  配置后 则 templates 路径下的 html 无法访问
+    mode: LEGACYHTML5 # 模板编码 默认值是HTML5，是一个很严格的检查，改为LEGACYHTML5可以得到一个可能更友好亲切的格式要求 但是需要 nekohtml 依赖
+
+
+
+
+server:
+  port: 8982
+  servlet:
+    # sos 此方法  只对 jar 包方式 运行有效 ， 对配置Tomcat后   在Tomcat中启动 则无效！
+    context-path: /thymeleaf  #项目上下文路径 此处配置后  页面所有的url请求 均需要 http://localhost:8263/thymeleaf/xxxx 才能正常访问  好比在Tomcat下 创建了一个虚拟目录
