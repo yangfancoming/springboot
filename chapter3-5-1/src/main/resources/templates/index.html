@@ -11,14 +11,8 @@
 <div id="div01" class="myDiv" th:id="${hello}" th:class="${hello}" th:text="${hello}">这是显示欢迎信息</div>
 <h3 th:text="${nani}"></h3>
 
-<div shiro:hasPermission = "user:add">
-    <a href="hello/add">添加</a>
-</div>
-<!--<shiro:hasPermission></shiro:hasPermission>-->
 
-<div shiro:hasPermission="user:update">
-    <a href="hello/edit">修改</a>
-</div>
+
 
 '!', '!=', '%', '&#', '&&', '&gt;', '&lt;', '(', '*', '+', '+=', ',', '-', '.', '/',
 </body>

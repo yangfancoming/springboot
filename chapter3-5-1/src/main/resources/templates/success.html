@@ -1,14 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh_CN" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
     <meta charset="UTF-8">
     <title>success </title>
 </head>
 <body>
-恭喜你 登录成功了！
+恭喜你 登录成功了！  授权了： hello:add  和  hello:update
+<br>
+chainDefinition.addPathDefinition("/hello/add", "perms[hello:add]");
+<br>
+chainDefinition.addPathDefinition("/hello/edit", "perms[hello:edit]");
+<br>
+<shiro:hasPermission name="hello:add">
+    <a href="/hello/add">添加---hello:add </a>
+</shiro:hasPermission>
+<br>
+<shiro:hasPermission name="hello:update">
+    <a href="/hello/edit">修改---hello:update</a>
+</shiro:hasPermission>
 
-<a href="/hello/add">添加</a>
-<a href="/hello/edit">修改</a>
 
 </body>
 </html>
