@@ -303,7 +303,7 @@ var Core = (function () {
         if (days == undefined || days == '') {
             days = 1;
         }
-        let date = new Date(date);
+        var date = new Date(date);
         date.setDate(date.getDate() + days);
         let month = date.getMonth() + 1;
         let day = date.getDate();

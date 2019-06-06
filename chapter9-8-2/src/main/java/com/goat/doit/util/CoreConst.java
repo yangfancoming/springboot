@@ -1,9 +1,5 @@
 package com.goat.doit.util;
-/**
- * @version V1.0
- * @date 2018年7月11日
- * @author superzheng
- */
+
 public class CoreConst {
     public static final Integer  SUCCESS_CODE           = 200;
     public static final Integer  FAIL_CODE               = 500;

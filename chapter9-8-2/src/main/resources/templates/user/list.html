@@ -159,34 +159,23 @@
     </div>
 </div>
 <script>
-    var editFlag = "[[${@perms.hasPerm('user:edit')}]]";
-    var deleteFlag = "[[${@perms.hasPerm('user:delete')}]]";
-    var assignRoleFlag="[[${@perms.hasPerm('user:assignRole')}]]";
-    var userIdStr;//批量用户id
-    var roleIdStr;//分配的角色
-    var selectRoleIds;
-    var userIdChecked;
-    var loadRoleCount=0;
-    var columns = [
-        {checkbox: true },
+    let editFlag = "[[${@perms.hasPerm('user:edit')}]]";
+    let deleteFlag = "[[${@perms.hasPerm('user:delete')}]]";
+    let assignRoleFlag="[[${@perms.hasPerm('user:assignRole')}]]";
+    let userIdStr;//批量用户id
+    let roleIdStr;//分配的角色
+    let selectRoleIds;
+    let userIdChecked;
+    let loadRoleCount=0;
+    let columns = [
+        { checkbox: true },
+        { field: 'username', title: '用户名',align : "center"},
+        { field: 'email', title: '邮箱',align : "center"},
+        { field: 'phone', title: '电话',align : "center"},
         {
-            field: 'username',
-            title: '用户名',
-            align : "center"
-        },{
-            field: 'email',
-            title: '邮箱',
-            align : "center"
-        }, {
-            field: 'phone',
-            title: '电话',
-            align : "center",
-        },{
-            field: 'roles',
-            title: '角色',
-            align : "center",
+            field: 'roles',title: '角色', align : "center",
             formatter:function(value,row, index){
-                var roles="";
+                let roles="";
                 $.each(value,function (i,item) {
                     roles+=item.name+",";
                 })
@@ -197,37 +186,30 @@
             }
         },
         {
-            field: 'status',
-            title: '用户状态',
-            align : "center",
+            field: 'status',title: '用户状态',align : "center",
             formatter:function(value,row, index){
                 return row.status == '1' ? "启用" : "禁用";
             }
         },
         {
-            field : 'operation',
-            title : '操作',
-            align : "center",
+            field : 'operation',title : '操作',align : "center",
             formatter : function(value,row, index) {
-                var edit = editFlag=="true" ?  '<a class="table-btn table-btn-info" href="javascript:void(0)" onclick="editUser('+row.userId+')">编辑</a>' : '';
-                var assign = assignRoleFlag=="true"  ? '<a class="table-btn table-btn-info"  href="javascript:void(0)" onclick="assignRoleList('+row.userId+')">分配角色</a>':'';
-                var del = deleteFlag=="true"  ?  '<a  class="table-btn table-btn-danger" href="javascript:void(0)" onclick="deleteUser('+row.userId+')">删除</a>' : '';
+                let edit = editFlag=="true" ?  '<a class="table-btn table-btn-info" href="javascript:void(0)" onclick="editUser('+row.userId+')">编辑</a>' : '';
+                let assign = assignRoleFlag=="true"  ? '<a class="table-btn table-btn-info"  href="javascript:void(0)" onclick="assignRoleList('+row.userId+')">分配角色</a>':'';
+                let del = deleteFlag=="true"  ?  '<a  class="table-btn table-btn-danger" href="javascript:void(0)" onclick="deleteUser('+row.userId+')">删除</a>' : '';
                 return edit + assign + del;
             }
         }];
-    var options={
-        id:"#table",
-        url: '/user/list',
-        columns:columns,
-        toolbar: '#toolbar',
-        showRefresh: true,
-        queryParams : queryParams
+    let options={
+        id:"#table", url: '/user/list',columns:columns,toolbar: '#toolbar',
+        showRefresh: true, queryParams : queryParams
     }
+
     Core.initTable(options);
 
     /*查询用户参数*/
     function queryParams(params) {
-        var temp = { //这里的键的名字和控制器的变量名必须一致，这边改动，控制器也需要改成一样的
+        let temp = { //这里的键的名字和控制器的变量名必须一致，这边改动，控制器也需要改成一样的
             limit : params.limit, //页面大小
             offset : params.offset, //页码
             username : $("#username").val(),
@@ -239,7 +221,7 @@
 
     /*查询角色参数*/
     function queryRoleParams(params){
-        var temp = {
+        let temp = {
             userId :userIdChecked
         };
         return temp;
@@ -267,34 +249,21 @@
         userIdChecked=userId;
         $("#assignRoleModal").modal("show");
         if(loadRoleCount==0){
-            var roleColumns=[
+            let roleColumns=[
                 {checkbox: true },
+                { field: 'roleId',title: '角色ID', align : "center" },
+                { field: 'name',title: '角色名称',align : "center" },
+                { field: 'description',title: '角色描述',align : "center" },
+
                 {
-                    field: 'roleId',
-                    title: '角色ID',
-                    align : "center"
-                }, {
-                    field: 'name',
-                    title: '角色名称',
-                    align : "center"
-                }, {
-                    field: 'description',
-                    title: '角色描述',
-                    align : "center"
-                },
-                {
-                    field: 'status',
-                    title: '角色状态',
-                    align : "center",
+                    field: 'status', title: '角色状态', align : "center",
                     formatter:function(value,row, index){
                         return row.status == '1' ? "有效" : "删除";
                     }
                 }];
-            var roleOptions={
-                id:"#assignRoleTable",
-                url: "/user/assign/role/list",
-                columns:roleColumns,
-                pagination : false,
+            let roleOptions={
+                id:"#assignRoleTable", url: "/user/assign/role/list",
+                columns:roleColumns,pagination : false,
                 queryParams : queryRoleParams,
                 onLoadSuccess: function(){  //加载成功时执行
                     loadRoleCount=1;
@@ -315,8 +284,6 @@
         return res.rows;
     }
 
-
-
     $(function () {
         /*查询*/
         $("#btn_query").click(function(){
@@ -328,7 +295,7 @@
         });
         /*批量删除*/
         $("#btn_batch_delete").click(function(){
-            var checkedRows= Core.selectMutiData("#table");
+            let checkedRows= Core.selectMutiData("#table");
             if(checkedRows){
                 Core.confirm("确定删除选中的"+checkedRows.length+"条记录？",function () {
                     userIdStr = "";
@@ -347,38 +314,24 @@
         });
         /*分配角色*/
         $("#btn_assign_role").click(function(){
-            var result = Core.selectSingleData("#table");
+            let result = Core.selectSingleData("#table");
             if(result){
                 $("#assignRoleModal").modal("show");
                 if(loadRoleCount==0){
-                    var roleColumns=[
+                    let roleColumns=[
                         {checkbox: true },
+                        { field: 'roleId',title: '角色ID',align : "center"},
+                        { field: 'name',title: '角色名称',align : "center"},
+                        { field: 'description',title: '角色描述',align : "center"},
                         {
-                            field: 'roleId',
-                            title: '角色ID',
-                            align : "center"
-                        }, {
-                            field: 'name',
-                            title: '角色名称',
-                            align : "center"
-                        }, {
-                            field: 'description',
-                            title: '角色描述',
-                            align : "center"
-                        },
-                        {
-                            field: 'status',
-                            title: '角色状态',
-                            align : "center",
+                            field: 'status',title: '角色状态',align : "center",
                             formatter:function(value,row, index){
                                 return row.status == '1' ? "有效" : "删除";
                             }
                         }];
-                    var roleOptions={
-                        id:"#assignRoleTable",
-                        url: "/user/assign/role/list",
-                        columns:roleColumns,
-                        pagination : false,
+                    let roleOptions={
+                        id:"#assignRoleTable",url: "/user/assign/role/list",
+                        columns:roleColumns, pagination : false,
                         queryParams : queryRoleParams,
                         onLoadSuccess: function(){  //加载成功时执行
                             loadRoleCount=1;
@@ -410,7 +363,7 @@
         });
         /*分配角色保存*/
         $("#saveAssign").click(function () {
-            var checkedRows= Core.selectMutiData("#assignRoleTable");
+            let checkedRows= Core.selectMutiData("#assignRoleTable");
             if(checkedRows){
                 Core.mask("#saveAssign");
                 roleIdStr="";
