@@ -49,6 +49,7 @@ public class ShiroConfig {
         DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition(); // 为了保证顺序 使用 LinkedHashMap
         chainDefinition.addPathDefinition("/toLogin", "anon");
         chainDefinition.addPathDefinition("/login", "anon");
+        chainDefinition.addPathDefinition("/logout", "anon");
         chainDefinition.addPathDefinition("/error/**", "anon");
         chainDefinition.addPathDefinition("/css/**", "anon");
         chainDefinition.addPathDefinition("/js/**", "anon");

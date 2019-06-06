@@ -17,10 +17,13 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.Serializable;
+import java.util.Deque;
 import java.util.List;
 
 
@@ -67,5 +70,14 @@ public class SystemController {
         //更新最后登录时间
         userService.updateLastLoginTime((User) SecurityUtils.getSubject().getPrincipal());
         return ResultUtil.success("登录成功！");
+    }
+
+    /*登出*/
+    @RequestMapping(value = "/logout")
+    @ResponseBody
+    public ResponseVo logout() {
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        return ResultUtil.success("退出成功");
     }
 }
