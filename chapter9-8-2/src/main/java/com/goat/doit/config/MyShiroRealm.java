@@ -1,14 +1,15 @@
-package com.goat.config;
+package com.goat.doit.config;
 
-import com.goat.bean.User;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import com.goat.doit.model.User;
+import com.goat.doit.service.UserService;
+import com.goat.doit.util.CoreConst;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,6 +19,10 @@ import org.springframework.stereotype.Component;
 */
 @Component
 public class MyShiroRealm extends AuthorizingRealm {
+
+
+    @Autowired
+    private UserService userService;
 
     /**
       sos 错误积累： Wildcard string cannot be null or empty. Make sure permission strings are properly formatte
@@ -42,19 +47,22 @@ public class MyShiroRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         System.out.println("执行认证方法");
         String username = (String)token.getPrincipal();  //获取用户的输入的账号
-//        User user = userService.selectByUsername(username);
-        User user = new User(1,"admin","12345");
-        // 1. 判断账号
-        if(!username.equals(user.getUsername())){
-            return null;// 如果 输入的账号和数据库中账号不相同 那么这里 null 会使 shiro 抛出 UnknownAccountException 异常
+        User user = userService.selectByUsername(username);
+        if(user==null) {
+            throw new UnknownAccountException();
+        }
+        if (CoreConst.STATUS_INVALID.equals(user.getStatus())) {
+            // 帐号锁定
+            throw new LockedAccountException();
         }
         /**
          *  P1 = 数据库账号  P2 = 数据库密码  P3 =  定死的
          *  这些需要注意的是   如果 SecurityManager 管理器函数中  securityManager.setRealm(myShiroRealm)
          *  设置的自定义realm  又设置了 hashedCredentialsMatcher 的 MD5 那么 P2 必须是 经过 M5 加密的
-         *  如果加密了不知道加密的密码   就去掉 盐值 再将表中的密码改成明文的
+         *
          * */
         // 2. 判断密码
+//        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user,user.getPassword(), ByteSource.Util.bytes(user.getCredentialsSalt()),getName());
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user,user.getPassword(),getName());
         return authenticationInfo;
     }

@@ -76,40 +76,31 @@
 </script>
 <script>
     $(function () {
+
         $(".vcode-img").on('click', function () {
-//            var url = '/Creditgt.jpg?d='+Math.random();
-//            $(this).attr('src',url);
             $(this).attr('src', '/verificationCode?' + Math.floor(Math.random() * 100));
         });
-        $("#loginBtn").on('click', function () {
-            if (!doValidForm(loginForm)) {
-                //没有通过验证
-                return;
-            }
+
+
+        let temp = ()=> {
+            if (!doValidForm(loginForm)) return;
             $.ajax({
-                type: "POST",
-                url: "/login",
+                type: "POST",url: "/login",dataType: "json",
                 data: $(".login-form").serialize(),
-                dataType: "json",
-                success: function (data) {
+                success: (data) =>{
                     if (data.status == 200) {
-                        layer.msg(data.msg, {
-                            offset: '30%',
-                            time: 800
-                        }, function () {
-                            window.location.href = "/index";
-                        });
+                        layer.msg(data.msg, { offset: '30%',time: 800 },
+                            ()=> {  window.location.href = "/index"; });
+
                     }else{
-                        layer.msg(data.msg, {
-                            icon: 2,
-                            offset: '30%',
-                            time: 2000
-                        });
+                        layer.msg(data.msg, {  icon: 2,offset: '30%',time: 2000 });
                         $("#verificationCode").click();
                     }
                 }
             });
-        });
+        }
+
+        $("#loginBtn").on('click', temp);
 
         $(document).keyup(function (event) {
             if (event.keyCode == 13) {

@@ -12,8 +12,6 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 
-import java.util.*;
-
 public class DbShiroRealm extends AuthorizingRealm {
 
 	private static final String encryptSalt = "F12839WhsnnEV$#23b";//数据库存储的用户密码的加密salt，正式环境不能放在源代码里
