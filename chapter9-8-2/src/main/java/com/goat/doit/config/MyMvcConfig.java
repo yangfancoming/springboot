@@ -1,7 +1,6 @@
 package com.goat.doit.config;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -16,6 +15,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/index").setViewName("index/index");
         registry.addViewController("/").setViewName("index/index");
         registry.addViewController("/users").setViewName("user/list");
+        registry.addViewController("/roles").setViewName("role/list");
     }
 
 }

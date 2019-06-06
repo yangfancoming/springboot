@@ -31,3 +31,9 @@
  
    http://localhost:8351/login
    http://localhost:8351/hello/success
+   
+   
+ # shiro 报错
+    java.lang.IllegalArgumentException: Odd number of characters.
+    问题出在 doGetAuthenticationInfo 方法中的
+    return new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), salt, getName());
