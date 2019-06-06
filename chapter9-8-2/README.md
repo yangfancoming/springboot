@@ -4,7 +4,8 @@
     2.发起 工作台主页  请求 Core.load("#content","/workdest");
     2.login.html  页  请求 /verificationCode
     
-    
+    用户登录后 KickoutSessionControlFilter 类中的 
+    Deque<Serializable> deque = cache.get(username);  将用户名写入缓存
     
 # 项目报错：
      Exception evaluating SpringEL expression: "@perms.hasPerm('user:edit')" (template: "user/list" - line 162, col 23)

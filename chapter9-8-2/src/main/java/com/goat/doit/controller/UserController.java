@@ -9,6 +9,7 @@ import com.goat.doit.service.UserService;
 import com.goat.doit.util.CoreConst;
 import com.goat.doit.util.PageUtil;
 import com.goat.doit.util.ResultUtil;
+import com.goat.doit.util.UUIDUtil;
 import com.goat.doit.vo.base.PageResultVo;
 import com.goat.doit.vo.base.ResponseVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,5 +103,34 @@ public class UserController {
         return jsonMap;
     }
 
-
+    /**新增用户*/
+    @PostMapping("/add")
+    @ResponseBody
+    public ResponseVo add(User userForm, String confirmPassword){
+        String username = userForm.getUsername();
+        User user = userService.selectByUsername(username);
+        if (null != user) {
+            return ResultUtil.error("用户名已存在");
+        }
+        String password = userForm.getPassword();
+        //判断两次输入密码是否相等
+        if (confirmPassword != null && password != null) {
+            if (!confirmPassword.equals(password)) {
+                return ResultUtil.error("两次密码不一致");
+            }
+        }
+        userForm.setUserId(UUIDUtil.getUniqueIdByUUId());
+        userForm.setStatus(CoreConst.STATUS_VALID);
+        Date date = new Date();
+        userForm.setCreateTime(date);
+        userForm.setUpdateTime(date);
+        userForm.setLastLoginTime(date);
+//        PasswordHelper.encryptPassword(userForm);
+        int num = userService.register(userForm);
+        if(num > 0){
+            return ResultUtil.success("添加用户成功");
+        }else {
+            return ResultUtil.error("添加用户失败");
+        }
+    }
 }

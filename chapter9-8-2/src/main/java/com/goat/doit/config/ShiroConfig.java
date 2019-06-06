@@ -2,13 +2,13 @@ package com.goat.doit.config;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import com.goat.doit.shiro.KickoutSessionControlFilter;
+import com.goat.doit.shiro.ShiroService;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
-import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
-import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;
 import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.SimpleCookie;
@@ -16,9 +16,14 @@ import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.crazycake.shiro.RedisCacheManager;
 import org.crazycake.shiro.RedisManager;
 import org.crazycake.shiro.RedisSessionDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import javax.servlet.Filter;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 
 /**
@@ -34,6 +39,15 @@ role  ： 该资源必须得到角色权限才可以访问
 @Configuration
 public class ShiroConfig {
 
+
+    // 貌似没啥用  可以注释掉 试试
+    @Bean
+    public static LifecycleBeanPostProcessor getLifecycleBeanPostProcessor() {
+        return new LifecycleBeanPostProcessor();
+    }
+    @Autowired
+    private ShiroService shiroService;
+
 	@Bean
 	public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         // 创建 ShiroFilterFactoryBean 并与 securityManager 进行关联
@@ -44,34 +58,18 @@ public class ShiroConfig {
 		shiroBean.setSuccessUrl("/index");// 设置成功之后要跳转的链接
         shiroBean.setUnauthorizedUrl("/403"); //未授权界面; perms[hello:add] 验证失败后 要跳转的页面
 //		shiroBean.setFilterChainDefinitionMap(filterMap);
-        shiroBean.setFilterChainDefinitionMap(shiroFilterChainDefinition().getFilterChainMap());//  加载url拦截规则
+
+        //自定义拦截器
+        Map<String, Filter> filtersMap = new LinkedHashMap<>();
+        //限制同一帐号同时在线的个数。
+        filtersMap.put("kickout", kickoutSessionControlFilter());
+        shiroBean.setFilters(filtersMap);
+        //拦截器.
+        Map<String,String> filterChainDefinitionMap = shiroService.loadFilterChainDefinitions();
+        shiroBean.setFilterChainDefinitionMap(filterChainDefinitionMap);//  加载url拦截规则
 		return shiroBean;
 	}
-    /**
-     对于登录请求，Filter直接放过，进到controller里面。Controller会调用shiro做用户名和密码的校验，成功后返回token
-     */
-    @Bean
-    protected ShiroFilterChainDefinition shiroFilterChainDefinition() {
-        DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition(); // 为了保证顺序 使用 LinkedHashMap
-        chainDefinition.addPathDefinition("/toLogin", "anon");
-        chainDefinition.addPathDefinition("/login", "anon");
-        chainDefinition.addPathDefinition("/logout", "anon");
-        chainDefinition.addPathDefinition("/error/**", "anon");
-        chainDefinition.addPathDefinition("/css/**", "anon");
-        chainDefinition.addPathDefinition("/js/**", "anon");
-        chainDefinition.addPathDefinition("/img/**", "anon");
-        chainDefinition.addPathDefinition("/libs/**", "anon");
-        chainDefinition.addPathDefinition("/favicon.ico", "anon");
-        chainDefinition.addPathDefinition("/verificationCode", "anon");
-        /**
-         授权过滤器 如果 指定了未授权界面 那么 直接跳到指定的页面(403) 如果未指定未授权界面  那么直接报错 401 Unauthorized
-         授权认证会调用 doGetAuthorizationInfo 函数
-         * */
-//        chainDefinition.addPathDefinition("/hello/add", "perms[hello:add]");
-//        chainDefinition.addPathDefinition("/hello/edit", "perms[hello:edit]");
-        chainDefinition.addPathDefinition("/**", "authc");   // 过滤链定义，从上向下顺序执行，一般将 /** 放在最为下边  这是一个坑呢，一不小心代码就不好使了;
-        return chainDefinition;
-    }
+
 	/**
 	 * 凭证匹配器 （由于我们的密码校验交给Shiro的SimpleAuthenticationInfo进行处理了 ）
 	 */
