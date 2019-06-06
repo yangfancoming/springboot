@@ -16,11 +16,11 @@ public class HelloController {
         return "views/success"; // 跳转到  templates路径下的 success.html
     }
 
-    // 测试地址：    http://localhost:8982/test1
+    // 测试地址：   http://localhost:8982/thymeleaf/test1
     @RequestMapping("/test1")
     public String success(Map<String,String> map){ // 这里的 map 一定要作为参数  不能 在函数内 new出来 否则 前端无法渲染
         map.put("hello","123123");
-        return "success";
+        return "index/index";
     }
 
     // 测试地址：    http://localhost:8982/test2
