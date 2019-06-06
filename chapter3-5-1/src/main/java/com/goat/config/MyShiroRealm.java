@@ -1,7 +1,5 @@
 package com.goat.config;
 
-
-
 import com.goat.bean.User;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -21,8 +19,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyShiroRealm extends AuthorizingRealm {
 
-//    @Reference
-//    public IUserService userService;
+    /**
+      sos 错误积累： Wildcard string cannot be null or empty. Make sure permission strings are properly formatte
+     是由于  authInfo.addStringPermission(null)
+    */
 
     /* 执行授权 ：*/
     @Override
@@ -31,14 +31,9 @@ public class MyShiroRealm extends AuthorizingRealm {
         // 给资源进行授权
         SimpleAuthorizationInfo authInfo = new SimpleAuthorizationInfo();
         User userInfo  = (User) principals.getPrimaryPrincipal();
-//        for(SysRole role:userInfo.getRoleList()){
-//            authInfo.addRole(role.getRole());
-//            for(SysPermission p:role.getPermissions()){
-//                authInfo.addStringPermission(p.getPermission());
-//            }
-//        }
-//        authInfo.addStringPermission(userInfo.getRoleid());
-//        authInfo.addStringPermission("hello:add");// 授予 对应  filterChainDefinitionMap.put("/hello/add", "perms[hello:add]");  访问权限
+        System.out.println(userInfo);
+        authInfo.addStringPermission("hello:add");// 授予 对应  filterChainDefinitionMap.put("/hello/add", "perms[hello:add]");  访问权限
+        authInfo.addStringPermission("hello:update");// 授予 对应  filterChainDefinitionMap.put("/hello/add", "perms[hello:edit]");  访问权限
         return authInfo;
     }
 

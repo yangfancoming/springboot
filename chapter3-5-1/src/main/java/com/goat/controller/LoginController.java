@@ -26,7 +26,7 @@ public class LoginController {
 
     @RequestMapping("/403")
     public String success(Map<String,String> map){ // 这里的 map 一定要作为参数  不能 在函数内 new出来 否则 前端无法渲染
-        map.put("hello","为授权哦");
+        map.put("hello","没有授权哦");
         return "403";
     }
     //    http://localhost:8351/login
