@@ -1,8 +1,8 @@
 <div th:fragment="navbar" class="jax-header">
     <header class="main-header">
         <a href="/index" class="logo">
-            <span class="logo-mini"><b>NB</b></span>
-            <span class="logo-lg"><b>Nb</b>Class</span>
+            <span class="logo-mini"><b>Goat</b></span>
+            <span class="logo-lg"><b>Goat</b>Coming</span>
         </a>
         <nav class="navbar navbar-static-top">
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
@@ -27,6 +27,7 @@
                         </a>
                     </li>
                     <li class="dropdown user user-menu">
+                        <!--个人信息-->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img th:src="@{/img/person.jpg}" class="user-image" alt="User Image">
                             <span><shiro:principal property="username" /></span>

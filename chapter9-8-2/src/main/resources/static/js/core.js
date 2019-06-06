@@ -1,7 +1,7 @@
 /*Core*/
 var Core = (function () {
-    var core = {};
-    var coreOptions;
+    let core = {};
+    let coreOptions;
     /*Core的参数对象*/
     coreOptions = {
         tableOptions: {
@@ -111,7 +111,7 @@ var Core = (function () {
     };
     /*bootstrap-table表格*/
     core.initTable = function (options, success) {
-        var tableOptions = $.extend({}, coreOptions.tableOptions, options);
+        let tableOptions = $.extend({}, coreOptions.tableOptions, options);
         $(tableOptions.id).bootstrapTable({
             url: tableOptions.url, //请求后台的URL（*）
             contentType: tableOptions.contentType, //用post请求，这个是必须条件，必须加上，get可以不用，亲测
@@ -153,23 +153,23 @@ var Core = (function () {
             onPostBody : function () {
                 //改变复选框样式
                 $(tableOptions.id).find("input:checkbox").each(function (i) {
-                    var $check = $(this);
+                    let $check = $(this);
                     if ($check.attr("id") && $check.next("label")) {
                         return;
                     }
-                    var name = $check.attr("name");
-                    var id = name + "-" + i;
-                    var $label = (i==0?$('<label for="'+ id +'"></label>'):(tableOptions.clickToSelect==true?$('<label></label>'):$('<label for="'+ id +'"></label>')));
+                    let name = $check.attr("name");
+                    let id = name + "-" + i;
+                    let $label = (i==0?$('<label for="'+ id +'"></label>'):(tableOptions.clickToSelect==true?$('<label></label>'):$('<label for="'+ id +'"></label>')));
                     $check.attr("id", id).parent().addClass("zb-checkbox").append($label);
                 });
                 $(tableOptions.id).find("input:radio").each(function (i) {
-                    var $check = $(this);
+                    let $check = $(this);
                     if ($check.attr("id") && $check.next("label")) {
                         return;
                     }
-                    var name = $check.attr("name");
-                    var id = name + "-" + i;
-                    var $label = (i==0?$('<label for="'+ id +'"></label>'):(tableOptions.clickToSelect==true?$('<label></label>'):$('<label for="'+ id +'"></label>')));
+                    let name = $check.attr("name");
+                    let id = name + "-" + i;
+                    let $label = (i==0?$('<label for="'+ id +'"></label>'):(tableOptions.clickToSelect==true?$('<label></label>'):$('<label for="'+ id +'"></label>')));
                     $check.attr("id", id).parent().addClass("zb-radio").append($label);
                 });
                 if ($.isFunction(options.onPostBody)) {
@@ -179,7 +179,7 @@ var Core = (function () {
         });
     }
     function queryInitParams(params) {
-        var temp = { //这里的键的名字和控制器的变量名必须一致，这边改动，控制器也需要改成一样的
+        let temp = { //这里的键的名字和控制器的变量名必须一致，这边改动，控制器也需要改成一样的
             limit: params.limit, //页面大小
             offset: params.offset //页码
         };
@@ -212,7 +212,7 @@ var Core = (function () {
         return $(id).bootstrapTable("getRowByUniqueId", val);
     }
     core.selectSingleData = function (id){
-        var selectContent = $(id).bootstrapTable('getSelections');
+        let selectContent = $(id).bootstrapTable('getSelections');
         if(typeof(selectContent) == 'undefined' || selectContent == "") {
             layer.msg("请先选择一条数据!");
             return false;
@@ -220,13 +220,13 @@ var Core = (function () {
             layer.msg("只能选择一条数据!");
             return false;
         }else{
-            var selectData = selectContent[0];
+            let selectData = selectContent[0];
             return selectData;
         }
     }
 
     core.selectMutiData = function (id){
-        var checkedRows= $(id).bootstrapTable('getSelections');
+        let checkedRows= $(id).bootstrapTable('getSelections');
         if(checkedRows.length==0){
             layer.msg("请先选择一条数据！");
             return false;
@@ -238,7 +238,7 @@ var Core = (function () {
 
     /*更新某一列的值 index-行索引，field-字段名，value-值*/
     core.updateCell = function (id, index, field, value) {
-        var updateCellOptions = {
+        let updateCellOptions = {
             index: index,
             field: field,
             value: value
@@ -248,7 +248,7 @@ var Core = (function () {
 
     /*禁用button*/
     core.mask = function (e) {
-        var i = "<i class='icon icon-spin icon-spinner-indicator'></i>"
+        let i = "<i class='icon icon-spin icon-spinner-indicator'></i>"
         $(e).append(i);
         $(e).attr('disabled', "true");//添加disabled属性
     }
@@ -273,7 +273,7 @@ var Core = (function () {
 
     //date类型到字符串
     core.formatterDateTime = function (date) {
-        var datetime = date.getFullYear()
+        let datetime = date.getFullYear()
             + "-"// "年"
             + ((date.getMonth() + 1) >= 10 ? (date.getMonth() + 1)
                 : "0" + (date.getMonth() + 1))
@@ -294,7 +294,7 @@ var Core = (function () {
 
     //long类型转时间字符串
     core.longMsTimeConvertToDateTime = function (time) {
-        var myDate = new Date(time);
+        let myDate = new Date(time);
         return this.formatterDateTime(myDate);
     }
 
@@ -303,17 +303,17 @@ var Core = (function () {
         if (days == undefined || days == '') {
             days = 1;
         }
-        var date = new Date(date);
+        let date = new Date(date);
         date.setDate(date.getDate() + days);
-        var month = date.getMonth() + 1;
-        var day = date.getDate();
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
         return date.getFullYear() + '-' + getFormatDate(month) + '-' + getFormatDate(day);
     }
     function getFormatDate(arg) {
         if (arg == undefined || arg == '') {
             return '';
         }
-        var re = arg + '';
+        let re = arg + '';
         if (re.length < 2) {
             re = '0' + re;
         }
@@ -327,11 +327,11 @@ var Core = (function () {
 
     core.clearForm = function (id) {
 
-        var objId = document.getElementById(id);
+        let objId = document.getElementById(id);
         if (objId == undefined) {
             return;
         }
-        for (var i = 0; i < objId.elements.length; i++) {
+        for (let i = 0; i < objId.elements.length; i++) {
             if (objId.elements[i].type == "text") {
                 objId.elements[i].value = "";
             }
@@ -348,7 +348,7 @@ var Core = (function () {
                 objId.elements[i].options[0].selected = true;
             }
             else if (objId.elements[i].type == "select-multiple") {
-                for (var j = 0; j < objId.elements[i].options.length; j++) {
+                for (let j = 0; j < objId.elements[i].options.length; j++) {
                     objId.elements[i].options[j].selected = false;
                 }
             }
@@ -389,7 +389,7 @@ var Core = (function () {
 
     // 判断是否为json对象
     core.isJsonObject = function (obj) {
-        var isjson = typeof(obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]" && !obj.length;
+        let isjson = typeof(obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]" && !obj.length;
         return isjson;
     }
 

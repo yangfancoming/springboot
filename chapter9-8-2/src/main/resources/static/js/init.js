@@ -22,13 +22,14 @@ $(function () {
         }
     })
 });
+
 $(function(){
     let clickHref="";//点击菜单判断使用
     //菜单列表html
     let menus = '';
     $.ajax({
         type: 'POST', url: "/menu" , data: {} ,
-        success: function (data) {
+        success: (data)=> {
             GetData(0, data)
             $("#menu").append(menus);
             $(".sidebar-menu a").click(function () {  /*菜单点击事件*/
@@ -41,7 +42,6 @@ $(function(){
                     clickHref = aHref;//赋值
                 }
             });
-
             loadMenuRefresh();/*初始化加载菜单样式*/
         }
     });
@@ -57,7 +57,6 @@ $(function(){
                 menus += '<ul class="treeview-menu">';
             }
             for (let i in childArry) {
-                /**/
                 let childArryChild = GetParentArry(childArry[i].id, arry);
                 if(childArryChild.length>0){
                     menus += '<li class="treeview"><a href="#"><i class="'+childArry[i].icon+'"></i> <span>'+childArry[i].name+'</span>'
