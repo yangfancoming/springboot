@@ -139,7 +139,7 @@ public class ShiroConfig {
 
     /**
      * 配置shiro redisManager
-     * 使用的是shiro-redis开源插件
+     * 使用的是shiro-redis开源插件  在登录页面不登录的情况下 刷新页面  也会存入session  这是为什么呢？ 我怀疑是 shiro-redis插件的实现的？？？
      * @return
      */
     public RedisManager redisManager() {

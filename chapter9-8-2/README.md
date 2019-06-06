@@ -14,3 +14,6 @@
      
      是由于 没有引入 com.goat.doit.shiro.PermsService 类。。。
     
+    
+    解决 用户登录后  用户信息没有存入redis的问题   ShiroConfig中的 过滤连问题
+    是 ShiroConfig 类中 Map<String,String> filterChainDefinitionMap = shiroService.loadFilterChainDefinitions(); 这里的问题  请参看 两次git提交 变化的部分 
