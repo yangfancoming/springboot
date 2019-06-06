@@ -61,8 +61,8 @@ public class ShiroConfig {
          授权过滤器 如果 指定了未授权界面 那么 直接跳到指定的页面(403) 如果未指定未授权界面  那么直接报错 401 Unauthorized
          授权认证会调用 doGetAuthorizationInfo 函数
          * */
-        chainDefinition.addPathDefinition("/hello/add", "perms[hello:add]");
-        chainDefinition.addPathDefinition("/hello/edit", "perms[hello:edit]");
+//        chainDefinition.addPathDefinition("/hello/add", "perms[hello:add]");
+//        chainDefinition.addPathDefinition("/hello/edit", "perms[hello:edit]");
         chainDefinition.addPathDefinition("/**", "authc");   // 过滤链定义，从上向下顺序执行，一般将 /** 放在最为下边  这是一个坑呢，一不小心代码就不好使了;
         return chainDefinition;
     }
