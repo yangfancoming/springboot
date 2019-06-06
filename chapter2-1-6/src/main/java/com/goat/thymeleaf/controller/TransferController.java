@@ -33,4 +33,10 @@ public class TransferController {
     public String form() {
         return "form";
     }
+
+    //    http://localhost:8216/transfer/table
+    @GetMapping("/table")
+    public String table() {
+        return "table";
+    }
 }

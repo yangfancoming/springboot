@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html;charset=UTF-8"/>
+    <title>山羊来了</title>
+    <meta content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link th:href="@{/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/plugins/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+    <link href="https://cdn.bootcss.com/bootstrap-table/1.14.2/bootstrap-table.css" rel="stylesheet">
+</head>
+<body>
+
+<button type="button" class="btn btn-default" onclick="test1()">发送单个参数</button>
+<button type="button" class="btn btn-primary" onclick="test2()">发送两个参数</button>
+<button type="button" class="btn btn-success" onclick="test3()">发送数组</button>
+<button type="button" class="btn btn-info" onclick="test4()">发送List</button>
+<button type="button" class="btn btn-warning" onclick="test5()">警告</button>
+<button type="button" class="btn btn-danger" onclick="">危险</button>
+<br>
+
+<table id="table"/>
+
+
+<!--sos 注意 js 引入位置 -->
+<script th:src="@{/plugins/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/plugins/bootstrap/js/bootstrap.min.js}"></script>
+<script src="https://cdn.bootcss.com/bootstrap-table/1.14.2/bootstrap-table.js"></script>
+</body>
+</html>
+
+<script type="text/javascript">
+
+    $(function(){
+    })
+
+</script>

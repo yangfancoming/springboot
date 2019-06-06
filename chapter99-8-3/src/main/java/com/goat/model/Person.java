@@ -2,10 +2,9 @@ package com.goat.model;
 
 public class Person {
 
-    private String name;
-    private int age;
     private int id;
-
+    private int age;
+    private String name;
 
     public Person() {
     }
