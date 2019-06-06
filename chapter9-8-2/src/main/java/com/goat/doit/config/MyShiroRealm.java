@@ -1,6 +1,8 @@
 package com.goat.doit.config;
 
 import com.goat.doit.model.User;
+import com.goat.doit.service.PermissionService;
+import com.goat.doit.service.RoleService;
 import com.goat.doit.service.UserService;
 import com.goat.doit.util.CoreConst;
 import org.apache.shiro.authc.*;
@@ -8,7 +10,6 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +24,11 @@ public class MyShiroRealm extends AuthorizingRealm {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private RoleService roleService;
 
+    @Autowired
+    private PermissionService permissionService;
     /**
       sos 错误积累： Wildcard string cannot be null or empty. Make sure permission strings are properly formatte
      是由于  authInfo.addStringPermission(null)
@@ -34,12 +39,12 @@ public class MyShiroRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         System.out.println("执行授权方法");
         // 给资源进行授权
+        User user  = (User) principals.getPrimaryPrincipal();
         SimpleAuthorizationInfo authInfo = new SimpleAuthorizationInfo();
-        User userInfo  = (User) principals.getPrimaryPrincipal();
-        System.out.println(userInfo);
-        authInfo.addStringPermission("hello:add");// 授予 对应  filterChainDefinitionMap.put("/hello/add", "perms[hello:add]");  访问权限
-        authInfo.addStringPermission("hello:update");// 授予 对应  filterChainDefinitionMap.put("/hello/add", "perms[hello:edit]");  访问权限
+        authInfo.setRoles(roleService.findRoleByUserId(user.getUserId()));
+        authInfo.setStringPermissions(permissionService.findPermsByUserId(user.getUserId()));
         return authInfo;
+
     }
 
     /* 执行认证 ： 主要是用来进行身份认证的，也就是说验证用户输入的账号和密码是否正确。*/
