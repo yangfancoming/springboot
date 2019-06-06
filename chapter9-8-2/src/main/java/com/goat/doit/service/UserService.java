@@ -3,6 +3,7 @@ package com.goat.doit.service;
 
 
 import com.goat.doit.model.User;
+import com.goat.doit.vo.UserOnlineVo;
 import com.goat.doit.vo.base.ResponseVo;
 
 import java.io.Serializable;
@@ -80,7 +81,7 @@ public interface UserService {
      * @param userOnlineVo
      * @return list
      */
-//    List<UserOnlineVo> selectOnlineUsers(UserOnlineVo userOnlineVo);
+    List<UserOnlineVo> selectOnlineUsers(UserOnlineVo userOnlineVo);
 
     /**
      * 踢出用户
