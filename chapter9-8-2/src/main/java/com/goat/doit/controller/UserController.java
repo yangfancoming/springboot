@@ -103,7 +103,6 @@ public class UserController {
                 return ResultUtil.error("两次密码不一致");
             }
         }
-        userForm.setUserId(UUIDUtil.getUniqueIdByUUId());
         userForm.setStatus(CoreConst.STATUS_VALID);
         Date date = new Date();
         userForm.setCreateTime(date);

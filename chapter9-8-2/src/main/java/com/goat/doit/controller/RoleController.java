@@ -24,11 +24,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * @version V1.0
- * @date 2018年7月11日
- * @author superzheng
- */
+
 @Controller
 @RequestMapping("/role")
 public class RoleController {

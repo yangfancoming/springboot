@@ -18,11 +18,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @version V1.0
- * @date 2018年7月11日
- * @author superzheng
- */
+
 @Service
 public class ShiroService {
     @Autowired

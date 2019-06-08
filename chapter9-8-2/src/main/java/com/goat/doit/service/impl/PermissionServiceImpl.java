@@ -4,9 +4,12 @@ package com.goat.doit.service.impl;
 import com.goat.doit.mapper.PermissionMapper;
 import com.goat.doit.model.Permission;
 import com.goat.doit.service.PermissionService;
+import com.goat.doit.util.CoreConst;
+import com.goat.doit.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -44,7 +47,12 @@ public class PermissionServiceImpl implements PermissionService {
      */
     @Override
     public int insert(Permission permission) {
-        return 0;
+        Date date = new Date();
+        permission.setPermissionId(UUIDUtil.getUniqueIdByUUId());
+        permission.setStatus(CoreConst.STATUS_VALID);
+        permission.setCreateTime(date);
+        permission.setUpdateTime(date);
+        return permissionMapper.insert(permission);
     }
 
 
