@@ -22,6 +22,15 @@ public class RolePermission implements Serializable {
      */
     private String permissionId;
 
+
+    public RolePermission() {
+    }
+
+    public RolePermission(String roleId, String permissionId) {
+        this.roleId = roleId;
+        this.permissionId = permissionId;
+    }
+
     /**
      * @return id
      */

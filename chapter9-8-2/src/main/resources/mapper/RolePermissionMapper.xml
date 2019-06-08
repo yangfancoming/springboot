@@ -15,4 +15,19 @@
     -->
     id, role_id, permission_id
   </sql>
+
+    <!-- RolePermission -->
+    <insert id="batchRolePermission">
+        insert into role_permission(role_id, permission_id) values
+        <foreach item="item" index="index" collection="list" separator=",">
+            (#{item.roleId},#{item.permissionId})
+        </foreach>
+    </insert>
+
+
+    <!--删除 单个-->
+    <delete id="deletes" parameterType="java.lang.Integer">
+        delete from role_permission where role_id = #{roleId}
+    </delete>
+
 </mapper>

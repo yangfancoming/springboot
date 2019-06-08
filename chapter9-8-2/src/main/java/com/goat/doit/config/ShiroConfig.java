@@ -2,6 +2,7 @@ package com.goat.doit.config;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import com.goat.doit.shiro.KickoutSessionControlFilter;
+import com.goat.doit.shiro.MyShiroRealm;
 import com.goat.doit.shiro.ShiroService;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.codec.Base64;

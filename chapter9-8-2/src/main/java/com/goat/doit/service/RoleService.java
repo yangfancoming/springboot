@@ -2,6 +2,7 @@ package com.goat.doit.service;
 
 
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.goat.doit.model.Permission;
 import com.goat.doit.model.Role;
 import com.goat.doit.model.User;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 
-public interface RoleService {
+public interface RoleService extends IService<Role> {
 
     /**
      * 根据用户id查询角色集合

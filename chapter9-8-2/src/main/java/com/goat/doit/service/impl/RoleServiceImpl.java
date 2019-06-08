@@ -1,25 +1,26 @@
 package com.goat.doit.service.impl;
 
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.goat.doit.mapper.PermissionMapper;
 import com.goat.doit.mapper.RoleMapper;
+import com.goat.doit.mapper.RolePermissionMapper;
 import com.goat.doit.mapper.UserMapper;
 import com.goat.doit.model.Permission;
 import com.goat.doit.model.Role;
+import com.goat.doit.model.RolePermission;
 import com.goat.doit.model.User;
 import com.goat.doit.service.RoleService;
+import com.goat.doit.util.ResultUtil;
 import com.goat.doit.vo.base.ResponseVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 
 @Service
-public class RoleServiceImpl implements RoleService {
+public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements RoleService {
 
     @Autowired
     private RoleMapper roleMapper;
@@ -27,6 +28,9 @@ public class RoleServiceImpl implements RoleService {
     private PermissionMapper permissionMapper;
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private RolePermissionMapper rolePermissionMapper;
 
     @Override
     public Set<String> findRoleByUserId(String userId) {
@@ -86,17 +90,32 @@ public class RoleServiceImpl implements RoleService {
 
     /**
      * 根据角色id保存分配权限
-     *
-     * @param roleId
-     * @param permissionIdsList
+     * @param roleId 当前选中角色id
+     * @param permissionIds
      * @return list
      */
     @Override
-    public ResponseVo addAssignPermission(String roleId, List<String> permissionIdsList) {
-        return null;
+    public ResponseVo addAssignPermission(String roleId, List<String> permissionIds) {
+        try{
+            List<RolePermission> list = new ArrayList<>();
+            int num = rolePermissionMapper.deletes(Integer.valueOf(roleId)); // 删除 中间表中 所有与该角色关联的菜单
+            System.out.println(num);
+            for(String permissionId : permissionIds){
+                list.add(new RolePermission(roleId,permissionId));
+            }
+            rolePermissionMapper.batchRolePermission(list);
+            return ResultUtil.success("分配权限成功");
+        }catch(Exception e){
+            return ResultUtil.error("分配权限失败");
+        }
     }
 
-
+    /**
+     * 根据角色id下的所有用户
+     *
+     * @param roleId
+     * @return list
+     */
     @Override
     public List<User> findByRoleId(String roleId) {
         return userMapper.findByRoleId(roleId);

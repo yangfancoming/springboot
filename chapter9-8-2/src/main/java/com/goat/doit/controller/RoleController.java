@@ -2,17 +2,19 @@ package com.goat.doit.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.goat.doit.config.MyShiroRealm;
 import com.goat.doit.model.Permission;
 import com.goat.doit.model.Role;
+import com.goat.doit.model.User;
 import com.goat.doit.service.PermissionService;
 import com.goat.doit.service.RoleService;
+import com.goat.doit.shiro.MyShiroRealm;
 import com.goat.doit.util.CoreConst;
 import com.goat.doit.util.PageUtil;
 import com.goat.doit.util.ResultUtil;
 import com.goat.doit.vo.PermissionTreeListVo;
 import com.goat.doit.vo.base.PageResultVo;
 import com.goat.doit.vo.base.ResponseVo;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/role")
 public class RoleController {
+
     private static final Logger logger = LoggerFactory.getLogger(RoleController.class);
 
     @Autowired
@@ -35,6 +38,9 @@ public class RoleController {
 
     @Autowired
     private PermissionService permissionService;
+
+    @Autowired
+    private MyShiroRealm myShiroRealm;
 
 
     /*角色列表数据*/
@@ -59,11 +65,7 @@ public class RoleController {
     public ResponseVo addRole(Role role) {
         try {
             int a = roleService.insert(role);
-            if (a > 0) {
-                return ResultUtil.success("添加角色成功");
-            } else {
-                return ResultUtil.error("添加角色失败");
-            }
+            return a > 0 ? ResultUtil.success("添加角色成功"):ResultUtil.error("添加角色失败");
         } catch (Exception e) {
             logger.error(String.format("RoleController.addRole%s", e));
             throw e;
@@ -77,13 +79,8 @@ public class RoleController {
         if(roleService.findByRoleId(roleId).size()>0){
             return ResultUtil.error("删除失败,该角色下存在用户");
         }
-        List<String> roleIdsList = Arrays.asList(roleId);
-        int a = roleService.updateStatusBatch(roleIdsList, CoreConst.STATUS_INVALID);
-        if (a > 0) {
-            return ResultUtil.success("删除角色成功");
-        } else {
-            return ResultUtil.error("删除角色失败");
-        }
+        boolean b = roleService.removeById(roleId);
+        return b ? ResultUtil.success("删除角色成功"):ResultUtil.error("删除角色失败");
     }
 
     /*批量删除角色*/
@@ -96,11 +93,7 @@ public class RoleController {
             return ResultUtil.error("删除失败,选择的角色下存在用户");
         }
         int a = roleService.updateStatusBatch(roleIdsList, CoreConst.STATUS_INVALID);
-        if (a > 0) {
-            return ResultUtil.success("删除角色成功");
-        } else {
-            return ResultUtil.error("删除角色失败");
-        }
+        return a > 0 ? ResultUtil.success("删除角色成功"):ResultUtil.error("删除角色失败");
     }
 
     /*编辑角色详情*/
@@ -116,11 +109,7 @@ public class RoleController {
     @ResponseBody
     public ResponseVo editRole(@ModelAttribute("role") Role role) {
         int a = roleService.updateByRoleId(role);
-        if (a > 0) {
-            return ResultUtil.success("编辑角色成功");
-        } else {
-            return ResultUtil.error("编辑角色失败");
-        }
+        return a > 0 ? ResultUtil.success("编辑角色成功"):ResultUtil.error("编辑角色失败");
     }
 
     /*分配权限列表查询*/
@@ -148,5 +137,27 @@ public class RoleController {
         return listVos;
     }
 
+
+    /*分配权限*/
+    @PostMapping("/assign/permission")
+    @ResponseBody
+    public ResponseVo assignRole(String roleId, String permissionIdStr){
+        List<String> permissionIdsList = new ArrayList<>();
+        if(StringUtils.isNotBlank(permissionIdStr)){
+            String[] permissionIds = permissionIdStr.split(",");
+            permissionIdsList = Arrays.asList(permissionIds);
+        }
+        ResponseVo responseVo = roleService.addAssignPermission(roleId,permissionIdsList);
+        /*重新加载角色下所有用户权限*/
+        List<User> userList = roleService.findByRoleId(roleId);
+        if(userList.size()>0){
+            List<String> userIds = new ArrayList<>();
+            for(User user : userList){
+                userIds.add(user.getUserId());
+            }
+            myShiroRealm.clearAuthorizationByUserId(userIds);
+        }
+        return responseVo;
+    }
 
 }
