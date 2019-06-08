@@ -195,11 +195,7 @@ var Core = (function () {
 
     /*刷新表格 ：flag-是否跳转到当前页。默认首页*/
     core.refreshTable = function (id, flag) {
-        if (flag) {
-            $(id).bootstrapTable("refresh");
-        } else {
-            $(id).bootstrapTable("refresh", {"pageNumber": 1});
-        }
+        flag ? $(id).bootstrapTable("refresh"): $(id).bootstrapTable("refresh", {"pageNumber": 1});
     }
 
     /*根据data选中数据*/

@@ -12,38 +12,34 @@ import java.util.List;
 
 public interface UserService {
 
-    /**
-     * 根据用户名查询用户
-     * @param username
-     * @return user
-     */
+    /*** 根据用户名查询用户*/
     User selectByUsername(String username);
 
     /**
-     * 注册用户
+     *
      * @param user
      * @return int
      */
+    /*** 注册用户*/
     int register(User user);
 
     /**
-     * 更新最后登录时间
+     *
      * @param user
      */
+    /*** 更新最后登录时间*/
     void updateLastLoginTime(User user);
 
     /**
-     * 根据条件查询用户列表
+     *
      * @param user
      * @return list
      */
+    /*** 根据条件查询用户列表*/
     List<User> selectUsers(User user);
 
-    /**
-     * 根据用户id查询用户
-     * @param userId
-     * @return user
-     */
+
+    /*** 根据用户id查询用户*/
     User selectByUserId(String userId);
 
     /**

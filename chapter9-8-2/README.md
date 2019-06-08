@@ -17,3 +17,29 @@
     
     解决 用户登录后  用户信息没有存入redis的问题   ShiroConfig中的 过滤连问题
     是 ShiroConfig 类中 Map<String,String> filterChainDefinitionMap = shiroService.loadFilterChainDefinitions(); 这里的问题  请参看 两次git提交 变化的部分 
+    
+    
+# 待解决问题：
+    1.新增账号 登录时候的 加密密码的验证   现在的密码是明文的肯定不行的
+    2.shiro 是如何管理session的  因为在线用户功能啥的都不好使呢  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

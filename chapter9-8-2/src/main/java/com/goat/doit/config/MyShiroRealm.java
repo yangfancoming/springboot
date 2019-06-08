@@ -53,11 +53,10 @@ public class MyShiroRealm extends AuthorizingRealm {
         System.out.println("执行认证方法");
         String username = (String)token.getPrincipal();  //获取用户的输入的账号
         User user = userService.selectByUsername(username);
-        if(user==null) {
+        if(user==null) { // 用户不存在
             throw new UnknownAccountException();
         }
-        if (CoreConst.STATUS_INVALID.equals(user.getStatus())) {
-            // 帐号锁定
+        if (CoreConst.STATUS_INVALID.equals(user.getStatus())) {  // 帐号锁定
             throw new LockedAccountException();
         }
         /**
@@ -67,7 +66,9 @@ public class MyShiroRealm extends AuthorizingRealm {
          *
          * */
         // 2. 判断密码
-//        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user,user.getPassword(), ByteSource.Util.bytes(user.getCredentialsSalt()),getName());
+//        ByteSource bytes = ByteSource.Util.bytes(user.getCredentialsSalt());
+//        PasswordHelper.encryptPassword(user);
+//        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user,user.getPassword(),bytes ,getName());
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user,user.getPassword(),getName());
         return authenticationInfo;
     }

@@ -25,7 +25,7 @@
 - ==chapter1-2-3 springboot  与 日志 log4j + AOP统一处理请求日志==
 - ==chapter1-2-4 springboot  日志输出至Logstash xml方式==
 - ==chapter1-2-5 springboot  日志输出至Logstash  properties方式==    失败
-- ==chapter1-2-6 springboot  自定义starter==
+- ==chapter1-2-6 springboot  自定义starter==mybatisplus 
 - ==chapter1-2-7 springboot  注解开发==
 
 

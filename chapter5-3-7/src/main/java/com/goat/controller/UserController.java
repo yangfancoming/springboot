@@ -44,4 +44,10 @@ public class UserController {
         System.out.println(mapById);
     }
 
+    // http://localhost:8537/user/getById/1   证明 使用 mybatisplus 会自动暴露出其内置的、没有实现的接口 (getById)
+    @RequestMapping("/getById/{id}")
+    public void getById(@PathVariable("id") Integer id) {
+        User user = iUserService.getById(id);
+        System.out.println(user);
+    }
 }
