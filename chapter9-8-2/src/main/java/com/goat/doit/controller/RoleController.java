@@ -100,20 +100,20 @@ public class RoleController {
         return a > 0 ? ResultUtil.success("删除角色成功"):ResultUtil.error("删除角色失败");
     }
 
-    /*编辑角色详情*/
+    /*编辑跳转*/
     @GetMapping("/edit")
     public String detail(Model model, Integer id) {
-        Role role = roleService.findById(id);
+        Role role = roleService.getById(id);
         model.addAttribute("role", role);
         return "role/detail";
     }
 
-    /*编辑角色*/
+    /*编辑保存*/
     @PostMapping("/edit")
     @ResponseBody
     public ResponseVo editRole(@ModelAttribute("role") Role role) {
-        int a = roleService.updateByRoleId(role);
-        return a > 0 ? ResultUtil.success("编辑角色成功"):ResultUtil.error("编辑角色失败");
+        boolean b = roleService.saveOrUpdate(role);
+        return b ? ResultUtil.success("编辑角色成功"):ResultUtil.error("编辑角色失败");
     }
 
     /*分配权限列表查询*/
