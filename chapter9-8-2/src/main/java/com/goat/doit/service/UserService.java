@@ -43,4 +43,12 @@ public interface UserService extends IService<User> {
     /*** 踢出用户*/
     void kickout(Serializable sessionId, String username);
 
+
+    /**
+     * 根据角色id下的所有用户
+     * @param roleId
+     * @return list
+     */
+    List<User> findByRoleId(Integer roleId);
+
 }

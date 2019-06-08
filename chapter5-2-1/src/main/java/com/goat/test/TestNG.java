@@ -1,14 +1,12 @@
 package com.goat.test;
 
 
-import com.goat.entity.Person;
+import com.goat.model.Person;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.concurrent.ExecutionException;
 
 /**
-     * @Description: 功能描述：
-     * @author: 杨帆
 　Guava Cache与ConcurrentMap很相似，但也不完全一样。最基本的区别是ConcurrentMap会一直保存所添加的元素，直到显式的移除；
   Guava Cache为了限制内存的占用，通常都是设定为自动回收元素。在某些场景下，尽管LoadingCahe不回收元素，但是它还是很有用的，因为它会自动加载缓存。
 　Guava Cache适用场景：

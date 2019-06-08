@@ -66,6 +66,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return userMapper.updateStatusBatch(params);
     }
 
+
+
     /**
      * 根据用户id分配角色集合
      *
@@ -135,6 +137,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public void kickout(Serializable sessionId, String username) {
 
+    }
+
+    /**
+     * 根据角色id下的所有用户
+     *
+     * @param roleId
+     * @return list
+     */
+    @Override
+    public List<User> findByRoleId(Integer roleId) {
+        return userMapper.findByRoleId(roleId);
     }
 
     private UserOnlineVo getSessionBo(Session session){

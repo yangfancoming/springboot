@@ -7,6 +7,7 @@ import com.goat.doit.model.Role;
 import com.goat.doit.model.User;
 import com.goat.doit.service.PermissionService;
 import com.goat.doit.service.RoleService;
+import com.goat.doit.service.UserService;
 import com.goat.doit.shiro.MyShiroRealm;
 import com.goat.doit.util.CoreConst;
 import com.goat.doit.util.PageUtil;
@@ -42,6 +43,9 @@ public class RoleController {
     @Autowired
     private MyShiroRealm myShiroRealm;
 
+    @Autowired
+    private UserService userService;
+
 
     /*角色列表数据*/
     @PostMapping("/list")
@@ -64,8 +68,8 @@ public class RoleController {
     @ResponseBody
     public ResponseVo addRole(Role role) {
         try {
-            int a = roleService.insert(role);
-            return a > 0 ? ResultUtil.success("添加角色成功"):ResultUtil.error("添加角色失败");
+            boolean a = roleService.save(role);
+            return a ? ResultUtil.success("添加角色成功"):ResultUtil.error("添加角色失败");
         } catch (Exception e) {
             logger.error(String.format("RoleController.addRole%s", e));
             throw e;
@@ -75,11 +79,11 @@ public class RoleController {
     /*删除角色*/
     @GetMapping("/delete")
     @ResponseBody
-    public ResponseVo deleteRole(String roleId) {
-        if(roleService.findByRoleId(roleId).size()>0){
+    public ResponseVo deleteRole(Integer id) {
+        if(userService.findByRoleId(id).size()>0){
             return ResultUtil.error("删除失败,该角色下存在用户");
         }
-        boolean b = roleService.removeById(roleId);
+        boolean b = roleService.removeById(id);
         return b ? ResultUtil.success("删除角色成功"):ResultUtil.error("删除角色失败");
     }
 
@@ -141,15 +145,15 @@ public class RoleController {
     /*分配权限*/
     @PostMapping("/assign/permission")
     @ResponseBody
-    public ResponseVo assignRole(String roleId, String permissionIdStr){
+    public ResponseVo assignRole(Integer roleId, String permissionIdStr){
         List<String> permissionIdsList = new ArrayList<>();
         if(StringUtils.isNotBlank(permissionIdStr)){
             String[] permissionIds = permissionIdStr.split(",");
             permissionIdsList = Arrays.asList(permissionIds);
         }
-        ResponseVo responseVo = roleService.addAssignPermission(roleId,permissionIdsList);
+        ResponseVo responseVo = roleService.addAssignPermission(roleId.toString(),permissionIdsList);
         /*重新加载角色下所有用户权限*/
-        List<User> userList = roleService.findByRoleId(roleId);
+        List<User> userList = userService.findByRoleId(roleId);
         if(userList.size()>0){
             List<String> userIds = new ArrayList<>();
             for(User user : userList){

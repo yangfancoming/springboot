@@ -6,7 +6,7 @@
       WARNING - @mbggenerated
     -->
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="role_id" property="roleId" jdbcType="VARCHAR" />
+    <!--<result column="role_id" property="roleId" jdbcType="VARCHAR" />-->
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="INTEGER" />
@@ -21,14 +21,14 @@
   </sql>
 
   <select id="findRoleByUserId" resultType="java.lang.String">
-    SELECT r.role_id FROM role r LEFT JOIN user_role ur ON r.role_id = ur.role_id
+    SELECT r.role_id FROM role r LEFT JOIN user_role ur ON r.id = ur.role_id
     WHERE ur.user_id = #{userId,jdbcType=VARCHAR}
   </select>
 
   <select id="selectRoles" parameterType="com.goat.doit.model.Role" resultMap="BaseResultMap" >
     select <include refid="Base_Column_List"/>
     FROM role
-    WHERE status=1
+    WHERE 1 = 1
     <if test="name !=null and name != ''">
         AND name like concat('%', #{name}, '%')
     </if>
@@ -40,7 +40,7 @@
     SET
     status=#{status}, update_time=now()
     where
-    role_id in
+      id in
     <foreach collection="roleIds" item="item" index="index" open="(" separator="," close=")">
       #{item}
     </foreach>
@@ -52,7 +52,7 @@
       SET
       name=#{name},description=#{description}, update_time=now()
       where
-      role_id = #{role_id}
+      id = #{id}
   </update>
 
 </mapper>
