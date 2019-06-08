@@ -16,7 +16,7 @@ public interface RoleMapper extends MyMapper<Role> {
      * @param userId 用户id
      * @return set
      */
-    Set<String> findRoleByUserId(String userId);
+    Set<String> findRoleByUserId(Integer userId);
 
     /**
      * 根据role参数查询角色列表
@@ -38,7 +38,5 @@ public interface RoleMapper extends MyMapper<Role> {
      * @return int
      */
     int updateByRoleId(Map<String, Object> params);
-
-
 
 }

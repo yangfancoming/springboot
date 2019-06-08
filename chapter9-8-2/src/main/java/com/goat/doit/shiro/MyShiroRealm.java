@@ -22,11 +22,10 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 /**
-     * @Description:  自定义 Realm 类  需要继承shiro 提供的  AuthorizingRealm类
-     * @author: 杨帆
-     * @Date:   2018/11/7
+ 自定义 Realm 类  需要继承shiro 提供的  AuthorizingRealm类
 */
 @Component
 public class MyShiroRealm extends AuthorizingRealm {
@@ -55,8 +54,13 @@ public class MyShiroRealm extends AuthorizingRealm {
         // 给资源进行授权
         User user  = (User) principals.getPrimaryPrincipal();
         SimpleAuthorizationInfo authInfo = new SimpleAuthorizationInfo();
-        authInfo.setRoles(roleService.findRoleByUserId(user.getUserId()));
-        authInfo.setStringPermissions(permissionService.findPermsByUserId(user.getUserId()));
+        authInfo.setRoles(roleService.findRoleByUserId(user.getId()));
+        /** doit
+         * 为啥 findPermsByUserId() 一条龙 换成 Interger 就报错呢？
+         * 报错： thymeleaf  java.sql.SQLException: Invalid value for getInt() - 'workdest'
+        */
+        Set<String> permsByUserId = permissionService.findPermsByUserId(user.getId().toString());
+        authInfo.setStringPermissions(permsByUserId);
         return authInfo;
 
     }
@@ -127,7 +131,7 @@ public class MyShiroRealm extends AuthorizingRealm {
                     User user = (User) obj;
                     System.out.println("user:"+user);
                     //比较用户ID，符合即加入集合
-                    if(null != user && userIds.contains(user.getUserId())){
+                    if(null != user && userIds.contains(user.getId())){
                         list.add(spc);
                     }
                 }

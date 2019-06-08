@@ -33,7 +33,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
     private RolePermissionMapper rolePermissionMapper;
 
     @Override
-    public Set<String> findRoleByUserId(String userId) {
+    public Set<String> findRoleByUserId(Integer userId) {
         return roleMapper.findRoleByUserId(userId);
     }
 
@@ -55,26 +55,6 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
         params.put("roleIds",roleIds);
         params.put("status",status);
         return roleMapper.updateStatusBatch(params);
-    }
-
-    /**
-     * 根据id查询角色
-     *
-     * @param id
-     * @return role
-     */
-    @Override
-    public Role findById(Integer id) {
-        return null;
-    }
-
-
-    @Override
-    public int updateByRoleId(Role role) {
-        Map<String,Object> params  = new HashMap<>(3);
-        params.put("name",role.getName());
-        params.put("description",role.getDescription());
-        return roleMapper.updateByRoleId(params);
     }
 
     @Override
@@ -103,15 +83,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
             return ResultUtil.error("分配权限失败");
         }
     }
-//
-//    /**
-//     * 根据角色id下的所有用户
-//     * @param roleId
-//     */
-//    @Override
-//    public List<User> findByRoleId(String roleId) {
-//        return userMapper.findByRoleId(roleId);
-//    }
+
 
     @Override
     public List<User> findByRoleIds(List<String> roleIds) {

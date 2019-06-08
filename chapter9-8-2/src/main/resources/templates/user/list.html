@@ -147,7 +147,6 @@
             </div>
             <div class="modal-body">
                 <table id="assignRoleTable"> </table>
-
             </div>
             <div class="modal-footer">
                 <div class="pull-right">
@@ -164,7 +163,7 @@
     let assignRoleFlag="[[${@perms.hasPerm('user:assignRole')}]]";
     let userIdStr;//批量用户id
     let roleIdStr;//分配的角色
-    let selectRoleIds;
+    let selectRoleIds = [];
     let userIdChecked;
     let loadRoleCount=0;
     let columns = [
@@ -222,7 +221,7 @@
     /*查询角色参数*/
     function queryRoleParams(params){
         let temp = {
-            id :userIdChecked
+            userId :userIdChecked  // sos 前端的 field:"userId"  必须要与 后台controller的 assignRoleList(String userId) 形参名称一致！！！
         };
         return temp;
     }
@@ -248,14 +247,14 @@
     /*分配角色-列表查询*/
     function assignRoleList(id) {
         userIdChecked=id;
+        console.log(userIdChecked,'userIdChecked')
         $("#assignRoleModal").modal("show");
         if(loadRoleCount==0){
             let roleColumns=[
                 {checkbox: true },
-                { field: 'roleId',title: '角色ID', align : "center" },
+                { field: 'id',title: '角色ID', align : "center" },
                 { field: 'name',title: '角色名称',align : "center" },
                 { field: 'description',title: '角色描述',align : "center" },
-
                 {
                     field: 'status', title: '角色状态', align : "center",
                     formatter:function(value,row, index){
@@ -266,9 +265,14 @@
                 id:"#assignRoleTable", url: "/user/assign/role/list",
                 columns:roleColumns,pagination : false,
                 queryParams : queryRoleParams,
-                onLoadSuccess: function(){  //加载成功时执行
+                onLoadSuccess: ()=>{  //加载成功时执行
                     loadRoleCount=1;
-                    Core.checkTableBy("#assignRoleTable",{field:"roleId", values:selectRoleIds});
+                    console.log(selectRoleIds,'selectRoleIds')
+                    /**
+                     * Core.checkTableBy("#assignRoleTable",{field:"id", values:[3,4]});
+                     * sos 这里是个大坑啊！ 必须是整型数组 [3,4]   字符串数组 ["3","4"] 不会勾选 ！！！
+                     */
+                    Core.checkTableBy("#assignRoleTable",{field:"id", values:selectRoleIds});
                 },
                 responseHandler : handleRoleData,
             }
@@ -281,6 +285,7 @@
 
     /*处理角色数据*/
     function handleRoleData(res){
+        console.log(res.hasRoles,'hasRoles')
         selectRoleIds = res.hasRoles;
         return res.rows;
     }
@@ -313,40 +318,7 @@
                 })
             }
         });
-        /*分配角色*/
-        $("#btn_assign_role").click(function(){
-            let result = Core.selectSingleData("#table");
-            if(result){
-                $("#assignRoleModal").modal("show");
-                if(loadRoleCount==0){
-                    let roleColumns=[
-                        {checkbox: true },
-                        { field: 'roleId',title: '角色ID',align : "center"},
-                        { field: 'name',title: '角色名称',align : "center"},
-                        { field: 'description',title: '角色描述',align : "center"},
-                        {
-                            field: 'status',title: '角色状态',align : "center",
-                            formatter:function(value,row, index){
-                                return row.status == '1' ? "有效" : "删除";
-                            }
-                        }];
-                    let roleOptions={
-                        id:"#assignRoleTable",url: "/user/assign/role/list",
-                        columns:roleColumns, pagination : false,
-                        queryParams : queryRoleParams,
-                        onLoadSuccess: function(){  //加载成功时执行
-                            loadRoleCount=1;
-                            Core.checkTableBy("#assignRoleTable",{field:"roleId", values:selectRoleIds});
-                        },
-                        responseHandler : handleRoleData,
-                    }
-                    Core.initTable(roleOptions);
-                }
-                if(loadRoleCount==1){
-                    Core.refreshTable("#assignRoleTable");
-                }
-            }
-        });
+
         /*保存用戶*/
         $("#saveUser").click(function(){
             if(doValidForm(userForm)){
@@ -362,17 +334,18 @@
                 })
             };
         });
+
         /*分配角色保存*/
         $("#saveAssign").click(function () {
-            let checkedRows= Core.selectMutiData("#assignRoleTable");
+            let checkedRows = Core.selectMutiData("#assignRoleTable");
             if(checkedRows){
                 Core.mask("#saveAssign");
                 roleIdStr="";
                 $.each(checkedRows, function (i, item) {
-                    roleIdStr+=(item.roleId+",");
+                    roleIdStr+=(item.id+",");
                 })
-                roleIdStr=roleIdStr.substring(0,roleIdStr.length-1);
-                Core.postAjax('/user/assign/role',{id:userIdChecked,roleIdStr:roleIdStr},function (data) {
+                roleIdStr=roleIdStr.substring(0,roleIdStr.length-1); // roleIdStr 勾选角色ids
+                Core.postAjax('/user/assign/role',{userId:userIdChecked,roleIdStr:roleIdStr},function (data) {
                     Core.unmask("#saveAssign");
                     if(data.status==200){
                         $("#assignRoleModal").modal("hide");

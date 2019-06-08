@@ -15,4 +15,18 @@
     -->
     id, user_id, role_id
   </sql>
+
+
+    <insert id="batchUserRole">
+        insert into user_role(user_id,role_id) values
+        <foreach item="item" index="index" collection="list" separator=",">
+            (#{item.userId},#{item.roleId})
+        </foreach>
+    </insert>
+
+    <!--删除 单个-->
+    <delete id="deletes" parameterType="java.lang.Integer">
+        delete from user_role where user_id = #{userId}
+    </delete>
+
 </mapper>

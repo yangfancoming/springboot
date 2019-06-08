@@ -64,4 +64,5 @@ public interface UserMapper extends MyMapper<User> {
      * @return list
      */
     List<User> findByRoleIds(List<String> roleIds);
+
 }

@@ -15,7 +15,7 @@ import java.util.Set;
 public interface RoleService extends IService<Role> {
 
     /** 根据用户id查询角色集合 */
-    Set<String> findRoleByUserId(String userId);
+    Set<String> findRoleByUserId(Integer userId);
 
     List<Role> selectRoles(Role role);
 

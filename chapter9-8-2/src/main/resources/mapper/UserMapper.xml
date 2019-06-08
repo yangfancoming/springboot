@@ -3,7 +3,7 @@
     <mapper namespace="com.goat.doit.mapper.UserMapper">
     <resultMap id="BaseResultMap" type="com.goat.doit.model.User" >
         <id column="id" property="id" jdbcType="INTEGER" />
-        <id column="user_id" property="userId" jdbcType="VARCHAR" />
+        <!--<id column="user_id" property="userId" jdbcType="VARCHAR" />-->
         <result column="username" property="username" jdbcType="VARCHAR" />
         <result column="password" property="password" jdbcType="VARCHAR" />
         <result column="salt" property="salt" jdbcType="VARCHAR" />
@@ -17,7 +17,7 @@
         <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
     </resultMap>
     <sql id="Base_Column_List" >
-        id, user_id, username, password, salt, email, phone, sex, age, status,
+        id, username, password, salt, email, phone, sex, age, status,
         create_time, update_time, last_login_time
     </sql>
 
@@ -40,7 +40,7 @@
     </select>
 
     <select id="selectByUserId" resultMap="BaseResultMap">
-        SELECT <include refid="Base_Column_List"/> FROM user WHERE user_id = #{userId,jdbcType=VARCHAR}
+        SELECT <include refid="Base_Column_List"/> FROM user WHERE id = #{userId,jdbcType=VARCHAR}
     </select>
 
     <update id="updateLastLoginTime" parameterType="com.goat.doit.model.User">
@@ -48,7 +48,7 @@
     </update>
 
     <update id="updateByUserId" parameterType="com.goat.doit.model.User">
-        update user SET email=#{email},phone=#{phone},sex=#{sex},age=#{age},update_time = now() where user_id = #{userId,jdbcType=BIGINT}
+        update user SET email=#{email},phone=#{phone},sex=#{sex},age=#{age},update_time = now() where id = #{userId,jdbcType=BIGINT}
     </update>
 
     <update id="updateStatusBatch" parameterType="map">
@@ -57,7 +57,7 @@
         SET
         status=#{status}, update_time=now()
         where
-        user_id in
+        id in
         <foreach collection="userIds" item="item" index="index" open="(" separator="," close=")">
             #{item}
         </foreach>
@@ -70,13 +70,13 @@
     </delete>
 
     <select id="findByRoleId" resultMap="BaseResultMap">
-        SELECT a.id, a.user_id, a.username, a.password, a.salt, a.email, a.phone, a.sex, a.age, a.status,
-        a.create_time, a.update_time, a.last_login_time FROM user a INNER JOIN user_role b ON a.user_id = b.user_id WHERE b.role_id = #{roleId,jdbcType=VARCHAR}
+        SELECT a.id, a.username, a.password, a.salt, a.email, a.phone, a.sex, a.age, a.status,
+        a.create_time, a.update_time, a.last_login_time FROM user a INNER JOIN user_role b ON a.id = b.user_id WHERE b.role_id = #{roleId,jdbcType=VARCHAR}
     </select>
 
     <select id="findByRoleIds" resultMap="BaseResultMap">
-        SELECT a.id, a.user_id, a.username, a.password, a.salt, a.email, a.phone, a.sex, a.age, a.status,
-        a.create_time, a.update_time, a.last_login_time FROM user a INNER JOIN user_role b ON a.user_id = b.user_id
+        SELECT a.id, a.username, a.password, a.salt, a.email, a.phone, a.sex, a.age, a.status,
+        a.create_time, a.update_time, a.last_login_time FROM user a INNER JOIN user_role b ON a.id = b.user_id
         WHERE b.role_id IN
         <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
             #{item}
@@ -86,7 +86,7 @@
 
     <!--删除 单个-->
     <select id="finds" parameterType="java.lang.Integer">
-        SELECT a.id, a.user_id, a.username, a.password, a.salt, a.email, a.phone, a.sex, a.age, a.status,
-               a.create_time, a.update_time, a.last_login_time FROM user a INNER JOIN user_role b ON a.user_id = b.user_id WHERE b.role_id = #{roleId}
+        SELECT a.id,a.username, a.password, a.salt, a.email, a.phone, a.sex, a.age, a.status,
+               a.create_time, a.update_time, a.last_login_time FROM user a INNER JOIN user_role b ON a.id = b.user_id WHERE b.role_id = #{roleId}
     </select>
 </mapper>

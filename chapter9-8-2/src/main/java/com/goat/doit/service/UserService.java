@@ -47,7 +47,6 @@ public interface UserService extends IService<User> {
     /**
      * 根据角色id下的所有用户
      * @param roleId
-     * @return list
      */
     List<User> findByRoleId(Integer roleId);
 

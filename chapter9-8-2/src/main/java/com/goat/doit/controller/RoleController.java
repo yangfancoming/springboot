@@ -157,7 +157,7 @@ public class RoleController {
         if(userList.size()>0){
             List<String> userIds = new ArrayList<>();
             for(User user : userList){
-                userIds.add(user.getUserId());
+                userIds.add(user.getId().toString());
             }
             myShiroRealm.clearAuthorizationByUserId(userIds);
         }

@@ -6,6 +6,7 @@ import com.goat.doit.model.Role;
 import com.goat.doit.model.User;
 import com.goat.doit.service.RoleService;
 import com.goat.doit.service.UserService;
+import com.goat.doit.shiro.MyShiroRealm;
 import com.goat.doit.util.*;
 import com.goat.doit.vo.base.PageResultVo;
 import com.goat.doit.vo.base.ResponseVo;
@@ -29,6 +30,9 @@ public class UserController {
 
     @Autowired
     private RoleService roleService;
+
+    @Autowired
+    private MyShiroRealm myShiroRealm;
 
     /**用户列表数据*/
     @PostMapping("/list")
@@ -78,13 +82,27 @@ public class UserController {
     /**分配角色列表查询*/
     @PostMapping("/assign/role/list")
     @ResponseBody
-    public Map<String,Object> assignRoleList(String userId){
+    public Map<String,Object> assignRoleList(Integer userId){
         List<Role> roleList = roleService.selectRoles(new Role());
         Set<String> hasRoles = roleService.findRoleByUserId(userId);
         Map<String, Object> jsonMap = new HashMap<>(2);
         jsonMap.put("rows", roleList);
         jsonMap.put("hasRoles",hasRoles);
         return jsonMap;
+    }
+
+    /**保存分配角色*/
+    @PostMapping("/assign/role")
+    @ResponseBody
+    public ResponseVo assignRole(String userId, String roleIdStr){
+        System.out.println(userId);
+        String[] roleIds = roleIdStr.split(",");
+        List<String> roleIdsList = Arrays.asList(roleIds);
+        ResponseVo responseVo = userService.addAssignRole(userId,roleIdsList);
+        List<String> userIds = new ArrayList<>();
+        userIds.add(userId);
+        myShiroRealm.clearAuthorizationByUserId(userIds);
+        return responseVo;
     }
 
     /**新增用户*/

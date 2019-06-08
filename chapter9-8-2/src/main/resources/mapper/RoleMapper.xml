@@ -20,7 +20,7 @@
     id, role_id, name, description, status, create_time, update_time
   </sql>
 
-  <select id="findRoleByUserId" resultType="java.lang.String">
+  <select id="findRoleByUserId" resultType="java.lang.Integer">
     SELECT r.role_id FROM role r LEFT JOIN user_role ur ON r.id = ur.role_id
     WHERE ur.user_id = #{userId,jdbcType=VARCHAR}
   </select>

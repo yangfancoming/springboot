@@ -4,8 +4,12 @@ package com.goat.doit.service.impl;
 //import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.goat.doit.mapper.UserMapper;
+import com.goat.doit.mapper.UserRoleMapper;
+import com.goat.doit.model.RolePermission;
 import com.goat.doit.model.User;
+import com.goat.doit.model.UserRole;
 import com.goat.doit.service.UserService;
+import com.goat.doit.util.ResultUtil;
 import com.goat.doit.vo.UserOnlineVo;
 import com.goat.doit.vo.base.ResponseVo;
 import org.apache.commons.lang3.StringUtils;
@@ -25,7 +29,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Autowired
     private UserMapper userMapper;
-
+    @Autowired
+    private UserRoleMapper userRoleMapper;
 
     @Override
     public User selectByUsername(String username) {
@@ -66,20 +71,24 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return userMapper.updateStatusBatch(params);
     }
 
-
-
     /**
      * 根据用户id分配角色集合
-     *
-     * @param userId
-     * @param roleIds
-     * @return int
      */
     @Override
     public ResponseVo addAssignRole(String userId, List<String> roleIds) {
-        return null;
+        try{
+            List<UserRole> list = new ArrayList<>();
+            userRoleMapper.deletes(Integer.valueOf(userId));// 删除 中间表中 所有与该用户关联的角色
+            for(String roleId :roleIds){
+                list.add(new UserRole(userId,roleId));
+            }
+            int i = userRoleMapper.batchUserRole(list);
+            System.out.println(i);
+            return ResultUtil.success("分配角色成功");
+        }catch(Exception e){
+            return ResultUtil.error("分配角色失败");
+        }
     }
-
     /**
      * 根据主键更新用户信息
      *
@@ -91,12 +100,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return 0;
     }
 
-    /**
-     * 查询在线用户
-     */
-
+    /** 查询在线用户*/
     @Autowired
     private RedisSessionDAO redisSessionDAO;
+
     @Override
     public List<UserOnlineVo> selectOnlineUsers(UserOnlineVo userVo) {
         // 因为我们是用redis实现了shiro的session的Dao,而且是采用了shiro+redis这个插件
@@ -130,7 +137,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
     /**
      * 踢出用户
-     *
      * @param sessionId 会话id
      * @param username  用户名
      */
@@ -139,16 +145,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     }
 
-    /**
-     * 根据角色id下的所有用户
-     *
-     * @param roleId
-     * @return list
-     */
+    /** 根据角色id下的所有用户 */
     @Override
     public List<User> findByRoleId(Integer roleId) {
         return userMapper.findByRoleId(roleId);
     }
+
 
     private UserOnlineVo getSessionBo(Session session){
         //获取session登录信息。
