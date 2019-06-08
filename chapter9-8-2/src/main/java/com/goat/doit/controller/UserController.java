@@ -26,9 +26,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
     @Autowired
     private RoleService roleService;
-
 
     /**用户列表数据*/
     @PostMapping("/list")
@@ -40,38 +40,29 @@ public class UserController {
         return ResultUtil.table(userList,pages.getTotal());
     }
 
-
-    /**编辑用户详情*/
+    /**编辑跳转*/
     @GetMapping("/edit")
     public String userDetail(Model model, String userId){
-        User user = userService.selectByUserId(userId);
+        User user = userService.getById(userId);
         model.addAttribute("user", user);
         return "user/userDetail";
     }
 
-    /**编辑用户*/
+    /**编辑保存*/
     @PostMapping("/edit")
     @ResponseBody
     public ResponseVo editUser(User userForm){
         int a = userService.updateByUserId(userForm);
-        if (a > 0) {
-            return ResultUtil.success("编辑用户成功！");
-        } else {
-            return ResultUtil.error("编辑用户失败");
-        }
+        ResponseVo responseVo = a > 0 ? ResultUtil.success("编辑用户成功！"): ResultUtil.error("编辑用户失败");
+        return responseVo;
     }
 
     /**删除用户*/
     @GetMapping("/delete")
     @ResponseBody
     public ResponseVo deleteUser(String userId) {
-        List<String> userIdsList = Arrays.asList(userId);
-        int a = userService.updateStatusBatch(userIdsList,CoreConst.STATUS_INVALID);
-        if (a > 0) {
-            return ResultUtil.success("删除用户成功");
-        } else {
-            return ResultUtil.error("删除用户失败");
-        }
+        boolean b = userService.removeById(userId);
+        return b ? ResultUtil.success("删除用户成功"):ResultUtil.error("删除用户失败");
     }
 
     /**批量删除用户*/
@@ -80,12 +71,8 @@ public class UserController {
     public ResponseVo batchDeleteUser(String userIdStr) {
         String[] userIds = userIdStr.split(",");
         List<String> userIdsList = Arrays.asList(userIds);
-        int a = userService.updateStatusBatch(userIdsList,CoreConst.STATUS_INVALID);
-        if (a > 0) {
-            return ResultUtil.success("删除用户成功");
-        } else {
-            return ResultUtil.error("删除用户失败");
-        }
+        boolean b = userService.removeByIds(userIdsList);
+        return b ? ResultUtil.success("删除用户成功"):ResultUtil.error("删除用户失败");
     }
 
     /**分配角色列表查询*/
@@ -109,8 +96,8 @@ public class UserController {
         if (null != user) {
             return ResultUtil.error("用户名已存在");
         }
+
         String password = userForm.getPassword();
-        //判断两次输入密码是否相等
         if (confirmPassword != null && password != null) {
             if (!confirmPassword.equals(password)) {
                 return ResultUtil.error("两次密码不一致");
@@ -124,10 +111,6 @@ public class UserController {
         userForm.setLastLoginTime(date);
 //        PasswordHelper.encryptPassword(userForm);
         int num = userService.register(userForm);
-        if(num > 0){
-            return ResultUtil.success("添加用户成功");
-        }else {
-            return ResultUtil.error("添加用户失败");
-        }
+        return num > 0 ? ResultUtil.success("添加用户成功"):ResultUtil.error("添加用户失败");
     }
 }

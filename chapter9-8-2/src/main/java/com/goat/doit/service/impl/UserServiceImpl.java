@@ -1,6 +1,8 @@
 package com.goat.doit.service.impl;
 
 
+//import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.goat.doit.mapper.UserMapper;
 import com.goat.doit.model.User;
 import com.goat.doit.service.UserService;
@@ -19,7 +21,7 @@ import java.util.*;
 
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     @Autowired
     private UserMapper userMapper;

@@ -35,7 +35,6 @@ public class MybatisPlusConfig {
         return performanceInterceptor;
     }
 
-
     @Bean
     public SqlExplainInterceptor sqlExplainInterceptor(){
         return new SqlExplainInterceptor();

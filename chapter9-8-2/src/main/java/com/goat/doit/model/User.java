@@ -2,6 +2,7 @@ package com.goat.doit.model;
 
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -11,6 +12,7 @@ import java.util.List;
 
 @TableName("user")
 public class User implements Serializable{
+
     private static final long serialVersionUID = -8736616045315083846L;
 
     @TableId(value = "id", type = IdType.AUTO)
@@ -76,13 +78,13 @@ public class User implements Serializable{
     /**
      * 登录ip
      */
-//    @Transient
+    @TableField(exist = false)//：表示该属性不为数据库表字段，但又是必须使用的。
     private String loginIpAddress;
 
     /**
      * 角色
      */
-//    @Transient
+    @TableField(exist = false)
     private List<Role> roles;
 
     /**
