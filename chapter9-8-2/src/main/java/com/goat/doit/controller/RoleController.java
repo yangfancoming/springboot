@@ -96,8 +96,8 @@ public class RoleController {
         if(roleService.findByRoleIds(roleIdsList).size()>0){
             return ResultUtil.error("删除失败,选择的角色下存在用户");
         }
-        int a = roleService.updateStatusBatch(roleIdsList, CoreConst.STATUS_INVALID);
-        return a > 0 ? ResultUtil.success("删除角色成功"):ResultUtil.error("删除角色失败");
+        boolean a = roleService.removeByIds(roleIdsList);
+        return a ? ResultUtil.success("删除角色成功"):ResultUtil.error("删除角色失败");
     }
 
     /*编辑跳转*/

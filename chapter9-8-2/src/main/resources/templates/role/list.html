@@ -173,7 +173,7 @@
                 Core.confirm("确定删除选中的"+checkedRows.length+"条记录？",()=>{
                     roleIdStr="";
                     $.each(checkedRows, function (i, item) {
-                        roleIdStr+=(item.roleId+",");
+                        roleIdStr+=(item.id+",");
                     })
                     roleIdStr=roleIdStr.substring(0,roleIdStr.length-1);
                     Core.postAjax("/role/batch/delete",{"roleIdStr":roleIdStr},(data)=>{
