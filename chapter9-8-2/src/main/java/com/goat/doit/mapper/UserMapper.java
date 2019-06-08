@@ -56,7 +56,6 @@ public interface UserMapper extends MyMapper<User> {
      * @param roleId
      * @return list
      */
-    List<User> findByRoleId(String roleId);
     List<User> findByRoleId(Integer roleId);
     /**
      * 根据角色id查询用户list

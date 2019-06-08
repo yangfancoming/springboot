@@ -66,24 +66,21 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
      * 根据角色id保存分配权限
      * @param roleId 当前选中角色id
      * @param permissionIds
-     * @return list
      */
     @Override
     public ResponseVo addAssignPermission(String roleId, List<String> permissionIds) {
         try{
             List<RolePermission> list = new ArrayList<>();
-            int num = rolePermissionMapper.deletes(Integer.valueOf(roleId)); // 删除 中间表中 所有与该角色关联的菜单
-            System.out.println(num);
-            for(String permissionId : permissionIds){
-                list.add(new RolePermission(roleId,permissionId));
+            rolePermissionMapper.deletes(Integer.valueOf(roleId)); //1.删除 中间表中 所有与该角色关联的菜单
+            if(permissionIds!=null && permissionIds.size()>0){
+                permissionIds.forEach(x->list.add(new RolePermission(roleId,x)));
+                rolePermissionMapper.batchRolePermission(list); // 2.全部删除后  根据打钩项 再重新插入
             }
-            rolePermissionMapper.batchRolePermission(list);
             return ResultUtil.success("分配权限成功");
         }catch(Exception e){
             return ResultUtil.error("分配权限失败");
         }
     }
-
 
     @Override
     public List<User> findByRoleIds(List<String> roleIds) {

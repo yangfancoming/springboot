@@ -64,7 +64,7 @@ public class UserController {
     /**删除用户*/
     @GetMapping("/delete")
     @ResponseBody
-    public ResponseVo deleteUser(String userId) {
+    public ResponseVo deleteUser(Integer userId) {
         boolean b = userService.removeById(userId);
         return b ? ResultUtil.success("删除用户成功"):ResultUtil.error("删除用户失败");
     }
