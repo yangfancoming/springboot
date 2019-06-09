@@ -8,6 +8,7 @@ import com.goat.doit.service.DictDataService;
 import com.goat.doit.util.PageUtil;
 import com.goat.doit.util.ResultUtil;
 import com.goat.doit.vo.base.PageResultVo;
+import com.goat.doit.vo.base.ResponseVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +26,7 @@ import java.util.List;
 @RequestMapping("/dictData")
 public class DictDataController {
 
+    private String mark = "字典数据";
 
     @Autowired
     private DictDataService dictDataService;
@@ -44,6 +46,14 @@ public class DictDataController {
         List<DictData> dictList = dictDataService.finds(dictData.getDictType());
         PageInfo<DictData> pages = new PageInfo<>(dictList);
         return ResultUtil.table(dictList,pages.getTotal());
+    }
+
+    /*新增保存字典数据*/
+    @PostMapping("/add")
+    @ResponseBody
+    public ResponseVo add(DictData dictData){
+        int a = dictDataService.insertDictData(dictData);
+        return a>0 ? ResultUtil.success("添加"+ mark +"成功"):ResultUtil.error("添加"+ mark +"失败");
     }
 
 

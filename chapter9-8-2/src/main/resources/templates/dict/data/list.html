@@ -49,20 +49,7 @@
     </div>
 
 </section>
-<!-- 角色模态框 -->
-<!--<id     property="dictCode"   column="dict_code"   />-->
-<!--<result property="dictSort"   column="dict_sort"   />-->
-<!--<result property="dictLabel"  column="dict_label"  />-->
-<!--<result property="dictValue"  column="dict_value"  />-->
-<!--<result property="dictType"   column="dict_type"   />-->
-<!--<result property="cssClass"   column="css_class"   />-->
-<!--<result property="listClass"  column="list_class"  />-->
-<!--<result property="isDefault"  column="is_default"  />-->
-<!--<result property="status"     column="status"      />-->
-<!--<result property="createBy"   column="create_by"   />-->
-<!--<result property="createTime" column="create_time" />-->
-<!--<result property="updateBy"   column="update_by"   />-->
-<!--<result property="updateTime" column="update_time" />-->
+
 <div id="roleModal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -74,18 +61,40 @@
                 <div>
                     <form class="form-horizontal" id="roleForm" method = 'post' th:action="@{/dictData/add}">
                         <div class="box-body">
+
                             <div class="form-group">
-                                <label for="dictLabel" class="col-sm-3 control-label">字典名称 :</label>
+                                <label class="col-sm-3 control-label">字典编码 :</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="dictLabel" id="dictLabel" require="必填项"  placeholder="">
+                                    <input type="text"  class="form-control" name="dictCode" id="dictCode" require="必填项"  placeholder="">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="dictType" class="col-sm-3 control-label">字典类型 :</label>
+                                <label class="col-sm-3 control-label">字典标签 :</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="dictType" id="dictType" placeholder="">
+                                    <input type="text"  class="form-control" name="dictLabel" id="dictLabel" placeholder="">
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">字典键值 :</label>
+                                <div class="col-sm-8">
+                                    <input type="text"  class="form-control" name="dictValue" id="dictValue" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">字典排序 :</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="dictSort" id="dictSort" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">状态 :</label>
+                                <div class="col-sm-8">
+                                    <input type="text"  class="form-control" name="status" id="status"  placeholder="">
+                                </div>
+                            </div>
+
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
@@ -196,7 +205,7 @@
         $("#saveRole").click(function(){
             if(doValidForm(roleForm)){
                 Core.mask("#saveRole");
-                Core.postAjax("/role/add",$("#roleForm").serialize(),(data)=> {
+                Core.postAjax("/dictData/add",$("#roleForm").serialize(),(data)=> {
                     Core.unmask("#saveRole");
                     if(data.status==200){
                         $("#roleModal").modal("hide");

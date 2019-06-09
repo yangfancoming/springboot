@@ -23,6 +23,7 @@ import java.util.List;
 public class DictTypeController {
 
     private String mark = "字典类型";
+
     @Autowired
     private DictTypeService dictTypeService;
 
