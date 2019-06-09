@@ -38,7 +38,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</where>
 	</select>
-	
+
+    <!-- 一查多 -->
+    <select id="finds" parameterType="com.goat.doit.model.DictData" resultMap="DictDataResult">
+        <include refid="selectDictDataVo"/>
+        where dict_code = #{dict_code} order by dict_sort asc
+    </select>
+
 	<select id="selectDictDataByType" parameterType="com.goat.doit.model.DictData" resultMap="DictDataResult">
 		<include refid="selectDictDataVo"/>
 		where dict_type = #{dictType} order by dict_sort asc

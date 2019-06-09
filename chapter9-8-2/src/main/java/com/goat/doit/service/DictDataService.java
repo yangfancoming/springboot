@@ -1,6 +1,7 @@
 package com.goat.doit.service;
 
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.goat.doit.model.DictData;
 
 import java.util.List;
@@ -10,9 +11,9 @@ import java.util.List;
  * 
  * @author Rimon
  */
-public interface DictDataService
-{
+public interface DictDataService extends IService<DictData> {
 
+    public List<DictData> finds(Long dictCode);
     /**
      * 根据条件分页查询字典数据
      * 

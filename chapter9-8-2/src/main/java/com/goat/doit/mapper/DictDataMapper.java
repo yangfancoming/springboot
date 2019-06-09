@@ -1,6 +1,7 @@
 package com.goat.doit.mapper;
 
 import com.goat.doit.model.DictData;
+import com.goat.doit.util.MyMapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 /**
  * 字典表 数据层
  */
-public interface DictDataMapper {
+public interface DictDataMapper extends MyMapper<DictData> {
 
     /**
      * 根据条件分页查询字典数据
@@ -25,6 +26,8 @@ public interface DictDataMapper {
      * @return 字典数据集合信息
      */
     public List<DictData> selectDictDataByType(String dictType);
+
+    public List<DictData> finds(Long dictCode);
 
     /**
      * 根据字典类型和字典键值查询字典数据信息

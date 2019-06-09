@@ -10,6 +10,7 @@ import com.goat.doit.util.ResultUtil;
 import com.goat.doit.vo.base.PageResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,16 +25,23 @@ import java.util.List;
 @RequestMapping("/dictData")
 public class DictDataController {
 
-    private String prefix = "system/dict/data";
 
     @Autowired
     private DictDataService dictDataService;
+
+
+    @GetMapping("/test")
+    public String dictData(Model model, String id){
+        model.addAttribute("fuck", id);
+        return "dict/data/list";
+    }
+
 
     @PostMapping("/list")
     @ResponseBody
     public PageResultVo list(DictData dictData, Integer limit, Integer offset){
         PageHelper.startPage(PageUtil.getPageNo(limit, offset),limit);
-        List<DictData> dictList = dictDataService.selectDictDataList(dictData);
+        List<DictData> dictList = dictDataService.finds(dictData.getDictCode());
         PageInfo<DictData> pages = new PageInfo<>(dictList);
         return ResultUtil.table(dictList,pages.getTotal());
     }
@@ -46,7 +54,7 @@ public class DictDataController {
     public String add(@PathVariable("dictType") String dictType, ModelMap mmap)
     {
         mmap.put("dictType", dictType);
-        return prefix + "/add";
+        return   "/add";
     }
 
     /**
@@ -66,7 +74,7 @@ public class DictDataController {
     public String edit(@PathVariable("dictCode") Long dictCode, ModelMap mmap)
     {
         mmap.put("dict", dictDataService.selectDictDataById(dictCode));
-        return prefix + "/edit";
+        return   "/edit";
     }
 
     /**

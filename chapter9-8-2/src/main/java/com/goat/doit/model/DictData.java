@@ -6,8 +6,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 @TableName("sys_dict_data")
-public class DictData extends BaseEntity
-{
+public class DictData extends BaseEntity {
+
     private static final long serialVersionUID = 1L;
 
     /** 字典编码 */
@@ -38,8 +38,7 @@ public class DictData extends BaseEntity
     /** 状态（0正常 1停用） */
     private String status;
 
-    public Long getDictCode()
-    {
+    public Long getDictCode() {
         return dictCode;
     }
 

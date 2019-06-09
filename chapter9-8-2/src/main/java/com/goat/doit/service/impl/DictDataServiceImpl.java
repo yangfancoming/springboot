@@ -1,9 +1,9 @@
 package com.goat.doit.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.goat.doit.mapper.DictDataMapper;
 import com.goat.doit.model.DictData;
 import com.goat.doit.service.DictDataService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +15,15 @@ import java.util.List;
  * @author Rimon
  */
 @Service
-public class DictDataServiceImpl implements DictDataService
+public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData>  implements DictDataService
 {
     @Autowired
     private DictDataMapper dictDataMapper;
+
+    @Override
+    public List<DictData> finds(Long dictCode) {
+        return dictDataMapper.finds(dictCode);
+    }
 
     /**
      * 根据条件分页查询字典数据
