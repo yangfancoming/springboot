@@ -101,8 +101,7 @@ public class MyShiroRealm extends AuthorizingRealm {
             return ;
         }
         List<SimplePrincipalCollection> list = getSpcListByUserIds(userIds);
-        RealmSecurityManager securityManager =
-                (RealmSecurityManager) SecurityUtils.getSecurityManager();
+        RealmSecurityManager securityManager =  (RealmSecurityManager) SecurityUtils.getSecurityManager();
         MyShiroRealm realm = (MyShiroRealm)securityManager.getRealms().iterator().next();
         for (SimplePrincipalCollection simplePrincipalCollection : list) {
             realm.clearCachedAuthorizationInfo(simplePrincipalCollection);
@@ -115,10 +114,8 @@ public class MyShiroRealm extends AuthorizingRealm {
      * @param userIds 已经修改了权限的userId
      */
     private  List<SimplePrincipalCollection> getSpcListByUserIds(List<String> userIds){
-        //获取所有session
-        Collection<Session> sessions = redisSessionDAO.getActiveSessions();
-        //定义返回
-        List<SimplePrincipalCollection> list = new ArrayList<>();
+        Collection<Session> sessions = redisSessionDAO.getActiveSessions(); //获取所有session
+        List<SimplePrincipalCollection> list = new ArrayList<>();   //定义返回
         for (Session session:sessions){
             //获取session登录信息。
             Object obj = session.getAttribute(DefaultSubjectContext.PRINCIPALS_SESSION_KEY);

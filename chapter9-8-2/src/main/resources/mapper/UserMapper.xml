@@ -48,7 +48,7 @@
     </update>
 
     <update id="updateByUserId" parameterType="com.goat.doit.model.User">
-        update user SET email=#{email},phone=#{phone},sex=#{sex},age=#{age},update_time = now() where id = #{userId,jdbcType=BIGINT}
+        update user SET email=#{email},phone=#{phone},sex=#{sex},age=#{age},update_time = now() where id = #{id,jdbcType=BIGINT}
     </update>
 
     <update id="updateStatusBatch" parameterType="map">

@@ -25,8 +25,7 @@ $(function () {
 
 $(function(){
     let clickHref="";//点击菜单判断使用
-    //菜单列表html
-    let menus = '';
+    let menus = '';  //菜单列表html
     $.ajax({
         type: 'POST', url: "/menu" , data: {} ,
         success: (data)=> {
@@ -45,9 +44,12 @@ $(function(){
             loadMenuRefresh();/*初始化加载菜单样式*/
         }
     });
-    //根据菜单主键id生成菜单列表html
-    //id：菜单主键id
-    //arry：菜单数组信息
+
+    /**
+     根据菜单主键id生成菜单列表html
+     id：菜单主键id
+     arry：菜单数组信息
+    */
     function GetData(id, arry) {
         let childArry = GetParentArry(id, arry);
         if (childArry.length > 0) {

@@ -22,8 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.Serializable;
-import java.util.Deque;
 import java.util.List;
 
 
@@ -40,7 +38,8 @@ public class SystemController {
     @PostMapping("/menu")
     @ResponseBody
     public List<Permission> getMenus(){
-        List<Permission> permissionListList = permissionService.selectMenuByUserId("1");
+        User principal = (User)SecurityUtils.getSubject().getPrincipal();
+        List<Permission> permissionListList = permissionService.selectMenuByUserId(principal.getId().toString());
         return permissionListList;
     }
 
