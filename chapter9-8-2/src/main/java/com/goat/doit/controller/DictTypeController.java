@@ -21,6 +21,7 @@ import java.util.List;
 @RequestMapping("/dictType")
 public class DictTypeController {
 
+    private String mark = "字典类型";
     @Autowired
     private DictTypeService dictTypeService;
 
@@ -39,9 +40,17 @@ public class DictTypeController {
     @ResponseBody
     public ResponseVo add(DictType dictType){
         int a = dictTypeService.insertDictType(dictType);
-        return a>0 ? ResultUtil.success("添加字典类型成功"):ResultUtil.error("添加字典类型失败");
+        return a>0 ? ResultUtil.success("添加"+ mark +"成功"):ResultUtil.error("添加"+ mark +"失败");
     }
 
+
+    /*删除字典类型*/
+    @GetMapping("/delete")
+    @ResponseBody
+    public ResponseVo delete(Long id) {
+        int i = dictTypeService.deleteDictTypeById(id);
+        return i>0 ? ResultUtil.success("删除"+ mark +"成功"):ResultUtil.error("删除"+ mark +"失败");
+    }
 
     /**
      * 修改字典类型

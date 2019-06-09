@@ -128,9 +128,9 @@
         {
             field : 'operation', title : '操作', align : "center",
             formatter : function(value,  row, index) {
-                let edit = editFlag=="true"  ?  '<a class="table-btn table-btn-info" href="javascript:void(0)" onclick="editRole('+row.id+')">编辑</a>' : '';
-                let assign = assignPermsFlag=="true"  ? '<a class="table-btn table-btn-info"  href="javascript:void(0)" onclick="assignPermsList('+row.id+')">分配权限</a>':'';
-                let del = deleteFlag=="true"  ?  '<a  class="table-btn table-btn-danger" href="javascript:void(0)" onclick="deleteRole('+row.id+')">删除</a>' : '';
+                let edit = editFlag=="true"  ?  '<a class="table-btn table-btn-info" href="javascript:void(0)" onclick="editRole('+row.dictId+')">编辑</a>' : '';
+                let assign = assignPermsFlag=="true"  ? '<a class="table-btn table-btn-info"  href="javascript:void(0)" onclick="assignPermsList('+row.dictId+')">分配权限</a>':'';
+                let del = deleteFlag=="true"  ?  '<a  class="table-btn table-btn-danger" href="javascript:void(0)" onclick="deleteRole('+row.dictId+')">删除</a>' : '';
                 return edit + assign + del;
             }
         }];
@@ -237,8 +237,8 @@
     }
     /*删除*/
     function deleteRole(id) {
-        Core.confirm("确定删除该角色？",()=> {
-            Core.postAjax("/role/delete", {"id": id},(data)=> {
+        Core.confirm("确定删除该字典类型？",()=> {
+            Core.postAjax("/dictType/delete", {"id": id},(data)=> {
                 if (data.status == 200) {
                     Core.refreshTable("#table");
                 }
