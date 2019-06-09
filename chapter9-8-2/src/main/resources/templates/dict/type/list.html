@@ -2,7 +2,7 @@
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
         <li><a href="#">权限管理</a></li>
-        <li class="active">字典管理</li>
+        <li class="active">字典类型管理</li>
     </ol>
 </section>
 <!-- Main content -->
@@ -111,7 +111,12 @@
     let columns=[
         {checkbox: true },
         {  field: 'dictName',title: '字典名称',align : "center" },
-        {  field: 'dictType',title: '字典类型',align : "center" },
+        {
+            field: 'dictType',title: '字典类型',align : "center" ,
+            formatter: function(value, row, index) {
+                return '<a href="#" onclick="detail(\'' + row.dictId + '\')">' + value + '</a>';
+            }
+        },
         {  field: 'status',title: '字典状态',align : "center" },
         {  field: 'createTime',title: '创建时间',align : "center" },
         {
@@ -129,6 +134,12 @@
     }
 
     Core.initTable(options);
+
+    /*字典列表-详细*/
+    function detail(dictId) {
+        Core.load("#content",'dicts2'); // 页面跳转！
+    }
+
 
     //树-初始化设置
     let treeSetting = {
