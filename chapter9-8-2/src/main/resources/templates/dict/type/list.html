@@ -120,7 +120,7 @@
         {
             field: 'dictType',title: '字典类型',align : "center" ,
             formatter: function(value, row, index) {
-                return '<a href="#" onclick="detail(\'' + row.dictId + '\')">' + value + '</a>';
+                return '<a href="#" onclick="detail(\'' + row.dictType + '\')">' + value + '</a>';
             }
         },
         {  field: 'status',title: '字典状态',align : "center" },
@@ -129,7 +129,7 @@
             field : 'operation', title : '操作', align : "center",
             formatter : function(value,  row, index) {
                 let edit = editFlag=="true"  ?  '<a class="table-btn table-btn-info" href="javascript:void(0)" onclick="editRole('+row.dictId+')">编辑</a>' : '';
-                let assign = assignPermsFlag=="true"  ? '<a class="table-btn table-btn-info"  href="javascript:void(0)" onclick="assignPermsList('+row.dictId+')">分配权限</a>':'';
+                let assign = assignPermsFlag=="true"  ? '<a class="table-btn table-btn-info"  href="javascript:void(0)" onclick="assignPermsList('+row.dictId+')">详情</a>':'';
                 let del = deleteFlag=="true"  ?  '<a  class="table-btn table-btn-danger" href="javascript:void(0)" onclick="deleteRole('+row.dictId+')">删除</a>' : '';
                 return edit + assign + del;
             }

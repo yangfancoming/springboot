@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface DictDataService extends IService<DictData> {
 
-    public List<DictData> finds(Long dictCode);
+    public List<DictData> finds(String dictCode);
     /**
      * 根据条件分页查询字典数据
      * 

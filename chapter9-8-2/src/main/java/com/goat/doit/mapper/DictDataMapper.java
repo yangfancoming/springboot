@@ -27,7 +27,7 @@ public interface DictDataMapper extends MyMapper<DictData> {
      */
     public List<DictData> selectDictDataByType(String dictType);
 
-    public List<DictData> finds(Long dictCode);
+    public List<DictData> finds(String dictCode);
 
     /**
      * 根据字典类型和字典键值查询字典数据信息

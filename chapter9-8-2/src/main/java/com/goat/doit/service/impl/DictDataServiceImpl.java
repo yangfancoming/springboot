@@ -21,7 +21,7 @@ public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData>  
     private DictDataMapper dictDataMapper;
 
     @Override
-    public List<DictData> finds(Long dictCode) {
+    public List<DictData> finds(String dictCode) {
         return dictDataMapper.finds(dictCode);
     }
 

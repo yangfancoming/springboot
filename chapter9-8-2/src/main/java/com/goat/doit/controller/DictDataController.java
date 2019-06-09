@@ -32,7 +32,7 @@ public class DictDataController {
 
     @GetMapping("/test")
     public String dictData(Model model, String id){
-        model.addAttribute("fuck", id);
+        model.addAttribute("type", id);
         return "dict/data/list";
     }
 
@@ -41,7 +41,7 @@ public class DictDataController {
     @ResponseBody
     public PageResultVo list(DictData dictData, Integer limit, Integer offset){
         PageHelper.startPage(PageUtil.getPageNo(limit, offset),limit);
-        List<DictData> dictList = dictDataService.finds(dictData.getDictCode());
+        List<DictData> dictList = dictDataService.finds(dictData.getDictType());
         PageInfo<DictData> pages = new PageInfo<>(dictList);
         return ResultUtil.table(dictList,pages.getTotal());
     }
