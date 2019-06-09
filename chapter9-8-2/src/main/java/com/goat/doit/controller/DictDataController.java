@@ -56,6 +56,14 @@ public class DictDataController {
         return a>0 ? ResultUtil.success("添加"+ mark +"成功"):ResultUtil.error("添加"+ mark +"失败");
     }
 
+    /*删除字典类型*/
+    @GetMapping("/delete")
+    @ResponseBody
+    public ResponseVo delete(Long id) {
+        int i = dictDataService.deleteDictDataById(id);
+        return i>0 ? ResultUtil.success("删除"+ mark +"成功"):ResultUtil.error("删除"+ mark +"失败");
+    }
+
 
     /**
      * 新增字典类型
