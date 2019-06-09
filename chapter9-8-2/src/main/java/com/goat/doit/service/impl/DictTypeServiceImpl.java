@@ -78,8 +78,7 @@ public class DictTypeServiceImpl implements DictTypeService
      * @return 结果
      */
     @Override
-    public int deleteDictTypeByIds(String ids) throws Exception
-    {
+    public int deleteDictTypeByIds(String ids) {
         return 0;
     }
 
@@ -104,13 +103,12 @@ public class DictTypeServiceImpl implements DictTypeService
      * @return 结果
      */
     @Override
-    public int updateDictType(DictType dictType)
-    {
+    public int updateDictType(DictType dictType) {
+
 //        dictType.setUpdateBy(ShiroUtils.getLoginName());
 //        DictType oldDict = dictTypeMapper.selectDictTypeById(dictType.getDictId());
 //        dictDataMapper.updateDictDataType(oldDict.getDictType(), dictType.getDictType());
-//        return dictTypeMapper.updateDictType(dictType);
-        return 0;
+        return dictTypeMapper.updateDictType(dictType);
     }
 
     /**

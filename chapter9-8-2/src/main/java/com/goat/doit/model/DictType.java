@@ -13,7 +13,7 @@ public class DictType extends BaseEntity {
 
     /** 字典主键 */
     @TableId(value = "dictId", type = IdType.AUTO)
-    private Long id;
+    private Long dictId;
 
     /** 字典名称 */
     private String dictName;
@@ -26,12 +26,12 @@ public class DictType extends BaseEntity {
 
     public Long getDictId()
     {
-        return id;
+        return dictId;
     }
 
     public void setDictId(Long dictId)
     {
-        this.id = dictId;
+        this.dictId = dictId;
     }
 
     public String getDictName()
@@ -67,7 +67,7 @@ public class DictType extends BaseEntity {
     @Override
     public String toString()
     {
-        return "DictType [dictId=" + id + ", dictName=" + dictName + ", dictType=" + dictType + ", status=" + status
+        return "DictType [dictId=" + dictId + ", dictName=" + dictName + ", dictType=" + dictType + ", status=" + status
                 + "]";
     }
 

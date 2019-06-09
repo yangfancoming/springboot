@@ -11,6 +11,7 @@ import com.goat.doit.vo.base.PageResultVo;
 import com.goat.doit.vo.base.ResponseVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
@@ -52,6 +53,22 @@ public class DictTypeController {
         return i>0 ? ResultUtil.success("删除"+ mark +"成功"):ResultUtil.error("删除"+ mark +"失败");
     }
 
+    /*编辑跳转*/
+    @GetMapping("/edit")
+    public String detail(Model model, Long id) {
+        DictType dictType = dictTypeService.selectDictTypeById(id);
+        model.addAttribute("role", dictType);
+        return "dict/type/detail";
+    }
+
+    /*编辑保存*/
+    @PostMapping("/edit")
+    @ResponseBody
+    public ResponseVo edit(@ModelAttribute("dictType") DictType dictType) {
+        int i = dictTypeService.updateDictType(dictType);
+        return i>0 ? ResultUtil.success("编辑"+ mark +"成功"):ResultUtil.error("编辑"+ mark +"失败");
+    }
+
     /**
      * 修改字典类型
      */
@@ -61,30 +78,6 @@ public class DictTypeController {
         mmap.put("dict", dictTypeService.selectDictTypeById(dictId));
         return  "/edit";
     }
-
-    /**
-     * 修改保存字典类型
-     */
-//    @PostMapping("/edit")
-//    @ResponseBody
-//    public AjaxResult editSave(DictType dict)
-//    {
-//        return toAjax(dictTypeService.updateDictType(dict));
-//    }
-
-//    @PostMapping("/remove")
-//    @ResponseBody
-//    public AjaxResult remove(String ids)
-//    {
-//        try
-//        {
-//            return toAjax(dictTypeService.deleteDictTypeByIds(ids));
-//        }
-//        catch (Exception e)
-//        {
-//            return error(e.getMessage());
-//        }
-//    }
 
     /**
      * 查询字典详细
