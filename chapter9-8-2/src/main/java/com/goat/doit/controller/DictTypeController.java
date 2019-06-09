@@ -30,11 +30,11 @@ public class DictTypeController
     @Autowired
     private DictTypeService dictTypeService;
 
-    @GetMapping()
-    public String dictType()
-    {
-        return prefix + "/type";
-    }
+//    @GetMapping()
+//    public String dictType()
+//    {
+//        return prefix + "/type";
+//    }
 
     @PostMapping("/list")
     @ResponseBody

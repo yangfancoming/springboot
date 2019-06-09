@@ -38,6 +38,10 @@
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>批量删除
                 </button>
             </shiro:hasPermission>
+
+            <button id="btn_back" type="button" class="btn btn-primary" data-toggle="modal" data-target="#roleModal">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>返回
+            </button>
         </div>
         <table id="table"></table>
     </div>
@@ -149,6 +153,10 @@
         /*新增*/
         $("#btn_add").click(()=>{
             Core.clearError("#roleForm");
+        });
+
+        $("#btn_back").click(()=>{
+            Core.load("#content",'dictType'); // 页面跳转！
         });
         //批量删除
         $("#btn_batch_delete").click(()=>{

@@ -29,12 +29,6 @@ public class DictDataController {
     @Autowired
     private DictDataService dictDataService;
 
-    @GetMapping()
-    public String dictData()
-    {
-        return prefix + "/data";
-    }
-
     @PostMapping("/list")
     @ResponseBody
     public PageResultVo list(DictData dictData, Integer limit, Integer offset){
