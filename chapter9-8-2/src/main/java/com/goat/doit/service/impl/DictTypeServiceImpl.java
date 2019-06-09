@@ -93,8 +93,8 @@ public class DictTypeServiceImpl implements DictTypeService
     public int insertDictType(DictType dictType)
     {
 //        dictType.setCreateBy(ShiroUtils.getLoginName());
-//        return dictTypeMapper.insertDictType(dictType);
-        return 0;
+        return dictTypeMapper.insertDictType(dictType);
+//        return 0;
     }
 
     /**

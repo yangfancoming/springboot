@@ -8,6 +8,7 @@ import com.goat.doit.service.DictTypeService;
 import com.goat.doit.util.PageUtil;
 import com.goat.doit.util.ResultUtil;
 import com.goat.doit.vo.base.PageResultVo;
+import com.goat.doit.vo.base.ResponseVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,25 +16,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * 数据字典信息
- *
- * @author Rimon
- */
+/** 字典类型*/
 @Controller
 @RequestMapping("/dictType")
-public class DictTypeController
-{
-    private String prefix = "system/dict/type";
+public class DictTypeController {
 
     @Autowired
     private DictTypeService dictTypeService;
-
-//    @GetMapping()
-//    public String dictType()
-//    {
-//        return prefix + "/type";
-//    }
 
     @PostMapping("/list")
     @ResponseBody
@@ -45,24 +34,14 @@ public class DictTypeController
     }
 
 
-    /**
-     * 新增字典类型
-     */
-    @GetMapping("/add")
-    public String add()
-    {
-        return prefix + "/add";
+    /*新增保存字典类型*/
+    @PostMapping("/add")
+    @ResponseBody
+    public ResponseVo add(DictType dictType){
+        int a = dictTypeService.insertDictType(dictType);
+        return a>0 ? ResultUtil.success("添加字典类型成功"):ResultUtil.error("添加字典类型失败");
     }
 
-    /**
-     * 新增保存字典类型
-     */
-//    @PostMapping("/add")
-//    @ResponseBody
-//    public AjaxResult addSave(DictType dict)
-//    {
-//        return toAjax(dictTypeService.insertDictType(dict));
-//    }
 
     /**
      * 修改字典类型
@@ -71,7 +50,7 @@ public class DictTypeController
     public String edit(@PathVariable("dictId") Long dictId, ModelMap mmap)
     {
         mmap.put("dict", dictTypeService.selectDictTypeById(dictId));
-        return prefix + "/edit";
+        return  "/edit";
     }
 
     /**
