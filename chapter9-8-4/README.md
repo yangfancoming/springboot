@@ -31,6 +31,7 @@
             <dependency>
                 <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
+                     <version>1.2.10</version>
             </dependency>
             
             

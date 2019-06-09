@@ -3,13 +3,11 @@ package com.goat.doit.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.goat.doit.model.DictData;
 import com.goat.doit.model.DictType;
 import com.goat.doit.service.DictTypeService;
 import com.goat.doit.util.PageUtil;
 import com.goat.doit.util.ResultUtil;
 import com.goat.doit.vo.base.PageResultVo;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
