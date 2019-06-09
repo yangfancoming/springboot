@@ -64,6 +64,21 @@ public class DictDataController {
         return i>0 ? ResultUtil.success("删除"+ mark +"成功"):ResultUtil.error("删除"+ mark +"失败");
     }
 
+    /*编辑跳转*/
+    @GetMapping("/edit")
+    public String detail(Model model, Long id) {
+        DictData dictData = dictDataService.selectDictDataById(id);
+        model.addAttribute("role", dictData);
+        return "dict/data/detail";
+    }
+
+    /*编辑保存*/
+    @PostMapping("/edit")
+    @ResponseBody
+    public ResponseVo edit(@ModelAttribute("dictData") DictData dictData) {
+        int i = dictDataService.updateDictData(dictData);
+        return i>0 ? ResultUtil.success("编辑"+ mark +"成功"):ResultUtil.error("编辑"+ mark +"失败");
+    }
 
     /**
      * 新增字典类型

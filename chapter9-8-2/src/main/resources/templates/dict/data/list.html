@@ -246,13 +246,12 @@
             dictType: $("#type").val(),
             // name: $("#roleName").val(),
             // status: $("#status").val(),
-
         };
         return temp;
     }
     /*编辑*/
     function editRole(id) {
-        Core.load("#roleOpenWindow","/role/edit?&id="+id, function(){
+        Core.load("#roleOpenWindow","/dictData/edit?&id="+id, function(){
             $("#roleDetailModal").modal("show");
         },2);
     }

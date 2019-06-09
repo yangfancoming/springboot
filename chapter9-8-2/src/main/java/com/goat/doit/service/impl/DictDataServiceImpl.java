@@ -116,9 +116,8 @@ public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData>  
      * @return 结果
      */
     @Override
-    public int updateDictData(DictData dictData)
-    {
-        return 0;
+    public int updateDictData(DictData dictData){
+        return dictDataMapper.updateDictData(dictData);
     }
 
 }
