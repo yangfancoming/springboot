@@ -16,7 +16,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 
@@ -53,7 +52,7 @@ public class LoginController {
         try {
             subject.login(token); //  跳到 doGetAuthenticationInfo 函数 去认证
             User user=(User) subject.getPrincipal();
-//            Session session = subject.getSession();
+//            Session session = subject.getSession(); // 这里为啥 使用这两句代码  就总是报错呢？
 //            session.setAttribute("user", user);
             model.addAttribute("user",user);
 //            return "redirect:/index"; //sos 这里不能使用 redirect: 否则 前端无法接收到  user 数据！！！
