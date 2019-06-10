@@ -1,7 +1,8 @@
-package com.goat.shiro01.config;
+package com.goat.shiro2.config;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.codec.Base64;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
@@ -40,7 +41,6 @@ public class ShiroConfig {
 		shiroBean.setLoginUrl("/login"); // 请求被拦截后  跳转到 登录页面  (哥是登录页哦) 没有登陆的用户只能访问登陆页面
 		shiroBean.setSuccessUrl("/success");// 设置成功之后要跳转的链接
         shiroBean.setUnauthorizedUrl("/403"); //未授权界面; perms[hello:add] 验证失败后 要跳转的页面
-//		shiroBean.setFilterChainDefinitionMap(filterMap);
         shiroBean.setFilterChainDefinitionMap(shiroFilterChainDefinition().getFilterChainMap());//  加载url拦截规则
 		return shiroBean;
 	}
@@ -59,8 +59,6 @@ public class ShiroConfig {
          授权过滤器 如果 指定了未授权界面 那么 直接跳到指定的页面(403) 如果未指定未授权界面  那么直接报错 401 Unauthorized
          授权认证会调用 doGetAuthorizationInfo 函数
          * */
-        chainDefinition.addPathDefinition("/hello/add", "perms[hello:add]");
-        chainDefinition.addPathDefinition("/hello/edit", "perms[hello:edit]");
 //        chainDefinition.addPathDefinition("/**", "authc");   // 过滤链定义，从上向下顺序执行，一般将 /** 放在最为下边  这是一个坑呢，一不小心代码就不好使了;
         chainDefinition.addPathDefinition("/**", "user"); // user表示配置记住我或认证通过可以访问的地址
         return chainDefinition;
@@ -79,8 +77,15 @@ public class ShiroConfig {
 	@Bean // 将该方法返回值 放入spring容器环境 其在容器中的名称为 securityManager
 	public SecurityManager securityManager(MyShiroRealm shiroRealm){
 		DefaultWebSecurityManager securityManager =  new DefaultWebSecurityManager(); // 1. 创建 DefaultWebSecurityManager 对象
+        shiroRealm.setCachingEnabled(true);
+        shiroRealm.setAuthenticationCachingEnabled(true);  //启用身份验证缓存，即缓存AuthenticationInfo信息，默认false
+        shiroRealm.setAuthenticationCacheName("authenticationCache");    //缓存AuthenticationInfo信息的缓存名称 在ehcache-shiro.xml中有对应缓存的配置
+        shiroRealm.setAuthorizationCachingEnabled(true);  //启用授权缓存，即缓存AuthorizationInfo信息，默认false
+        shiroRealm.setAuthorizationCacheName("authorizationCache"); //缓存AuthorizationInfo信息的缓存名称  在ehcache-shiro.xml中有对应缓存的配置
+
 		securityManager.setRealm(shiroRealm);  // 2.securityManager 关联 自定义realm
         securityManager.setRememberMeManager(rememberMeManager());  // 3. 设置记住我功能
+        securityManager.setCacheManager(ehCacheManager());  // 4.配置 ehcache缓存管理器 参考博客：
 		return securityManager;
 	}
 
@@ -137,6 +142,20 @@ public class ShiroConfig {
         //对应前端的checkbox的name = rememberMe
         formAuthenticationFilter.setRememberMeParam("rememberMe");
         return formAuthenticationFilter;
+    }
+
+
+    /**
+     * shiro缓存管理器;
+     * 需要添加到securityManager中
+     * @return
+     */
+    @Bean
+    public EhCacheManager ehCacheManager(){
+        EhCacheManager cacheManager = new EhCacheManager();
+//        cacheManager.setCacheManagerConfigFile("classpath:config/ehcache-shiro.xml");
+        cacheManager.setCacheManagerConfigFile("classpath:ehcache-shiro.xml");
+        return cacheManager;
     }
 
 }

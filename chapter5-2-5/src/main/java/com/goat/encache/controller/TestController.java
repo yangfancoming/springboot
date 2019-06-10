@@ -5,7 +5,6 @@ import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,6 +37,8 @@ public class TestController {
         System.out.println("进入 insert  方法。。。。。。。。。。。。");
         return "insert";
     }
+
+
     //    http://localhost:8525/test/delete
     //删除
     @CacheEvict(key = CACHE_KEY2) //清除缓存
@@ -54,6 +55,8 @@ public class TestController {
         System.out.println("进入 get  方法。。。。。。。。。。。。");
         return new User(1L,"11","22");
     }
+
+
     //    http://localhost:8525/test/list
     @Cacheable(key = "'users'")
     @GetMapping("/list")
