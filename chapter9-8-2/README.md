@@ -16,6 +16,14 @@
      是 ShiroConfig 类中 Map<String,String> filterChainDefinitionMap = shiroService.loadFilterChainDefinitions(); 这里的问题  请参看 两次git提交 变化的部分 
     
     
+    IDEA 在做了 包调整之后  会出现 大片的红色类 提示 不到。。。
+    解决方法： project structure  弹出框 找到对应项目 找到 main src java 目录(为蓝色)  取消蓝色后 再次点击为蓝色目录  然后应用！！
+    查找项目中 没能自动调整包路径改变的代码  eg：MybatisPlusConfig 类中的 @MapperScan("com.goat.doit.system.mapper") 路径！！
+    
+    页面跳转 由于  <div th:replace="home/fragments/footer :: copyrightLight"></div>
+    改成  <div th:replace="system/home/fragments/footer :: copyrightLight"></div>
+    
+    
 # 待解决问题：
     1.新增账号 登录时候的 加密密码的验证   现在的密码是明文的肯定不行的
     2.shiro 是如何管理session的  因为在线用户功能啥的都不好使呢  

@@ -1,7 +1,7 @@
 package com.goat.doit.util;
 
 
-import com.goat.doit.model.User;
+import com.goat.doit.system.model.User;
 import org.apache.shiro.crypto.RandomNumberGenerator;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;

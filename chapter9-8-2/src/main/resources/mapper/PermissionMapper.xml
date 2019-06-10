@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.goat.doit.mapper.PermissionMapper" >
-  <resultMap id="BaseResultMap" type="com.goat.doit.model.Permission" >
+<mapper namespace="com.goat.doit.system.mapper.PermissionMapper" >
+  <resultMap id="BaseResultMap" type="com.goat.doit.system.model.Permission" >
     <!--
       WARNING - @mbggenerated
     -->
@@ -74,7 +74,7 @@
     WHERE permission_id = #{permissionId}
   </select>
 
-  <update id="updateByPermissionId" parameterType="com.goat.doit.model.Permission">
+  <update id="updateByPermissionId" parameterType="com.goat.doit.system.model.Permission">
     UPDATE
     permission
     SET

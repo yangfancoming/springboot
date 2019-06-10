@@ -2,8 +2,8 @@ package com.goat.doit.util;
 
 
 
-import com.goat.doit.vo.base.PageResultVo;
-import com.goat.doit.vo.base.ResponseVo;
+import com.goat.doit.system.vo.base.PageResultVo;
+import com.goat.doit.system.vo.base.ResponseVo;
 
 import java.util.List;
 
