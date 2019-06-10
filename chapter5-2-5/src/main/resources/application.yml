@@ -1,0 +1,8 @@
+spring:
+  cache:
+    ehcache:
+      config: classpath:ehcache.xml
+# \u5F00\u542F\u9A7C\u5CF0\u5F0F\u547D\u540D\u8F6C\u6362\uFF0C\u6620\u5C04\u5173\u7CFB\uFF1Auser_name-->userName
+server:
+  port: 8525
+# \u6253\u5370sql
