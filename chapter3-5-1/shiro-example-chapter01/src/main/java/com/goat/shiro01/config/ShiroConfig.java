@@ -8,6 +8,7 @@ import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSource
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
 import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;
+import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.apache.shiro.web.mgt.CookieRememberMeManager;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.SimpleCookie;
@@ -60,7 +61,8 @@ public class ShiroConfig {
          * */
         chainDefinition.addPathDefinition("/hello/add", "perms[hello:add]");
         chainDefinition.addPathDefinition("/hello/edit", "perms[hello:edit]");
-        chainDefinition.addPathDefinition("/**", "authc");   // 过滤链定义，从上向下顺序执行，一般将 /** 放在最为下边  这是一个坑呢，一不小心代码就不好使了;
+//        chainDefinition.addPathDefinition("/**", "authc");   // 过滤链定义，从上向下顺序执行，一般将 /** 放在最为下边  这是一个坑呢，一不小心代码就不好使了;
+        chainDefinition.addPathDefinition("/**", "user"); // user表示配置记住我或认证通过可以访问的地址
         return chainDefinition;
     }
 	/**
@@ -78,7 +80,7 @@ public class ShiroConfig {
 	public SecurityManager securityManager(MyShiroRealm myShiroRealm){
 		DefaultWebSecurityManager securityManager =  new DefaultWebSecurityManager(); // 1. 创建 DefaultWebSecurityManager 对象
 		securityManager.setRealm(myShiroRealm);  // 2.securityManager 关联 自定义realm
-        securityManager.setRememberMeManager(rememberMeManager());  // 3.记住我
+        securityManager.setRememberMeManager(rememberMeManager());  // 3. 设置记住我功能
 		return securityManager;
 	}
 
@@ -111,9 +113,30 @@ public class ShiroConfig {
 
     /** cookie对象; */
     public SimpleCookie rememberMeCookie(){
-        SimpleCookie simpleCookie = new SimpleCookie("rememberMe"); //这个参数是cookie的名称，对应前端的checkbox的name = rememberMe
-        simpleCookie.setMaxAge(2592000);  // 记住我cookie生效时间30天 ,单位秒;
+        //这个参数是cookie的名称，对应前端的checkbox的name = rememberMe
+        SimpleCookie simpleCookie = new SimpleCookie("rememberMe");
+        //setcookie的httponly属性如果设为true的话，会增加对xss防护的安全系数。它有以下特点：
+
+        //setcookie()的第七个参数
+        //设为true后，只能通过http访问，javascript无法访问
+        //防止xss读取cookie
+        simpleCookie.setHttpOnly(true);
+        simpleCookie.setPath("/");
+        //<!-- 记住我cookie生效时间30天 ,单位秒;-->
+        simpleCookie.setMaxAge(2592000);
         return simpleCookie;
+    }
+
+    /**
+     * FormAuthenticationFilter 过滤器 过滤记住我
+     * @return
+     */
+    @Bean
+    public FormAuthenticationFilter formAuthenticationFilter(){
+        FormAuthenticationFilter formAuthenticationFilter = new FormAuthenticationFilter();
+        //对应前端的checkbox的name = rememberMe
+        formAuthenticationFilter.setRememberMeParam("rememberMe");
+        return formAuthenticationFilter;
     }
 
 
