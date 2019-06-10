@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>shiro-example-chapter10</module>
+        <module>shiro-example-chapter01</module>
     </modules>
 
 
@@ -20,10 +21,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <!--<thymeleaf.version>3.0.9.RELEASE</thymeleaf.version>-->
+        <thymeleaf.version>3.0.9.RELEASE</thymeleaf.version>
         <!-- 布局功能的支持程序  thymeleaf3主程序  layout2以上版本 -->
         <!-- thymeleaf2   layout1-->
-        <!--<thymeleaf-layout-dialect.version>2.2.2</thymeleaf-layout-dialect.version>-->
+        <thymeleaf-layout-dialect.version>2.2.2</thymeleaf-layout-dialect.version>
     </properties>
 
 
@@ -37,28 +38,17 @@
 
 
         <!--引入 thymeleaf-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-thymeleaf</artifactId>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>com.github.theborakompanioni</groupId>-->
-            <!--<artifactId>thymeleaf-extras-shiro</artifactId>-->
-            <!--<version>2.0.0</version>-->
-        <!--</dependency>-->
-        <!--&lt;!&ndash;  引入 common api 依赖 &ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>com.goat.springboot.learing</groupId>-->
-            <!--<artifactId>chapter5-3-6</artifactId>-->
-            <!--<version>0.0.1-SNAPSHOT</version>-->
-        <!--</dependency>-->
-        <!--&lt;!&ndash; Spring Boot Dubbo 依赖 &ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>com.alibaba.boot</groupId>-->
-            <!--<artifactId>dubbo-spring-boot-starter</artifactId>-->
-            <!--<version>0.2.0</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.github.theborakompanioni</groupId>
+            <artifactId>thymeleaf-extras-shiro</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+
     </dependencies>
 
 

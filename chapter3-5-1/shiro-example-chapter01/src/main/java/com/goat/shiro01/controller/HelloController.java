@@ -1,4 +1,4 @@
-package com.goat.controller;
+package com.goat.shiro01.controller;
 
 
 import org.springframework.stereotype.Controller;

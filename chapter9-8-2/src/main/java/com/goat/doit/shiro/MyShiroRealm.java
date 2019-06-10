@@ -30,9 +30,9 @@ import java.util.Set;
 @Component
 public class MyShiroRealm extends AuthorizingRealm {
 
-
     @Autowired
     private UserService userService;
+
     @Autowired
     private RoleService roleService;
 
@@ -47,20 +47,34 @@ public class MyShiroRealm extends AuthorizingRealm {
      是由于  authInfo.addStringPermission(null)
     */
 
-    /* 执行授权 ：*/
+    /* 执行授权 ：
+    * 该方法是在碰到<shiro:hasPermission name=''></shiro:hasPermission>标签的时候调用的
+    * 它会去检测shiro框架中的权限(这里的permissions)是否包含有该标签的name值,如果有,里面的内容显示如果没有,里面的内容不予显示(这就完成了对于权限的认证.)
+    * 如果只是简单的身份认证没有权限的控制的话，那么这个方法可以不进行实现，直接返回null即可。
+    * 在这个方法中主要是使用类：SimpleAuthorizationInfo 进行角色的添加和权限的添加。
+    * authorizationInfo.addRole(role.getRole()); authorizationInfo.addStringPermission(p.getPermission());
+    * 当然也可以添加set集合：roles是从数据库查询的当前用户的角色，stringPermissions是从数据库查询的当前用户对应的权限
+    * authorizationInfo.setRoles(roles); authorizationInfo.setStringPermissions(stringPermissions);
+    *
+    * 就是说如果在shiro配置文件中添加了filterChainDefinitionMap.put("/add", "perms[权限添加]");
+    * 就说明访问/add这个链接必须要有“权限添加”这个权限才可以访问
+    *
+    * 如果在shiro配置文件中添加了filterChainDefinitionMap.put("/add", "roles[100002]，perms[权限添加]");
+    * 就说明访问/add这个链接必须要有 "权限添加" 这个权限和具有 "100002" 这个角色才可以访问
+    * */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         System.out.println("执行授权方法");
         // 给资源进行授权
         User user  = (User) principals.getPrimaryPrincipal();
         SimpleAuthorizationInfo authInfo = new SimpleAuthorizationInfo();
-        authInfo.setRoles(roleService.findRoleByUserId(user.getId()));
+        authInfo.setRoles(roleService.findRoleByUserId(user.getId())); //获取用户角色 并添加角色
         /** doit
          * 为啥 findPermsByUserId() 一条龙 换成 Interger 就报错呢？
          * 报错： thymeleaf  java.sql.SQLException: Invalid value for getInt() - 'workdest'
         */
-        Set<String> permsByUserId = permissionService.findPermsByUserId(user.getId().toString());
-        authInfo.setStringPermissions(permsByUserId);
+        Set<String> permissions = permissionService.findPermsByUserId(user.getId().toString()); // 获取用户权限 并添加权限
+        authInfo.setStringPermissions(permissions);
         return authInfo;
 
     }

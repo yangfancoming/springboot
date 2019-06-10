@@ -51,14 +51,16 @@ public class ShiroConfig {
 
 	@Bean
 	public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
-        // 创建 ShiroFilterFactoryBean 并与 securityManager 进行关联
-        ShiroFilterFactoryBean shiroBean = new ShiroFilterFactoryBean();
+        ShiroFilterFactoryBean shiroBean = new ShiroFilterFactoryBean(); // 创建 ShiroFilterFactoryBean 并与 securityManager 进行关联
         shiroBean.setSecurityManager(securityManager); // 必须设置 SecurityManager
-        //拦截成功后的跳转页面： 如果不设置默认会自动寻找Web工程根目录下(templates/)的"/login.jsp"页面
-		shiroBean.setLoginUrl("/toLogin"); // 请求被拦截后  跳转到 登录页面  (哥是登录页哦) 没有登陆的用户只能访问登陆页面
-		shiroBean.setSuccessUrl("/index");// 设置成功之后要跳转的链接
+        /**
+         这里的/login是后台的接口名,非页面，如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
+         拦截成功后的跳转页面： 如果不设置默认会自动寻找Web工程根目录下(templates/)的"/login.jsp"页面
+         请求被拦截后  跳转到 登录页面  (哥是登录页哦) 没有登陆的用户只能访问登陆页面
+        */
+		shiroBean.setLoginUrl("/toLogin");
+		shiroBean.setSuccessUrl("/index");// 这里的/index是后台的接口名,非页面,登录成功后要跳转的链接
         shiroBean.setUnauthorizedUrl("/403"); //未授权界面; perms[hello:add] 验证失败后 要跳转的页面
-//		shiroBean.setFilterChainDefinitionMap(filterMap);
 
         //自定义拦截器
         Map<String, Filter> filtersMap = new LinkedHashMap<>();
@@ -90,7 +92,10 @@ public class ShiroConfig {
 		return securityManager;
 	}
 
-	/**  用于  thymeleaf 和 shiro 标签配合使用 （为了在thymeleaf里使用shiro的标签的bean）  */
+	/**  用于  thymeleaf 和 shiro 标签配合使用 （为了在thymeleaf里使用shiro的标签的bean）
+     * 必须（thymeleaf页面使用shiro标签控制按钮是否显示）
+     * 未引入thymeleaf包，Caused by: java.lang.ClassNotFoundException: org.thymeleaf.dialect.AbstractProcessorDialect
+     *  */
     @Bean
 	public ShiroDialect getShiroDialect(){
 	    return new ShiroDialect();
@@ -99,7 +104,7 @@ public class ShiroConfig {
 	/**
 	 *  开启shiro aop注解支持.
 	 *  使用代理方式;所以需要开启代码支持; 加入注解的使用，不加入这个注解不生效
-	 * @param securityManager
+     * 可以在controller中的方法前加上注解 如 @RequiresPermissions("userInfo:add")
 	 */
 	@Bean
 	public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager){

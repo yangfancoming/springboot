@@ -1,4 +1,4 @@
-package com.goat.config;
+package com.goat.shiro01.config;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
@@ -116,17 +116,5 @@ public class ShiroConfig {
         return simpleCookie;
     }
 
-//
-//	@Bean(name="simpleMappingExceptionResolver")
-//	public SimpleMappingExceptionResolver createSimpleMappingExceptionResolver() {
-//		SimpleMappingExceptionResolver r = new SimpleMappingExceptionResolver();
-//		Properties mappings = new Properties();
-//		mappings.setProperty("DatabaseException", "databaseError");//数据库异常处理
-//		mappings.setProperty("UnauthorizedException","403");
-//		r.setExceptionMappings(mappings);  // None by default
-//		r.setDefaultErrorView("error");    // No default
-//		r.setExceptionAttribute("ex");     // Default is "exception"
-//		//r.setWarnLogCategory("example.MvcLogger");     // No default
-//		return r;
-//	}
+
 }
