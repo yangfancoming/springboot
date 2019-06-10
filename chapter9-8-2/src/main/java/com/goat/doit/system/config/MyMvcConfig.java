@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class MyMvcConfig implements WebMvcConfigurer {
 
     private static final String prefix = "system/";
+
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/toLogin").setViewName(prefix +"login");
@@ -22,7 +23,8 @@ public class MyMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/online/users").setViewName(prefix +"onlineUsers/list");
 
 
-        registry.addViewController("/thymeleafs").setViewName("thymeleaf/fuck");
+        registry.addViewController("/thymeleafs").setViewName("thymeleaf/demo01");
+        registry.addViewController("/select2s").setViewName("select2/demo01");
     }
 
 }

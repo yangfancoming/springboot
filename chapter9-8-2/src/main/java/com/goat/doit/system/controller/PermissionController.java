@@ -31,6 +31,7 @@ public class PermissionController {
     @Autowired
     private ShiroService shiroService;
 
+    private static final String prefix = "system/";
 
     /*权限列表数据*/
     @PostMapping("/list")
@@ -90,7 +91,7 @@ public class PermissionController {
             }
         }
         model.addAttribute("permission", permission);
-        return "permission/detail";
+        return prefix + "permission/detail";
     }
 
     /*编辑保存*/
