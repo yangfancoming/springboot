@@ -61,6 +61,8 @@ public class MyMvcConfig implements WebMvcConfigurer {
         // sos 这里映射 类路径 和 项目外部路径 不能同时存在 否则 第一个会是失效！
         registry.addResourceHandler("/my/**").addResourceLocations("classpath:/my/"); // 指定类路径下静态资源
 //        registry.addResourceHandler("/my/**").addResourceLocations("file:E:/my/");  // 指定 项目外部路径下静态资源
+        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+        registry.addResourceHandler("/public/**").addResourceLocations("classpath:/public/");
     }
 
     /** 拦截器配置
@@ -79,5 +81,21 @@ public class MyMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(customInterceptor)
                 .addPathPatterns("/**").excludePathPatterns("/toLogin","/login","/asserts/**","/my/**");
+    }
+
+
+    /**
+     * 设置自己的path匹配规则
+     * @param configurer
+     */
+    @Override
+    public void configurePathMatch(PathMatchConfigurer configurer) {
+        // 常用的两种
+        // 匹配结尾 / :会识别 url 的最后一个字符是否为 /
+        // 设置为true: localhost:8080/test 与 localhost:8080/test/ 等价
+        configurer.setUseTrailingSlashMatch(true);
+        // 匹配后缀名：会识别 xx.* 后缀的内容
+        // 设置为true: localhost:8080/test 与 localhost:8080/test.jsp 等价
+        configurer.setUseSuffixPatternMatch(true);
     }
 }

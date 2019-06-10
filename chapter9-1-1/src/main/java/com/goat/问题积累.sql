@@ -14,3 +14,6 @@ delete from t_official_sys_user where USER_NAME IN(
 
 # 项目启动后 报错： sos java.sql.SQLException: Unknown system variable 'query_cache_size'
 # 解决方法： 此问题为MySql驱动版本与mysql版本不兼容导致，换一个较低版本的驱动即可解决。例如：换成 mysql-connector-java-5.1.6.jar
+
+# 项目启动后 报错： sos java.sql.SQLException: Unknown system variable 'tx_isolation'
+# 解决方法： 此问题为MySql驱动版本与mysql版本不兼容导致，换一个较低版本的驱动即可解决。 <version>5.1.46</version>
