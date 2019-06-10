@@ -7,18 +7,22 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class MyMvcConfig implements WebMvcConfigurer {
 
+    private static final String prefix = "system/";
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/toLogin").setViewName("/login");
-        registry.addViewController("/kickout").setViewName("/kickout");
-        registry.addViewController("/workdest").setViewName("index/workdest");
-        registry.addViewController("/index").setViewName("index/index");
-        registry.addViewController("/").setViewName("index/index");
-        registry.addViewController("/users").setViewName("user/list");
-        registry.addViewController("/roles").setViewName("role/list");
-        registry.addViewController("/dictType").setViewName("dict/type/list");
-        registry.addViewController("/permissions").setViewName("permission/list");
-        registry.addViewController("/online/users").setViewName("onlineUsers/list");
+        registry.addViewController("/toLogin").setViewName(prefix +"login");
+        registry.addViewController("/kickout").setViewName(prefix +"/kickout");
+        registry.addViewController("/workdest").setViewName(prefix + "index/workdest");
+        registry.addViewController("/index").setViewName(prefix +"index/index");
+        registry.addViewController("/").setViewName(prefix +"index/index");
+        registry.addViewController("/users").setViewName(prefix +"user/list");
+        registry.addViewController("/roles").setViewName(prefix +"role/list");
+        registry.addViewController("/dictType").setViewName(prefix +"dict/type/list");
+        registry.addViewController("/permissions").setViewName(prefix +"permission/list");
+        registry.addViewController("/online/users").setViewName(prefix +"onlineUsers/list");
+
+
+        registry.addViewController("/thymeleafs").setViewName("thymeleaf/fuck");
     }
 
 }
