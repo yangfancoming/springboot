@@ -124,7 +124,7 @@
             type:'get', dataType: 'json',delay: 250,
             url: "/json/select.json", // 请求本地 json 文件
             contentType:"application/json",
-            data: function (params) { // 相当于   data: {  q: 111,page: 222},
+            data: function (params) { //  data: 下拉框绑定的数据 相当于   data: {  q: 111,page: 222},
                 console.log(params,1111111111)
                 return {
                     q: params.term, // search term 请求参数 ， 请求框中输入的参数
@@ -145,8 +145,11 @@
         language: "zh-CN",
         tags: true,//允许手动添加
         allowClear: true,//允许清空
+        closeOnSelect: false, // select选中关闭下拉框
+        multiple: true,  // 多选，默认 true
         escapeMarkup: function (markup) { return markup; }, // 自定义格式化防止xss注入
         minimumInputLength: 1,//最少输入多少个字符后开始查询
+        maximumSelectionLength: 6, // 最多能够选择的个数
     });
 
 /**

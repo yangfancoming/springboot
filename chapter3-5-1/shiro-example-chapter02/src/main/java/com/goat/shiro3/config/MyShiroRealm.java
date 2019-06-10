@@ -1,6 +1,6 @@
-package com.goat.shiro2.config;
+package com.goat.shiro3.config;
 
-import com.goat.shiro2.bean.User;
+import com.goat.shiro3.bean.User;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;

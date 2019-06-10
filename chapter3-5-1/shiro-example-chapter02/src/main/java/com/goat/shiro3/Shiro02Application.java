@@ -1,4 +1,4 @@
-package com.goat.shiro2;
+package com.goat.shiro3;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

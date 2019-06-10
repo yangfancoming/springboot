@@ -1,4 +1,4 @@
-package com.goat.shiro2.bean;
+package com.goat.shiro3.bean;
 
 
 import com.fasterxml.jackson.annotation.JsonView;
