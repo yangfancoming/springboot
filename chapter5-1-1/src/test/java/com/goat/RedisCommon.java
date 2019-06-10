@@ -18,7 +18,7 @@ public class RedisCommon  {
 
     /**
          * @Description:  redisTemplate 操作 Redis 总结
-         * @author: 杨帆
+         * @author: Goat
          * @Date:   2018/10/7
      *
      *

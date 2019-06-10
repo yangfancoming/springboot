@@ -6,7 +6,7 @@ import org.junit.Test;
 
 /**
      * @Description: 功能描述： redis 字符串操作
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/9/4
 */
 public class Redis_String extends Redis_Common {

@@ -23,7 +23,7 @@ public class OpsForValue extends RedisCommon {
     private ValueOperations<String, Object> stringOperations;
     /**
          * @Description:  stringRedisTemplate 操作 字符串 总结
-         * @author: 杨帆
+         * @author: Goat
          * @Date:   2018/10/7
      *
     RedisTemplate 使用的是 JdkSerializationRedisSerializer 用于 字符串类型操作
@@ -35,7 +35,7 @@ public class OpsForValue extends RedisCommon {
     */
     /**
          * @Description:  对应命令
-         * @author: 杨帆
+         * @author: Goat
          * @Param:   set goat2 hahaha
          * @Return:  get goat2
          * @Date:   2018/10/7
@@ -63,7 +63,7 @@ public class OpsForValue extends RedisCommon {
     }
     /**
      * @Description:  截取字符串，从开始下标位置开始到结束下标的位置(包含结束下标)的字符串
-     * @author: 杨帆
+     * @author: Goat
      * @Param:    GETRANGE goat 1 3
      * @Return:  123456 ---> 234
      * @Date:   2018/10/7
@@ -75,7 +75,7 @@ public class OpsForValue extends RedisCommon {
     }
     /**
      * @Description:  获取原来的值并重新赋新值
-     * @author: 杨帆
+     * @author: Goat
      * @Param:   GETSET key value
      * @Return:  返回旧值
      * @Date:   2018/10/7
@@ -154,7 +154,7 @@ public class OpsForValue extends RedisCommon {
      19	DECRBY key decrement	按给定数值减少键的整数值
 
      * @Description:  incr decr 操作 不存在的key时  则新建key 其value设置0  然后在进行 增加或减少操作  value 必须为整数型
-     * @author: 杨帆
+     * @author: Goat
      * @Param:  delta 步长  （要变化的值） 负数===DECR 类指令   整数===INCR 类指令
      * @Return:
      * @Date:   2018/10/7
@@ -173,7 +173,7 @@ public class OpsForValue extends RedisCommon {
     /**
 
      * @Description:  如果key存在则 将value追加到旧value末尾，如果key不存在则 新增键值对
-     * @author: 杨帆
+     * @author: Goat
      * @Param:   append goat 123
      * @Return:  返回 追加后 value 的总长度
      * @Date:   2018/10/7

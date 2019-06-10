@@ -16,7 +16,7 @@ public class RetryService {
 
     /**
          * @Description: 功能描述：(这里用一句话描述这个方法的作用)
-         * @author: 杨帆
+         * @author: Goat
          * @Param: value:发生指定的异常时进行重试
          * @Param: maxAttempts 最大重试次数 默认 3
          * @Param: backoff 重试补偿机制，默认没有

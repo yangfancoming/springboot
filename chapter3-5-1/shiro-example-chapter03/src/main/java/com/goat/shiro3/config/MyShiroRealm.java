@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 /**
      * @Description:  自定义 Realm 类  需要继承shiro 提供的  AuthorizingRealm类
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/11/7
 */
 @Component

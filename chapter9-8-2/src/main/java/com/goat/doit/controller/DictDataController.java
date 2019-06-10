@@ -19,8 +19,6 @@ import java.util.List;
 
 /**
  * 数据字典信息
- * 
- * @author Rimon
  */
 @Controller
 @RequestMapping("/dictData")

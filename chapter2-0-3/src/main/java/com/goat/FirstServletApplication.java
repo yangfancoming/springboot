@@ -38,7 +38,7 @@ public class FirstServletApplication extends SpringBootServletInitializer {
 
     /**
          * @Description:  注册 servlet bean
-         * @author: 杨帆
+         * @author: Goat
          * @Date:   2018/10/23
     */
     @Bean  //一定要加，不然这个方法不会运行   手动为第二个servlet 实例化bean (SecondServlet 使用)
@@ -50,7 +50,7 @@ public class FirstServletApplication extends SpringBootServletInitializer {
 
     /**
      * @Description:  注册 SecondFilter  bean    http://localhost:8203/second
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/10/23
      * FilterRegistrationBean是springboot提供的，此类提供setOrder方法，可以为filter设置排序值，让spring在注册web filter之前排序后再依次注册。
      */
@@ -70,7 +70,7 @@ public class FirstServletApplication extends SpringBootServletInitializer {
 
     /**
      * @Description:  注册 Listener   bean
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/10/23
      */
     @Bean

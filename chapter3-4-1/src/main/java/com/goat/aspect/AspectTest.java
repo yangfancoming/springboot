@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 /**
      * @Description:
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/8/23
     整个表达式可以分为五个部分：
     1、execution(): 表达式主体。 execution (* com.sample.service.impl..*.*(..))
@@ -64,7 +64,7 @@ public class AspectTest {
 
     /**
          * @Description: 功能描述： 拦截指定方法
-         * @author: 杨帆
+         * @author: Goat
          * @Param:  测试地址：    http://localhost:8341/hello1
          * @Date:   2018/9/26
     */
@@ -76,7 +76,7 @@ public class AspectTest {
 
     /**
          * @Description: 功能描述： 后置增强  可以接收 切入方法的返回值
-         * @author: 杨帆
+         * @author: Goat
          * @Param: 测试地址：    http://localhost:8341/hello1
          * @Return:  rvt
          * @Date:   2018/9/26

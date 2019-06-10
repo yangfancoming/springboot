@@ -13,7 +13,7 @@ import java.io.File;
 
 /**
      * @Description: 运行此类生成license
-     * @author: 杨帆
+     * @author: Goat
      * @Param:
      * @Return:
      * @Date:   2018/12/12

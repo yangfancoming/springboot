@@ -14,7 +14,7 @@ public class MyStringTool {
 
     /**
      * @Description: 功能描述：将字符串按照指定长度进行分割
-     * @author: 杨帆
+     * @author: Goat
      * @Param: 1234567890    MyStringTool.StrSplit(marks,3);
      * @Return:  123,456,789
      * @Date:   2018/7/11
@@ -31,7 +31,7 @@ public class MyStringTool {
 
     /**
      * @Description: 功能描述：4 字节(8位)字符串     每 n 个字节倒序 （输入 n 长度必须能被 输入字符串的长度整除 否则数据丢失）
-     * @author: 杨帆
+     * @author: Goat
      * @Param:   String ret = MyStringTool.StrReverse("1234567890",5);  1234567890 ---- 6789012345
      * @Param:   String ret = MyStringTool.StrReverse("1234567890",2);  1234567890 ---- 9078563412
      * @Return:
@@ -53,7 +53,7 @@ public class MyStringTool {
      */
     /**
      * @Description: 功能描述：字节数组转换为十六进制字符串
-     * @author: 杨帆
+     * @author: Goat
      * @Param:  byte[] temp = {0x7e,0x09,0x0A}; MyStringTool.bytes2hex(temp);
      * @Return:  7E090A
      * @Date:   2018/7/12
@@ -98,7 +98,7 @@ public class MyStringTool {
 
     /**
      * @Description: 功能描述：(这里用一句话描述这个方法的作用)
-     * @author: 杨帆
+     * @author: Goat
      * @Param:
      * @Return:
     src：byte源数组
@@ -128,7 +128,7 @@ public class MyStringTool {
     //    }
     /**
      * @Description: 功能描述：(这里用一句话描述这个方法的作用)
-     * @author: 杨帆
+     * @author: Goat
      * @Param:    String ret = MyStringTool.IntToAsc("1234");
      * @Return:  31323334
      * @Date:   2018/7/12

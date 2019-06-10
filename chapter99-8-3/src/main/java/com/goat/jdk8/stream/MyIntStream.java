@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 
 /**
      * @Description:  同一个循环代码的 不同学法
-     * @author: 杨帆
+     * @author: Goat
      * @Param:
      * @Return:
      * @Date:   2019/4/11

@@ -37,7 +37,7 @@ public class HelloController {
 
 /**
      * @Description:
-     * @author: 杨帆
+     * @author: Goat
         new Search.Builder(要搜索的json表达式).addIndex(指定在哪个索引下搜索).addType(指定在哪个类型下搜索)
      * @Date:   2018/8/22
 */

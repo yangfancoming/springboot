@@ -25,7 +25,7 @@ public class DateUtil {
 
     /**
          * @Description:  常用日期格式
-         * @author: 杨帆
+         * @author: Goat
             yyyy-MM-dd
             yyyy-MM-dd HH:mm:ss
             yyyy-MM-dd HH:mm:ss EE
@@ -60,7 +60,7 @@ public class DateUtil {
 
     /**
          * @Description: 赵博排班计算函数   白班  夜班  下夜  正休 0,1,2,3  20181209  休
-         * @author: 杨帆
+         * @author: Goat
          * @Param:  start  起始日期设定
          * @Param:  end    查询日期
          * @Return:

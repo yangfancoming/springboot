@@ -18,7 +18,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 
 /**
      * @Description:
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2019/1/12
  *
  * 有了该配置类 启动项目后 控制台 会显示以下映射

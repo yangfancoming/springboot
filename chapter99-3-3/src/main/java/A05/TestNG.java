@@ -5,7 +5,7 @@ import org.junit.Test;
 
 /**
      * @Description: 功能描述： 3.5.1 基本类型的自动转换 示例
-     * @author: 杨帆
+     * @author: Goat
      * @Param:   byte -->  short/char --->  int ---> long ---> float ---> double
      * @Return:
      * @Date:   2018/9/3

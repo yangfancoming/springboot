@@ -5,7 +5,7 @@ import org.junit.Test;
 
 /**
      * @Description: 功能描述： 5.1.3   对象、指针、引用 示例
-     * @author: 杨帆
+     * @author: Goat
      * @Param:
      * @Return:
      * @Date:   2018/9/3
@@ -36,7 +36,7 @@ public class TestNG {
 
     /**
          * @Description: 功能描述：Object 对象的常用方法 示例
-         * @author: 杨帆
+         * @author: Goat
          * @Param:
          * @Return:
          * @Date:   2018/9/3
@@ -49,7 +49,7 @@ public class TestNG {
 
     /**
      * @Description: 功能描述：(这里用一句话描述这个方法的作用)
-     * @author: 杨帆
+     * @author: Goat
     Object 类的 toString 方法返回一个字符串，该字符串由类名（对象是该类的一个实例）、at 标记符“@”和此对象哈希码的无符号十六进制表示组成。
     getClass().getName() + '@' + Integer.toHexString(hashCode())
      * @Date:   2018/8/5
@@ -65,7 +65,7 @@ public class TestNG {
 
     /**
      * @Description: 功能描述：
-     * @author: 杨帆
+     * @author: Goat
     基本类型： 比较的就是值
     引用类型： 比较的就是地址
      * @Date:   2018/8/5

@@ -48,7 +48,7 @@ public class Mytest {
     }
     /**
          * @Description: 功能描述：(这里用一句话描述这个方法的作用)
-         * @author: 杨帆
+         * @author: Goat
     connectString：连接服务器列表，已“，”分割。
     sessionTimeOut：心跳检测时间周期(毫秒)
     watcher：事件处理通知器。
@@ -66,7 +66,7 @@ public class Mytest {
 
     /**
          * @Description: 创建节点
-         * @author: 杨帆
+         * @author: Goat
          * @Param:  要创建节点的路径，节点的数据，节点的权限，节点的类型
          * @Param:
          * @Return:

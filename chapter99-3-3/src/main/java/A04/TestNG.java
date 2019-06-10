@@ -5,7 +5,7 @@ import org.junit.Test;
 
 /**
      * @Description: 功能描述： 3.4.1 基本数据类型
-     * @author: 杨帆
+     * @author: Goat
      * @Param:
      * @Return:
      * @Date:   2018/9/3

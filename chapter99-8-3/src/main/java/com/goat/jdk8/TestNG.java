@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
      * @Description:  list 过滤  filter
      * @Description:  list 求和
      * @Description:  List转为Map
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/12/14
 */
 public class TestNG {

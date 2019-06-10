@@ -119,7 +119,7 @@ public class MyArrayList {
 
     /**
          * @Description: 功能描述：(这里用一句话描述这个方法的作用)
-         * @author: 杨帆
+         * @author: Goat
          * Description:  listIterator  迭代器 不通用 只有list系才能使用 使用正常遍历不推荐使用，推荐使用的是它的反向遍历功能！
          *  sos 但是 要想使用 listIterator 的反向遍历功能，必须先要正向遍历一遍。。。。。我凑！
          * 1.与Set只提供一个iterator()方法不同，List还额外提供了一个listIterator()方法，返回一个ListIterator对象

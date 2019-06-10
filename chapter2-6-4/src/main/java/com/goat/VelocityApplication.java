@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * @Description: Springboot 整合 Velocity
- * @author: 杨帆
+ * @author: Goat
  * @Param:
  * @Return:
  * @Date:   2018/10/24

@@ -5,7 +5,7 @@ import org.junit.Test;
 
 /**
      * @Description: 功能描述：( 多线程 龟兔赛跑 来演示 线程常用方法 )
-     * @author: 杨帆
+     * @author: Goat
 int getPriority() 　 获取线程优先级  线程默认优先级是5   范围 0 - 10
 public static final int MAX_PRIORITY 10
 public static final int MIN_PRIORITY 1
@@ -30,7 +30,7 @@ public class TestNG {
 
     /**
          * @Description: 功能描述： 常用方法示例
-         * @author: 杨帆
+         * @author: Goat
          * @Date:   2018/8/29
     */
     @Test
@@ -47,7 +47,7 @@ public class TestNG {
 
     /**
          * @Description: 功能描述：测试线程和主线程 均100次随机正常执行
-         * @author: 杨帆
+         * @author: Goat
          * @Date:   2018/8/29
     */
     @Test
@@ -62,7 +62,7 @@ public class TestNG {
     /**
          * @Description: 功能描述：join() 方法演示
      * 主线程 在执行到 i==30 时  t 线程 抢入 直到 t 线程执行结束后  主线程继续执行
-         * @author: 杨帆
+         * @author: Goat
          * @Date:   2018/8/29
     */
     @Test
@@ -83,7 +83,7 @@ public class TestNG {
      * 多次运行测试代码 可以发现  主线程每次执行到10整数倍时 很大几率可以看到 t 线程执行
      *
      *  yield()的作用是让步。它能让当前线程由“运行状态”进入到“就绪状态”，从而让其它具有相同优先级的等待线程获取执行权；
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/8/29
      */
     @Test
@@ -114,7 +114,7 @@ public class TestNG {
      * @Description: 功能描述：setPriority() 方法演示
      * 可以看到  1.设置 t 线程的优先级为最高   2.设置主线程的优先级为最低    然后测试 会明显的发现  t 线程 优先执行
      *
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/8/29
      */
     @Test

@@ -4,7 +4,7 @@ package com.goat.enums;
 
 /**
  * @Description:
- * @author: 杨帆
+ * @author: Goat
  * @Date:   2018/12/25
  *
  * 其中共有三个状态（待支付、待收货、结束）以及两个引起状态迁移的事件（支付、收货），

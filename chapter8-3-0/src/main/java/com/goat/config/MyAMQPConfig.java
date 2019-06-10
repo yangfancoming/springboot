@@ -29,7 +29,7 @@ public class MyAMQPConfig{
 
     /**
          * @Description:  使用自定义消息体序列化器  使用Json格式发送
-         * @author: 杨帆
+         * @author: Goat
          * @Date:   2018/9/29
     */
     @Bean

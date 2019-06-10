@@ -7,7 +7,7 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 /**
      * @Description: 启动后  输入  http://localhost:8542/ 即可看到 eureka 页面
-     * @author: 杨帆
+     * @author: Goat
      * @Param:
      * @Return:
      * @Date:   2018/11/27

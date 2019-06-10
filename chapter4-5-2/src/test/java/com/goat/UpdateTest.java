@@ -45,7 +45,7 @@ public class UpdateTest extends CommonTest {
 
     /**
      * @Description: 功能描述：  查询到指定对象后  进行更改
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/9/27
      * @Return: p1 返回 修改指定的对象
      */

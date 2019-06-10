@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
      * @Description: 功能描述：Gson 工具 常用方法
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/9/13
 User 类的成员变量名要和 json 中的key 一致，成员变量类型要和json中的value类型一致；并且要生成getter和setter方法
 
@@ -68,7 +68,7 @@ public class TestNG {
 
     /**
          * @Description:   对应 Long 类型 code属性 要么写正确 要么就不写默认转为null  否则报错
-         * @author: 杨帆
+         * @author: Goat
          * @Return:   Caused by: java.lang.NumberFormatException: empty String
          * @Date:   2018/12/3
     */

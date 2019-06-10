@@ -11,7 +11,7 @@ import org.junit.Test;
 等待线程：WAITING
 唤醒线程：BLOCKED
 终止线程：TERMINATED
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/8/29
 */
 

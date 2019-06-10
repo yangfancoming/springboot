@@ -17,7 +17,7 @@ public class TestNG_mes {
 
     /**
          * @Description:  测试  mes 系统  HTTPClient 请求
-         * @author: 杨帆
+         * @author: Goat
          * @Date:   2018/10/15
     */
     @Test
@@ -58,7 +58,7 @@ public class TestNG_mes {
 
     /**
          * @Description:
-         * @author: 杨帆
+         * @author: Goat
          * @Param:
          * @Return:
          * @Date:   2018/10/16

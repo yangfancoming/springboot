@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 /**
  * @Description:  JPA 映射类
- * @author: 杨帆
+ * @author: Goat
  * @Date:   2018/11/9
  */
 @Entity

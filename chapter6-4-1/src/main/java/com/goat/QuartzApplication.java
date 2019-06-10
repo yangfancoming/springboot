@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
      * @Description: 访问地址：http://localhost:8641/JobManager.html
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/11/26
 */
 @SpringBootApplication

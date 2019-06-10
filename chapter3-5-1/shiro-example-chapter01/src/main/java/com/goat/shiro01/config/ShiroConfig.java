@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
      * @Description: 功能描述：(这里用一句话描述这个方法的作用)
-     * @author: 杨帆
+     * @author: Goat
  *
 Subject  用户主题 把操作交给 SecurityManager
 anon  ： 无需认证就可以访问

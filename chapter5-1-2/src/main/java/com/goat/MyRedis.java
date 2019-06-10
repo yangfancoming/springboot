@@ -6,7 +6,7 @@ import redis.clients.jedis.Jedis;
 
 /**
      * @Description: 功能描述：
-     * @author: 杨帆
+     * @author: Goat
  * Redis 是一种 key-value 的 nosql 数据库，先存到内存中，可以根据一定的策略持久化到磁盘上。
  * 支持的数据类型：
 

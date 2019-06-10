@@ -7,11 +7,10 @@ import java.util.List;
 
 /**
  * 字典 业务层
- * 
- * @author Rimon
+
  */
-public interface DictTypeService
-{
+public interface DictTypeService {
+
     /**
      * 根据条件分页查询字典类型
      * 

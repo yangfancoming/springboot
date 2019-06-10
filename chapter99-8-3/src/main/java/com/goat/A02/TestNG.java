@@ -12,7 +12,7 @@ import java.util.HashSet;
 /**
      * @Description:  * 对于以前的例子，额外定义一个calAll()方法来遍历集合元素，然后依次对每个集合元素进行判断，太麻烦。
      *                * 如果使用Stream,即可直接对集合中所有的元素进行批量操作。
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018年12月19日16:52:03
 */
 public class TestNG {

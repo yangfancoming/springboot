@@ -19,7 +19,7 @@ public class A03 {
     }
         /**
          * @Description: ：继承 Thread 的对象  可以直接使用 start() 的方式 启动线程
-         * @author: 杨帆
+         * @author: Goat
          * @Date:   2018/8/31
          */
         @Test
@@ -29,7 +29,7 @@ public class A03 {
         }
         /**
          * @Description: ：实现 Runnable 接口的对象  只能使用 代理方式 启动线程
-         * @author: 杨帆
+         * @author: Goat
          * @Date:   2018/8/31
          */
         @Test

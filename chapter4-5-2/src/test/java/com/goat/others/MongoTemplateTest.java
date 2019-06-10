@@ -24,9 +24,6 @@ import static com.mongodb.client.model.Updates.addEachToSet;
 
 /**
  * 原生java驱动Document的操作测
- * 
- * @author dylan
- * @date 2018年4月13日下午11:43:17
  */
 public class MongoTemplateTest {
 	private final Logger log = LoggerFactory.getLogger(this.getClass());

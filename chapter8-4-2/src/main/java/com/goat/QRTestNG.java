@@ -9,7 +9,7 @@ public class QRTestNG {
 
     /**
          * @Description:   生成带 Logo 二维码
-         * @author: 杨帆
+         * @author: Goat
          * @ content  二维码包含的内容，文本或网址"Hello World"
          * @ path     二维码图片目录"C:/Users/Administrator/Desktop/QRcode2/b.jpg"
          * @ size     二维码图片尺寸 null or your size

@@ -11,6 +11,6 @@ public class Yangfan implements Marry {
 
     @Override
     public void marry() {
-        System.out.println("我是杨帆，我终于结婚啦！");
+        System.out.println("我是Goat，我终于结婚啦！");
     }
 }

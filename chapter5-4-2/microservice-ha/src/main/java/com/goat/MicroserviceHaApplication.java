@@ -8,7 +8,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
      * @Description: @EnableEurekaClient 表明自己是一个 Eureka Client (即是一个微服务)
-     * @author: 杨帆
+     * @author: Goat
      * @Param:
      * @Return:
      * @Date:   2018/11/27

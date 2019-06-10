@@ -52,7 +52,7 @@ public class ParameterTest {
 
 /**
      * @Description:  【传入 Map】
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/10/25
 */
     @Test
@@ -66,7 +66,7 @@ public class ParameterTest {
 
     /**
      * @Description:  【传入 pojo】
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/10/25
      */
     @Test

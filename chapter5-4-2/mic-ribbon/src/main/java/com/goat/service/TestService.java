@@ -15,7 +15,7 @@ public class TestService {
 
     /**
          * @Description:  调用其他项目提供的微服务   （这里调用 microservice-hi 项目的 http://localhost:8111/hi  服务  ）
-         * @author: 杨帆
+         * @author: Goat
          * @param : goat2234234234 为  microservice-hi 项目配置文件中的 spring.application.name 属性
          * @param : /hi  为             microservice-hi 项目 HiController 中 映射的 请求url
          * @Return:

@@ -12,12 +12,10 @@ import java.util.List;
 
 /**
  * 字典 业务层处理
- * 
- * @author Rimon
  */
 @Service
-public class DictTypeServiceImpl implements DictTypeService
-{
+public class DictTypeServiceImpl implements DictTypeService {
+
     @Autowired
     private DictTypeMapper dictTypeMapper;
 

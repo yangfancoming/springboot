@@ -19,7 +19,7 @@ import java.util.UUID;
  * 类的功能描述：
  * 消息生产者用于发送消息
  * @ClassName: MessageProducer
- * @Author 杨帆
+ * @Author Goat
  * @Date 2019年1月16日13:56:38
  */
 @Component

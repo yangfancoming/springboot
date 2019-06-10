@@ -16,7 +16,7 @@ public class MyArrayTool<T>{
     private MyArrayTool() {} //sos 构造函数私有化 防止在外部创建
     /**
      * @Description: 功能描述： 获取最小值下标
-     * @author: 杨帆
+     * @author: Goat
      * @Param:   int[] arrs = {2, 1, 14, 22, 18, 3, 27, 20};
      * @Return:  1
      * @Date:   2018/7/8
@@ -31,7 +31,7 @@ public class MyArrayTool<T>{
     }
     /**
      * @Description: 功能描述： 获取最大值下标
-     * @author: 杨帆
+     * @author: Goat
      * @Param:   int[] arrs = {2, 1, 14, 22, 18, 3, 27, 20};
      * @Return:  6
      * @Date:   2018/7/8
@@ -46,7 +46,7 @@ public class MyArrayTool<T>{
     }
     /**
      * @Description: 功能描述：选择排序(升序)：整型数组 从小到大排序
-     * @author: 杨帆
+     * @author: Goat
      * @Param:  Integer[] temp ={2, 1, 14, 22, 18, 3, 27, 20};
      * @Return:  1,2,3,14,18,20,22,27
      * @Date:   2018/7/8
@@ -61,7 +61,7 @@ public class MyArrayTool<T>{
     }
     /**
      * @Description: 功能描述： 输入一个整型数组 然后以字符串形式输出
-     * @author: 杨帆
+     * @author: Goat
      * @Param:  int[] arrs = {2, 1, 14, 22, 18, 3, 27, 20};
      * @Return:  2,1,14,22,18,3,27,20
      * @Date:   2018/7/8
@@ -79,7 +79,7 @@ public class MyArrayTool<T>{
 
     /**
      * @Description: 功能描述：(元素位置置换)
-     * @author: 杨帆
+     * @author: Goat
      * @Param:
      * @Return:
      * @Date:   2018/7/11
@@ -92,7 +92,7 @@ public class MyArrayTool<T>{
 
     /**
      * @Description: 功能描述：折半查找(二分查找)：必须保证该数组是有序，升序降序均可，并返回将一个数插入该数组中的位置。
-     * @author: 杨帆
+     * @author: Goat
      * @Param: int[] arrs = {2, 1, 14, 22, 18, 3, 27, 20};      int hoho1 = MyArrayTool.halfSearch(arrs,14);
      * @Return:  2
      * @Date:   2018/7/11
@@ -132,7 +132,7 @@ public class MyArrayTool<T>{
 
     /**
      * @Description: 功能描述：数组反转
-     * @author: 杨帆
+     * @author: Goat
      * @Param:    byte[] byteArrs = {2, 1, 14, 22, 18, 3, 27, 20};   byte[] hoho1 = MyArrayTool.reverseArray(byteArrs);
      * @Return:   20,27,3,18,22,14,1,2
      * @Date:   2018/7/12

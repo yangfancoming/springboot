@@ -13,7 +13,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2019/1/13
      *  在Oauth2的授权中 必须要增加 该类 实现 WebSecurityConfigurerAdapter
      *  否则报错： org.springframework.security.authentication.InsufficientAuthenticationException: User must be authenticated with Spring Security before authorization can be completed.

@@ -90,7 +90,7 @@ public class SelectTest {
     }
     /**
          * @Description: 分页查询
-         * @author: 杨帆
+         * @author: Goat
          * @Param:   IPage ==> mybatis自带的分页查询条件
          * @Return:   wrapper ==> 实体对象封装操作类（条件构造器）
          * @Date:   2018/12/7

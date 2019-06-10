@@ -19,7 +19,7 @@ public class QrcodeUtil {
 
     /**
      * @Description: 加密： 文字---> 二维码
-     * @author 杨帆
+     * @author Goat
      * @date 2018年11月26日20:01:36
      * @param content  要加密的文字信息
      * @param imgPath  生成二维码图片 路径

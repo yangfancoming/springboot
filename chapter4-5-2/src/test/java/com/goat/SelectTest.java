@@ -36,7 +36,7 @@ public class SelectTest extends CommonTest {
 
     /**
      * @Description: 功能描述：  通过主键id 进行查找单个对象    p1 指定 主键id  p2 指定 要在哪个集合中查找
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/9/27
      */
     @Test
@@ -56,7 +56,7 @@ public class SelectTest extends CommonTest {
 
     /**
      * @Description: 功能描述：  通过某个属性匹配指定值  进行查找
-     * @author: 杨帆
+     * @author: Goat
      * @param  p1 指定  查询属性及对应值
      * @param  p2 指定 要在哪个集合中查找
      * @Date:   2018/9/27
@@ -72,7 +72,7 @@ public class SelectTest extends CommonTest {
 
     /**
      * @Description: 在 Query 中加入排序 功能  P1   P2 指定
-     * @author: 杨帆
+     * @author: Goat
      * @param  p1 指定 升序/降序
      * @param  p2 指定 对那个属性进行排序
      * @Date:   2018/9/27
@@ -117,7 +117,7 @@ public class SelectTest extends CommonTest {
     }
     /**
          * @Description: 投影  include()和exclude() 方法用于包含或排除某个字段
-         * @author: 杨帆
+         * @author: Goat
          * @Date:   2018/10/6
      *
     当通过投影获取数据时，在结果的类实例中，被排除的字段是null

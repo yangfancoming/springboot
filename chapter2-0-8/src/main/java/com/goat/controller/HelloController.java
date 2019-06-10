@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
      * @Description: 功能描述：get和post请求测试controller
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/9/22
 */
 @RestController

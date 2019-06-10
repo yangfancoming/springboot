@@ -13,7 +13,7 @@ import java.util.Optional;
 
 /**
  * @Description: 功能描述： JPA 常用查询
- * @author: 杨帆
+ * @author: Goat
  * @Date:  2018年9月28日16:32:51
  */
 @RunWith(SpringRunner.class)
@@ -22,7 +22,7 @@ public class SelectTest extends TestCommon {
 
     /**
          * @Description: JPA 自带查询功能
-         * @author: 杨帆
+         * @author: Goat
          * @Date:   2018/9/28
 
      * 需要自定义：

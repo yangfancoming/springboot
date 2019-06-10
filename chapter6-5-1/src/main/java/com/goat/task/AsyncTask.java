@@ -11,7 +11,7 @@ import java.util.concurrent.Future;
 
 /**
      * @Description: 异步任务 方式二 ： springBoot 自带注解实现
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2019/2/12
 */
 @Component

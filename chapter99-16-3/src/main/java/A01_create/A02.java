@@ -5,7 +5,7 @@ import org.junit.Test;
 
 /**
      * @Description:  （多线程 演示龟兔赛跑）
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/8/29
 */
 
@@ -37,7 +37,7 @@ public class A02 {
 
     /**
          * @Description:  使用静态代理方式 创建线程
-         * @author: 杨帆
+         * @author: Goat
          * @Param:   1. 真实角色和代理角色 实现同一个接口
          * @Return:  2. 代理角色包含真实角色的引用
          * @Date:   2018/8/31

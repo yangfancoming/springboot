@@ -11,12 +11,10 @@ import java.util.List;
 
 /**
  * 字典 业务层处理
- * 
- * @author Rimon
+
  */
 @Service
-public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData>  implements DictDataService
-{
+public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData>  implements DictDataService {
     @Autowired
     private DictDataMapper dictDataMapper;
 
@@ -32,8 +30,7 @@ public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData>  
      * @return 字典数据集合信息
      */
     @Override
-    public List<DictData> selectDictDataList(DictData dictData)
-    {
+    public List<DictData> selectDictDataList(DictData dictData) {
         return dictDataMapper.selectDictDataList(dictData);
     }
 
@@ -44,8 +41,7 @@ public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData>  
      * @return 字典数据集合信息
      */
     @Override
-    public List<DictData> selectDictDataByType(String dictType)
-    {
+    public List<DictData> selectDictDataByType(String dictType) {
         return dictDataMapper.selectDictDataByType(dictType);
     }
 
@@ -57,8 +53,7 @@ public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData>  
      * @return 字典标签
      */
     @Override
-    public String selectDictLabel(String dictType, String dictValue)
-    {
+    public String selectDictLabel(String dictType, String dictValue) {
         return dictDataMapper.selectDictLabel(dictType, dictValue);
     }
 
@@ -69,8 +64,7 @@ public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData>  
      * @return 字典数据
      */
     @Override
-    public DictData selectDictDataById(Long dictCode)
-    {
+    public DictData selectDictDataById(Long dictCode) {
         return dictDataMapper.selectDictDataById(dictCode);
     }
 
@@ -81,8 +75,7 @@ public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData>  
      * @return 结果
      */
     @Override
-    public int deleteDictDataById(Long dictCode)
-    {
+    public int deleteDictDataById(Long dictCode) {
         return dictDataMapper.deleteDictDataById(dictCode);
     }
 
@@ -93,8 +86,7 @@ public class DictDataServiceImpl extends ServiceImpl<DictDataMapper, DictData>  
      * @return 结果
      */
     @Override
-    public int deleteDictDataByIds(String ids)
-    {
+    public int deleteDictDataByIds(String ids) {
         return 0;
     }
 

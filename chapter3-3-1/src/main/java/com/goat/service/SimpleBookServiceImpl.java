@@ -12,7 +12,7 @@ import java.util.List;
 public class SimpleBookServiceImpl extends CommonServiceImpl {
 
     /**
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/8/22
        sos @Transactional
      1.注解应该只被应用到 public 方法上，这是由 Spring AOP 的本质决定的。

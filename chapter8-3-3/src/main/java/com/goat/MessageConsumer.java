@@ -13,7 +13,7 @@ import java.util.Optional;
  * 类的功能描述：
  * 消息消费者者用于处理消息
  * @ClassName: MessageConsumer
- * @Author 杨帆
+ * @Author Goat
  * @Date 2019年1月16日13:56:47
  */
 @Service

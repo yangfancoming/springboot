@@ -14,7 +14,7 @@ import java.util.Set;
 
 /**
      * @Description: 功能描述：
-     * @author: 杨帆
+     * @author: Goat
     * HashMap  TreeMap  LinkedHashMap 的区别
     我们用的最多的是HashMap,在Map 中插入、删除和定位元素，HashMap 是最好的选择。
     但如果您要按自然顺序或自定义顺序遍历键，那么 TreeMap 会更好。
@@ -58,7 +58,7 @@ public class MapHere{
 
     /**
          * @Description: 功能描述： 将来两个map 进行合并！！！
-         * @author: 杨帆
+         * @author: Goat
          * @Date:   2018/9/12
     */
     @Test

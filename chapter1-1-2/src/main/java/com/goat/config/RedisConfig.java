@@ -23,7 +23,7 @@ public class RedisConfig extends CachingConfigurerSupport {
 
     /**
          * @ Description: 功能描述：(这里用一句话描述这个方法的作用)
-         * @ author: 杨帆
+         * @ author: Goat
          * @ Date:   2018/8/12
     解释：SpringBoot提供了对Redis的自动配置功能，
     在RedisAutoConfiguration中默认为我们配置了 JedisConnectionFactory（客户端连接）、RedisTemplate以及StringRedisTemplate（数据操作模板），

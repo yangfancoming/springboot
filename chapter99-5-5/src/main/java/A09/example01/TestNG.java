@@ -5,7 +5,7 @@ import org.junit.Test;
 
 /**
      * @Description: 功能描述： 6.9 枚举类
-     * @author: 杨帆
+     * @author: Goat
      * @Param:
      * @Return:
      * @Date:   2018/9/3

@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
      * @Description: Springboot 整合 Vue + elementUI
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2019年2月11日13:11:21
 */
 @SpringBootApplication

@@ -23,7 +23,7 @@ public class DeleteTest extends CommonTest {
 
     /**
      * @Description: 查询出符合条件的第一个结果，并将符合条件的数据删除,只会删除第一条
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/9/27
      */
     @Test
@@ -35,7 +35,7 @@ public class DeleteTest extends CommonTest {
     }
     /**
      * @Description: 查询出符合条件的所有结果，并将符合条件的所有数据删除
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/9/27
      */
     @Test
@@ -46,7 +46,7 @@ public class DeleteTest extends CommonTest {
     }
     /**
          * @Description:  删除 name 为 list2 的数据
-         * @author: 杨帆
+         * @author: Goat
          * @Param:
          * @Return:  删除的记录数
          * @Date:   2018/10/6

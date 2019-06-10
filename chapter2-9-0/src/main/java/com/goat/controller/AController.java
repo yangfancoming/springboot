@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
      * @Description:  A 标签 跳 controller 方法
-     * @author: 杨帆
+     * @author: Goat
      * @Param:
      * @Return:
      * @Date:   2018/11/8

@@ -28,7 +28,7 @@ public class EmpServiceImpl implements IEmpService {
 
 
 /**
-     * @author: 杨帆
+     * @author: Goat
         该方法存在  缓存穿透 问题：在高并发条件下，有一万人同时请求该方法，同时进入if(map==null)内，
         那么就会查询一万次数据库 而我们想要的是 只要第一个人的请求 查询数据库后 就进行缓存其余的9999人走缓存
         解决方法： 在函数声明中 加上 synchronized 锁

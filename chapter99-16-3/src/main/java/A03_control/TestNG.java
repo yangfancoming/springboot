@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 
 /**
      * @Description: 功能描述： 如何控制线程的执行顺序
-     * @author: 杨帆
+     * @author: Goat
      * @Param:
      * @Return:
      * @Date:   2018/9/4
@@ -38,7 +38,7 @@ public class TestNG {
     }
     /**
          * @Description: 功能描述：线程 1 2 3 的执行顺序 是有顺序的！
-         * @author: 杨帆
+         * @author: Goat
             newSingleThreadExecutor 返回一个包含单线程的Executor,将多个任务交给此Exector时，
             这个线程处理完一个任务后接着处理下一个任务，若该线程出现异常，将会有一个新的线程来替代。
          * @Date:   2018/9/4

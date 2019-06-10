@@ -5,7 +5,7 @@ import org.junit.Test;
 
 /**
      * @Description: 功能描述：jedis 对list的操作
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/9/27
 在Redis中，List类型是按照插入顺序排序的字符串链表。和数据结构中的普通链表一样，我们可以在其头部(left)和尾部(right)添加新的元素。
 在插入时，如果该键并不存在，Redis将为该键创建一个新的链表。

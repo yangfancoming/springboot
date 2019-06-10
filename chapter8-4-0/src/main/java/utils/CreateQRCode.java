@@ -11,7 +11,7 @@ import java.io.IOException;
 
 /**
      * @Description:  二维码 生成 (加密)
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/11/26
 */
 public class CreateQRCode {

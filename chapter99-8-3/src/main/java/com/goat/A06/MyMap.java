@@ -77,7 +77,7 @@ public class MyMap {
     }
     /**
          * @Description: 功能描述： map遍历 key  的 第一种方式
-         * @author: 杨帆
+         * @author: Goat
          * @Date:   2018/7/21
     */
     @Test
@@ -91,7 +91,7 @@ public class MyMap {
     }
     /**
      * @Description: 功能描述： map遍历  key 的 第二种方式
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/7/21
      */
     @Test

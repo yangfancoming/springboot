@@ -5,7 +5,7 @@ import org.junit.Test;
 
 /**
      * @Description:   线程的创建方式
-     * @author: 杨帆
+     * @author: Goat
 注意：
     run() 方法相当于普通方法调用，并不创建新的线程
     start() 方法 才会创建新的线程

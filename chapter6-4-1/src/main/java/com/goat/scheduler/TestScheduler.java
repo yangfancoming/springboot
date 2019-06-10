@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
      * @Description: SimpleTrigger 触发器
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/11/26
 */
 

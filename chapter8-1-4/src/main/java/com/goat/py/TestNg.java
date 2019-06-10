@@ -9,7 +9,7 @@ import java.io.InputStreamReader;
 
 /**
      * @Description:  Java通过命令行 执行 Python 脚本 并获取执行结果
-     * @author: 杨帆
+     * @author: Goat
      * @Param:
      * @Return:
      * @Date:   2018/9/27

@@ -67,7 +67,7 @@ public class MybatisPlusConfig {
     }
     /**
          * @Description:  乐观锁 插件
-         * @author: 杨帆
+         * @author: Goat
          * @Param:  相当于 xml 中的 <bean class="com.baomidou.mybatisplus.plugins.OptimisticLockerInterceptor"/>
          * @Return:
          * @Date:   2018/12/7

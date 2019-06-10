@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 /**
  * @Description: 功能描述： freemarker 文件生成
- * @author: 杨帆
+ * @author: Goat
  * @Param:
  * @Return:
  * @Date:  2018年11月30日14:13:03

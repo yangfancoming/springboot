@@ -15,7 +15,7 @@ public class MyStringUtils {
 
     /**
      * @Description: 清除掉str首尾的空白字符, 如果仅str全由空白字符组成则返回null
-     * @author: 杨帆
+     * @author: Goat
      * @Param: " 11123 " ----->  "11123"
      * @Date: 2018/11/12
      */
@@ -26,7 +26,7 @@ public class MyStringUtils {
 
     /**
      * @Description: 清除掉str首尾的空白字符, 如果仅str全由空白字符组成则返回null
-     * @author: 杨帆
+     * @author: Goat
      * @Param: "1234" ----->  "4321"
      * @Date: 2018/11/12
      */
@@ -43,7 +43,7 @@ public class MyStringUtils {
 
     /**
          * @Description:  isBlank isEmpty  isNotBlank isNotEmpty
-         * @author: 杨帆
+         * @author: Goat
                             isNotEmpty(str)等价于 str != null && str.length > 0
                             isNotBlank(str) 等价于 str != null && str.length > 0 && str.trim().length > 0
                             isEmpty 等价于 str == null || str.length == 0

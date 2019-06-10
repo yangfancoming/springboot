@@ -18,7 +18,7 @@ public class OssUtil {
 
     /**
          * @Description: 功能描述：上传文件到阿里云oss
-         * @author: 杨帆
+         * @author: Goat
          * @Param:
          * @Return:
          * @Date:   2018/8/23
@@ -35,7 +35,7 @@ public class OssUtil {
 
     /**
          * @Description: 功能描述：将阿里云文件 下载到本地
-         * @author: 杨帆
+         * @author: Goat
          * @Param:   阿里云文件的存储位置及文件名 "goat/222.rar"   下载到本地的路径及文件名 "D:/123/321.rar"
          * @Return:
          * @Date:   2018/8/23
@@ -49,7 +49,7 @@ public class OssUtil {
 
     /**
          * @Description: 功能描述： 删除阿里云上文件
-         * @author: 杨帆
+         * @author: Goat
          * @Param:   唯一参数  要删除文件  在阿里云上的存放位置
          * @Return:
          * @Date:   2018/8/23
@@ -62,7 +62,7 @@ public class OssUtil {
 
     /**
          * @Description: 功能描述：判断 阿里云上 指定文件是否存在
-         * @author: 杨帆
+         * @author: Goat
          * @Param:    唯一参数  要查找文件  在阿里云上的存放位置
          * @Return:
          * @Date:   2018/8/23

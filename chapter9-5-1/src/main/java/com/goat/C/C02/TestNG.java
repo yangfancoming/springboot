@@ -5,7 +5,7 @@ import org.junit.Test;
 
 /**
      * @Description:  模板方法 设计模式
-     * @author: 杨帆
+     * @author: Goat
      * @Date:   2018/11/4
  *
 　（1）具体细节步骤实现定义在子类中，子类定义详细处理算法是不会改变算法整体结构。

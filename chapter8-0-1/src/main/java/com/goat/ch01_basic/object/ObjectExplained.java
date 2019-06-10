@@ -7,7 +7,7 @@ import org.junit.Test;
 
 /**
      * @Description:  常用 Object 方法
-     * @author: 杨帆
+     * @author: Goat
      * @Param:
      * @Return:
      * @Date:   2018/10/22

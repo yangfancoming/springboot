@@ -3,7 +3,7 @@ package com.goat;
 
 /**
      * @Description: 功能描述：CRC校检工具类
-     * @author: 杨帆
+     * @author: Goat
      * @Param: 
      * @Return: 
      * @Date:   2018/7/12
@@ -12,7 +12,7 @@ public class CrcTool {
     private CrcTool() { }
     /**
          * @Description: 功能描述：(这里用一句话描述这个方法的作用)
-         * @author: 杨帆
+         * @author: Goat
          * @Param:  Byte[] data1= MyStringTool.hex2bytes("1234");  String crc16 = CRCUtil.getCrc16(data1, data1.length);
          * @Return:  C613
          * @Date:   2018/7/12

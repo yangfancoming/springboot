@@ -22,7 +22,7 @@ import static java.util.stream.Collectors.toList;
 
 /**
      * @Description:
-     * @author: 杨帆
+     * @author: Goat
      * @Date:  2018年12月26日18:52:32
 */
 public class MyList {
