@@ -1,9 +1,8 @@
-package example;/**
- * Created by 64274 on 2018/8/27.
-  * @Description: TODO
-  * @author  q�e�
-  * @date 2018/8/27---18:57
- */
+package example;
+
+import mypackage.CountriesPortServiceLocator;
+
+
 public class HelloWorldClient {
   public static void main(String[] argv) {
 //      try {

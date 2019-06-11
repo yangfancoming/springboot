@@ -1,7 +1,5 @@
 package com.goat.service;
 
-//import com.itar.ws.model.Country;
-//import com.itar.ws.model.Currency;
 
 import com.goat.model.Country;
 import com.goat.model.Currency;
