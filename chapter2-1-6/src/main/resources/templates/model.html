@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html;charset=UTF-8"/>
+    <title>山羊来了</title>
+    <meta content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link th:href="@{/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/plugins/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="col-md-4">
+<button type="button" class="btn btn-primary" onclick="test2()">发送两个参数</button>
+<button type="button" class="btn btn-success" onclick="test3()">发送数组</button>
+<button type="button" class="btn btn-info" onclick="test4()">发送List</button>
+<button type="button" class="btn btn-danger" onclick="">危险</button>
+</div>
+
+<br><br><br>
+
+<!--sos 总结： # 方式 是绑定 id   而 . 的方式是绑定 class ！！！-->
+
+<h2>创建模态框（Modal）</h2>
+<!-- 按钮触发模态框   通过 data-target="#myModal"  与  id="myModal" 弹出框绑定 -->
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">演示模态框1111</button>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">1111</h4>
+            </div>
+            <div class="modal-body">我是内容111111</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">提交更改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+
+<!-- 按钮触发模态框 -->
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">演示模态框2222</button>
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel2">1111</h4>
+            </div>
+            <div class="modal-body">我是内容22222</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">提交更改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+<!-- 按钮触发模态框   通过 data-target=".myModal3"  与  class="modal fade myModal3" 中的 myModal3 绑定 -->
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target=".myModal3">演示模态框33333</button>
+<div class="modal fade myModal3" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel3">1111</h4>
+            </div>
+            <div class="modal-body">我是内容333333</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">提交更改</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!--sos 注意 js 引入位置 -->
+<script th:src="@{/plugins/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/plugins/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
+
+<script type="text/javascript">
+
+
+
+</script>
