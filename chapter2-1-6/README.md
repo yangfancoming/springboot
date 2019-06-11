@@ -26,4 +26,9 @@
     而上面代码参数id 的类型 为 long，它接受不了null值。
     解决办法：将long类型换成对象类型Long，问题解决。
     
+    
+    
+# 3 
+    Uncaught TypeError: Cannot read property 'toLowerCase' of undefined
+    
    
