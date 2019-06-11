@@ -99,7 +99,7 @@ var Core = (function () {
                 $(".prompt-success .alert-success").css("opacity", "0");
                 $(".prompt-success").hide();
             }, 3000);
-        } else if (t = 2) {
+        } else if (t == 2) {
             $(".prompt-error .prompt-text").text(m);
             $(".prompt-error").show();
             $(".prompt-error .alert-danger").css("opacity", "1");

@@ -32,10 +32,10 @@
     </tr>
 </table>
 <script>
-    var speed = 50
-    var _demo = document.getElementById("demo");
-    var _demo1 = document.getElementById("demo1");
-    var _demo2 = document.getElementById("demo2");
+    let speed = 50
+    let _demo = document.getElementById("demo");
+    let _demo1 = document.getElementById("demo1");
+    let _demo2 = document.getElementById("demo2");
     demo2.innerHTML=demo1.innerHTML
     function Marquee(){
         if(_demo2.offsetTop-_demo.scrollTop<=0){
@@ -44,7 +44,7 @@
             _demo.scrollTop++
         }
     }
-    var MyMar=setInterval(Marquee,speed)
+    let MyMar=setInterval(Marquee,speed)
     _demo.onmouseover=function() {clearInterval(MyMar)}
     _demo.onmouseout=function() {MyMar=setInterval(Marquee,speed)}
 </script>

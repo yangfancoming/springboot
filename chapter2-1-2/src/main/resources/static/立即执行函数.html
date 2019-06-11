@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>立即执行函数 </title>
+</head>
+<body>
+
+<div>
+    <ul>
+        <li><a>第一个超链接</a></li>
+        <li><a>第二个超链接</a></li>
+    </ul>
+</div>
+
+
+<script>
+
+    /**
+     这段代码意图是点击第一个超链接提示“I am click Link #0”，点击第二个提示“I am click Link #1”。真的是这样吗？ 不是，每一次都是“I am click Link #2”
+     因为i的值没有被锁住，当我们点击链接的时候其实for循环早已经执行完了，于是在点击的时候i的值已经是elems.length了。
+    */
+    let elems = document.getElementsByTagName('a');
+    for(var i=0; i<elems.length; i++) {
+        elems[i].addEventListener('click', function (e) {
+            e.preventDefault();
+            alert('I am click Link #' + i);
+        }, 'false')
+    }
+
+
+
+    
+</script>
+</body>
+</html>
