@@ -37,7 +37,7 @@ public class TransferController {
     //    http://localhost:8216/transfer/table
     @GetMapping("/table")
     public String table() {
-        return "table";
+        return "table01";
     }
 
     //    http://localhost:8216/transfer/model

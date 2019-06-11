@@ -19,7 +19,22 @@
 <button type="button" class="btn btn-danger" onclick="">危险</button>
 <br>
 
-<table id="table"/>
+
+
+<!--方式一： -->
+<table data-toggle="table" data-url="/json/table01.json">
+    <thead>
+    <tr>
+        <th data-field="id">Item ID</th>
+        <th data-field="name">Item Name</th>
+        <th data-field="price">Item Price</th>
+    </tr>
+    </thead>
+</table>
+<h1>----------------------------------------------------------------</h1>
+
+<!--方式一： -->
+<table id="table2"/>
 
 
 <!--sos 注意 js 引入位置 -->
@@ -31,7 +46,13 @@
 
 <script type="text/javascript">
 
-    $(function(){
-    })
+    $('#table2').bootstrapTable({
+        url: '/json/table01.json',
+        columns: [
+            {  field: 'id', title: 'Item ID'},
+            {  field: 'name',title: 'Item Name'},
+            {  field: 'price',title: 'Item Price'},
+        ]
+    });
 
 </script>
