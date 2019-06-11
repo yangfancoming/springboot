@@ -1,3 +1,5 @@
+# server 端启动后 访问地址： http://localhost:8244/services/user?wsdl
+
 # 错误：
 
     jaxws 的版本问题
