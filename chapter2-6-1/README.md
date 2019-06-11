@@ -14,7 +14,8 @@
         protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
             return application.sources(BootstrapApplication.class);
         }
-
+        
+    第四步： 如果发现 前三步 还不好使， 直接 使用右侧maven clean然后package后  再次启动外置Tomcat  成功！
 #  文件上传 及 项目根路径/类路径 获取  及 配置文件路径配置
 
 
