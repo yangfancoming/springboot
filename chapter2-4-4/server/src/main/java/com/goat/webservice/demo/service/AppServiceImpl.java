@@ -1,9 +1,9 @@
-package com.goat.webservice.server.service;
+package com.goat.webservice.demo.service;
 
 import javax.jws.WebService;
 
 //name暴露的服务名称, targetNamespace:命名空间,设置为接口的包名倒写(默认是本类包名倒写). endpointInterface 接口地址全类路径名
-@WebService(name = "test" ,targetNamespace ="http://service.server.webservice.demo.goat.com/" ,endpointInterface = "com.goat.webservice.server.service.AppService")
+@WebService(name = "test" ,targetNamespace ="http://service.demo.webservice.goat.com/" ,endpointInterface = "com.goat.webservice.demo.service.AppService")
 public class AppServiceImpl implements AppService {
 
     @Override

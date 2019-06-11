@@ -8,6 +8,7 @@
             </dependency>
             
         当 
+        parent版本是1.5.6，同时jaxws版本是3.1.6时；
         parent版本是2.0.4，同时jaxws版本是3.2.6时；
         parent版本是2.0.5，同时jaxws版本是3.2.6时；
         parent版本是2.0.6，同时jaxws版本是3.2.6时；
@@ -40,3 +41,15 @@
                 
 # 测试  项目启动 
         启动成功后 控制台 打印  ： Creating Service {http://service.server.webservice.demo.goat.com/}AppServiceImplService from class com.goat.webservice.server.service.AppService
+        
+        
+# 报错：
+    javax.xml.ws.soap.SOAPFaultException: Unexpected wrapper element {http://service.client.webservice.goat.com/}getUser found.   Expected {http://service.server.webservice.goat.com/}getUser.
+    
+    原因:是客户端和服务器的namespace不同，即客户端和服务端的WebService接口包路径不一致。
+    解决方式：
+    1、客户端和服务器的WebService接口包路径相同。
+    2、在客户端和服务端的接口注解上指定相同的targetNamespace。建议与包名保持一致。
+    3、如果是反向生成的服务器代码，需注释掉:wsdlLocation部分；wsdlLocation会导致找不到具体的服务
+    
+    总结 server端和client端的  包全类路径名必须相同。。。。。我草！

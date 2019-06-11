@@ -1,4 +1,4 @@
-package com.goat.webservice.server.service;
+package com.goat.webservice.demo.service;
 
 import org.apache.cxf.binding.soap.SoapHeader;
 import org.apache.cxf.binding.soap.SoapMessage;

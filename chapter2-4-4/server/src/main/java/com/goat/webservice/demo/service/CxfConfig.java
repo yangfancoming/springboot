@@ -1,4 +1,4 @@
-package com.goat.webservice.server.service;
+package com.goat.webservice.demo.service;
 
 import org.apache.cxf.Bus;
 import org.apache.cxf.bus.spring.SpringBus;
