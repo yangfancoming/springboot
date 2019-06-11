@@ -2,7 +2,6 @@ package com.goat.hutool.log;
 
 import com.goat.hutool.log.dialect.slf4j.Slf4jLogFactory;
 
-import java.net.URL;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 

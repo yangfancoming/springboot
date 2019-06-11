@@ -1,15 +1,100 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>成功！select2 </h1>
-<!--th:text 将div里面的文本内容设置为 -->
-<!--/*@thymesVar id="hello" type="String"*/-->
 
-<!--sos  去掉变量告警  settings  点击  inspections  查找 Thymeleaf  取消打钩   Validates unresolved references and invalid expressions.-->
-<div id="div01" class="myDiv" th:id="${hello}" th:class="${hello}" th:text="${hello}">这是显示欢迎信息</div>
-</body>
-</html>
+<html xmlns:th="http://www.thymeleaf.org">
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+        <li><a href="#">xxx管理</a></li>
+        <li class="active">xxx管理</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div class="jax-box">
+        <form id="formSearch" class="form-horizontal form-search">
+            <div class="form-group">
+                <div class="col-md-4 col-sm-6">
+                    <label class="control-label  col-xs-4" for="username">用户名:</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control" id="username">
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <label class="control-label  col-xs-4" for="dict">邮箱:</label>
+                    <div class="col-xs-8">
+                        <!-- <select name="dict" id="dict" class="form-control1">-->
+                        <!--   <option th:each="car,${carList}" th:value="${car.carId}" th:text="${car.name}"></option>-->
+                          <!--</select>-->
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <label class="control-label  col-xs-4" for="phone">电话:</label>
+                    <div class="col-xs-8">
+                        <input type="text" class="form-control" id="phone">
+                    </div>
+                </div>
+                    <div class="col-md-1 col-sm-6 " style="text-align:left;">
+                        <button type="button" id="btn_query" class="btn btn-info" onclick="test()">查询</button>
+                    </div>
+            </div>
+        </form>
+    </div>
+    <div class="jax-box jax-box-table">
+        <div id="toolbar" class="btn-group">
+            <shiro:hasPermission name="role:add">
+                <button id="btn_add" type="button" class="btn btn-primary" data-toggle="modal" data-target="#roleModal">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                </button>
+            </shiro:hasPermission>
+            <shiro:hasPermission name="role:batchDelete">
+                <button id="btn_batch_delete" type="button" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>批量删除
+                </button>
+            </shiro:hasPermission>
+        </div>
+
+        <table id="table">
+            <tr>
+                <th>no</th>
+                <th>account</th>
+                <th>name</th>
+                <th>password</th>
+                <th>accountType</th>
+                <th>tel</th>
+            </tr>
+            <tr th:each="list,stat : ${accountList}">
+                <td th:text="${stat.count}"></td>
+                <td th:text="${list.account}"></td>
+                <td th:text="${list.name}"></td>
+                <td th:text="${list.password}"></td>
+                <td th:text="${list.accountType}"></td>
+                <td th:text="${list.tel}"></td>
+            </tr>
+        </table>
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+    function test(){
+        $.ajax({
+            type:"get", dataType:"json", url: "/select2/list",
+            data: {"param1": 111,"param2": 222}, // sos 参数名称 param1  必须与后台形参对应上 否则接收不到！
+            success:(data) =>{ console.log(data)},
+            error:(data)=>{ }
+        });
+    }
+
+    // let test = () => {
+    //
+    // }
+
+</script>
+
+
+
+
+
