@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生成二维码<</title>
+    <script type='text/javascript' src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+</head>
+<body>
+<div id="qrcode"></div>
+</body>
+
+
+<script>
+    $("#qrcode").qrcode({
+        width:64,
+        height:64,
+        foreground: "#C00",
+        background: "#FFF",
+        render: "canvas",
+        text:"https://www.baidu.com/"
+    })
+    /**
+     指定二维码的生成方式：
+     render: "table", //使用table生成
+     render: "canvas", //使用canvas生成
+    */
+</script>
+</html>
