@@ -21,11 +21,7 @@ public class TransferController {
         return "select";
     }
 
-    //    http://localhost:8216/transfer/ajax
-    @GetMapping("/ajax")
-    public String ajax() {
-        return "ajax";
-    }
+
 
 
     //    http://localhost:8216/transfer/form

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta content="text/html;charset=UTF-8"/>
     <title>山羊来了</title>
     <meta content="text/html;charset=UTF-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <link th:href="@{/plugins/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
-    <link th:href="@{/plugins/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+
 </head>
 <body>
 
@@ -19,19 +18,15 @@
 <br>
 
 
-
-<!--sos 注意 js 引入位置 -->
-<script th:src="@{/plugins/jquery-3.3.1.min.js}"></script>
-<script th:src="@{/plugins/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>
 
 <script type="text/javascript">
 
 
-    let test1 = ()=> {
+    test1 = ()=> {
         $.ajax({
-            type:"post", dataType:"json", url: "/ajax/test1", 
+            type:"post", dataType:"json", url: "/ajax/test1",
             // contentType:"application/json", // 加上  后台接收为 null
             data: {"param": 123},
             success:(data) =>{ console.log(data)},
@@ -39,9 +34,9 @@
         });
     }
 
-    let test2 = () => {
+    test2 = () => {
         $.ajax({
-            type:"post", dataType:"json", url: "/ajax/test2", 
+            type:"post", dataType:"json", url: "/ajax/test2",
             data: {"param1": 111,"param2": 222}, // sos 参数名称 param1  必须与后台形参对应上 否则接收不到！
             success:(data) =>{ console.log(data)},
             error:(data)=>{ }
@@ -49,9 +44,9 @@
     }
 
     let ids = [1,2,3,5];
-    let test3 = () => {
+    test3 = () => {
         $.ajax({
-            type:"post", dataType:"json", url: "/ajax/test3", 
+            type:"post", dataType:"json", url: "/ajax/test3",
             data: {"ids":JSON.stringify(ids)}, // sos  必须使用 JSON.stringify() 否则后台无法接收
             // data: {"ids":ids}, // 后台无法接收
             // data: JSON.stringify(ids), // 参数没有名字的传递方式，后台需要使用流的方式获取 request.getInputStream();
@@ -60,7 +55,7 @@
         });
     }
 
-    let test4 = () => {
+    test4 = () => {
         $.ajax({
             type:"post", dataType:"json", url: "/ajax/test4",
             data: {  "pn": 1123,"ids":ids, },
@@ -70,7 +65,7 @@
     }
 
 
-    let test5 = () => {
+    test5 = () => {
         let list = [
             {  "TYPE1": "111","TYPE2": "1,30", "TYPE3": "20" },
             {  "TYPE1": "111","TYPE2": "1,30", "TYPE3": "20" }];
