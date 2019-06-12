@@ -7,10 +7,10 @@ import org.junit.Test;
  * Created by 64274 on 2018/11/12.
  *
  * @author 山羊来了
- * @Description: TODO
+ * @Description: apache.commons.lang3 工具使用
  * @date 2018/11/12---14:28
  */
-public class MyStringUtils {
+public class MyLang3 {
 
 
     /**
