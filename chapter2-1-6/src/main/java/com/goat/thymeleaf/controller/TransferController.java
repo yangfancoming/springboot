@@ -45,4 +45,10 @@ public class TransferController {
     public String model() {
         return "model";
     }
+
+    //    http://localhost:8216/transfer/qrcode
+    @GetMapping("/qrcode")
+    public String qrcode() {
+        return "qrcode";
+    }
 }
