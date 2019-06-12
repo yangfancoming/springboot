@@ -55,24 +55,6 @@
         </div>
 
 
-        <table id="table" class="table table-striped table-bordered table-hover">
-            <tr>
-                <th>no</th>
-                <th>account</th>
-                <th>name</th>
-                <th>password</th>
-                <th>accountType</th>
-                <th>tel</th>
-            </tr>
-            <tr th:each="list,stat : ${accountList}">
-                <td th:text="${stat.count}"></td>
-                <td th:text="${list.account}"></td>
-                <td th:text="${list.name}"></td>
-                <td th:text="${list.password}"></td>
-                <td th:text="${list.accountType}"></td>
-                <td th:text="${list.tel}"></td>
-            </tr>
-        </table>
 
     </div>
 
@@ -84,16 +66,12 @@
 
     function test(){
         $.ajax({
-            type:"get", dataType:"json", url: "/select2/list",
+            type:"get", dataType:"json", url: "/select/list",
             data: {"param1": 111,"param2": 222}, // sos 参数名称 param1  必须与后台形参对应上 否则接收不到！
             success:(data) =>{ console.log(data)},
             error:(data)=>{ }
         });
     }
-
-    // let test = () => {
-    //
-    // }
 
 </script>
 

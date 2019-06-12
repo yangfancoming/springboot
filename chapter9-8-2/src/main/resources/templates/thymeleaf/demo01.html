@@ -5,11 +5,76 @@
     <title>Title</title>
 </head>
 <body>
-<h1>成功！111111111111111</h1>
+<h2>欢迎使用Thymeleaf!!</h2>
 <!--th:text 将div里面的文本内容设置为 -->
 <!--/*@thymesVar id="hello" type="String"*/-->
 
 <!--sos  去掉变量告警  settings  点击  inspections  查找 Thymeleaf  取消打钩   Validates unresolved references and invalid expressions.-->
 <div id="div01" class="myDiv" th:id="${hello}" th:class="${hello}" th:text="${hello}">这是显示欢迎信息</div>
+<a href="http://www.baidu.com" th:href="${info}">戳我有惊喜</a>
+
+
+
+
+<table id="table" class="table table-striped table-bordered table-hover">
+    <tr>
+        <th>no</th>
+        <th>account</th>
+        <th>name</th>
+        <th>password</th>
+        <th>accountType</th>
+        <th>tel</th>
+    </tr>
+    <tr th:each="list,stat : ${accountList}">
+        <td th:text="${stat.count}"></td>
+        <td th:text="${list.account}"></td>
+        <td th:text="${list.name}"></td>
+        <td th:text="${list.password}"></td>
+        <td th:text="${list.accountType}"></td>
+        <td th:text="${list.tel}"></td>
+    </tr>
+</table>
+
+
+
+<button type="button" class="btn btn-success" onclick="test3()">请求userList</button>
+<button type="button" class="btn btn-info" onclick="test4()">发送List</button>
+<button type="button" class="btn btn-warning" onclick="test5()">警告</button>
+<button type="button" class="btn btn-danger" onclick="test6()">危险</button>
+<h2>用户列表</h2>
+<!--说明： th:each="obj,stat:${objects}" 分别代表单个实例,状态(可省略),待遍历对象-->
+<div th:each="user:${userList}">
+    <input type="text" name="id" th:value="${user.id}"/>
+    用户姓名：<input type="text" name="password" th:value="${user.username}"/>
+    登录密码：<input type="text" name="username" th:value="${user.password}"/>
+</div>
+
+<a href="/thymeleaf/user">查询单个用户</a>
+
+<!-- Will produce 'http://localhost:8263/user/list?userId=3' (plus rewriting) -->
+<a href="details.html" th:href="@{http://localhost:8263/user/list(userId=${user.id})}">跳转user/list?userId=3</a>
+
+<!-- @{/  会加上 servlet 的上下文路径  需要在页面 F12 进行查看 -->
+<a href="details.html" th:href="@{/user/list(userId=${user.id})}">跳转user/list?userId=3</a>
 </body>
+
+
+
+<script type="text/javascript">
+
+    // let ids = [1,2,3,5];
+    // test3 = () => {
+    //     $.ajax({
+    //         type:"get", dataType:"json", url: "/thymeleaf/list2",
+    //         data: {"ids":JSON.stringify(ids)}, // sos  必须使用 JSON.stringify() 否则后台无法接收
+    //         // data: {"ids":ids}, // 后台无法接收
+    //         // data: JSON.stringify(ids), // 参数没有名字的传递方式，后台需要使用流的方式获取 request.getInputStream();
+    //         success:(data) =>{ console.log(data,11111) },
+    //         error:(data)=>{ console.log(data,2222) }
+    //     });
+    // }
+
+
+</script>
+
 </html>
