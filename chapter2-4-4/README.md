@@ -55,3 +55,23 @@
     3、如果是反向生成的服务器代码，需注释掉:wsdlLocation部分；wsdlLocation会导致找不到具体的服务
     
     总结 server端和client端的  包全类路径名必须相同。。。。。我草！
+    
+    
+    
+# 总结 这一套 版本也是可以的
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web-services</artifactId>
+                <version>1.4.5.RELEASE</version>
+            </dependency>
+    
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                <version>3.1.7</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-transports-http</artifactId>
+                <version>3.1.7</version>
+            </dependency>

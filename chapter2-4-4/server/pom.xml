@@ -11,5 +11,15 @@
 
     <artifactId>server</artifactId>
 
+    <dependencies>
+
+        <!--<dependency>-->
+            <!--<groupId>org.apache.cxf</groupId>-->
+            <!--<artifactId>cxf-rt-transports-http</artifactId>-->
+            <!--<version>3.1.7</version>-->
+        <!--</dependency>-->
+
+
+    </dependencies>
 
 </project>

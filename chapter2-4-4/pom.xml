@@ -35,10 +35,13 @@
             <!--<groupId>org.springframework.boot</groupId>-->
             <!--<artifactId>spring-boot-starter-webservices</artifactId>-->
         <!--</dependency>-->
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web-services</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-frontend-jaxws</artifactId>
@@ -46,11 +49,13 @@
         </dependency>
 
 
+        <!--为什么这个依赖 放在 server 子项目里后  server子项目 启动就会报错呢？ 这本来就是 server子项目的依赖啊-->
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-http</artifactId>
-            <version>3.1.6</version>
+            <version>3.1.7</version>
         </dependency>
+
     </dependencies>
 
     <build>
