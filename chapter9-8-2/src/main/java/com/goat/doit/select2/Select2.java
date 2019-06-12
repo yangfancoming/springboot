@@ -1,4 +1,4 @@
-package com.goat.thymeleaf.model;
+package com.goat.doit.select2;
 
 /**
  * Created by 64274 on 2019/6/11.

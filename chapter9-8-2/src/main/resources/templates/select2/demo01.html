@@ -18,12 +18,14 @@
                         <input type="text" class="form-control" id="username">
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6">
-                    <label class="control-label  col-xs-4" for="dict">邮箱:</label>
-                    <div class="col-xs-8">
-                        <!-- <select name="dict" id="dict" class="form-control1">-->
-                        <!--   <option th:each="car,${carList}" th:value="${car.carId}" th:text="${car.name}"></option>-->
-                          <!--</select>-->
+
+                <!--下拉框 动态 加载-->
+                <div class="col-md-4">
+                    <label for="prov" class="col-sm-2 control-label">省份:</label>
+                    <div class="col-md-4">
+                        <select name="prov" id="prov" class="form-control"  placeholder="请选择省份">
+                            <option th:each="foo,userStat:${provList}" th:value="${foo.id}" th:text="${foo.text}"></option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
@@ -52,8 +54,8 @@
             </shiro:hasPermission>
         </div>
 
-        <!-- doit 这里为啥不能渲染？-->
-        <table id="table">
+
+        <table id="table" class="table table-striped table-bordered table-hover">
             <tr>
                 <th>no</th>
                 <th>account</th>
