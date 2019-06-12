@@ -4,9 +4,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
-/**
- * Created by 钟述林 393156105@qq.com on 2016/10/21 15:45.
- */
+
 public class PageableTools {
 
 

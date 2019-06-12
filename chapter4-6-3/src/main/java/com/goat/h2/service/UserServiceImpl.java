@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
 
-/**
- * Created by os-huangys on 2019/2/13.
- */
+
 @Service
 public class UserServiceImpl implements   UserService {
 

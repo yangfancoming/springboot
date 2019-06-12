@@ -2,9 +2,7 @@ package com.goat.tools;
 
 import org.springframework.data.domain.Sort;
 
-/**
- * Created by 钟述林 393156105@qq.com on 2016/10/21 11:25.
- */
+
 public class SortTools {
 
     public static Sort basicSort() {
