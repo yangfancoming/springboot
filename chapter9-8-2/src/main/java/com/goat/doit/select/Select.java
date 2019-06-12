@@ -1,4 +1,4 @@
-package com.goat.doit.select2;
+package com.goat.doit.select;
 
 /**
  * Created by 64274 on 2019/6/11.
@@ -7,15 +7,15 @@ package com.goat.doit.select2;
  * @ author  山羊来了
  * @ date 2019/6/11---18:59
  */
-public class Select2 {
+public class Select {
 
     Integer id;
     String text;
 
-    public Select2() {
+    public Select() {
     }
 
-    public Select2(Integer id, String text) {
+    public Select(Integer id, String text) {
         this.id = id;
         this.text = text;
     }

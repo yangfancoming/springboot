@@ -1,4 +1,4 @@
-package com.goat.doit.select2;
+package com.goat.doit.select;
 
 public class Account {
 	private String account;
