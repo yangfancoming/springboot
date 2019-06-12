@@ -40,6 +40,8 @@
 </body>
 </html>
 <script type="text/javascript">
+
+
     $(document).ready( function () {
 
         $.ajaxPrefilter(function( options, original_Options, jqXHR ) {

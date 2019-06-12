@@ -24,6 +24,9 @@ public class MyMvcConfig implements WebMvcConfigurer {
 
 
         registry.addViewController("/ajax/list").setViewName("ajax/ajax");
+        registry.addViewController("/interactive/list").setViewName("interactive/demo01");
+
+
 //        registry.addViewController("/thymeleafs").setViewName("thymeleaf/demo01");
 //        registry.addViewController("/select2s").setViewName("select2/demo01");
     }

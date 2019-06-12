@@ -1,14 +1,8 @@
-package com.goat.doit.thymeleaf;
+package com.goat.doit.common.model;
 
 import java.io.Serializable;
 
-/**
- * Created by 64274 on 2018/10/16.
- *
- * @author 山羊来了
- * @Description: TODO
- * @date 2018/10/16---20:34
- */
+
 public class User implements Serializable {
 
     private String id;

@@ -1,5 +1,6 @@
 package com.goat.doit.thymeleaf;
 
+import com.goat.doit.common.model.User;
 import com.goat.doit.select.Account;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
