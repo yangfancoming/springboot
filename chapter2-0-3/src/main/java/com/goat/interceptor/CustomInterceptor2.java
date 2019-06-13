@@ -11,21 +11,21 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @Description:
  * @author: Goat
- * http://localhost:8203/random2
+ *   http://localhost:8203/random2
  * @Date:   2018/11/12
  */
 @Component
 public class CustomInterceptor2 implements HandlerInterceptor {
+
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
-
-        System.out.println("CustomInterceptor2拦截器开始工作，拦截到当前请求地址：" + httpServletRequest.getRequestURL().toString());
+        System.out.println("CustomInterceptor2 拦截器开始工作，拦截到当前请求地址：" + httpServletRequest.getRequestURL().toString());
         // 只有返回true才会继续向下执行，返回false取消当前请求
-        if (true) {
-            System.out.println("没有权限访问：" + httpServletRequest.getRequestURL().toString());
-            httpServletResponse.sendRedirect("/error1");
-            return false;
-        }
+//        if (true) {
+//            System.out.println("没有权限访问：" + httpServletRequest.getRequestURL().toString());
+//            httpServletResponse.sendRedirect("/error1");
+//            return false;
+//        }
         return true;
     }
 
@@ -38,6 +38,6 @@ public class CustomInterceptor2 implements HandlerInterceptor {
     @Override
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e)  {
         // 在整个请求结束之后被调用，也就是在DispatcherServlet 渲染了对应的视图之后执行（主要是用于进行资源清理工作）
-        System.out.println("CustomInterceptor2.afterCompletion:" + o);
+        System.out.println("afterCompletion2  清理资源...");
     }
 }

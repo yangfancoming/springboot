@@ -54,7 +54,8 @@ public class FirstFilter implements Filter {
         HttpServletResponseWrapper wrapper = new HttpServletResponseWrapper((HttpServletResponse) response);
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
-        if (req.getRequestURL().toString().indexOf("/index")>-1){
+        String string = req.getRequestURL().toString();
+        if (string.indexOf("/random1")>-1){
             LOGGER.info("FirstFilter - Request URL: {}", req.getRequestURL().toString());
             LOGGER.info("FirstFilter - Request port：{}", req.getServerPort());
             LOGGER.info("FirstFilter - Request Method: {}", req.getMethod());

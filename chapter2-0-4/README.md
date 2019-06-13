@@ -6,6 +6,9 @@
     如果不明确写出属性 比如这样：@WebServlet("fuck")   这将是 代表 urlPatterns 的属性  而不是 name 属性
     因为在 @WebServlet 注解的源码中 可以看到   * E.g. <code>@WebServlet("/path")}<br>  就代表了 他是 urlPatterns 的属性
     
+    
+    
+    
 # 细节
     1.当客户端(浏览器)关闭后，服务器不关闭，两次获取的session 并不是同一个！  （默认情况下）
         解决方法： Cookie cookie = new Cookie("JSESSIONID",session.getId());
@@ -19,3 +22,8 @@
         1. 服务器关闭
         2. session对象调用 session.invalidate();
         3. session 的失效时间
+        
+        
+# request.getSession(true)和request.getSession(false)的区别
+    request.getSession(true)：若存在会话则返回该会话，否则新建一个会话。
+    request.getSession(false)：若存在会话则返回该会话，否则返回NULL

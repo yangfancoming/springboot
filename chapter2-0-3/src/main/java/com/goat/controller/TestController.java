@@ -53,7 +53,15 @@ public class TestController {
         session.setAttribute("map2", map);
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
-
+    //    http://localhost:8203/random3
+    @GetMapping("/random3")
+    public ResponseEntity<Map> random3(HttpSession session){
+        Map<String, Object> map = new HashMap<>();
+        map.put("key", "random3");
+        map.put("value", new Random().nextInt(100));
+        session.setAttribute("map3", map);
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
     //    http://localhost:8203/error1
     @GetMapping("/error1")
     public Object error1(){
