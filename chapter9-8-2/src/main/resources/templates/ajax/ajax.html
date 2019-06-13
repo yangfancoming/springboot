@@ -15,6 +15,11 @@
 <button type="button" class="btn btn-info" onclick="test4()">发送List</button>
 <button type="button" class="btn btn-warning" onclick="test5()">警告</button>
 <button type="button" class="btn btn-danger" onclick="test0()">播放mp3</button>
+
+
+<!--html 播放音频-->
+<audio src="/mp3/123.mp3" controls="controls">  哈哈 </audio>
+
 <br>
 
 
@@ -28,8 +33,6 @@
         let audio= new Audio("/mp3/123.mp3");//这里的路径写上mp3文件在项目中的绝对路径
         audio.play();//播放
     }
-
-
 
     test1 = ()=> {
         $.ajax({
@@ -70,7 +73,6 @@
             error:(data)=>{ }
         });
     }
-
 
     test5 = () => {
         let list = [
