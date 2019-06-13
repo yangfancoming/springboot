@@ -16,23 +16,21 @@
 <button type="button" class="btn btn-primary" onclick="test('string2')">字符串2  传参</button>
 <button type="button" class="btn btn-primary" onclick="test('string3')">字符串3  传参</button>
 <button type="button" class="btn btn-success" onclick="test2()">数组 传参</button>
-<button type="button" class="btn btn-info" onclick="test4()">发送List</button>
-<button type="button" class="btn btn-warning" onclick="test5()">警告</button>
-<button type="button" class="btn btn-danger" onclick="test6()">危险</button>
+<button type="button" class="btn btn-info" onclick="xxxMapping('get')">GetMapping</button>
+<button type="button" class="btn btn-warning" onclick="xxxMapping('post')">PostMapping</button>
+<button type="button" class="btn btn-danger" onclick="xxxMapping('delete')">DeleteMapping</button>
+<button type="button" class="btn btn-danger" onclick="xxxMapping('put')">PutMapping</button>
 <br>
+
 
 
 </body>
 </html>
 
 <script type="text/javascript">
-
-
-    test1 = ()=> {
-        let codes = "123,222,333";
+    xxxMapping = (type)=> {
         $.ajax({
-            type: "post",url:  "/interactive/string",
-            data: {  "mark":codes, },
+            type: type,url:  "/interactive/receive/123" ,
             dataType: "json", async: false,
             success:(data) =>{ console.log(data,'success') },
             error:(err)=>{ console.log(err,'error') }
@@ -42,7 +40,7 @@
 
     test = (url)=> {
         $.ajax({
-            type: "get",url:  "/interactive/" + url,
+            type: "get",url:  "/interactive/receive/" + url,
             data: {  username:"goat","password":"123", },
             dataType: "json", async: false,
             success:(data) =>{ console.log(data,'success') },
@@ -50,11 +48,21 @@
         });
     }
 
+    test1 = ()=> {
+        let codes = "123,222,333";
+        $.ajax({
+            type: "post",url:  "/interactive/receive/string",
+            data: {  "mark":codes, },
+            dataType: "json", async: false,
+            success:(data) =>{ console.log(data,'success') },
+            error:(err)=>{ console.log(err,'error') }
+        });
+    }
 
     test2 = ()=> {
         let codes = [1111,2222,3333];
         $.ajax({
-            type: "post",url: "interactive/array",
+            type: "post",url: "interactive/receive/array",
             data: {  "codes":codes, },
             dataType: "json",async: false,
             success:(data) =>{ console.log(data,'success') },

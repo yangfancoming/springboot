@@ -11,8 +11,8 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/interactive")
-public class InteractiveController {
+@RequestMapping("/interactive/receive")
+public class ReceiveController {
 
     /** a 标签跳转 */
     @RequestMapping("/a")
@@ -87,6 +87,26 @@ public class InteractiveController {
     */
 
 
+//    http://localhost:8982/interactive/receive/123
+    @GetMapping("/{id}")
+    public void getUserById(@PathVariable Integer id){
+        System.out.println("进入 GetMapping" + id);
+    }
 
+
+    @PostMapping("/{id}")
+    public void getMapById(@PathVariable Integer id){
+        System.out.println("进入 PostMapping" + id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Integer id){
+        System.out.println("进入 DeleteMapping" + id);
+    }
+
+    @PutMapping("/{id}")
+    public void savaUser(@PathVariable Integer id){
+        System.out.println("进入 PutMapping" + id);
+    }
 
 }
