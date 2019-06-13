@@ -1,9 +1,12 @@
 package com.goat.doit.interactive;
 
 import com.goat.doit.common.model.User;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.List;
 
 
@@ -17,15 +20,30 @@ public class InteractiveController {
         return "A 标签成功跳进controller ！";
     }
 
-
     /**
      * 成功接收 字符串
+     *  测试地址： http://localhost:8982/interactive/string
+     *  如果前后端参数名不匹配， 也可以进入controller方法 接收参数值为 null
      * sos 这里的 String mark  必须要与 前台  ajax 中的 data: {  "mark":codes, } 中的  "mark"  对应发否则无法接收！
      * */
     @PostMapping("/string")
     public void string(String mark) {
         System.out.println(mark);
     }
+
+    /**
+     * 测试地址： http://localhost:8982/interactive/user1?username=我的
+     * 如果前后端参数名不匹配，则不会进入controller方法，并报错：
+     There was an unexpected error (type=Bad Request, status=400).
+     Required String parameter 'username' is not present
+    */
+    @GetMapping("/user1")
+    public String user1(@RequestParam String username) throws UnsupportedEncodingException {
+        String temp = URLDecoder.decode(username,"GBK"); // 如果前端发送的是GBK编码 则需要注这样进行转换
+        return temp;
+    }
+
+
 
     /**
      * 成功接收 字符串
@@ -50,14 +68,12 @@ public class InteractiveController {
     }
 
 
-
-
-
-
-
-
-    /** 成功接收 数组 */
-    @RequestMapping("/array")
+    /** 成功接收 数组
+     * produces 不但可以设置返回值类型还可以设定返回值的字符编码；
+     * produces = MediaType.APPLICATION_JSON_VALUE      指定 返回数据类型为 application/json  此处可以不写 因为 @RestController 就表明了 要返回 Json 类型
+     * produces = MediaType.APPLICATION_JSON_UTF8_VALUE 指定 返回数据类型为  application/json  并指定返回数据编码为  charset=utf-8
+     * */
+    @RequestMapping(value = "/array",produces = MediaType.APPLICATION_JSON_VALUE)
     public void test1(@RequestParam(value = "codes[]", required = false) List<String> codes) {  // 成功
         String[] codeArr = codes.toArray(new String[codes.size()]); // list 转  数组
         System.out.println(codeArr);
@@ -69,6 +85,8 @@ public class InteractiveController {
      @RequestMapping(value = "/test4",produces="text/html;charset=UTF-8")
      public void test4(@RequestParam("codes") String[] codes ) {  } // 失败
     */
+
+
 
 
 }

@@ -1,4 +1,4 @@
-package com.goat.domain;
+package com.goat.doit.interactive;
 
 
 public class MesDto<T> {
