@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta content="text/html;charset=UTF-8"/>
-    <title>山羊来了</title>
-    <meta content="text/html;charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+<html xmlns:th="http://www.thymeleaf.org">
 
-</head>
-<body>
+<section class="content-header">
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+        <li><a href="#">xxx管理</a></li>
+        <li class="active">xxx管理</li>
+    </ol>
+</section>
 
-<a href="interactive/a">a标签跳controller</a>
-
+<section class="content">
 <button type="button" class="btn btn-primary" onclick="test1()">字符串  传参</button>
 <button type="button" class="btn btn-primary" onclick="test('string1')">字符串1  传参</button>
 <button type="button" class="btn btn-primary" onclick="test('string2')">字符串2  传参</button>
@@ -22,16 +20,11 @@
 <button type="button" class="btn btn-danger" onclick="xxxMapping('put')">PutMapping</button>
 <br>
 
-<div class="col-md-8">
 
-
-
-</div>
-
-</body>
-</html>
+</section>
 
 <script type="text/javascript">
+
     xxxMapping = (type)=> {
         $.ajax({
             type: type,url:  "/interactive/receive/123" ,
@@ -40,7 +33,6 @@
             error:(err)=>{ console.log(err,'error') }
         });
     }
-
 
     test = (url)=> {
         $.ajax({
