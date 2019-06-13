@@ -42,16 +42,11 @@
     </div>
     <div class="jax-box jax-box-table">
         <div id="toolbar" class="btn-group">
-            <shiro:hasPermission name="role:add">
-                <button id="btn_add" type="button" class="btn btn-primary" data-toggle="modal" data-target="#roleModal">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
-                </button>
-            </shiro:hasPermission>
-            <shiro:hasPermission name="role:batchDelete">
-                <button id="btn_batch_delete" type="button" class="btn btn-danger">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>批量删除
-                </button>
-            </shiro:hasPermission>
+            <button type="button" class="btn btn-primary" onclick="test2()">清空下拉框</button>
+            <button type="button" class="btn btn-success" onclick="test3()">获取选中值</button>
+            <button type="button" class="btn btn-info" onclick="test4()">获取选中文本</button>
+            <button type="button" class="btn btn-warning" onclick="test5()">获取选中索引</button>
+            <button type="button" class="btn btn-danger" onclick="test0()">播放mp3</button>
         </div>
 
 
@@ -64,14 +59,24 @@
 
 <script>
 
-    function test(){
-        $.ajax({
-            type:"get", dataType:"json", url: "/select/list",
-            data: {"param1": 111,"param2": 222}, // sos 参数名称 param1  必须与后台形参对应上 否则接收不到！
-            success:(data) =>{ console.log(data)},
-            error:(data)=>{ }
-        });
+    test2 = () => {
+        $("#prov").empty() //  清空下拉框
     }
+
+    test3 = () => {
+       // alert( $("#prov").val())//  ok
+       alert( $('#prov option:selected').val())//  获取选中值
+    }
+
+    test4 = () => {
+        // alert( $("#prov").text())//  error
+        alert( $('#prov option:selected').text())//  获取选中文本
+    }
+
+    test5 = () => {
+        alert($("#prov").get(0).selectedIndex); // 索引
+    }
+
 
 </script>
 

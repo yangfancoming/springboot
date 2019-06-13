@@ -27,9 +27,9 @@ public class SelectController {
 
     public List<Select> init(){
         select2List.clear();
-        select2List.add(new Select(1,"1"));
-        select2List.add(new Select(2,"2"));
-        select2List.add(new Select(3,"3"));
+        select2List.add(new Select(1,"11"));
+        select2List.add(new Select(2,"22"));
+        select2List.add(new Select(3,"33"));
         return select2List;
     }
 
