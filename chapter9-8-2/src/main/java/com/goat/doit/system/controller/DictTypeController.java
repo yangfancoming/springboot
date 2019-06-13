@@ -59,7 +59,7 @@ public class DictTypeController {
     public String detail(Model model, Long id) {
         DictType dictType = dictTypeService.selectDictTypeById(id);
         model.addAttribute("role", dictType);
-        return "dict/type/detail";
+        return "system/dict/type/detail";
     }
 
     /*编辑保存*/

@@ -106,7 +106,7 @@ public class RoleController {
     public String detail(Model model, Integer id) {
         Role role = roleService.getById(id);
         model.addAttribute("role", role);
-        return "role/detail";
+        return "system/role/detail";
     }
 
     /*编辑保存*/

@@ -50,7 +50,7 @@ public class UserController {
     public String userDetail(Model model, String userId){
         User user = userService.getById(userId);
         model.addAttribute("user", user);
-        return "user/userDetail";
+        return "system/user/userDetail";
     }
 
     /**编辑保存*/

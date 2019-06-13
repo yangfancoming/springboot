@@ -33,7 +33,7 @@ public class DictDataController {
     @GetMapping("/test")
     public String dictData(Model model, String id){
         model.addAttribute("type", id);
-        return "dict/data/list";
+        return "system/dict/data/list";
     }
 
 
@@ -67,7 +67,7 @@ public class DictDataController {
     public String detail(Model model, Long id) {
         DictData dictData = dictDataService.selectDictDataById(id);
         model.addAttribute("role", dictData);
-        return "dict/data/detail";
+        return "system/dict/data/detail";
     }
 
     /*编辑保存*/
