@@ -1,6 +1,7 @@
 package com.goat.doit.interactive;
 
 import com.goat.doit.common.model.User;
+import com.goat.doit.common.util.GoatInfo;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -107,6 +109,18 @@ public class ReceiveController {
     @PutMapping("/{id}")
     public void savaUser(@PathVariable Integer id){
         System.out.println("进入 PutMapping" + id);
+    }
+
+    @RequestMapping("/form1") //
+    public void form1(HttpServletRequest request) {
+        Map map = request.getParameterMap();
+        System.out.println(map);
+    }
+
+    @RequestMapping("/form2")
+    public void form2(HttpServletRequest request) throws Exception {
+        Map map = GoatInfo.getInfo(request);
+        System.out.println(map);
     }
 
 }

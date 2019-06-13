@@ -34,6 +34,11 @@ public class SystemController {
     @Autowired
     private PermissionService permissionService;
 
+//    @RequestMapping("/")
+//    public String index(){
+//        return "system/index/index";
+//    }
+
     /*获取当前登录用户的菜单*/
     @PostMapping("/menu")
     @ResponseBody

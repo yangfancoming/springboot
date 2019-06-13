@@ -12,7 +12,7 @@
 
 
 <div class="col-md-8">
-    <form class="form-horizontal" id="permissionForm">
+    <form class="form-horizontal"  th:action="@{/interactive/receive/string3}" method="post" name="Form" id="Form">
         <div class="box-body">
             <div class="form-group">
                 <label class="col-sm-3 control-label">类型 :</label>
@@ -25,7 +25,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label">资源名称 :</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="name" id="name" require="必填项"  placeholder="">
+                    <input type="text" class="form-control" name="username" id="username" require="必填项"  placeholder="">
                 </div>
             </div>
             <div class="form-group">
@@ -38,24 +38,117 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label">上级资源 :</label>
                 <div class="col-sm-8">
-                    <select name="prov" id="prov" class="form-control"  placeholder="请选择省份">
+                    <select name="password" id="password" class="form-control"  placeholder="请选择省份">
                         <option th:each="foo,userStat:${provList}" th:value="${foo.id}" th:text="${foo.text}"></option>
                     </select>
                 </div>
             </div>
-            <input type="hidden" class="form-control" id="parentId" name="parentId" value="0">
+            <input type="hidden" class="form-control" id="id" name="id" value="0">
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
             <div class="text-center">
-                <button type="button" id="savePermission" class="btn btn-info" onclick="haha()" >确定</button>
-                <button type="button" data-dismiss="modal" class="btn btn-default">取消</button>
+                <button type="submit" id="savePermission" class="btn btn-info">确定</button>
+                <button type="button" data-dismiss="modal" class="btn btn-default"  onclick="haha()" >取消</button>
             </div>
         </div>
         <!-- /.box-footer -->
     </form>
 </div>
 
+
+
+    <div class="col-md-8">
+        <form class="form-horizontal" method="post" name="Form1" id="Form1">
+            <div class="box-body">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">类型1 :</label>
+                    <div class="col-sm-8">
+                        <label class="radio-inline pr-5"><input type="radio" name="type" value="0" id="type-category1"> 目录</label>
+                        <label class="radio-inline pr-5"><input type="radio" name="type" value="1" checked="checked" id="type-menu1"> 菜单</label>
+                        <label class="radio-inline pr-5"><input type="radio" name="type" value="2" id="type-btn1"> 按钮</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">资源名称 :</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="username" id="username1" require="必填项"  placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">上级资源 :</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control cursor-pointer" id="parentMenu1" value="顶层菜单" onclick="showMenu(1)" readonly="readonly">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">上级资源 :</label>
+                    <div class="col-sm-8">
+                        <select name="password" id="password1" class="form-control"  placeholder="请选择省份">
+                            <option th:each="foo,userStat:${provList}" th:value="${foo.id}" th:text="${foo.text}"></option>
+                        </select>
+                    </div>
+                </div>
+                <input type="hidden" class="form-control" id="id1" name="id" value="0">
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <div class="text-center">
+                    <button  id="submit1" class="btn btn-info">确定</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-default"  onclick="haha()" >取消</button>
+                </div>
+            </div>
+            <!-- /.box-footer -->
+        </form>
+    </div>
+
+
+
+    <div class="col-md-8">
+        <form class="form-horizontal" method="post" name="Form2" id="Form2">
+            <div class="box-body">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">类型 :</label>
+                    <div class="col-sm-8">
+                        <label class="radio-inline pr-5"><input type="radio" name="type" value="0" id="type-category2"> 目录</label>
+                        <label class="radio-inline pr-5"><input type="radio" name="type" value="1" checked="checked" id="type-menu2"> 菜单</label>
+                        <label class="radio-inline pr-5"><input type="radio" name="type" value="2" id="type-btn2"> 按钮</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">资源名称 :</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="username" id="username2" require="必填项"  placeholder="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">上级资源 :</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control cursor-pointer" id="parentMenu2" value="顶层菜单" onclick="showMenu(1)" readonly="readonly">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">上级资源 :</label>
+                    <div class="col-sm-8">
+                        <select name="password" id="password2" class="form-control"  placeholder="请选择省份">
+                            <option th:each="foo,userStat:${provList}" th:value="${foo.id}" th:text="${foo.text}"></option>
+                        </select>
+                    </div>
+                </div>
+                <input type="hidden" class="form-control" id="id2" name="id2" value="0">
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <div class="text-center">
+                    <button id="submit2" class="btn btn-info">确定</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-default"  onclick="haha()" >取消</button>
+                </div>
+            </div>
+            <!-- /.box-footer -->
+        </form>
+    </div>
 </section>
 
 <script type="text/javascript">
@@ -80,9 +173,33 @@
         console.log( $("#permissionForm").serializeArray())
     }
 
+    // doit   1.为啥 表单 ajax提交 请求后 还会 post 请求一次  "/" ?
+    // doit   2.为啥  GoatInfo.getInfo(request) 还是null  ?
 
+    //发送表单ajax请求
+    $('#submit1').on('click',function(){
+        $.ajax({
+            url:"/interactive/receive/form1",type:"post",
+            data:$('#Form1').serializeArray(),
+            contentType:"application/x-www-form-urlencoded",
+            success:(data)=>{ console.log(data) },
+            error:(err)=>{ console.log(err) }
+        });
+    });
 
-
+    // [{"name":"type","value":"1"},{"name":"username","value":"123"},{"name":"password","value":"1"},{"name":"id2","value":"0"}]
+    $('#submit2').on('click',function(){
+        // let data = JSON.stringify($('#Form2').serializeArray())
+        let data = $('#Form2').serializeArray()
+        console.log(data,11111111)
+        $.ajax({
+            url:"/interactive/receive/form2",type:"post",
+            data: data ,
+            contentType:"application/x-www-form-urlencoded",
+            success:(data)=>{ console.log(data) },
+            error:(err)=>{ console.log(err) }
+        });
+    });
 
 
 </script>
