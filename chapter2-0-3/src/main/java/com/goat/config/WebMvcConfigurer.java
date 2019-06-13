@@ -48,6 +48,7 @@ public class WebMvcConfigurer extends WebMvcConfigurationSupport {
  CustomInterceptor2 拦截器开始工作，拦截到当前请求地址：http://localhost:8203/random3
  CustomInterceptor2.postHandle:public org.springframework.http.ResponseEntity<java.util.Map> com.goat.controller.TestController.random3(javax.servlet.http.HttpSession)
  CustomInterceptor1.postHandle:public org.springframework.http.ResponseEntity<java.util.Map> com.goat.controller.TestController.random3(javax.servlet.http.HttpSession), modelAndView:null
+  跳转到前台进行视图解析。。。。。
  afterCompletion2  清理资源...
  afterCompletion1  清理资源...
 */
