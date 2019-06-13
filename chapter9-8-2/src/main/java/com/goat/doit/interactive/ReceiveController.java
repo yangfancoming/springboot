@@ -74,6 +74,12 @@ public class ReceiveController {
      * produces 不但可以设置返回值类型还可以设定返回值的字符编码；
      * produces = MediaType.APPLICATION_JSON_VALUE      指定 返回数据类型为 application/json  此处可以不写 因为 @RestController 就表明了 要返回 Json 类型
      * produces = MediaType.APPLICATION_JSON_UTF8_VALUE 指定 返回数据类型为  application/json  并指定返回数据编码为  charset=utf-8
+     *
+     *      数组接收的三种失败方式
+     *      public void test2(String[] codes) {  } // 失败
+     *      public void test3(List<String> codes) {  } // 失败
+     *      @RequestMapping(value = "/test4",produces="text/html;charset=UTF-8")
+     *      public void test4(@RequestParam("codes") String[] codes ) {  } // 失败
      * */
     @RequestMapping(value = "/array",produces = MediaType.APPLICATION_JSON_VALUE)
     public void test1(@RequestParam(value = "codes[]", required = false) List<String> codes) {  // 成功
@@ -81,12 +87,23 @@ public class ReceiveController {
         System.out.println(codeArr);
     }
 
-    /**  数组接收的三种失败方式
-     public void test2(String[] codes) {  } // 失败
-     public void test3(List<String> codes) {  } // 失败
-     @RequestMapping(value = "/test4",produces="text/html;charset=UTF-8")
-     public void test4(@RequestParam("codes") String[] codes ) {  } // 失败
+    /**
+     Spring Controller各方法参数绑定还支持集合类型，这里拿常用的List和Map举例，
+     如果直接拿集合类作为绑定参数，写法上与基本类型类似，不同的是需要在参数处增加注解 @RequestParam()
     */
+    @PostMapping("/array2")
+    public void test2(@RequestParam("codes[]") List<String> codes) {
+        System.out.println(codes.toString());
+    }
+
+    /**
+     Map类型作为参数，只需要使用@RequestParam注解即可，这里Map对应的key-value基本是String类型，value可以为Object
+     Map作为参数的话，会把Ajax请求中的全部数据转换为key-value存入Map对应中
+    */
+    @PostMapping("/map")
+    public void requestList(@RequestParam Map<String, Object> param) {
+        System.out.println(param.toString());
+    }
 
 
 //    http://localhost:8982/interactive/receive/123

@@ -14,6 +14,8 @@
 <button type="button" class="btn btn-primary" onclick="test('string2')">字符串2  传参</button>
 <button type="button" class="btn btn-primary" onclick="test('string3')">字符串3  传参</button>
 <button type="button" class="btn btn-success" onclick="test2()">数组 传参</button>
+<button type="button" class="btn btn-success" onclick="test22()">数组2 传参</button>
+<button type="button" class="btn btn-success" onclick="test3()">Map 传参</button>
 <button type="button" class="btn btn-info" onclick="xxxMapping('get')">GetMapping</button>
 <button type="button" class="btn btn-warning" onclick="xxxMapping('post')">PostMapping</button>
 <button type="button" class="btn btn-danger" onclick="xxxMapping('delete')">DeleteMapping</button>
@@ -59,13 +61,36 @@
         let codes = [1111,2222,3333];
         $.ajax({
             type: "post",url: "interactive/receive/array",
-            data: {  "codes":codes, },
+            data: { "codes":codes, },
             dataType: "json",async: false,
             success:(data) =>{ console.log(data,'success') },
             error:(err)=>{ console.log(err,'error') }
         });
     }
 
+    test22 = ()=> {
+        let strList = new Array();
+        strList.push("field1");
+        strList.push("field2");
+        $.ajax({
+            type: "post",url: "interactive/receive/array2",
+            data:{ codes : strList},
+            dataType:"json",
+            success:(data) =>{ console.log(data,'success') },
+            error:(err)=>{ console.log(err,'error') }
+        });
+    }
+
+
+    test3 = ()=> {
+        $.ajax({
+            type: "post",url: "interactive/receive/map",
+            data:{field1:"field1",field2:1},
+            dataType:"json",
+            success:(data) =>{ console.log(data,'success') },
+            error:(err)=>{ console.log(err,'error') }
+        });
+    }
 
 
 </script>
