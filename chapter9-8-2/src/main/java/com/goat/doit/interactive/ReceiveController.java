@@ -57,7 +57,7 @@ public class ReceiveController {
 
     /**  使用 HttpServletRequest 接收 字符串*/
     @RequestMapping("/string2")
-    public void test3( HttpServletRequest req){
+    public void test3(HttpServletRequest req){
         System.out.println(req.getParameter("username") + "-----------" + req.getParameter("password"));
     }
 

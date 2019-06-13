@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class HelloController {
 
     // 测试地址：    http://localhost:8208/8208/hello/get
-	@GetMapping("/get") //  等价于   @RequestMapping(value = "/get",method = RequestMethod.GET)
+	@GetMapping("/get")
 	public String get()   {
 		return "get无参请求成功";
 	}
@@ -23,7 +23,7 @@ public class HelloController {
 	}
 
 
-    @PostMapping("/post") //  等价于   @RequestMapping(value = "/post",method = RequestMethod.POST)
+    @PostMapping("/post")
     public String post(@RequestHeader("User-Agent") String userAgent,
                        @RequestHeader("Accept") String accept,
                        @RequestHeader("Accept-Language") String acceptLanguage,

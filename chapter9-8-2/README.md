@@ -1,3 +1,5 @@
+# 基于Spring Boot、Shiro、MyBatis、Redis、thymeleaf等框架，前端使用adminlte模板。
+
 #   项目启动后  http://localhost:8982/thymeleaf/test1
     static/js/init.js  文件中 
     1.发起左侧菜单 请求  type: 'POST', url: "/menu" , data: {} ,
