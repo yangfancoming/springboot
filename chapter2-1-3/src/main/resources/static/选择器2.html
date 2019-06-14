@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery </title>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+
+
+<div id="outer">
+    <div id="inter_1">
+        <h1>inter_1的h1</h1>
+        <p>inter_1的p</p>
+    </div>
+    <div id="inter_2">
+        <h1>inter_2的h1</h1>
+        <p>inter_2的p</p>
+    </div>
+    <h1>outer的h1</h1>
+    <p>outer的p</p>
+</div>
+
+
+<script>
+    //选取id为outer元素中所有的 h1 和 p 元素
+    $("#outer h1,p").each(function(){
+        console.log( $(this).text() ); //控制台查看获取的文本值
+    });
+
+    //选取所有 h1 和 p 元素，它们父元素是id为outer的元素
+    $("#outer > h1,p").css("color", "red");
+
+    //选取id为inter_1的元素中所有紧接着 h1 元素的p元素
+    $("#inter_1 h1+p").css("color", "green");
+    $("#inter_1 > h1+p") //如果匹配h1+p的父元素非#inter_1 ，就不能匹配。
+
+    //匹配h1之后所有的p元素，祖先元素是id为inter_2的元素
+    $("#inter_2 h1 ~ p")
+    //匹配h1之后所有的p元素，父元素是id为inter_2的元素
+    $("#inter_2 > h1 ~ p")
+</script>
+
+
+</body>
+</html>

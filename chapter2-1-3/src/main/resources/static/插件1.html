@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery </title>
+</head>
+<body>
+
+<div id="box">
+
+</div>
+
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="插件.js"></script>
+
+
+<script type="text/javascript">
+
+    /**
+     通过$.extend()向jQuery添加了一个sayHello函数，然后通过$直接调用。到此你可以认为我们已经完成了一个简单的jQuery插件了。
+    */
+    $.sayHello(); //调用
+    $.sayHello('Wayou'); //带参调用
+    $.log('initializing...'); //调用
+</script>
+
+
+</body>
+</html>

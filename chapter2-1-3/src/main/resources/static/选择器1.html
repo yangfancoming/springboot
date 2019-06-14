@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery </title>
+</head>
+<body>
+
+<div>
+    div标签
+</div>
+<p>p标签</p>
+<h1>H1标签</h1>
+<h2>H2标签</h2>
+<div id="d2">
+    <span>span1</span>
+    <span>span2</span>
+    <p>p2</p>
+</div>
+
+
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+
+
+<!-- 简单演示群组选择器、通配选择器 -->
+<script>
+
+    $('*');  // 选择所有标签元素
+    $('a');  // 比如$('a')返回的是页面上所有a标签的集合
+
+
+    //选取所有div p ul h1元素，设置字体为红色
+    $("div, p, ul, h1").css("color", "red");
+    //选取id为d2元素中所有元素，设置字体为蓝色
+    $("#d2 *").css("color", "blue");
+</script>
+
+
+
+</body>
+</html>
