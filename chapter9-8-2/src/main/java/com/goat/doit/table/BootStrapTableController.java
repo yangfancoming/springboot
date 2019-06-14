@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @ date 2019/6/12---20:52
  */
 @Controller
-@RequestMapping("/table")
-public class TableController {
+@RequestMapping("/table/bootstraptable")
+public class BootStrapTableController {
 
-    //    http://localhost:8216/transfer/table
-    @GetMapping("/list")
-    public String table() {
-        return "table/table";
-    }
+//    //
+//    @GetMapping("/list")
+//    public String table() {
+//        return "table/bootstraptable";
+//    }
 
 }

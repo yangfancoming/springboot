@@ -51,11 +51,11 @@
 
 <a href="/thymeleaf/user">查询单个用户</a>
 
-<!-- Will produce 'http://localhost:8263/user/list?userId=3' (plus rewriting) -->
-<a href="details.html" th:href="@{http://localhost:8263/user/list(userId=${user.id})}">跳转user/list?userId=3</a>
+<!--&lt;!&ndash; Will produce 'http://localhost:8263/user/list?userId=3' (plus rewriting) &ndash;&gt;-->
+<!--<a href="details.html" th:href="@{http://localhost:8263/user/list(userId=${user.id})}">跳转user/list?userId=3</a>-->
 
-<!-- @{/  会加上 servlet 的上下文路径  需要在页面 F12 进行查看 -->
-<a href="details.html" th:href="@{/user/list(userId=${user.id})}">跳转user/list?userId=3</a>
+<!--&lt;!&ndash; @{/  会加上 servlet 的上下文路径  需要在页面 F12 进行查看 &ndash;&gt;-->
+<!--<a href="details.html" th:href="@{/user/list(userId=${user.id})}">跳转user/list?userId=3</a>-->
 </body>
 
 
