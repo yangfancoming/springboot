@@ -14,7 +14,7 @@
 </div>
 
 
-<script>
+<script type="text/javascript" >
 
     /**
      这段代码意图是点击第一个超链接提示“I am click Link #0”，点击第二个提示“I am click Link #1”。真的是这样吗？ 不是，每一次都是“I am click Link #2”
@@ -32,17 +32,25 @@
  因为i的值没有被锁住，当我们点击链接的时候其实for循环早已经执行完了，于是在点击的时候i的值已经是elems.length了
  这次可以正确的输出结果，i的值被传给了LockedIndex，并且被锁定在内存中，尽管for循环之后i的值已经改变，但是立即执行函数内部的LockedIndex的值并不会改变。
 */
-    var elems = document.getElementsByTagName('a');
-    for(var i=0; i < elems.length; i++){
-        (function (LockedInIndex) {
-            elems[i].addEventListener('click', function (e) {
-                e.preventDefault();
-                alert('I am cliick Link #' + LockedInIndex);
-            }, 'false')
-        })(i)
-    }
+    // var elems = document.getElementsByTagName('a');
+    // for(var i=0; i < elems.length; i++){
+    //     (function (LockedInIndex) {
+    //         elems[i].addEventListener('click', function (e) {
+    //             e.preventDefault();
+    //             alert('I am cliick Link #' + LockedInIndex);
+    //         }, 'false')
+    //     })(i)
+    // }
 
     /** 解决方式二： 将 var i=0; 改成 let i=0;*/
+
+
+
+
+
+
+
+
 
 
 </script>

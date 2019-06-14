@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>立即执行函数 </title>
+</head>
+<body>
+
+<div id="box">
+
+</div>
+
+<script type="text/javascript" src="插件.js"></script>
+
+<!-- sos
+<script type="text/javascript" src="插件.js">
+    console.log(11111) // 在引入js标签内 是不会被执行的。。。要另起一个 </script> 标签
+</script>
+
+-->
+
+<script type="text/javascript">
+
+    let option = {
+        el:document.getElementById("box"),
+        data:{ row:3, col:1 }
+    }
+
+    let table = new Table();
+    table.test1()
+    table.test2()
+    table.create(option)
+
+
+
+</script>
+
+
+</body>
+</html>

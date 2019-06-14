@@ -25,3 +25,5 @@ let Person = (function(){
 console.log(Person.SayName('lucy')); //lucy
 console.log(Person.SayName());//shane
 console.log(Person.SayAge());//18
+
+
