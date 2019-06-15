@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06-jQuery核心函数</title>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+        // $(); 就代表调用jQuery的核心函数
+
+
+        $(function () {   // 1.接收一个函数
+            alert("hello lnj");
+            // 2.接收一个字符串 返回一个jQuery对象, 对象中保存了找到的DOM元素
+            let $box1 = $(".box1");
+            let $box2 = $("#box2");
+            console.log($box1);
+            console.log($box2);
+
+            // 2.2接收一个字符串代码片段 返回一个jQuery对象, 对象中保存了创建的DOM元素
+            let $p = $("<p>我是段落</p>");
+            console.log($p);
+            $box1.append($p);
+
+
+            let span = document.getElementsByTagName("span")[0];
+            console.log(span);
+            let $span = $(span);  // 3.接收一个DOM元素 会被包装成一个jQuery对象返回给我们
+            console.log($span);
+        });
+    </script>
+
+</head>
+<body>
+<div class="box1"></div>
+<div id="box2"></div>
+<span>我是span</span>
+</body>
+
+
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>12-静态方法holdReady方法</title>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+        // $.holdReady(true); 作用: 暂停 ready 执行
+        $.holdReady(true);
+        $(document).ready(function () {
+            alert("ready");
+        });
+    </script>
+</head>
+<body>
+<button>恢复ready事件</button>
+<script>
+    let btn = document.getElementsByTagName("button")[0]; // 找到 button 按钮 控件
+    btn.onclick = function () { // 给按钮动态添加 点击事件
+        $.holdReady(false); // 恢复 ready 执行
+    }
+</script>
+</body>
+</html>

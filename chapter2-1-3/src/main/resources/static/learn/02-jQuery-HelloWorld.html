@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-jQuery-HelloWorld</title>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script>
+        // 1.原生JS的固定写法
+        window.onload = function (ev) {  }
+
+        /** 2.jQuery的固定写法 */
+
+        // 1.第一种写法
+        $(document).ready(function () {
+            // alert("hello lnj");
+        });
+
+        // 2.第二种写法
+        jQuery(document).ready(function () {
+            // alert("hello lnj");
+        });
+
+        // 3.第三种写法(推荐)
+        $(function () {
+            alert("hello lnj");
+        });
+
+        // 4.第四种写法
+        jQuery(function () {
+            // alert("hello lnj");
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>
