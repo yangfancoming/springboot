@@ -11,8 +11,8 @@ public class Cxfclient {
 
     //测试
     public static void main(String[] args) {
-        test1();
-//        test2();
+//        test1();
+        test2();
     }
 
     /**
@@ -46,13 +46,13 @@ public class Cxfclient {
         // 创建动态客户端
         JaxWsDynamicClientFactory dcf = JaxWsDynamicClientFactory.newInstance();
         Client client = dcf.createClient(address);
-        // 需要密码的情况需要加上用户名和密码
+        // 需要密码的情况需要加上用户名和密码 服务端会校检用户名和密码  如果校检失败 则不予提供服务。
         client.getOutInterceptors().add(new LoginInterceptor("root","admin"));
         Object[] objects;
         try {
             // invoke("方法名",参数1,参数2,参数3....);
             System.out.println("======client"+client);
-            objects = client.invoke("getUserName", "1");
+            objects = client.invoke("test", "1",1,"GOAT",true);
             System.out.println("返回数据:" + objects[0]);
         } catch (Exception e) {
             e.printStackTrace();

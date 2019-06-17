@@ -17,4 +17,13 @@ public class AppServiceImpl implements AppService {
         System.out.println("===========================getUser:"+id);
         return "webserviceServer--getUserName: this is jw,18 years old";
     }
+
+    @Override
+    public String test(String id, int num, String name, Boolean mark) {
+        System.out.println(id);
+        System.out.println(num);
+        System.out.println(name);
+        System.out.println(mark);
+        return "ok";
+    }
 }

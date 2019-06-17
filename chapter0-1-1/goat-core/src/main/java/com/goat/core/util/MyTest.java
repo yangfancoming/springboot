@@ -14,11 +14,13 @@ public class MyTest {
     @Test
     public void test(){
         int a[] =   {1,2,4};
-        Object b[] =   {1,2,4};
-//                boolean empty = ArrayUtil.isEmpty(a);
+//        Object b[] =   {1,2,4};
+//                boolean empty = ArrayUtil.isEmpty(a,a,b);
 //        boolean empty = ArrayUtil.isEmpty(b);
-        boolean empty = ArrayUtil.isEmpty(null);
-        System.out.println(empty);
+//        boolean empty = ArrayUtil.isEmpty(null);
+//        System.out.println(empty);
+
+        System.out.println( a instanceof int[] );
 
     }
 }
