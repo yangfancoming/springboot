@@ -25,7 +25,7 @@
 - ==chapter1-2-3 springboot  与 日志 log4j + AOP统一处理请求日志==
 - ==chapter1-2-4 springboot  日志输出至Logstash xml方式==
 - ==chapter1-2-5 springboot  日志输出至Logstash  properties方式==    失败
-- ==chapter1-2-6 springboot  自定义starter==mybatisplus 
+- ==chapter1-2-6 springboot  自定义starter==
 - ==chapter1-2-7 springboot  注解开发==
 
 
@@ -49,14 +49,14 @@ Web开发
 - ==chapter2-0-2 springboot  打jar包方式的静态资源映射规则(webjars)==
 - ==chapter2-0-3 springboot  集成  servlet、Filter、 Listener、interceptor 的两种方式==
 - ==chapter2-0-4 springboot  集成  HttpSession==
-- ==chapter2-0-5 springboot  中的 SpringMVC   返回各种数据类型总结 JPA==
-- ==chapter2-0-7 springboot  中的 SpringMVC 扩展与接管 无后台==
-- ==chapter2-0-8 springboot  集成 MockMvc和Swagger2==
-- ==chapter2-1-0 springboot  中使用  ES6==
+- ==chapter2-0-5 
+- ==chapter2-0-7 
+- ==chapter2-0-8 springboot  集成 MockMvc和Swagger2 接收前台参数==
+- ==chapter2-1-0 springboot  中使用 ES6==
 - ==chapter2-1-2 springboot  中使用 JavaScript  ==
-- ==chapter2-1-3 springboot  中使用 JQuery ==
+- ==chapter2-1-3 springboot  中使用 JQuery==
 - ==chapter2-1-5 springboot  中使用 Bootstrap + JSP==
-- ==chapter2-1-6 springboot  中使用 Bootstrap + Thymeleaf + Select2==
+- ==chapter2-1-6 springboot  中使用 Bootstrap + Select2 + 前后端ajax交互 ==
 - ==chapter2-1-7 springboot  中使用 Bootstrap + AdminLTE 模板==
 - ==chapter2-1-8 springboot  集成 Kaptcha 验证码==
 - ==chapter2-2-2 springboot  集成 fastjson  相关操作总结==
@@ -68,6 +68,7 @@ Web开发
 - ==chapter2-3-8 springboot  集成 Mina server==
 - ==chapter2-3-9 springboot  集成 Mina client==
 - ==chapter2-4-1 springboot  集成 WebService 服务端==
+- ==chapter2-4-4 springboot  集成 WebService ==
 - ==chapter2-5-1 springboot  集成 WebService 客户端==
 - ==chapter2-5-3 springboot  集成 Netty==
 - ==chapter2-5-4 springboot  集成 Netty Server==
@@ -79,7 +80,7 @@ Web开发
 
 模板引擎
 
-- ==chapter2-6-3 springboot  集成  Thymeleaf 与 SpringMVC 扩展==
+- ==chapter2-6-3 
 - ==chapter2-6-4 springboot  集成  velocity==
 - ==chapter2-6-5 springboot  集成  freemarker + 日期类型处理==
 - ==chapter2-6-7 springboot  集成  vue+ elementUI==
@@ -89,7 +90,7 @@ Web开发
 
 网络请求
 
-- ==chapter2-7-1 springboot  集成 HttpClient==
+- ==chapter2-7-1 springboot  集成 HttpClient ==
 - ==chapter2-7-3 springboot  集成 RestTemplate==
 - ==chapter2-8-0 springboot  集成  JSP 中使用 Echarts==
 - ==chapter2-8-1 springboot  集成  JSP 中使用 JQuery==
@@ -138,7 +139,7 @@ AOP
 - ==chapter3-4-8：springboot  集成 License 验证  生成和校检整合==
 - ==chapter3-4-9：springboot  集成 License 验证  生成和校检分开==
 - ==chapter3-5-0：springboot  集成 License 验证 待整理 ==
-- ==chapter3-5-1：springboot  集成  Shiro==
+- ==chapter3-5-1：springboot  集成  Shiro 基于内存用户 ==
 - ==chapter3-5-2：springboot  集成  Shiro + jwt==
 - ==chapter3-5-3：springboot  集成  Shiro + jwt Plus==
 - ==chapter3-5-4：springboot  集成  SpringSecurity +  Thymeleaf + 内存用户==
@@ -148,7 +149,7 @@ AOP
 - ==chapter3-6-4：springboot  集成  oauth2 四种验证模式==
 - ==chapter3-6-6：springboot  集成  Social QQ登录==
 - ==chapter3-7-0：springboot  集成  jwt==
-- ==chapter3-7-0：springboot  集成  Session==
+- ==chapter3-7-3：springboot  集成  Session==
 - ==chapter3-8-0：springboot  集成  actuator==
 
 
@@ -190,6 +191,7 @@ AOP
 - ==chapter5-1-7：springboot 集成 Dubbo Redis API Impl ==
 - ==chapter5-2-1：springboot 集成  guava cache==
 - ==chapter5-2-2：springboot 集成  guava cache  基于注解==
+- ==chapter5-2-5：springboot 集成  encache 基于注解==
 
 
 
@@ -201,7 +203,7 @@ AOP
 - ==chapter5-3-5： ==
 - ==chapter5-3-6：springboot 集成 Dubbo api==
 - ==chapter5-3-7：springboot 集成 Dubbo consumer==
-- ==chapter5-3-8：springboot 集成 Dubbo Provider 使用 MybatisPlus实现==
+- ==chapter5-3-8：springboot 集成 Dubbo Provider 使用 mybatisplus 实现==
 - ==chapter5-3-9：springboot 集成 Dubbo Provider 使用 JPA实现 ==
 - ==chapter5-4-0：springboot 集成 Dubbo  单点登录SSO  ==
 - ==chapter5-4-2：springboot 集成  SpringCloud eureka、Ribbon、feign、zuul 等全家桶==
@@ -339,8 +341,9 @@ JVM
 - ==chapter9-5-1：springboot 集成23种设计模式==
 - ==chapter9-5-5：springboot  代码重构 实例 ==
 - ==chapter9-6-1：springboot 集成 微信订阅号==
-- ==chapter9-8-0：springboot  dubbo 后台 为 Rbac 提供服务 ==
-- ==chapter9-8-1：springboot  dubbo  API    为 Rbac 提供服务 ==
+- ==chapter9-8-0：springboot  dubbo 生产者 为 Rbac 提供服务 ==
+- ==chapter9-8-1：springboot  dubbo    API    为 Rbac 提供服务 ==
+- ==chapter9-8-2：springboot 架构  AdminLTE ==
 - ==chapter9-8-3：springboot 架构 Layui ==
 - ==chapter9-8-4：springboot 架构 Easyui==
 - ==chapter9-9-0：springboot 架构 设计模式实战==
