@@ -15,7 +15,13 @@ public class AppServiceImpl implements AppService {
     @Override
     public String getUser(String id) {
         System.out.println("===========================getUser:"+id);
-        return "webserviceServer--getUserName: this is jw,18 years old";
+        return "webserviceServer--getUser: this is jw,18 years old";
+    }
+
+    @Override
+    public String test2(String id) {
+        System.out.println("===========================test2:"+id);
+        return "webserviceServer--test2: this is jw,18 years old";
     }
 
     @Override

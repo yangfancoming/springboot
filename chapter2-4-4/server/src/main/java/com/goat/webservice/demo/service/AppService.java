@@ -13,6 +13,10 @@ public interface AppService {
     @WebMethod
     String getUser(String id)  ;
 
+
+    @WebMethod
+    String test2(String id)  ;
+
     @WebMethod
     String test(String id,int num,String name,Boolean mark)  ;
 }

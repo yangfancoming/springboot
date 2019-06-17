@@ -3,15 +3,60 @@ package com.goat.webservice.demo.service;
 import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.apache.cxf.jaxws.endpoint.dynamic.JaxWsDynamicClientFactory;
+import org.springframework.stereotype.Component;
 
 
+@Component
 public class Cxfclient {
+
     //webservice接口地址
-    private static String address = "http://localhost:8244/services/user?wsdl";
+    private static String address = "http://localhost:1126/WebService.asmx?WSDL";
+
+    private JaxWsDynamicClientFactory dcf ;
+    private JaxWsProxyFactoryBean jpf ;
+    private  Client client;
+
+    private Cxfclient() {
+        this.dcf = JaxWsDynamicClientFactory.newInstance();
+        this.client = dcf.createClient(address);
+        this.jpf = new JaxWsProxyFactoryBean(); // 代理工厂
+        this.jpf.setAddress(address);   // 设置代理地址
+        this.jpf.getOutInterceptors().add(new LoginInterceptor("root","admin"));  //添加用户名密码拦截器
+        this.jpf.setServiceClass(AppService.class); // 设置接口类型
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public JaxWsProxyFactoryBean getJpf() {
+        return jpf;
+    }
+
+    public void setJpf(JaxWsProxyFactoryBean jpf) {
+        this.jpf = jpf;
+    }
+
+    public JaxWsDynamicClientFactory getDcf() {
+        return dcf;
+    }
+
+    public void setDcf(JaxWsDynamicClientFactory dcf) {
+        this.dcf = dcf;
+    }
+
+
+
+    //webservice接口地址
+    private static String address1 = "http://localhost:8244/services/user?wsdl";
 
     //测试
     public static void main(String[] args) {
-//        test1();
+//                test1();
         test2();
     }
 
@@ -24,7 +69,7 @@ public class Cxfclient {
     public static void test1() {
         try {
             JaxWsProxyFactoryBean jaxWsProxyFactoryBean = new JaxWsProxyFactoryBean(); // 代理工厂
-            jaxWsProxyFactoryBean.setAddress(address);   // 设置代理地址
+            jaxWsProxyFactoryBean.setAddress(address1);   // 设置代理地址
             jaxWsProxyFactoryBean.getOutInterceptors().add(new LoginInterceptor("root","admin"));  //添加用户名密码拦截器
             jaxWsProxyFactoryBean.setServiceClass(AppService.class); // 设置接口类型
             AppService cs = (AppService) jaxWsProxyFactoryBean.create();  // 创建一个代理接口实现
@@ -45,7 +90,7 @@ public class Cxfclient {
     public static void test2() {
         // 创建动态客户端
         JaxWsDynamicClientFactory dcf = JaxWsDynamicClientFactory.newInstance();
-        Client client = dcf.createClient(address);
+        Client client = dcf.createClient(address1);
         // 需要密码的情况需要加上用户名和密码 服务端会校检用户名和密码  如果校检失败 则不予提供服务。
         client.getOutInterceptors().add(new LoginInterceptor("root","admin"));
         Object[] objects;
