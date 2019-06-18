@@ -76,9 +76,9 @@ public class MyDateController {
     protected static final String HOST = "http://127.0.0.1:8137";
     @Autowired
     RestTemplate restTemplate;
+
     @RequestMapping("test3")
     public void test3() {
-
         List<MyDate> list = repository.findAll();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -86,8 +86,17 @@ public class MyDateController {
         ResponseEntity<List> exchange = restTemplate.exchange(HOST + "/mydate/test3", HttpMethod.POST, requestEntity, List.class);
         List<MyDate> body = exchange.getBody();
         System.out.println(body);
-
     }
 
+//    http://localhost:8136/mydate/test4
+    @RequestMapping("test4")
+    public void test4() {
+        HttpHeaders headers = new HttpHeaders();
+//        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity httpEntity = new HttpEntity<>("JSCX161209051",headers);
+        ResponseEntity<List> exchange = restTemplate.exchange("http://192.168.172.138:8080/Feeding/getFeedingMain", HttpMethod.POST, httpEntity, List.class);
+        List body = exchange.getBody();
+        System.out.println(body);
+    }
 }
 

@@ -32,7 +32,7 @@ public class StreamReduce {
     @Test
     public void reduce1(){
         int result = numList.stream().reduce((a,b) -> a + b ).get();
-        System.out.println(result);
+        System.out.println(result); // 15
     }
 
 
@@ -41,7 +41,7 @@ public class StreamReduce {
      */
     @Test
     public void reduce2(){
-        int result = numList.stream().reduce(0,(a,b) ->  a + b );
+        int result = numList.stream().reduce(2,(a,b) ->  a + b );// doit  这个 identity  是啥？ 有啥用？
         System.out.println(result);
     }
 

@@ -29,7 +29,7 @@ public class EmpServiceImpl implements IEmpService {
 
 /**
      * @author: Goat
-        该方法存在  缓存穿透 问题：在高并发条件下，有一万人同时请求该方法，同时进入if(map==null)内，
+        该方法存在  缓存穿透 问题：在高并发条件下，有一万人同时请求该方法，同时进入if(map==null)内，并在执行 set缓存代码之前
         那么就会查询一万次数据库 而我们想要的是 只要第一个人的请求 查询数据库后 就进行缓存其余的9999人走缓存
         解决方法： 在函数声明中 加上 synchronized 锁
      * @Date:   2018/8/22
@@ -39,10 +39,10 @@ public class EmpServiceImpl implements IEmpService {
         Map map = (Map) redisTemplate.opsForValue().get("findById");
         if(map==null){
             map = baseDao.findById(id); // 查询单条记录
-            System.out.println("查询数据库了哦");
             redisTemplate.opsForValue().set("findById",map);
+            System.out.println("查询数据库了哦" + System.currentTimeMillis());
         }else {
-            System.out.println("走了。。。。redisTemplate 缓存");
+            System.out.println("走了。。。。redisTemplate 缓存"+ System.currentTimeMillis());
         }
         return map;
     }
