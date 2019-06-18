@@ -8,7 +8,7 @@ import java.util.Arrays;
 /**
  * Created by 64274 on 2018/8/7.
  * @author 山羊来了
- * @Description: 可变参数  基本 数组求和
+ * @Description: 可变长参数
  * @date 2018/8/7---13:23
  *
  * 可变参数： 数据类型... 形参名称   其中形参为数组类型  可以接收可变参数个数
@@ -21,7 +21,7 @@ public class Variableparameter {
         System.out.println(x1);
     }
 
-    /*  接收 可变个参数 并返回 所有参数的和 */
+    /* 基本数组求和：  接收 可变个参数 并返回 所有参数的和 */
     public static int sum(Integer...arrs){
         return Arrays.stream(arrs).reduce((x1, x2)->x1 + x2).get();
     }
