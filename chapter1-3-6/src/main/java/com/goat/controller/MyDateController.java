@@ -2,6 +2,7 @@ package com.goat.controller;
 
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.goat.model.Mes;
 import com.goat.model.MyDate;
 import com.goat.repository.MyDateRepository;
 import com.google.gson.Gson;
@@ -92,10 +93,10 @@ public class MyDateController {
     @RequestMapping("test4")
     public void test4() {
         HttpHeaders headers = new HttpHeaders();
-//        headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity httpEntity = new HttpEntity<>("JSCX161209051",headers);
-        ResponseEntity<List> exchange = restTemplate.exchange("http://192.168.172.138:8080/Feeding/getFeedingMain", HttpMethod.POST, httpEntity, List.class);
-        List body = exchange.getBody();
+        headers.setContentType(MediaType.TEXT_PLAIN);
+        HttpEntity httpEntity = new HttpEntity<>("JSCX16120905",headers);
+        ResponseEntity<Mes> exchange = restTemplate.exchange("http://192.168.172.138:8080/Feeding/getFeedingMain", HttpMethod.POST, httpEntity, Mes.class);
+        Mes body = exchange.getBody();
         System.out.println(body);
     }
 }
