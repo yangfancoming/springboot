@@ -23,6 +23,7 @@ public class TestController {
 
     /**  http://localhost:8241/test/test1
      * Springboot 调用 C# .net 提供的webservice 的asmx 后缀 服务 方式
+     *  C# 客户端 为  E:\Code\C#_code\webservice  项目
      *
      *         JaxWsDynamicClientFactory dcf = JaxWsDynamicClientFactory.newInstance();
      *         Client client = dcf.createClient("http://localhost:1126/WebService.asmx?WSDL"); // 这里最后必须加  ?WSDL  ！！！
