@@ -8,6 +8,7 @@
 
 
     对应这种请求结果  要使用  Temp[] obj;   来接收 不能使用 List<Temp> obj;  否则无法接收到 数组数据
+    可以使用 数组接收后 再  List<Temp> lists = Arrays.asList(body.getObj());// 数组转集合list
     
     {
         "success": true,

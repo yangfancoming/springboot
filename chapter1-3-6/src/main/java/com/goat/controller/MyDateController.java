@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.goat.model.Mes;
 import com.goat.model.MyDate;
+import com.goat.model.Temp;
 import com.goat.repository.MyDateRepository;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -98,6 +100,8 @@ public class MyDateController {
         ResponseEntity<Mes> exchange = restTemplate.exchange("http://192.168.172.138:8080/Feeding/getFeedingMain", HttpMethod.POST, httpEntity, Mes.class);
         Mes body = exchange.getBody();
         System.out.println(body);
+        List<Temp> lists = Arrays.asList(body.getObj());// 数组转集合list
+        System.out.println(lists);
     }
 }
 
