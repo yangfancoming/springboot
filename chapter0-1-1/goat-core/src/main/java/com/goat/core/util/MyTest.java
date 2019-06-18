@@ -2,6 +2,8 @@ package com.goat.core.util;
 
 import org.junit.Test;
 
+
+
 /**
  * Created by 64274 on 2019/6/15.
  *
@@ -11,16 +13,7 @@ import org.junit.Test;
  */
 public class MyTest {
 
-    @Test
-    public void test(){
-        int a[] =   {1,2,4};
-//        Object b[] =   {1,2,4};
-//                boolean empty = ArrayUtil.isEmpty(a,a,b);
-//        boolean empty = ArrayUtil.isEmpty(b);
-//        boolean empty = ArrayUtil.isEmpty(null);
-//        System.out.println(empty);
 
-        System.out.println( a instanceof int[] );
 
-    }
+
 }

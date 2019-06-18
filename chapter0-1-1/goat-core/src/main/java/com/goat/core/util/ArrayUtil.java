@@ -21,14 +21,11 @@ public class ArrayUtil {
 	 * @param array 数组
 	 * @return 是否为空
 	 */
-//	@SuppressWarnings("unchecked")
 	public static <T> boolean isEmpty(final T... array) {
 		return array == null || array.length == 0;
 	}
 
-//    public static boolean isEmpty(final int... array) {
-//        return array == null || array.length == 0;
-//    }
+
 
 
 }

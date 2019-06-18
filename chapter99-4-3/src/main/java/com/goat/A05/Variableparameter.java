@@ -16,7 +16,7 @@ import java.util.Arrays;
 public class Variableparameter {
 
     @Test
-    public void test3(){
+    public void test(){
         int x1 = sum(1,2,3,4,5);
         System.out.println(x1);
     }
@@ -26,5 +26,34 @@ public class Variableparameter {
         return Arrays.stream(arrs).reduce((x1, x2)->x1 + x2).get();
     }
 
+    /*  变长参数中的大坑 */
+    @Test
+    public void test1(){
+        Long[] b =   new Long[0];
+        System.out.println(this.isEmpty1(b)); // 可以 true
+        System.out.println(this.isEmpty2(b)); // 可以 true
+//        System.out.println(this.isEmpty2(b,b)); // 报错 ： 只能接收一个数组 'isEmpty2(java.lang.Long[])' in 'com.goat.A05.Variableparameter' cannot be applied to '(java.lang.Long[], java.lang.Long[])'
+    }
+    @Test
+    public void test2(){
+        int[] b =   new int[0];
+        System.out.println(this.isEmpty1(b,b)); // false  这里本应该是 true 。。。。 因为 int[] 被当成了 可变参数 array 数组中的一个参数。。。  打断下 看array变量
+//        System.out.println(this.isEmpty2(b)); // 报错：只能接收包装类型！   'isEmpty2(T[])' in 'com.goat.A05.Variableparameter' cannot be applied to '(int[])'
+
+    }
+
+    // 方法1：
+    public static <T> boolean isEmpty1(final T... array) {
+        return array == null || array.length == 0;
+    }
+    // 方法2：
+    public static <T> boolean isEmpty2(final T[] array) {
+        return array == null || array.length == 0;
+    }
+
+    /*  总结：
+     *  方法1： 不够严谨 可以接收 多个 基本类型数组   当然这是不是我们想要的
+     *  方法2： 严谨
+      * */
 }
 
