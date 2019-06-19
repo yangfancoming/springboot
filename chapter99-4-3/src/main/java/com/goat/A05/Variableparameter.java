@@ -37,6 +37,7 @@ public class Variableparameter {
     @Test
     public void test2(){
         int[] b =   new int[0];
+        System.out.println(this.isEmpty1(b)); // false  这里本应该是 true 。。。。 因为 int[] 被当成了 可变参数 array 数组中的一个参数。。。  打断下 看array变量
         System.out.println(this.isEmpty1(b,b)); // false  这里本应该是 true 。。。。 因为 int[] 被当成了 可变参数 array 数组中的一个参数。。。  打断下 看array变量
 //        System.out.println(this.isEmpty2(b)); // 报错：只能接收包装类型！   'isEmpty2(T[])' in 'com.goat.A05.Variableparameter' cannot be applied to '(int[])'
 

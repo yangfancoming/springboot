@@ -105,7 +105,11 @@ public class TestNG {
             long sum = collect.get(key).getSum();
             System.out.println(sum);
         }
-//        IntSummaryStatistics statistics1 = collect.get(1);
+
+        /* 统计list中对象的重复次数  key为 指定属性，vaule 为 重复次数**/
+        Map<Integer, Long> haha = list.stream().collect(Collectors.groupingBy(Foo::getCode, Collectors.counting()));
+        System.out.println(haha);
+        //        IntSummaryStatistics statistics1 = collect.get(1);
 //        IntSummaryStatistics statistics2 = collect.get(2);
 //        System.out.println(statistics1); // 包含  getSum 总和  getAverage 平均值  getMax getMin getCount
 //        System.out.println(statistics2);

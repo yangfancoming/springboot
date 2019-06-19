@@ -21,6 +21,8 @@ import org.springframework.web.client.RestTemplate;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Created by 64274 on 2019/2/13.
@@ -96,12 +98,14 @@ public class MyDateController {
     public void test4() {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.TEXT_PLAIN);
-        HttpEntity httpEntity = new HttpEntity<>("JSCX16120905",headers);
-        ResponseEntity<Mes> exchange = restTemplate.exchange("http://192.168.172.138:8080/Feeding/getFeedingMain", HttpMethod.POST, httpEntity, Mes.class);
+        HttpEntity httpEntity = new HttpEntity<>("CLCX16101001",headers);
+        ResponseEntity<Mes> exchange = restTemplate.exchange("http://192.168.166.89/Feeding/getFeedingMain", HttpMethod.POST, httpEntity, Mes.class);
         Mes body = exchange.getBody();
         System.out.println(body);
         List<Temp> lists = Arrays.asList(body.getObj());// 数组转集合list
         System.out.println(lists);
+        Map<String, Long> collect = lists.stream().collect(Collectors.groupingBy(Temp::getPartNumber, Collectors.counting()));
+        System.out.println(collect);
     }
 }
 
