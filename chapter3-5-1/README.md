@@ -1,3 +1,12 @@
+# 目录
+    shiro-example-chapter01  增加  记住我
+    shiro-example-chapter02  增加 encache 缓存
+    shiro-example-chapter03  增加 session 会话管理
+    
+
+
+
+
 #  shiro  添加依赖 
 
         <!-- shiro权限控制框架 -->
@@ -28,10 +37,9 @@
     
 #第三方
 
- 
-   http://localhost:8351/login
-   http://localhost:8351/hello/success
-   
+       http://localhost:8351/login
+       http://localhost:8351/hello/success
+       
    
  # shiro 报错
     java.lang.IllegalArgumentException: Odd number of characters.

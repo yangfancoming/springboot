@@ -106,6 +106,9 @@ public class MyDateController {
         System.out.println(lists);
         Map<String, Long> collect = lists.stream().collect(Collectors.groupingBy(Temp::getPartNumber, Collectors.counting()));
         System.out.println(collect);
+
+        // map 遍历
+        collect.keySet().forEach(key -> System.out.println("map.get(" + key + ") = " + collect.get(key)));
     }
 }
 
