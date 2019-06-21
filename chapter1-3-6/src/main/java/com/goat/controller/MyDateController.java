@@ -55,7 +55,6 @@ public class MyDateController {
     /**  使用 谷歌 Gson  进行解析 会报错：
      java.lang.NumberFormatException: Invalid number: 20:1
      */
-
     @RequestMapping(method = RequestMethod.POST, value = "test2", produces = MediaType.APPLICATION_JSON_VALUE)
     public void test2(@RequestBody String result) {
         List<MyDate> list = new Gson().fromJson(result, new TypeToken<List<MyDate>>() {}.getType());
@@ -75,8 +74,6 @@ public class MyDateController {
             是由于 被请求方的原因： filter、intercepter 等拦截了 就会 出现这样的错误！！！
             应该是被拦截之后  默认返回的数据 没办法解析，导致的！！！
     */
-
-
     //    http://localhost:8136/mydate/test3
     protected static final String HOST = "http://127.0.0.1:8137";
     @Autowired
