@@ -1,15 +1,7 @@
 package com.goat.domain;
 
-
 import javax.persistence.*;
 
-/**
- * Created by 64274 on 2018/8/24.
- *
- * @author 山羊来了
- * @Description: TODO
- * @date 2018/8/24---14:22
- */
 @Entity
 @Table(name = "pet")
 public class Pet {

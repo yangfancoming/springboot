@@ -12,21 +12,20 @@ import java.util.Date;
  * @author 山羊来了
  * @Description: TODO
  * @date 2018/9/28---17:12
- *
- * 如果省略 @Table 注解 则 表明默认为类名 Customer
- * @Id    主键 ID
- * @GeneratedValue 自动增长
+ * 如果省略 @Table 注解 则 表明默认为类名 customer
  */
 
-
-@Entity
+@Entity // 表明是  JPA实体类
+//@Table // 1.表明  JPA 实体类 对应的表  映射
 @EntityListeners(AuditingEntityListener.class)
 public class Customer {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Id //   设置主键 ID
+    @GeneratedValue(strategy=GenerationType.AUTO) //  设置主键生成策略：自动增长
     private Long id;
-    private String firstName;
+
+//    @Column(name = "first_name") // 2.实体类 属性 与 表 字段 映射
+    private String firstName; //如果 省略@Column注解  默认 生成表 first_name 字段
     private String lastName;
 
     @CreatedDate

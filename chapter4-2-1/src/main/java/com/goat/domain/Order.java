@@ -7,14 +7,12 @@ import javax.persistence.*;
 
 /**
  * Created by 64274 on 2018/12/12.
- *
  * @ Description: 订单表  演示  单向 多对一
  * @ author  山羊来了
  * @ date 2018/12/12---21:13
  */
 
 /*
-*
 fuck 尼玛 这里必须要指定表名 否则 默认表名 order 是mysql的关键字 直接报错
     Error executing DDL via JDBC Statement
     You have an error IN your SQL syntax; CHECK the manual that corresponds TO your MySQL SERVER VERSION FOR the RIGHT syntax TO USE near.....

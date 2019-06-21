@@ -8,8 +8,6 @@
       Query query = entityManager.createNativeQuery(sql, clazz);
       query.unwrap(NativeQueryImpl.class).setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
 
-
-
     //    Transformers.ALIAS_TO_ENTITY_MAP //把输出结果转换成map
     //    Transformers.TO_LIST //把结果按顺序排进List
     //    ransformers.aliasToBean(target) //把结果通过setter方法注入到指定的对像属性中
@@ -18,7 +16,7 @@
     单向 多对一 
     单向 一对多
     
-# JPA 自动创建时间，修改时间。
+# JPA 自动创建时间，修改时间 所需配置：
     1.实体类加注解 注意 日期类型 为 Date 不能是 Timestamp   还要记得 增加对应的get set 方法
     
     /**  * 创建时间 */

@@ -9,7 +9,6 @@ import javax.persistence.*;
  * @author 山羊来了
  * @Description: TODO
  * @date 2018/10/17---16:47
- *   sos  在一个实体文件中，注解要么全部放在字段上，要么全部放在get方法上，不能混合使用！
  */
 @Entity
 @Table(name = "t_person")
