@@ -21,7 +21,7 @@ package com.goat.servlet;
 
 */
 
-import javax.servlet.ServletContext;
+import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,13 +29,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Enumeration;
 
-//访问地址：  http://localhost:8203/firstServlet
-@WebServlet(name = "firstServlet", urlPatterns = "/random1/**")  //标记为 servlet，以便启动器扫描。
+//访问地址：  http://localhost:8203/test
+@WebServlet(name = "firstServlet", urlPatterns = "/test")  //标记为 servlet，以便启动器扫描。
 public class FirstServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws  IOException {
-        System.out.println("进入 firstServlet 。。。。。。。。。。。。。。。。。");
+        System.out.println("进入 doGet 。。。。。。。。。。。。。。。。。");
         resp.getWriter().append("firstServlet");
         resp.setContentType("application/json");  //设置返回类型为json
         resp.setCharacterEncoding("utf-8"); //设置返回字符集
@@ -67,6 +67,10 @@ public class FirstServlet extends HttpServlet {
         System.out.println(req.getSession().getServletContext().getRealPath("/"));
         //获取绝对路径 == E:\J2EE\IDEA2016\servlet\out\artifacts\servlet_war_exploded\
         //获取绝对路径 == E:\Code\J2EE_code\MySpringBoot\springboot\chapter2-0-3\target\chapter2-0-3-0.0.1-SNAPSHOT\
+    }
+
+    public FirstServlet() {
+        System.out.println("进入 FirstServlet() ");
     }
 
 }

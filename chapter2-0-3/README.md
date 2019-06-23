@@ -13,4 +13,8 @@
 
 
 # 报错： Cannot create a session after the response has been committed
+
+
+# servlet 
+    单例多线程 
     
