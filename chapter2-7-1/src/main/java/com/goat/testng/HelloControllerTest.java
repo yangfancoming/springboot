@@ -5,7 +5,7 @@ import com.goat.HttpClientApplication;
 import com.goat.pojo.HttpClientResult;
 import com.goat.utils.HttpClientUtils;
 import org.junit.Test;
-import org.springframework.test.context.ContextConfiguration;
+//import org.springframework.test.context.ContextConfiguration;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +18,7 @@ import java.util.Map;
      * @Return:
      * @Date:   2018/9/22
 */
-@ContextConfiguration(classes= HttpClientApplication.class)
+//@ContextConfiguration(classes= HttpClientApplication.class)
 public class HelloControllerTest {
 
     private static final String url = "http://127.0.0.1:8208/8208";

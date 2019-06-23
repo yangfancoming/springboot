@@ -7,12 +7,12 @@ import com.goat.HttpClientApplication;
 import com.goat.pojo.HttpClientResult;
 import com.goat.utils.HttpClientUtils;
 import org.junit.Test;
-import org.springframework.test.context.ContextConfiguration;
+//import org.springframework.test.context.ContextConfiguration;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@ContextConfiguration(classes= HttpClientApplication.class)
+//@ContextConfiguration(classes= HttpClientApplication.class)
 public class TestNG_mes {
 
     /**
