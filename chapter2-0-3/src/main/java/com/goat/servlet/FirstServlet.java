@@ -84,7 +84,7 @@ public class FirstServlet extends HttpServlet {
     @Override
     public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
         System.out.println("进入 service ");
-        ServletContext sc = servletConfig.getServletContext();
+        ServletContext sc = servletConfig.getServletContext(); // 获取 sc
         System.out.println(sc.getAttribute("mark")); // 在 MyServlet 中 进行设置后  在此处可以获取到值
 
     }
