@@ -33,6 +33,8 @@ import java.util.Enumeration;
 @WebServlet(name = "firstServlet", urlPatterns = "/test")  //标记为 servlet，以便启动器扫描。
 public class FirstServlet extends HttpServlet {
 
+    private ServletConfig servletConfig;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws  IOException {
         System.out.println("进入 doGet 。。。。。。。。。。。。。。。。。");
@@ -73,4 +75,17 @@ public class FirstServlet extends HttpServlet {
         System.out.println("进入 FirstServlet() ");
     }
 
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        this.servletConfig = config; // 通过断下 可知 传入的 ServletConfig 接口的具体实现类为：StandardWrapperFacade
+        System.out.println("  进入 init " + servletConfig);
+    }
+
+    @Override
+    public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+        System.out.println("进入 service ");
+        ServletContext sc = servletConfig.getServletContext();
+        System.out.println(sc.getAttribute("mark")); // 在 MyServlet 中 进行设置后  在此处可以获取到值
+
+    }
 }

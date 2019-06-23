@@ -56,8 +56,13 @@ public class MyServlet implements Servlet {
         Enumeration<String> initParameterNames = servletConfig.getInitParameterNames();
         System.out.println(initParameterNames);
 
-        ServletContext servletContext = servletConfig.getServletContext();
-        System.out.println(servletContext); // ServletContext 接口的实现类：rg.apache.catalina.core.ApplicationContextFacade@5ac913a0
+        /* ServletContext 是全局的  是所有 servlet 都可以共享的 */
+        ServletContext sc = servletConfig.getServletContext();
+        System.out.println(sc); // ServletContext 接口的实现类：rg.apache.catalina.core.ApplicationContextFacade@5ac913a0
+        Enumeration<String> temp1 = sc.getInitParameterNames();
+        System.out.println(temp1);
+        sc.setAttribute("mark",1111);// 在 MyServlet 中 进行设置后  在FirstServlet 等其他 servlet中 可以获取到值
+
 
         System.out.println(servletConfig.getServletName()); // com.goat.servlet.MyServlet
     }
