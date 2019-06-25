@@ -9,6 +9,7 @@
     监听器：其主要可用于以下方面：1、统计在线人数和在线用户2、系统启动时加载初始化信息3、统计网站访问量4、记录用户访问路径
     
 # web 请求 拦截 顺序
+        项目启动后 浏览器输入： http://localhost:8203/random1?what=123  测试 
         浏览器发起请求  filter放行前   interceptor(preHandle)  controller interceptor(postHandle)   前端页面  interceptor(afterCompletion)  filter放行后 
 
 
@@ -59,3 +60,12 @@
 
 # Filter url 匹配规则
     1.精确匹配
+         CustomInterceptor1： @WebFilter(filterName = "FirstFilter", urlPatterns = { "/random1" })
+         CustomInterceptor2：  urlList.add("/random2");
+    2.路径匹配  /路径名/*
+         参见： sos 注意*是必须的 否则拦截不生效的！ 
+        
+    3.后缀匹配   *.后缀名
+         拦截所有以为 * 为后缀的请求
+          参见：  urlPatterns = { "*.do" }
+             
