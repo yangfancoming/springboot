@@ -1,5 +1,7 @@
 package com.goat.filter;
 
+import com.goat.servlet.SecondServlet;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
@@ -18,8 +20,15 @@ public class FourFilter implements Filter {
         System.out.println("FourFilter init========init========");
     }
 
+    /** 响应乱码问题
+     * response.getWriter().write("hello servlet! 哇嘎嘎");//  返回给浏览器的内容  中文有问题。。。乱码
+     * sos 解决方法： 一定要在  response.getWriter().write 之前设置 response.setContentType("text/html;charset=utf-8")
+     * @see SecondServlet
+     */
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        response.setContentType("text/html;charset=utf-8");
+        response.getWriter().write("hello servlet! 哇嘎嘎");
         System.out.println("FourFilter doFilter========doFilter========");
     }
 

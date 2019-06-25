@@ -37,7 +37,7 @@ public class SecondServlet extends HttpServlet {
          1. 可以给浏览器响应 字符串
         */
         PrintWriter writer = resp.getWriter();
-        writer.write("hello servlet! 哇嘎嘎" + username + password);// 返回给浏览器的内容  中文有问题。。。
+        writer.write("hello servlet! 哇嘎嘎" + username + password);
         req.getRequestDispatcher("hello").forward(req,resp);
     }
 
