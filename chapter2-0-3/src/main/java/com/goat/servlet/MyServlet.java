@@ -23,6 +23,9 @@ import java.util.Enumeration;
  * @ date 2019/6/23---14:09
  *
  * 访问地址：  http://localhost:8203/myTest
+ *
+ * 总结： 由于 直接实现 Servlet 接口 需要重写5个方法，而我们大多情况下 只需要实现一个service()方法就够了
+ *        所以 多数情况下 我们都使用 继承 HttpServlet 的方法 创建自定义的 servlet ！
  */
 //标记为 servlet，以便启动器扫描。
 @WebServlet(urlPatterns = "/myTest",initParams = { @WebInitParam(name = "Site :", value = "http://roseindia.net"),@WebInitParam(name = "Rose", value = "India", description = "detail-info") }
@@ -52,22 +55,17 @@ public class MyServlet implements Servlet {
     public void service(ServletRequest req, ServletResponse res) throws IOException {
         System.out.println("1148 测试  进入 service ");
         System.out.println(servletConfig.getInitParameter("Rose"));// India
-
+        System.out.println(servletConfig.getServletName()); // com.goat.servlet.MyServlet
         Enumeration<String> initParameterNames = servletConfig.getInitParameterNames();
         System.out.println(initParameterNames);
 
-        /* ServletContext 是全局的  是所有 servlet 都可以共享的 即 所有的servlets 都对应一个ServletContext */
-        ServletContext sc = servletConfig.getServletContext();
-        System.out.println(sc); // ServletContext 接口的实现类：rg.apache.catalina.core.ApplicationContextFacade@5ac913a0
-        Enumeration<String> temp1 = sc.getInitParameterNames();
-        System.out.println(temp1);
-        sc.setAttribute("mark",1111);// 在 MyServlet 中 进行设置后  在 FirstServlet 等其他 servlet中 可以获取到值
-
-
-        System.out.println(servletConfig.getServletName()); // com.goat.servlet.MyServlet
-
         PrintWriter writer = res.getWriter();
         writer.write("hello servlet!");// 返回给浏览器的内容
+
+        /* ServletContext 是全局的  是所有 servlet 都可以共享的 即 一个web项目对应一个ServletContext */
+        ServletContext sc = servletConfig.getServletContext();
+        sc.setAttribute("mark",1111);// 在 MyServlet 中 进行设置后  在 FirstServlet 等其他 servlet中 可以获取到值
+
     }
 
     @Override

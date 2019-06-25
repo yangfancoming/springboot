@@ -6,7 +6,7 @@
 </head>
 <body>
 
-wahaha 111111
+index  111111
 <hr>
 <input type=checkbox id="fuck1" name="kk1">
 <hr>

@@ -36,12 +36,10 @@ public class FirstServlet extends HttpServlet {
     private ServletConfig servletConfig;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws  IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws  IOException {
         System.out.println("进入 doGet 。。。。。。。。。。。。。。。。。");
-        resp.getWriter().append("firstServlet");
-        resp.setContentType("application/json");  //设置返回类型为json
-        resp.setCharacterEncoding("utf-8"); //设置返回字符集
-        ServletContext servletContext = this.getServletContext();
+
+        ServletContext servletContext = this.getServletContext();   // ServletContext 接口的实现类：rg.apache.catalina.core.ApplicationContextFacade@5ac913a0
         String driver = servletContext.getInitParameter("driver1");
         System.out.println("driver1============" + driver);
 
@@ -59,7 +57,11 @@ public class FirstServlet extends HttpServlet {
         String realPath = servletContext.getRealPath("/index.jsp"); //获取一个文件 在发布后的 服务器上的路径
         System.out.println(realPath);
 
-
+        /*
+            虚拟路径：是网络访问使用虚拟路径。每一个虚拟路径对应一个实际资源
+            真实路径：文件在磁盘中的存储路径。
+            虚拟路径是必须的 因为 在网络客户端url访问中都使用的是虚拟路径 一一对应 服务器上的真实路径。
+        */
         String contextPath = servletContext.getContextPath(); // 项目名路径
         System.out.println(contextPath);//  /servlet   （http://localhost:8080/servlet）
         req.getSession().getServletContext();
@@ -76,13 +78,13 @@ public class FirstServlet extends HttpServlet {
     }
 
     @Override
-    public void init(ServletConfig config) throws ServletException {
+    public void init(ServletConfig config) {
         this.servletConfig = config; // 通过断下 可知 传入的 ServletConfig 接口的具体实现类为：StandardWrapperFacade
         System.out.println("  进入 init " + servletConfig);
     }
 
     @Override
-    public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+    public void service(ServletRequest req, ServletResponse res) {
         System.out.println("进入 service ");
         ServletContext sc = servletConfig.getServletContext(); // 获取 sc
         System.out.println(sc.getAttribute("mark")); // 在 MyServlet 中 进行设置后  在此处可以获取到值

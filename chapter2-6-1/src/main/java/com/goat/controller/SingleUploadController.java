@@ -22,13 +22,13 @@ public class SingleUploadController {
     /**
      * 上传文件方法
      * @param file 前台上传的文件对象
-     *  http://localhost:8261/upload
+     *  测试地址：  http://localhost:8261/upload
      * @return
      */
     @RequestMapping(value = "/upload",method = RequestMethod.POST)
     public @ResponseBody String upload(MultipartFile file) {
         try {
-            String uploadDir =getClass().getResource("/").getPath();
+            String uploadDir = getClass().getResource("/").getPath();// 获取项目真实路径
             //如果目录不存在，自动创建文件夹
             File dir = new File(uploadDir);
             if(!dir.exists()){
@@ -44,6 +44,8 @@ public class SingleUploadController {
         }
         return "上传成功";
     }
+
+
 //    http://localhost:8261/read
     @RequestMapping(value = "/read",method = RequestMethod.GET)
     public void read(HttpServletRequest request) throws FileNotFoundException {
