@@ -1,6 +1,5 @@
 package com.goat.servlet;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +23,7 @@ public class SecondServlet extends HttpServlet {
      */
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         System.out.println("进入 SecondServlet  doGet。。。。。。。。。。。。。。。。。");
 
         resp.getWriter().append("firstServlet！！！！！！！！"); //  中文符号有问题。。。
@@ -39,10 +38,7 @@ public class SecondServlet extends HttpServlet {
         */
         PrintWriter writer = resp.getWriter();
         writer.write("hello servlet! 哇嘎嘎" + username + password);// 返回给浏览器的内容  中文有问题。。。
-
-//        resp.getWriter().append("SecondServlet");
-//        req.getRequestDispatcher("/WEB-INF/index").forward(req,resp); //doit  这里为什么404？ 将请求分发到 index.jsp 页面  然后 forward 进行跳转
-//        req.getRequestDispatcher("index.jsp").forward(req,resp); //doit  同上
+        req.getRequestDispatcher("hello").forward(req,resp);
     }
 
     @Override
@@ -54,7 +50,7 @@ public class SecondServlet extends HttpServlet {
          重定向 是指  让浏览器重新发起请求，浏览器 会再发起 http://localhost:8203/hello 请求
          进入到 HelloController 中。 在 浏览器 F12 network 中可以看到
         */
-//        resp.sendRedirect("hello");
+        resp.sendRedirect("what");
     }
 }
 

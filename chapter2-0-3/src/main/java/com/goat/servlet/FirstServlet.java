@@ -36,7 +36,7 @@ public class FirstServlet extends HttpServlet {
     private ServletConfig servletConfig;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws  IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         System.out.println("进入 doGet 。。。。。。。。。。。。。。。。。");
 
         System.out.println("进入 service ");
@@ -44,7 +44,7 @@ public class FirstServlet extends HttpServlet {
         System.out.println(sc.getAttribute("mark")); // 在 MyServlet 中 进行设置后  在此处可以获取到值
 
 
-        ServletContext servletContext = this.getServletContext();   // ServletContext 接口的实现类：rg.apache.catalina.core.ApplicationContextFacade@5ac913a0
+        ServletContext servletContext = this.getServletContext();
         String driver = servletContext.getInitParameter("driver1");
         System.out.println("driver1============" + driver);
 
@@ -114,7 +114,10 @@ public class FirstServlet extends HttpServlet {
 
         /** HttpServletRequest 的作用
          3. 转发一个页面/资源
-         请求 转发与 重定向不同的是  重定向浏览器2次请求   转发浏览器1次请求
+         请求 转发与 重定向不同的是
+            1.重定向浏览器2次请求   转发浏览器1次请求
+            2.地址栏显示内容不同
+            3.重定向和转发 不能同时使用
          */
         RequestDispatcher dispatcher = req.getRequestDispatcher("hello");
         dispatcher.forward(req,resp);
