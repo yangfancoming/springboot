@@ -22,7 +22,7 @@ public class CustomInterceptor1 implements HandlerInterceptor {
     /** 预处理 类似于 AOP 的前置增强 */
     @Override
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) {
-        System.out.println("CustomInterceptor1 拦截器开始工作，拦截到当前请求地址：" + httpServletRequest.getRequestURL().toString());
+        System.out.println("CustomInterceptor1 preHandle:，拦截到当前请求地址：" + httpServletRequest.getRequestURL().toString());
         // 只有返回true才会继续向下执行，返回false取消当前请求
         return true;
     }
@@ -31,7 +31,7 @@ public class CustomInterceptor1 implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) {
         // 请求处理之后进行调用，但是在视图被渲染之前（Controller方法调用之后）
-        System.out.println("CustomInterceptor1.postHandle:" + o + ", modelAndView:" + modelAndView);
+        System.out.println("CustomInterceptor1 postHandle:" + o + ", modelAndView:" + modelAndView);
     }
 
     /**  视图渲染完毕后执行  */
@@ -39,7 +39,7 @@ public class CustomInterceptor1 implements HandlerInterceptor {
     public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e)  {
         // 在整个请求结束之后被调用，也就是在DispatcherServlet 渲染了对应的视图之后执行（主要是用于进行资源清理工作）
 //        System.out.println("CustomInterceptor1.afterCompletion:" + o);
-        System.out.println("afterCompletion1  清理资源...");
+        System.out.println("CustomInterceptor1 afterCompletion1  清理资源...");
         // 清理session
         HttpSession session = httpServletRequest.getSession(false);
         if (session == null) return;

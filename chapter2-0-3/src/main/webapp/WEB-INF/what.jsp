@@ -4,6 +4,7 @@
 <head>
     <title>Title</title>
 </head>
+<% System.out.println("进入jsp页面了啊。。。。"); %>
 <body>
 
 what  111111

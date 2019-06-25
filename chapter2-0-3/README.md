@@ -9,6 +9,7 @@
     监听器：其主要可用于以下方面：1、统计在线人数和在线用户2、系统启动时加载初始化信息3、统计网站访问量4、记录用户访问路径
     
 # web 请求 拦截 顺序
+        浏览器发起请求  filter放行前   interceptor(preHandle)  controller interceptor(postHandle)   前端页面  interceptor(afterCompletion)  filter放行后 
 
 
 
@@ -43,5 +44,18 @@
                     
         2.使用 @WebServlet 或 web.xml 中 指定 servlet 全限定类名、映射url 
                     
-                    
-    
+# Filter 过滤器
+     定义：过滤器 可以过滤   请求资源 和 响应资源。 一来一回  都是可以进行过滤的！            
+     拦截请求（request）可以修改请求头、请求内容等等。。
+     拦截响应（response）  可以修改响应头
+
+
+# Filter 生命周期
+    1. 构造器  
+    2. init() 初始化方法
+    3. doFilter() 拦截
+    4. destroy() 
+    其中 1 和 2 只在项目启动时 执行一个  3是每次请求都执行   4是项目关闭时执行
+
+# Filter url 匹配规则
+    1.精确匹配
