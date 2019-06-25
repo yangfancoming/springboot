@@ -28,8 +28,16 @@ public class FourFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         response.setContentType("text/html;charset=utf-8");
-        response.getWriter().write("hello servlet! 哇嘎嘎");
+        response.getWriter().write("hello servlet! 哇嘎嘎"); // 要把这段代码理解成 生成和拼装 前端页面标签元素 即渲染jsp  渲染后的 response 还是一个 response
         System.out.println("FourFilter doFilter========doFilter========");
+        chain.doFilter(request, response); // 放行
+
+        /**
+         IDEA 查看 jsp编译后java文件 位置： C:\Users\64274\.IntelliJIdea2018.3\system\tomcat\Unnamed_springboot_6\work\Catalina\localhost\ROOT\org\apache\jsp
+         其中 Unnamed_springboot_6  项目是根据修改时间来判断出来的。 打开 index_jsp.java 文件 可以看到 response.setContentType("text/html;charset=UTF-8");  即渲染jsp时 自动设置了 编码
+         所以 你才会看到 ： 放行后的 response 不管是否有中文 是否设置了 setContentType  均不会乱码  因为一次请求对应一次响应
+        */
+        response.getWriter().write("hello servlet! 哇嘎嘎");//
     }
 
     @Override
