@@ -29,11 +29,11 @@
         </dependency>
 
         <!-- doit 这里报红 为啥加了 <repositories>  也是不好使呢？？-->
-        <dependency>
-            <groupId>org.apache.mina</groupId>
-            <artifactId>mina-integration-beans</artifactId>
-            <version>2.1.2</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.mina</groupId>-->
+            <!--<artifactId>mina-integration-beans</artifactId>-->
+            <!--<version>2.1.2</version>-->
+        <!--</dependency>-->
 
     </dependencies>
 

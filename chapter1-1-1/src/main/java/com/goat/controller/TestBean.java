@@ -7,9 +7,11 @@ import com.goat.service.TestService;
 import com.goat.service.TestService2;
 import com.goat.utils.SpringContextUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -94,6 +96,15 @@ public class TestBean {
     public void test44(){
         ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
         Dog dog = (Dog) ac.getBean("dog01");
+        System.out.println(dog);
+    }
+
+    //   http://localhost:1111/testbean/test41
+    @GetMapping("/test41")
+    public void test41(){
+        ClassPathResource resource = new ClassPathResource("beans.xml");
+        XmlBeanFactory xmlBeanFactory = new XmlBeanFactory(resource);
+        Dog dog = (Dog) xmlBeanFactory.getBean("dog01");
         System.out.println(dog);
     }
 

@@ -18,3 +18,17 @@
 # servlet 
     单例多线程 
     
+    搭建步骤：
+    
+        1. 实现 servlet 接口
+                实现 5个 方法
+                    destroy
+                    getServletConfig
+                    getServletInfo
+                    init
+                    service
+                    
+        2.使用 @WebServlet 或 web.xml 中 指定 servlet 全限定类名、映射url 
+                    
+                    
+    
