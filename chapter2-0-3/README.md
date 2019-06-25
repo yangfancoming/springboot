@@ -13,6 +13,19 @@
 
 
 # 报错： Cannot create a session after the response has been committed
+# 报错： javax.servlet.ServletException: Could not resolve view with name 'hello' in servlet with name 'dispatcherServlet' 
+            在 application.properties 配置文件中 使用   以下配置无效
+                spring.mvc.view.prefix=/WEB-INF/
+                spring.mvc.view.suffix=.jsp
+            但是 在启动类中使用 以下配置  则是OK的  这是为什么呢？ doit 
+                
+            @Bean
+            public InternalResourceViewResolver setupViewResolver(){
+                InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+                resolver.setPrefix("/WEB-INF/");
+                resolver.setSuffix(".jsp");
+                return resolver;
+            }
 
 
 # servlet 

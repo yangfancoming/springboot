@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CustomInterceptor2 implements HandlerInterceptor {
 
     @Override
-    public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
+    public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) {
         System.out.println("CustomInterceptor2 拦截器开始工作，拦截到当前请求地址：" + httpServletRequest.getRequestURL().toString());
         // 只有返回true才会继续向下执行，返回false取消当前请求
 //        if (true) {

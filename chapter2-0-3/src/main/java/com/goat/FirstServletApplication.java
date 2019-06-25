@@ -12,6 +12,7 @@ import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,4 +80,14 @@ public class FirstServletApplication extends SpringBootServletInitializer {
         servletListenerRegistrationBean.setListener(new SecondListener());
         return servletListenerRegistrationBean;
     }
+
+
+    @Bean
+    public InternalResourceViewResolver setupViewResolver(){
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF/");
+        resolver.setSuffix(".jsp");
+        return resolver;
+    }
+
 }

@@ -39,6 +39,11 @@ public class FirstServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws  IOException {
         System.out.println("进入 doGet 。。。。。。。。。。。。。。。。。");
 
+        System.out.println("进入 service ");
+        ServletContext sc = servletConfig.getServletContext(); // 获取 sc
+        System.out.println(sc.getAttribute("mark")); // 在 MyServlet 中 进行设置后  在此处可以获取到值
+
+
         ServletContext servletContext = this.getServletContext();   // ServletContext 接口的实现类：rg.apache.catalina.core.ApplicationContextFacade@5ac913a0
         String driver = servletContext.getInitParameter("driver1");
         System.out.println("driver1============" + driver);
@@ -64,7 +69,6 @@ public class FirstServlet extends HttpServlet {
         */
         String contextPath = servletContext.getContextPath(); // 项目名路径
         System.out.println(contextPath);//  /servlet   （http://localhost:8080/servlet）
-        req.getSession().getServletContext();
 
         System.out.println(req.getContextPath());//获取上下文路径  ==  /servlet
         System.out.println(req.getServletPath());//获取请求路径  ==  /
@@ -83,11 +87,37 @@ public class FirstServlet extends HttpServlet {
         System.out.println("  进入 init " + servletConfig);
     }
 
+    /**  查看 HttpServlet  源码：
+     *  如果是 继承 HttpServlet 的 自定义 servlet  若是重写了 service()方法  则请求 不会再进入 重写的  doGet 和 doPost 方法中
+     *  如果 只重写 doGet 和 doPost 方法 不重写 service 方法 那么 请求 是可以进入 doGet 和 doPost 方法的
+
+    */
+//    @Override
+//    public void service(ServletRequest req, ServletResponse res) { }
+
+
     @Override
-    public void service(ServletRequest req, ServletResponse res) {
-        System.out.println("进入 service ");
-        ServletContext sc = servletConfig.getServletContext(); // 获取 sc
-        System.out.println(sc.getAttribute("mark")); // 在 MyServlet 中 进行设置后  在此处可以获取到值
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        /** HttpServletRequest 的作用
+         1. 获取浏览器请求的数据
+         */
+        String username = req.getParameter("username");
+        String password = req.getParameter("password"); // 取单个
+        String[] hobbies = req.getParameterValues("hobby"); // 取数组
+        System.out.println(username + password);
+        System.out.println(hobbies);
+
+        /** HttpServletRequest 的作用
+         2. 获取请求头信息
+         */
+        System.out.println(req.getHeader("User-Agent")); // Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.79 Safari/537.36
+
+        /** HttpServletRequest 的作用
+         3. 转发一个页面/资源
+         请求 转发与 重定向不同的是  重定向浏览器2次请求   转发浏览器1次请求
+         */
+        RequestDispatcher dispatcher = req.getRequestDispatcher("hello");
+        dispatcher.forward(req,resp);
 
     }
 }
