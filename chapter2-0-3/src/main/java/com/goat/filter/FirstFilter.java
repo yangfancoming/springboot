@@ -12,7 +12,7 @@ import java.io.IOException;
 
 /**
  * Created by 64274 on 2018/10/23.
- *
+ * 学习 转发与重定向
  * @author 山羊来了
  * @Description: 自定义 Filter  第一种实现方式 直接再该类上 加 @WebFilter 注解 实现注册
  * @date 2018/10/23---11:03
