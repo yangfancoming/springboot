@@ -25,7 +25,7 @@
     IOService会先调用底层IO接口读取数据，封装成IoBuffer，之后以事件的形式通知上层代码，从而将Java NIO的同步IO接口转化成了异步IO。
     所以从图上看，进来的low-level IO经过IOService层后变成IO Event。
     常用API：
-    getFilterChain() 获取过滤器链
+    getFilterChain() 获取 过滤器链
     setHandler() 设置 真正业务的 handler
     getSessionConfig() 获取会话配置信息
     dispose()
