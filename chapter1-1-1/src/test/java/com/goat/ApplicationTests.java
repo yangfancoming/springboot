@@ -8,7 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@ActiveProfiles("test") // 相当于 配置文件中的 spring.profiles.active=test
+@ActiveProfiles("test") // 相当于配置文件中的 spring.profiles.active=test
 public class ApplicationTests {
 
 }
