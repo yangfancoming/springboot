@@ -21,15 +21,15 @@ import static org.junit.Assert.assertThat;
 
 
 @RestController
-@RequestMapping("/testbean")
-public class TestBean {
+@RequestMapping("/service")
+public class ServiceController {
 
     @Autowired private ApplicationContext ac;
     @Autowired private TestService testService;
     @Autowired private TestService2 testService2;
     @Autowired private HelloService helloService;
 
-    //    http://localhost:1111/testbean/test0
+    //    http://localhost:1111/service/test0
     @GetMapping("/test0")
     public void test0() {
         String[] str= ac.getBeanDefinitionNames();
@@ -38,14 +38,28 @@ public class TestBean {
         }
     }
 
-    //    http://localhost:1111/testbean/test1
+    //    http://localhost:1111/service/test1
     @GetMapping("/test1")
     public void test1() {
         String[] beanNamesForType = ac.getBeanNamesForType(Dog.class); // 根据 bean 的类型 从 IOC容器中获取 bean 的实例  数组
         System.out.println(beanNamesForType);
     }
 
-    //    http://localhost:1111/testbean/testDog1
+    /*
+        Spring Boot里面没有Spring的配置文件，我们自己编写的配置文件，也不能自动识别；
+        想让Spring的配置文件生效，加载进来；@ImportResource(locations = {"classpath:beans.xml"}) 标注在启动类上
+    * */
+    @GetMapping("/test11")
+    public void test11(){
+        System.out.println(ac.containsBean("testoService"));
+    }
+    @GetMapping("/test12")
+    public void test12(){
+        System.out.println(ac.containsBean("helloService02"));
+    }
+
+
+    //    http://localhost:1111/service/testDog1
     @GetMapping("/testDog1")
     public void testDog1() {
 //      Dog beanNamesForType = ac.getBean(Dog.class);  // 根据 bean 的类型 从 IOC容器中获取 bean 的实例  单个
@@ -53,7 +67,7 @@ public class TestBean {
         System.out.println(dog03);
     }
 
-    //    http://localhost:1111/testbean/testDog2
+    //    http://localhost:1111/service/testDog2
     @GetMapping("/testDog2")
     public void testDog2() throws ClassNotFoundException, IllegalAccessException, InstantiationException {
         Class cl=Class.forName("com.goat.bean2.Dog");
@@ -61,7 +75,7 @@ public class TestBean {
         System.out.println(obj);
     }
     /**
-     http://localhost:1111/testbean/test2
+     http://localhost:1111/service/test2
      通过启动类 @ImportResource(locations = {"classpath:beans.xml"}) 注解  注入 该bean
     */
     @GetMapping("/test2")
@@ -70,7 +84,7 @@ public class TestBean {
     }
 
     /**
-     http://localhost:1111/testbean/test2
+     http://localhost:1111/service/test2
      通过@Service 注解 注入该 bean
      */
     @GetMapping("/test3")
@@ -79,7 +93,7 @@ public class TestBean {
     }
 
     /**  sos 实测 该方法  可以在拦截器中 注入 bean
-     http://localhost:1111/testbean/test4
+     http://localhost:1111/service/test4
      通过启动类 FileSystemXmlApplicationContext  加载 该bean
      FileSystemXmlApplicationContext("beans.xml") 这种路径 虽然鼠标可以点击导航 但路径是不正确的 会报错  java.io.FileNotFoundException: beans.xml
      FileSystemXmlApplicationContext 适用于 配置文件 在 其他磁盘或是其他非 项目路径下 的情况
@@ -91,7 +105,7 @@ public class TestBean {
         TestService testService = (TestService) ac.getBean("testoService");
         testService.test();
     }
-    //   http://localhost:1111/testbean/test44
+    //   http://localhost:1111/service/test44
     @GetMapping("/test44")
     public void test44(){
         ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
@@ -99,7 +113,7 @@ public class TestBean {
         System.out.println(dog);
     }
 
-    //   http://localhost:1111/testbean/test41
+    //   http://localhost:1111/service/test41
     @GetMapping("/test41")
     public void test41(){
         ClassPathResource resource = new ClassPathResource("beans.xml");
@@ -109,7 +123,7 @@ public class TestBean {
     }
 
     /** sos 实测 该方法  可以在拦截器中 注入 bean
-     * http://localhost:1111/testbean/test5
+     * http://localhost:1111/service/test5
      * 通过 implements ApplicationContextAware 获取 该bean
     */
     @GetMapping("/test5")
@@ -120,7 +134,7 @@ public class TestBean {
         testoService1.test();
     }
 
-    /**   http://localhost:1111/testbean/test55
+    /**   http://localhost:1111/service/test55
      Expected: sameInstance(<com.goat.bean2.Dog@5195507d>)
      but: was <com.goat.bean2.Dog@6293e6e0>] with root cause
      说明 @bean 方法 配置了一次   在 bean.xml 中配置了一次  容器在启动的时候会给我们 new 出两个对象
@@ -134,7 +148,7 @@ public class TestBean {
         assertThat(dog03, sameInstance(dog01)); // 判断两个对象 是否是同一个实例
     }
 
-    /**   http://localhost:1111/testbean/test555
+    /**   http://localhost:1111/service/test555
      * 同一个 组件 在ioc容器中 是单例的
      */
     @GetMapping("/test555")
@@ -145,7 +159,7 @@ public class TestBean {
     }
 
     /**   sos 实测 该方法  不能 在拦截器中 注入 bean
-     http://localhost:1111/testbean/test6
+     http://localhost:1111/service/test6
      通过 MyAppConfig 类的  @Configuration 和 @Bean 注解 注入该bean
      */
     @GetMapping("/test6")
