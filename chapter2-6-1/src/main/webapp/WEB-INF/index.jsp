@@ -64,6 +64,11 @@ ${pageContext.servletContext.contextPath}
 </form>
 
 
+<hr/>
+<p>文件下载</p>
+<a href="download">下载文件</a>
+
+
 </body>
 </html>
 
