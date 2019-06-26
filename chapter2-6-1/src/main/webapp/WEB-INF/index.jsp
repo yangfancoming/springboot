@@ -65,14 +65,29 @@ ${pageContext.servletContext.contextPath}
 
 
 <hr/>
-<p>文件下载</p>
-<a href="download">下载文件</a>
+<p> 文件下载</p>
+
+<a href="download">A标签 下载</a>
+<button onclick="test()">button 下载 </button>
+<button  onclick="test2()">ajax 下载 </button>
+
+<form id="queryCourseForm" action="/download"></form>
 
 
 </body>
 </html>
 
 <script>
+
+    function test() {
+        window.location.href = "/download"
+    }
+
+    function test2() {
+        // $("#queryCourseForm").attr("action",contextPath+"/downCourses.do");//改变表单的提交地址为下载的地址
+        $("#queryCourseForm").submit();//提交表单
+    }
+
     $(document).ready(function() {
         $('.js-example-basic-single').select2();
     });
