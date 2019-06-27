@@ -3,6 +3,8 @@ package com.goat;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
+import java.io.Reader;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,4 +72,9 @@ public class TestNg {
         System.out.println(temp1.equals(temp2)); // true
     }
 
+
+    @Test
+    public void test5()  {
+
+    }
 }

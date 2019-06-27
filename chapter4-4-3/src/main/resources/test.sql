@@ -1,0 +1,1 @@
+insert into account (username, balance) values ('111',1);
