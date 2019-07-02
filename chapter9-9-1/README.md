@@ -61,3 +61,10 @@
     git merge master lampbelt  将master分支 合并到 lampbelt分支
     
 #    sos 切记 合并分支后 是合并在你本地的  必须要 push 到对应远程分支后 其他同事才能看到并拉取代码！！！
+
+
+#  Filename too long unable to index file   即 git for windows下的Filename too long
+
+    git有可以创建4096长度的文件名，然而在windows最多是260，因为git用了旧版本的windows api，为此踩了个坑。
+    解决方法： 点击IDEA  Terminal  输入 git config --global core.longpaths true  后  在 右键git---> add  
+    就不会再报错 Filename too long unable to index file 了 
