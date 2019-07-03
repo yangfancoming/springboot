@@ -1,4 +1,5 @@
-<div class="easyui-panel" style="width:100%;padding:30px 60px;" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="easyui-panel" style="width:100%;padding:30px 60px;" >
     <form id="role_edit_form" class="easyui-form" method="post" data-options="novalidate:true">
         <div style="margin-bottom:20px">
             <input class="easyui-textbox" name="roleName" th:value="${goat.roleName}"  style="width:100%" data-options="label:'角色名称：',required:true">
@@ -6,6 +7,15 @@
 
         <div style="margin-bottom:20px">
             <input class="easyui-textbox" name="remark" style="width:100%;height:60px" th:value="${goat.remark}" data-options="label:'备注：',multiline:true">
+        </div>
+
+        <!-- doit 这里如何进行 下拉框的回显 -->
+        <div style="margin-bottom:20px">
+            <select class="easyui-combobox" name="ssex" label="性别：" data-options="editable:false" style="width:100%">
+            <!--<input class = "easyui-combobox" data-options = "valueField:'databaseID',textField:'facName',url:'listFac'" id="id" name="factory"/>-->
+                <option value="1">男</option>
+                <option value="0">女</option>
+            </select>
         </div>
     </form>
     <div style="text-align:center;padding:5px 0">
