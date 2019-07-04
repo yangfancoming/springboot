@@ -15,7 +15,7 @@
     上面@ConditionalOnXXX都是组合@Conditional元注解，使用了不同的条件Condition
     
     
-    当一个 Bean 被 Conditional 注解修饰时，Spring容器会对数组中所有 Condition 接口的 matches() 方法进行判断，
+    当一个 Bean 被 @Conditional 注解修饰时，Spring容器会对数组中所有 Condition 接口的 matches() 方法进行判断，
     只有当其中所有 Condition 接口的 matches()方法都为 ture 时，才会创建 Bean 。
     
 #condition3
