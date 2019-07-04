@@ -17,6 +17,8 @@ public class Matchmaking implements Marry {
 
     @Override
     public void marry() {
+        System.out.println("前置增强。。。");
         marry.marry();
+        System.out.println("后置增强。。。");
     }
 }

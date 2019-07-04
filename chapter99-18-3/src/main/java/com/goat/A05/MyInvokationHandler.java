@@ -17,7 +17,6 @@ public class MyInvokationHandler implements InvocationHandler{
      * @param proxy  代表动态代理对象
      * @param method 代表正在执行的方法
      * @param args   代表调用目标方法时传入的实参
-     * @return
      */
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) {

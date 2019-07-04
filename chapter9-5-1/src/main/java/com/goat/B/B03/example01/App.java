@@ -4,8 +4,6 @@ import org.junit.Test;
 
 /**
  * Created by 64274 on 2018/7/7.
- *
- * @Description: TODO
  * @date 2018/7/7---19:04
  * 静态代理模式要点：
  * 1.  代理角色要持有真实角色的引用
