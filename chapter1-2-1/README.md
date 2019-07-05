@@ -39,3 +39,7 @@
         
         
        3. 加入  log4j2-spring.xml 配置文件
+       
+       
+# 报错：
+    log4j:WARN No appenders could be found for logger
