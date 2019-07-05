@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<books>
+	<book>
+		<name>C#从入门到精通（第2版） </name>
+		<publisher>清华大学出版社</publisher>
+		<company>明日科技</company>
+		<author>王小科</author>
+		<ISBN>9787302226628</ISBN>
+		<price unit="RBM" >69.80</price>
+		<url><![CDATA[http://www.mingribook.com/bookinfo.php?id=227&sid=4]]></url>
+	</book>
+	<book>
+		<name>JavaScript开发技术大全</name>
+		<publisher>人民邮电出版社</publisher>
+		<author>梁冰</author>
+		<company>明日科技</company>
+		<ISBN>9787115179708</ISBN>
+		<price unit="RBM" >65.00</price>
+		<url><![CDATA[http://www.mingribook.com/bookinfo.php?id=138&sid=5]]></url>
+        <!--不是用 <![CDATA[...]]> 将会报错-->
+		<!--<url>http://www.mingribook.com/bookinfo.php?id=138&sid=5</url>-->
+	</book>
+	<book>
+		<name>Java全能速查宝典</name>
+		<publisher>人民邮电出版社</publisher>
+		<author>梁冰</author>
+		<company>明日科技</company>
+		<ISBN>9787115214874</ISBN>
+		<price unit="RBM" >59</price>
+		<url><![CDATA[http://www.mingribook.com/bookinfo.php?id=191&sid=7]]></url>
+	</book>
+	<book>
+		<name>视频学Java Web(1DVD)</name>
+		<publisher>人民邮电出版社</publisher>
+		<author>王国辉</author>
+		<company>明日科技</company>
+		<ISBN>9787115219893</ISBN>
+		<price unit="RBM" >49.80</price>
+		<url><![CDATA[http://www.mingribook.com/bookinfo.php?id=208&sid=11]]></url>
+	</book>
+</books>
