@@ -2,6 +2,7 @@ package com.goat.A09;
 
 import com.alibaba.fastjson.JSON;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,5 +39,16 @@ public class App {
     public static <T> List<T> parseArray(String response,Class<T> object){
         List<T> modelList = JSON.parseArray(response, object);
         return modelList;
+    }
+
+    public static <T> T request2Bean(String request,Class<T> clazz) throws IllegalAccessException, InstantiationException {
+        List<T> modelList = new ArrayList<>();
+//        return modelList.get(0);
+        return clazz.newInstance();
+    }
+
+    public static <T> Class<? extends T> resolveClass(String alias) {
+        Class<T> temp = null;
+        return temp;
     }
 }
