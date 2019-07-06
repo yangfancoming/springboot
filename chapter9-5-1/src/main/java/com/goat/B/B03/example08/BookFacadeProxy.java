@@ -18,6 +18,7 @@ public class BookFacadeProxy implements InvocationHandler {
     /**
      * 绑定业务对象并返回一个动态创建的代理类
      */
+
     public Object bind(Object target) {
         this.target = target;  //接收业务实现类对象参数
         //通过反射机制，创建一个代理类对象实例并返回。用户进行方法调用时使用
@@ -29,6 +30,7 @@ public class BookFacadeProxy implements InvocationHandler {
     /**
      * 包装调用方法：进行预处理、调用后处理
      */
+    @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("预处理操作——————");
         Object result=method.invoke(target, args);  //调用真正的业务方法

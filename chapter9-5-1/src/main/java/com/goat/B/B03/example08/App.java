@@ -17,7 +17,7 @@ public class App {
      最后通过接口引用调用业务方法即可。（接口引用真正指向的是一个绑定了业务类的代理类对象，所以通过接口方法名调用的是被代理的方法们）
     */
     @Test
-    public void testCglib() {
+    public void testJDK() {
         BookFacadeImpl bookFacadeImpl = new BookFacadeImpl(); // 业务实现类对象 (被代理)
         BookFacadeProxy proxy = new BookFacadeProxy(); // 代理类对象
         BookFacade bookfacade = (BookFacade) proxy.bind(bookFacadeImpl);

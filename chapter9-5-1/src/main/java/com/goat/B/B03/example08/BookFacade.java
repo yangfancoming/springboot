@@ -8,5 +8,5 @@ package com.goat.B.B03.example08;
  * @ date 2019/4/9---19:08
  */
 public interface BookFacade {
-    public void addBook();
+     void addBook();
 }
