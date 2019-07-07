@@ -15,12 +15,18 @@ public class HelloController {
 
    @Autowired IEmpService iEmpService;
 
-//    http://localhost:8441/hello/hellola
-    @RequestMapping("/hellola")
-    public Map hellola(){
+//    http://localhost:8112/hello/test1
+    @RequestMapping("/test1")
+    public Map findById(){
         Map maps = iEmpService.findById(12);
         System.out.println(maps);
         return maps;
     }
 
+
+    //    http://localhost:8112/hello/test2
+    @RequestMapping("/test2")
+    public void findById2(){
+        iEmpService.findById2(12);
+    }
 }

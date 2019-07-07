@@ -11,4 +11,6 @@ import java.util.Map;
  */
 public interface IEmpService {
     Map findById(Integer id);
+
+    void findById2(Integer id);
 }
