@@ -40,21 +40,55 @@ Collection<V> values()    获取集合中 所有的值！
  */
 public class MyMap {
     Map map = new HashMap();
+    Map<String,Class<?>> map1 = new HashMap();
 
     @Before
     public void testBefore() {
+        map.put(1 , "1");
         map.put("王宝" , 109);
         map.put("西安大咖" , 10);
         map.put("老卢" , 79);
         map.put("杨总" , "kaa");
         map.put("掉毛" , 99);
         map.put("老卢" , 99); // 如果新的value覆盖了原有的value，该方法返回被覆盖的value
+
+        map1.put("byte", Byte.class);
+        map1.put("1", String.class);
+        map1.put("2", Byte.class);
     }
 
     @Test
-    public void test0(){
+    public void get(){ // 允许 get null值
         Object o = map.get(1);
         System.out.println(o); // null
+    }
+
+    @Test
+    public void put1(){ // 允许 put 值相同 类型不同的key sos 因为是  Map map = new HashMap();  换成   Map<String,Class<?>> map1 = new HashMap(); 就可以杜绝这种情况 ！
+        String key = "1";
+        String value = "2";
+        System.out.println(map.containsKey(key));// 原有 Integer 1    用 String 1 判断  结果false
+        map.put(key, value);
+        System.out.println(map);
+        Object o1 = map.get(1); // 原有 Integer key 1
+        Object o2 = map.get("1"); // 新增 String key 1
+        System.out.println(o1==o2);
+    }
+
+    /**
+        测试 mybatis 源码  TypeAliasRegistry
+     if (typeAliases.containsKey(key) && typeAliases.get(key) != null && !typeAliases.get(key).equals(value)) {
+    */
+    @Test
+    public void put2(){
+        String key = "1";
+        Class<?> value = Byte.class;
+        if (map1.containsKey(key) && map1.get(key) != null && !map1.get(key).equals(value)) {
+            System.out.println("已经注册的别名不允许改动！");
+        }else {
+            System.out.println("OK！");
+        }
+
     }
 
     @Test
