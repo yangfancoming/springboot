@@ -50,10 +50,18 @@ public class MyMap {
         map.put("掉毛" , 99);
         map.put("老卢" , 99); // 如果新的value覆盖了原有的value，该方法返回被覆盖的value
     }
+
+    @Test
+    public void test0(){
+        Object o = map.get(1);
+        System.out.println(o); // null
+    }
+
     @Test
     public void test(){
         System.out.println(map);
     }
+
     @Test
     public void clear(){
         map.clear(); // 删除集合中所有 键值对 元素
