@@ -10,3 +10,8 @@
         ALTER SYSTEM KILL SESSION '2278,51491';
         ALTER SYSTEM KILL SESSION '5700,1791';
     
+    
+#  Oracle  数据库 不能直接再编辑器里 添加一条记录  需要用sql来添加 否则会出现诡异情况
+    例如： 点击+号 主键 输入1  点击添加记录 当时是添加成功了  但是 sql 是查询不到的  而且过一会 刷新表
+           可以看到编辑器手动添加的记录  又不见了。。。
+    INSERT INTO "JYT"."INVENTORY_PLAN" ("INVENTORY_PLAN_ID","CODE") VALUES (DEFAULT_SEQ.nextval,'456516')
