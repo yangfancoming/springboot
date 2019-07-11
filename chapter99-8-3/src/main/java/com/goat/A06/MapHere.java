@@ -37,10 +37,19 @@ public class MapHere{
         map1.put("04","goat4");
         map1.put("05","goat5");
         map1.put("06","goat6");
+        map1.put("06","goat6666"); //由于key相同  goat6666 会覆盖掉  goat6
+        map1.put("AA","AAAAAAAA");
 
         map2.put(1,"goat1");
         map2.put(2,"goat2");
         map2.put(3,"goat3");
+    }
+
+    @Test
+    public void test(){
+        // map的key 是区分大小写的
+        System.out.println(map1.containsKey("AA")); // true
+        System.out.println(map1.containsKey("aa"));// false
     }
 
     @Test
@@ -49,6 +58,7 @@ public class MapHere{
         map.put("01","goat1"); // 如果map中没有对应的key 则返回null 如果map中已经存在本次put的key 那么覆盖原有的value并返回原有的value
         map.put("02","goat2");
         map.put("03","goat3");
+        map.containsKey("022");
         System.out.println(map.containsKey("022")); //判断map集合中是否存在某个键
         System.out.println(map.remove("02")); // 如果存在，则从该Map中移除一个键的映射。
         System.out.println(map.get("022")); // 返回指定的键映射的89值,如果这个Map不包含的键映射返回null
