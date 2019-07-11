@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -62,8 +63,23 @@ public class RoleController  {
 //        return generator.getSuccessResult(role);
     }
 
-	
-//	@RequestMapping("role/getRole")
+    // http://localhost:8984/role/test
+    @PostMapping("/test")
+    @ResponseBody
+    public List<Role> saveUser() {
+        List<Role> list = new ArrayList();
+        Role role1 = new Role();
+        role1.setRoleId(1L);
+        role1.setRoleName("wahaha");
+        Role role2 = new Role();
+        role2.setRoleId(2L);
+        role2.setRoleName("hoho");
+        list.add(role1);
+        list.add(role2);
+        return list;
+    }
+
+    //	@RequestMapping("role/getRole")
 //	@ResponseBody
 //	public ResponseBo getRole(Long roleId) {
 //		try {

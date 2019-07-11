@@ -9,13 +9,9 @@
             <input class="easyui-textbox" name="remark" style="width:100%;height:60px" th:value="${goat.remark}" data-options="label:'备注：',multiline:true">
         </div>
 
-        <!-- doit 这里如何进行 下拉框的回显 -->
+        <!--  easyui 下拉框 动态回显  -->
         <div style="margin-bottom:20px">
-            <select class="easyui-combobox" name="ssex" label="性别：" data-options="editable:false" style="width:100%">
-            <!--<input class = "easyui-combobox" data-options = "valueField:'databaseID',textField:'facName',url:'listFac'" id="id" name="factory"/>-->
-                <option value="1">男</option>
-                <option value="0">女</option>
-            </select>
+            <select class="easyui-combobox" name="ssex" id="ssex" label="性别：" style="width:100%" data-options=" valueField:'roleId',textField:'roleName', url:'/role/test'"></select>
         </div>
     </form>
     <div style="text-align:center;padding:5px 0">
