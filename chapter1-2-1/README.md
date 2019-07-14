@@ -41,5 +41,14 @@
        3. 加入  log4j2-spring.xml 配置文件
        
        
-# 报错：
-    log4j:WARN No appenders could be found for logger
+# 报错： log4j:WARN No appenders could be found for logger
+    
+    解决办法如下：
+    
+    在配置文件log4j.properties（文件名必须这个，放在resources目录） 全选粘贴如下代码：
+    # Global logging configuration 开发时候建议使用 debug
+    log4j.rootLogger=DEBUG, stdout
+    # Console output...
+    log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+    log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+    log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
