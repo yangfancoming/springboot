@@ -5,6 +5,10 @@ package com.goat.A03;
 import org.junit.Test;
 
 import java.lang.reflect.*;
+import java.sql.PreparedStatement;
+import java.util.Arrays;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Created by 64274 on 2018/7/20.
@@ -100,6 +104,16 @@ public class MyReflect2 {
                 method.invoke(aClass.newInstance()); // 通过反射 调用类中的方法
             }
         }
+    }
+
+    @Test
+    public void test(){
+        Set<String> SET_METHODS = Arrays.stream(PreparedStatement.class.getDeclaredMethods())
+                .filter(method -> method.getName().startsWith("set"))
+                .filter(method -> method.getParameterCount() > 1)
+                .map(Method::getName)
+                .collect(Collectors.toSet());
+        System.out.println(SET_METHODS);
     }
 
 }
