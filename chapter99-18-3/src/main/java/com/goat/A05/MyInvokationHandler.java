@@ -13,10 +13,9 @@ import java.lang.reflect.Method;
 public class MyInvokationHandler implements InvocationHandler{
     /**
      * 执行动态代理的所有方法时,都会白替换成执行如下的invoke方法
-     *
-     * @param proxy  代表动态代理对象
-     * @param method 代表正在执行的方法
-     * @param args   代表调用目标方法时传入的实参
+     * @param proxy  代表 被代理对象
+     * @param method 代表 正在执行的方法
+     * @param args   代表 调用目标方法时传入的实参
      */
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) {
