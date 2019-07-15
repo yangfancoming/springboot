@@ -1,4 +1,4 @@
-package com.goat.A03;
+package com.goat.model;
 
 /**
  * Created by 64274 on 2018/7/20.

@@ -27,7 +27,7 @@ public class RedisConfig extends CachingConfigurerSupport {
     //使用Jackson2JsonRedisSerializer来序列化和反序列化redis的value值
     private final Jackson2JsonRedisSerializer j2 = new Jackson2JsonRedisSerializer(Object.class);
 
-    /** 2.x 配置方式  采用RedisCacheManager作为缓存管理器*/
+    /** 2.x 配置方式  采用RedisCacheManager 作为缓存管理器*/
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
         RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()

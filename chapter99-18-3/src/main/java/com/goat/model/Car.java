@@ -1,11 +1,11 @@
-package com.goat.A03;
+package com.goat.model;
 
 public class Car {
 	private String brand;
 
 	private String color;
 
-	private int maxSpeed;
+	private Integer maxSpeed;
 
 	public Car(){System.out.println("init car!!");}
 

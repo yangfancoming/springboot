@@ -2,6 +2,7 @@ package com.goat.A03;
 
 
 
+import com.goat.model.Car;
 import org.junit.Test;
 
 import java.lang.reflect.Constructor;
@@ -30,7 +31,7 @@ public class MyReflect3 {
         car.introduce();
     }
 
-    public static final String path = "com.goat.example03.Car";
+    public static final String path = "com.goat.model.Car";
     @Test
     public void test() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         // 通过类加载器 获取Car类对象

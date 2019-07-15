@@ -24,11 +24,13 @@ public class RedisController {
     public User testRedis(@PathVariable("id") Long id){
         return demoService.findById(id);
     }
+
     // http://localhost:8513/redis/all}
     @GetMapping("/all}")
     public List<User> getAll(){
         return demoService.findAll();
     }
+
     // http://localhost:8513/redis/insert
     @GetMapping("/insert")
     public String insert(){

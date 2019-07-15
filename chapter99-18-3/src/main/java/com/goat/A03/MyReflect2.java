@@ -2,6 +2,7 @@ package com.goat.A03;
 
 
 
+import com.goat.model.Dog;
 import org.junit.Test;
 
 import java.lang.reflect.*;
@@ -23,7 +24,7 @@ import java.util.stream.Collectors;
  */
 public class MyReflect2 {
 
-    public static final String path = "com.goat.A03.Dog";
+    public static final String path = "com.goat.model.Dog";
 
     @Test
     public void test0() throws ClassNotFoundException {

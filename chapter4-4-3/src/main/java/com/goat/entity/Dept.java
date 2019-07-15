@@ -7,7 +7,7 @@ package com.goat.entity;
  * @Description: TODO
  * @date 2018/8/20---19:27
  */
-public class Dept {
+public class Dept  {
 
     private Integer deptno;
     private String dname;
