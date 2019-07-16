@@ -1,9 +1,9 @@
-package com.goat.B.B06;
+package com.goat.B.B06.item01;
 
 /**
  * Created by 64274 on 2019/7/15.
  *
- * @ Description: TODO
+ * @ Description: Leaf 叶节点对象：叶节点对象没有任何子节点，实现了Component中的某些操作。
  * @ author  山羊来了
  * @ date 2019/7/15---20:53
  */

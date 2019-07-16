@@ -1,4 +1,4 @@
-package com.goat.B.B06;
+package com.goat.B.B06.item01;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by 64274 on 2019/7/15.
  *
- * @ Description: TODO
+ * @ Description: Composite 组合节点对象：实现了Component的所有操作，并且持有子节点对象。
  * @ author  山羊来了
  * @ date 2019/7/15---20:53
  */
