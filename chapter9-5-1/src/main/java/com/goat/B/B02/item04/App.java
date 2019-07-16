@@ -21,7 +21,6 @@ import org.junit.Test;
  */
 public class App {
 
-
     @Test
     public void test() {
         Pancake tornCake = new TornCake();

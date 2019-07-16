@@ -10,7 +10,7 @@ package com.goat.B.B02.item03.base;
 public class Roujiamo extends Pancake {
 
     public Roujiamo() {
-        desc = "【肉夹馍】";
+        desc = "【肉夹馍】" ;
     }
 
     @Override

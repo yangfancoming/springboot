@@ -4,14 +4,11 @@ import com.goat.B.B02.example02.IEquip;
 import com.goat.B.B02.example02.IEquipDecorator;
 
 /**
- * Created by 64274 on 2019/4/29.
- *
- * @ Description: 每个装饰品维护一个装备
- * @ author  山羊来了
- * @ date 2019/4/29---9:40
+ * 黄宝石装饰品 每颗攻击力+10
  */
 public class YellowGemDecorator implements IEquipDecorator {
 
+    /**  每个装饰品维护一个装备 */
     private IEquip equip;
 
     public YellowGemDecorator(IEquip equip){

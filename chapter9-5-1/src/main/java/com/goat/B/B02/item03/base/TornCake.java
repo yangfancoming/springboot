@@ -10,7 +10,7 @@ package com.goat.B.B02.item03.base;
 public class TornCake extends Pancake {
 
     public TornCake() {
-        desc = "【手抓饼】";
+        desc = "【手抓饼】" ;
     }
 
     @Override
