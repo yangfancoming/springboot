@@ -1,4 +1,4 @@
-package com.goat.B.B06.itm03;
+package com.goat.B.B06.item03;
 
 /**
  * Created by 64274 on 2019/7/15.
