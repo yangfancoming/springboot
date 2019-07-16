@@ -16,10 +16,12 @@ public class HRDepartment extends Company {
 
     @Override
     public void add(Company c) {
+
     }
 
     @Override
     public void remove(Company c) {
+
     }
 
     // 履行职责

@@ -16,12 +16,13 @@ public class Folder extends File{
 
     public Folder(String name){
         super(name);
-        files = new ArrayList<File>();
+        files = new ArrayList<>();
     }
 
     /**
      * 浏览文件夹中的文件
      */
+    @Override
     public void display() {
         for(File file : files){
             file.display();

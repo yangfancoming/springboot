@@ -16,10 +16,12 @@ public class FinanceDepartment extends Company {
 
     @Override
     public void add(Company c) {
+
     }
 
     @Override
     public void remove(Company c) {
+
     }
 
     @Override

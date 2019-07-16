@@ -8,6 +8,7 @@ package com.goat.B.B06.item03;
  * @ date 2019/7/15---21:16
  */
 public abstract class File {
+
     String name;
 
     public File(String name){
