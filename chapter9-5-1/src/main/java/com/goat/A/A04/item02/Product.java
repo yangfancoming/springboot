@@ -3,13 +3,9 @@ package com.goat.A.A04.item02;
 /**
  * Created by 64274 on 2019/7/6.
  *
- * @ Description: TODO
+ * @ Description: 产品（房子）
  * @ author  山羊来了
  * @ date 2019/7/6---16:17
- */
-/**
- * Product.java
- *  产品（房子）
  */
 public class Product {
     private String buildA;

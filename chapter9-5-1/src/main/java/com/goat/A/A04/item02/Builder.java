@@ -3,13 +3,9 @@ package com.goat.A.A04.item02;
 /**
  * Created by 64274 on 2019/7/6.
  *
- * @ Description: TODO
+ * @ Description: 建造者
  * @ author  山羊来了
  * @ date 2019/7/6---16:16
- */
-/**
- * Builder.java
- *  建造者
  */
 abstract class Builder {
     //地基

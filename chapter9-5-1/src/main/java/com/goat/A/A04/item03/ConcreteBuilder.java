@@ -11,6 +11,7 @@ package com.goat.A.A04.item03;
 public class ConcreteBuilder extends Builder{
 
     private Product product;
+
     public ConcreteBuilder() {
         product = new Product();
     }
