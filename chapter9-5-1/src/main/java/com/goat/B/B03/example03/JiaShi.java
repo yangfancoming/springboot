@@ -3,7 +3,7 @@ package com.goat.B.B03.example03;
 /**
  * Created by 64274 on 2018/6/26.
  * @author 山羊来了
- * @Description: TODO
+ * @Description: 被代理 (委托类)
  * @date 2018/6/26---21:19
  */
 public class JiaShi implements KindWomen {

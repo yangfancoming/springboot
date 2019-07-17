@@ -68,8 +68,8 @@ ${pageContext.servletContext.contextPath}
 <p> 文件下载</p>
 
 <a href="download">A标签 下载</a>
-<button onclick="test()">button 下载 </button>
-<button  onclick="test2()">ajax 下载 </button>
+<button onclick="test()">window.location.href  下载 </button>
+<button  onclick="test2()">表单 下载 </button>
 
 <form id="queryCourseForm" action="/download"></form>
 

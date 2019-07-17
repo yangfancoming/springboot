@@ -3,7 +3,7 @@ package com.goat.B.B03.example03;
 /**
  * Created by 64274 on 2018/6/26.
  * @author 山羊来了
- * @Description: TODO
+ * @Description: 代理类
  * @date 2018/6/26---20:54
  */
 public class WangPo implements KindWomen {

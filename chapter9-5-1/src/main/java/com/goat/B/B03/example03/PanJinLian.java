@@ -1,7 +1,7 @@
 package com.goat.B.B03.example03;
 
 /**
- * I'm glad to share my knowledge with you all.
+ *  (委托类)
  * 潘金莲
  */
 public class PanJinLian implements KindWomen {
