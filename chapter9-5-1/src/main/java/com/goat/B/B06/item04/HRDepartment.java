@@ -3,11 +3,10 @@ package com.goat.B.B06.item04;
 /**
  * Created by 64274 on 2019/7/16.
  *
- * @ Description: TODO
+ * @ Description: 人力资源部
  * @ author  山羊来了
  * @ date 2019/7/16---8:54
  */
-//人力资源部
 public class HRDepartment extends Company {
 
     public HRDepartment(String name) {

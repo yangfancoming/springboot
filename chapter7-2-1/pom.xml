@@ -12,4 +12,12 @@
     <artifactId>chapter7-2-1</artifactId>
 
 
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-solr</artifactId>
+        </dependency>
+
+    </dependencies>
 </project>

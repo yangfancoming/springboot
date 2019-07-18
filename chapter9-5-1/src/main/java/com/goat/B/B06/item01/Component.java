@@ -10,6 +10,7 @@ import java.util.List;
  * @ date 2019/7/15---20:53
  */
 public abstract class Component {
+
     protected String name;
 
     public Component(String name) {
