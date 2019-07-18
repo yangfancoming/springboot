@@ -95,42 +95,42 @@ public class SolrController {
     @RequestMapping("/search")
     public Map<String, Map<String, List<String>>> search() throws IOException, SolrServerException {
 
-            SolrQuery params = new SolrQuery();
+        SolrQuery params = new SolrQuery();
 
-//            params.set("q", "马");  //查询条件, 这里的 q 对应 下面图片标红的地方
-            // params.set("fq", "product_price:[100 TO 100000]");   //过滤条件
-            // params.addSort("product_price", SolrQuery.ORDER.asc);   //排序
+        //            params.set("q", "马");  //查询条件, 这里的 q 对应 下面图片标红的地方
+        // params.set("fq", "product_price:[100 TO 100000]");   //过滤条件
+        // params.addSort("product_price", SolrQuery.ORDER.asc);   //排序
 
-            //分页
-            params.setStart(0);
-            params.setRows(20);
-//            params.set("df", "user_name");  //默认域
-//            params.set("fl", "id,user_name,user_address");  //只查询指定域
+        //分页
+        params.setStart(0);
+        params.setRows(20);
+        //            params.set("df", "user_name");  //默认域
+        //            params.set("fl", "id,user_name,user_address");  //只查询指定域
 
-            params.setHighlight(true);   //高亮 开关
-            params.addHighlightField("user_name");   //指定高亮域
-            params.setHighlightSimplePre("<span style='color:red'>");  //设置前缀
-            params.setHighlightSimplePost("</span>");  //设置后缀
+        params.setHighlight(true);   //高亮 开关
+        params.addHighlightField("user_name");   //指定高亮域
+        params.setHighlightSimplePre("<span style='color:red'>");  //设置前缀
+        params.setHighlightSimplePost("</span>");  //设置后缀
 
-            QueryResponse queryResponse = client.query(params);
-            SolrDocumentList results = queryResponse.getResults();
-            long numFound = results.getNumFound();
-            System.out.println(numFound);
+        QueryResponse queryResponse = client.query(params);
+        SolrDocumentList results = queryResponse.getResults();
+        long numFound = results.getNumFound();
+        System.out.println(numFound);
 
-            //获取高亮显示的结果, 高亮显示的结果和查询结果是分开放的
-            Map<String, Map<String, List<String>>> highlight = queryResponse.getHighlighting();
+        //获取高亮显示的结果, 高亮显示的结果和查询结果是分开放的
+        Map<String, Map<String, List<String>>> highlight = queryResponse.getHighlighting();
 
-            for (SolrDocument result : results) {
-                System.out.println(result.get("id"));
-                System.out.println(result.get("user_name"));
-                System.out.println(result.get("user_address"));
+        for (SolrDocument result : results) {
+            System.out.println(result.get("id"));
+            System.out.println(result.get("user_name"));
+            System.out.println(result.get("user_address"));
 
-                Map<String, List<String>> map = highlight.get(result.get("id"));
-                List<String> list = map.get("user_name");
-                System.out.println(list.get(0));
+            Map<String, List<String>> map = highlight.get(result.get("id"));
+            List<String> list = map.get("user_name");
+            System.out.println(list.get(0));
 
-                System.out.println("------------------");
-            }
-            return highlight;
+            System.out.println("------------------");
+        }
+        return highlight;
     }
 }
