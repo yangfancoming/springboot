@@ -12,6 +12,7 @@ public class Dog {
     private String name;
     Integer age;
     public boolean married;
+    public String nickName;
 
     public Dog() {
     }
@@ -48,5 +49,11 @@ public class Dog {
         this.age = age;
     }
 
+    public String getNickName() {
+        return nickName;
+    }
 
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
 }

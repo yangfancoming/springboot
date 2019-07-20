@@ -17,10 +17,26 @@ import java.lang.reflect.Method;
  */
 public class MyReflect3 {
 
+    public static final String path = "com.goat.model.Car";
+
+    @Test
+    public void test() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        // 通过类加载器 获取Car类对象
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        Class clazz = loader.loadClass(path);
+        testCar(clazz);
+    }
+
+    @Test
+    public void test2() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        Class<?> clazz = Class.forName(path);
+        // 获取类的默认构造函数对象 并通过它来实例化对象
+        testCar(clazz);
+    }
+
     public void testCar(Class clazz) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
         // 获取类的默认构造函数对象 并通过它来实例化对象
-        Constructor constructor = clazz.getDeclaredConstructor(null);
-        Car car = (Car) constructor.newInstance();
+        Car car = (Car) gaga(clazz);
         // 通过反射方法设置对象属性
         Method setBrand = clazz.getMethod("setBrand",String.class);
         setBrand.invoke(car,"宝马");
@@ -31,20 +47,8 @@ public class MyReflect3 {
         car.introduce();
     }
 
-    public static final String path = "com.goat.model.Car";
-    @Test
-    public void test() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        // 通过类加载器 获取Car类对象
-        ClassLoader loader = Thread.currentThread().getContextClassLoader();
-        Class clazz = loader.loadClass(path);
-        testCar(clazz);
-    }
-
-
-    @Test
-    public void test2() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        Class<?> clazz = Class.forName(path);
-        // 获取类的默认构造函数对象 并通过它来实例化对象
-        testCar(clazz);
+    public <T> T gaga(Class<T> clazz) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        Constructor constructor = clazz.getDeclaredConstructor();
+        return (T)constructor.newInstance();
     }
 }

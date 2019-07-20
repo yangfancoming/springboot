@@ -46,8 +46,17 @@ public class MyReflect2 {
         System.out.println(dog.getName());
         System.out.println(dog.getAge());
         System.out.println(dog.married);
+        System.out.println(dog.toString());
     }
 
+    @Test
+    public void newInstance2() throws IllegalAccessException, InstantiationException, NoSuchFieldException {
+        Class dogClass = Dog.class;
+        Dog dog = (Dog)dogClass.newInstance();// 通过class对象 调用默认无参构造函数 来 实例化类对象  （如果没有提供无参构造方法 则会报错）
+        Field name = dogClass.getField("nickName");
+        name.set(dog,"wahaha");// 这必须是 dog 而不能是  dogClass
+        System.out.println(dog);
+    }
     @Test
     public void getConstructor() throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         Class<Dog> dogClass = Dog.class;
