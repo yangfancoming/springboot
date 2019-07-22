@@ -76,17 +76,29 @@ public class SolrController {
     }
 
 
-    /**   http://localhost:8721/solr/deleteAll
+    /**   http://localhost:8721/solr/deleteAll1
      * 删除所有的索引
+     * 针对于 没有配置 数据库的方法 需要指定数据库
+     * spring.data.solr.host=http://172.16.163.135:8983/solr/
      */
-    @RequestMapping("/deleteAll")
-    public String deleteAll() throws IOException, SolrServerException {
+    @RequestMapping("/deleteAll1")
+    public String deleteAll1() throws IOException, SolrServerException {
         client.deleteByQuery(collection,"*:*");
         client.commit(collection);
         return "success";
     }
 
-
+    /**   http://localhost:8721/solr/deleteAll2
+     * 删除所有的索引
+     * 针对于 配置了 数据库的方法
+     * spring.data.solr.host=http://172.16.163.135:8983/solr/mycore
+     */
+    @RequestMapping("/deleteAll2")
+    public String deleteAll2() throws IOException, SolrServerException {
+        client.deleteByQuery("*:*");
+        client.commit();
+        return "success";
+    }
 
 
     /**   http://localhost:8721/solr/search doit 报错 是不是因为 没有设置 Collection 的原因？
