@@ -74,7 +74,7 @@ Web开发
 - ==chapter2-5-4 springboot  集成 Netty Server==
 - ==chapter2-5-5 springboot  集成 Netty Client==
 - ==chapter2-6-0 springboot  集成  JSP 内嵌Tomcat容器==
-- ==chapter2-6-1 springboot  集成  JSP 外置Tomcat容器 + 文件上传==
+- ==chapter2-6-1 springboot  集成  JSP 外置Tomcat容器 + 文件上传/下载==
 
 
 
@@ -162,6 +162,7 @@ AOP
 - ==chapter4-2-1：springboot 集成 JPA==  
 - ==chapter4-2-2：springboot 集成 JPA  复杂条件查询 ==  
 - ==chapter4-2-4：springboot 集成  JPA 分页查询 JSP + DataTable==  
+- ==chapter4-4-0：springboot 集成   解析 XML == 
 - ==chapter4-4-1：springboot 集成 mybatis   Dao接口 + sqlxml 实现== 
 - ==chapter4-4-2：springboot 集成 mybatis   Dao接口 +  注解 实现==
 - ==chapter4-4-3：springboot 集成 mybatis== 
@@ -169,8 +170,10 @@ AOP
 - ==chapter4-5-2：springboot 集成 MongoDB  使用 MongoTemplate==
 - ==chapter4-5-3：springboot 集成 MongoDB  使用 MongoRepository==
 - ==chapter4-6-0：springboot 集成 Oracle==
+- ==chapter4-6-1：springboot 集成  JPA + Oracle==
 - ==chapter4-6-3：springboot 集成 H2 + mybatis==
 - ==chapter4-6-4：springboot 集成 H2 + jdbc==
+- ==chapter4-6-6：springboot 集成 HSqlDB+ JPA==
 - ==chapter4-7-0：springboot 集成 多数据源 基于 JPA和Mybatis==
 - ==chapter4-7-5：springboot 集成 mysql读写分离  基于 IO.shardingJDBC==
 - ==chapter4-7-6：springboot 集成 mysql读写分离  基于 DD.shardingJDBC==
@@ -233,8 +236,14 @@ AOP
 - ==chapter6-5-5：springboot  重试机制==
 - ==chapter6-5-7：springboot  @Async与@Retryable结合==
 - ==chapter6-5-8：springboot  @Async与@Scheduled结合==
+
+
+
+
+
 - ==chapter6-6-0：springboot  Batch 批处理1 ==
 - ==chapter6-6-1：springboot  Batch 批处理2 ==
+- ==chapter7-2-1：springboot 集成 solr ==
 - ==chapter7-3-1：springboot 集成 ElasticSearch  使用 JestClient 操作==
 - ==chapter7-4-1：springboot 集成 ElasticSearch  使用 SpringData 操作==
 - ==chapter7-5-0：springboot 集成 Maven 学习总结==
@@ -255,6 +264,8 @@ excel 相关操作
 
 
 
+- ==chapter7-6-1：springboot 集成 事件监听==
+- ==chapter7-6-5：springboot 集成 Tinypinyin==
 - ==chapter7-8-0：springboot 集成 Drools==
 - ==chapter7-8-5：springboot 集成 Python==
 - ==chapter7-8-7：springboot 集成 Rust==
@@ -345,7 +356,8 @@ JVM
 - ==chapter9-8-1：springboot  dubbo    API    为 Rbac 提供服务 ==
 - ==chapter9-8-2：springboot 架构  AdminLTE ==
 - ==chapter9-8-3：springboot 架构 Layui ==
-- ==chapter9-8-4：springboot 架构 Easyui==
+- ==chapter9-8-4：springboot 架构 Easyui + Thymeleaf==
+- ==chapter9-8-5：springboot 架构 Easyui + JSP==
 - ==chapter9-9-0：springboot 架构 设计模式实战==
 
 
@@ -357,5 +369,7 @@ JVM
 
 测试功能
 
+- ==chapter9-9-2：springboot  Jacoco 测试覆盖率==
 - ==chapter9-9-6：springboot 集成 TestNG==
 - ==chapter9-9-9：提供测试代码 编写==
+  
