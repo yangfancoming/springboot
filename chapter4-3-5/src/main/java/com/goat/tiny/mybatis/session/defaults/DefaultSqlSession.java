@@ -15,7 +15,6 @@ import java.util.List;
 
 /**
  * 默认SQL会话实现类
-
  */
 public class DefaultSqlSession implements SqlSession {
 
@@ -23,20 +22,14 @@ public class DefaultSqlSession implements SqlSession {
 
     private final Executor executor;
 
-    /**
-     * 默认构造方法
-     * 
-     * @param configuration
-     */
+
     public DefaultSqlSession(Configuration configuration) {
         this.configuration = configuration;
         this.executor = new SimpleExecutor(configuration);
 
     }
 
-    /**
-     * 查询带条记录
-     */
+
     @Override
     public <T> T selectOne(String statementId, Object parameter) {
         List<T> results = this.<T> selectList(statementId, parameter);
@@ -45,7 +38,6 @@ public class DefaultSqlSession implements SqlSession {
 
     /**
      * 查询多条记录
-     *
      * @param statementId ID为mapper类全名+方法名
      * @param parameter 参数列表
      * @return
@@ -56,12 +48,7 @@ public class DefaultSqlSession implements SqlSession {
         return this.executor.<E> doQuery(mappedStatement, parameter);
     }
 
-    /**
-     * 更新
-     *
-     * @param statementId
-     * @param parameter
-     */
+
     @Override
     public void update(String statementId, Object parameter) {
         MappedStatement mappedStatement = this.configuration.getMappedStatement(statementId);

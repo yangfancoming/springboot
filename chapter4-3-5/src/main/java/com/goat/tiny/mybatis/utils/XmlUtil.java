@@ -79,8 +79,7 @@ public final class XmlUtil {
             }
 
         }
-        catch (Exception e)
-        {
+        catch (Exception e){
             e.printStackTrace();
         }
 

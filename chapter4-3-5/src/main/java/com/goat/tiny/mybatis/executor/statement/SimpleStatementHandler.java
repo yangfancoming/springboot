@@ -22,23 +22,10 @@ public class SimpleStatementHandler implements StatementHandler {
 
     private MappedStatement mappedStatement;
 
-    /**
-     * 默认构造方法
-     * 
-     * @param mappedStatement
-     */
     public SimpleStatementHandler(MappedStatement mappedStatement) {
         this.mappedStatement = mappedStatement;
     }
 
-    /**
-     * prepare
-     *
-     * @param paramConnection
-     * @param paramInteger
-     * @return
-     * @throws SQLException
-     */
     @Override
     public PreparedStatement prepare(Connection paramConnection)  throws SQLException {
         String originalSql = mappedStatement.getSql();

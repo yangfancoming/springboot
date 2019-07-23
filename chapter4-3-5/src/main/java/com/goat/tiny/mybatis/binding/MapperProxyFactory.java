@@ -13,7 +13,6 @@ import java.lang.reflect.Proxy;
  */
 public class MapperProxyFactory<T> {
 
-
     private final Class<T> mapperInterface;
 
     /**

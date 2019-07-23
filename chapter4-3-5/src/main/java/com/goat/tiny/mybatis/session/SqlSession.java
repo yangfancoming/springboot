@@ -15,13 +15,8 @@ public interface SqlSession {
 
     void insert(String statementId, Object parameter);
     
-    /**
-     * 获取mapper
-     */
+
     <T> T getMapper(Class<T> paramClass);
 
-    /**
-     * 获取配置类
-     */
     Configuration getConfiguration();
 }
