@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<mapper namespace="test.dao.UserMapper">-->
+<mapper namespace="com.goat.tiny.mybatis.dao.UserMapper">
+
+	<select id="getUser" resultType="com.goat.tiny.mybatis.bean.User">
+		select * from users where id = #{id}
+	</select>
+
+	<select id="getAll" resultType="com.goat.tiny.mybatis.bean.User">
+		select * from users
+	</select>
+
+	<update id="updateUser">
+		update user set name = '张三2' where id = #{id}
+	</update>
+
+</mapper>

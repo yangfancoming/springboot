@@ -12,4 +12,42 @@
     <artifactId>chapter4-3-5</artifactId>
 
 
+    <dependencies>
+
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+        </dependency>
+
+
+        <dependency><groupId>junit</groupId><artifactId>junit</artifactId><version>4.12</version></dependency>
+
+
+
+        <!--引入 druid 数据源-->
+        <dependency> <groupId>com.alibaba</groupId> <artifactId>druid</artifactId><version>1.1.8</version> </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+    </dependencies>
+
+
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
