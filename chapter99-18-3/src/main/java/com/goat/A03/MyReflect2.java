@@ -14,11 +14,11 @@ import java.util.stream.Collectors;
 /**
  * Created by 64274 on 2018/7/20.
  * @author 山羊来了
- * @Description: 获取class的四种方式
+ * @Description: 获取class的四种方式  反射四种方式
  *     第一种：通过Object类的getClass方法     Class cla = foo.getClass();
- *     第二种：通过对象实例方法获取对象      Class cla = foo.class; 或 Class forClass = com.hqh.reflect.UseInfo.class ;
- *     第三种：通过 通过类名的字符串获取对象 Class.forName方式   Class cla = Class.forName("xx.xx.Foo");
- *     第四种：通过子类的实例获得父类对象   Class subUserClass = userClass.getSuperclass() ;
+ *     第二种：通过对象实例方法获取对象       Class cla = foo.class; 或 Class forClass = com.hqh.reflect.UseInfo.class ;
+ *     第三种：通过 通过类名的字符串获取对象  Class.forName方式   Class cla = Class.forName("xx.xx.Foo");
+ *     第四种：通过子类的实例获得父类对象     Class subUserClass = userClass.getSuperclass() ;
  * @date 2018/7/20---18:56
  *
  */

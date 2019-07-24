@@ -21,7 +21,6 @@ public class ReadXMLByDom4j {
     private Book book = null;
 
     public List<Book> getBooks(File file){
-
         SAXReader reader = new SAXReader();
         try {
             Document document = reader.read(file);
@@ -63,7 +62,6 @@ public class ReadXMLByDom4j {
                 book = null;
             }
         } catch (DocumentException e) {
-
             e.printStackTrace();
         }
         return bookList;
