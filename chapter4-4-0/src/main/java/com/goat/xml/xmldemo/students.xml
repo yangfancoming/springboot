@@ -6,23 +6,5 @@
     <lastname>22</lastname>  
     <nickname>33</nickname>  
     <marks>4</marks> 
-  </student>  
-  <student rollnumber="321"> 
-    <firstname>11</firstname>  
-    <lastname>22</lastname>  
-    <nickname>33</nickname>  
-    <marks>321</marks> 
-  </student>  
-  <student rollnumber="321"> 
-    <firstname>11</firstname>  
-    <lastname>22</lastname>  
-    <nickname>33</nickname>  
-    <marks>321</marks> 
-  </student>  
-  <student rollnumber="321">
-    <firstname>11</firstname>
-    <lastname>22</lastname>
-    <nickname>33</nickname>
-    <marks>321</marks>
-  </student>
+  </student> 
 </class>

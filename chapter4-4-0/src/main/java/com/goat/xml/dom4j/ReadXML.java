@@ -3,9 +3,7 @@ package com.goat.xml.dom4j;
 import com.goat.xml.base.MyBase;
 import com.goat.xml.bean.Student;
 import org.dom4j.Document;
-import org.dom4j.DocumentException;
 import org.dom4j.Node;
-import org.dom4j.io.SAXReader;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -29,7 +27,6 @@ public class ReadXML extends MyBase {
 
     private static List<Student> getStudents(Document document) {
         List<Student> list = new ArrayList<>();
-
         String expression = "/class/student";
         List<Node> nodes = document.selectNodes(expression);
         for (Node node : nodes) {

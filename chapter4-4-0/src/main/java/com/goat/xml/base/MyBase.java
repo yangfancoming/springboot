@@ -4,9 +4,14 @@ import com.goat.xml.bean.Student;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * Created by 64274 on 2019/7/5.
@@ -33,12 +38,18 @@ public class MyBase {
         }
     }
 
-
-    protected static void add(Student st, Element root) {
+    protected  void add(Student st, Element root) {
         Element student = root.addElement("student").addAttribute("rollnumber", String.valueOf(st.getRollNumber()));
         student.addElement("firstname").addText(st.getFirstName());
         student.addElement("lastname").addText(st.getLastName());
         student.addElement("nickname").addText(st.getNickName());
         student.addElement("marks").addText(String.valueOf(st.getMarks()));
+    }
+
+    protected void save() throws IOException {
+        FileOutputStream fos = new FileOutputStream(file);
+        OutputFormat format = OutputFormat.createPrettyPrint();
+        XMLWriter writer = new XMLWriter(fos, format);
+        writer.write(document);
     }
 }
