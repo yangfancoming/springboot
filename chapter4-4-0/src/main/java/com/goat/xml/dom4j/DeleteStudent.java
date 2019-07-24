@@ -9,8 +9,6 @@ import org.junit.Test;
 import java.io.IOException;
 
 
-
-
 /**
  * 删除 xml 测试 只删除 匹配到的第一个
  */
@@ -21,9 +19,6 @@ public class DeleteStudent extends MyBase {
         boolean result = deleteStudent(document, 321);
         if (result) {
             save();
-            System.out.println("Student details has been deleted successfully.");
-        } else {
-            System.out.println("Student not found.");
         }
     }
 
