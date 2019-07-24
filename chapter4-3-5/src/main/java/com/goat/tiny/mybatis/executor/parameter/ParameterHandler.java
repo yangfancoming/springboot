@@ -9,8 +9,6 @@ import java.sql.PreparedStatement;
 public interface ParameterHandler {
 
 
-    /**
-     * 设置参数
-     */
+    /** 设置参数*/
     void setParameters(PreparedStatement paramPreparedStatement);
 }

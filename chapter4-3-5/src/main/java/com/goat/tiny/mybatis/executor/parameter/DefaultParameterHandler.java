@@ -13,9 +13,8 @@ public class DefaultParameterHandler implements ParameterHandler {
         this.parameter = parameter;
     }
 
-    /**
-     * 将SQL参数设置到PreparedStatement中
-     */
+
+    /**  将SQL参数设置到PreparedStatement中 */
     @Override
     public void setParameters(PreparedStatement ps)  {
         try  {

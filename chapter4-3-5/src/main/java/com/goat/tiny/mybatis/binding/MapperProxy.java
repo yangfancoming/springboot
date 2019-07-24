@@ -23,9 +23,8 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
         this.mapperInterface = mapperInterface;
     }
 
-    /**
-     * 真正的执行方法
-     */
+
+    /** 真正的执行方法*/
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) {
         try {
@@ -40,9 +39,8 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
         return null;
     }
 
-    /**
-     * 根据SQL指令执行对应操作
-     */
+
+    /** 根据SQL指令执行对应操作*/
     private Object execute(Method method,  Object[] args) {
 
         String statementId = this.mapperInterface.getName() + "." + method.getName();

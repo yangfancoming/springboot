@@ -2,8 +2,6 @@
 package com.goat.tiny.mybatis.utils;
 
 
-
-
 import com.goat.tiny.mybatis.constants.Constant;
 import com.goat.tiny.mybatis.mapping.MappedStatement;
 import com.goat.tiny.mybatis.session.Configuration;
@@ -56,19 +54,15 @@ public final class XmlUtil {
 
                 //设置SQL的唯一ID
                 String sqlId = namespace + "." + element.attributeValue(Constant.XML_ELEMENT_ID); 
-                
                 statement.setSqlId(sqlId);
                 statement.setNamespace(namespace);
                 statement.setSql(CommonUtis.stringTrim(element.getStringValue()));
                 statements.add(statement);
-                
                 System.out.println(statement);
                 configuration.addMappedStatement(sqlId, statement);
-                
                 //这里其实是在MapperRegistry中生产一个mapper对应的代理工厂
                 configuration.addMapper(Class.forName(namespace));
             }
-
         }
         catch (Exception e){
             e.printStackTrace();

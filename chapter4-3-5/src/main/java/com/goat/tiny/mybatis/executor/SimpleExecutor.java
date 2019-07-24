@@ -32,16 +32,13 @@ public class SimpleExecutor implements Executor {
         initConnect();
     }
 
-    /**
-     * 初始化方法
-     */
+
+    /** 初始化方法 */
     public SimpleExecutor(Configuration configuration) {
         this.conf = configuration;
     }
 
-    /**
-     * 根据参数查询数据库
-     */
+    /** 根据参数查询数据库 */
     @Override
     public <E> List<E> doQuery(MappedStatement ms, Object parameter) {
         try {

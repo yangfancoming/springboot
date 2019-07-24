@@ -8,13 +8,10 @@ import java.util.List;
 
 public interface Executor {
 
-    /**
-     * 查询数据库
-     */
+
+    /** 查询数据库 */
     <E> List<E> doQuery(MappedStatement ms, Object parameter);
-    
-    /**
-     * 更新操作
-     */
+
+    /** 更新操作 */
     void doUpdate(MappedStatement ms, Object parameter);
 }

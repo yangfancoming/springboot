@@ -11,18 +11,12 @@ import java.sql.SQLException;
 
 public interface StatementHandler {
 
-    /**
-     * SQL预处理
-     */
+    /** SQL预处理 */
     PreparedStatement prepare(Connection paramConnection) throws SQLException;
 
-    /**
-     * 查询数据库
-     */
+    /** 查询数据库 */
     ResultSet query(PreparedStatement preparedStatement) throws SQLException;
-    
-    /**
-     * update
-     */
+
+    /** update */
     void update(PreparedStatement preparedStatement) throws SQLException;
 }

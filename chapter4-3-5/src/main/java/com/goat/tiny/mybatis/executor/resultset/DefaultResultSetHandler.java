@@ -19,9 +19,7 @@ public class DefaultResultSetHandler implements ResultSetHandler {
         this.mappedStatement = mappedStatement;
     }
 
-    /**
-     * 处理查询结果，通过反射设置到返回的实体类
-     */
+    /** 处理查询结果，通过反射设置到返回的实体类 */
     @SuppressWarnings("unchecked")
     @Override
     public <E> List<E> handleResultSets(ResultSet resultSet){

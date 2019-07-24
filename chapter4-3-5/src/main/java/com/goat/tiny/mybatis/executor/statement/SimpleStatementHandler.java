@@ -49,9 +49,8 @@ public class SimpleStatementHandler implements StatementHandler {
         preparedStatement.executeUpdate();
     }
 
-    /**
-     * 将SQL语句中的#{}替换为？，源码中是在SqlSourceBuilder类中解析的
-     */
+
+    /** 将SQL语句中的#{}替换为？，源码中是在SqlSourceBuilder类中解析的 */
     private static String parseSymbol(String source) {
         source = source.trim();
         Matcher matcher = param_pattern.matcher(source);

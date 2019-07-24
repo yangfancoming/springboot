@@ -22,10 +22,8 @@ public interface Constant {
     String XML_ELEMENT_ID = "id";
     String XML_SELECT_NAMESPACE = "namespace";
     String XML_SELECT_RESULTTYPE = "resultType";
-    
-    /**
-     * SQL类型枚举，如select、insert、update
-     */
+
+    /** SQL类型枚举，如select、insert、update */
     public enum SqlType  {
 
         SELECT("select"),

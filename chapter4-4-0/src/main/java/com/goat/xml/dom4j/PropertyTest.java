@@ -13,7 +13,7 @@ public class PropertyTest extends MyBase {
 
     /**
      *  添加的是：  <goat1>luck1</goat1>
-    */
+     */
     @Test
     public void addProperty() throws IOException {
         boolean result = addProperty(document, 1,"goat1","luck1");
@@ -64,8 +64,7 @@ public class PropertyTest extends MyBase {
         String expression2="/class/student[@rollnumber="+rollNumber+"]";
         Node node2=document.selectSingleNode(expression2);
         boolean result=false;
-        if(node1!=null)
-        {
+        if(node1!=null) {
             Element element1=(Element)node1;
             Element element2=(Element)node2;
             element2.remove(element1);
@@ -79,8 +78,7 @@ public class PropertyTest extends MyBase {
         String expression="/class/student[@rollnumber="+rollNumber+"]/"+propertyName;
         Node node=document.selectSingleNode(expression);
         boolean result=false;
-        if(node!=null)
-        {
+        if(node!=null){
             Element element=(Element)node;
             element.setText(propertyValue);
             result=true;

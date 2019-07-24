@@ -6,9 +6,8 @@ import java.sql.ResultSet;
 import java.util.List;
 
 public interface ResultSetHandler {
-    /**
-     * 处理查询结果
-     */
+
+    /** 处理查询结果 */
     <E> List<E> handleResultSets(ResultSet resultSet);
 
 }
