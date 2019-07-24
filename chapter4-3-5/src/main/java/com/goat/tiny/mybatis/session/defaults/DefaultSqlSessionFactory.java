@@ -20,8 +20,9 @@ public class DefaultSqlSessionFactory implements SqlSessionFactory {
 
     public DefaultSqlSessionFactory(Configuration configuration) {
         this.configuration = configuration;
-        String dirName = Configuration.getProperty(Constant.MAPPER_LOCATION).replaceAll("\\.", "/");
-        loadMappersInfo(dirName);
+        // 从配置文件中 获取 mapper 接口类路径   mapper.location=com.goat.tiny.mybatis.dao
+        String dirName = Configuration.getProperty(Constant.MAPPER_LOCATION); // com.goat.tiny.mybatis.dao
+        loadMappersInfo(dirName.replaceAll("\\.", "/")); // com/goat/tiny/mybatis/dao
     }
 
     @Override
@@ -31,10 +32,14 @@ public class DefaultSqlSessionFactory implements SqlSessionFactory {
     }
 
     private void loadMappersInfo(String dirName) {
-        URL resources =this.getClass().getClassLoader().getResource(dirName);
+        URL resources =this.getClass().getClassLoader().getResource(dirName); // file:/E:/Code/J2EE_code/MySpringBoot/springboot/chapter4-3-5/target/test-classes/com/goat/tiny/mybatis/dao
         File mappersDir = new File(resources.getFile());
         if (mappersDir.isDirectory()){
-            // 显示包下所有文件
+            /**
+              显示包下所有文件
+              E:\Code\J2EE_code\MySpringBoot\springboot\chapter4-3-5\target\test-classes\com\goat\tiny\mybatis\dao\UserMapper.class
+              E:\Code\J2EE_code\MySpringBoot\springboot\chapter4-3-5\target\test-classes\com\goat\tiny\mybatis\dao\UserMapper.xml
+            */
             File[] mappers = mappersDir.listFiles();
             if (CommonUtis.isNotEmpty(mappers)){
                 for (File file : mappers){

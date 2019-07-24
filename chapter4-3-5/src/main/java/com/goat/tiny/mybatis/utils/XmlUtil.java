@@ -22,22 +22,17 @@ public final class XmlUtil {
 
     @SuppressWarnings("rawtypes")
     public static void readMapperXml(File fileName, Configuration configuration) {
-
         try {
-
             SAXReader saxReader = new SAXReader(); // 创建一个读取器
             saxReader.setEncoding(Constant.CHARSET_UTF8); // 设置编码
             Document document = saxReader.read(fileName); // 读取文件内容
             Element rootElement = document.getRootElement();  // 获取xml中的根元素
-
             // 不是beans根元素的，文件不对
             if (!Constant.XML_ROOT_LABEL.equals(rootElement.getName())){
                 System.err.println("mapper xml文件根元素不是mapper");
                 return;
             }
-
             String namespace = rootElement.attributeValue(Constant.XML_SELECT_NAMESPACE);
-
             List<MappedStatement> statements = new ArrayList<>();
             for (Iterator iterator = rootElement.elementIterator(); iterator.hasNext();) {
                 Element element = (Element)iterator.next();
