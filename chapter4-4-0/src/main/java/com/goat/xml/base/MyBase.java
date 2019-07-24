@@ -1,5 +1,11 @@
 package com.goat.xml.base;
 
+import com.goat.xml.bean.Student;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+
 import java.io.File;
 
 /**
@@ -13,10 +19,26 @@ public class MyBase {
 
     protected static final String path = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter4-4-0\\src\\main\\java\\com\\goat\\xml\\xmldemo\\students.xml";
 
-    protected static final File file = new File(path);
+    protected File file ;
+    protected Document document ;
+    protected SAXReader reader ;
+
+    public MyBase()  {
+        this.file = new File(path);
+        this.reader = new SAXReader();
+        try {
+            this.document = this.reader.read(file);
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+    }
 
 
-    public static File getFile() {
-        return file;
+    protected static void add(Student st, Element root) {
+        Element student = root.addElement("student").addAttribute("rollnumber", String.valueOf(st.getRollNumber()));
+        student.addElement("firstname").addText(st.getFirstName());
+        student.addElement("lastname").addText(st.getLastName());
+        student.addElement("nickname").addText(st.getNickName());
+        student.addElement("marks").addText(String.valueOf(st.getMarks()));
     }
 }

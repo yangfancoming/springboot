@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<class>
-  <student rollnumber="1">
+<class> 
+  <student rollnumber="1"> 
+    <firstname>11</firstname>  
+    <lastname>22</lastname>  
+    <nickname>33</nickname>  
+    <marks>4</marks> 
+  </student>  
+  <student rollnumber="321"> 
+    <firstname>11</firstname>  
+    <lastname>22</lastname>  
+    <nickname>33</nickname>  
+    <marks>321</marks> 
+  </student>  
+  <student rollnumber="321"> 
+    <firstname>11</firstname>  
+    <lastname>22</lastname>  
+    <nickname>33</nickname>  
+    <marks>321</marks> 
+  </student>  
+  <student rollnumber="321">
     <firstname>11</firstname>
     <lastname>22</lastname>
     <nickname>33</nickname>
-    <marks>4</marks>
+    <marks>321</marks>
   </student>
 </class>

@@ -11,12 +11,14 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * 读取 xml 测试
+ */
 public class ReadXML extends MyBase {
 
     @Test
-    public void test() throws DocumentException {
-        SAXReader reader = new SAXReader();
-        Document document = reader.read(file);
+    public void test() {
         String rootElement = document.getRootElement().getName();
         System.out.println("Root Element : " + rootElement);
         List<Student> students = getStudents(document);
