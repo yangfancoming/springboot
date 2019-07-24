@@ -30,14 +30,10 @@ public final class XmlUtil {
                 System.err.println("mapper xml文件根元素不是mapper");
                 return;
             }
-            String namespace = rootElement.attributeValue(Constant.XML_SELECT_NAMESPACE);
-            List<MappedStatement> statements = new ArrayList<>();
             for (Iterator iterator = rootElement.elementIterator(); iterator.hasNext();) {
                 Element element = (Element)iterator.next();
                 String eleName = element.getName();
-                
                 MappedStatement statement = new MappedStatement();
-                
                 if (SqlType.SELECT.value().equals(eleName)) {
                     String resultType = element.attributeValue(Constant.XML_SELECT_RESULTTYPE);
                     statement.setResultType(resultType);
@@ -51,14 +47,13 @@ public final class XmlUtil {
                     System.err.println("不支持此xml标签解析:" + eleName);
                     statement.setSqlCommandType(SqlType.DEFAULT);
                 }
-
+                // com.goat.tiny.mybatis.dao.UserMapper
+                String namespace = rootElement.attributeValue(Constant.XML_SELECT_NAMESPACE);
                 //设置SQL的唯一ID
-                String sqlId = namespace + "." + element.attributeValue(Constant.XML_ELEMENT_ID); 
+                String sqlId = namespace + "." + element.attributeValue(Constant.XML_ELEMENT_ID);
                 statement.setSqlId(sqlId);
                 statement.setNamespace(namespace);
                 statement.setSql(CommonUtis.stringTrim(element.getStringValue()));
-                statements.add(statement);
-                System.out.println(statement);
                 configuration.addMappedStatement(sqlId, statement);
                 //这里其实是在MapperRegistry中生产一个mapper对应的代理工厂
                 configuration.addMapper(Class.forName(namespace));
@@ -67,7 +62,6 @@ public final class XmlUtil {
         catch (Exception e){
             e.printStackTrace();
         }
-
     }
 
 }

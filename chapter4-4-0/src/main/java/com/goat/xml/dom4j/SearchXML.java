@@ -28,13 +28,7 @@ public class SearchXML extends MyBase {
         String expression = "/class/student[@rollnumber=" + rollNumber + "]";
         Node node = document.selectSingleNode(expression);
         if (node != null) {
-            Student student = new Student();
-            student.setRollNumber(rollNumber);
-            student.setFirstName(getPropertyValue(node, "firstname"));
-            student.setLastName(getPropertyValue(node, "lastname"));
-            student.setNickName(getPropertyValue(node, "nickname"));
-            int marks = Integer.parseInt(getPropertyValue(node, "marks"));
-            student.setMarks(marks);
+            Student student = new Student(rollNumber,getPropertyValue(node, "firstname"),getPropertyValue(node, "lastname"),getPropertyValue(node, "nickname"),Integer.parseInt(getPropertyValue(node, "marks")));
             return student;
         }
         return null;
