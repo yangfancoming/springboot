@@ -1,16 +1,12 @@
 
 package com.goat.tiny.mybatis.session.defaults;
 
-
-
-
 import com.goat.tiny.mybatis.constants.Constant;
 import com.goat.tiny.mybatis.session.Configuration;
 import com.goat.tiny.mybatis.session.SqlSession;
 import com.goat.tiny.mybatis.session.SqlSessionFactory;
 import com.goat.tiny.mybatis.utils.CommonUtis;
 import com.goat.tiny.mybatis.utils.XmlUtil;
-
 import java.io.File;
 import java.net.URL;
 

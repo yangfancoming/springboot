@@ -11,7 +11,11 @@
 	</select>
 
 	<update id="updateUser">
-		update user set name = '张三2' where id = #{id}
+		update users set name = '张三2' where id = #{id}
 	</update>
+
+    <delete id="deleteById">
+        delete from users where id = #{id}
+    </delete>
 
 </mapper>

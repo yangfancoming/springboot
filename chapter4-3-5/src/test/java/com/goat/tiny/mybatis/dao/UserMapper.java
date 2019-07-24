@@ -23,4 +23,6 @@ public interface UserMapper {
      * 更新用户（功能未完成）
      */
     void updateUser(String id);
+
+    void deleteById(String id);
 }

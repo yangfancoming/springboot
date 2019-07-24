@@ -24,15 +24,11 @@ public final class XmlUtil {
     public static void readMapperXml(File fileName, Configuration configuration) {
 
         try {
-            // 创建一个读取器
-            SAXReader saxReader = new SAXReader();
-            saxReader.setEncoding(Constant.CHARSET_UTF8);
-            
-            // 读取文件内容
-            Document document = saxReader.read(fileName);
 
-            // 获取xml中的根元素
-            Element rootElement = document.getRootElement();
+            SAXReader saxReader = new SAXReader(); // 创建一个读取器
+            saxReader.setEncoding(Constant.CHARSET_UTF8); // 设置编码
+            Document document = saxReader.read(fileName); // 读取文件内容
+            Element rootElement = document.getRootElement();  // 获取xml中的根元素
 
             // 不是beans根元素的，文件不对
             if (!Constant.XML_ROOT_LABEL.equals(rootElement.getName())){

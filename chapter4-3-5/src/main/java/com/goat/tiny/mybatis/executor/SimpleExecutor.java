@@ -44,7 +44,6 @@ public class SimpleExecutor implements Executor {
      */
     @Override
     public <E> List<E> doQuery(MappedStatement ms, Object parameter) {
-
         try {
             //1.获取数据库连接
             Connection connection = getConnect();

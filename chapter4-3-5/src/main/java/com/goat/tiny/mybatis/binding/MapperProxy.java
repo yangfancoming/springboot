@@ -19,8 +19,6 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
 
 
     public MapperProxy(SqlSession sqlSession, Class<T> mapperInterface) {
-
-
         this.sqlSession = sqlSession;
         this.mapperInterface = mapperInterface;
     }

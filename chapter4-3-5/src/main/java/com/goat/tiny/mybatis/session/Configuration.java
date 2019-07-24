@@ -26,6 +26,8 @@ public class Configuration {
     /** mapper文件的select/update语句的id和SQL语句属性 **/
     protected final Map<String, MappedStatement> mappedStatements = new HashMap<>();
 
+
+
     public <T> void addMapper(Class<T> type){
       this.mapperRegistry.addMapper(type);
     }

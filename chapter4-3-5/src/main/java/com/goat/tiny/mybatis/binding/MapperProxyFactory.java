@@ -26,7 +26,7 @@ public class MapperProxyFactory<T> {
      * 根据sqlSession创建一个代理
      */
     public T newInstance(SqlSession sqlSession) {
-        MapperProxy<T> mapperProxy = new MapperProxy<T>(sqlSession, this.mapperInterface);
+        MapperProxy<T> mapperProxy = new MapperProxy<>(sqlSession, this.mapperInterface);
         return newInstance(mapperProxy);
     }
 
