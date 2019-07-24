@@ -28,7 +28,8 @@
             <version>2.0.2</version>
         </dependency>
 
-
+        <!--  通过xpath查找指定的节点-->
+        <!--sos 采用xpath查找需要引入jaxen-xx-xx.jar，否则会报java.lang.NoClassDefFoundError: org/jaxen/JaxenException异常。-->
         <dependency>
             <groupId>jaxen</groupId>
             <artifactId>jaxen</artifactId>
