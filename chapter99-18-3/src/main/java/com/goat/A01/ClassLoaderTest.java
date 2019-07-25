@@ -19,8 +19,7 @@ public class ClassLoaderTest {
             classLoader.loadClass("com.goat.A01.Tester");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        } finally{}
-        System.out.println("系统加载Tester类");
+        }
     }
 
     @Test

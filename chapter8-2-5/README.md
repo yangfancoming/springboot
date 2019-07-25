@@ -1,0 +1,1 @@
+#  生成水印照片后  去项目生产目录找 chapter8-2-3/target/classes/static/imgs/watermark_123.png

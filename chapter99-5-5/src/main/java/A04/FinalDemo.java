@@ -46,9 +46,7 @@ public class FinalDemo {
      String和基本数据类型修饰的变量。
      同样final表示地址不能修改，但是地址的存储跟常量的值有关，给他重新赋值会指向另外一个对象，地址就改变了。
      总结： 被final修饰的变量，不可变的是变量的引用，而不是变量的内容
-
     */
-
     public static void main(String[] args) {
         FinalDemo finalDemo = new FinalDemo();
         finalDemo.setName();
