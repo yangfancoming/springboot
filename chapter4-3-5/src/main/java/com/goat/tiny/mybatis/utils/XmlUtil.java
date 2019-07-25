@@ -3,6 +3,7 @@ package com.goat.tiny.mybatis.utils;
 
 
 import com.goat.tiny.mybatis.constants.Constant;
+import com.goat.tiny.mybatis.constants.Constant.SqlType;
 import com.goat.tiny.mybatis.mapping.MappedStatement;
 import com.goat.tiny.mybatis.session.Configuration;
 import org.dom4j.Document;
@@ -10,11 +11,7 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-
-import com.goat.tiny.mybatis.constants.Constant.SqlType;
 
 public final class XmlUtil {
 
@@ -34,6 +31,7 @@ public final class XmlUtil {
                 Element element = (Element)iterator.next();
                 String eleName = element.getName();
                 MappedStatement statement = new MappedStatement();
+
                 if (SqlType.SELECT.value().equals(eleName)) {
                     String resultType = element.attributeValue(Constant.XML_SELECT_RESULTTYPE);
                     statement.setResultType(resultType);
@@ -53,6 +51,7 @@ public final class XmlUtil {
                 String sqlId = namespace + "." + element.attributeValue(Constant.XML_ELEMENT_ID);
                 statement.setSqlId(sqlId);
                 statement.setNamespace(namespace);
+                // 设置 sql  select * from users where id = #{id}
                 statement.setSql(CommonUtis.stringTrim(element.getStringValue()));
                 configuration.addMappedStatement(sqlId, statement);
                 //这里其实是在MapperRegistry中生产一个mapper对应的代理工厂

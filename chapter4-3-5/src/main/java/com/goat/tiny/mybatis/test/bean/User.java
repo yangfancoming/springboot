@@ -1,5 +1,5 @@
 
-package com.goat.tiny.mybatis.bean;
+package com.goat.tiny.mybatis.test.bean;
 
 
 public class User {

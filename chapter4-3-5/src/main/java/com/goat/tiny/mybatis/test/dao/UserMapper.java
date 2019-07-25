@@ -1,11 +1,10 @@
 
-package com.goat.tiny.mybatis.dao;
+package com.goat.tiny.mybatis.test.dao;
 
 
-import com.goat.tiny.mybatis.bean.User;
+import com.goat.tiny.mybatis.test.bean.User;
 
 import java.util.List;
-
 
 public interface UserMapper {
 

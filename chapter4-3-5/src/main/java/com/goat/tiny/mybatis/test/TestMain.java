@@ -1,12 +1,12 @@
 
-package com.goat.tiny.mybatis;
+package com.goat.tiny.mybatis.test;
 
 
-import com.goat.tiny.mybatis.bean.User;
-import com.goat.tiny.mybatis.dao.UserMapper;
 import com.goat.tiny.mybatis.session.SqlSession;
 import com.goat.tiny.mybatis.session.SqlSessionFactory;
 import com.goat.tiny.mybatis.session.SqlSessionFactoryBuilder;
+import com.goat.tiny.mybatis.test.bean.User;
+import com.goat.tiny.mybatis.test.dao.UserMapper;
 import org.junit.Test;
 
 import java.util.List;
