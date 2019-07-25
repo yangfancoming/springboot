@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+
 <mapper namespace="com.goat.tiny.mybatis.test.dao.UserMapper">
 
 	<select id="getUser" resultType="com.goat.tiny.mybatis.test.bean.User">

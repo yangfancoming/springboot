@@ -12,7 +12,6 @@ public class MapperProxyFactory<T> {
 
     private final Class<T> mapperInterface;
 
-
     /** 初始化方法 */
     public MapperProxyFactory(Class<T> mapperInterface) {
         this.mapperInterface = mapperInterface;
@@ -23,7 +22,6 @@ public class MapperProxyFactory<T> {
         MapperProxy<T> mapperProxy = new MapperProxy<>(sqlSession, this.mapperInterface);
         return newInstance(mapperProxy);
     }
-
 
     /** 根据mapper代理返回实例 */
     @SuppressWarnings("unchecked")

@@ -45,17 +45,18 @@ public final class XmlUtil {
                     System.err.println("不支持此xml标签解析:" + eleName);
                     statement.setSqlCommandType(SqlType.DEFAULT);
                 }
-                // com.goat.tiny.mybatis.dao.UserMapper
+                // com.goat.tiny.mybatis.test.dao.UserMapper
                 String namespace = rootElement.attributeValue(Constant.XML_SELECT_NAMESPACE);
-                //设置SQL的唯一ID
+                //设置SQL的唯一ID     com.goat.tiny.mybatis.test.dao.UserMapper.getUser
                 String sqlId = namespace + "." + element.attributeValue(Constant.XML_ELEMENT_ID);
                 statement.setSqlId(sqlId);
                 statement.setNamespace(namespace);
-                // 设置 sql  select * from users where id = #{id}
+                // 设置sql   select * from users where id = #{id}
                 statement.setSql(CommonUtis.stringTrim(element.getStringValue()));
                 configuration.addMappedStatement(sqlId, statement);
                 //这里其实是在MapperRegistry中生产一个mapper对应的代理工厂
-                configuration.addMapper(Class.forName(namespace));
+                Class<?> aClass = Class.forName(namespace);
+                configuration.addMapper(aClass);
             }
         }
         catch (Exception e){
