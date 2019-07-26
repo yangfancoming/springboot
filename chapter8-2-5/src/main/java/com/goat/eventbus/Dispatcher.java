@@ -9,16 +9,7 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 
-/**
- * Handler for dispatching events to subscribers, providing different event ordering guarantees that
- * make sense for different situations.
- *
- * <p><b>Note:</b> The dispatcher is orthogonal to the subscriber's {@code Executor}. The dispatcher
- * controls the order in which events are dispatched, while the executor controls how (i.e. on which
- * thread) the subscriber is actually called when an event is dispatched to it.
- *
- * @author Colin Decker
- */
+
 abstract class Dispatcher {
 
 

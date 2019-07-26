@@ -45,10 +45,6 @@ public class EventBus {
         return executor;
     }
 
-
-
-
-
     public void register(Object object) {
         subscribers.register(object);
     }

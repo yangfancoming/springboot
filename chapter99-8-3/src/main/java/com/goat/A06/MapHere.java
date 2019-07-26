@@ -45,6 +45,27 @@ public class MapHere{
         map2.put(3,"goat3");
     }
 
+    /**
+     来源
+     在此方法出现在HashMap里面之前，JDK给出的解决方案是ConcurrentMap的putIfAbsent()方法。
+     出现在HashMap里面的这个putIfAbsent()方法与之前的解决方法具有相同的功能，
+
+     当value为null的时候，putIfAbsent()方法会覆盖null值，直到value不为null为止
+     当value初始值不为null的时候，putIfAbsent()保证返回值始终是唯一的，并且是多线程安全的
+     putIfAbsent()是有返回值的，应该对他的返回值进行非空判断
+     2和3主要应用在单例模式中
+
+     如果不存在key，则添加到HashMap中，跟put方法相似
+     如果存在key，则不会覆盖，HashMap不受影响，而put方法会覆盖更新
+    */
+    @Test
+    public void testPutIfAbsent(){
+        Map<String, String> map = new HashMap<>();
+        map.put("message", "hello");
+        map.putIfAbsent("message", "world");
+        System.out.println(map); // {message=hello}
+    }
+
     @Test
     public void test(){
         // map的key 是区分大小写的
