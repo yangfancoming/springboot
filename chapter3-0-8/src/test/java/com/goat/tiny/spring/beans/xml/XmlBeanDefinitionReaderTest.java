@@ -15,7 +15,8 @@ public class XmlBeanDefinitionReaderTest {
 	public void test() throws Exception {
 
 		XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(new ResourceLoader());
-		// doit  为啥这里 读取不到配置文件呢 ？ 为啥 E:\Code\Spring\GitHub3\tiny-spring-master 项目中的测试类就可以呢？
+		//  为啥这里 读取不到配置文件呢 ？ 为啥 E:\Code\Spring\GitHub3\tiny-spring-master 项目中的测试类就可以呢？
+        //  因为：配置文件名写错了！ tiny.xml 一个是 tinyioc.xml  我草 ！
 		xmlBeanDefinitionReader.loadBeanDefinitions("tinyioc.xml");
 		Map<String, BeanDefinition> registry = xmlBeanDefinitionReader.getRegistry();
 		Assert.assertTrue(registry.size() > 0);
