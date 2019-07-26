@@ -6,6 +6,6 @@
 	   http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-autowire="byName">
 
-	<bean id="messageService" class="com.goat.spring.demo.service.MessageServiceImpl"/>
+	<bean id="messageService" class="com.goat.tiny.spring.beans.OutputServiceImpl"/>
 
 </beans>
