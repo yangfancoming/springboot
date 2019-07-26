@@ -87,11 +87,7 @@ public class MapHere{
         System.out.println(map); //
     }
 
-    /**
-         * @Description: 功能描述： 将来两个map 进行合并！！！
-         * @author: Goat
-         * @Date:   2018/9/12
-    */
+    /**  将来两个map 进行合并！！！ */
     @Test
     public void putAll(){
         System.out.println(map);  // 合并前
