@@ -37,4 +37,24 @@
         </dependency>
 
     </dependencies>
+
+
+    <build>
+
+
+
+        <!-- maven编译 指定目录  指定文件-->
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+    </build>
+
 </project>
