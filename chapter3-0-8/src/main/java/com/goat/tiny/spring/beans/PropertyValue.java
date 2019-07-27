@@ -2,7 +2,6 @@ package com.goat.tiny.spring.beans;
 
 /**
  * 用于bean的属性注入
- * @author yihua.huang@dianping.com
  */
 public class PropertyValue {
 

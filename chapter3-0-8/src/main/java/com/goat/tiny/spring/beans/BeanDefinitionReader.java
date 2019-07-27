@@ -5,5 +5,5 @@ package com.goat.tiny.spring.beans;
  */
 public interface BeanDefinitionReader {
 
-    void loadBeanDefinitions(String location) throws Exception;
+   public abstract void loadBeanDefinitions(String location) throws Exception;
 }

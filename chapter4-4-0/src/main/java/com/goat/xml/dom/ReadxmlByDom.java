@@ -53,7 +53,7 @@ public class ReadxmlByDom {
 				Node cNode = cList.item(j);
 				String content = cNode.getFirstChild().getTextContent();
 				contents.add(content);
-				//System.out.println(contents);
+				System.out.println(contents);
 			}
 			book.setName(contents.get(0));
 			book.setAuthor(contents.get(1));

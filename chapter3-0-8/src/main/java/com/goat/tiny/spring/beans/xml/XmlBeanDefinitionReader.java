@@ -4,6 +4,7 @@ import com.goat.tiny.spring.BeanReference;
 import com.goat.tiny.spring.beans.AbstractBeanDefinitionReader;
 import com.goat.tiny.spring.beans.BeanDefinition;
 import com.goat.tiny.spring.beans.PropertyValue;
+import com.goat.tiny.spring.beans.io.Resource;
 import com.goat.tiny.spring.beans.io.ResourceLoader;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -24,7 +25,9 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 
 	@Override
 	public void loadBeanDefinitions(String location) throws Exception {
-		InputStream inputStream = getResourceLoader().getResource(location).getInputStream();
+        ResourceLoader resourceLoader = super.getResourceLoader();
+        Resource resource = resourceLoader.getResource(location);
+        InputStream inputStream = resource.getInputStream();
 		doLoadBeanDefinitions(inputStream);
 	}
 
