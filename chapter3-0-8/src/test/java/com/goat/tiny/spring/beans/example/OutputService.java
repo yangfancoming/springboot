@@ -1,4 +1,4 @@
-package com.goat.tiny.spring.beans;
+package com.goat.tiny.spring.beans.example;
 
 
 public interface OutputService {

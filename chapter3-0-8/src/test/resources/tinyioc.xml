@@ -6,6 +6,12 @@
 	   http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-autowire="byName">
 
-	<bean id="messageService" class="com.goat.tiny.spring.beans.OutputServiceImpl"/>
+	<bean id="outputService" class="com.goat.tiny.spring.beans.example.OutputServiceImpl"/>
+
+
+    <bean id="helloWorldService" class="com.goat.tiny.spring.beans.example.HelloWorldServiceImpl">
+        <property name="text" value="Hello World!"></property>
+        <property name="outputService" ref="outputService"></property>
+    </bean>
 
 </beans>
