@@ -1,4 +1,4 @@
-package com.goat.A06;
+package com.goat.A06.map;
 
 
 
@@ -11,7 +11,7 @@ import java.util.*;
  * Created by 64274 on 2018/7/21.
  *
  * @author 山羊来了
- * @Description: TODO
+ * @Description: map遍历
  * @date 2018/7/21---17:48
  *
 添加功能：
@@ -88,70 +88,84 @@ public class MyMap {
         }else {
             System.out.println("OK！");
         }
-
     }
 
-    @Test
-    public void test(){
-        System.out.println(map);
-    }
-
-    @Test
-    public void clear(){
-        map.clear(); // 删除集合中所有 键值对 元素
-        System.out.println(map);
-    }
-
-    @Test
-    public void remove(){
-        map.remove("掉毛"); //  根据键 删除该键值对元素
-        System.out.println(map);
-    }
-    @Test
-    public void containsKey(){
-        // 判断是否包含指定key
-        System.out.println(map.containsKey("疯狂iOS讲义")); // 输出 true
-    }
-    @Test
-    public void containsValue(){
-        // 判断是否包含指定value
-        System.out.println(map.containsValue(99)); // 输出true
-    }
     /**
-         * @Description: 功能描述： map遍历 key  的 第一种方式
-         * @author: Goat
-         * @Date:   2018/7/21
-    */
+     *  keySet 遍历 key  的 第一种方式
+     * 获取Map集合的所有key组成的集合，通过遍历key来实现遍历所有key-value对
+     * @Date:   2018/7/21
+     */
     @Test
     public void keySet(){
-        // 获取Map集合的所有key组成的集合，通过遍历key来实现遍历所有key-value对
-        Set set = map.keySet();
+        Set set = map.keySet(); //将map中所有的键存入到set(集合)
         for (Object key : set ){
-//            System.out.println(key + "-->" + map.get(key)); // map.get(key)方法获取指定key对应的value
-            System.out.println(key);
+            System.out.println(key + "-->" + map.get(key)); // map.get(key)方法获取指定key对应的value
         }
     }
     /**
-     * @Description: 功能描述： map遍历  key 的 第二种方式
-     * @author: Goat
+     * keySet 遍历  key 的 第二种方式
+     * 通过提供的迭代器的方式遍历
      * @Date:   2018/7/21
      */
     @Test
     public void keySet2(){
-        Set set = map.keySet();
+        Set set = map.keySet(); //将map中所有的键存入到set(集合)
         Iterator iterator = set.iterator();
         while (iterator.hasNext()){
-            System.out.println(iterator.next());
+            Object key = iterator.next();
+            System.out.println(key + "-->" + map.get(key));
         }
     }
 
     @Test
     public void values(){ //  遍历map的 value  的一种方式
-        Collection<String> collection = map.values();
-        Iterator iterator = collection.iterator();
+        Collection values = map.values();
+        Iterator iterator = values.iterator();
         while (iterator.hasNext()){
-            System.out.println("$$$    "+iterator.next());
+            System.out.println("$$$    " + iterator.next());
         }
+    }
+
+
+    /** entrySet 遍历 */
+    @Test
+    public void entrySet2(){
+        Set<Map.Entry<String, Class<?>>> entries = map1.entrySet();
+        for (Map.Entry<String, Class<?>> entrie:entries){
+            System.out.println(entrie.getKey()+"----"+entrie.getValue());
+        }
+    }
+
+    @Test
+    public void entrySet1(){
+        Set<Map.Entry<String,String>> entrySet = map.entrySet();  //将map集合中的映射关系存入到set集合中
+        Iterator<Map.Entry<String,String>> it = entrySet.iterator();//有了set集合 就可以获取其迭代器
+        while (it.hasNext()){
+            Map.Entry<String,String> me = it.next();
+            System.out.println(me.getKey()+"-------"+me.getValue()); //
+        }
+    }
+
+
+    /**
+     来源
+     在此方法出现在HashMap里面之前，JDK给出的解决方案是ConcurrentMap的putIfAbsent()方法。
+     出现在HashMap里面的这个putIfAbsent()方法与之前的解决方法具有相同的功能，
+
+     当value为null的时候，putIfAbsent()方法会覆盖null值，直到value不为null为止
+     当value初始值不为null的时候，putIfAbsent()保证返回值始终是唯一的，并且是多线程安全的
+     putIfAbsent()是有返回值的，应该对他的返回值进行非空判断
+     2和3主要应用在单例模式中
+
+     如果不存在key，则添加到HashMap中，跟put方法相似
+     如果存在key，则不会覆盖，HashMap不受影响，而put方法会覆盖更新
+     */
+    @Test
+    public void testPutIfAbsent(){
+        Map<String, String> map = new HashMap<>();
+        map.put("message", "hello");
+        map.putIfAbsent("message", "world");
+        System.out.println(map); // {message=hello}
     }
 
 
