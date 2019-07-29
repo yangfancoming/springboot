@@ -11,12 +11,10 @@ import java.io.InputStream;
 
 public class SqlSessionFactoryBuilder {
 
-
     public SqlSessionFactory build(String fileName){
         InputStream inputStream =  this.getClass().getClassLoader().getResourceAsStream(fileName);
         return build(inputStream);
     }
-
 
     public SqlSessionFactory build(InputStream inputStream){
         try{

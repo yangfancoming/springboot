@@ -68,3 +68,9 @@
     git有可以创建4096长度的文件名，然而在windows最多是260，因为git用了旧版本的windows api，为此踩了个坑。
     解决方法： 点击IDEA  Terminal  输入 git config --global core.longpaths true  后  在 右键git---> add  
     就不会再报错 Filename too long unable to index file 了 
+    
+#  GitHub  我提交了commit，但为什么我没有出现在贡献者列表中呢？
+    有两个原因：
+    1. 检查你的commit中的邮箱信息，这个邮箱必须和你的github.com账号关联。怎么关联邮箱账号呢。先选择Account Setting, 在左边先Emails，
+        于是就看到可以verify邮箱地址的页面了。关联邮箱地址后还有过一段时间，贡献者列表才会更新。
+    2. 你的commit必须被提交到工程的默认分支上。如果提交到其它的分支上，你的名字就不会被显示。
