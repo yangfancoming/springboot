@@ -7,8 +7,16 @@ public class BeanDefinition {
 
 	private Object bean;
 
+    /**
+     class com.goat.tiny.spring.beans.example.HelloWorldServiceImpl
+     class com.goat.tiny.spring.beans.example.OutputServiceImpl
+    */
 	private Class beanClass;
 
+    /**
+     com.goat.tiny.spring.beans.example.OutputServiceImpl
+     com.goat.tiny.spring.beans.example.HelloWorldServiceImpl
+     */
 	private String beanClassName;
 
 	private PropertyValues propertyValues = new PropertyValues();

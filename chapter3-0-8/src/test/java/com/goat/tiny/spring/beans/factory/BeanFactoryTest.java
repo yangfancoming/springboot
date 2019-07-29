@@ -6,7 +6,6 @@ import com.goat.tiny.spring.beans.io.ResourceLoader;
 import com.goat.tiny.spring.beans.xml.XmlBeanDefinitionReader;
 import org.junit.Test;
 
-
 import java.util.Map;
 
 
@@ -17,10 +16,13 @@ public class BeanFactoryTest {
         // 1.读取配置
         XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(new ResourceLoader());
         xmlBeanDefinitionReader.loadBeanDefinitions("tinyioc.xml");
-
-        // 2.初始化BeanFactory并注册bean
+       /**
+        * 2.初始化BeanFactory并注册bean  就是把 XmlBeanDefinitionReader 的父类中的
+        *  其实就是把 private Map<String,BeanDefinition> registry; 拷贝给 AbstractBeanFactory 中的 	private Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>();
+       */
         AbstractBeanFactory beanFactory = new AutowireCapableBeanFactory();
-        for (Map.Entry<String, BeanDefinition> beanDefinitionEntry : xmlBeanDefinitionReader.getRegistry().entrySet()) {
+        Map<String, BeanDefinition> registry = xmlBeanDefinitionReader.getRegistry();
+        for (Map.Entry<String, BeanDefinition> beanDefinitionEntry : registry.entrySet()) {
             beanFactory.registerBeanDefinition(beanDefinitionEntry.getKey(), beanDefinitionEntry.getValue());
         }
         // 3.获取bean

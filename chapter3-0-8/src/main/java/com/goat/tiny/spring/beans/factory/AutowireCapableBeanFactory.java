@@ -24,11 +24,12 @@ public class AutowireCapableBeanFactory extends AbstractBeanFactory {
 			}
 
 			try {
-				Method declaredMethod = bean.getClass().getDeclaredMethod(
-						"set" + propertyValue.getName().substring(0, 1).toUpperCase()
-								+ propertyValue.getName().substring(1), value.getClass());
+			    // setText
+                String methodName = "set" + propertyValue.getName().substring(0, 1).toUpperCase()+ propertyValue.getName().substring(1);
+				Method declaredMethod = bean.getClass().getDeclaredMethod(methodName, value.getClass());
+                // 设置权限  使其可以访问 类中的私有方法  否则 报权限错误
 				declaredMethod.setAccessible(true);
-
+				// 调用目标方法
 				declaredMethod.invoke(bean, value);
 			} catch (NoSuchMethodException e) {
 				Field declaredField = bean.getClass().getDeclaredField(propertyValue.getName());

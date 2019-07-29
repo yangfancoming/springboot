@@ -12,7 +12,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 
 public abstract class AbstractBeanFactory implements BeanFactory {
-
 	private Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>();
 	private final List<String> beanDefinitionNames = new ArrayList<>();
 	private List<BeanPostProcessor> beanPostProcessors = new ArrayList<>();
@@ -27,7 +26,7 @@ public abstract class AbstractBeanFactory implements BeanFactory {
 		if (bean == null) {
 			bean = doCreateBean(beanDefinition);
             bean = initializeBean(bean, name);
-            beanDefinition.setBean(bean);
+            beanDefinition.setBean(bean); // doit  此行代码  在此类中 出现两个 set的bean 应该是不同的
 		}
 		return bean;
 	}
@@ -45,10 +44,11 @@ public abstract class AbstractBeanFactory implements BeanFactory {
 	}
 
 	protected Object createBeanInstance(BeanDefinition beanDefinition) throws Exception {
-		return beanDefinition.getBeanClass().newInstance();
+        Class beanClass = beanDefinition.getBeanClass();
+        return beanClass.newInstance();
 	}
 
-	public void registerBeanDefinition(String name, BeanDefinition beanDefinition) throws Exception {
+	public void registerBeanDefinition(String name, BeanDefinition beanDefinition) {
 		beanDefinitionMap.put(name, beanDefinition);
 		beanDefinitionNames.add(name);
 	}
@@ -71,7 +71,7 @@ public abstract class AbstractBeanFactory implements BeanFactory {
 
 	}
 
-	public void addBeanPostProcessor(BeanPostProcessor beanPostProcessor) throws Exception {
+	public void addBeanPostProcessor(BeanPostProcessor beanPostProcessor) {
 		this.beanPostProcessors.add(beanPostProcessor);
 	}
 

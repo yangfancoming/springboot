@@ -4,6 +4,7 @@ package com.goat.tiny.spring.beans.example;
 public class HelloWorldServiceImpl implements HelloWorldService {
 
     private String text;
+
     private OutputService outputService;
 
 
