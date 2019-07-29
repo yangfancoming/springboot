@@ -14,7 +14,6 @@ public interface SqlSession {
     void update(String statementId, Object parameter);
 
     void insert(String statementId, Object parameter);
-    
 
     <T> T getMapper(Class<T> paramClass);
 
