@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-
 /**
  * mybatis核心配置类
  */
