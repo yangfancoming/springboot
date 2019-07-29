@@ -15,3 +15,10 @@
     例如： 点击+号 主键 输入1  点击添加记录 当时是添加成功了  但是 sql 是查询不到的  而且过一会 刷新表
            可以看到编辑器手动添加的记录  又不见了。。。
     INSERT INTO "JYT"."INVENTORY_PLAN" ("INVENTORY_PLAN_ID","CODE") VALUES (DEFAULT_SEQ.nextval,'456516')
+    
+    
+    
+# Navicat 连接 Oracle 报错：  ORA-28040: 没有匹配的验证协议
+    Navicat premium 客户端 点击 工具栏中的 工具按钮 --------选项------其他----OCI-----oci.dll
+    解压 instantclient_11_2.zip 压缩包 到随意路径   将次文件夹内的 oci.dll 设置到 Navicat中 就可以了
+    原来 Navicat 用的是 instantclient_10_2 的驱动  而要连接的Oracle是 11g/12g 的 所以会报错
