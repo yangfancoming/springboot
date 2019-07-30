@@ -1,0 +1,30 @@
+
+#spring:
+#  profiles: dev
+dubbo:
+  scan:
+    basePackages: com.goat
+  application:
+    id: service-provider
+    name: service-provider # Dubbo 服务提供者 应用名称
+  protocol:
+    id: dubbo
+    name: dubbo #协议名称
+#    serialization: kryo  # 协议序列化方式
+    port: 20880 # 该端口为 消费者 远程RPC调用生产者时  所使用的端口！！！ 默认为 20880
+    # 同一个duboo项目 启动多个实例时 报错 Caused by: java.net.BindException: Address already in use: bind   需要 更改 protocol.port 就可以解决！
+#    host: 47.98.148.84  # doit  一旦加这个属性  在阿里云上报错  Failed to bind NettyServer on /47.98.148.84:20880, cause: Failed to bind to:
+
+
+
+  registry:
+    id: zookeeper
+    address: zookeeper://172.16.163.135  #配置注册中心地址
+#    address: zookeeper://192.168.235.207
+#    address: zookeeper://47.98.148.84 # 注册到 阿里云的 zookeeper
+    port: 2181
+#    protocol: zookeeper
+
+#  provider:
+#    loadbalance: roundrobin  # 生产者 负载均衡策略
+

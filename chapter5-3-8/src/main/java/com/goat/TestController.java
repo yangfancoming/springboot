@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class TestController {
+
     @Autowired private ApplicationContext ac;
 
     // http://localhost:8539/test

@@ -1,0 +1,21 @@
+# dubbo服务发布者实现类注解@service所在的包  sos 这里注意： 包扫描的是  service 的上一层
+
+dubbo:
+  scan:
+    basePackages: com.goat
+  application:
+    id: service-consumer
+    name: service-consumer
+  protocol:
+    id: dubbo
+    name: dubbo
+    serialization: kryo
+
+  registry:
+    id: zookeeper
+    address: zookeeper://172.16.163.135
+    port: 2181
+
+#  consumer:
+#    loadbalance: roundrobin
+

@@ -15,7 +15,7 @@ public class HelloServiceImpl implements HelloService {
 
     @Override
     public String sayHello(String name) {
-        System.out.println(name + "111111111111111");
+        System.out.println(name + "进入生产者");
         return name;
     }
 }
