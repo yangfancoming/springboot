@@ -1,4 +1,4 @@
-package com.goat.C.C02;
+package com.goat.C.C02.item01;
 
 
 import org.junit.Test;
@@ -12,7 +12,7 @@ import org.junit.Test;
 　（2）代码复用的基本技术，在数据库设计中尤为重要。
 　（3）存在一种反向的控制结构，通过一个父类调用其子类的操作，通过子类对父类进行扩展增加新的行为，符合“开闭原则”。
 */
-public class TestNG {
+public class App {
 
     @Test
     public void test() {
