@@ -14,6 +14,7 @@ public class Product {
     private String buildB="饮料";
     private String buildC="薯条";
     private String buildD="甜品";
+
     public String getBuildA() {
         return buildA;
     }
