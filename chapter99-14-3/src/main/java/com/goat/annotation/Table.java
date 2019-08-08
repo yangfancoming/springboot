@@ -9,7 +9,7 @@ import java.lang.annotation.*;
  * @ author  山羊来了
  * @ date 2018/12/11---21:26
  */
-@Retention(RetentionPolicy.RUNTIME) // 指定注解的声明周期： source/class/runtime
+@Retention(RetentionPolicy.RUNTIME) // 指定注解的生命周期： source/class/runtime
 @Target(ElementType.TYPE) // 指定注解的使用范围
 @Documented // 定义Testable Annotation将被javadoc工具提取
 public @interface Table {
