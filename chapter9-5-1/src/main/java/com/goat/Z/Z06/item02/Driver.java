@@ -1,4 +1,5 @@
-package com.goat.Z.Z06.example00;
+package com.goat.Z.Z06.item02;
+
 
 /**
  * Created by 64274 on 2019/5/6.
@@ -9,8 +10,9 @@ package com.goat.Z.Z06.example00;
  */
 public class Driver {
 
-    //在这里产生了实体类之间的依赖
-    public void drive(Benz benz){
-        benz.run();
+    // 让Driver类依赖一个Car这个接口
+    public void drive(Car car){
+        car.run();
     }
+
 }

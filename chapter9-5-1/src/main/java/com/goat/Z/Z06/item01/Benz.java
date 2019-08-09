@@ -1,4 +1,4 @@
-package com.goat.Z.Z06.example01;
+package com.goat.Z.Z06.item01;
 
 /**
  * Created by 64274 on 2019/5/6.
@@ -7,10 +7,10 @@ package com.goat.Z.Z06.example01;
  * @ author  山羊来了
  * @ date 2019/5/6---13:28
  */
-public class Bmw {
+public class Benz {
 
     public void run(){
-        System.out.println("Bmw run......");
+        System.out.println("benz run......");
     }
 
 }
