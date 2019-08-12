@@ -35,6 +35,9 @@
             </select>
         </div>
 
+        <input id="wsCode1" name="wsCode1" style="width:204px;height:30px"  class="easyui-combobox" data-options=" valueField:'wsId',textField:'wsCode', url:'/ws/wsListAjax'"/>
+        <input id="wsCode2" name="wsCode1" style="width:204px;height:30px"  class="easyui-combobox" />
+
         <div style="margin-bottom:20px">
             <input class="easyui-textbox" name="description" style="width:100%;height:60px" data-options="label:'备注：',multiline:true">
         </div>
@@ -60,9 +63,12 @@
      * 当给select加上class="easyui-combobox"这样的样式后，上面的绑定方式将失效
      * 正确的方法 如下：
     */
-    $("#ssex").combobox({
-        onChange:function(n,o){
-            alert(n);//这里的参数n是select改变后的value,o是改变前的value
+    $("#wsCode1").combobox({
+        onChange:function(ne,old){
+            //这里的参数n是select改变后的value,o是改变前的value
+            console.log(ne);
+            // 联动下拉框
+            $('#wsCode2').combobox({ url:'/ws/wsListAjax',valueField:'wsId',textField:'wsCode' });
         }
     });
 
