@@ -29,7 +29,7 @@
         </div>
 
         <div style="margin-bottom:20px">
-            <select class="easyui-combobox" name="ssex" label="性别：" data-options="editable:false" style="width:100%">
+            <select class="easyui-combobox" id="ssex" name="ssex" label="性别：" data-options="editable:false" style="width:100%">
                 <option value="1">男</option>
                 <option value="0">女</option>
             </select>
@@ -52,6 +52,20 @@
     //     e.preventDefault();
     //     $("#dlg").dialog("close");
     // });
+
+    /**
+     * easyui给select控件绑定change事件   下拉框联动  下拉框改变事件  change事件
+     * 一般的做法是使用jQuery来绑定
+     * $("#id").change(function(){ alert("change事件绑定"); });
+     * 当给select加上class="easyui-combobox"这样的样式后，上面的绑定方式将失效
+     * 正确的方法 如下：
+    */
+    $("#ssex").combobox({
+        onChange:function(n,o){
+            alert(n);//这里的参数n是select改变后的value,o是改变前的value
+        }
+    });
+
 
     function submitForm(){
         $('#ff').form('submit',{

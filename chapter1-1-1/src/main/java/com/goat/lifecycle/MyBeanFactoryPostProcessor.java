@@ -20,9 +20,9 @@ public class MyBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
     }
 
     @Override
-    public void postProcessBeanFactory(ConfigurableListableBeanFactory arg0) throws BeansException {
+    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         System.out.println("BeanFactoryPostProcessor调用postProcessBeanFactory方法");
-        BeanDefinition bd = arg0.getBeanDefinition("person");
+        BeanDefinition bd = beanFactory.getBeanDefinition("person");
         bd.getPropertyValues().addPropertyValue("phone", "110");
     }
 

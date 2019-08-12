@@ -3,6 +3,8 @@ package com.goat.lifecycle;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.*;
 
+import javax.annotation.PostConstruct;
+
 /**
  * Created by 64274 on 2019/4/22.
  *
@@ -18,6 +20,7 @@ public class Person implements BeanFactoryAware, BeanNameAware, InitializingBean
 
     private BeanFactory beanFactory;
     private String beanName;
+
 
     public Person() {
         System.out.println("【构造器】调用Person的构造器实例化");
