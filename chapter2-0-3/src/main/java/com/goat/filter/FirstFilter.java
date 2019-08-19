@@ -69,10 +69,8 @@ public class FirstFilter implements Filter {
             resp.setHeader("My-Name", "MeiNanzi");
             chain.doFilter(request, response); // 放行
         }else {
-            wrapper.sendRedirect("/login"); // 不放行 重定向到登录页
+            wrapper.sendRedirect("/hello"); // 不放行 重定向到登录页
         }
-
-
         System.out.println("FirstFilter 放行后========");
     }
 
