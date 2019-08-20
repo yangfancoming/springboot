@@ -1,4 +1,4 @@
-package A06;
+package A06.item01;
 
 /**
  * Created by 64274 on 2019/5/10.
