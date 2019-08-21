@@ -22,12 +22,14 @@ public abstract class AbstractApplicationContext implements ConfigurableApplicat
         obtainFreshBeanFactory(); // 父类自身的抽象方法
     }
 
-
     protected void obtainFreshBeanFactory() {
         refreshBeanFactory();
     }
 
-
-
+    /**
+     * 该抽象方法 虽然后两个实现类 AbstractRefreshableApplicationContext 和 GenericApplicationContext
+     * 但是最终执行的是 AbstractRefreshableApplicationContext 类
+     * 而 GenericApplicationContext 类根本就没有被实例化
+    */
     protected abstract void refreshBeanFactory() throws BeansException, IllegalStateException;
 }

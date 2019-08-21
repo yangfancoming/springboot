@@ -12,6 +12,15 @@ import org.junit.Test;
  */
 public class App  {
 
+    /**
+     * 实例化流程
+     * AbstractApplicationContext 实例化
+     * AbstractRefreshableApplicationContext 实例化
+     * AbstractXmlApplicationContext 实例化
+     * ClassPathXmlApplicationContext 实例化
+     * AbstractApplicationContext............
+     * AbstractRefreshableApplicationContext
+    */
     @Test
     public void test(){
         ClassPathXmlApplicationContext ct = new ClassPathXmlApplicationContext();
