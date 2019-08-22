@@ -21,7 +21,7 @@ public class Test2 {
 
     /**
     Mybatis 参数传值 ：
-    单个参数： mybatis 不会做处理  所以 #{参数名} 中的参数名 可以随意写
+    单个参数： mybatis 不会做处理  所以 #{ 参数名} 中的参数名 可以随意写
     多个参数： mybatis 会做特殊处理   多个参数会被封装成一个map
                 key： param1.....paramN
                 value： 传入的参数

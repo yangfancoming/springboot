@@ -117,6 +117,21 @@ public class MyReflect2 {
     }
 
     @Test
+    public void tt() throws  ClassNotFoundException {
+        Class<?> aClass = Class.forName(path);
+        Method[] declaredMethods = aClass.getDeclaredMethods(); // 获取 本类中定义的方法  包括 私有和公有 但不包括父类的
+        for(Method method:declaredMethods){  // 遍历对象中的所有方法
+            if(method.getName().equals("fuck")){ // 判断出指定方式
+                Parameter[] parameters = method.getParameters();
+                System.out.println(parameters);
+            }
+            if(method.getName().equals("shit")){ // 判断出指定方式
+                Parameter[] parameters = method.getParameters();
+                System.out.println(parameters);
+            }
+        }
+    }
+    @Test
     public void test(){
         Set<String> SET_METHODS = Arrays.stream(PreparedStatement.class.getDeclaredMethods())
                 .filter(method -> method.getName().startsWith("set"))
