@@ -67,7 +67,7 @@
         onChange:function(ne,old){
             //这里的参数n是select改变后的value,o是改变前的value
             console.log(ne);
-            // 联动下拉框
+            // 联动下拉框  级联下拉框
             $('#wsCode2').combobox({ url:'/ws/wsListAjax',valueField:'wsId',textField:'wsCode' });
         }
     });
