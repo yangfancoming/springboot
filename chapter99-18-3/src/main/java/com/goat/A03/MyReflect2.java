@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.lang.reflect.*;
 import java.sql.PreparedStatement;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -116,6 +117,18 @@ public class MyReflect2 {
         }
     }
 
+    @Test
+    public void tt() throws  ClassNotFoundException {
+        Class<?> aClass = Class.forName(path);
+        Method[] declaredMethods = aClass.getDeclaredMethods(); // 获取 本类中定义的方法  包括 私有和公有 但不包括父类的
+        for(Method method:declaredMethods){  // 遍历对象中的所有方法
+            if(method.getName().equals("shit")){ // 判断出指定方式
+                Parameter[] parameters = method.getParameters();
+                List<String> collect = Arrays.stream(parameters).map(Parameter::getName).collect(Collectors.toList());
+                System.out.println(collect);
+            }
+        }
+    }
     @Test
     public void test(){
         Set<String> SET_METHODS = Arrays.stream(PreparedStatement.class.getDeclaredMethods())

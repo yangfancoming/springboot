@@ -26,6 +26,10 @@ public class Dog {
         System.out.println("fuck!!!!!!!!!hahaha");
     }
 
+    private void shit(String name, Integer age){
+        System.out.println("fuck!!!!!!!!!hahaha" + name + age);
+    }
+
     @Override
     public String toString() {
         return "Dog{" + "name='" + name + '\'' + ", age=" + age + '}';

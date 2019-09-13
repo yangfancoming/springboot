@@ -18,7 +18,7 @@ public class MyStrUtil {
     @Test
     public void test(){
         // 用 0 填充  填充后总长度为4位  待填充内容  ==
-        String haha = haha("0", 4, 1);
+        String haha = fill("1", 6, 9);
         System.out.println(haha); // 0001
     }
     /**
@@ -31,11 +31,11 @@ public class MyStrUtil {
      * @Date:   2019年6月12日16:19:19
      */
 
-    public String haha(String mark,Integer count,Integer num){
+    public String fill(String mark,Integer count,Integer num){
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < count; i++) {
            sb.append(mark);
         }
-        return new DecimalFormat("0000").format(num);
+        return new DecimalFormat(sb.toString()).format(num);
     }
 }

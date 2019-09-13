@@ -10,7 +10,7 @@ public class Emperor {
     /** 在类加载时就创建 不管以后是否使用 因此没有延时加载的优势*/
 	private static final Emperor emperor = new Emperor();  //初始化一个皇帝 在类加载时就创建
 
-    // private 构造函数 保证了该类不能被其他类new出来
+    // 2. 私有化 构造函数
 	private Emperor(){
         System.out.println("1111哥是 饿汉式  构造方法！");
 	}

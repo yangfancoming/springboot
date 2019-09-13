@@ -76,8 +76,15 @@
     IDENTITY(mysql)：主键由数据库自动生成（主要是自动增长型）  
     AUTO：主键由程序控制(也是默认的,在指定主键时，如果不指定主键生成策略，默认为AUTO)
             
+# JPA 映射视图实体类 需要注意的 
+    这里主要说一下怎么用jpa映射一个视图的实体类，其实跟表映射一样，就是需要添加一个空的主键id标识
+    @Entity
+    @Table(name = "v_sc_template") // 这个是视图名称
+    public class SupplyChainTemplate {
+        @Id // 添加一个空的id标识，因为jpa在映射实体是需要一个id，这个必须
+        @Column(name = "name")
+        private String name;	   
         
         
-        
-        
+     如果没有主键标识  则报错：To prevent a memory leak, the JDBC Driver has been forcibly unregistered.   
         
