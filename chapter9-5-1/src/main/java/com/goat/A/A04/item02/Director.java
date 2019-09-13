@@ -12,6 +12,7 @@ package com.goat.A.A04.item02;
  *  指挥者
  */
 public class Director {
+
     //指挥工人按顺序造房
     public Product create(Builder builder) {
         builder.bulidA();

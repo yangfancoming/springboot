@@ -64,11 +64,8 @@ public class TestNG {
     }
 
     /**
-     * @Description: 功能描述：
-     * @author: Goat
-    基本类型： 比较的就是值
-    引用类型： 比较的就是地址
-     * @Date:   2018/8/5
+     基本类型： 比较的就是值
+     引用类型： 比较的就是地址
      */
     @Test
     public void  haha(){

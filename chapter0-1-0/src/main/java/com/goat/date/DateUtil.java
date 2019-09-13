@@ -4,6 +4,7 @@ package com.goat.date;
 import org.junit.Test;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -98,5 +99,70 @@ public class DateUtil {
 
         dateFormatter.applyPattern("E");
         System.out.println("一个星期中的天数：" + dateFormatter.format(date));
+    }
+
+
+    /**  常用 时间格式  日期格式  转换  */
+
+    /**  Date -> Timestamp  */
+    @Test
+    public void test2()  {
+
+        Date date = new Date();
+        Timestamp ts = new Timestamp(date.getTime());
+        System.out.println(ts);
+    }
+    /**  Timestamp -> Date  */
+    @Test
+    public void test3() {
+        Timestamp ts = new Timestamp(System.currentTimeMillis());
+        Date date = ts;
+        System.out.println(date);
+    }
+
+    /**  Timestamp -> String  */
+    @Test
+    public void test4() {
+        Timestamp ts = new Timestamp(System.currentTimeMillis());
+        String tsStr;
+        DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        //方法一
+        tsStr = sdf.format(ts);
+        System.out.println(tsStr);
+        //方法二
+        tsStr = ts.toString();
+        System.out.println(tsStr);
+    }
+
+    /**   String ->Timestamp */
+    @Test
+    public void test5() {
+        String tsStr = "2011-05-09 11:49:45";
+        Timestamp ts = Timestamp.valueOf(tsStr);
+        System.out.println(ts);
+    }
+
+    /**   Date -> String */
+    @Test
+    public void test6() {
+        Date date = new Date();
+        System.out.println(date.toString());
+        //format的格式可以任意
+        DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        DateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH/mm/ss");
+        String dateStr1 = sdf.format(date);
+        System.out.println(dateStr1);
+        String dateStr2 = sdf2.format(date);
+        System.out.println(dateStr2);
+    }
+
+    /**   String -> Date */
+    @Test
+    public void test7() throws ParseException {
+        String dateStr = "2010/05/04 12:34:23";
+        //注意format的格式要与日期String的格式相匹配
+        DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = sdf.parse(dateStr);
+        System.out.println(date.toString());
     }
 }

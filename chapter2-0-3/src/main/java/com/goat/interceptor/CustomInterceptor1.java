@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.Map;
 
 
@@ -21,9 +22,10 @@ public class CustomInterceptor1 implements HandlerInterceptor {
 
     /** 预处理 类似于 AOP 的前置增强 */
     @Override
-    public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) {
+    public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws IOException {
         System.out.println("CustomInterceptor1 preHandle:，拦截到当前请求地址：" + httpServletRequest.getRequestURL().toString());
         // 只有返回true才会继续向下执行，返回false取消当前请求
+        httpServletResponse.sendRedirect("/hello"); // 不放行 重定向到登录页
         return true;
     }
 

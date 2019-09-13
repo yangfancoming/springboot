@@ -31,6 +31,7 @@ public class TestNG {
         JSONObject object = JSON.parseObject(s);
         System.out.println(object.get("name"));
     }
+
     @Test
     public void json2JavaBean() {
         String s = "{\"id\":\"17051801\",\"name\":\"lucy\"}";
@@ -38,6 +39,7 @@ public class TestNG {
         System.out.println(user.getId());
         System.out.println(user.getName());
     }
+
     @Test
     public void json2JsonArray() {
         String s = "[{\"id\":\"17051801\",\"name\":\"lucy\"},{\"id\":\"17051802\",\"name\":\"peter\"}]";
@@ -49,6 +51,7 @@ public class TestNG {
             System.out.println(object.get("name"));
         }
     }
+
     @Test
     public  void json2JavaBeanList() {
         String s = "[{\"id\":\"17051801\",\"name\":\"lucy\"},{\"id\":\"17051802\",\"name\":\"peter\"}]";

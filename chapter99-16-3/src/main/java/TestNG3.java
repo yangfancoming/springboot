@@ -15,6 +15,9 @@ public class TestNG3 {
      junit case 的特点 ：
      1.@test 函数是不会等待子线程运行结束的,只要@test函数执行结束就立即结束.
      2.所有junit 中的@test函数 是依次执行的.
+
+     main() 的多线程是非守护线程
+     在 main 中创建的多线程是非守护线程模式,所以只要子线程未执行结束, main线程会处于等待状态 ,这是程序进程也不会结束.
     */
     @Test
     public void test(){
@@ -32,5 +35,7 @@ public class TestNG3 {
         });
         t1.start();
         t2.start();
+        System.out.println(t2.isDaemon());
+        System.out.println(t1.isDaemon());
     }
 }

@@ -10,12 +10,16 @@ package A04_synchronize.example00;
  */
 
 public class Run1_local {
+
     public static void main(String[] args) {
         HasLocalNum numRef = new HasLocalNum();
         ThreadA threadA = new ThreadA(numRef);
         threadA.start();
         ThreadB threadB = new ThreadB(numRef);
         threadB.start();
+
+        System.out.println(threadA.isDaemon());
+        System.out.println(threadB.isDaemon());
     }
 }
 

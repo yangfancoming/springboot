@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>A06.item02.ConfigurableApplicationContext</OriginalElement>
+  <nodes>
+    <node x="20.0" y="435.0">A06.item02.ClassPathXmlApplicationContext</node>
+    <node x="147.75" y="103.0">A06.item02.AbstractApplicationContext</node>
+    <node x="0.0" y="252.0">A06.item02.AbstractRefreshableApplicationContext</node>
+    <node x="23.5" y="355.0">A06.item02.AbstractXmlApplicationContext</node>
+    <node x="294.0" y="252.0">A06.item02.GenericApplicationContext</node>
+    <node x="153.75" y="0.0">A06.item02.ConfigurableApplicationContext</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="A06.item02.AbstractRefreshableApplicationContext" target="A06.item02.AbstractApplicationContext">
+      <point x="0.0" y="-26.5" />
+      <point x="137.0" y="227.0" />
+      <point x="208.75" y="227.0" />
+      <point x="-61.0" y="49.5" />
+    </edge>
+    <edge source="A06.item02.AbstractXmlApplicationContext" target="A06.item02.AbstractRefreshableApplicationContext">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="A06.item02.AbstractApplicationContext" target="A06.item02.ConfigurableApplicationContext">
+      <point x="0.0" y="-49.5" />
+      <point x="0.0" y="26.5" />
+    </edge>
+    <edge source="A06.item02.GenericApplicationContext" target="A06.item02.AbstractApplicationContext">
+      <point x="0.0" y="-26.5" />
+      <point x="402.5" y="227.0" />
+      <point x="330.75" y="227.0" />
+      <point x="61.0" y="49.5" />
+    </edge>
+    <edge source="A06.item02.ClassPathXmlApplicationContext" target="A06.item02.AbstractXmlApplicationContext">
+      <point x="0.0" y="-26.5" />
+      <point x="0.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="247.5" y="220.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

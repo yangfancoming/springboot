@@ -1,6 +1,6 @@
 package com.goat.Z.Z06.example04;
 
-import com.goat.Z.Z06.example03.Car;
+import com.goat.Z.Z06.item02.Car;
 
 /**
  * Created by 64274 on 2019/5/6.
@@ -10,6 +10,7 @@ import com.goat.Z.Z06.example03.Car;
  * @ date 2019/5/6---13:42
  */
 public class Driver3 {
+
     public void drive(Car car){
         car.run();
     }
