@@ -461,8 +461,7 @@
             <tr>
                 <td>班级</td>
                 <td colspan="1">
-                    <select id="edit_clazz_name" style="width: 200px; height: 30px;" class="easyui-combobox"
-                            name="clazz_name">
+                    <select id="edit_clazz_name" style="width: 200px; height: 30px;" class="easyui-combobox"  name="clazz_name">
                         <c:forEach items="${clazzList}" var="clazz">
                             <option value="${clazz.name}">${clazz.name}</option>
                         </c:forEach>
@@ -472,15 +471,13 @@
             <tr>
                 <td>姓名</td>
                 <td colspan="1">
-                    <input id="edit_name" style="width: 200px; height: 30px;" class="easyui-textbox"
-                           type="text" name="name" data-options="required:true, missingMessage:'请填写姓名哟~'"/>
+                    <input id="edit_name" style="width: 200px; height: 30px;" class="easyui-textbox" type="text" name="name" data-options="required:true, missingMessage:'请填写姓名哟~'"/>
                 </td>
             </tr>
             <tr>
                 <td>性别</td>
                 <td>
-                    <select id="edit_gender" class="easyui-combobox"
-                            data-options="editable: false, panelHeight: 50, width: 60, height: 30" name="gender">
+                    <select id="edit_gender" class="easyui-combobox" data-options="editable: false, panelHeight: 50, width: 60, height: 30" name="gender">
                         <option value="男">男</option>
                         <option value="女">女</option>
                     </select>
@@ -490,8 +487,7 @@
                 <td>学号</td>
                 <td colspan="1">
                     <!-- 设置为只读 -->
-                    <input id="edit_sno" data-options="readonly: true" style="width: 200px; height: 30px;"
-                           class="easyui-textbox" type="text"/>
+                    <input id="edit_sno" data-options="readonly: true" style="width: 200px; height: 30px;" class="easyui-textbox" type="text"/>
                 </td>
             </tr>
             <tr>
