@@ -102,7 +102,7 @@ public class DateUtil {
     }
 
 
-    /**  常用 时间格式  日期格式  转换  */
+    /**  常用 时间格式  日期格式 日期转换 转换  转化  */
 
     /**  Date -> Timestamp  */
     @Test
@@ -164,5 +164,31 @@ public class DateUtil {
         DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = sdf.parse(dateStr);
         System.out.println(date.toString());
+    }
+
+
+    /**
+     *通过年周日获取日期
+     * 通过周数获取日期
+     * @param year
+     * @param weeks
+     * @param day (Calendar SUNDAY = 1;MONDAY = 2; 以此类推 看具体需求判断day参数是否需要+1)
+     * @return
+     */
+    public Date getDateByWeek(Integer year,Integer weeks,Integer day){
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR,year);
+        cal.set(Calendar.WEEK_OF_YEAR,weeks);
+        cal.set(Calendar.DAY_OF_WEEK,day);
+        return cal.getTime();
+    }
+
+    @Test
+    public void test8(){
+
+        SimpleDateFormat aDate = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
+        Date date = getDateByWeek(2019, 5, 2);
+        System.out.println(aDate.format(date));
     }
 }

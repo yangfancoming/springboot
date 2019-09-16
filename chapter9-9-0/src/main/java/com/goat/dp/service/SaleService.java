@@ -51,6 +51,7 @@ public class SaleService {
     }
 
     Map<String, IDiscountStrategy> map = new ConcurrentHashMap<>();
+
     // sos 通过构造方法 进行  Spring注入 所有该接口的实现类！
     public SaleService(List<IDiscountStrategy> list) {
         for (IDiscountStrategy temp:list){
