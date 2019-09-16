@@ -176,7 +176,6 @@ public class DateUtil {
      * @return
      */
     public Date getDateByWeek(Integer year,Integer weeks,Integer day){
-
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.YEAR,year);
         cal.set(Calendar.WEEK_OF_YEAR,weeks);

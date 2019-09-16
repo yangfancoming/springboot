@@ -41,6 +41,11 @@ public class MyCalendar {
 		System.out.println(cal4.getTime());
 	}
 
+	/**
+     * 获取当前年
+     * 获取当前月
+     * 获取当前日
+	*/
 	@Test
     public void test(){
         System.out.println(c.get(YEAR)); // 取出年
@@ -55,9 +60,8 @@ public class MyCalendar {
         String format2 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
         System.out.println("分别设置年、月、日、小时、分钟、秒 \t" + format1);
         System.out.println("分别设置年、月、日、小时、分钟、秒 \t" + format2);
-
-
     }
+
     @Test
     public void year(){
         c.add(YEAR , 1);
@@ -130,6 +134,13 @@ public class MyCalendar {
         Calendar c = Calendar.getInstance();
         System.out.println(new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime())); // 2004-02-23  00:00:00
     }
+
+    @Test
+    public void test11(){
+        String temp1 = "1544".substring(0, 2);
+        System.out.println(temp1);
+    }
+
 
 }
 

@@ -7,11 +7,11 @@ import java.util.Calendar;
 
 /**
  Calendar中add函数和roll函数的用法及区别123
+ java8 日期 日历
  */
 public class MyCalendar2 {
 
     Calendar c = Calendar.getInstance();
-
 
     /** 取某个时间点后的整点时刻。例如1984年7月7日15:23:05后的整点时刻即为1984-07-07 16:00:00 */
 	@Test
@@ -37,7 +37,6 @@ public class MyCalendar2 {
         c.roll(Calendar.MONTH, -1);
         System.out.println(new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime())); // 2002-12-12  20:19:43
     }
-
 
     /**
      结论：roll()函数处理，只会比相应的字段进行处理，不会智能的对其它字段也进行逻辑上的改变。但是add()函数会在逻辑上改变其它字段，使结果正确。
