@@ -71,5 +71,14 @@ public class CommonNativeSqls {
         query.executeUpdate(); //
     }
 
+    /**
+     * @Title： @Query 注解方式 原生sql  参数为List<String>   in查询
+     * @author fan.yang
+     * @date 2019年9月20日21:23:04
+     * @param age
+     * @return 返回
+     */
+//    @Query(value = "select PART_NUMBER from WS_UPN u left join REGIONS r on u.REGIONS_ID = r.REGIONS_ID WHERE u.PART_NUMBER in (:pns)  ORDER BY r.CODE" ,nativeQuery = true)
+//    List<String> sortPnBYRegions(@Param(value = "pns") List<String> pns);
 
 }
