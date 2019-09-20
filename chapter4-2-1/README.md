@@ -91,3 +91,7 @@
 # JPA 实体类生成数据库表  sos 
      实体类的属性 必须使用包装类型修饰  不能使用8种类基本类型  
      因为基本类型的属性 不会映射到表字段中去。。。
+     
+# Invocation of init method failed; nested exception is java.util.NoSuchElementException
+    是因为 使用 JPA findBy方式查询  findByInbadocno 没有给定 Inbadocno 参数  
+     
