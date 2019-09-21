@@ -1,13 +1,10 @@
 package com.goat.jdk8;
 
 
-
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by 64274 on 2018/7/21.
@@ -19,6 +16,7 @@ import java.util.Map;
 public class MyMapJDK8 {
 
      Map<String, Object> map = new HashMap();
+     Map<String, Object> map2 = new HashMap();
 
     @Before
     public void testBefore() {
@@ -30,7 +28,12 @@ public class MyMapJDK8 {
         map.put("Java" , null);  //   computeIfAbsent 起作用
         System.out.println(map);
     }
-
+    @Before
+    public void testBefore2() {
+        map2.put("AAA" , 109);
+        map2.put("BBB" , 99);
+        System.out.println(map);
+    }
     @Test
     public void replace1(){  // 尝试替换key为"疯狂XML讲义"的value，由于原Map中没有对应的key，  因此Map集合没有发生任何改变
         map.replace("疯狂XML讲义" , 66);
@@ -112,7 +115,7 @@ public class MyMapJDK8 {
 
     /**
      * 遍历Map第五种
-     * 通过k,v遍历，Java8独有的
+     * 通过k,v遍历，Java8 独有的
      */
     @Test
     public void test5() {
@@ -120,4 +123,51 @@ public class MyMapJDK8 {
         map.forEach((k, v) -> System.out.println("key:value = " + k + ":" + v));
     }
 
+
+    @Test
+    public void test6() {
+        System.out.println("---------------------Only JAVA8  ------------------------------");
+        List<Map<String, Object>> listMap = new ArrayList<>();
+        map2.forEach((k, v) -> {
+            Map<String, Object> newMap = new HashMap();
+            newMap.put(k.toLowerCase(),v);
+            listMap.add(newMap);
+        });
+        System.out.println(listMap);
+    }
+
+    @Test
+    public void test7() {
+        Map<String, Object> map = transformUpperCase(map2);
+        System.out.println(map);
+    }
+
+
+    /**
+     * @Description: 将Map的key转成小写
+     * @author fan.yang
+     * @date 2019年7月15日20:00:03
+     * @param map  待转换Map对象
+     * @return
+     */
+    public Map<String, Object> transformUpperCase(Map<String, Object> map){
+        return  transformUpperCase(map,true);
+    }
+    /**
+     * @Description: 将Map的key转成小写 / 大写
+     * @author fan.yang
+     * @date 2019年7月15日20:00:03
+     * @param map  待转换Map对象
+     * @param mark 大小写标识 true 转小写   false 转大写
+     * @return
+     */
+    public Map<String, Object> transformUpperCase(Map<String, Object> map, Boolean mark){
+        Map<String, Object> newMap = new HashMap();
+        if (mark){
+            map.forEach((k, v) ->newMap.put(k.toLowerCase(),v));
+        }else  {
+            map.forEach((k, v) ->newMap.put(k.toUpperCase(),v));
+        }
+        return newMap;
+    }
 }
