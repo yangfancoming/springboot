@@ -36,6 +36,7 @@ public class Directory extends Entry {
         return size;
     }
 
+    @Override
     public Entry add(Entry entry) {
         directory.add(entry);
         return this;

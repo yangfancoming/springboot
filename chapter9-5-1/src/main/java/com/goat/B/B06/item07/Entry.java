@@ -10,6 +10,7 @@ package com.goat.B.B06.item07;
 public abstract class Entry {
 
     public abstract String getName();
+
     public abstract int getSize();
 
     public Entry add(Entry entry) {
@@ -22,6 +23,7 @@ public abstract class Entry {
 
     protected abstract void printList(String prefix);
 
+    @Override
     public String toString() {
         return getName() + "(" + getSize() + ")";
     }

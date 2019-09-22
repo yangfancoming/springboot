@@ -15,6 +15,7 @@ public class Composite extends Component {
     /**
      * 示意方法，通常在里面需要实现递归的调用
      */
+    @Override
     public void someOperation() {
         if (childComponents != null){
             for(Component c : childComponents){
@@ -23,6 +24,7 @@ public class Composite extends Component {
             }
         }
     }
+    @Override
     public void addChild(Component child) {
         //延迟初始化
         if (childComponents == null) {
@@ -30,11 +32,13 @@ public class Composite extends Component {
         }
         childComponents.add(child);
     }
+    @Override
     public void removeChild(Component child) {
         if (childComponents != null) {
             childComponents.remove(child);
         }
     }
+    @Override
     public Component getChildren(int index) {
         if (childComponents != null){
             if(index>=0 && index<childComponents.size()){

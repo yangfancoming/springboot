@@ -15,6 +15,7 @@ import java.util.List;
 public class Menu extends MenuComponent {
 
     private List<MenuComponent> menuList = new ArrayList<>();
+
     private String name;
 
     public Menu(String name) {

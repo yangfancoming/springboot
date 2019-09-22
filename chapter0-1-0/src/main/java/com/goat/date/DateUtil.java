@@ -17,10 +17,8 @@ public class DateUtil {
     @Test
     public void timestamp()  {
         Timestamp time1 = new Timestamp(System.currentTimeMillis());
-        Timestamp time2 = new Timestamp(new Date().getTime());
         Timestamp time3 = new Timestamp(Calendar.getInstance().getTimeInMillis());
         System.out.println(time1);
-        System.out.println(time2);
         System.out.println(time3);
     }
 
@@ -129,7 +127,7 @@ public class DateUtil {
         //方法一
         tsStr = sdf.format(ts);
         System.out.println(tsStr);
-        //方法二
+//        方法二
         tsStr = ts.toString();
         System.out.println(tsStr);
     }

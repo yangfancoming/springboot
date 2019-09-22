@@ -16,7 +16,9 @@ import java.util.*;
 public class MyMapJDK8 {
 
      Map<String, Object> map = new HashMap();
+     Map<String, Object> map1 = new HashMap();
      Map<String, Object> map2 = new HashMap();
+     List<Map<String, Object>> list =  new ArrayList<>();
 
     @Before
     public void testBefore() {
@@ -26,14 +28,21 @@ public class MyMapJDK8 {
 //        map.put("Java" , 79);  //   computeIfAbsent 不起作用
 //        map.put("Java" , "");  //   computeIfAbsent 不起作用
         map.put("Java" , null);  //   computeIfAbsent 起作用
-        System.out.println(map);
     }
     @Before
     public void testBefore2() {
+        map1.put("CCC" , 109);
+        map1.put("DDD" , 99);
+
         map2.put("AAA" , 109);
         map2.put("BBB" , 99);
-        System.out.println(map);
+
+        list.add(map1);
+        list.add(map2);
+
     }
+
+
     @Test
     public void replace1(){  // 尝试替换key为"疯狂XML讲义"的value，由于原Map中没有对应的key，  因此Map集合没有发生任何改变
         map.replace("疯狂XML讲义" , 66);
@@ -136,12 +145,21 @@ public class MyMapJDK8 {
         System.out.println(listMap);
     }
 
+    /**  单个map 测试 */
+
+
     @Test
     public void test7() {
         Map<String, Object> map = transformUpperCase(map2);
         System.out.println(map);
     }
 
+    /**  集合map 测试 */
+    @Test
+    public void test8() {
+        List<Map<String, Object>> list = transformUpperCase(this.list);
+        System.out.println(list);
+    }
 
     /**
      * @Description: 将Map的key转成小写
@@ -162,12 +180,31 @@ public class MyMapJDK8 {
      * @return
      */
     public Map<String, Object> transformUpperCase(Map<String, Object> map, Boolean mark){
+        Map<String, Object> newMap = getStringObjectMap(mark, map);
+        return newMap;
+    }
+
+    public List<Map<String, Object>> transformUpperCase(List<Map<String, Object>> map){
+        return  transformUpperCase(map,true);
+    }
+
+    public List<Map<String, Object>> transformUpperCase(List<Map<String, Object>> listMap, Boolean mark){
+        List<Map<String, Object>> newList = new ArrayList<>();
+        listMap.stream().forEach(m->{
+            Map<String, Object> newMap = getStringObjectMap(mark, m);
+            newList.add(newMap);
+        });
+        return newList;
+    }
+
+    private Map<String, Object> getStringObjectMap(Boolean mark, Map<String, Object> m) {
         Map<String, Object> newMap = new HashMap();
-        if (mark){
-            map.forEach((k, v) ->newMap.put(k.toLowerCase(),v));
-        }else  {
-            map.forEach((k, v) ->newMap.put(k.toUpperCase(),v));
+        if (mark) {
+            m.forEach((k, v)->newMap.put(k.toLowerCase(), v));
+        } else {
+            m.forEach((k, v)->newMap.put(k.toUpperCase(), v));
         }
         return newMap;
     }
+
 }

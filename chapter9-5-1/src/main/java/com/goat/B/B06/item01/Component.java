@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by 64274 on 2019/7/15.
  *
- * @ Description:  Component 抽象组件：为组合中所有对象提供一个接口，不管是叶子对象还是组合对象。
+ * @ Description:  Component 抽象组件：为 组合模式中的 所有对象提供一个接口，不管是叶子对象还是组合对象。
  * @ author  山羊来了
  * @ date 2019/7/15---20:53
  */
