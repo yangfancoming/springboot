@@ -1,4 +1,4 @@
-package com.goat.C.C05.example01;
+package com.goat.C.C05.item01;
 
 /**父系社会，那就是男性有至高权利，handler控制权 */
 

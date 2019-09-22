@@ -1,10 +1,10 @@
-package com.goat.C.C05.example00;
+package com.goat.C.C05.item00;
 
 
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestNG {
+public class App {
 
     private MyHandler h1 = new ConcrateHandler1();
     private MyHandler h2 = new ConcrateHandler2();
@@ -15,6 +15,8 @@ public class TestNG {
     public void before(){
         h1.setSuccessor(h2).setSuccessor(h3);
     }
+
+
     @Test
     public void test0() {
         h1.handleRequest(11111); // 走三个节点
@@ -22,7 +24,7 @@ public class TestNG {
 
     @Test
     public void test1() {
-        h3.handleRequest(11111); // 只走最后一个节点
+        h3.handleRequest(1); // 只走最后一个节点
     }
 
     @Test

@@ -1,4 +1,4 @@
-package com.goat.C.C05.example00;
+package com.goat.C.C05.item00;
 
 public abstract class MyHandler {
 
@@ -12,20 +12,19 @@ public abstract class MyHandler {
      * @Date:   2018/11/1
 	*/
 	public MyHandler setSuccessor(MyHandler successor) {
-		mSuccessor = successor;
+		this.mSuccessor = successor;
 		return successor;
 	}
 	
 	public abstract void handleRequest(int request);
 
 
-
     void test(int request){
         if (mSuccessor != null) {
-            System.out.println(this.getClass().getName() + "不归我管，交给下一个");
+            System.out.println(this.getClass().getName() + "类 接收请求："+ request + " -- 不归我管，交给下一个");
             mSuccessor.handleRequest(request);
         }else {
-            System.out.println(this.getClass().getName() + "没有人能管！ 责任链结束！");
+            System.out.println(this.getClass().getName() + "  没有人能管！ 责任链结束！");
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.goat.C.C05.example01;
+package com.goat.C.C05.item01;
 
 /**部门经理类*/
 public class DM extends Handler {
