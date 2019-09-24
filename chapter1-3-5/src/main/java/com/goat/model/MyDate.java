@@ -25,7 +25,7 @@ public class MyDate {
     // 在没加任何注解的 属性  默认为 @Basic 注解
     private Integer col2;
 
-    @Transient // @Transient 是让该属性不在表中产生字段，但又可以在程序中使用它
+    @Transient // @Transient 是让该属性不在表中产生字段，但又可以在程序中使用它  JPA不映射注解
     private String info;
 
     private Timestamp createdTime; // 对应生成数据库 datetime 字段 yyyy-MM-dd HH:mm:ss 2018-12-12 20:12:04

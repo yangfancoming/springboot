@@ -33,7 +33,7 @@ public class MyTable {
     private Integer col2;
 
 
-    @Transient // @Transient 是让该属性不在表中产生字段，但又可以在程序中使用它
+    @Transient
     private String info;
 
 
