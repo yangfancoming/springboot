@@ -4,6 +4,11 @@ public abstract class MyHandler {
 
 	private MyHandler mSuccessor;
 
+
+    public MyHandler() {
+        System.out.println("MyHandler 构造函数执行");
+    }
+
 	/**
      * @Description:  责任链最经典的地方
      * @author: Goat
