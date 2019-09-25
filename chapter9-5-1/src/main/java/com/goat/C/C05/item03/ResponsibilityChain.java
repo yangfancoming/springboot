@@ -13,7 +13,7 @@ import java.util.List;
 public class ResponsibilityChain implements IResponsibility {
 
     // 完整责任链列表
-    private List<IResponsibility> list= new ArrayList<>();
+    private List<IResponsibility> list = new ArrayList<>();
 
     // 索引
     private int index = 0;

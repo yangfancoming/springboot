@@ -9,11 +9,12 @@ public class App {
     private MyHandler h1 = new ConcrateHandler1();
     private MyHandler h2 = new ConcrateHandler2();
     private MyHandler h3 = new ConcrateHandler3();
+    private MyHandler h4 = new ConcrateHandler4();
 
 
     @Before
     public void before(){
-        h1.setSuccessor(h2).setSuccessor(h3);
+        h1.setSuccessor(h2).setSuccessor(h3).setSuccessor(h4);
     }
 
 

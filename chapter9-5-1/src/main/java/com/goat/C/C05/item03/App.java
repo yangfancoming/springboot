@@ -10,13 +10,12 @@ package com.goat.C.C05.item03;
 public class App {
 
     public static void main(String[] args) {
-        String input = "A";
-        ResponsibilityChain chain= new ResponsibilityChain();
+        String input = "C";
+        ResponsibilityChain chain = new ResponsibilityChain();
         chain.add(new AResponsibility())
                 .add(new BResponsibility())
                 .add(new CResponsibility());
         chain.doSomething(input, chain);
     }
-
 
 }

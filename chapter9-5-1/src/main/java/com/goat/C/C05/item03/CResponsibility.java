@@ -7,7 +7,7 @@ package com.goat.C.C05.item03;
  * @ author  山羊来了
  * @ date 2019/9/22---20:59
  */
-public class CResponsibility implements IResponsibility{
+public class CResponsibility implements IResponsibility {
     @Override
     public void doSomething(String input, IResponsibility responsibility) {
         if ("C".equals(input)) {
