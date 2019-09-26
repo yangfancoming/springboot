@@ -22,9 +22,8 @@ public abstract class MyHandler {
 //		return this; // 如果是 返回this 则只有第一个和最后一个被调用  运行 test0 体会一下
 	}
 	
-	public abstract void handleRequest(int request);
 
-    void test(int request){
+    final void process(int request){
         if (mSuccessor != null) {
             System.out.println(this.getClass().getName() + "类 接收请求："+ request + " -- 不归我管，交给下一个");
             mSuccessor.handleRequest(request);
@@ -32,4 +31,8 @@ public abstract class MyHandler {
             System.out.println(this.getClass().getName() + "  没有人能管！ 责任链结束！");
         }
     }
+
+
+    public abstract void handleRequest(int request);
+
 }

@@ -18,7 +18,7 @@ public class App {
 
     @Test
     public void test0() {
-        h1.handleRequest(11111); // 走三个节点
+        h1.handleRequest(11); // 走三个节点
     }
 
     @Test

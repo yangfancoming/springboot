@@ -12,9 +12,7 @@ public class App {
     public static void main(String[] args) {
         String input = "C";
         ResponsibilityChain chain = new ResponsibilityChain();
-        chain.add(new AResponsibility())
-                .add(new BResponsibility())
-                .add(new CResponsibility());
+        chain.add(new AResponsibility()).add(new BResponsibility()).add(new CResponsibility());
         chain.doSomething(input, chain);
     }
 

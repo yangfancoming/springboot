@@ -10,9 +10,9 @@ public class ConcrateHandler4 extends MyHandler {
 	@Override
 	public void handleRequest(int request) {
         if (request >= 30 && request < 40) {
-            System.out.println(String.format("%s----处理请求%d", this.getClass().getName(), request));
+            System.out.println(String.format("%s----我来 处理请求%d", this.getClass().getName(), request));
         } else {
-            test(request);
+            process(request);
         }
 	}
 	
