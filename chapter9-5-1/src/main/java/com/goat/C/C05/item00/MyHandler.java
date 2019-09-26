@@ -16,12 +16,11 @@ public abstract class MyHandler {
      * @return successor  设置谁就返回谁
      * @Date:   2018/11/1
 	*/
-	public MyHandler setSuccessor(MyHandler successor) {
+	public  MyHandler setSuccessor(MyHandler successor) {
 		this.mSuccessor = successor;
 		return successor; // 重点在这里 返回的是 当前传入的对象 而不是this 所以才能组成一个链
 //		return this; // 如果是 返回this 则只有第一个和最后一个被调用  运行 test0 体会一下
 	}
-	
 
     final void process(int request){
         if (mSuccessor != null) {
@@ -31,7 +30,6 @@ public abstract class MyHandler {
             System.out.println(this.getClass().getName() + "  没有人能管！ 责任链结束！");
         }
     }
-
 
     public abstract void handleRequest(int request);
 
