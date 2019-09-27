@@ -25,6 +25,11 @@ public class SaleService {
     @Autowired VIP1StrategyImpl vip1Strategy;
     @Autowired VIP2StrategyImpl vip2Strategy;
 
+
+    // 这种方式也可以进行自动注意 但是key自动为 实现类的类名
+    @Autowired
+    Map<String, IDiscountStrategy> map = new ConcurrentHashMap<>();
+
     // 原始方式
     public void sale(String type,double price){
         if ("VIP".equals(type)){
@@ -50,7 +55,6 @@ public class SaleService {
         }
     }
 
-    Map<String, IDiscountStrategy> map = new ConcurrentHashMap<>();
 
     // sos 通过构造方法 进行  Spring注入 所有该接口的实现类！
     public SaleService(List<IDiscountStrategy> list) {
