@@ -11,10 +11,25 @@ import org.junit.Test;
  */
 public class App {
 
+    Competitor competitor = new Competitor();
+
+
 
     @Test
-    public void testA() {
-        Competitor competitor = new Competitor();
+    public void test1() {
+        CompetitorMusic competitorMusic = new CompetitorMusic(competitor);
+        competitorMusic.sing();
+    }
+
+    @Test
+    public void test2() {
+        CompetitorMusic competitorMusic = new CompetitorMusic(competitor);
+        CompetitorDance competitorDance = new CompetitorDance(competitorMusic);
+        competitorDance.sing();
+    }
+
+    @Test
+    public void test3() {
         CompetitorMusic competitorMusic = new CompetitorMusic(competitor);
         CompetitorDance competitorDance = new CompetitorDance(competitorMusic);
         CompetitorApplause competitorApplause = new CompetitorApplause(competitorDance);
@@ -26,9 +41,9 @@ public class App {
         Competitor competitor = new Competitor();
         int a = 30;
         //做业务判断
+        if( a < 10 ){ competitor = new CompetitorDance(competitor); }
         if( a == 10 ){ competitor = new CompetitorMusic(competitor); }
         if( a > 20) { competitor = new CompetitorApplause(competitor); }
-        if( a < 10 ){ competitor = new CompetitorDance(competitor); }
         competitor.sing();
     }
 

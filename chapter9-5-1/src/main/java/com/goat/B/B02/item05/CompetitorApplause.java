@@ -22,6 +22,6 @@ public class CompetitorApplause extends Competitor{
     }
 
     public void applause(){
-        System.out.println("观众鼓掌中。。。。。。。。");
+        System.out.println("鼓掌中。。。。。。。。");
     }
 }

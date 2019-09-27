@@ -9,14 +9,15 @@ package com.goat.B.B02.example00;
  */
 public class ConcreteDecoratorB extends Decorator {
 
+
+    public void addedBehavior() {
+        System.out.print("B中的新增行为 ");
+    }
+
     @Override
     public void operation() {
         super.operation();
         addedBehavior();
         System.out.println("具体装饰对象B的操作");
-    }
-
-    public void addedBehavior() {
-        System.out.print("B中的新增行为 ");
     }
 }
