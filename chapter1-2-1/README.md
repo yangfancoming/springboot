@@ -52,3 +52,12 @@
     log4j.appender.stdout=org.apache.log4j.ConsoleAppender
     log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
     log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n
+
+
+# tomcat启动日志控制台出现乱码解决办法
+    下载了一个8.5的tomcat容器，启动时发现日志控制台出现乱码，处于强迫症，研究了下解决办法。
+    在config目录下将log.properties文件中第47行修改成GBK或者GB2312即可。
+    java.util.logging.ConsoleHandler.encoding = UTF-8
+    修改为：
+    java.util.logging.ConsoleHandler.encoding = GBK
+    再一次启动就正常了。 
