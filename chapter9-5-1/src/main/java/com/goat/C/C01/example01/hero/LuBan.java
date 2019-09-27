@@ -12,7 +12,6 @@ import com.goat.C.C01.example01.skill.GunSkill;
 public class LuBan extends Hero {
 
     public LuBan() {
-        super();
         System.out.println("鲁班七号：魔法大师，智障250，@￥%*&￥#... ");
         mBehavior = new GunSkill();
     }

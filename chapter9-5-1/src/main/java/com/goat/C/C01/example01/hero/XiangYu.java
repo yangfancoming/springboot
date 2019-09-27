@@ -12,7 +12,6 @@ import com.goat.C.C01.example01.skill.KnifeSkill;
 public class XiangYu extends Hero {
 
     public XiangYu(){
-        super();
         System.out.println("项羽：我命由我... ");
         mBehavior = new KnifeSkill();
     }
