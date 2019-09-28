@@ -8,6 +8,7 @@ package com.goat.C.C02.item01;
  * @date 2018/11/4---16:36
  */
 public class Bouilli extends DodishTemplate {
+
     @Override
     public void preparation() {
         System.out.println("切猪肉和土豆。");

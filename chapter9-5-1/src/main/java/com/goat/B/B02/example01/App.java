@@ -64,6 +64,8 @@ public class App {
         //创建法师
         IAttribute attribute = new Mage();
         attribute = new Shoe(attribute);//鞋子
+        attribute = new Sword(attribute);//剑
+        attribute = new Bow(attribute);//弓
         attribute = new Wand(attribute);//法杖
         pringMsg(attribute);
 

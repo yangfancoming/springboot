@@ -32,6 +32,6 @@ public class Shoe extends Equip {
 
     @Override
     public String getDescribe() {
-        return super.attribute.getDescribe() + ","+describe;
+        return super.attribute.getDescribe() + "," + describe;
     }
 }

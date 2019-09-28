@@ -15,7 +15,7 @@ public class Warrior implements IAttribute {
     //攻击力
     private float power = 20f;
     //描述
-    private String describe = "武士";
+    private String describe = "战士";
 
     @Override
     public String getDescribe() {
