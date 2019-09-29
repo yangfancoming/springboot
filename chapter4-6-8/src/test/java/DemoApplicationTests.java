@@ -5,27 +5,27 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.*;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
 public class DemoApplicationTests {
-//
-//    @Test
-//    public void contextLoads() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
-//        String url = "jdbc:sqlserver://localhost:1434;databaseName=student";
-//        String username = "sa";
-//        String password = "123456";
-//        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
-//        Connection   conn = DriverManager.getConnection(url, username, password);
-//        String sql = "select * from student where id = ?";
-//        PreparedStatement pre = conn.prepareStatement(sql);
-//        pre.setInt(1, 1);
-//        ResultSet rs = pre.executeQuery();
-//        System.out.println(rs.first());
-//    }
+
+    @Test
+    public void contextLoads3() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+        String url = "jdbc:sqlserver://localhost:1434;databaseName=student";
+        String username = "sa";
+        String password = "123456";
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+        Connection   conn = DriverManager.getConnection(url, username, password);
+        String sql = "select * from student where id = ?";
+        PreparedStatement pre = conn.prepareStatement(sql);
+        pre.setInt(1, 1);
+        ResultSet rs = pre.executeQuery();
+        System.out.println(rs.first());
+    }
 
 
     @Test
-    public void contextLoads() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+    public void contextLoads2() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
         // sqlserver 默认端口 1433
         String url = "jdbc:sqlserver://localhost:1433;databaseName=tianjincollect";
         String username = "sa";
@@ -41,4 +41,21 @@ public class DemoApplicationTests {
         //
     }
 
+
+    @Test
+    public void contextLoads() throws SQLException, ClassNotFoundException, IllegalAccessException, InstantiationException {
+        // sqlserver 默认端口 1433
+        String url = "jdbc:sqlserver://192.168.101.6;DatabaseName=JYT_MESDB";
+        String username = "sa";
+        String password = "JYT@2018";
+        // 驱动jar 类名
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+        Connection conn = DriverManager.getConnection(url, username, password);
+        String sql = "select * from sysdiagrams";
+        PreparedStatement pre = conn.prepareStatement(sql);
+        //
+        ResultSet rs = pre.executeQuery();
+        System.out.println(rs.first());
+        //
+    }
 }
