@@ -9,7 +9,9 @@ import java.util.List;
  */
 public class WechatServer implements Observerable {
 
-    private List<Observer> list;  //注意到这个List集合的泛型参数为Observer接口，设计原则：面向接口编程而不是面向实现编程
+    //注意到这个List集合的泛型参数为Observer接口，设计原则：面向接口编程而不是面向实现编程
+    private List<Observer> list;
+
     private String message;
 
     public WechatServer() {
@@ -23,8 +25,9 @@ public class WechatServer implements Observerable {
 
     @Override
     public void removeObserver(Observer o) {
-        if(!list.isEmpty())
+        if(!list.isEmpty()) {
             list.remove(o);
+        }
     }
 
     @Override

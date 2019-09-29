@@ -1,5 +1,13 @@
 
 
+两个项目 配置使用  
+
+==chapter2-7-1 springboot  集成 HttpClient ==
+
+==chapter2-0-8 springboot  集成 MockMvc和Swagger2==
+
+
+
 工程配置
 
 - ==chapter0-0-0 springboot 空项目==
@@ -27,6 +35,9 @@
 - ==chapter1-2-5 springboot  日志输出至Logstash  properties方式==    失败
 - ==chapter1-2-6 springboot  自定义starter==
 - ==chapter1-2-7 springboot  注解开发==
+- ==chapter1-3-0 springboot  日志框架 Slf4j ==
+- ==chapter1-3-0 springboot  日志框架 Log4j==
+- ==chapter1-3-0 springboot  日志框架 CommonsLogging==
 
 
 
@@ -165,6 +176,7 @@ AOP
 - ==chapter4-2-4：springboot 集成  JPA 分页查询 JSP + DataTable==  
 - ==chapter4-3-0：springboot 集成   getResourceAsStream   == 
 - ==chapter4-3-5：springboot 集成   手写mybatis框架  == 
+- ==chapter4-3-7：springboot 集成   自己手写mybatis框架    == 
 - ==chapter4-4-0：springboot 集成   解析 XML == 
 - ==chapter4-4-1：springboot 集成 mybatis   Dao接口 + sqlxml 实现== 
 - ==chapter4-4-2：springboot 集成 mybatis   Dao接口 +  注解 实现==
@@ -177,6 +189,7 @@ AOP
 - ==chapter4-6-3：springboot 集成 H2 + mybatis==
 - ==chapter4-6-4：springboot 集成 H2 + jdbc==
 - ==chapter4-6-6：springboot 集成 HSqlDB+ JPA==
+- ==chapter4-6-8：springboot 集成 sqlserver==
 - ==chapter4-7-0：springboot 集成 多数据源 基于 JPA和Mybatis==
 - ==chapter4-7-5：springboot 集成 mysql读写分离  基于 IO.shardingJDBC==
 - ==chapter4-7-6：springboot 集成 mysql读写分离  基于 DD.shardingJDBC==
@@ -377,11 +390,14 @@ JVM
 - ==chapter9-9-5：springboot  Junit 读取 resources ==
 - ==chapter9-9-6：springboot 集成 TestNG==
 - ==chapter9-9-9：提供测试代码 编写==
+  
 
-  
-  
-  
-  
+
+
+
+
+
+
 JavaSe 项目目录
 
 
@@ -398,4 +414,3 @@ JavaSe 项目目录
 - ==chapter99-17-3：Java 网络编程==
 - ==chapter99-18-3：Java 类加载机制与反射==
 - ==chapter99-20-1：单机游戏==
-
