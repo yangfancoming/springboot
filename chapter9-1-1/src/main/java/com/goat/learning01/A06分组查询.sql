@@ -10,8 +10,8 @@ SELECT DEPTNO  ,  count(*),GROUP_CONCAT(ENAME) FROM emp GROUP BY DEPTNO HAVING c
 # 【例7.26】根据s_id对fruits表中的数据进行分组，SQL语句如下：
 SELECT * FROM fruits;
 SELECT s_id, COUNT(*) AS Total  FROM fruits GROUP BY s_id;
-SELECT s_id, GROUP_CONCAT(f_name) AS Total  FROM fruits GROUP BY s_id ORDER BY s_id ASC;
 SELECT s_id, f_name FROM fruits GROUP BY s_id ORDER BY s_id ASC ;
+SELECT s_id, GROUP_CONCAT(f_name) AS Total  FROM fruits GROUP BY s_id ORDER BY s_id ASC;
 
 # 【例7.27】根据s_id对fruits表中的数据进行分组，将每个供应商的水果名称显示出来，SQL语句如下：
 SELECT s_id, GROUP_CONCAT(f_name) AS Names FROM fruits GROUP BY s_id;
