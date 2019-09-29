@@ -24,6 +24,9 @@ select * from user u where exists (select * from salgrade s where s.GRADE = u.id
 select * from user where user.id in (select GRADE from salgrade);
 
 
+
+
+
 SELECT * FROM fruits ;
 SELECT * FROM suppliers ;
 
