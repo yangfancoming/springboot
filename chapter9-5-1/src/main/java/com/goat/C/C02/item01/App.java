@@ -19,11 +19,11 @@ public class App {
         DodishTemplate eggsWithTomato = new EggsWithTomato();
         eggsWithTomato.spit = true;// 通知厨师吐痰
         eggsWithTomato.dodish();
-        System.out.println("番茄炒蛋。。。。。。。。。。。。。。。OK！");
+//        System.out.println("番茄炒蛋。。。。。。。。。。。。。。。OK！");
 
         DodishTemplate bouilli = new Bouilli();
         bouilli.dodish();
-        System.out.println("红烧肉。。。。。。。。。。。。。。。OK！");
+//        System.out.println("红烧肉。。。。。。。。。。。。。。。OK！");
     }
 
 }
