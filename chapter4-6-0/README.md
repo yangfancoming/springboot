@@ -23,3 +23,26 @@
     Navicat premium 客户端 点击 工具栏中的 工具按钮 --------选项------其他----OCI-----oci.dll
     解压 instantclient_11_2.zip 压缩包 到随意路径   将此文件夹内的 oci.dll 设置到 Navicat中 就可以了
     原来 Navicat 用的是 instantclient_10_2 的驱动  而要连接的Oracle是 11g/12g 的 所以会报错
+    
+    
+    
+# # Oracle的ORA-02292报错：违反完整性约束，已找到子记录
+  
+    第一种方法：
+    
+    第一步就是找到子表的记录：
+    select a.constraint_name, a.table_name, b.constraint_name
+    from user_constraints a, user_constraints b
+    where a.constraint_type = 'R'
+      and b.constraint_type = 'P'
+      and a.r_constraint_name = b.constraint_name
+      and a.constraint_name = 'FKXXX' --提示的报错信息FK...填入这里。
+    
+      第二步： 删除子表中的外键  或   删除子表中的所有记录。
+      第三步： 就可以轻松删除主表的记录啦。
+      
+  
+      第二种方法： 根据提示的name关掉。
+    alter table sysuser_role disable constraint FK671FDKRNUAA98IUUKGKM803VS cascade
+    alter table sysuser_role enable constraint FK671FDKRNUAA98IUUKGKM803VS
+    
