@@ -13,4 +13,6 @@ public interface CumDemoRepository extends JpaRepository<Order, Long> {
     */
     @Query(value = "SELECT a.id,a.money,SUM(lt.money) as cum FROM cum_demo a JOIN cum_demo lt  ON a.id >= lt.id GROUP BY a.money ORDER BY id",nativeQuery = true)
     List<Object[]> test();
+
+
 }
