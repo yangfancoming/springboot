@@ -30,10 +30,7 @@
 use mysql;
 select host , user from user;
 
-# 显示都有哪些数据库
-show databases;
-# 显示都有哪些表
-show tables;
+
 # 创建账号
 create user goat identified by '123';
 set password=PASSWORD('12345');
