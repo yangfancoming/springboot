@@ -1,4 +1,6 @@
-﻿-- 下面是SELECT语句的逻辑执行顺序
+﻿
+
+-- 下面是SELECT语句的逻辑执行顺序
 # FROM
 # ON
 # JOIN

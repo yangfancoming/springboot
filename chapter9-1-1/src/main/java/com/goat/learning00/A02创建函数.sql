@@ -1,4 +1,6 @@
-﻿CREATE FUNCTION get_taskname(id VARCHAR(32))
+﻿
+
+CREATE FUNCTION get_taskname(id VARCHAR(32))
   RETURNS VARCHAR(255)
   BEGIN
     DECLARE titles VARCHAR(255) ;
