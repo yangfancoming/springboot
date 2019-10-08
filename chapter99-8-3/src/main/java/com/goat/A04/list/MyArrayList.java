@@ -1,7 +1,8 @@
-package com.goat.A04;
+package com.goat.A04.list;
 
 
-import org.junit.Before;
+import com.goat.A04.A;
+import com.goat.A04.BaseListData;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -21,30 +22,7 @@ import java.util.ListIterator;
  * 3.java8 新增加 void replaceAll(UnaryOperator operator) 根据指定规则重新设置List集合的所有元素
  *                void  sort(Comparator c)                根据Comparator参数对List集合的元素排序，可以用lambda作为参数
  */
-public class MyArrayList {
-    ArrayList c = new ArrayList();
-    ArrayList cc = new ArrayList();
-    /**
-     * 在执行目标测试方法testTest()前执行
-     */
-    @Before
-    public void testBefore() {
-        c.add("周永康");
-        c.add("孙悟空");
-        c.add("三张");
-        c.add("李四");
-        c.add("李四");
-        c.add("李四");
-        c.add("王五");
-        System.out.println("----------------c---------------------");
-
-        cc.add("7");
-        cc.add(8);
-        cc.add(9);
-        cc.add(10);
-        cc.add(11);
-        System.out.println("----------------cc---------------------");
-    }
+public class MyArrayList extends BaseListData {
 
     @Test
     public void add(){  // fuck List作为Collection的子类 具有的特有功能  在指定位置 添加元素

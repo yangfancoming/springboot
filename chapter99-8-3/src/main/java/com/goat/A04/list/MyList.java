@@ -1,8 +1,9 @@
-package com.goat.A04;
+package com.goat.A04.list;
 
 
 
 
+import com.goat.A04.BaseListData;
 import com.goat.model.Book;
 import com.goat.model.Person;
 import org.junit.Before;
@@ -24,24 +25,9 @@ import static java.util.stream.Collectors.toList;
      * @author: Goat
      * @Date:  2018年12月26日18:52:32
 */
-public class MyList {
+public class MyList extends BaseListData {
 
-    List<String> list1 = new ArrayList<>();
-    List<String> list2 = new ArrayList<>();
 
-    @Before
-    public void before(){
-        list1.add("1");
-        list1.add("2");
-        list1.add("3");
-        list1.add("5");
-        list1.add("6");
-
-        list2.add("2");
-        list2.add("3");
-        list2.add("7");
-        list2.add("8");
-    }
     @Test
     public void test()  {
         // 交集
