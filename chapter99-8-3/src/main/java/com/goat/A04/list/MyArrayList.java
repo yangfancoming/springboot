@@ -140,6 +140,7 @@ public class MyArrayList extends BaseListData {
         books.remove(new A());     // ②
         System.out.println(books);
     }
+
     @Test
     public void distinct1(){ //  ArrayList 集合去重方法   新建换一个临时集合方法
         ArrayList temp = new ArrayList();
@@ -150,8 +151,8 @@ public class MyArrayList extends BaseListData {
             }
         }
         System.out.println(temp);
-
     }
+
     @Test
     public void distinct2(){ //  ArrayList 集合去重方法  不创建新集合  遍历发现重复就删
         for (int i = 0; i < c.size()-1; i++) {

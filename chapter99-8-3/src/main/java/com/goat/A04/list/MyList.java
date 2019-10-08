@@ -1,12 +1,9 @@
 package com.goat.A04.list;
 
 
-
-
 import com.goat.A04.BaseListData;
 import com.goat.model.Book;
 import com.goat.model.Person;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
