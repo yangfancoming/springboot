@@ -24,7 +24,9 @@
     解压 instantclient_11_2.zip 压缩包 到随意路径   将此文件夹内的 oci.dll 设置到 Navicat中 就可以了
     原来 Navicat 用的是 instantclient_10_2 的驱动  而要连接的Oracle是 11g/12g 的 所以会报错
     
-    
+# 项目启动后 连接Oracle 报错： java.net.NoRouteToHostException: No route to host: connect
+    1.电脑没联网。。。
+    2.Oracle主机防火墙
     
 # # Oracle的ORA-02292报错：违反完整性约束，已找到子记录
   
