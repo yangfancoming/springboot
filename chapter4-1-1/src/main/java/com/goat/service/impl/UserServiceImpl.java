@@ -40,6 +40,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<Map<String, Object>> getByPn(String pn) {
+        List<Map<String, Object>> list = jdbcTemplate.queryForList("select AREA_NAME from WS_AREA_INFO where PN = ?", pn);
+        return list;
+    }
+
+    @Override
     public void deleteAllUsers() {
         jdbcTemplate.update("delete from emp");
     }

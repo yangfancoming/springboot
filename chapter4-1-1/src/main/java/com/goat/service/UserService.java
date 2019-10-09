@@ -19,6 +19,9 @@ public interface UserService {
      */
     void deleteByName(String name);
 
+
+    List<Map<String, Object>> getByPn(String pn);
+
     /**
      * 获取用户总量
      */
