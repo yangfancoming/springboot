@@ -8,6 +8,12 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * 按id从小到大
+ * List<User> sortUser = list.stream().sorted((u1, u2) -> u1.getId().compareTo(u2.getId())).collect(Collectors.toList());
+ * 按id从大到小
+ * List<User> sortUser = list.stream().sorted((u1, u2) -> u2.getId().compareTo(u1.getId())).collect(Collectors.toList());
+*/
 public class StreamSorted {
 
     List<String> strs2 = Arrays.asList("aaa3","aaa1", "bbb1", "aaa2", "bbb2", "bbb3" , "ccc", "ddd1", "ddd2");
