@@ -10,9 +10,9 @@ package com.goat.B.B08.item02;
 public class Consumer {
 
     private String name;
-    private Integer star;
-    private Integer existsYears;
-    private Integer combos;
+    private Integer star; // 星级
+    private Integer existsYears; // 在网年限
+    private Integer combos; // 套餐
 
     public Consumer(String name, Integer star, Integer existsYears, Integer combos) {
         this.name = name;

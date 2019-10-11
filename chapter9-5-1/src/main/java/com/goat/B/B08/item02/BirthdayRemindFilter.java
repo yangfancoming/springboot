@@ -1,7 +1,7 @@
 package com.goat.B.B08.item02;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by 64274 on 2019/10/10.
@@ -14,14 +14,9 @@ public class BirthdayRemindFilter implements Filter {
 
     @Override
     public List<Consumer> filtrate(List<Consumer> consumers) {
-        List<Consumer> cs = new ArrayList<Consumer>();
         // 星级为5星级以上 赠送生日提醒
-        for (Consumer c : consumers) {
-            if (c.getCombos() >= 138) {
-                cs.add(c);
-            }
-        }
-        return cs;
+        List<Consumer> collect = consumers.stream().filter(x->x.getStar() >= 5).collect(Collectors.toList());
+        return collect;
     }
 }
 
