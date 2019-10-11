@@ -1,5 +1,5 @@
 ﻿
-# 修改 表中 某时间字段 默认值为 系统当前时间戳
+# 修改 表中 某时间字段 默认值为 系统当前时间戳  mysql默认事件
 ALTER TABLE smms.c_step MODIFY CREATETIME DATETIME DEFAULT CURRENT_TIMESTAMP();
 ALTER TABLE authority.sys_role MODIFY createtime DATETIME DEFAULT CURRENT_TIMESTAMP();
 
