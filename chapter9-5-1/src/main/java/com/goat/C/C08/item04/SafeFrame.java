@@ -17,7 +17,7 @@ public class SafeFrame extends Frame implements Context, ActionListener {
 
     private static final long serialVersionUID = 1676660221139225498L;
 
-    private Button btnUse = new Button("use");
+    private Button btnUse = new Button("Use");
     private Button btnAlarm=new Button("Alarm");
     private Button btnPhone=new Button("Call");
     private Button btnExit=new Button("Exit");
