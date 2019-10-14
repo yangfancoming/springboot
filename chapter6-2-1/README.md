@@ -18,3 +18,11 @@
         这是因为你的fromEmail（发件人）和tran.connect（邮件发送对象）使用的邮箱不一致，解决办法:保持一致
     使用163的服务  spring.mail.host=smtp.163.com
     却使用了 qq的用户发送  spring.mail.username=642744551@qq.com
+    
+    
+    
+# javax.mail.AuthenticationFailedException: 460 ERR.LOGIN.PASSERR
+    删除 网页邮箱设置中的 邮箱客户端中的  已生成的授权码 后  再次发送邮件 则会报该错！
+    
+    
+# 

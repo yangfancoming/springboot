@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Created by 64274 on 2019/10/14.
  *
- * @ Description: TODO
+ * @ Description:
  * @ author  山羊来了
  * @ date 2019/10/14---12:36
  */
@@ -35,7 +35,7 @@ public class TestController {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(from);
         message.setTo(to);
-        message.setSubject("简单邮件");
+        message.setSubject("简单111邮件");
         message.setText("简单邮件的简单内容");
         mailSender.send(message);
     }
