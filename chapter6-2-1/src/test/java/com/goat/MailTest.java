@@ -34,9 +34,9 @@ public class MailTest {
     private JavaMailSender mailSender; //自动注入的Bean
 
     @Value("${spring.mail.username}")
-    private String from; // 读取配置文件中的参数
+    private String to; // 读取配置文件中的参数
 
-    private String to = "1286031921@qq.com"; // 接收地址
+    private String from  = "1286031921@qq.com"; // 接收地址
 
     @Autowired
     private TemplateEngine templateEngine;
