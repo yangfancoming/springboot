@@ -53,3 +53,8 @@
     9、Engine把HttpServletResponse对象返回Connector。 
     10、Connector把HttpServletResponse对象返回给客户Browser。
         
+        
+#  外置 Tomcat 部署项目 遇到 本地好使 打war包 部署测试环境好使  但是增量更新到正式环境 出现异常
+    1.IDEA 远程调试  发现 xxxclass$1 not found   
+    2.是由于 一个java文件中 有2个内部类  导致该java文件编译后 有3个class文件  在增量更新后 只更新了只有1个class 导致出现异常
+        
