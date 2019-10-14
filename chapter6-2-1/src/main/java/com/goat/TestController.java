@@ -25,7 +25,8 @@ public class TestController {
     private String from ; // 读取配置文件中的参数
 
 //    private String to  = "1286031921@qq.com"; // 接收地址
-    private String to  = "qianqian.xie@sim.com"; // 接收地址
+//    private String to  = "qianqian.xie@sim.com"; // 接收地址
+    private String to  = "zhineng.hu@sim.com"; // 接收地址
 
 
     //  http://localhost:8621/mail/test1

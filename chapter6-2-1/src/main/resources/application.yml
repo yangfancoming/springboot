@@ -1,0 +1,17 @@
+spring:
+  mail:
+#    host: smtp.exmail.qq.com  # qq 邮箱服务
+    host: smtphz.qiye.163.com  # 网易163邮箱服务
+    protocol: smtp
+    port: 465
+    username: fan.yang@sim.com #邮箱地址
+    password: QphEyxCWLgS2aJSC #邮箱密码
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+            socketFactory:
+              class: com.sun.mail.util.MailSSLSocketFactory
+              fallback: false
