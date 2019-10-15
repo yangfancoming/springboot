@@ -24,14 +24,13 @@ public class App {
     @Test
     public void test(){
 
-
     }
 
     public static void main(String[] args) {
 
         SafeFrame f=new SafeFrame("状态模式");
         while(true){
-            for(int hour=1;hour<=24;hour++){
+            for(int hour = 1;hour <= 24;hour++){
                 f.setClock(hour);
                 try {
                     Thread.sleep(1000);

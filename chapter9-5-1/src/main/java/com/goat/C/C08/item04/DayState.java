@@ -10,7 +10,7 @@ package com.goat.C.C08.item04;
 public class DayState implements State {
 
 
-    private static DayState dayState=new DayState();
+    private static DayState dayState = new DayState();
 
     public static DayState getInstance() {
         return dayState;

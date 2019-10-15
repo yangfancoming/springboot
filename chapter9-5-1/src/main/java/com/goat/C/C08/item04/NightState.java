@@ -9,7 +9,7 @@ package com.goat.C.C08.item04;
  */
 public class NightState implements State {
 
-    private static NightState nightState=new NightState();
+    private static NightState nightState = new NightState();
 
     public static NightState getInstance() {
         return nightState;
@@ -17,7 +17,7 @@ public class NightState implements State {
 
     @Override
     public void doClock(Context context, int hour) {
-        if(hour>=6 && hour <18){
+        if(hour >= 6 && hour < 18){
             //白天
             context.changeState(DayState.getInstance());
         }
