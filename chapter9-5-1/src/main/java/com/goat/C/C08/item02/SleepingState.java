@@ -9,6 +9,7 @@ package com.goat.C.C08.item02;
  */
 
 public class SleepingState extends State {
+
     @Override
     public void writeProgram(Work work) {
         System.out.println("当前时间" + work.getHour() + "不行了，睡着了");

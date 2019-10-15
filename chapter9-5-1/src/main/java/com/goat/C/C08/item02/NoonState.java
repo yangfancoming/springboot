@@ -8,6 +8,7 @@ package com.goat.C.C08.item02;
  * @ date 2019/10/11---15:52
  */
 public class NoonState extends State {
+
     @Override
     public void writeProgram(Work work) {
         if (work.getHour() < 13){
