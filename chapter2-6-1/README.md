@@ -73,4 +73,9 @@
     -agentlib:jdwp=transport=dt_socket,address=5005,suspend=n,server=y"
     export CATALINA_OPTS
     # OS specific support.  $var _must_ be set to either true or false.
-        
+
+
+# 注意事项
+    当开启远程Debug后，任何能走到断点的操作都会导致业务阻塞到断点位置，从而影响业务流程的正常执行，
+    所以最好选择没什么用户操作的时候进行远程Debug调试。
+    远程Debug调试过程中，结束调试不会导致远程业务流程终止，线上业务会继续执行。
