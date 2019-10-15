@@ -57,4 +57,20 @@
 #  外置 Tomcat 部署项目 遇到 本地好使 打war包 部署测试环境好使  但是增量更新到正式环境 出现异常
     1.IDEA 远程调试  发现 xxxclass$1 not found   
     2.是由于 一个java文件中 有2个内部类  导致该java文件编译后 有3个class文件  在增量更新后 只更新了只有1个class 导致出现异常
+    
+    
+#  远程tomcat catalina.sh 配置文件 加入  CATALINA_OPTS=
+    #   USE_NOHUP       (Optional) If set to the string true the start command will
+    #                   use nohup so that the Tomcat process will ignore any hangup
+    #                   signals. Default is "false" unless running on HP-UX in which
+    #                   case the default is "true"
+    # -----------------------------------------------------------------------------
+    CATALINA_OPTS="-Dcom.sun.management.jmxremote
+    -Dcom.sun.management.jmxremote.port=1099
+    -Dcom.sun.management.jmxremote.ssl=false
+    -Dcom.sun.management.jmxremote.authenticate=false
+    -Djava.rmi.server.hostname=192.168.136.128
+    -agentlib:jdwp=transport=dt_socket,address=5005,suspend=n,server=y"
+    export CATALINA_OPTS
+    # OS specific support.  $var _must_ be set to either true or false.
         
