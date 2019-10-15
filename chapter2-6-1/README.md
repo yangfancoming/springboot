@@ -74,8 +74,21 @@
     export CATALINA_OPTS
     # OS specific support.  $var _must_ be set to either true or false.
 
+#  开启方法
+    开启远程Debug服务
+    1）对于jar包项目
+    命令行添加启动项，如下：
+    ## 注意新参数必须在 -jar 之前
+    jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -jar test.jar
+    
+    2）对于war包项目
+    启动脚本（catalina.sh）添加如下信息：
+    ## sudo vim $CATALINA_HOME/bin/catalina.sh
+    JAVA_OPTS="$JAVA_OPTS -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"
 
 # 注意事项
     当开启远程Debug后，任何能走到断点的操作都会导致业务阻塞到断点位置，从而影响业务流程的正常执行，
     所以最好选择没什么用户操作的时候进行远程Debug调试。
     远程Debug调试过程中，结束调试不会导致远程业务流程终止，线上业务会继续执行。
+    
+    
