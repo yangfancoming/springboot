@@ -74,3 +74,27 @@
     1. 检查你的commit中的邮箱信息，这个邮箱必须和你的github.com账号关联。怎么关联邮箱账号呢。先选择Account Setting, 在左边先Emails，
         于是就看到可以verify邮箱地址的页面了。关联邮箱地址后还有过一段时间，贡献者列表才会更新。
     2. 你的commit必须被提交到工程的默认分支上。如果提交到其它的分支上，你的名字就不会被显示。
+    
+    
+    
+    
+# IDEA 本地项目 上传到 远程git仓库  注意：不是GitHub
+        复制粘贴出已经Git控制的项目文件夹  然后将新项目文件夹中的.git隐藏文件夹删除掉 (干掉版本控制)
+        
+        然后 VCS --- import into version Control --- Create Git Resiptory 
+        然后 设置 远程分支 VCS ---  Git --- Remotes  输入 git url 
+        
+        
+        IDEA push 后报错
+       报错： Push rejected: Push to origin/master was rejected 
+       
+       切换到自己项目所在的目录 (.git 所在目录)，右键选择GIT BASH Here
+       在terminl窗口中依次输入命令：
+       git pull
+       git pull origin master
+       git pull origin master --allow-unrelated-histories
+       在idea中重新push自己的项目，即可成功push。
+       
+       IDEA  pull 拉取代码报错后
+       VCS ---  Git --- pull  弹出框中 点击刷新分支按钮后  打钩刷新出的分支 再pull拉取代码 就可以了
+    
