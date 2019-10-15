@@ -1,5 +1,7 @@
 package com.goat.B.B07.item01;
 
+import org.junit.Test;
+
 /**
  * Created by 64274 on 2019/4/25.
  *
@@ -9,7 +11,11 @@ package com.goat.B.B07.item01;
  */
 public class App {
 
-    public static void main(String[] args) {
+    /**
+     *  一共 getShape 5次  实际只创建了3个对象
+    */
+    @Test
+    public void test(){
         Shape shape1 = FlyweightFactory.getShape("red");
         shape1.draw();
 
@@ -25,6 +31,10 @@ public class App {
         Shape shape5 = FlyweightFactory.getShape("gray");
         shape5.draw();
 
-        System.out.println("一共绘制了"+FlyweightFactory.getSum()+"中颜色的圆形");
+        System.out.println("一共绘制了"+FlyweightFactory.getSum()+"种颜色的圆形");
+    }
+    @Test
+    public void test1(){
+
     }
 }

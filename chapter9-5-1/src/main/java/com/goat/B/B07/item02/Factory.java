@@ -15,13 +15,14 @@ public abstract class Factory {
 
     // 参数 state 是外部状态
     public Flyweight factory(Character state){
-        if ( map.containsKey( state ) ){ // 返回已经存在的 实现类
+        // 返回已经存在的 实现类
+        if ( map.containsKey( state ) ){
             return (Flyweight) map.get( state );
         }
-
         Flyweight fly = new ConcreteFlyweight( state );
         map.put( state , fly);
-        return fly; //如果不存在则 返回 新创建的实现类
+        //如果不存在则 返回 新创建的实现类
+        return fly;
     }
 
     public void checkFlyweight() {

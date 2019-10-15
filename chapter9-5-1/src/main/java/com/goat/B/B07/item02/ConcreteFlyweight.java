@@ -8,7 +8,8 @@ public class ConcreteFlyweight extends Flyweight {
         this.intrinsicState = state;
 	}
 	
-	public void operation(String state) {
+	@Override
+    public void operation(String state) {
 		System.out.print( "\n Intrinsic State = " + intrinsicState + ", Extrinsic State = " + state);
 	}
 }
