@@ -86,9 +86,11 @@
     ## sudo vim $CATALINA_HOME/bin/catalina.sh
     JAVA_OPTS="$JAVA_OPTS -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005"
 
+    3）开启成功后  远程tomcat catalina.out 日志会显示     Listening for transport dt_socket at address: 5005 
+    
 # 注意事项
     当开启远程Debug后，任何能走到断点的操作都会导致业务阻塞到断点位置，从而影响业务流程的正常执行，
     所以最好选择没什么用户操作的时候进行远程Debug调试。
     远程Debug调试过程中，结束调试不会导致远程业务流程终止，线上业务会继续执行。
     
-    
+
