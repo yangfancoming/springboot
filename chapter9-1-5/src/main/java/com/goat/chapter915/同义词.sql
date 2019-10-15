@@ -1,3 +1,8 @@
+# Oracle 同义词 概念容易混淆的地方：
+# 是先创建link连接
+# 创建连接之后 在创建同义词
+# 实际情况也可以 只创建link连接 不创建同义词 也可以远程访问
+
 # =============================  示例1
 #
 # A数据库访问B数据库的表table(两台数据库不在同一个数据库)此处不考虑权限问题
@@ -105,3 +110,15 @@ from erp_imaauc_v@ERP_DB_READ_VIEW
 #   ERP_DB_READ_VIEW  ==   link
 #   erp_imaauc_v == tableName
 # select * from erp_imaauc_v@ERP_DB_READ_VIEW;
+
+
+
+
+# 查看所有 link
+select * from dba_db_links;
+select * from all_synonyms;
+select * from user_synonyms;
+select * from dba_synonyms;
+
+select * from dba_synonyms where synonym_name like '%ERP%';
+select * from dba_synonyms where table_name like '%ERP%';
