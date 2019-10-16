@@ -14,8 +14,7 @@ public class WebSiteFactory {
 		if(!pool.containsKey(key)) {
 			pool.put(key, new ConcreteWebSite(key));
 		}
-		
-		return (WebSite)pool.get(key);
+		return pool.get(key);
 	}
 	
 	//获得网站分类总数
