@@ -169,7 +169,8 @@ AOP
 持久层数据访问
 
 - ==chapter4-0-0：springboot 集成  Druid连接池及监控界面==
-- ==chapter4-1-1：springboot 中使用 JDBC==   
+- ==chapter4-0-4：springboot 使用  内置数据库连接池==
+- ==chapter4-1-1：springboot 中使用 JDBC  JdbcTemplate==   
 - ==chapter4-2-0：springboot 集成 JPA 乐观锁==  
 - ==chapter4-2-1：springboot 集成 JPA==  
 - ==chapter4-2-2：springboot 集成 JPA  复杂条件查询 ==  
@@ -235,7 +236,7 @@ AOP
 
 
 - ==chapter6-1-1：springboot 集成 Swagger2==
-- ==chapter6-2-1：springboot 集成 Email==
+- ==chapter6-2-1：springboot 集成 Email 邮件  邮箱==
 - ==chapter6-2-4：springboot 集成 StateMachine  官网demo==
 - ==chapter6-2-5：springboot 集成 StateMachine 框架实现状态机1==
 - ==chapter6-2-6：springboot 集成 StateMachine 框架实现状态机2==
@@ -347,7 +348,11 @@ JVM
 
 
 
+项目经验总结
 
+==chapter8-8-8：springboot 集成 项目经验总结==
+
+==chapter8-9-0：springboot 集成 Linux 系统 总结==
 
 高并发 
 
@@ -356,8 +361,12 @@ JVM
 
 
 
+
+
+
 - ==chapter9-1-1：Mysql 积累和总结==
 - ==chapter9-1-2：Mysql  各种配置==
+- ==chapter9-1-5：Oracle 积累和总结==
 - ==chapter9-3-1：springboot 集成 HessianServer==
 - ==chapter9-3-2：springboot 集成 HessianClient==
 - ==chapter9-4-1：springboot 集成 Docker==
@@ -411,3 +420,5 @@ JavaSe 项目目录
 - ==chapter99-17-3：Java 网络编程==
 - ==chapter99-18-3：Java 类加载机制与反射==
 - ==chapter99-20-1：单机游戏==
+
+
