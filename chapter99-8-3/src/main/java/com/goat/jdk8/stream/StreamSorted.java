@@ -9,6 +9,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
+ * java8  jdk8排序
  * 按id从小到大
  * List<User> sortUser = list.stream().sorted((u1, u2) -> u1.getId().compareTo(u2.getId())).collect(Collectors.toList());
  * 按id从大到小
