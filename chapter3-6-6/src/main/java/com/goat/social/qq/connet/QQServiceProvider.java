@@ -7,10 +7,7 @@ import com.goat.social.qq.api.QQ;
 import com.goat.social.qq.api.QQImpl;
 import org.springframework.social.oauth2.AbstractOAuth2ServiceProvider;
 
-/**
- * @author zhailiang
- *
- */
+
 public class QQServiceProvider extends AbstractOAuth2ServiceProvider<QQ> {
 
 	private String appId;

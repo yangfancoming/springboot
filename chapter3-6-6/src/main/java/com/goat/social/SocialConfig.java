@@ -19,10 +19,7 @@ import org.springframework.social.security.SpringSocialConfigurer;
 
 import javax.sql.DataSource;
 
-/**
- * @author zhailiang
- *
- */
+
 @Configuration
 @EnableSocial
 public class SocialConfig extends SocialConfigurerAdapter {

@@ -14,10 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.nio.charset.Charset;
 
-/**
- * @author zhailiang
- *
- */
+
 public class QQOAuth2Template extends OAuth2Template {
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());

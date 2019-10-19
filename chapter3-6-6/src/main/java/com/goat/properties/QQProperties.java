@@ -3,10 +3,7 @@
  */
 package com.goat.properties;
 
-/**
- * @author zhailiang
- *
- */
+
 public class QQProperties extends SocialProperties {
 	
 	private String providerId = "qq";

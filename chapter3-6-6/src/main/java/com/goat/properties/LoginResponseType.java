@@ -3,10 +3,7 @@
  */
 package com.goat.properties;
 
-/**
- * @author zhailiang
- *
- */
+
 public enum LoginResponseType {
 	
 	/**

@@ -6,10 +6,7 @@ package com.goat.social;
 import org.springframework.social.security.SocialAuthenticationFilter;
 import org.springframework.social.security.SpringSocialConfigurer;
 
-/**
- * @author zhailiang
- *
- */
+
 public class ImoocSpringSocialConfigurer extends SpringSocialConfigurer {
 	
 	private String filterProcessesUrl;

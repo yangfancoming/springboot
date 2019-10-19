@@ -5,10 +5,7 @@ package com.goat.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-/**
- * @author zhailiang
- *
- */
+
 @ConfigurationProperties(prefix = "imooc.security")
 public class SecurityProperties {
 	

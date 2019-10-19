@@ -270,8 +270,9 @@ AOP
 excel 相关操作
 
 - ==chapter7-5-5：springboot 集成 POI 操作Excel ==
-- ==chapter7-5-6：springboot 集成 EasyPoi 操作Excel
+- ==chapter7-5-6：springboot 集成 EasyPoi 操作Excel==
 - chapter7-5-8：springboot 集成 Alibaba EasyExcel
+- ==chapter7-5-9：springboot 集成 ureport2 报表==
 
 
 

@@ -4,10 +4,7 @@
 package com.goat.properties;
 
 
-/**
- * @author zhailiang
- *
- */
+
 public class SessionProperties {
 	
 	/**
