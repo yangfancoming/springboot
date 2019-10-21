@@ -14,7 +14,7 @@ public class RedPacket {
 
     private String publisherName; //发包人
 
-    private String acceptName; //手包人
+    private String acceptName; //收包人
 
     private BigDecimal packetAmount; //红包金额
 

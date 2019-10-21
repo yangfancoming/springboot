@@ -12,7 +12,6 @@ public class App {
     public static void main(String[] args){
 
         Director director = new Director();
-
         IBuildHuman smartManBuilder = new SmartManBuilder();
         Human human = director.createHumanByDirecotr(smartManBuilder);
         System.out.println(human.getHead());
