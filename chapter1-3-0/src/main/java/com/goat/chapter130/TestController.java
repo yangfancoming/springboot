@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     private final static Log logger = LogFactory.getLog(TestController.class);
-
+   // http://localhost:8130/test1
     @GetMapping("/test1")
     public void test1(){
         logger.debug("DEBUG ...");
