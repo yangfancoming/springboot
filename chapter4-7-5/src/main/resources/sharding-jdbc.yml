@@ -1,12 +1,12 @@
 dataSources:
   db_master: !!com.zaxxer.hikari.HikariDataSource
     driverClassName: com.mysql.jdbc.Driver
-    jdbcUrl: jdbc:mysql://172.16.163.135:3307/sphere?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    jdbcUrl: jdbc:mysql://192.168.136.128:3307/sphere?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
     username: goat
     password: 12345
   db_slave: !!com.zaxxer.hikari.HikariDataSource
     driverClassName: com.mysql.jdbc.Driver
-    jdbcUrl: jdbc:mysql://172.16.163.135:3308/sphere?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    jdbcUrl: jdbc:mysql://192.168.136.128:3308/sphere?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
     username: goat
     password: 12345
 masterSlaveRule:

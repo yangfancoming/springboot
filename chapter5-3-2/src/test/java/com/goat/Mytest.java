@@ -39,7 +39,7 @@ public class Mytest {
                  e.printStackTrace();
              }
          };
-//        zookeeper  = new ZooKeeper("172.16.163.135", 999999, watcher);
+//        zookeeper  = new ZooKeeper("192.168.136.128", 999999, watcher);
         zookeeper  = new ZooKeeper("192.168.235.207", 999999, watcher);
     }
     @After

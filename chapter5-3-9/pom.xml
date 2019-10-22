@@ -122,7 +122,7 @@
 
                     <!--指定远程 docker api地址-->
                     <!--本地虚拟机-->
-                    <dockerHost>http://172.16.163.135:2376</dockerHost>
+                    <dockerHost>http://192.168.136.128:2376</dockerHost>
                     <!--腾讯云-->
                     <!--<dockerHost>http://132.232.71.245:2376</dockerHost>-->
                     <!--阿里云-->

@@ -34,7 +34,7 @@ public class MongoTemplateTest {
 
 	@Before
 	public void init() {
-		client = new MongoClient("172.16.163.135", 27017);
+		client = new MongoClient("192.168.136.128", 27017);
 		db = client.getDatabase("test");
 		doc = db.getCollection("persons");
 	}

@@ -23,7 +23,7 @@ public class Redis_Transaction {
 
     @Before
     public void test(){
-         jedis = new Jedis("172.16.163.135",6379); // 连接 redis 服务器
+         jedis = new Jedis("192.168.136.128",6379); // 连接 redis 服务器
     }
 
 

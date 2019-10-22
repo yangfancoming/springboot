@@ -4,6 +4,7 @@ import com.goat.exception.BookStockException;
 import com.goat.exception.UserAccountException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -62,12 +63,20 @@ public class CommonServiceImpl {
         System.out.println("线程1  第一次查询出记录数为：" +maps1);
     }
 
+    /**
+     * 在不考虑事务 且非JPA 单纯的update sql   纯sql情况 并发修改同一条记录的不同字段 是可以实现的
+    */
+    @Scheduled(cron = "5 * * * * ? ")
     public void updateOne(){
-        int update = jdbcTemplate.update("update book set book_name = 'test'  where id = 1");
+        int update = jdbcTemplate.update("update book set book_name = ?  where isbn = ?","goat1",23);
         System.out.println(update);
     }
 
-
+    @Scheduled(cron = "5 * * * * ? ")
+    public void updateTwo(){
+        int update = jdbcTemplate.update("update book set price = ?  where isbn = ?",11,23);
+        System.out.println(update);
+    }
     /* 循环中 读取 更改： 再循环中 读取后 更改 某一字段后  再读取 可以读取到 更改后的记录 */
     @Transactional
     public void forTest(){

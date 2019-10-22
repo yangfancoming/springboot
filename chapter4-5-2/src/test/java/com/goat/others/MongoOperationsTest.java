@@ -20,7 +20,7 @@ public class MongoOperationsTest  {
 
     public final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    MongoClient mongoClient = new MongoClient("172.16.163.135", 27017);
+    MongoClient mongoClient = new MongoClient("192.168.136.128", 27017);
     MongoOperations mongoOps = new MongoTemplate(new SimpleMongoDbFactory( mongoClient , "database"));
 
     @Test

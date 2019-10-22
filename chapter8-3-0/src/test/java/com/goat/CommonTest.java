@@ -16,7 +16,7 @@ import java.util.concurrent.TimeoutException;
  */
 public class CommonTest {
 
-//    public static final String IP = "172.16.163.135";
+//    public static final String IP = "192.168.136.128";
     public static final String IP = "192.168.235.207";
 
     public static final String QUEUE = "fanout.A";

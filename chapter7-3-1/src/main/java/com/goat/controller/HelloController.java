@@ -22,7 +22,7 @@ public class HelloController {
 
     /**
      *     http://localhost:8731/hello/create   创建索引
-     *     http://172.16.163.135:9200/goat/news/1   查询已经操作的索引
+     *     http://192.168.136.128:9200/goat/news/1   查询已经操作的索引
      构建一个索引功能 Index.Builder(要保存的数据).index(保存的位置).type(保存的类型)
      保存成功后 查询url ：http://192.168.235.207:9200/goat/news/1
     */

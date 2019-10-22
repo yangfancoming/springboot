@@ -20,7 +20,7 @@ ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urando
 # docker run -it  --name 8537 -d  -p 8537:8537  2cb35a760e6f -e zk.ip=172.17.0.3 doit 为啥这里传入 获得容器 ip  #spring.dubbo.registry.address=zookeeper://${zk.ip}:2181   不能正确连接 zookeeper呢？
 # docker run -it  --name 8537   -p 8537:8537  2cb35a760e6f -e zk.ip=172.17.0.4
 # docker run -it  --name 8537   -p 8537:8537  d6567bc415b3
-# docker run -it  --name 8537  -d -p 8537:8537  d6567bc415b3  在配置文件中 写死 #spring.dubbo.registry.address=zookeeper://172.16.163.135:2181  就可以正确连接
+# docker run -it  --name 8537  -d -p 8537:8537  d6567bc415b3  在配置文件中 写死 #spring.dubbo.registry.address=zookeeper://192.168.136.128:2181  就可以正确连接
 
 
 

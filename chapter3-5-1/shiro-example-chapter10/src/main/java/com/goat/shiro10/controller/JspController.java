@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class JspController {
 
     //    http://localhost:3510/hello
-    // linux部署后   http://172.16.163.135:8080/123/hello
+    // linux部署后   http://192.168.136.128:8080/123/hello
     @RequestMapping("/hello")
     @ResponseBody
     public String hello() {

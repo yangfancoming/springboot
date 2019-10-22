@@ -2,12 +2,12 @@
 #spring:
 #  data:
 #    elasticsearch:
-#      cluster-nodes: 172.16.163.135:9300
+#      cluster-nodes: 192.168.136.128:9300
 #      repositories: true
 #spring:
 #  elasticsearch:
 #    jest:
-#      uris: http://172.16.163.135:9200
+#      uris: http://192.168.136.128:9200
 
 #server:
 #  port: 8731

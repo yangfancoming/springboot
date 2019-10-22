@@ -2,8 +2,10 @@ package com.goat.controller;
 
 
 import com.goat.service.BookServiceImpl;
+import com.goat.service.CommonServiceImpl;
 import com.goat.service.SimpleBookServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -91,5 +93,7 @@ public class TestControler {
     public void test7() {
         simpleBookService.checkoutNew("goat", Arrays.asList("1","2"));
     }
+
+
 
 }

@@ -6,7 +6,7 @@ spring:
     mode: LEGACYHTML5 # 模板编码 默认值是HTML5，是一个很严格的检查，改为LEGACYHTML5可以得到一个可能更友好亲切的格式要求 但是需要 nekohtml 依赖
 
   redis:
-    host: 172.16.163.135
+    host: 192.168.136.128
     port: 6379
     password:
     timeout: 0

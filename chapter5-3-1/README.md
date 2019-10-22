@@ -11,7 +11,7 @@
          http://localhost:7531/sayHello/name=jack
          
  # 消费端 发起请求后台报错：       
-    com.alibaba.dubbo.rpc.RpcException: No provider available from registry 172.16.163.135:2181
+    com.alibaba.dubbo.rpc.RpcException: No provider available from registry 192.168.136.128:2181
      for service com.goat.service.ITestService on consumer 172.16.163.1 use dubbo version 2.0.1, 
     please check status of providers(disabled, not registered or in blacklist).
     

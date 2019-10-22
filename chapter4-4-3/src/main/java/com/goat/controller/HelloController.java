@@ -37,7 +37,7 @@ public class HelloController {
 
     public static Connection getMySqlConnection() throws Exception {
         Class.forName("com.mysql.jdbc.Driver");
-        String url="jdbc:mysql://172.16.163.135:3306/test2?Unicode=true&amp;characterEncoding=utf8&useSSL=false";
+        String url="jdbc:mysql://192.168.136.128:3306/test2?Unicode=true&amp;characterEncoding=utf8&useSSL=false";
         return DriverManager.getConnection(url,"root","12345");
     }
 }

@@ -21,7 +21,7 @@ services:
       - "./storage_base_path:/fastdfs/storage/data"
       - "./store_path0:/fastdfs/store_path"
     environment:
-      TRACKER_SERVER: "172.16.163.135:22122"
+      TRACKER_SERVER: "192.168.136.128:22122"
     network_mode: "host"
     command: "storage"
 

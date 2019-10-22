@@ -79,7 +79,7 @@ public class SolrController {
     /**   http://localhost:8721/solr/deleteAll1
      * 删除所有的索引
      * 针对于 没有配置 数据库的方法 需要指定数据库
-     * spring.data.solr.host=http://172.16.163.135:8983/solr/
+     * spring.data.solr.host=http://192.168.136.128:8983/solr/
      */
     @RequestMapping("/deleteAll1")
     public String deleteAll1() throws IOException, SolrServerException {
@@ -91,7 +91,7 @@ public class SolrController {
     /**   http://localhost:8721/solr/deleteAll2
      * 删除所有的索引
      * 针对于 配置了 数据库的方法
-     * spring.data.solr.host=http://172.16.163.135:8983/solr/mycore
+     * spring.data.solr.host=http://192.168.136.128:8983/solr/mycore
      */
     @RequestMapping("/deleteAll2")
     public String deleteAll2() throws IOException, SolrServerException {

@@ -48,7 +48,7 @@ public class ApplicationTests {
          */
         List<String> keyList = new ArrayList();
         keyList.add("count");
-        keyList.add("rate.limiting:172.16.163.135");
+        keyList.add("rate.limiting:192.168.136.128");
         /**
          * 用Mpa设置Lua的ARGV[1]
          */

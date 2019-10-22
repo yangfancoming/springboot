@@ -18,7 +18,7 @@ public class Redis_Common {
 
     @Before
     public void test(){
-        jedis = new Jedis("172.16.163.135",6379); // 连接 redis 服务器
+        jedis = new Jedis("192.168.136.128",6379); // 连接 redis 服务器
 //        jedis.auth("12345"); // 密码验证,当连接Redis时不需要密码验证的时候，就可以省略掉本行代码
     }
 

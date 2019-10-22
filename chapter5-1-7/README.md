@@ -6,7 +6,7 @@
     ## Dubbo 服务提供者 应用名称
     spring.dubbo.application.name=service-provider
     #配置注册中心地址
-    spring.dubbo.registry.address=zookeeper://172.16.163.135
+    spring.dubbo.registry.address=zookeeper://192.168.136.128
     spring.dubbo.registry.port=2181
     
     #协议名称

@@ -89,18 +89,18 @@
 //
 //    /**
 //     * 配置redis的哨兵
-//     master: 172.16.163.135:26379
+//     master: 192.168.136.128:26379
 //     nodes:
-//     -172.16.163.135:26380
-//     -172.16.163.135:26381
+//     -192.168.136.128:26380
+//     -192.168.136.128:26381
 //     */
 //    @Bean
 //    public RedisSentinelConfiguration sentinelConfiguration() {
 //        RedisSentinelConfiguration redisSentinelConfiguration = new RedisSentinelConfiguration();
 //        //        配置redis的哨兵sentinel
-//        RedisNode senRedisNode1 = new RedisNode("172.16.163.135", 26379);
-//        RedisNode senRedisNode2 = new RedisNode("172.16.163.135", 26380);
-//        RedisNode senRedisNode3 = new RedisNode("172.16.163.135", 26381);
+//        RedisNode senRedisNode1 = new RedisNode("192.168.136.128", 26379);
+//        RedisNode senRedisNode2 = new RedisNode("192.168.136.128", 26380);
+//        RedisNode senRedisNode3 = new RedisNode("192.168.136.128", 26381);
 //
 //        Set<RedisNode> redisNodeSet = new HashSet<>();
 //        redisNodeSet.add(senRedisNode1);
