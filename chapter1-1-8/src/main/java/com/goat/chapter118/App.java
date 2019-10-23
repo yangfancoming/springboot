@@ -24,16 +24,12 @@ public class App {
      * 对Root对象的访问
      */
     @Test
-    public void test0() {
+    public void test0() throws OgnlException {
         Address address = new Address("666666", "天涯路海角街");
         User user = new User("lucy", "123456", address);
-        try {
-            System.out.println(Ognl.getValue("username", user));
-            System.out.println(Ognl.getValue("address", user));
-            System.out.println(Ognl.getValue("address.location", user));
-        } catch (OgnlException e) {
-            e.printStackTrace();
-        }
+        System.out.println(Ognl.getValue("username", user));// lucy
+        System.out.println(Ognl.getValue("address", user)); // com.goat.chapter118.model.Address@5c0369c4
+        System.out.println(Ognl.getValue("address.location", user)); // 天涯路海角街
     }
 
     /**
@@ -42,19 +38,15 @@ public class App {
      * 当访问上下文环境当中的参数时候，需要在表达式前面加上‘#’，表示了与访问Root对象的区别。
      */
     @Test
-    public void test1() {
+    public void test1() throws OgnlException {
         Address address = new Address("666666", "天涯路海角街");
         User user = new User("lucy", "123456", address);
         Map<String, Object> context = new HashMap<>();
         context.put("init", "hello");
         context.put("user", user);
-        try {
-            System.out.println(Ognl.getValue("#init", context, user));
-            System.out.println(Ognl.getValue("#user.username", context, user));
-            System.out.println(Ognl.getValue("username", context, user));
-        } catch (OgnlException e) {
-            e.printStackTrace();
-        }
+        System.out.println(Ognl.getValue("#init", context, user)); // hello
+        System.out.println(Ognl.getValue("#user.username", context, user)); // lucy
+        System.out.println(Ognl.getValue("username", context, user)); // lucy
     }
 
     /**
@@ -62,14 +54,10 @@ public class App {
      * 在OGNL表达式当中也可以访问静态变量或者调用静态方法，格式如@[class]@[field/method()]
      */
     @Test
-    public void test2() {
-        try {
-            System.out.println(Ognl.getValue("@test.ognl.Constant@ONE", null));
-            System.out.println(Ognl.getValue("@test.ognl.Constant@get()", null));
-            System.out.println(Ognl.getValue("@test.ognl.Constant@getString()", null));
-        } catch (OgnlException e) {
-            e.printStackTrace();
-        }
+    public void test2() throws OgnlException {
+        System.out.println(Ognl.getValue("@model.Constant@ONE", null));
+        System.out.println(Ognl.getValue("@test.ognl.Constant@get()", null));
+        System.out.println(Ognl.getValue("@test.ognl.Constant@getString()", null));
     }
 
     /**
@@ -78,26 +66,22 @@ public class App {
      * 从代码可以看出来，赋值的时候可以选择上下文当中的元素进行给Root对象的username属性赋值。
      */
     @Test
-    public void test3() {
+    public void test3() throws OgnlException {
         Address address = new Address("666666", "天涯路海角街");
         User user = new User("lucy", "123456", address);
-        Map<String, Object> context = new HashMap<String, Object>();
+        Map<String, Object> context = new HashMap<>();
         context.put("username", "yyy");
         context.put("password", "654321");
-        try {
-            System.out.println(Ognl.getValue("getUsername()", context, user));
-            Ognl.getValue("setUsername(#username)", context, user);
-            System.out.println(Ognl.getValue("getUsername()", context, user));
-        } catch (OgnlException e) {
-            e.printStackTrace();
-        }
+        System.out.println(Ognl.getValue("getUsername()", context, user)); // lucy
+        Ognl.getValue("setUsername(#username)", context, user);
+        System.out.println(Ognl.getValue("getUsername()", context, user)); // yyy
     }
 
     /**
      * 对数组和集合的访问
      */
     @Test
-    public void test4() {
+    public void test4() throws OgnlException {
         User user = new User();
         Map<String, Object> context = new HashMap<>();
         String[] strings = {"aa", "bb"};
@@ -110,15 +94,11 @@ public class App {
         context.put("list", list);
         context.put("strings", strings);
         context.put("map", map);
-        try {
-            System.out.println(Ognl.getValue("#strings[0]", context, user));
-            System.out.println(Ognl.getValue("#list[0]", context, user));
-            System.out.println(Ognl.getValue("#list[0+1]", context, user));
-            System.out.println(Ognl.getValue("#map['key1']", context, user));
-            System.out.println(Ognl.getValue("#map['key' + '2']", context, user));
-        } catch (OgnlException e) {
-            e.printStackTrace();
-        }
+        System.out.println(Ognl.getValue("#strings[0]", context, user));
+        System.out.println(Ognl.getValue("#list[0]", context, user));
+        System.out.println(Ognl.getValue("#list[0+1]", context, user));
+        System.out.println(Ognl.getValue("#map['key1']", context, user));
+        System.out.println(Ognl.getValue("#map['key' + '2']", context, user));
     }
 
     /**
@@ -132,7 +112,7 @@ public class App {
      * 　　　　　　$：选择满足条件的最后一个元素
      */
     @Test
-    public void test5() {
+    public void test5() throws OgnlException {
         Map<String, Object> context = new HashMap<>();
         ArrayList<Person> list = new ArrayList<>();
         for (int i = 1; i < 5; i++) {
@@ -142,15 +122,11 @@ public class App {
             list.add(p);
         }
         context.put("list", list);
-        try {
-            System.out.println(Ognl.getValue("#list.{id}", context, list));
-            System.out.println(Ognl.getValue("#list.{id + '-' + name}", context, list));
-            System.out.println(Ognl.getValue("#list.{? #this.id > 2}", context, list));
-            System.out.println(Ognl.getValue("#list.{^ #this.id > 2}", context, list));
-            System.out.println(Ognl.getValue("#list.{$ #this.id > 2}", context, list));
-        } catch (OgnlException e) {
-            e.printStackTrace();
-        }
+        System.out.println(Ognl.getValue("#list.{id}", context, list));
+        System.out.println(Ognl.getValue("#list.{id + '-' + name}", context, list));
+        System.out.println(Ognl.getValue("#list.{? #this.id > 2}", context, list));
+        System.out.println(Ognl.getValue("#list.{^ #this.id > 2}", context, list));
+        System.out.println(Ognl.getValue("#list.{$ #this.id > 2}", context, list));
     }
 
     /**
@@ -161,16 +137,12 @@ public class App {
      * 　　构造任意对象：直接使用已知的对象的构造方法进行构造。
      */
     @Test
-    public void test6() {
-        try {
-            Map<String, String> map = (Map<String, String>) Ognl.getValue("#{'key1':'value1'}", null);
-            System.out.println(map);
-            List<String> list = (List<String>) Ognl.getValue("{'key1','value1'}", null);
-            System.out.println(list);
-            Object object = Ognl.getValue("new java.lang.Object()", null);
-            System.out.println(object);
-        } catch (OgnlException e) {
-            e.printStackTrace();
-        }
+    public void test6() throws OgnlException {
+        Map<String, String> map = (Map<String, String>) Ognl.getValue("#{'key1':'value1'}", null);
+        System.out.println(map);
+        List<String> list = (List<String>) Ognl.getValue("{'key1','value1'}", null);
+        System.out.println(list);
+        Object object = Ognl.getValue("new java.lang.Object()", null);
+        System.out.println(object);
     }
 }
