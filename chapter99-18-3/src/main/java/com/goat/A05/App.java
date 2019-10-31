@@ -21,4 +21,5 @@ public class App {
         person.walk();
         person.sayHello("飞科剃须刀");
     }
+
 }

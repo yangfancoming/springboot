@@ -14,6 +14,7 @@ import java.util.Arrays;
 
 /**
  *   反射构造函数 测试
+ *   反射创建对象
 */
 public class App {
 
@@ -56,10 +57,6 @@ public class App {
         Constructor<?>[] consts = aClass2.getConstructors();
         Assert.assertEquals(3,consts.length);
     }
-
-
-
-
 
     @Test
     public void tesxxx0() throws IllegalAccessException, InvocationTargetException, InstantiationException {

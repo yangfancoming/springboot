@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 /**
  * Created by 64274 on 2019/5/16.
  *
- * @ Description: TODO
+ * @ Description: JDK动态代理
  * @ author  山羊来了
  * @ date 2019/5/16---10:00
  */
