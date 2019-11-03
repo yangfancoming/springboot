@@ -9,34 +9,39 @@ package com.goat.model;
  */
 public class Dog {
 
+    /*成员属性*/
     private String name;
     Integer age;
     public boolean married;
     public String nickName;
 
+    /*构造方法*/
     public Dog() {
     }
-
+    /*构造方法*/
     public Dog(String name, Integer age) {
         this.name = name;
         this.age = age;
     }
 
+    /*成员方法*/
     private void fuck(){
         System.out.println("fuck!!!!!!!!!hahaha");
     }
 
     private void shit(String name, Integer age){
-        System.out.println("fuck!!!!!!!!!hahaha" + name + age);
+        System.out.println("shit!!!!!!!!!hahaha" + name + age);
     }
 
-    @Override
-    public String toString() {
-        return "Dog{" + "name='" + name + '\'' + ", age=" + age + '}';
+    public void eat1(){
+        System.out.println("eat!!!!!!!!!hahaha");
     }
 
+    public void eat2(String name){
+        System.out.println("eat!!!!!!!!!hahaha" + name);
+    }
 
-
+    /* getter/setter 方法 */
     public String getName() {
         return name;
     }
@@ -59,5 +64,10 @@ public class Dog {
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
+    }
+
+    @Override
+    public String toString() {
+        return "Dog{" + "name='" + name + '\'' + ", age=" + age + ", married=" + married + ", nickName='" + nickName + '\'' + '}';
     }
 }
