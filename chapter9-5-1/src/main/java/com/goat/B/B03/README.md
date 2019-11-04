@@ -13,10 +13,10 @@
 # Java 代理模式实现方式，主要有如下五种方法
     静态代理，工程师编辑代理类代码，实现代理模式；在编译期就生成了代理类。
     
-    基于 JDK 实现动态代理，通过jdk提供的工具方法Proxy.newProxyInstance动态构建全新的代理类(继承Proxy类，并持有InvocationHandler接口引用 )字节码文件并实例化对象返回。
+    基于JDK实现动态代理，通过jdk提供的工具方法Proxy.newProxyInstance动态构建全新的代理类(继承Proxy类，并持有InvocationHandler接口引用 )字节码文件并实例化对象返回。
                             (jdk动态代理是由java内部的反射机制来实例化代理对象，并代理的调用委托类方法)
     
-    基于CGlib 动态代理模式 基于继承被代理类生成代理子类，不用实现接口。只需要被代理类是非final 类即可。(cglib动态代理底层是借助asm字节码技术
+    基于CGlib动态代理模式 基于继承被代理类生成代理子类，不用实现接口。只需要被代理类是非final 类即可。(cglib动态代理底层是借助asm字节码技术
     
     基于 Aspectj 实现动态代理（修改目标类的字节，织入代理的字节，在程序编译的时候 插入动态代理的字节码，不会生成全新的Class ）
     
@@ -48,7 +48,7 @@
         example05： 使用Cglib代码对类做代理的通用写法
         example06： 使用Cglib定义不同的拦截策略
         example07： 静态代理
-        example08： JDK 动态代理
+        example08： JDK动态代理
     
     
     Cglib 要点描述：
