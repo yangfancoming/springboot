@@ -70,6 +70,8 @@
         example07： 静态代理
         example08： JDK动态代理
         example09： JDK动态代理
+        example10： JDK动态代理
+        example11： CGLIB动态代理
     
     
     Cglib 要点描述：
