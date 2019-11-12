@@ -16,6 +16,7 @@
 # 设置 git 用户名和 email 
     1.全局方式  优先级低  ~/.gitconfig  很常用
     git config --global user.name 'goat'
+    git config --global user.name 'fan.yang'
     git config --global user.email '642744551@qq.com'
     
     2.局部方式  优先级高  .git/config  针对于特定的项目 
