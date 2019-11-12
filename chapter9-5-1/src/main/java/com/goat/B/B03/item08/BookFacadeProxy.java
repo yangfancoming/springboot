@@ -34,7 +34,7 @@ public class BookFacadeProxy implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("预处理操作——————" + method.getName());
-        Object result=method.invoke(target, args);  //调用真正的业务方法
+        Object result = method.invoke(target, args);  //调用真正的业务方法
         System.out.println("调用后处理——————" + method.getName());
         return result;
     }
