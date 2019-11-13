@@ -42,5 +42,15 @@ public class JPAController {
         return all;
     }
 
+    /**
+     * 根据id删除用户
+     *   http://localhost:8723/hello/test3
+     */
+    @GetMapping("/test3")
+    public void test3() {
+        User test = new User();
+        test.setId("1002");
+        userRepository.delete(test);
+    }
 
 }

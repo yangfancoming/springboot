@@ -1,15 +1,20 @@
 package com.goat.chapter723.controller;
 
 
+import com.goat.chapter723.entity.User;
 import org.apache.solr.client.solrj.SolrClient;
+import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.client.solrj.response.UpdateResponse;
 import org.apache.solr.common.SolrInputDocument;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Date;
+import java.util.List;
 
 
 @Controller
@@ -35,6 +40,13 @@ public class TestController {
         return commit;
     }
 
-
+    @Test
+    public void query() throws Exception {
+        SolrQuery query = new SolrQuery();
+        query.set("q", "id:1001");
+        QueryResponse response = solrClient.query(SOLR_COLLECTION_USER, query);
+        List<User> userList = response.getBeans(User.class);
+        System.out.println(userList.size());
+    }
 
 }
