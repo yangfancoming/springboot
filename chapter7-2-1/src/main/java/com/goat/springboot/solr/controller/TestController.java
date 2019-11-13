@@ -103,6 +103,7 @@ public class TestController {
         System.out.println("responseHeader==========="+responseHeader);
         System.out.println("status==========="+status);
     }
+
     //     http://localhost:8721/test/queryFromSolr1/
     @RequestMapping("/queryFromSolr1")
     public  Object  queryFromSolr1() throws IOException, SolrServerException {
