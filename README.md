@@ -414,7 +414,6 @@ JavaSe 项目目录
 - ==chapter99-5-3：面向对象 上==
 - ==chapter99-5-5：面向对象 下==
 - ==chapter99-7-3：Java基础类库==
-- ==chapter99-8-3：Java 集合==
 - ==chapter99-14-3：Java Annotation 注解==
 - ==chapter99-15-3：Java  I/O  输入/输出==
 - ==chapter99-16-3：Java 多线程==

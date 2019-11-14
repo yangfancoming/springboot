@@ -40,7 +40,8 @@ public class TestController {
         return commit;
     }
 
-    @Test
+    // http://localhost:8723/test/test2
+    @GetMapping("/test2")
     public void query() throws Exception {
         SolrQuery query = new SolrQuery();
         query.set("q", "id:1001");
