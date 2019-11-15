@@ -16,7 +16,6 @@ public class ResponseMessage {
     /**
      * 响应消息
      */
-
     private String message ;
 
     public String getMessage() {
