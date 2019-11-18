@@ -17,11 +17,12 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args);
     }
 
+    // CommandLineRunner是Spring BOOT项目启动时会执行的任务
     @Bean
     CommandLineRunner serverRunner(TcpDecoderHandler tcpDecoderHandler, UdpDecoderHandler udpDecoderHanlder, UdpEncoderHandler udpEncoderHandler, UdpHandler udpHandler) {
         return strings ->{
             createUdpServer(udpDecoderHanlder, udpEncoderHandler, udpHandler);
-            createTcpServer(tcpDecoderHandler);
+//            createTcpServer(tcpDecoderHandler);
         };
     }
 
@@ -39,7 +40,9 @@ public class DemoApplication {
                             .subscribe();
                     return Flux.never();
                 })
-                .port(5002) //UDP Server 端口
+//                .host("172.20.10.3") // UDP Server 监听ip
+                .host("192.168.1.104") // UDP Server 监听ip
+                .port(5002) // UDP Server 监听端口
                 .doOnBound(conn -> conn
                         .addHandler("decoder",udpDecoderHandler)
                         .addHandler("encoder", udpEncoderHandler)
@@ -55,14 +58,10 @@ public class DemoApplication {
     private void createTcpServer(TcpDecoderHandler tcpDecoderHandler) {
         TcpServer.create()
                 .handle((in,out) -> {
-                    in.receive()
-                            .asByteArray()
-                            .subscribe();
+                    in.receive().asByteArray() .subscribe();
                     return Flux.never();
-
                 })
-                .doOnConnection(conn ->
-                        conn.addHandler(tcpDecoderHandler)) //实例只写了如何添加handler,可添加delimiter，tcp生命周期，decoder，encoder等handler
+                .doOnConnection(conn ->conn.addHandler(tcpDecoderHandler)) //实例只写了如何添加handler,可添加delimiter，tcp生命周期，decoder，encoder等handler
                 .port(9999)
                 .bindNow();
     }

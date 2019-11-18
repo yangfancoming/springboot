@@ -14,7 +14,8 @@ import java.util.List;
 /**
  * Created by Administrator on 2019/11/15.
  *
- * @ Description: TODO
+ * @ Description: 3.将需要发送给UDP Client进行数据封装
+ * ctx.writeAndFlush("hello word")会调用UdpEncoderHandler，将数据进行decoder封装成DatagramPacket类型，发送给UDP Client
  * @ author  山羊来了
  * @ date 2019/11/15---9:59
  */
@@ -24,11 +25,11 @@ public class UdpEncoderHandler extends MessageToMessageEncoder {
     private static final Logger LOGGER = LoggerFactory.getLogger(UdpEncoderHandler.class);
 
     @Override
-    protected void encode(ChannelHandlerContext ctx, Object o, List list) throws Exception {
+    protected void encode(ChannelHandlerContext ctx, Object o, List list) {
         byte[] data = o.toString().getBytes();
         ByteBuf buf = ctx.alloc().buffer(data.length);
         buf.writeBytes(data);
-        InetSocketAddress inetSocketAddress = new InetSocketAddress("127.0.0.1", 1111);//指定客户端的IP及端口
+        InetSocketAddress inetSocketAddress = new InetSocketAddress("172.20.10.3", 1111);//指定客户端的IP及端口
         list.add(new DatagramPacket(buf, inetSocketAddress));
         LOGGER.info("{}发送消息{}:" + o.toString());
     }
