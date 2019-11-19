@@ -27,12 +27,14 @@
     git config user.name
     git config user.email
     
-# 取消版本控制 命令
+# 取消版本控制 命令  单个文件
      git add 123.log
      git rm --cached 123.log
      git rm --cached compiler.xml
      git rm --cached encodings.xml
      git rm --cached .gitignore
+# 取消版本控制 命令  目录
+    git rm --cached E:\demo\.idea -r 
      
 # 创建和 删除 分支
     git branch -a   查看所有分支

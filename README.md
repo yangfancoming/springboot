@@ -24,6 +24,7 @@
 - ==chapter1-1-2 springboot  javaconfig配置集合(其他模块共享该配置)==
 - ==chapter1-1-4 springboot  国际化 i18n==
 - ==chapter1-1-6 springboot 多环境profile打包 ==
+- ==chapter1-1-8 springboot  集成OGNL ==
 
 
 
@@ -35,9 +36,10 @@
 - ==chapter1-2-5 springboot  日志输出至Logstash  properties方式==    失败
 - ==chapter1-2-6 springboot  自定义starter==
 - ==chapter1-2-7 springboot  注解开发==
-- ==chapter1-3-0 springboot  日志框架 Slf4j ==
-- ==chapter1-3-0 springboot  日志框架 Log4j==
+- ==chapter1-3-X springboot  日志框架 Slf4j ==
+- ==chapter1-3-X springboot  日志框架 Log4j==
 - ==chapter1-3-0 springboot  日志框架 CommonsLogging==
+- ==chapter1-3-1 springboot  日志框架 Java原生日志 java.util.logging==
 
 
 
@@ -76,6 +78,7 @@ Web开发
 - ==chapter2-3-1 springboot  集成 WebSocket==
 - ==chapter2-3-2 springboot  集成 WebSocket2==
 - ==chapter2-3-3 springboot  集成 WebSocket3==
+- ==chapter2-3-5 springboot  集成 Spring Webflux的UDP数据接收及发送==
 - ==chapter2-3-8 springboot  集成 Mina server==
 - ==chapter2-3-9 springboot  集成 Mina client==
 - ==chapter2-4-1 springboot  集成 WebService 服务端==
@@ -260,7 +263,8 @@ AOP
 
 - ==chapter6-6-0：springboot  Batch 批处理1 ==
 - ==chapter6-6-1：springboot  Batch 批处理2 ==
-- ==chapter7-2-1：springboot 集成 solr ==
+- ==chapter7-2-1：springboot 集成 solr  使用SolrClient 方式 ==
+- ==chapter7-2-3：springboot 集成 solr  使用JPA方式==
 - ==chapter7-3-1：springboot 集成 ElasticSearch  使用 JestClient 操作==
 - ==chapter7-4-1：springboot 集成 ElasticSearch  使用 SpringData 操作==
 - ==chapter7-5-0：springboot 集成 Maven 学习总结==
@@ -270,9 +274,8 @@ AOP
 excel 相关操作
 
 - ==chapter7-5-5：springboot 集成 POI 操作Excel ==
-- ==chapter7-5-6：springboot 集成 EasyPoi 操作Excel==
+- ==chapter7-5-6：springboot 集成 EasyPoi 操作Excel
 - chapter7-5-8：springboot 集成 Alibaba EasyExcel
-- ==chapter7-5-9：springboot 集成 ureport2 报表==
 
 
 
@@ -355,7 +358,7 @@ JVM
 
 ==chapter8-9-0：springboot 集成 Linux 系统 总结==
 
-高并发 
+高并发
 
 - ==chapter9-0-1：springboot 集成 高并发 ==
 
@@ -420,5 +423,3 @@ JavaSe 项目目录
 - ==chapter99-17-3：Java 网络编程==
 - ==chapter99-18-3：Java 类加载机制与反射==
 - ==chapter99-20-1：单机游戏==
-
-
