@@ -1,0 +1,8 @@
+
+
+
+spring:
+  kafka:
+    gourd:
+#      enabled: false # kafka开关
+      enabled: true # kafka开关

@@ -5,6 +5,7 @@ import com.goat.condition.OsServiceConfig;
 import com.goat.condition.ListService;
 import com.goat.condition2.ConditionConfig2;
 import com.goat.condition2.Person;
+import com.goat.config.KafkaConsumerConfig;
 import com.goat.config.MessageConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -61,6 +62,20 @@ public class TestControler {
         ctx.scan("com.goat.config");
         ctx.refresh();
         System.out.println(ctx.getBean("message"));
+    }
+
+    //    http://localhost:8127/test5
+    @GetMapping("/test5")
+    public void test5() {
+
+    }
+
+    @Autowired
+    KafkaConsumerConfig kafkaConsumerConfig;
+    //    http://localhost:8127/test6
+    @GetMapping("/test6")
+    public void test6() {
+        kafkaConsumerConfig.test();
     }
 
 //    //    http://localhost:8127/test3
