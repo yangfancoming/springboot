@@ -32,4 +32,11 @@ public class IoTest {
         InputStream inputStream = resource.getInputStream();
         Assert.assertNotNull(inputStream);
     }
+
+    // 测试 IO 读取
+    @Test
+    public void test3(){
+        InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("tinyioc.xml");
+        System.out.println(inputStream);
+    }
 }
