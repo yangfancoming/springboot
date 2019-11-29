@@ -1,4 +1,4 @@
-package com.goat.xml.dom;
+package com.goat.xml.w3cdom;
 
 import org.junit.Before;
 import org.junit.Test;

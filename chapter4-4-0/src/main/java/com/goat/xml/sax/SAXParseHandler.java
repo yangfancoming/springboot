@@ -1,4 +1,4 @@
-package com.goat.xml.handler;
+package com.goat.xml.sax;
 
 import com.goat.xml.bean.Book;
 import org.xml.sax.Attributes;

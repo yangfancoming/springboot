@@ -1,4 +1,4 @@
-package com.goat.xml.dom;
+package com.goat.xml.w3cdom;
 
 import com.goat.xml.bean.Book;
 import org.w3c.dom.Document;
