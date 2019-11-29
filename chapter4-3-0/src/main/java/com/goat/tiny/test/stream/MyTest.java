@@ -31,7 +31,8 @@ public class MyTest {
 
         // ClassLoader的getResourceAsStream(String path)  默认则是从ClassPath根下获取，path不能以'/'开头
         InputStream e1 = MyTest.class.getClassLoader().getResourceAsStream("b.properties") ;
-        InputStream e2 = this.getClass().getClassLoader().getResourceAsStream("b.properties") ;
+        ClassLoader classLoader = this.getClass().getClassLoader();
+        InputStream e2 = classLoader.getResourceAsStream("b.properties") ;
 
         // doit  为啥只有 e1 和 e2 好使？？？
         System.out.println(a);
