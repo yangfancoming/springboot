@@ -11,7 +11,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.InputStream;
-
 /**
  * Created by Administrator on 2019/11/29.
  *
@@ -44,4 +43,5 @@ public class App {
             System.out.println("Tel: "+ node.getElementsByTagName("Tel").item(0).getFirstChild().getNodeValue());
         }
     }
+
 }

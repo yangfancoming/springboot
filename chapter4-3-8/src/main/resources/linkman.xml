@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+
+<root>
+    <linkman id="3">
+        <name>王美丽</name>
+        <address>西南医学院</address>
+        <email>wangmeili@163.com</email>
+    </linkman>
+
+    <linkman id="2">
+        <name>张三</name>
+        <address>泸职院</address>
+        <email>zhangsan@163.com</email>
+    </linkman>
+
+    <linkman id="1">
+        <name>张三1</name>
+        <address>泸职院22</address>
+        <email>zhangsan1@163.com</email>
+    </linkman>
+
+    <linkman id="4">
+        <name>bbb</name>
+        <address>aaaa</address>
+        <email>ccc@163.com</email>
+    </linkman>
+
+    <linkman id="5">
+        <name>张无忌</name>
+        <address>高新区创业园</address>
+        <email>ximenchuixue@163.com</email>
+    </linkman>
+
+    <linkman id="6"><name>666</name><address>66666</address><email>66666666@163.com</email></linkman>
+</root>
