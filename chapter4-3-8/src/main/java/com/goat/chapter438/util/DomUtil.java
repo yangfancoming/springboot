@@ -1,7 +1,6 @@
 package com.goat.chapter438.util;
 
 import com.goat.chapter438.model.Linkman;
-import com.sun.istack.internal.Nullable;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -11,7 +10,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -96,8 +94,7 @@ public class DomUtil {
                     linkmanEl.getElementsByTagName("address").item(0).setTextContent(linkman.getAddress());
                     linkmanEl.getElementsByTagName("email").item(0).setTextContent(linkman.getEmail());
                     //同步
-                    TransformerFactory.newInstance().newTransformer().transform(new DOMSource(doc),
-                            new StreamResult("resource/linkman.xml"));
+                    TransformerFactory.newInstance().newTransformer().transform(new DOMSource(doc),new StreamResult("resource/linkman.xml"));
                     return;
                 }
             }

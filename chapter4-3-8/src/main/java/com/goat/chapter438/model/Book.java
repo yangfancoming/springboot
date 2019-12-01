@@ -1,4 +1,4 @@
-package com.goat.xml.bean;
+package com.goat.chapter438.model;
 
 
 public class Book {

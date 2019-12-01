@@ -1,4 +1,4 @@
-package com.goat.xml.w3cdom;
+package com.goat.chapter438;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +23,7 @@ import java.io.InputStream;
  * @ author  山羊来了
  * @ date 2019/7/27---14:51
  */
-public class App {
+public class App2 {
 
     DocumentBuilderFactory dbf;
     DocumentBuilder db;

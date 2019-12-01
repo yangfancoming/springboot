@@ -3,7 +3,11 @@ package com.goat.chapter438;
 import com.goat.chapter438.model.Linkman;
 import com.goat.chapter438.util.DomUtil;
 import org.junit.Test;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -23,13 +27,13 @@ public class TestApp {
     InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("linkman.xml");
 
     @Test
-    public void selectOneById()  {
+    public void selectOneById() throws IOException, SAXException, ParserConfigurationException {
         Linkman lkm = DomUtil.selectOneById("5",inputStream);
         System.out.println(lkm);
     }
 
     @Test
-    public void delete()  {
+    public void delete() throws SAXException, TransformerException, ParserConfigurationException, IOException {
         DomUtil.delete("6");
     }
 
@@ -44,7 +48,7 @@ public class TestApp {
     }
 
     @Test
-    public void update()  {
+    public void update() throws IOException, SAXException, ParserConfigurationException {
         Linkman lkm = DomUtil.selectOneById("5",inputStream);
         lkm.setAddress("fuck");
         DomUtil.update(lkm);
