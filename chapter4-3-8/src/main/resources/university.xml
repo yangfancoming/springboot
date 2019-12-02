@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <university name="pku">
+
 	<college name="c1">
 		<class name="class1">
 			<student name="stu1" sex='male' age="21" />
@@ -12,11 +13,14 @@
 			<student name="stu6" sex='female' age="21" />
 		</class>
 	</college>
+
 	<college name="c2">
 		<class name="class3">
 			<student name="stu7" sex='male' age="20" />
 		</class>
 	</college>
+
 	<college name="c3">
 	</college>
+
 </university>

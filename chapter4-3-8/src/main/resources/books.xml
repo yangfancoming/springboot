@@ -7,12 +7,14 @@
 		<year>2014</year>           <!-- NodeList -->
 		<price>89</price>           <!-- NodeList -->
 	</book>
+
 	<book id="2">
 		<name>安徒生童话</name>
 		<author>安徒生</author>
 		<year>2004</year>
 		<price>77</price>
 	</book>
+
 	<book id="3">
 		<name>think in java</name>
 		<author>aaa</author>

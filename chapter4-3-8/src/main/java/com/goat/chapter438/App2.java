@@ -51,8 +51,6 @@ public class App2 {
     }
 
 
-
-
     @Test
     public void read()   {
         System.err.println(root.getAttribute("name"));

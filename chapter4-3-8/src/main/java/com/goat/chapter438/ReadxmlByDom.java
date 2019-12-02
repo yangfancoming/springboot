@@ -46,7 +46,8 @@ public class ReadxmlByDom {
 			String id = namedNodeMap.getNamedItem("id").getTextContent();//System.out.println(id);
 			book.setId(Integer.parseInt(id));
 			//获取book结点的子节点,包含了Test类型的换行
-			NodeList cList = node.getChildNodes();//System.out.println(cList.getLength());9
+			NodeList cList = node.getChildNodes();//
+            System.out.println(cList.getLength());
 			//将一个book里面的属性加入数组
 			ArrayList<String> contents = new ArrayList<>();
 			for(int j=1;j<cList.getLength();j+=2){

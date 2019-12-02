@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bookstore>
+
+    <test>123</test>
+
+    <book category="java">
+        <title lang="en">Everyday Italian</title>
+        <author>Giada De Laurentiis</author>
+        <!--    hello-->
+        <year>2005</year>
+        <price>30.0</price>
+    </book>
+
+
+    <book category="CHILDREN" test = "123">
+        <title lang="cn">Harry Potter</title>
+        <author>J K. Rowling</author>
+        <year>2005</year>
+        <price>29.99</price>
+    </book>
+
+
+    <book category="WEB">
+        <title lang="sn">Learing XML</title>
+        <author>Erik T. Ray</author>
+        <year>2010</year>
+        <price>48.99</price>
+    </book>
+
+
+</bookstore>

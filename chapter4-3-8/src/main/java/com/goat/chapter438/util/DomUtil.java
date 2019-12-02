@@ -27,6 +27,26 @@ import java.util.List;
  */
 public class DomUtil {
 
+    public static Document getDocumentByInputStream(InputStream inputStream) throws ParserConfigurationException, IOException, SAXException {
+        /* 1. 得到DOM解析器的工厂实例 */
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        /* 2. 从DOM工厂中获得DOM解析器 */
+        DocumentBuilder dbBuilder = dbFactory.newDocumentBuilder();
+        /* 3. 解析器 解析inputStream流的解析结果 */
+        Document doc = dbBuilder.parse(inputStream);
+        return doc;
+    }
+
+
+    public static Document getDocumentByInputStream(String path) throws ParserConfigurationException, IOException, SAXException {
+        /* 1. 得到DOM解析器的工厂实例 */
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        /* 2. 从DOM工厂中获得DOM解析器 */
+        DocumentBuilder dbBuilder = dbFactory.newDocumentBuilder();
+        /* 3. 解析器 解析inputStream流的解析结果 */
+        Document doc = dbBuilder.parse(path);
+        return doc;
+    }
 
     public static List<Linkman> selectAll() {
         List<Linkman> list = new ArrayList<>();
