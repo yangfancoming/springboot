@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * 用SAX解析xml文件时需要的handler
  */
-public class SAXParseHandler extends DefaultHandler {
+public class MyParseHandler extends DefaultHandler {
 
 	private List<Book> list;         //存放解析到的book数组
 	private Book book;               //存放当前解析的book
@@ -32,6 +32,7 @@ public class SAXParseHandler extends DefaultHandler {
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         super.startElement(uri, localName, qName, attributes);
+        System.out.println("发现节点开始：" +  qName );
         //当节点名为book时,获取book的属性id
         if(qName.equals("book")){
             book = new Book();
@@ -41,26 +42,34 @@ public class SAXParseHandler extends DefaultHandler {
     }
 
     /**
-     * 此方法用来获取节点的值
+     *
+     */
+    /**
+     * @Title： 此方法用来获取节点的值
+     * @author fan.yang
+     * @date 2019年12月2日21:37:00
+     * @param ch  所有的文本内容
+     * @param start 起始位置
+     * @param length 长度
      */
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
         super.characters(ch, start, length);
         content = new String(ch, start, length);
         //收集不为空白的节点值
-        //		if(!content.trim().equals("")){
-        //			System.out.println("节点值为："+content);
-        //		}
+        if(!content.trim().equals("")){
+            System.out.println("节点值为："+content);
+        }
     }
 
     /**
      *节点解析完毕时调用此方法
-     *
      *@param qName 节点名
      */
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
         super.endElement(uri, localName, qName);
+        System.out.println("发现节点结束：" +  qName );
         if(qName.equals("name")){
             book.setName(content);
             //System.out.println("书名"+content);

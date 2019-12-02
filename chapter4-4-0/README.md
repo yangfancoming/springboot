@@ -13,8 +13,9 @@
 
 
 # SAX解析
-    1.sax 解析器
+    1.sax 解析器(扫描器)
     2. MyParseHandler extends DefaultHandler
+    其原理是 sax解析器(扫描器)  边扫描xml文件 边触发事件机制通知 MyParseHandler 边处理 
     
     
     
