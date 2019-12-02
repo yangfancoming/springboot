@@ -4,6 +4,7 @@ import com.goat.chapter438.util.DomUtil;
 import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
@@ -78,6 +79,8 @@ public class ClassApp {
     public void test4() throws TransformerException {
         // 创建一个学生节点
         Element element1 = doc.createElement("学生");
+        // 给节点设置 属性
+        element1.setAttribute("goat","wahaha");
         // 创建 名字节点
         Element element2 = doc.createElement("名字");
         // 设置节点值
@@ -96,6 +99,54 @@ public class ClassApp {
 
         // 新建的节点 添加到根元素下
         doc.getDocumentElement().appendChild(element1);
+        DOMSource xmlSource = new DOMSource(doc);
+        StreamResult streamResult = new StreamResult("src/classes.xml");
+        // 将添加到内存的结果  保存到硬盘xml文件
+        TransformerFactory.newInstance().newTransformer().transform(xmlSource,streamResult);
+    }
+
+    // 删除 节点
+    @Test
+    public void test5() throws TransformerException {
+        // 获取 <学生> 元素列表
+        NodeList nodeList = doc.getElementsByTagName("学生");
+        // 获取第4个学生
+        Node item = nodeList.item(3);
+        item.getParentNode().removeChild(item);
+
+        DOMSource xmlSource = new DOMSource(doc);
+        StreamResult streamResult = new StreamResult("src/classes.xml");
+        // 将添加到内存的结果  保存到硬盘xml文件
+        TransformerFactory.newInstance().newTransformer().transform(xmlSource,streamResult);
+    }
+
+    // 删除 节点 属性
+    @Test
+    public void test6() throws TransformerException {
+        // 获取 <学生> 元素列表
+        NodeList nodeList = doc.getElementsByTagName("学生");
+        // 获取第3个学生
+        Element item = (Element)nodeList.item(2);
+        item.removeAttribute("sex");
+
+        DOMSource xmlSource = new DOMSource(doc);
+        StreamResult streamResult = new StreamResult("src/classes.xml");
+        // 将添加到内存的结果  保存到硬盘xml文件
+        TransformerFactory.newInstance().newTransformer().transform(xmlSource,streamResult);
+    }
+
+    // 修改 节点
+    @Test
+    public void test7() throws TransformerException {
+        // 获取 <学生> 元素列表
+        NodeList nodeList = doc.getElementsByTagName("学生");
+        // 获取第1个学生
+        Element item = (Element)nodeList.item(0);
+        // 在第一个学生节点中 查找 “名字” 子节点
+        NodeList temp = item.getElementsByTagName("名字");
+        // 由于可能找到多个 “名字” 子节点  所以就取出第一个  进行修改
+        temp.item(0).setTextContent("宋江");
+
         DOMSource xmlSource = new DOMSource(doc);
         StreamResult streamResult = new StreamResult("src/classes.xml");
         // 将添加到内存的结果  保存到硬盘xml文件
