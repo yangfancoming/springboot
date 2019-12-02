@@ -1,9 +1,7 @@
 package com.goat.chapter438.util;
 
 import com.goat.chapter438.model.Linkman;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -20,12 +18,25 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2019/11/30.
- *
  * @ Description: TODO
  * @ author  山羊来了
  * @ date 2019/11/30---10:35
  */
 public class DomUtil {
+
+    // 递归遍历 xml
+    public static void foreachNode(Node node){
+        String nodeName = node.getNodeName();
+        NodeList childNodes = node.getChildNodes();
+        if (node.getNodeType() == Node.ELEMENT_NODE){
+            System.out.println("节点名称：" +  nodeName + "子节点个数：" + childNodes.getLength());
+        }
+        for (int i = 0; i < childNodes.getLength(); i++) {
+            Node item = childNodes.item(i);
+            foreachNode(item);
+        }
+    }
+
 
     public static Document getDocumentByInputStream(InputStream inputStream) throws ParserConfigurationException, IOException, SAXException {
         /* 1. 得到DOM解析器的工厂实例 */

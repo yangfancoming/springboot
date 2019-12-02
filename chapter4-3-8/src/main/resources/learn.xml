@@ -1,5 +1,4 @@
-
-<?xml version="1.0" encoding="UTF-8"?> <!-- xml声明 -->
+<?xml version="1.0" encoding="UTF-8"?>  <!-- xml声明 -->
 
 <!--
 一个xml文档必须要有第一行的声明和它的文档元素的描述信息就可以了。
@@ -9,9 +8,8 @@ encoding： 文档字符编码，默认编码为 UTF-8
 -->
 
 
-
 <!--
-<bookstore> 根元素： 是xml文档里面唯一的；它的开始是放在最前面，结束是放在最后面。
+<bookstore> 根元素： 是xml文档里面唯一的；有且只有一个！ 它的开始是放在最前面，结束是放在最后面。
 -->
 <bookstore>
 
@@ -26,11 +24,27 @@ encoding： 文档字符编码，默认编码为 UTF-8
 名称不能以数字或者标点符号开始；
 名称中不能包含空格。
 -->
-	<book id="1">     <!--Node-->
-		<name>冰与火之歌</name>    <!-- NodeList -->
-		<author>乔治马丁</author>  <!-- NodeList -->
-		<year>2014</year>           <!-- NodeList -->
-		<price>89</price>           <!-- NodeList -->
+	<book id="1">
+		<name>冰与火之歌</name>   
+		<author>乔治马丁</author> 
+		<year>2014</year>          
+		<price>89</price>          
+		<判断>100  &lt;  99 吗？</判断>  <!--   100 < 99 吗？-->
+		<介绍> <!--   当遇到大片的 需要转义字符时 使用  <![CDATA[ ]]> 来简化操作 不用每个都用转义字符 那样太麻烦了 -->
+            <![CDATA[
+    function matchwo(a,b)
+    {
+    if (a < b && a < 0) then
+      {
+      return 1;
+      }
+    else
+      {
+      return 0;
+      }
+    }
+]]>
+        </介绍>
 	</book>
 
 	<book id="2">
@@ -62,4 +76,20 @@ xml中5个预定义实体:
 &amp;	&	和号
 &apos;	'	省略号
 &quot;	"	引号
+-->
+
+
+<!--
+xml 解析器
+Aelfred2  dom4j
+Xerces   ibm->apache
+Crimson  sun
+
+明确概念：
+    1.dom会把xml文件看做一个树，并加载到内存
+    2. dom特别适合做crud操作
+    3. xml中的  <book>  叫做： 元素/标签/节点
+    4. dom会把xml文件中每一个元素/属性/文本 都映射成对应的 Node/Element 对象
+
+
 -->
