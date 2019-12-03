@@ -22,19 +22,28 @@ import java.util.List;
  * @ author  山羊来了
  * @ date 2019/7/5---19:21
  */
-public class App {
+public class DomXpathApp {
+
+   public static List<Students> list = new ArrayList<>();//解析出来的数据用Stundent对象存储，用集合存储该对象
 
     public static void main(String[] args) throws Exception{
-        List<Students> list = new ArrayList<>();//解析出来的数据用Stundent对象存储，用集合存储该对象
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();//实例化DocumentBuilderFactory对象
         DocumentBuilder bulider = dbf.newDocumentBuilder();
         String fileName = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter4-4-0\\src\\main\\java\\com\\goat\\xml\\xmldemo\\student.xml";
 //        Document doc = bulider.parse(Thread.currentThread().getContextClassLoader().getResourceAsStream(fileName));
         Document doc = bulider.parse(fileName);
-        XPathFactory factory = XPathFactory.newInstance();//实例化XPathFactory对象
-        XPath xpath = factory.newXPath();
+        XPath xpath = XPathFactory.newInstance().newXPath();
+        // 方式一：
+        //使用XPath对象编译XPath表达式
         XPathExpression compile = xpath.compile("//student");//选取student节点
+        //计算 XPath 表达式得到结果
+        //节点集node-set转化为NodeList
+        //将结果强制转化成 DOM NodeList
         NodeList nodes = (NodeList)compile.evaluate(doc, XPathConstants.NODESET);//获取student节点的所有节点
+
+        // 方式二：
+//        NodeList nodes = (NodeList)xpath.evaluate("//student", doc, XPathConstants.NODESET);
+
         for(int i=0;i<nodes.getLength();i++) {
             Students stu = new Students();
             NodeList childNodes = nodes.item(i).getChildNodes(); //获取一个student节点所有的子节点，返回集合

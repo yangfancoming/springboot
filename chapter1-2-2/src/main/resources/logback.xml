@@ -19,7 +19,7 @@
     <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${log.path}</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            日志文件输出的文件名
+<!--            日志文件输出的文件名-->
             <fileNamePattern>logback.%d{yyyy-MM-dd}.log</fileNamePattern>
             <!--日志文件保留天数-->
             <maxHistory>30</maxHistory>

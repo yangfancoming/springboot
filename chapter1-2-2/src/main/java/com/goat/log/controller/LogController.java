@@ -1,9 +1,14 @@
 package com.goat.log.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.goat.log.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 64274 on 2019/4/3.
@@ -16,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class LogController {
 
 //    private static final Logger LOG = LoggerFactory.getLogger(LogController.class);
-    private  final Logger logger = LoggerFactory.getLogger(getClass());
+//    private  final Logger logger = LoggerFactory.getLogger(getClass());
     //  http://localhost:8122/test
     @GetMapping("/test")
     public void test(){
@@ -37,5 +42,19 @@ public class LogController {
         logger.info("这是  info.................");
         logger.warn("这是  warn.................");
         logger.error("这是  error.................");
+    }
+    private Logger logger = LoggerFactory.getLogger(getClass());
+    //  http://localhost:8122/test2
+    @GetMapping("/test2")
+    public void test2(){
+        List<User> userList = new ArrayList<>();
+        userList.add(new User("11",11));
+        userList.add(new User("22",22));
+
+        String json = JSON.toJSONString(userList);
+
+        logger.error("这是  error................{}.",json);
+        logger.info("123..............{}.",111);
+        logger.info("username:{}  and pwd:{}", 11, 22);
     }
 }
