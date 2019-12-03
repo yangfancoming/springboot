@@ -2,14 +2,10 @@ package com.goat.xml.dom4j;
 
 import com.goat.xml.base.MyBase;
 import com.goat.xml.bean.Student;
-import org.dom4j.Document;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Element;
-import org.dom4j.Node;
+import org.dom4j.*;
 import org.dom4j.io.XMLWriter;
 import org.junit.Test;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,13 +19,79 @@ import java.util.List;
 public class ReadXML extends MyBase {
 
 
+    //  修改节点属性
+    @Test
+    public void update() throws IOException {
+        Element student = document.getRootElement().element("student");
+        Element firstname = student.element("firstname");
+        // 设置 节点文本内容
+        firstname.setText("gaga");
+        // 设置 节点 属性
+        firstname.addAttribute("foo","banner");
+        FileOutputStream fos = new FileOutputStream(file);
+        XMLWriter writer = new XMLWriter(fos);
+        writer.write(document);
+    }
+
+    //  删除节点属性
+    @Test
+    public void del2() throws IOException {
+        // 获取到要删除的节点
+        Element student = (Element)document.getRootElement().elements("student").get(2);
+        // 获取节点下的子节点
+        Element firstname = student.element("firstname");
+        // 获取子节点 下的 属性
+        Attribute foo = firstname.attribute("foo");
+        // 进行删除操作
+        boolean mark = firstname.remove(foo);
+        // 持久化
+        System.out.println(mark);
+        FileOutputStream fos = new FileOutputStream(file);
+        XMLWriter writer = new XMLWriter(fos);
+        writer.write(document);
+    }
+
+    //  删除节点
+    @Test
+    public void del() throws IOException {
+        // 获取到要删除的节点
+        Element student = (Element)document.getRootElement().elements("student").get(2);
+        // 进行删除操作
+        boolean remove = student.getParent().remove(student);
+        System.out.println(remove);
+        FileOutputStream fos = new FileOutputStream(file);
+        XMLWriter writer = new XMLWriter(fos);
+        writer.write(document);
+    }
+    //  再指定位置 添加 节点
+    @Test
+    public void add2() throws IOException {
+        // 创建 <student> 节点
+        Element temp = DocumentHelper.createElement("student");
+        temp.setText("卢俊义");
+
+        Element rootElement = document.getRootElement();
+        List list = rootElement.elements("student");
+        list.add(1,temp);
+
+        // 将 内存文档 写入磁盘文件  持久化
+        FileOutputStream fos = new FileOutputStream(file);
+        XMLWriter writer = new XMLWriter(fos);
+        writer.write(document);
+    }
+
+
+    //  添加 节点
     @Test
     public void add() throws IOException {
-
         // 创建 <student> 节点
         Element student = DocumentHelper.createElement("student");
         // 创建 <firstname> 节点
         Element firstname = DocumentHelper.createElement("firstname");
+        // 给  <firstname> 节点 添加属性
+        firstname.addAttribute("haha","didi");
+        // 给  <firstname> 节点 添加文本
+        firstname.setText("wangbao");
         // 创建 <lastname> 节点
         Element lastname = DocumentHelper.createElement("lastname");
         // 创建 <nickname> 节点
