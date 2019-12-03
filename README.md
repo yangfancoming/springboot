@@ -40,7 +40,7 @@
 - ==chapter1-3-X springboot  日志框架 Log4j==
 - ==chapter1-3-0 springboot  日志框架 CommonsLogging==
 - ==chapter1-3-1 springboot  日志框架 Java原生日志 java.util.logging==
-
+==chapter1-3-2 springboot  日志框架  LogBack ==
 
 
 
@@ -118,6 +118,7 @@ Web开发
 Spring基础
 
 - ==chapter3-0-3：springboot 中 Spring基础==
+- ==chapter3-0-6：springboot 中 Goat手写 Tiny-Spring框架==
 - ==chapter3-0-8：springboot 中 手写 Tiny-Spring框架==
 - 
 
@@ -181,11 +182,14 @@ AOP
 - ==chapter4-3-0：springboot 集成   getResourceAsStream   == 
 - ==chapter4-3-5：springboot 集成   手写mybatis框架  == 
 - ==chapter4-3-7：springboot 集成   自己手写mybatis框架    == 
+- ==chapter4-3-8：springboot 集成   解析MXL W3C dom== 
+- ==chapter4-3-9：springboot 集成   解析MXL SAX== 
 - ==chapter4-4-0：springboot 集成   解析 XML == 
 - ==chapter4-4-1：springboot 集成 mybatis   Dao接口 + sqlxml 实现== 
 - ==chapter4-4-2：springboot 集成 mybatis   Dao接口 +  注解 实现==
 - ==chapter4-4-3：springboot 集成 mybatis== 
 - ==chapter4-4-4：springboot 集成 mybatis + mybatisplus + 日期处理== 
+- ==chapter4-4-7：springboot 集成 mybatis-generator  == 
 - ==chapter4-5-2：springboot 集成 MongoDB  使用 MongoTemplate==
 - ==chapter4-5-3：springboot 集成 MongoDB  使用 MongoRepository==
 - ==chapter4-6-0：springboot 集成 Oracle==
