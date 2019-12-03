@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--     /*/*/*/BBB   选择所有的有3个祖先元素的BBB元素 -->
+
+
+<AAA>
+    <XXX>
+        <DDD>
+            <BBB/> <!---->
+            <BBB/> <!---->
+            <EEE/>
+            <FFF/>
+        </DDD>
+    </XXX>
+    <CCC>
+        <DDD>
+            <BBB/> <!---->
+            <BBB/> <!---->
+            <EEE/>
+            <FFF/>
+        </DDD>
+    </CCC>
+    <CCC>
+        <BBB>
+            <BBB> <!---->
+                <BBB/>
+            </BBB> <!---->
+        </BBB>
+    </CCC>
+</AAA>

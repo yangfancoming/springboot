@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--       //BBB  选择所有BBB元素  -->
+
+
+<AAA>
+    <BBB/> <!---->
+    <CCC/>
+    <BBB/> <!---->
+    <DDD>
+        <BBB/> <!---->
+    </DDD>
+    <CCC>
+        <DDD>
+            <BBB/> <!---->
+            <BBB/> <!---->
+        </DDD>
+    </CCC>
+</AAA>

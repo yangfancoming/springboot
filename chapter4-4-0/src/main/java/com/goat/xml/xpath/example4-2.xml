@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--   /AAA/BBB[last()]   选择AAA的最后一个BBB子元素 -->
+
+
+<AAA>
+    <BBB/>
+    <BBB/>
+    <BBB/>
+    <BBB/> <!---->
+</AAA>

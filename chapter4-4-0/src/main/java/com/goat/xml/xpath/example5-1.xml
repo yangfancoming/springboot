@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--   //@id
+选择所有的id属性 -->
+
+
+
+<AAA>
+    <BBB id = "b1"/>
+    <BBB id = "b2"/>
+    <BBB name = "bbb"/>
+    <BBB/>
+</AAA>

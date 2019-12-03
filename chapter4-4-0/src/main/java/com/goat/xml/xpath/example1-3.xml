@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--       /AAA/DDD/BBB
+选择AAA的子元素DDD的所有子元素   -->
+
+<AAA>
+    <BBB/>
+    <CCC/>
+    <BBB/>
+    <BBB/>
+    <DDD>
+        <BBB/> <!---->
+    </DDD>
+    <CCC/>
+</AAA>

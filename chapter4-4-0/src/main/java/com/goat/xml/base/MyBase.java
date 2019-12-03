@@ -21,7 +21,8 @@ import java.io.IOException;
  */
 public class MyBase {
 
-    protected static final String path = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter4-4-0\\src\\main\\java\\com\\goat\\xml\\xmldemo\\students.xml";
+//    public static String path = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter4-4-0\\src\\main\\java\\com\\goat\\xml\\xmldemo\\students.xml";
+    public static String path = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter4-4-0\\src\\main\\java\\com\\goat\\xml\\xpath\\example03.xml";
 
     protected File file ;
     protected Document document ;

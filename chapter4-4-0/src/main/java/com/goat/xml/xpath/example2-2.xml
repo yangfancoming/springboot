@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--        //DDD/BBB 选择所有父元素是DDD的BBB元素 -->
+
+
+<AAA>
+    <BBB/>
+    <CCC/>
+    <BBB/>
+    <DDD>
+        <BBB/> <!---->
+    </DDD>
+    <CCC>
+        <DDD>
+            <BBB/> <!---->
+            <BBB/> <!---->
+        </DDD>
+    </CCC>
+</AAA>
