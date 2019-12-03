@@ -9,7 +9,9 @@
   
 #  由来
     1、DOM解析   基于 w3c 标准  缺点是  一次性将xml文件 加载到内存后 再开始解析。。。如果xml文件很大 则加载很慢
-    2、SAX解析   因此应运而生  sax可以在不全部加载完毕的情况下 就可以开始解析了！
+    2、SAX解析   因此应运而生  sax可以在不全部加载完毕的情况下 就可以开始解析了！ 缺点：读取，不能做cud操作
+    3、DOM4J     因此应运而生  效率既高又可以crud
+    
 
 
 # SAX解析
@@ -17,6 +19,7 @@
     2. MyParseHandler extends DefaultHandler
     其原理是 sax解析器(扫描器)  边扫描xml文件 边触发事件机制通知 MyParseHandler 边处理 
     
+# dom4j
     
     
 # xpath 表达式

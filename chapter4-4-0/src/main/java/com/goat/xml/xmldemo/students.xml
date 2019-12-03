@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <class>
     <student rollnumber="1" goat="what">
         <firstname>11</firstname>
@@ -9,8 +8,8 @@
         <goat1>what</goat1>
     </student>
 
-    <student rollnumber="1" goat="what">
-        <firstname>11</firstname>
+    <student rollnumber="2" goat="what">
+        <firstname foo="bar">11</firstname>
         <lastname>22</lastname>
         <nickname>33</nickname>
         <marks>4</marks>
@@ -18,8 +17,7 @@
     </student>
 
 
-
     <goat>
 
     </goat>
-</class>
+<student><firstname/><lastname/><nickname/></student></class>

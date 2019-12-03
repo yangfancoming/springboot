@@ -29,8 +29,10 @@ public class MyBase {
 
     public MyBase()  {
         this.file = new File(path);
+        // 创建解析器
         this.reader = new SAXReader();
         try {
+            // 解析器解析指定xml文件
             this.document = this.reader.read(file);
         } catch (DocumentException e) {
             e.printStackTrace();
