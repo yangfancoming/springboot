@@ -1,15 +1,10 @@
 
-
 SpringBoot
-
-
 
 两个项目 配置使用  
 
 ==chapter2-7-1 springboot  集成 HttpClient ==
-
 ==chapter2-0-8 springboot  集成 MockMvc和Swagger2==
-
 
 
 工程配置
@@ -31,8 +26,6 @@ SpringBoot
 - ==chapter1-1-6 springboot 多环境profile打包 ==
 - ==chapter1-1-8 springboot  集成OGNL ==
 
-
-
 日志相关
 
 - ==chapter1-2-1 springboot  与 日志==
@@ -48,18 +41,12 @@ SpringBoot
 - ==chapter1-3-1 springboot  日志框架 Java原生日志 java.util.logging==
 
 
-
-
-
 日期和时间处理  基于 restTemplate
 
 - ==chapter1-3-5 springboot  公共接口和model==
 - ==chapter1-3-6 springboot  生产者 Provider==
 - ==chapter1-3-7 springboot  消费者 Consumer==
 - ==chapter1-3-8 springboot  全局 日期格式处理==
-
-
-
 
 
 Web开发
@@ -97,7 +84,6 @@ Web开发
 - ==chapter2-6-1 springboot  集成  JSP 外置Tomcat容器 + 文件上传/下载==
 
 
-
 模板引擎
 
 - ==chapter2-6-3 
@@ -105,7 +91,6 @@ Web开发
 - ==chapter2-6-5 springboot  集成  freemarker + 日期类型处理==
 - ==chapter2-6-7 springboot  集成  vue+ elementUI==
 - ==chapter2-6-8 springboot  集成 Layui==
-
 
 
 网络请求
@@ -120,15 +105,11 @@ Web开发
 - ==chapter2-9-5 springboot  集成  Redis + Lua 限流==
 
 
-
 Spring基础
 
 - ==chapter3-0-3：springboot 中 Spring基础==
 - ==chapter3-0-6：springboot 中 Goat手写 Tiny-Spring框架==
 - ==chapter3-0-8：springboot 中 手写 Tiny-Spring框架==
-- 
-
-
 
 
 
@@ -138,15 +119,10 @@ Spring基础
 
 
 
-
-
 事务管理
 
 - ==chapter3-3-1：springboot  事务管理   基于@Transactional 注解+ jdbcTemplate实现==
 - ==chapter3-3-2：springboot  事务管理   基于@Transactional 注解+ JPA实现==
-
-
-
 
 
 AOP
@@ -210,7 +186,6 @@ AOP
 - ==chapter4-7-7：springboot 集成 mysql分库分表  基于 DD.shardingJDBC==
 
 
-
 缓存支持
 
 - ==chapter5-0-8：springboot 集成 Cache + jdbcTemplate==
@@ -225,7 +200,6 @@ AOP
 - ==chapter5-2-1：springboot 集成  guava cache==
 - ==chapter5-2-2：springboot 集成  guava cache  基于注解==
 - ==chapter5-2-5：springboot 集成  encache 基于注解==
-
 
 
 微服务
@@ -246,8 +220,6 @@ AOP
 
 
 
-
-
 - ==chapter6-1-1：springboot 集成 Swagger2==
 - ==chapter6-2-1：springboot 集成 Email 邮件  邮箱==
 - ==chapter6-2-4：springboot 集成 StateMachine  官网demo==
@@ -255,7 +227,6 @@ AOP
 - ==chapter6-2-6：springboot 集成 StateMachine 框架实现状态机2==
 - ==chapter6-2-7：springboot 集成 StateMachine 框架实现状态机3==
 - ==chapter6-2-8：springboot 集成 StateMachine 框架实现状态机4==
-
 
 
 任务调度
@@ -269,8 +240,6 @@ AOP
 
 
 
-
-
 - ==chapter6-6-0：springboot  Batch 批处理1 ==
 - ==chapter6-6-1：springboot  Batch 批处理2 ==
 - ==chapter7-2-1：springboot 集成 solr  使用SolrClient 方式 ==
@@ -278,7 +247,6 @@ AOP
 - ==chapter7-3-1：springboot 集成 ElasticSearch  使用 JestClient 操作==
 - ==chapter7-4-1：springboot 集成 ElasticSearch  使用 SpringData 操作==
 - ==chapter7-5-0：springboot 集成 Maven 学习总结==
-
 
 
 excel 相关操作
@@ -289,10 +257,7 @@ excel 相关操作
 
 
 
- 
-
 其他语言
-
 
 
 - ==chapter7-6-1：springboot 集成 事件监听==
@@ -313,12 +278,10 @@ excel 相关操作
 - ==chapter8-1-4：springboot 集成  Java调用 Python脚本  通过命令行==
 
 
-
 文件上传/下载
 
 - ==chapter8-2-0：springboot 集成 FastDFS==
 - ==chapter8-2-3：springboot 实现 图片上传(加水印)==
-
 
 
 消息中间件
@@ -328,8 +291,6 @@ excel 相关操作
 - ==chapter8-3-1：springboot 集成 RabbitMQ  精简版==
 - ==chapter8-3-3：springboot 集成 Kafka==
 - ==chapter8-3-5：springboot 集成 Activemq==
-- 
-
 
 
 二维码相关
@@ -338,13 +299,9 @@ excel 相关操作
 - ==chapter8-4-2：springboot 集成 Zxing==
 
 
-
 JVM
 
 - ==chapter8-5-0：springboot 集成 JVM==
-
-
-
 
 
 数据结构与算法
@@ -353,29 +310,19 @@ JVM
 - ==chapter8-6-2：springboot 集成 数据结构==
 
 
-
-
-
 书籍
 
 ==chapter8-7-0：springboot 集成 Effective Java 第二版==
 
 
-
 项目经验总结
 
 ==chapter8-8-8：springboot 集成 项目经验总结==
-
 ==chapter8-9-0：springboot 集成 Linux 系统 总结==
 
 高并发
 
 - ==chapter9-0-1：springboot 集成 高并发 ==
-
-
-
-
-
 
 
 - ==chapter9-1-1：Mysql 积累和总结==
@@ -398,7 +345,6 @@ JVM
 - ==chapter9-9-0：springboot 架构 设计模式实战==
 
 
-
 版本控制
 
 - ==chapter9-9-1：springboot 集成Git 版本控制==
@@ -411,11 +357,6 @@ JVM
 - ==chapter9-9-6：springboot 集成 TestNG==
 - ==chapter9-9-9：提供测试代码 编写==
   
-
-
-
-
-
 
 
 JavaSe 项目目录
