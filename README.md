@@ -1,5 +1,9 @@
 
 
+SpringBoot
+
+
+
 两个项目 配置使用  
 
 ==chapter2-7-1 springboot  集成 HttpClient ==
@@ -31,6 +35,7 @@
 日志相关
 
 - ==chapter1-2-1 springboot  与 日志==
+- ==chapter1-2-2 springboot  与 日志    默认日志框架  LogBack ==
 - ==chapter1-2-3 springboot  与 日志 log4j + AOP统一处理请求日志==
 - ==chapter1-2-4 springboot  日志输出至Logstash xml方式==
 - ==chapter1-2-5 springboot  日志输出至Logstash  properties方式==    失败
@@ -40,7 +45,7 @@
 - ==chapter1-3-X springboot  日志框架 Log4j==
 - ==chapter1-3-0 springboot  日志框架 CommonsLogging==
 - ==chapter1-3-1 springboot  日志框架 Java原生日志 java.util.logging==
-==chapter1-3-2 springboot  日志框架  LogBack ==
+
 
 
 
@@ -183,7 +188,7 @@ AOP
 - ==chapter4-3-5：springboot 集成   手写mybatis框架  == 
 - ==chapter4-3-7：springboot 集成   自己手写mybatis框架    == 
 - ==chapter4-3-8：springboot 集成   解析MXL W3C dom== 
-- ==chapter4-3-9：springboot 集成   解析MXL SAX== 
+- ==chapter4-3-9：springboot 集成   解析 XML SAX== 
 - ==chapter4-4-0：springboot 集成   解析 XML == 
 - ==chapter4-4-1：springboot 集成 mybatis   Dao接口 + sqlxml 实现== 
 - ==chapter4-4-2：springboot 集成 mybatis   Dao接口 +  注解 实现==
@@ -427,3 +432,39 @@ JavaSe 项目目录
 - ==chapter99-17-3：Java 网络编程==
 - ==chapter99-18-3：Java 类加载机制与反射==
 - ==chapter99-20-1：单机游戏==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
