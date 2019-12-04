@@ -1,5 +1,5 @@
 
-package com.goat.io;
+package cn.goatool.core.io;
 
 import java.io.*;
 import java.net.URL;
@@ -45,7 +45,6 @@ public class Resources {
    * @throws IOException If the resource cannot be found or read
    */
   public static URL getResourceURL(String resource) throws IOException {
-      // issue #625
       return getResourceURL(null, resource);
   }
 

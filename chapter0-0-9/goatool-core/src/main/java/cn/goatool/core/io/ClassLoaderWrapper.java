@@ -1,5 +1,5 @@
 
-package com.goat.io;
+package cn.goatool.core.io;
 
 import java.io.InputStream;
 import java.net.URL;

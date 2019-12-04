@@ -1,6 +1,6 @@
 package com.goat.mybatis.decompose;
 
-import com.goat.mybatis.decompose.io.Resources;
+import cn.goatool.core.io.Resources;
 import com.goat.mybatis.decompose.parsing.SelectNodeUtil;
 import org.junit.Test;
 import org.slf4j.Logger;

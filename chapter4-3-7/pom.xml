@@ -15,11 +15,12 @@
 
     <dependencies>
 
-<!--        <dependency>-->
-<!--            <groupId>com.goat.springboot.learing</groupId>-->
-<!--            <artifactId>chapter0-1-0</artifactId>-->
-<!--            <version>0.0.1-SNAPSHOT</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.goat.springboot.learing</groupId>
+            <artifactId>goatool-core</artifactId>
+<!--            <artifactId>chapter0-0-9</artifactId>-->
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
 
     </dependencies>
