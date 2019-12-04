@@ -1,3 +1,5 @@
+package cn.goatool.core;
+
 import org.junit.Test;
 
 /**

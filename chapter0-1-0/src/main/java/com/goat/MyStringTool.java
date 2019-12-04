@@ -15,7 +15,7 @@ public class MyStringTool {
     /**
      * @Description: 功能描述：将字符串按照指定长度进行分割
      * @author: Goat
-     * @Param: 1234567890    MyStringTool.StrSplit(marks,3);
+     * @Param:     MyStringTool.StrSplit("1234567890",3);
      * @Return:  123,456,789
      * @Date:   2018/7/11
      */
@@ -76,14 +76,12 @@ public class MyStringTool {
     }
     /**
      * 十六进制串转化为byte数组
-     *
      * @return the array of byte
      */
-    public static final Integer MARK = 2;
 
     //    public static final Byte[] hex2bytes(String hex) throws IllegalArgumentException {
     public static  Byte[] hex2bytes(String hex) throws IllegalArgumentException {
-        if (hex.length() % MARK != 0) {
+        if (hex.length() % 2 != 0) {
             throw new IllegalArgumentException();
         }
         char[] arr = hex.toCharArray();
