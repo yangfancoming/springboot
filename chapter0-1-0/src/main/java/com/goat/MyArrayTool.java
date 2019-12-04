@@ -10,9 +10,11 @@ package com.goat;
 public class MyArrayTool<T>{
 
     private final static MyArrayTool INSTANCE = new MyArrayTool();
+
     public static MyArrayTool getInstance(){
         return INSTANCE;
     }
+
     private MyArrayTool() {} //sos 构造函数私有化 防止在外部创建
     /**
      * @Description: 功能描述： 获取最小值下标

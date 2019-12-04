@@ -13,23 +13,28 @@ public class MyArrayTest {
 
     int[] arrs = {2, 1, 14, 22, 18, 3, 27, 20};
     byte[] byteArrs = {2, 1, 14, 22, 18, 3, 27, 20};
+
     MyArrayTool myArrayTool = MyArrayTool.getInstance();
+
     @Test
     public void test(){
         int temp = MyArrayTool.getMin(arrs);
         System.out.println(temp);
     }
+
     @Test
     public void test1(){
         int temp = MyArrayTool.getMax(arrs);
         System.out.println(temp);
     }
+
     @Test
     public void test2(){
         Integer[] temp ={2, 1, 14, 22, 18, 3, 27, 20};
         String lolo = myArrayTool.strPrint(temp);
         System.out.println(lolo);
     }
+
     @Test
     public void test3(){
         Integer[] temp ={2, 1, 14, 22, 18, 3, 27, 20};
@@ -37,11 +42,14 @@ public class MyArrayTest {
         String gaga = myArrayTool.strPrint(lolo);
         System.out.println(gaga);
     }
+
+
     @Test
     public void test4(){
         int hoho1 = MyArrayTool.halfSearch(arrs,14);
         System.out.println(hoho1);
     }
+
     @Test
     public void reverseArray(){
         Byte[] hoho1 = MyArrayTool.reverseArray(byteArrs);

@@ -1,7 +1,7 @@
 package com.goat.java;
 
 
-import com.goat.scala.Hello;
+//import com.goat.scala.Hello;
 
 /**
  * Created by 64274 on 2018/11/29.
@@ -13,7 +13,7 @@ import com.goat.scala.Hello;
 public class HelloWorld {
 
     public static void main(String[] args){
-        Hello h = new Hello();
-        h.sayHello("scala");
+//        Hello h = new Hello();
+//        h.sayHello("scala");
     }
 }

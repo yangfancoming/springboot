@@ -20,7 +20,8 @@ SpringBoot
 - ==chapter0-0-6 springboot 自定义jar包==
 - ==chapter0-0-7 springboot 引入自定义jar包并以可运行jar方式启动 + SpringMVC 扩展==
 - ==chapter0-0-8 springboot 引入自定义jar包并以war包方式启动==
-- ==chapter0-1-0 springboot Utils 积累常用工具类==
+- ==chapter0-0-9 springboot goatool  (作为其他项目依赖) ==
+- ==chapter0-1-0 springboot Utils 积累常用工具类 (作为其他项目依赖)==  
 - ==chapter0-1-1springboot 集合 Hutool 框架源码==
 - ==chapter0-1-2 springboot 集合 Hutool 框架 演示使用==
 - ==chapter0-1-9 springboot 自定义banner==
@@ -186,7 +187,7 @@ AOP
 - ==chapter4-2-4：springboot 集成  JPA 分页查询 JSP + DataTable==  
 - ==chapter4-3-0：springboot 集成   getResourceAsStream   == 
 - ==chapter4-3-5：springboot 集成   手写mybatis框架  == 
-- ==chapter4-3-7：springboot 集成   自己手写mybatis框架    == 
+- ==chapter4-3-7：springboot 集成   Mybatis框架 分解    == 
 - ==chapter4-3-8：springboot 集成   解析MXL W3C dom== 
 - ==chapter4-3-9：springboot 集成   解析 XML SAX== 
 - ==chapter4-4-0：springboot 集成   解析 XML == 
