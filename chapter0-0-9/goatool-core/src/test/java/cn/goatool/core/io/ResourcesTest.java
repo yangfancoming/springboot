@@ -2,6 +2,8 @@ package cn.goatool.core.io;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,6 +18,7 @@ import java.io.Reader;
  */
 public class ResourcesTest {
 
+    private Logger log = LoggerFactory.getLogger(getClass());
 
     @Test
     public void getResourceAsReader() throws IOException {
@@ -33,6 +36,8 @@ public class ResourcesTest {
             Assert.assertNotNull(inputStream);
         }
     }
+
+
 
 
 }

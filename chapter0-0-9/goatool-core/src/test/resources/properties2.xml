@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"   "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+
+    <properties resource="dbconfig.properties">
+        <property name="jdbc.driver" value="1"/>
+        <property name="jdbc.url" value="2"/>
+        <property name="jdbc.username" value="3"/>
+        <property name="jdbc.password" value="4"/>
+    </properties>
+
+</configuration>
+
