@@ -4,18 +4,27 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Created by Administrator on 2019/12/4.
- *
- * @ Description: TODO
- * @ author  山羊来了
+ * 字节数据工具类测试
  * @ date 2019/12/4---16:40
  */
 public class ByteArrayUtilTest extends TestData {
 
     @Test
-    public void byteArrToHexString() {
+    public void byteArrToHexString1() {
         String hexString = ByteArrayUtil.byteArrToHexString(primitiveArray);
         Assert.assertEquals("[38,03,00,00,00,05]", hexString);
+    }
+
+    @Test
+    public void byteArrToHexStringUpperCase() {
+        String hexString = ByteArrayUtil.byteArrToHexString(foo,true);
+        Assert.assertEquals("[7E,09,0A]", hexString);
+    }
+
+    @Test
+    public void byteArrToHexStringLowerCase() {
+        String hexString = ByteArrayUtil.byteArrToHexString(foo,false);
+        Assert.assertEquals("[7e,09,0a]", hexString);
     }
 
     @Test

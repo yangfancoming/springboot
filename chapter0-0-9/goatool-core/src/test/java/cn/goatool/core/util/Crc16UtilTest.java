@@ -4,10 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Created by Administrator on 2019/12/4.
- * @ Description: TODO
- * @ author  山羊来了
- * @ date 2019/12/4---15:56
+ * Crc 校检测试类
+ * @date 2019/12/4---15:56
  */
 public class Crc16UtilTest extends TestData {
 
