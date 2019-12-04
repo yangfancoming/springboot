@@ -30,7 +30,6 @@ public class MyStrUtil {
      * @Return:
      * @Date:   2019年6月12日16:19:19
      */
-
     public String fill(String mark,Integer count,Integer num){
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < count; i++) {

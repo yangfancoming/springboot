@@ -39,4 +39,22 @@ public class ByteArrayUtilTest extends TestData {
         Byte[] bytes = ByteArrayUtil.convertToObjectArray(primitiveArray);
         Assert.assertNotNull(bytes);
     }
+
+    @Test
+    public void byteArrToShort() {
+        byte[] bytes = new byte[]{0x00,0x09};
+        short s = ByteArrayUtil.byteArrToShort(bytes);
+        Assert.assertEquals(9, s);
+    }
+    /**
+     *      * @Param:      byte[] hoho1 = MyArrayTool.reverseArray(byteArrs);
+     *      * @Return:   20,27,3,18,22,14,1,2
+
+    */
+    @Test
+    public void reverseArray() {
+        byte[] bytes = {2, 1, 14, 22, 18, 3, 27, 20};
+        byte[] s = ByteArrayUtil.reverseArray(bytes);
+        System.out.println(new String(s));
+    }
 }

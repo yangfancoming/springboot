@@ -4,6 +4,36 @@ package cn.goatool.core.util;
 
 public class ByteArrayUtil {
 
+
+    /**
+     * @Description: 功能描述：数组反转  反转后数组的第一个元素等于源数组的最后一个元素：
+     * 输入示例：  byte[] byteArrs = {2, 1, 14, 22, 18, 3, 27, 20};
+     * 输出结果：  { 20,27,3,18,22,14,1,2 }
+     * @author: Goat
+     * @Date:   2018/7/12
+     */
+    public static byte[] reverseArray(byte[] Array) {
+        byte[] new_array = new byte[Array.length];
+        for (int i = 0; i < Array.length; i++) {
+            new_array[i] = Array[Array.length - i - 1];
+        }
+        return new_array;
+    }
+
+    /**
+     * 字节数组转short
+     * @param bytes 待转换的字节数组
+     * 输入示例：  byte[] bytes = new byte[]{0x00,0x09};
+     * 输出结果：  9
+     * @author: Goat
+     * @Date:   2018/7/12
+     */
+    public static short byteArrToShort(byte[] bytes) {
+        int FF = 0xff;
+        int first = (bytes[0] & FF) << 8;
+        return (short) (first | (bytes[1] & FF));
+    }
+
     /**
      * 将包装类型的字节数组转换成基本类型
      * @param objectsArray 待转换的基本类型字节数组

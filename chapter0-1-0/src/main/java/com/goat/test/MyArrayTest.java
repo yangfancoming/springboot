@@ -12,7 +12,6 @@ import org.junit.Test;
 public class MyArrayTest {
 
     int[] arrs = {2, 1, 14, 22, 18, 3, 27, 20};
-    byte[] byteArrs = {2, 1, 14, 22, 18, 3, 27, 20};
 
     MyArrayTool myArrayTool = MyArrayTool.getInstance();
 
@@ -50,12 +49,7 @@ public class MyArrayTest {
         System.out.println(hoho1);
     }
 
-    @Test
-    public void reverseArray(){
-        Byte[] hoho1 = MyArrayTool.reverseArray(byteArrs);
-        String gaga = myArrayTool.strPrint(hoho1);
-        System.out.println(gaga);
-    }
+
 
 
 }
