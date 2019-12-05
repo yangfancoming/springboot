@@ -22,12 +22,12 @@ public class Human {
 
     /* 无参 无返回*/
     public void eat(){
-        System.out.println("user eat......");
+        System.out.println("Human eat......");
     }
 
     /* 有参 无返回*/
     public void sing(String song){
-        System.out.println("user sing......" + song);
+        System.out.println("Human sing......" + song);
     }
 
 

@@ -2,9 +2,41 @@ package cn.goatool.core.reflect;
 
 
 import java.lang.reflect.Method;
+import java.util.Map;
 
 
 public class ReflectUtil {
+
+
+
+    /**
+     * 为每个方法生成唯一签名，并记录到uniqueMethods集合中
+     * @param uniqueMethods  记录方法签名map集合
+     * @param methods  带生成签名的方法数组
+     * 输入示例：
+     * 0 = {Method@846} "public java.util.List cn.goatool.core.reflect.Student.getIds()"  --- 桥接方法会被过滤掉
+     * 1 = {Method@847} "public java.util.ArrayList cn.goatool.core.reflect.Student.getIds()"
+     * 2 = {Method@848} "public java.lang.String cn.goatool.core.reflect.Student.study(java.lang.String,java.lang.Integer)"
+     * 3 = {Method@849} "public void cn.goatool.core.reflect.Student.eat()"
+     * 输出结果：
+     * "void#eat" -> {Method@849} "public void cn.goatool.core.reflect.Student.eat()"
+     * "java.lang.String#study:java.lang.String,java.lang.Integer" -> {Method@848} "public java.lang.String cn.goatool.core.reflect.Student.study(java.lang.String,java.lang.Integer)"
+     * "java.util.ArrayList#getIds" -> {Method@847} "public java.util.ArrayList cn.goatool.core.reflect.Student.getIds()"
+     */
+    public static Map<String, Method> addUniqueMethods(Map<String, Method> uniqueMethods, Method[] methods) {
+        for (Method currentMethod : methods) {
+            if (!currentMethod.isBridge()) {
+                //得到方法签名 格式为：方法返回参数#方法名:参数名 ps：多个参数用,分割 签名样例:String#getName:User
+                String signature = getSignature(currentMethod);
+                //如果签名存在，则不做处理，表示子类已经覆盖了该方法。
+                //如果签名不存在，则将签名作为Key,Method作为value 加入map
+                if (!uniqueMethods.containsKey(signature)) {
+                    uniqueMethods.put(signature, currentMethod);
+                }
+            }
+        }
+        return uniqueMethods;
+    }
 
     /**
      *  给指定方法生成唯一签名  生成签名的规则是： 方法返回值#方法名#参数名
@@ -28,14 +60,17 @@ public class ReflectUtil {
      */
     public static String getSignature(Method method) {
         StringBuilder sb = new StringBuilder();
+        // 获取方法返回值类型
         Class<?> returnType = method.getReturnType();
         if (returnType != null) {
             sb.append(returnType.getName()).append('#');
         }
+        // 追加方法名
         sb.append(method.getName());
         Class<?>[] parameters = method.getParameterTypes();
         for (int i = 0; i < parameters.length; i++) {
             sb.append((i == 0)? ':':',');
+            // 追加参数名
             sb.append(parameters[i].getName());
         }
         return sb.toString();

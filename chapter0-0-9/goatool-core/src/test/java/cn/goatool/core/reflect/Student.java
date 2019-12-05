@@ -25,4 +25,9 @@ public class Student extends Human {
         strings.add("2");
         return strings;
     }
+
+    @Override
+    public void eat() {
+        System.out.println("Student eat......");
+    }
 }

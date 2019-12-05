@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2019/12/5.
@@ -34,4 +36,13 @@ public class ReflectUtilTest {
         Method student_getIds = Student.class.getMethod("getIds");
         Assert.assertEquals("java.util.ArrayList#getIds",ReflectUtil.getSignature(student_getIds));
     }
+
+    @Test
+    public void test3() {
+        Map<String, Method> uniqueMethods = new HashMap<>();
+        Method[] methods = Student.class.getDeclaredMethods();
+        Map<String, Method> map = ReflectUtil.addUniqueMethods(uniqueMethods, methods);
+        System.out.println(map);
+    }
+
 }
