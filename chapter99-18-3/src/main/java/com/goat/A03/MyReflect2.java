@@ -91,9 +91,6 @@ public class MyReflect2 extends BaseClass {
         System.out.println(dog);
     }
 
-
-
-
     @Test
     public void newInstance() throws IllegalAccessException, InstantiationException {
         Class<Dog> dogClass = Dog.class;
@@ -113,7 +110,6 @@ public class MyReflect2 extends BaseClass {
         System.out.println(dog);
     }
 
-
     @Test
     public void tt() throws  ClassNotFoundException {
         Class<?> aClass = Class.forName(path);
@@ -126,6 +122,7 @@ public class MyReflect2 extends BaseClass {
             }
         }
     }
+
     @Test
     public void test(){
         Set<String> SET_METHODS = Arrays.stream(PreparedStatement.class.getDeclaredMethods())
