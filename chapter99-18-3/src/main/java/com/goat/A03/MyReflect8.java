@@ -26,7 +26,7 @@ public class MyReflect8 {
     // 遍历 类对象 实现的所有接口
     @Test
     public void test1()  {
-        Class<?>[] interfaces = person.getClass().getInterfaces();
+        Class<?>[] interfaces = Person.class.getInterfaces();
         Arrays.stream(interfaces).forEach(x->System.out.println(x.getName()));
     }
 

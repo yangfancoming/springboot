@@ -29,7 +29,7 @@ public class ReflectUtilTest {
     }
 
     @Test
-    public void test2() throws NoSuchMethodException {
+    public void getSignature() throws NoSuchMethodException {
         Method humnan_getIds = Human.class.getMethod("getIds");
         Assert.assertEquals("java.util.List#getIds",ReflectUtil.getSignature(humnan_getIds));
 
@@ -38,11 +38,12 @@ public class ReflectUtilTest {
     }
 
     @Test
-    public void test3() {
+    public void addUniqueMethods() {
         Map<String, Method> uniqueMethods = new HashMap<>();
         Method[] methods = Student.class.getDeclaredMethods();
         Map<String, Method> map = ReflectUtil.addUniqueMethods(uniqueMethods, methods);
         System.out.println(map);
     }
+
 
 }
