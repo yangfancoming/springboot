@@ -2,15 +2,10 @@ package cn.goatool.core.xml;
 
 import cn.goatool.core.exception.BuilderException;
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 
-import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathFactory;
 
 /**
  * Created by Administrator on 2019/12/5.
@@ -21,27 +16,6 @@ import javax.xml.xpath.XPathFactory;
  */
 public class W3cXmlUtil {
 
-    public static XPath xpath = XPathFactory.newInstance().newXPath();
-
-    /**
-     *   主要适用于当XPath表达式的结果有且只有一个节点
-     * 如果XPath表达式返回了多个节点，却指定类型为XPathConstants.NODE，则evaluate()方法将按照文档顺序返回第一个节点。
-     * 如果XPath表达式的结果为一个空集，却指定类型为XPathConstants.NODE，则evaluate( )方法将返回null
-     * @param expression xpath 表达式
-     * @param root 待解析的节点/元素
-     * @param returnType 指定解析的节点类型
-     * @return CRC16校验值
-     * 输入示例： evaluate("/configuration/properties", document, XPathConstants.NODE)
-     * 输出结果： Node 解析结果
-     * 注意：returnType参数，虽然evaluate返回的数据类型是Object的，但是如果指定了错误的returnType，那么在进行类型转换时将会报类型转换异常
-     */
-    public static Object evaluate(String expression, Object root, QName returnType) {
-        try {
-            return xpath.evaluate(expression, root, returnType);
-        } catch (Exception e) {
-            throw new BuilderException("Error evaluating XPath.  Cause: " + e, e);
-        }
-    }
 
 
     /**
