@@ -31,18 +31,18 @@ public class W3cXmlParsing {
      */
     public static String parseBody(Node node) {
         String data = getBodyData(node);
-        //如果该节点不是文本节点或者CDATA节点，就取其子节点值
-        if (data == null) {
-            NodeList children = node.getChildNodes();
-            for (int i = 0; i < children.getLength(); i++) {
-                Node child = children.item(i);
-                data = getBodyData(child);
-                //只要一个节点为文本节点或者CDATA节点,就结束循环。因而此时的body值只是node的第一个文本节点的内容
-                if (data != null) {
-                    break;
-                }
-            }
-        }
+//        //如果该节点不是文本节点或者CDATA节点，就取其子节点值
+//        if (data == null) {
+//            NodeList children = node.getChildNodes();
+//            for (int i = 0; i < children.getLength(); i++) {
+//                Node child = children.item(i);
+//                data = getBodyData(child);
+//                //只要一个节点为文本节点或者CDATA节点,就结束循环。因而此时的body值只是node的第一个文本节点的内容
+//                if (data != null) {
+//                    break;
+//                }
+//            }
+//        }
         return data;
     }
 
@@ -91,13 +91,13 @@ public class W3cXmlParsing {
          * 获取Node之中的属性，然后是进行遍历属性获取内容
          */
         Properties attributes = new Properties();
-        NamedNodeMap attributeNodes = n.getAttributes();
-        if (attributeNodes != null) {
-            for (int i = 0; i < attributeNodes.getLength(); i++) {
-                Node attribute = attributeNodes.item(i);
-                attributes.put(attribute.getNodeName(), attribute.getNodeValue());
-            }
-        }
+//        NamedNodeMap attributeNodes = n.getAttributes();
+//        if (attributeNodes != null) {
+//            for (int i = 0; i < attributeNodes.getLength(); i++) {
+//                Node attribute = attributeNodes.item(i);
+//                attributes.put(attribute.getNodeName(), attribute.getNodeValue());
+//            }
+//        }
         return attributes;
     }
 
