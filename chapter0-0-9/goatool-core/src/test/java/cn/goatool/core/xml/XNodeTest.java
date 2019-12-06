@@ -44,6 +44,12 @@ public class XNodeTest extends BaseTest {
         System.out.println(childrenAsProperties);
     }
 
+    @Test
+    public void getChildrenAsProperties3() throws Exception{
+        XNode node = common("settings.xml", "/configuration/settings");
+        Properties childrenAsProperties = node.getChildrenAsProperties();
+        System.out.println(childrenAsProperties);
+    }
 
     @Test
     public void getStringAttribute() throws Exception{

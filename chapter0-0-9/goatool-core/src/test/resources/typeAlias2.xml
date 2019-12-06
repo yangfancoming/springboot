@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"   "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <!-- 2、package:为某个包下的所有类批量起别名
+                     name：指定包名（为当前包以及下面所有的后代包的每一个类都起一个默认别名（类名小写），）
+    -->
+
+    <typeAliases>
+        <package name="org.apache.goat.common"/>
+    </typeAliases>
+
+</configuration>
+
+

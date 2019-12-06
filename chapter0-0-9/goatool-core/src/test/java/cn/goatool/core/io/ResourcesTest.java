@@ -1,5 +1,6 @@
 package cn.goatool.core.io;
 
+import cn.goatool.core.reflect.Student;
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -29,7 +30,6 @@ public class ResourcesTest {
         }
     }
 
-
     @Test
     public void getResourceAsStream() throws IOException {
         String xmlPath = "mybatis-config.xml";
@@ -38,15 +38,17 @@ public class ResourcesTest {
         }
     }
 
-
-
     @Test
     public void getResourceAsProperties() throws IOException {
         Properties properties = Resources.getResourceAsProperties("dbconfig.properties");
-        System.out.println(properties);
+        log.info("Resources.getResourceAsProperties {}" ,properties);
     }
 
-
+    @Test
+    public void classForName() throws Exception {
+        Class<?> clazz = Resources.classForName("cn.goatool.core.reflect.Student");
+        log.info("Resources.classForName {}" ,clazz);
+    }
 
 
 }

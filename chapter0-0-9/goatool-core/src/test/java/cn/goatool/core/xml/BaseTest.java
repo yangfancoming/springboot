@@ -11,7 +11,7 @@ import java.io.InputStream;
  * @ author  山羊来了
  * @ date 2019/12/6---14:51
  */
-public class BaseTest {
+public abstract class BaseTest {
 
     public XNode common(String path,String expression) throws Exception{
         try (InputStream inputStream = Resources.getResourceAsStream(path)) {

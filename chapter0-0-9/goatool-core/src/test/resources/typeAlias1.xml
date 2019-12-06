@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"   "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <!--
+    1、typeAlias:为某个java类型起别名
+                type:指定要起别名的类型全类名;默认别名就是类名小写；employee
+                alias:指定新的别名
+     -->
+
+  <typeAliases>
+     <typeAlias type="org.apache.goat.common.Foo" alias="Foo"/>
+     <typeAlias type="org.apache.goat.common.Bar" alias="Bar"/>
+  </typeAliases>
+
+</configuration>
+
+
