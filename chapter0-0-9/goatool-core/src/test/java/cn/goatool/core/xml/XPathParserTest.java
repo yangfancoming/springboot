@@ -5,6 +5,8 @@ import org.junit.Test;
 
 import java.io.InputStream;
 import java.io.Reader;
+import java.util.List;
+import java.util.Properties;
 
 /**
  * Created by Administrator on 2019/12/6.
@@ -17,7 +19,7 @@ public class XPathParserTest {
 
     @Test
     public void getResourceAsStream() throws Exception{
-        String xmlPath = "properties1.xml";
+        String xmlPath = "properties2.xml";
         try (InputStream inputStream = Resources.getResourceAsStream(xmlPath)) {
             XPathParser xPathParser = new XPathParser(inputStream);
             XNode node = xPathParser.evalNode("/configuration/properties");
@@ -32,6 +34,40 @@ public class XPathParserTest {
             XPathParser xPathParser = new XPathParser(reader);
             XNode node = xPathParser.evalNode("/books/book/url");
             System.out.println(node);
+        }
+    }
+
+    @Test
+    public void getChildren() throws Exception{
+        String xmlPath = "cdata_demo.xml";
+        try (Reader reader = Resources.getResourceAsReader(xmlPath)) {
+            XPathParser xPathParser = new XPathParser(reader);
+            XNode node = xPathParser.evalNode("/books/book");
+            List<XNode> children = node.getChildren();
+            System.out.println(children);
+        }
+    }
+
+
+    @Test
+    public void getChildrenAsProperties() throws Exception{
+        String xmlPath = "properties2.xml";
+        try (InputStream inputStream = Resources.getResourceAsStream(xmlPath)) {
+            XPathParser xPathParser = new XPathParser(inputStream);
+            XNode node = xPathParser.evalNode("/configuration/properties");
+            Properties childrenAsProperties = node.getChildrenAsProperties();
+            System.out.println(childrenAsProperties);
+        }
+    }
+
+    @Test
+    public void getChildrenAsProperties2() throws Exception{
+        String xmlPath = "cdata_demo.xml";
+        try (InputStream inputStream = Resources.getResourceAsStream(xmlPath)) {
+            XPathParser xPathParser = new XPathParser(inputStream);
+            XNode node = xPathParser.evalNode("/books/book");
+            Properties childrenAsProperties = node.getChildrenAsProperties();
+            System.out.println(childrenAsProperties);
         }
     }
 }
