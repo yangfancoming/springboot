@@ -1,11 +1,30 @@
 package cn.goatool.core.reflect;
 
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.Map;
 
 
 public class ReflectUtil {
+
+
+
+    /**
+     * 获取指定Class对象的 所有的构造函数(public，protected，default(package)access和private)
+     *  查找clazz的无参构造方法，通过反射遍历所有构造方法，过滤出构造参数集合长度为0的。
+     */
+    public static Constructor<?> getDefaultConstructor(Class<?> clazz) {
+        // 取出所有构造函数 (public，protected，default(package)access和private)
+        Constructor<?>[] consts = clazz.getDeclaredConstructors();
+        for (Constructor<?> constructor : consts) {
+            // 将无参构造函数保存起来 (只有默认构造函数没有参数)
+            if (constructor.getParameterTypes().length == 0) {
+                return constructor;
+            }
+        }
+        return null;
+    }
 
 
     /**

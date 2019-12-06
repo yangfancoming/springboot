@@ -6,8 +6,8 @@
 		<publisher>清华大学出版社</publisher>
 		<company>明日科技</company>
 		<author>王小科</author>
-		<ISBN>9787302226628</ISBN>
-		<price unit="RBM" >69.80</price>
+		<ISBN  unit="RBM1" mark = "true">9787302226628</ISBN>
+		<price unit="RBM2" mark = "false">69.80</price>
 		<url><![CDATA[http://www.mingribook.com/bookinfo.php?id=227&sid=4]]></url>
 	</book>
 	<book>
@@ -16,7 +16,7 @@
 		<author>梁冰</author>
 		<company>明日科技</company>
 		<ISBN>9787115179708</ISBN>
-		<price unit="RBM" >65.00</price>
+		<price unit="RBM" mark = "true" >65.00</price>
 		<url><![CDATA[http://www.mingribook.com/bookinfo.php?id=138&sid=5]]></url>
         <!--不是用 <![CDATA[...]]> 将会报错-->
 		<!--<url>http://www.mingribook.com/bookinfo.php?id=138&sid=5</url>-->

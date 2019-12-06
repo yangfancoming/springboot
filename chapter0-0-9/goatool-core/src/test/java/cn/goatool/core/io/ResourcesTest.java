@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
+import java.util.Properties;
 
 /**
  * Created by Administrator on 2019/12/4.
@@ -35,6 +36,14 @@ public class ResourcesTest {
         try (InputStream inputStream = Resources.getResourceAsStream(xmlPath)) {
             Assert.assertNotNull(inputStream);
         }
+    }
+
+
+
+    @Test
+    public void getResourceAsProperties() throws IOException {
+        Properties properties = Resources.getResourceAsProperties("dbconfig.properties");
+        System.out.println(properties);
     }
 
 

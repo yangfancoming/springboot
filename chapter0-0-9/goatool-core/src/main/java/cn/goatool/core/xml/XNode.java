@@ -34,14 +34,16 @@ public class XNode {
      * @Description: 获取 当前节点的所有子节点 并将这些子节点 两个属性和对应的属性值 保存到Properties对象
      * @param key1 每个子节点的属性名1
      * @param key2 每个子节点的属性名2
-     * <setting name="mapUnderscoreToCamelCase" value="true"/>
-     * <setting name="cacheEnabled" value="false"/>
+     *   <settings>
+     *     <setting name="mapUnderscoreToCamelCase" value="true"/>
+     *     <setting name="cacheEnabled" value="true" />
+     *   </settings>
      * 输入示例：   getChildrenAsProperties("name", "value");
      * 输出结果：   key：mapUnderscoreToCamelCase  value：true
      * 输出结果：   key：cacheEnabled              value：false
      * @author goat
      * @date 2018/7/11
-     * @return  Properties
+     * 注意： 如果当前节点没有子节点则返回的 Properties  size为0
      */
     public Properties getChildrenAsProperties(String key1,String key2) {
         Properties properties = new Properties();

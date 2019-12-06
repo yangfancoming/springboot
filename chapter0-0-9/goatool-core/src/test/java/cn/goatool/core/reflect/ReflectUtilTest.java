@@ -3,6 +3,8 @@ package cn.goatool.core.reflect;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,6 +45,12 @@ public class ReflectUtilTest {
         Method[] methods = Student.class.getDeclaredMethods();
         Map<String, Method> map = ReflectUtil.addUniqueMethods(uniqueMethods, methods);
         System.out.println(map);
+    }
+
+    @Test
+    public void addDefaultConstructor() throws IllegalAccessException, InvocationTargetException, InstantiationException {
+        Constructor<?> constructor = ReflectUtil.getDefaultConstructor(Student.class);
+        Object o = constructor.newInstance();
     }
 
 

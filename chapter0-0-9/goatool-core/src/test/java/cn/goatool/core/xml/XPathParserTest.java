@@ -1,12 +1,6 @@
 package cn.goatool.core.xml;
 
-import cn.goatool.core.io.Resources;
 import org.junit.Test;
-
-import java.io.InputStream;
-import java.io.Reader;
-import java.util.List;
-import java.util.Properties;
 
 /**
  * Created by Administrator on 2019/12/6.
@@ -15,59 +9,20 @@ import java.util.Properties;
  * @ author  山羊来了
  * @ date 2019/12/6---9:46
  */
-public class XPathParserTest {
+public class XPathParserTest extends BaseTest {
+
 
     @Test
     public void getResourceAsStream() throws Exception{
-        String xmlPath = "properties2.xml";
-        try (InputStream inputStream = Resources.getResourceAsStream(xmlPath)) {
-            XPathParser xPathParser = new XPathParser(inputStream);
-            XNode node = xPathParser.evalNode("/configuration/properties");
-            System.out.println(node);
-        }
+        XNode node = common("properties2.xml", "/configuration/properties");
+        System.out.println(node);
     }
 
     @Test
     public void getResourceAsReader() throws Exception{
-        String xmlPath = "cdata_demo.xml";
-        try (Reader reader = Resources.getResourceAsReader(xmlPath)) {
-            XPathParser xPathParser = new XPathParser(reader);
-            XNode node = xPathParser.evalNode("/books/book/url");
-            System.out.println(node);
-        }
-    }
-
-    @Test
-    public void getChildren() throws Exception{
-        String xmlPath = "cdata_demo.xml";
-        try (Reader reader = Resources.getResourceAsReader(xmlPath)) {
-            XPathParser xPathParser = new XPathParser(reader);
-            XNode node = xPathParser.evalNode("/books/book");
-            List<XNode> children = node.getChildren();
-            System.out.println(children);
-        }
+        XNode node = common("cdata_demo.xml", "/books/book/url");
+        System.out.println(node);
     }
 
 
-    @Test
-    public void getChildrenAsProperties() throws Exception{
-        String xmlPath = "properties2.xml";
-        try (InputStream inputStream = Resources.getResourceAsStream(xmlPath)) {
-            XPathParser xPathParser = new XPathParser(inputStream);
-            XNode node = xPathParser.evalNode("/configuration/properties");
-            Properties childrenAsProperties = node.getChildrenAsProperties();
-            System.out.println(childrenAsProperties);
-        }
-    }
-
-    @Test
-    public void getChildrenAsProperties2() throws Exception{
-        String xmlPath = "cdata_demo.xml";
-        try (InputStream inputStream = Resources.getResourceAsStream(xmlPath)) {
-            XPathParser xPathParser = new XPathParser(inputStream);
-            XNode node = xPathParser.evalNode("/books/book");
-            Properties childrenAsProperties = node.getChildrenAsProperties();
-            System.out.println(childrenAsProperties);
-        }
-    }
 }

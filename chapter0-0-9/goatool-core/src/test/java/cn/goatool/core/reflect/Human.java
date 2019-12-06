@@ -14,7 +14,7 @@ public class Human {
 
     private String name;
 
-    private Integer age;
+    public Integer age;
 
     public List<String> getIds(){
         return Arrays.asList("1","1","1");
