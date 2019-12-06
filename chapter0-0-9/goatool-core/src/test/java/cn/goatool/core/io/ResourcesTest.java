@@ -1,6 +1,5 @@
 package cn.goatool.core.io;
 
-import cn.goatool.core.reflect.Student;
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
