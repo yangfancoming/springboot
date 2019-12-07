@@ -47,6 +47,7 @@ public class ResourcesTest {
     @Test
     public void classForName() throws Exception {
         Class<?> clazz = Resources.classForName("cn.goatool.core.reflect.Student");
+        log.info("Resources.classForName getSimpleName {}" ,clazz.getSimpleName());
         log.info("Resources.classForName {}" ,clazz);
     }
 

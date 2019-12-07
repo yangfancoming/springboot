@@ -9,6 +9,7 @@
     -->
 
     <typeAliases>
+<!--        <typeAlias type="org.apache.goat.common.Bar" alias="Bar"/>-->    <!-- 如果像这种混搭的方式  结果会怎样？？？ doit -->
         <package name="org.apache.goat.common"/>
     </typeAliases>
 
