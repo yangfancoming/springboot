@@ -18,7 +18,6 @@ public class StringUtilTest {
     public void intToAsc(){
         String s = StringUtil.intToAsc("1234");
         Assert.assertEquals("[31,32,33,34]", s);
-
     }
 
     @Test

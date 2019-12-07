@@ -40,4 +40,16 @@ public abstract class VFS {
         return packageName == null ? null : packageName.replace('.', '/');
     }
 
+
+
+    /**
+     * Recursively list the full resource path of all the resources that are children of the resource identified by a URL.
+     * 递归地列出所有资源的完整资源路径，这些资源是由URL标识的资源的子级。
+     * @param url The URL that identifies the resource to list.
+     * @param forPath The path to the resource that is identified by the URL. Generally, this is the value passed to {@link #getResources(String)} to get the resource URL.
+     * @return A list containing the names of the child resources.
+     * @throws IOException If I/O errors occur
+     * D.获取资源list
+     */
+    protected abstract List<String> list(URL url, String forPath) throws IOException;
 }
