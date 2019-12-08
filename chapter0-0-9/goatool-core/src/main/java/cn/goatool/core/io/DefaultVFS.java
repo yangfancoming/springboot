@@ -62,12 +62,12 @@ public class DefaultVFS extends VFS {
                     }
                     else {
                         /*
-                         * Some servlet containers allow reading from directory resources like a
-                         * text file, listing the child resources one per line. However, there is no
-                         * way to differentiate between directory and file resources just by reading
-                         * them. To work around that, as each line is read, try to look it up via
-                         * the class loader as a child of the current resource. If any line fails
-                         * then we assume the current resource is not a directory.
+                         * Some servlet containers allow reading from directory resources like a text file,
+                         * listing the child resources one per line.
+                         * However, there is no way to differentiate between directory and file resources just by reading them.
+                         * To work around that, as each line is read, try to look it up via
+                         * the class loader as a child of the current resource.
+                         * If any line fails then we assume the current resource is not a directory.
                          */
                         is = url.openStream();
                         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
@@ -271,9 +271,8 @@ public class DefaultVFS extends VFS {
 
 
     /**
-     * List the names of the entries in the given {@link JarInputStream} that begin with the
-     * specified {@code path}. Entries will match with or without a leading slash.
-     *
+     * List the names of the entries in the given {@link JarInputStream} that begin with the  specified {@code path}.
+     * Entries will match with or without a leading slash.
      * @param jar The JAR input stream
      * @param path The leading path to match
      * @return The names of all the matching entries

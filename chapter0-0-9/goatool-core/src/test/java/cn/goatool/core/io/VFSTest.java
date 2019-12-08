@@ -5,7 +5,10 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -39,46 +42,68 @@ public class VFSTest {
     @Test
     public void list() throws IOException {
         List<String> names = new ArrayList<>();
-        String path = "cn/goatool/core/reflect";
-        List<URL> urls = VFS.getResources(path); //  cn.goatool.core.reflect
+        String path = "cn/goatool/core/exception";
+        List<URL> urls = VFS.getResources(path);
         for (URL url : urls) {
             List<String> list = defaultVFS.list(url, path);
-            names.addAll(list);// file:/E:/Code/Mybatis/GitHub/mybatis-3-master/target/test-classes/org/apache/goat/common
+            names.addAll(list);
         }
         System.out.println(names);
     }
 
 
     @Test
-    public void isJar() throws IOException {
-        String path = "cn/goatool/core/reflect";
-        List<URL> urls = VFS.getResources(path); //  cn.goatool.core.reflect
+    public void listResources() throws IOException {
+        String path = "cn/goatool/core/exception";
+        List<URL> urls = VFS.getResources(path);
 
-        urls.stream().forEach(x->{
-            StringBuilder jarUrl = new StringBuilder(x.toExternalForm());
-            int index = jarUrl.lastIndexOf(".jar");
-            if (index >= 0) {
-                jarUrl.setLength(index + 4);
+        List<String> children = new ArrayList<>();
+
+        for (URL url : urls) {
+            InputStream is = url.openStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            List<String> lines = new ArrayList<>();
+            for (String line; (line = reader.readLine()) != null;) {
                 if (log.isDebugEnabled()) {
-                    log.debug("Extracted JAR URL: " + jarUrl);
+                    log.debug("Reader entry: " + line);
+                }
+                lines.add(line);
+                if (defaultVFS.getResources(path + "/" + line).isEmpty()) {
+                    lines.clear();
+                    break;
                 }
             }
-            else {
+
+            if (!lines.isEmpty()) {
                 if (log.isDebugEnabled()) {
-                    log.debug("Not a JAR: " + jarUrl);
+                    log.debug("Listing " + url);
                 }
-                return ;
+                children.addAll(lines);
             }
 
-            URL testUrl = null;
-            try {
-                testUrl = new URL(jarUrl.toString());
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
+            // The URL prefix to use when recursively listing child resources
+            String prefix = url.toExternalForm();
+            if (!prefix.endsWith("/")) {
+                prefix = prefix + "/";
             }
-            log.info(x.getPath() + "是否为jar：{}",defaultVFS.isJar(testUrl));
+            List<String> resources = new ArrayList<>();
+            // Iterate over immediate children, adding files and recursing into directories
+            for (String child : children) { // 由于这里的 for循环到 测试类的失败 doit？？？
+                String resourcePath = path + "/" + child;
+                resources.add(resourcePath);
+                URL childUrl = new URL(prefix + child);
+                boolean jar = defaultVFS.isJar(childUrl);
+                log.info(childUrl.toString() + "是不是jar：{}",jar);
 
-        });
+                System.out.println(childUrl);
+                System.out.println(resourcePath);
+            }
+        }
+
+        System.out.println(children);
+
+
+
     }
 
 }
