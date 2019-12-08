@@ -1,7 +1,14 @@
 package cn.goatool.core.io;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,6 +20,51 @@ import java.util.List;
  * @ date 2019/12/6---17:23
  */
 public abstract class VFS {
+
+    private Logger log = LoggerFactory.getLogger(getClass());
+
+    // 对比list方法    此方法不是递归 只是获取当前目录的下一层目录
+    public List<URL> getChildUrls(URL url, String path) throws IOException {
+        List<URL> childUrls = new ArrayList<>();
+        List<String> children = getchilds(url, path);
+        // The URL prefix to use when recursively listing child resources  getchilds
+        String prefix = url.toExternalForm();
+        if (!prefix.endsWith("/")) {
+            prefix = prefix + "/";
+        }
+        // Iterate over immediate children, adding files and recursing into directories
+        for (String child : children) {
+            URL childUrl = new URL(prefix + child);
+            childUrls.add(childUrl);
+
+        }
+        return childUrls;
+    }
+
+
+    public List<String> getchilds(URL url,String path) throws IOException {
+        InputStream is = url.openStream();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        List<String> lines = new ArrayList<>();
+        List<String> children = new ArrayList<>();
+        for (String line; (line = reader.readLine()) != null;) {
+            if (log.isDebugEnabled()) {
+                log.debug("Reader entry: " + line);
+            }
+            lines.add(line);
+            if (getResources(path + "/" + line).isEmpty()) {
+                lines.clear();
+                break;
+            }
+        }
+        if (!lines.isEmpty()) {
+            if (log.isDebugEnabled()) {
+                log.debug("Listing " + url);
+            }
+            children.addAll(lines);
+        }
+        return children;
+    }
 
     /**
      * Get a list of {@link URL}s from the context classloader for all the resources found at the specified path.
