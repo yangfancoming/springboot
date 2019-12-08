@@ -1,6 +1,9 @@
 package cn.goatool.core.reflect;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -8,6 +11,7 @@ import java.util.Map;
 
 public class ReflectUtil {
 
+    private Logger log = LoggerFactory.getLogger(getClass());
 
 
     /**

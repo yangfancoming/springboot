@@ -54,8 +54,8 @@ public class VFSTest {
         List<URL> urls = VFS.getResources(path);
 
         for (URL url : urls) {
-            List<URL> tet = defaultVFS.getChildUrls(url, path);
-            tet.stream().forEach(x->{
+            List<URL> childUrls = defaultVFS.getChildUrls(url, path);
+            childUrls.stream().forEach(x->{
                 boolean jar = defaultVFS.isJar(x);
                 System.out.println(jar);
             });
