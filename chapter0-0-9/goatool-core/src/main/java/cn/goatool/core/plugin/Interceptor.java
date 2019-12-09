@@ -27,7 +27,7 @@ public interface Interceptor {
   //设置属性 //设置plugin配置的属性
   default void setProperties(Properties properties) {
     // NOP
-      System.out.println("setProperties.....执行");
+      System.out.println("setProperties.....插件配置的信息  执行");
   }
 
 }
