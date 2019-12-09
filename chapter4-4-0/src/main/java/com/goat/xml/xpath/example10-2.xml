@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--       /AAA/EEE | //BBB -->
+<!--        选择所有的BBB元素和所有是AAA的子元素的EEE元素 -->
+
+
+<AAA>
+    <BBB/> <!---->
+    <CCC/>
+    <DDD>
+        <CCC/>
+    </DDD>
+    <EEE/> <!---->
+</AAA>

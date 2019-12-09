@@ -1,11 +1,9 @@
 package com.goat.xml.xpath;
 
-import com.goat.xml.base.MyBase;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;

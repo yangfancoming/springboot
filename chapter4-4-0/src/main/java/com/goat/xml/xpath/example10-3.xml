@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--        /AAA/EEE | //DDD/CCC | /AAA | //BBB-->
+<!--        可以合并的路径数目没有限制-->
+
+<AAA> <!---->
+    <BBB/> <!---->
+    <CCC/>
+    <DDD>
+        <CCC/> <!---->
+    </DDD>
+    <EEE/> <!---->
+</AAA> <!---->
+
