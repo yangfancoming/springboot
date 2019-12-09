@@ -100,9 +100,9 @@ public class Plugin implements InvocationHandler {
   //取得签名Map
   private static Map<Class<?>, Set<Method>> getSignatureMap(Interceptor interceptor) {
     //1.首先从Interceptor的实现类上获取Intercepts注解 //取Intercepts注解，例子可参见 ExamplePlugin.java
-    Intercepts interceptsAnnotation = interceptor.getClass().getAnnotation(Intercepts.class);
-    // issue #251
-    // 如果Interceptor的类上没有定义Intercepts注解，则抛出异常，说明我们在自定义插件时，必须要有Intercepts注解
+      Class<? extends Interceptor> aClass = interceptor.getClass();
+      Intercepts interceptsAnnotation = aClass.getAnnotation(Intercepts.class);
+    // issue #251  如果Interceptor的类上没有定义Intercepts注解，则抛出异常，说明我们在自定义插件时，必须要有Intercepts注解
     if (interceptsAnnotation == null) {
       throw new PluginException("No @Intercepts annotation was found in interceptor " + interceptor.getClass().getName());
     }

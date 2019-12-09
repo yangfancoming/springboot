@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"   "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+
+  <!--plugins：注册插件  -->
+  <plugins>
+
+    <plugin interceptor="cn.goatool.core.plugin.MyMybatisPlugin">
+      <property name="username" value="goat"/>
+      <property name="password" value="123654"/>
+    </plugin>
+
+<!--    <plugin interceptor="cn.goatool.core.plugin.MySecondPlugin"></plugin>-->
+
+  </plugins>
+
+
+</configuration>

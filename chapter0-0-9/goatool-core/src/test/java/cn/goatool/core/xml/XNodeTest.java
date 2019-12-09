@@ -62,4 +62,5 @@ public class XNodeTest extends BaseTest {
         properties = Resources.getResourceAsProperties("dbconfig.properties");
         System.out.println(properties);
     }
+
 }
