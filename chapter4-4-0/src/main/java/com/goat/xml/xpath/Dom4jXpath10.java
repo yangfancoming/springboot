@@ -19,10 +19,12 @@ import java.util.List;
  * 实例 5
  * 属性通过前缀 @ 来指定
  */
-public class Dom4jXpath11 {
+public class Dom4jXpath10 {
 
-    public static String path11 = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter4-4-0\\src\\main\\java\\com\\goat\\xml\\xpath\\example5-1.xml";
-    public static String path12 = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter4-4-0\\src\\main\\java\\com\\goat\\xml\\xpath\\example5-2.xml";
+    public static String path11 = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter4-4-0\\src\\main\\java\\com\\goat\\xml\\xpath\\example10-1.xml";
+    public static String path12 = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter4-4-0\\src\\main\\java\\com\\goat\\xml\\xpath\\example10-2.xml";
+    public static String path13 = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter4-4-0\\src\\main\\java\\com\\goat\\xml\\xpath\\example10-3.xml";
+
 
     public Element init(String path) throws DocumentException {
         Document document = new SAXReader().read( new File(path));
@@ -32,16 +34,22 @@ public class Dom4jXpath11 {
     @Test
     public void test1() throws DocumentException {
         Element rootElement = init(path11);
-        List list = rootElement.selectNodes("//@id");
+        List list = rootElement.selectNodes("//CCC | //BBB");
         System.out.println(list.size());
     }
 
     @Test
     public void test2() throws DocumentException {
         Element rootElement = init(path12);
-        List list = rootElement.selectNodes("//BBB[@id]");
+        List list = rootElement.selectNodes("/AAA/EEE | //BBB");
         System.out.println(list.size());
     }
 
+    @Test
+    public void test3() throws DocumentException {
+        Element rootElement = init(path12);
+        List list = rootElement.selectNodes(" /AAA/EEE | //DDD/CCC | /AAA | //BBB");
+        System.out.println(list.size());
+    }
 
 }
