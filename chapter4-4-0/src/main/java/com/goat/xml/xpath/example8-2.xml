@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--      //*[starts-with(name(),'B')]
+选择所有名称以"B"起始的元素   -->
+
+<AAA>
+    <BCC> <!---->
+        <BBB/> <!---->
+        <BBB/> <!---->
+        <BBB/> <!---->
+    </BCC> <!---->
+    <DDB>
+        <BBB/> <!---->
+        <BBB/> <!---->
+    </DDB>
+    <BEC> <!---->
+        <CCC/>
+        <DBD/>
+    </BEC> <!---->
+</AAA>

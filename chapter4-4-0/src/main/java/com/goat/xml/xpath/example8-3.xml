@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--      //*[contains(name(),'C')]
+选择所有名称包含"C"的元素   -->
+
+<AAA>
+    <BCC> <!---->
+        <BBB/>
+        <BBB/>
+        <BBB/>
+    </BCC> <!---->
+    <DDB>
+        <BBB/>
+        <BBB/>
+    </DDB>
+    <BEC> <!---->
+        <CCC/>
+        <DBD/>
+    </BEC> <!---->
+</AAA>

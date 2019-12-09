@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- /AAA/BBB
+等价于/child::AAA/child::BBB -->
+
+<!---->
+
+<AAA>
+    <BBB/>  <!---->
+    <CCC/>
+</AAA>

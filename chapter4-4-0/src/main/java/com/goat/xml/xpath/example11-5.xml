@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- /child::AAA/BBB
+二者都可以被合并 -->
+
+<!---->
+
+<AAA>
+    <BBB/>  <!---->
+    <CCC/>
+</AAA>

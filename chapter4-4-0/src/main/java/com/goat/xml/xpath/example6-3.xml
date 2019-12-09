@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  //BBB[normalize-space(@name)='bbb']
+选择含有属性name且其值(在用normalize-space函数去掉前后空格后)为'bbb'的BBB元素   -->
+
+
+<AAA>
+    <BBB id = "b1"/>
+    <BBB name = " bbb "/> <!---->
+    <BBB name = "bbb"/> <!---->
+</AAA>

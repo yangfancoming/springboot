@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+//*[string-length(name()) > 3]
+选择名字长度大于3的元素  -->
+
+<AAA>
+    <Q/>
+    <SSSS/> <!---->
+    <BB/>
+    <CCC/>
+    <DDDDDDDD/> <!---->
+    <EEEE/> <!---->
+</AAA>
+

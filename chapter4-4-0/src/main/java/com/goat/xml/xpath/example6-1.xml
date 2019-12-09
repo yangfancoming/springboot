@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--   //BBB[@id='b1']
+选择含有属性id且其值为'b1'的BBB元素   -->
+
+<!---->
+<AAA>
+    <BBB id = "b1"/> <!---->
+    <BBB name = " bbb "/>
+    <BBB name = "bbb"/>
+</AAA>

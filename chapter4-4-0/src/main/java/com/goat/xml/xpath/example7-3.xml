@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  //*[count(*)=3]
+选择含有3个子元素的元素   -->
+
+
+<AAA> <!---->
+    <CCC> <!---->
+        <BBB/>
+        <BBB/>
+        <BBB/>
+    </CCC> <!---->
+    <DDD>
+        <BBB/>
+        <BBB/>
+    </DDD>
+    <EEE>
+        <CCC/>
+        <DDD/>
+    </EEE>
+</AAA> <!---->
