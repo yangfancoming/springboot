@@ -47,7 +47,7 @@ public class Dom4jXpath10 {
 
     @Test
     public void test3() throws DocumentException {
-        Element rootElement = init(path12);
+        Element rootElement = init(path13);
         List list = rootElement.selectNodes(" /AAA/EEE | //DDD/CCC | /AAA | //BBB");
         System.out.println(list.size());
     }

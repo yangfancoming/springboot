@@ -12,4 +12,15 @@
     <artifactId>chapter4-6-1</artifactId>
 
 
+
+    <dependencies>
+
+<!--        <dependency>-->
+<!--            <groupId>com.oracle</groupId>-->
+<!--            <artifactId>ojdbc7</artifactId>-->
+<!--            <version>12C</version>-->
+<!--        </dependency>-->
+
+
+    </dependencies>
 </project>
