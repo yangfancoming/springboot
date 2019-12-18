@@ -12,3 +12,15 @@
     oracle数据库中设置了自增，代码里也设置了allocationSize，具体的当前序列号为：
     当前序列号 = （数据库序列+数据库步长）*allocationSize
     allocationSize默认为50
+    
+    
+# ORA-02289: 序列不存在
+
+    create sequence DEFAULT_SEQ
+    minvalue 2000
+    maxvalue 9999999999
+    start with 2020
+    increment by 1
+    cache 20;
+    
+    select DEFAULT_SEQ.nextval from dual;
