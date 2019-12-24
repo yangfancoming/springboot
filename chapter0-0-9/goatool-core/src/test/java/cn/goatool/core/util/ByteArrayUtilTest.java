@@ -57,4 +57,26 @@ public class ByteArrayUtilTest extends TestData {
         byte[] s = ByteArrayUtil.reverseArray(bytes);
         System.out.println(new String(s));
     }
+
+    @Test
+    public void test() {
+        byte[] bytes = {0x7b,01, 00, 0x4d, 22, 18, 3, 27, 0x7b};
+        // 获取数组第一个元素
+        System.out.println(bytes[0]);
+        // 获取数组长度
+        System.out.println(bytes.length);
+        // 获取数组最后一个元素
+        System.out.println(bytes[bytes.length-1]);
+
+        if (bytes[0] != 123 || bytes[bytes.length-1] != 123){
+            System.out.println("报文不完整");
+        }
+
+        byte[] bytes2 = new byte[2];
+        bytes2[0] = bytes[2];
+        bytes2[1] = bytes[3];
+        short s = ByteArrayUtil.byteArrToShort(bytes2);
+        System.out.println(s);
+
+    }
 }
