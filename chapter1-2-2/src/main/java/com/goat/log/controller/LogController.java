@@ -20,6 +20,9 @@ import java.util.List;
 @RestController
 public class LogController {
 
+
+    private Logger logger = LoggerFactory.getLogger(getClass());
+
 //    private static final Logger LOG = LoggerFactory.getLogger(LogController.class);
 //    private  final Logger logger = LoggerFactory.getLogger(getClass());
     //  http://localhost:8122/test
@@ -43,7 +46,7 @@ public class LogController {
         logger.warn("这是  warn.................");
         logger.error("这是  error.................");
     }
-    private Logger logger = LoggerFactory.getLogger(getClass());
+
     //  http://localhost:8122/test2
     @GetMapping("/test2")
     public void test2(){
