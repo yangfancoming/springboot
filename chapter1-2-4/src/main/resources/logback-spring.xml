@@ -15,7 +15,7 @@
                 <!--<timestamp>-->
                     <!--<timeZone>UTC</timeZone>-->
                 <!--</timestamp>-->
-                <!--<pattern>-->
+                <!--<pattern>-->Log4j
                     <!--<pattern>-->
                         <!--{-->
                         <!--"severity": "%level",-->
