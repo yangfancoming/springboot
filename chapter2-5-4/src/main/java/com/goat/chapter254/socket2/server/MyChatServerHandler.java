@@ -38,16 +38,16 @@ public class MyChatServerHandler extends SimpleChannelInboundHandler<String>{
         channelGroup.add(channel);
     }
 
-    // 有客户端断开连接
+    // 有客户端断开连接  （该方法 再客户端/手机  强制关机/开启飞行模式的情况下 是不会被调用的，需要心跳包检测！）
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
         // 获取当前对开的客户端对象
         Channel channel = ctx.channel();
-        channelGroup.remove(channel);
-        System.out.println(channelGroup.size());
         // 广播/通知 所有已连接客户端  xxx客户端下线
         channelGroup.writeAndFlush("【服务器】- " + channel.remoteAddress() + " 离开\n");
-        // 将已连接的客户端对象从组中移除 （此行代码不写也行 netty会自动调用）
+        channelGroup.remove(channel);
+        System.out.println(channelGroup.size());
+        // 将已连接的客户端对象从组中移除 （此行代码不写也行 netty会自动调用  可以通过观看channelGroup.size()来证明）
     }
 
     @Override
