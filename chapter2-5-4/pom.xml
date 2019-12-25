@@ -11,5 +11,15 @@
 
     <artifactId>chapter2-5-4</artifactId>
 
+    <dependencies>
+
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+<!--            <version>4.1.16.Final</version>-->
+            <version>4.1.10.Final</version>
+        </dependency>
+
+    </dependencies>
 
 </project>
