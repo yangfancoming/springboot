@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <property name="LOG_HOME" value="D://123//waterProjectLog" />
+    <property name="pattern" value="%X{fn} %d %level %class [%thread] %m%n" />
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${pattern}</pattern>
+        </encoder>
+    </appender>
+    <appender name="myapp" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/logback.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/logback.%d{yyyy-MM-dd}.%i.log.zip</fileNamePattern>
+            <maxFileSize>50MB</maxFileSize>  <!-- 日志文件过大会使的编辑器打开非常慢，因此设置日志最大50MB -->
+            <maxHistory>30</maxHistory>  <!-- 保存30天 -->
+            <totalSizeCap>1GB</totalSizeCap>  <!-- 总日志大小 -->
+        </rollingPolicy>
+        <encoder>
+            <pattern>${pattern}</pattern>
+        </encoder>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="console" leval="info" />
+        <appender-ref ref="myapp" leval="info" />
+    </root>
+</configuration>

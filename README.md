@@ -72,8 +72,8 @@ Web开发
 - ==chapter2-3-2 springboot  集成 WebSocket2==
 - ==chapter2-3-3 springboot  集成 WebSocket3==
 - ==chapter2-3-5 springboot  集成 Spring Webflux的UDP数据接收及发送==
-- ==chapter2-3-8 springboot  集成 Mina server==
-- ==chapter2-3-9 springboot  集成 Mina client==
+- ==chapter2-3-8 springboot  集成 Mina client ==
+- ==chapter2-3-9 springboot  集成 Mina server ==
 - ==chapter2-4-1 springboot  集成 WebService 服务端==
 - ==chapter2-4-4 springboot  集成 WebService ==
 - ==chapter2-5-1 springboot  集成 WebService 客户端==

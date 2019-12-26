@@ -35,6 +35,20 @@ public class ByteArrayUtil {
     }
 
     /**
+     * 注释：short到字节数组的转换！
+     * @param x 00 19
+     * @return
+     */
+    public static byte[] shortToByteArr(short x) {
+        byte high = (byte) (0x00FF & (x >> 8));//定义第一个byte
+        byte low = (byte) (0x00FF & x);//定义第二个byte
+        byte[] bytes = new byte[2];
+        bytes[0] = high;
+        bytes[1] = low;
+        return bytes;
+    }
+
+    /**
      * 将包装类型的字节数组转换成基本类型
      * @param objectsArray 待转换的基本类型字节数组
      * 输入示例：   Byte[] byte = {0x38,0x03,0x00,0x00,0x00,0x05};
