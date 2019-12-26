@@ -8,4 +8,4 @@
         执行命令 protoc --java_out=./  ./Person.proto
         意思是：根据当前目录下的 Person.proto 接口文件，在当前目录下生成java实体类，
 
-    
+    3. 不要尝试去修改/继承 生成出来的类文件。。。。
