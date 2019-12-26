@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+package com.goat.chapter258.msg;
+
+option java_outer_classname = "PersonBean";
+
+message Person {
+    required string name = 1;
+    required int32 age = 2;
+    optional string gender = 3;
+}
