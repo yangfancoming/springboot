@@ -14,24 +14,23 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Arrays;
 
-/**
- * CumulativeProtocolDecoder 累积性的协议解码器，专门用来处理粘包和断包问题。doDecode()的返回值有重要作用。
 
-*/
 public class SocketDecoder extends CumulativeProtocolDecoder {
 
     private Logger log = LoggerFactory.getLogger(getClass());
 
     @Override
     protected boolean doDecode(IoSession session, IoBuffer in, ProtocolDecoderOutput out) throws IOException {
-        log.info("接收数据总长度:" + in.remaining());
+        // 取出缓冲区字节数组前 先做好标记 以便  reset()
+        in.mark();
         byte[] data = new byte[in.remaining()];
-        // 获取字节数组
+        // 从缓冲区中取出字节数组
         in.get(data, 0, in.remaining());
-        log.info("接收数据内容:" + ByteArrayUtil.byteArrToHexString(data));
-        // 判断报文 头尾 7B 标识
-        if (data[0] != 123 || data[data.length - 1] != 123) {
-            log.info("报文不完整！ 予以忽略！");
+        log.info("接收数据总长度:= {} 接收数据内容: ={}",in.remaining() , ByteArrayUtil.byteArrToHexString(data));
+        // 如果报文头是7B 且尾不是7B 则是断包 数据放回缓冲区
+        if (data[0] == 123 && data[data.length - 1] != 123) {
+            log.info("7B开头的断包，缓冲区继续接收！");
+            in.reset();
             return false;
         }
 
