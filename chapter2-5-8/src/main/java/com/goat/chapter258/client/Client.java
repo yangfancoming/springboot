@@ -15,8 +15,7 @@ public class Client {
     public static void main(String[] args) throws Exception {
         Socket socket = new Socket("localhost",9988);
         //构造一个Person对象
-        PersonBean.Person person = PersonBean.Person.newBuilder().setName("zhangsan")
-                .setAge(20).setGender("male").build();
+        PersonBean.Person person = PersonBean.Person.newBuilder().setName("zhangsan").setAge(20).setGender("male").build();
         OutputStream os = socket.getOutputStream();
         //将Person对象写到输出流中
         os.write(person.toByteArray());
