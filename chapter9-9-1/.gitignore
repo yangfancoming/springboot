@@ -1,0 +1,28 @@
+# .gitignore 文件要放在 所在项目的根目录下
+#  支持 正则表达式  和 通配符 方式匹配
+
+
+# IntelliJ project files
+.idea
+*.iml
+out
+logs
+target
+
+# demo1 过滤统一后缀名
+# 过滤掉所有 以.goat为后缀名的文件 但是  2.goat 文件除外
+*.goat
+!2.goat
+
+
+# demo2 忽略当前文件夹 下所有文件  包括子目录
+/src/main/java/demo2
+
+# demo3 忽略当前文件夹 下所有文件  不包括子目录
+/src/main/java/demo3/123.cd
+/src/main/java/demo3/**/123.cd
+aliyun-oss.properties
+security.properties
+banner.txt
+bootstrap.yml
+gen

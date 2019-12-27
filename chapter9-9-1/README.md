@@ -15,21 +15,33 @@
     touch text.txt 新建文件  并 创建默认master分支 
     
     git add 命令：    新建的文件text.txt（进入工作区） 再IDEA中文件名显示红色  命令行输入 git add text.txt 命令后  文件名变成绿色 （将该文件添加到暂存区）
+    git add .  该条命令会把 当前目录及其子目录下所有的文件都添加到暂存区
+    git add *.html  //添加一类文件
     git rm --cached 命令： 将绿色的缓冲区文件从暂存区移回到工作区，文件名变成红色   对应 IDEA revert 功能
     
     git commit 命令： 将所有暂存区中(绿色)的文件 提交到版本库中 颜色由绿色变成无色  对应 IDEA commit  功能
-  
+    git commit -m '我是注释'  （这样就可以不用进入到编辑页面了）
+    git commit --amend -m '修改注释' doit ???
+
     解决问题： 当使用 .gitignore 时候 发现某文件 已经在暂存区(文件呈绿色) 在提交时候 还是会出现在 提交框中 这时就需要使用 git rm --cached 命令
     将该文件从 暂存区中删除 后   再次提交就不会出现在 提交框中了 
     
+    
+    git checkout -- 123.txt  撤销本次所有修改： 对应 IDEA revert 功能
+    
+    git rm 222.txt  文件被commit变成无色后  要想删除 该文件使用 git rm  命令 物理文件也会被删除  对应 IDEA 删除  功能
+
+    git mv 222.txt 211.txt  将222.txt文件名 改成 211.txt   文件重命名的 命令
+    
 # 设置 git 用户名和 email 
-    1.全局方式  优先级低  ~/.gitconfig  很常用
+    1.全局方式  优先级低  ~/.gitconfig  很常用 对于没有使用局部方式指定特定项目的其他项目/新建项目 默认都是使用的全局方式显示 
     git config --global user.name 'goat'
     git config --global user.name 'fan.yang'
     git config --global user.email '642744551@qq.com'
     
     2.局部方式  优先级高  .git/config  针对于特定的项目 
     git config --local user.name 'goat'
+    git config --local user.name 'test1'
     git config --local user.email '642744551@qq.com'
 
     查看 用户名和email   
