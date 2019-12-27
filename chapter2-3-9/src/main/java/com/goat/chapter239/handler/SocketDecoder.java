@@ -21,6 +21,7 @@ public class SocketDecoder extends CumulativeProtocolDecoder {
 
     @Override
     protected boolean doDecode(IoSession session, IoBuffer in, ProtocolDecoderOutput out) throws IOException {
+        log.info("接收数据长度:" + in.remaining());
         // 取出缓冲区字节数组前 先做好标记 以便  reset()
         in.mark();
         byte[] data = new byte[in.remaining()];
