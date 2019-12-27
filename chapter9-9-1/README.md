@@ -5,6 +5,10 @@
     2.已暂存 (文件呈绿色)   
     3.已提交 (文件呈无色)
 
+    对应三种工作区：
+    工作区---暂存区---版本库
+
+    
     git init   初始化 版本库 Initialized empty Git repository in E:/Git/mygit/.git/
     touch text.txt 新建文件  并 创建默认master分支 
     git add text.txt   将文件添加到 暂存区
@@ -100,4 +104,31 @@
        
        IDEA  pull 拉取代码报错后
        VCS ---  Git --- pull  弹出框中 点击刷新分支按钮后  打钩刷新出的分支 再pull拉取代码 就可以了
-    
+       
+#  git 中央服务器仓库搭建
+    第一步：  用户操作
+        1.添加 用户
+        adduser goat
+        2.添加密码
+        passwd goat   后输入两次密码
+        3.添加用户组
+        groupadd goat 
+        4.添加指定用户到指定组  第一个goat为用户 第二个goat为组
+        usermod -G goat goat
+        
+        
+      第二步：  创建git仓库
+        切换/新建 仓库目录 srv
+        再 srv目录下  继续创建   mkdir goat-test.git 
+        继续进入 cd goat-test.git/  后 
+        输入 git init --bare 创建仓库  bare指定创建裸仓库（没有工作区）
+        为goat用户 修改权限
+        chown -R goat:goat /srv/goat-test.git 
+
+        
+      第三步： 注意 @ 符号前的 goat 指的是账号  就是 第二步为 goat用户 修改权限的那个账号！！！
+      再本地 通过IDEA git下载项目 
+        goat@47.98.148.84:/srv/goat-test.git
+        输入密码 12345 即可down项目了
+         
+        

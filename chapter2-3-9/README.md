@@ -37,8 +37,49 @@
     （意思就是会把剩余数据给doDecode()处理，剩余数据就是remaining()的数据），返回false就不处理剩余的，
     （不把剩余数据给doDecode()处理）当有新数据包来的时候就把剩余的数据和新的数据拼接在一起，然后再调用decoder。
 
- 
- 
+# IoBuffer的使用
+    Limit(int)
+    如果position>limit, position = limit,如果mark>limit, 重置mark
+    
+    Mark()
+    取当前的position的快照标记mark
+    
+    Reset()
+    恢复position到先前标记的mark
+    
+    Clear()
+    limit=capacity , position=0,重置mark,但是不清空数据，为了从头开始put做准备，其实就是清空数据，因为你put就覆盖了原来的数据
+    
+    Rewind()
+    position=0,重置mark,一系列写操作后，为了从头开始get做准备，和clear()有用途上的区别，他大部分是用来从头开始读取，而clear是大部分用来重头开始填充，就是清理的意思
+    
+    Flip()
+    limit=position , position=0,重置mask，为了将buf写出做好准备，一般是结束buf操作，将buf写入输出流时调用，这个必须要调用，否则极有可能position!=limit，导致position后面没有数据，每次写入数据到输出流时，必须确保position=limit。
+    
+    Remaining()
+    返回limit-position,返回缓冲器中的剩余字节
+    
+    Wrap(byte[])
+    组装到新的buffer，capacity=limit=byte[].length，position=0 重置mark
+    
+    Slice()
+    分割缓冲器，将remaining的空间形成一个新的buffer，新的position=0，limit=capacity=remaining，重置mark，和主缓冲区内容共享，其它都独立
+    
+    Duplicate()
+    缓冲区，内容共享，其它都独立
+    
+    asReadOnlyBuffer()
+    和duplicate一样，只是不可写
+    
+    Compact()
+    将position和limit之间的字节移到最前面，position=limit-position，这就是这里的压缩的意思，一般是结束buf操作，将buf写入输出流时调用
+    
+    Position(int)
+    position=newPosition,如果position<mark,重置mark
+    
+    Remaining()
+    返回position和limit之间的字节数
+
  
  
  

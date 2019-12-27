@@ -30,6 +30,7 @@ public class SocketDecoder extends CumulativeProtocolDecoder {
         // 如果报文头是7B 且尾不是7B 则是断包 数据放回缓冲区
         if (data[0] == 123 && data[data.length - 1] != 123) {
             log.info("7B开头的断包，缓冲区继续接收！");
+            //继续接收数据，以待数据完整
             in.reset();
             return false;
         }
@@ -41,6 +42,7 @@ public class SocketDecoder extends CumulativeProtocolDecoder {
         short i = ByteArrayUtil.byteArrToShort(length);
         if (i != data.length) {
             log.info("报文长度不正确！ 予以忽略！");
+            // 因为没有in.reset(); 所以这里是丢弃当前包 继续接收其他包
             return false;
         }
 

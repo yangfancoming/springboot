@@ -79,8 +79,8 @@ public class AioTcpClient {
 		// 发起异步写!!!!!
         socket.write(clientBuffer, clientBuffer, new AioSendHandler(socket));
     }
-    public   void createPanel() {
-        me=this;
+    public void createPanel() {
+        me = this;
         JFrame f = new JFrame("Wallpaper");
         f.getContentPane().setLayout(new BorderLayout());       
         
