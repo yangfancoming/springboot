@@ -10,10 +10,15 @@
 
     
     git init   初始化 版本库 Initialized empty Git repository in E:/Git/mygit/.git/
-    touch text.txt 新建文件  并 创建默认master分支 
-    git add text.txt   将文件添加到 暂存区
-    git rm --cached text.txt  将从暂存区中 删除   对应 IDEA revert 功能
+    使用 init命令后 自动生成一个默认分支为：master 分支
     
+    touch text.txt 新建文件  并 创建默认master分支 
+    
+    git add 命令：    新建的文件text.txt（进入工作区） 再IDEA中文件名显示红色  命令行输入 git add text.txt 命令后  文件名变成绿色 （将该文件添加到暂存区）
+    git rm --cached 命令： 将绿色的缓冲区文件从暂存区移回到工作区，文件名变成红色   对应 IDEA revert 功能
+    
+    git commit 命令： 将所有暂存区中(绿色)的文件 提交到版本库中 颜色由绿色变成无色  对应 IDEA commit  功能
+  
     解决问题： 当使用 .gitignore 时候 发现某文件 已经在暂存区(文件呈绿色) 在提交时候 还是会出现在 提交框中 这时就需要使用 git rm --cached 命令
     将该文件从 暂存区中删除 后   再次提交就不会出现在 提交框中了 
     
