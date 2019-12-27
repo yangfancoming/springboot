@@ -7,7 +7,13 @@
 
     对应三种工作区：
     工作区---暂存区---本地库
-
+    
+    工作区：就是项目的目录
+    暂存区：又叫stage/index 一般在 .git目录下 就是我们计划要提交的文件
+    本地库：也在 .git 目录下
+    
+    流程： 
+    在工作区写代码 ---add--- 到暂存区临时存储 ----commit---  本地库 ----push---- 远程库
     
     git init   初始化 本地库 Initialized empty Git repository in E:/Git/mygit/.git/
     使用 init命令后 自动生成一个默认分支为：master 分支
@@ -17,8 +23,13 @@
     git add 命令：    新建的文件text.txt（进入工作区） 再IDEA中文件名显示红色  命令行输入 git add text.txt 命令后  文件名变成绿色 （将该文件添加到暂存区）
     git add .  该条命令会把 当前目录及其子目录下所有的文件都添加到暂存区
     git add *.html  //添加一类文件
+    
+    git rm --cached 命令： 用于将暂存区的文件恢复到工作区
     git rm --cached 命令： 将绿色的缓冲区文件从暂存区移回到工作区，文件名变成红色   对应 IDEA revert 功能
     
+    git rm ： 命令用于从工作区和暂存区中删除文件 
+    git rm 222.txt  文件被commit变成无色后  要想删除 该文件使用 git rm  命令 物理文件也会被删除  对应 IDEA 删除  功能
+        
     git commit 命令： 将所有暂存区中(绿色)的文件 提交到本地库中 颜色由绿色变成无色  对应 IDEA commit  功能
     git commit -m '我是注释'  （这样就可以不用进入到编辑页面了）
     git commit --amend -m '修改注释' doit ???
@@ -26,12 +37,18 @@
     解决问题： 当使用 .gitignore 时候 发现某文件 已经在暂存区(文件呈绿色) 在提交时候 还是会出现在 提交框中 这时就需要使用 git rm --cached 命令
     将该文件从 暂存区中删除 后   再次提交就不会出现在 提交框中了 
     
-    
     git checkout -- 123.txt  撤销本次所有修改： 对应 IDEA revert 功能
-    
-    git rm 222.txt  文件被commit变成无色后  要想删除 该文件使用 git rm  命令 物理文件也会被删除  对应 IDEA 删除  功能
 
     git mv 222.txt 211.txt  将222.txt文件名 改成 211.txt   文件重命名的 命令
+    
+    查看远程库信息：
+    git remote -v
+
+    连接远程仓库：其中 origin 为远程仓库名
+    git remote add origin goat@47.98.148.84:/srv/goat-test.git 
+    
+    提交远程仓库：其中 origin 为远程仓库名  mater 为要提交到的分支
+    git push -u origin mater 
     
 # 设置 git 用户名和 email 
     1.全局方式  优先级低  ~/.gitconfig  很常用 对于没有使用局部方式指定特定项目的其他项目/新建项目 默认都是使用的全局方式显示 
@@ -40,7 +57,7 @@
     git config --global user.email '642744551@qq.com'
     
     2.局部方式  优先级高  .git/config  针对于特定的项目 
-    git config --local user.name 'goat'
+    git config --local user.name 'fan.yang'
     git config --local user.name 'test1'
     git config --local user.email '642744551@qq.com'
 
