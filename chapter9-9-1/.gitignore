@@ -16,13 +16,16 @@ target
 
 
 # demo2 忽略当前文件夹 下所有文件  包括子目录
-/src/main/java/demo2
+src/main/java/demo2
 
-# demo3 忽略当前文件夹 下所有文件  不包括子目录
-/src/main/java/demo3/123.cd
+# demo3 忽略当前文件夹 指定文件 123.cd  不包括子目录
+/src/main/java/demo3/test.h
+# 忽略当前文件夹 指定文件 123.cd  包括子目录
 /src/main/java/demo3/**/123.cd
-aliyun-oss.properties
-security.properties
-banner.txt
-bootstrap.yml
-gen
+
+
+# demo4 忽略/src/main/java/demo4/ 下所有*.txt文件  但不包括子目录432.txt
+/src/main/java/demo4/*.txt
+
+# 按文件名 忽略整个项目中的文件  包括根目录及子目录
+temp.java

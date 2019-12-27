@@ -6,10 +6,10 @@
     3.已提交 (文件呈无色)
 
     对应三种工作区：
-    工作区---暂存区---版本库
+    工作区---暂存区---本地库
 
     
-    git init   初始化 版本库 Initialized empty Git repository in E:/Git/mygit/.git/
+    git init   初始化 本地库 Initialized empty Git repository in E:/Git/mygit/.git/
     使用 init命令后 自动生成一个默认分支为：master 分支
     
     touch text.txt 新建文件  并 创建默认master分支 
@@ -19,7 +19,7 @@
     git add *.html  //添加一类文件
     git rm --cached 命令： 将绿色的缓冲区文件从暂存区移回到工作区，文件名变成红色   对应 IDEA revert 功能
     
-    git commit 命令： 将所有暂存区中(绿色)的文件 提交到版本库中 颜色由绿色变成无色  对应 IDEA commit  功能
+    git commit 命令： 将所有暂存区中(绿色)的文件 提交到本地库中 颜色由绿色变成无色  对应 IDEA commit  功能
     git commit -m '我是注释'  （这样就可以不用进入到编辑页面了）
     git commit --amend -m '修改注释' doit ???
 
@@ -59,18 +59,24 @@
      
 # 创建和 删除 分支
     git branch -a   查看所有分支
-  
     git branch devMy   # 创建一个新分支
     git checkout devMy  # 切换到新分支
-    git checkout lampbelt  # 切换到新分支
     或者 git checkout -b devMy   # 创建并切换分支
     git branch -d devMy  删除分支 
+    合并分支：
+    git merge devMy # 表示将devMy分支合并到当前所在分支
     
     git checkout master  切换回主分支前 必须要提交所有暂存区的文件后 才能实现切换
+    
     
     删除远程分支：
     $ git push origin -d devMy
     
+#  分支与HEAD  
+    master、devMy等分支 指向最后一次提交
+    HEAD 是指向分支的指针， 当前切换到哪条分支就指向哪条分支
+    查看当前HEAD指向哪个分支命令：
+     git symbolic-ref HEAD
     
 # 合并某分支到当前分支：git merge <name>
     git merge master
