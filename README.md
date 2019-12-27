@@ -1,7 +1,9 @@
 
 SpringBoot
 
-两个项目 配置使用  
+两个项目 配置使用 
+
+ 
 
 ==chapter2-7-1 springboot  集成 HttpClient ==
 ==chapter2-0-8 springboot  集成 MockMvc和Swagger2==
@@ -349,7 +351,7 @@ JVM
 版本控制
 
 - ==chapter9-9-1：springboot 集成Git 版本控制==
-- 
+- ​
 
 测试功能
 
@@ -357,7 +359,6 @@ JVM
 - ==chapter9-9-5：springboot  Junit 读取 resources ==
 - ==chapter9-9-6：springboot 集成 TestNG==
 - ==chapter9-9-9：提供测试代码 编写==
-  
 
 
 JavaSe 项目目录
