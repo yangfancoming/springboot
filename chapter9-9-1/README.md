@@ -171,4 +171,9 @@
         goat@47.98.148.84:/srv/goat-test.git
         输入密码 12345 即可down项目了
          
+#  GitHub 强制删除 某一次提交历史 
+    
+    git reset --hard 6dc42554076ec85655109bd45b136fec5af0cd8c
+    
+    git push origin HEAD --force
         
