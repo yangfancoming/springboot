@@ -120,4 +120,26 @@ public class ByteArrayUtil {
         return "[" + returnValue.toString() + "]";
     }
 
+    /**
+     * @Description: 十六进制字符串 转化为byte数组
+     * @param hex 待转换的 十六进制字符串
+     * 输入示例：   String ret = MyStringTool.hex2bytes("7B01");
+     * 输出结果：   [0x7B,0x01]
+     * @author goat
+     * @date 2018/7/12
+     */
+    public static byte[] hex2bytes(String hex) throws IllegalArgumentException {
+        if (hex.length() % 2 != 0) {
+            throw new IllegalArgumentException();
+        }
+        char[] arr = hex.toCharArray();
+        byte[] b = new byte[hex.length() / 2];
+        for (int i = 0, j = 0, l = hex.length(); i < l; i++, j++) {
+            String swap = "" + arr[i++] + arr[i];
+            int byteint = Integer.parseInt(swap, 16) & 0xFF;
+            b[j] = new Integer(byteint).byteValue();
+        }
+        return b;
+    }
+
 }

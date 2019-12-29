@@ -37,7 +37,7 @@ public class StringUtilTest {
 
     @Test
     public void hex2bytes(){
-        byte[] s = StringUtil.hex2bytes("7B01");
+        byte[] s = ByteArrayUtil.hex2bytes("7B01");
         Assert.assertEquals(2, s.length);
     }
 

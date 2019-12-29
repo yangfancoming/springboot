@@ -256,7 +256,8 @@ excel 相关操作
 - ==chapter7-5-6：springboot 集成 EasyPoi 操作Excel
 - chapter7-5-8：springboot 集成 Alibaba EasyExcel
 
-
+work  相关操作
+- chapter7-6-0：springboot 集成 docx4j 操作 word 
 
 其他语言
 
