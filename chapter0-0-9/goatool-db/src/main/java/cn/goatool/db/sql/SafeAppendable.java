@@ -1,4 +1,4 @@
-package cn.goatool.db;
+package cn.goatool.db.sql;
 
 import java.io.IOException;
 

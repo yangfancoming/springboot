@@ -1,4 +1,4 @@
-package cn.goatool.db;
+package cn.goatool.db.sql;
 
 /**
  * Created by Administrator on 2020/1/2.

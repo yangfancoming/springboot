@@ -1,5 +1,5 @@
 
-package cn.goatool.db;
+package cn.goatool.db.sql;
 
 
 public class SQL extends AbstractSQL<SQL> {
