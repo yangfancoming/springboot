@@ -178,6 +178,7 @@ AOP
 - ==chapter4-6-1：springboot 集成  JPA + Oracle==
 - ==chapter4-6-3：springboot 集成 H2 + mybatis==
 - ==chapter4-6-4：springboot 集成 sqlite + mybatis==
+- ==chapter4-6-5：springboot 集成 sqlite + JPA==
 - ==chapter4-6-6：springboot 集成 HSqlDB + JPA==
 - ==chapter4-6-8：springboot 集成 sqlserver==
 - ==chapter4-7-0：springboot 集成 多数据源 基于 JPA和Mybatis==

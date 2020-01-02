@@ -15,7 +15,9 @@ public class SqliteController {
     @Autowired
     PersonMapper personMapper;
 
-	@GetMapping("/test1")
+    // 测试地址：  http://localhost:8464/person/test3
+
+    @GetMapping("/test1")
 	public List<Person> test1() {
 		List<Person> list = personMapper.findAll();
 		return list;
