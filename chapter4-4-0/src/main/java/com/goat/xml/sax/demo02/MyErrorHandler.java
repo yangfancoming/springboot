@@ -1,4 +1,4 @@
-package com.goat.chapter439;
+package com.goat.xml.sax.demo02;
 
 
 import org.xml.sax.ErrorHandler;

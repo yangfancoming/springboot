@@ -166,7 +166,6 @@ AOP
 - ==chapter4-3-5：springboot 集成   手写mybatis框架  == 
 - ==chapter4-3-7：springboot 集成   Mybatis框架 分解    == 
 - ==chapter4-3-8：springboot 集成   解析MXL W3C dom== 
-- ==chapter4-3-9：springboot 集成   解析 XML SAX== 
 - ==chapter4-4-0：springboot 集成   解析 XML == 
 - ==chapter4-4-1：springboot 集成 mybatis   Dao接口 + sqlxml 实现== 
 - ==chapter4-4-2：springboot 集成 mybatis   Dao接口 +  注解 实现==
