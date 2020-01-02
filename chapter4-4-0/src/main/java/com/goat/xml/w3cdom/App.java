@@ -1,6 +1,6 @@
-package com.goat.chapter438;
+package com.goat.xml.w3cdom;
 
-import com.goat.chapter438.util.DomUtil;
+import com.goat.xml.util.DomUtil;
 import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -10,6 +10,7 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.InputStream;
+
 /**
  * Created by Administrator on 2019/11/29.
  *
@@ -35,6 +36,7 @@ public class App {
             System.out.println("Classes: "+ node.getElementsByTagName("Classes").item(0).getFirstChild().getNodeValue());
             System.out.println("Address: "+ node.getElementsByTagName("Address").item(0).getFirstChild().getNodeValue());
             System.out.println("Tel: "+ node.getElementsByTagName("Tel").item(0).getFirstChild().getNodeValue());
+            System.out.println("-----------------");
         }
     }
 }

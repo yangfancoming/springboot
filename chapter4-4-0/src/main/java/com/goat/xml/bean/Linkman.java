@@ -1,4 +1,4 @@
-package com.goat.chapter438.model;
+package com.goat.xml.bean;
 
 /**
  * Created by Administrator on 2019/11/30.

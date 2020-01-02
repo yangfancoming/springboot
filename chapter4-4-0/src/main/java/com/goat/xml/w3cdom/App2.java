@@ -1,4 +1,4 @@
-package com.goat.chapter438;
+package com.goat.xml.w3cdom;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -115,7 +115,8 @@ public class App2 {
         TransformerFactory transFactory = TransformerFactory.newInstance();
         Transformer transFormer = transFactory.newTransformer();
         DOMSource domSource = new DOMSource(doc);
-        File file = new File("src/main/resource/university-modify.xml");
+//        File file = new File("src/main/resource/university-modify.xml");
+        File file = new File("E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter4-4-0\\src\\main\\resources\\university-modify.xml");
         if (file.exists()) {
             file.delete();
         }

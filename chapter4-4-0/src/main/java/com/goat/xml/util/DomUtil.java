@@ -1,7 +1,10 @@
-package com.goat.chapter438.util;
+package com.goat.xml.util;
 
-import com.goat.chapter438.model.Linkman;
-import org.w3c.dom.*;
+import com.goat.xml.bean.Linkman;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;

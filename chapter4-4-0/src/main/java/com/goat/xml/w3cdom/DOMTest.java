@@ -1,6 +1,6 @@
-package com.goat.chapter438;
+package com.goat.xml.w3cdom;
 
-import com.goat.chapter438.model.Books2;
+import com.goat.xml.util.DomUtil;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -9,8 +9,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.InputStream;
 
 /**
  * Created by Administrator on 2019/12/1.
@@ -21,12 +20,13 @@ import java.util.List;
  */
 public class DOMTest {
 
+
     public static void main(String[] args){
 
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document document = dBuilder.parse("E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter4-3-8\\src\\main\\resources\\books2.xml");
+            Document document = dBuilder.parse("E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter4-4-0\\src\\main\\resources\\books2.xml");
             //找到根节点
             Element root = document.getDocumentElement();
 

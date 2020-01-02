@@ -1,7 +1,8 @@
-package com.goat.chapter438;
+package com.goat.xml.w3cdom;
 
-import com.goat.chapter438.model.Linkman;
-import com.goat.chapter438.util.DomUtil;
+
+import com.goat.xml.bean.Linkman;
+import com.goat.xml.util.DomUtil;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
@@ -22,7 +23,7 @@ import java.util.List;
  *    Document doc = builder.parse(new File("linkman.xml")); // E:\Code\J2EE_code\MySpringBoot\springboot\chapter4-3-8\linkman.xml (系统找不到指定的文件。)
  *    Document doc = builder.parse(new File("E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter4-3-8\\src\\main\\resources\\linkman.xml")); // ok
  */
-public class TestApp {
+public class LinkManApp {
 
     InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("linkman.xml");
 

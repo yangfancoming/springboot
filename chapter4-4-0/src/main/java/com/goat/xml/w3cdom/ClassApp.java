@@ -1,6 +1,6 @@
-package com.goat.chapter438;
+package com.goat.xml.w3cdom;
 
-import com.goat.chapter438.util.DomUtil;
+import com.goat.xml.util.DomUtil;
 import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -14,6 +14,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Created by Administrator on 2019/11/29.
@@ -25,8 +26,8 @@ import java.io.IOException;
 public class ClassApp {
 
     public ClassApp() throws IOException, SAXException, ParserConfigurationException {}
-
-    Document doc = DomUtil.getDocumentByInputStream("src/classes.xml");
+    InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("classes.xml");
+    Document doc = DomUtil.getDocumentByInputStream(inputStream);
 
 
     // 递归遍历 xml

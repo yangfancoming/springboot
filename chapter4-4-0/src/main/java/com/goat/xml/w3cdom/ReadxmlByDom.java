@@ -1,6 +1,6 @@
-package com.goat.chapter438;
+package com.goat.xml.w3cdom;
 
-import com.goat.chapter438.model.Book;
+import com.goat.xml.bean.Book;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -66,7 +66,7 @@ public class ReadxmlByDom {
 	}
 
     public static void main(String args[]) throws Exception {
-        String fileName = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter4-3-8\\src\\main\\resources\\books.xml";
+        String fileName = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter4-4-0\\src\\main\\java\\com\\goat\\xml\\xmldemo\\books.xml";
         List<Book> list = ReadxmlByDom.getBooks(fileName);
         for(Book book :list){
             System.out.println(book);

@@ -1,4 +1,4 @@
-package com.goat.chapter438.util;
+package com.goat.xml.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
