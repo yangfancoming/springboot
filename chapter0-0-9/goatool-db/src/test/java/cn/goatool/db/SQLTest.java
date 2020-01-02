@@ -118,10 +118,41 @@ public class SQLTest {
 
     // 测试 join 语句的 可变长参数
     @Test
-    void variableLengthArgumentOnJoin() {
+    public void variableLengthArgumentOnJoin() {
         final String sql = new SQL() {{ SELECT().JOIN("TABLE_A b ON b.id = a.id", "TABLE_C c ON c.id = a.id"); }}.toString();
         assertEquals("JOIN TABLE_A b ON b.id = a.id\nJOIN TABLE_C c ON c.id = a.id", sql);
     }
+
+
+    /**
+     *  测试  Where  GroupBy  Having  OrderBy  语句的变长参数
+    */
+    @Test
+    public void variableLengthArgumentOnWhere() {
+        final String sql = new SQL() {{  SELECT().WHERE("a = #{a}", "b = #{b}"); }}.toString();
+        assertEquals("WHERE (a = #{a} AND b = #{b})", sql);
+    }
+
+    @Test
+    public void variableLengthArgumentOnGroupBy() {
+        final String sql = new SQL() {{ SELECT().GROUP_BY("a", "b"); }}.toString();
+        assertEquals("GROUP BY a, b", sql);
+    }
+
+    @Test
+    public void variableLengthArgumentOnHaving() {
+        final String sql = new SQL() {{ SELECT().HAVING("a = #{a}", "b = #{b}"); }}.toString();
+        assertEquals("HAVING (a = #{a} AND b = #{b})", sql);
+    }
+
+    @Test
+    public void variableLengthArgumentOnOrderBy() {
+        final String sql = new SQL() {{ SELECT().ORDER_BY("a", "b");}}.toString();
+        assertEquals("ORDER BY a, b", sql);
+    }
+
+
+
 
     @Test
     public void deleteUsingLimit() {
