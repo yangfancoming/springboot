@@ -168,7 +168,6 @@ AOP
 - ==chapter4-3-5：springboot 集成   手写mybatis框架  == 
 - ==chapter4-3-7：springboot 集成   Mybatis框架 分解    == 
 - ==chapter4-3-8：springboot 集成   解析MXL W3C dom== 
-- ==chapter4-3-9：springboot 集成   解析 XML SAX== 
 - ==chapter4-4-0：springboot 集成   解析 XML == 
 - ==chapter4-4-1：springboot 集成 mybatis   Dao接口 + sqlxml 实现== 
 - ==chapter4-4-2：springboot 集成 mybatis   Dao接口 +  注解 实现==
@@ -180,8 +179,9 @@ AOP
 - ==chapter4-6-0：springboot 集成 Oracle==
 - ==chapter4-6-1：springboot 集成  JPA + Oracle==
 - ==chapter4-6-3：springboot 集成 H2 + mybatis==
-- ==chapter4-6-4：springboot 集成 H2 + jdbc==
-- ==chapter4-6-6：springboot 集成 HSqlDB+ JPA==
+- ==chapter4-6-4：springboot 集成 sqlite + mybatis==
+- ==chapter4-6-5：springboot 集成 sqlite + JPA==
+- ==chapter4-6-6：springboot 集成 HSqlDB + JPA==
 - ==chapter4-6-8：springboot 集成 sqlserver==
 - ==chapter4-7-0：springboot 集成 多数据源 基于 JPA和Mybatis==
 - ==chapter4-7-5：springboot 集成 mysql读写分离  基于 IO.shardingJDBC==
@@ -258,7 +258,8 @@ excel 相关操作
 - ==chapter7-5-6：springboot 集成 EasyPoi 操作Excel
 - chapter7-5-8：springboot 集成 Alibaba EasyExcel
 
-
+work  相关操作
+- chapter7-6-0：springboot 集成 docx4j 操作 word 
 
 其他语言
 

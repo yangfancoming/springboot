@@ -57,3 +57,19 @@
      expected START_TAG or END_TAG not TEXT (position: TEXT seen ...</dependency>-->\n`\n        <d... @56:11). 
      原因： 依赖是通过复制过来的，存在空格， 
      解决：将日志指示位置的代码code一遍。 去掉 指定位置的空格 或空行
+     
+# Maven的Snapshot版本与Release版本
+    1. Snapshot版本代表不稳定、尚处于开发中的版本
+    2. Release版本则代表稳定的版本
+    3. 什么情况下该用SNAPSHOT?
+    协同开发时，如果A依赖构件B，由于B会更新，B应该使用SNAPSHOT来标识自己。这种做法的必要性可以反证如下：
+    a.如果B不用SNAPSHOT，而是每次更新后都使用一个稳定的版本，那版本号就会升得太快，每天一升甚至每个小时一升，这就是对版本号的滥用。
+    b.如果B不用SNAPSHOT, 而是一直使用一个单一的Release版本号，那当B更新后，A可能并不会接受到更新。
+        因为A所使用的repository一般不会频繁更新release版本的缓存（即本地repository)，
+        所以B以不换版本号的方式更新后，A在拿B时发现本地已有这个版本，就不会去远程Repository下载最新的B
+    4. 不用Release版本，在所有地方都用SNAPSHOT版本行不行？
+        不行。正式环境中不得使用snapshot版本的库。 
+        比如说，今天你依赖某个snapshot版本的第三方库成功构建了自己的应用，明天再构建时可能就会失败，
+        因为今晚第三方可能已经更新了它的snapshot库。
+        你再次构建时，Maven会去远程repository下载snapshot的最新版本，
+        你构建时用的库就是新的jar文件了，这时正确性就很难保证了。
