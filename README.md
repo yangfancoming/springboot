@@ -65,8 +65,8 @@ Web开发
 - ==chapter2-1-6 springboot  中使用 Bootstrap + Select2 + 前后端ajax交互 ==
 - ==chapter2-1-7 springboot  中使用 Bootstrap + AdminLTE 模板==
 - ==chapter2-1-8 springboot  集成 Kaptcha 验证码==
-- ==chapter2-2-2 springboot  集成 fastjson  相关操作总结==
-- ==chapter2-2-3 springboot  集成 Jackson 相关操作总结==
+- ==chapter2-2-2 springboot  集成 fastjson 相关操作总结==
+- ==chapter2-2-3 springboot  集成 Jackson  相关操作总结==
 - ==chapter2-2-5 springboot  集成 Gson  相关操作总结==
 - ==chapter2-3-1 springboot  集成 WebSocket==
 - ==chapter2-3-2 springboot  集成 WebSocket2==

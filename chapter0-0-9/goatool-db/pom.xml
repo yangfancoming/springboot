@@ -9,13 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>goatool-core</artifactId>
+    <artifactId>goatool-db</artifactId>
 
-
-    <dependencies>
-
-
-
-    </dependencies>
 
 </project>
