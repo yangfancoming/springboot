@@ -8,7 +8,10 @@ import java.sql.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
+/**
+ * 提供了用于控制执行SQL脚本的一些行为
+ *
+*/
 public class ScriptRunner {
 
   private static final String LINE_SEPARATOR = System.getProperty("line.separator", "\n");
@@ -19,17 +22,27 @@ public class ScriptRunner {
 
   private final Connection connection;
 
+  // SQL 异常是否中断程序执行
   private boolean stopOnError;
+  // 是否抛出 SQLWarning 警告
   private boolean throwWarning;
+  // 是否自动提交
   private boolean autoCommit;
+  // true 批量执行文件中的sql语句 false 逐条执行，默认情况下 SQL语句以分号为分割
   private boolean sendFullScript;
+  // 是否去除 windows 系统换行符中的  \r
   private boolean removeCRs;
+  // 设置 Statement 属性会否支持转义处理
   private boolean escapeProcessing = true;
 
+  // 日志输出位置，默认控制台
   private PrintWriter logWriter = new PrintWriter(System.out);
+    // 错误日志输出位置，默认控制台
   private PrintWriter errorLogWriter = new PrintWriter(System.err);
 
+  // 脚本文件中  SQL语句的分隔符，默认为 ;
   private String delimiter = DEFAULT_DELIMITER;
+  // 是否支持SQL语句分割符，单独占一行
   private boolean fullLineDelimiter;
 
   public ScriptRunner(Connection connection) {
@@ -56,9 +69,6 @@ public class ScriptRunner {
     this.removeCRs = removeCRs;
   }
 
-  /**
-   * @since 3.1.1
-   */
   public void setEscapeProcessing(boolean escapeProcessing) {
     this.escapeProcessing = escapeProcessing;
   }
@@ -78,6 +88,7 @@ public class ScriptRunner {
   public void setFullLineDelimiter(boolean fullLineDelimiter) {
     this.fullLineDelimiter = fullLineDelimiter;
   }
+
 
   public void runScript(Reader reader) {
     setAutoCommit();
@@ -138,8 +149,10 @@ public class ScriptRunner {
     }
   }
 
+  //设置 自动是否自动提交
   private void setAutoCommit() {
     try {
+        // 自由当我们设置的是否自动提交 与 当前数据库不相同时 才设置，如果是一致的 就不必设置！
       if (autoCommit != connection.getAutoCommit()) {
         connection.setAutoCommit(autoCommit);
       }
