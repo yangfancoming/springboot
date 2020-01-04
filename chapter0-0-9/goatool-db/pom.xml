@@ -12,4 +12,19 @@
     <artifactId>goatool-db</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>com.goat.springboot.learing</groupId>
+            <artifactId>goatool-core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.4.1</version>
+<!--            <scope>test</scope>-->
+        </dependency>
+    </dependencies>
 </project>

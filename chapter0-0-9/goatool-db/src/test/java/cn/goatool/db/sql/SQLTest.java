@@ -1,9 +1,6 @@
-package cn.goatool.db;
+package cn.goatool.db.sql;
 
-import cn.goatool.db.sql.SQL;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,8 +12,6 @@ import static org.junit.Assert.assertEquals;
  * @ date 2020/1/2---17:03
  */
 public class SQLTest {
-
-    private Logger log = LoggerFactory.getLogger(getClass());
 
     // 测试 混合 风格
     @Test
