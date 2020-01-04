@@ -1,5 +1,5 @@
 
-package cn.goatool.db.script;
+package cn.goatool.core.exception;
 
 
 public class RuntimeSqlException extends RuntimeException {

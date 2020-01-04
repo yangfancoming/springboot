@@ -1,5 +1,8 @@
 
-package cn.goatool.db.script;
+package cn.goatool.db.runner;
+
+
+import cn.goatool.core.exception.RuntimeSqlException;
 
 import java.io.BufferedReader;
 import java.io.PrintWriter;
