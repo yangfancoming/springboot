@@ -9,6 +9,9 @@ import java.util.Properties;
 
 /**
  * A class to simplify access to resources through the classloader.
+ * 类通过类加载器简化对资源的访问。主要实现读取classpath包下的资源文件
+ * 1.加载资源文件，基本上测试类中都有用到
+ * 2.通过类名，加载Class
  */
 public class Resources {
 
@@ -65,6 +68,7 @@ public class Resources {
 
   /**
    * Returns a resource on the classpath as a Stream object
+   * 将classpath下的资源文件以 文件流 对象返回
    * @param resource The resource to find
    * @return The resource
    * @throws IOException If the resource cannot be found or read
@@ -75,6 +79,7 @@ public class Resources {
 
   /**
    * Returns a resource on the classpath as a Stream object
+   * 将classpath下的资源文件以 文件流 对象返回
    * @param loader   The classloader used to fetch the resource
    * @param resource The resource to find
    * @return The resource
@@ -119,6 +124,7 @@ public class Resources {
 
   /**
    * Returns a resource on the classpath as a Reader object
+   * 将classpath下的资源文件以字符流对象返回
    * @param resource The resource to find
    * @return The resource
    * @throws IOException If the resource cannot be found or read
