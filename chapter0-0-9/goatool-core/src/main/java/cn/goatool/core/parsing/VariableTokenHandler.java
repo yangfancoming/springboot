@@ -47,7 +47,7 @@ public class VariableTokenHandler implements TokenHandler {
     /**默认分隔符*/
     private final String defaultValueSeparator;
 
-     VariableTokenHandler(Properties variables) {
+     public VariableTokenHandler(Properties variables) {
         this.variables = variables;
         this.enableDefaultValue = Boolean.parseBoolean(getPropertyValue(KEY_ENABLE_DEFAULT_VALUE, ENABLE_DEFAULT_VALUE));
         this.defaultValueSeparator = getPropertyValue(KEY_DEFAULT_VALUE_SEPARATOR, DEFAULT_VALUE_SEPARATOR);
@@ -56,6 +56,26 @@ public class VariableTokenHandler implements TokenHandler {
     private String getPropertyValue(String key, String defaultValue) {
         return (variables == null) ? defaultValue : variables.getProperty(key, defaultValue);
     }
+
+    /**
+     * @Description: 解析
+     * @author fan.yang
+     * @date 2019年11月13日20:13:32
+     * @param string 待解析的字符串
+     * @param variables 属性替换集合
+     * @return 解析后的结果字符串
+     */
+    public static String parse(String string, Properties variables) {
+        //解析默认值
+        VariableTokenHandler handler = new VariableTokenHandler(variables);
+        //解析占位符
+        //在初始化GenericTokenParser对象，设置openToken为${,endToken为}
+        //有没有对${}比较熟悉，这个符号就是mybatis配置文件中的占位符，例如定义datasource时用到的 <property name="driverClassName" value="${driver}" />
+        //同时也可以解释在VariableTokenHandler中的handleToken时，如果content在properties中不存在时，返回的内容要加上${}了。
+        GenericTokenParser parser = new GenericTokenParser("${", "}", handler);
+        return parser.parse(string);
+    }
+
 
     @Override
     public String handleToken(String content) {
