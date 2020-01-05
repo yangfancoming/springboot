@@ -1,18 +1,32 @@
 package cn.goatool.core.reflect;
 
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.lang.reflect.ReflectPermission;
 import java.util.Map;
 
 
-public class ReflectUtil {
+public class Reflector {
 
-    private Logger log = LoggerFactory.getLogger(getClass());
 
+    /**
+     * Checks whether can control member accessible.
+     * 检查是否拥有了访问的权限：除了访问公有的变量， 还能访问 default , protected 和private 变量
+     * @return If can control member accessible, it return {@literal true}
+     * @since 3.5.0
+     */
+    public static boolean canControlMemberAccessible() {
+        try {
+            SecurityManager securityManager = System.getSecurityManager();
+            if (null != securityManager) {
+                securityManager.checkPermission(new ReflectPermission("suppressAccessChecks"));
+            }
+        } catch (SecurityException e) {
+            return false;
+        }
+        return true;
+    }
 
     /**
      * 获取指定Class对象的 所有的构造函数(public，protected，default(package)access和private)
