@@ -4,7 +4,7 @@ package cn.goatool.core.util;
  * CRC16相关计算
  * encode: utf-8
  */
-public class Crc16Util {
+public class Crc16Utils {
 
 	/**
 	 * 计算CRC16校验

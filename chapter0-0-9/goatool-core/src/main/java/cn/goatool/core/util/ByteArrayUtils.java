@@ -2,7 +2,7 @@
 package cn.goatool.core.util;
 
 
-public class ByteArrayUtil {
+public class ByteArrayUtils {
 
 
     /**

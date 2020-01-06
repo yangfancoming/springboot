@@ -1,6 +1,6 @@
 package com.goat.chapter239.model;
 
-import cn.goatool.core.util.ByteArrayUtil;
+import cn.goatool.core.util.ByteArrayUtils;
 import org.apache.mina.core.future.ConnectFuture;
 import org.apache.mina.core.service.IoConnector;
 import org.apache.mina.core.session.IoSession;
@@ -80,7 +80,7 @@ public class Message implements Serializable {
         Message.packageIdentity = identity;
         Message.user = user;
         int length = user.length+16;
-        Message.packageLength = ByteArrayUtil.shortToByteArr((short)length);
+        Message.packageLength = ByteArrayUtils.shortToByteArr((short)length);
         int l1 = Message.startMark.length;
         int l2 = Message.packageType.length;
         int l3 = Message.packageLength.length;

@@ -1,6 +1,6 @@
 package com.goat.chapter239.chain;
 
-import cn.goatool.core.util.ByteArrayUtil;
+import cn.goatool.core.util.ByteArrayUtils;
 import com.goat.chapter239.model.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,8 +26,8 @@ public class PackageLength extends Chain {
         byte[] length = new byte[2];
         input.read(length);
         Message.packageLength = length;
-        log.info("包长度处理器 解析结果： "+ ByteArrayUtil.byteArrToShort(Message.packageLength));
-        log.info("包长度处理器 解析结果（16进制）："+ ByteArrayUtil.byteArrToHexString(length));
+        log.info("包长度处理器 解析结果： "+ ByteArrayUtils.byteArrToShort(Message.packageLength));
+        log.info("包长度处理器 解析结果（16进制）："+ ByteArrayUtils.byteArrToHexString(length));
         return process(input);
     }
 }

@@ -1,6 +1,6 @@
 package com.goat.chapter239.chain;
 
-import cn.goatool.core.util.ByteArrayUtil;
+import cn.goatool.core.util.ByteArrayUtils;
 import com.goat.chapter239.observe.Starter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +30,7 @@ public class PackageUserUdp extends Chain {
         input.skip(1);// 跳过最后一个 7B 剩下的都是 用户数据 (udp协议)
         input.read(user);
         log.info("UDP 用户数据 解析结果： " + user );
-        log.info("UDP 用户数据 解析结果（16进制）： " + ByteArrayUtil.byteArrToHexString(user));
+        log.info("UDP 用户数据 解析结果（16进制）： " + ByteArrayUtils.byteArrToHexString(user));
         starter.start(user);
         return process(input);
     }

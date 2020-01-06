@@ -1,4 +1,6 @@
-package cn.goatool.core.util;
+package cn.goatool.core.util.string;
+
+import cn.goatool.core.util.ByteArrayUtils;
 
 import java.nio.charset.StandardCharsets;
 
@@ -6,7 +8,7 @@ import java.nio.charset.StandardCharsets;
  * 字符串工具类
  * @date 2018/7/11---9:54
  */
-public class StringUtil {
+public class StringUtils {
 
     /**
      * @Description: 将字符串按照指定长度进行分割
@@ -55,7 +57,7 @@ public class StringUtil {
     public static String intToAsc(String str){
         // 0x31,0x32,0x33,0x34
         byte[] gaga = str.getBytes(StandardCharsets.UTF_8);
-        return ByteArrayUtil.byteArrToHexString(gaga);
+        return ByteArrayUtils.byteArrToHexString(gaga);
     }
 
 

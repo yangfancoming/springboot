@@ -1,6 +1,6 @@
 package com.goat.chapter239.chain;
 
-import cn.goatool.core.util.ByteArrayUtil;
+import cn.goatool.core.util.ByteArrayUtils;
 import com.goat.chapter239.model.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +28,7 @@ public class PackageIdentity extends Chain {
         Message.packageIdentity = identity;
         Message.identity = new String(Message.packageIdentity,"ascii");
         log.info("DTU 身份识别码 处理器 解析结果： " + Message.identity);
-        log.info("DTU 身份识别码 处理器 解析结果（16进制）： "+ ByteArrayUtil.byteArrToHexString(Message.packageIdentity));
+        log.info("DTU 身份识别码 处理器 解析结果（16进制）： "+ ByteArrayUtils.byteArrToHexString(Message.packageIdentity));
         return process(input);
     }
 }
