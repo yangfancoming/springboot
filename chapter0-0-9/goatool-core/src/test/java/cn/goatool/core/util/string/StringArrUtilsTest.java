@@ -17,20 +17,20 @@ public class StringArrUtilsTest {
     public void testDeleteAny() {
         String inString = "Able was I ere I saw Elba";
 
-        String res = StringArrUtils.deleteAny(inString, "I");
+        String res = StringUtils.deleteAny(inString, "I");
         assertTrue("Result has no Is [" + res + "]", res.equals("Able was  ere  saw Elba"));
 
 
         // 删除字符串中的所有出现的字符
-        res = StringArrUtils.deleteAny(inString, "AeEba!");
+        res = StringUtils.deleteAny(inString, "AeEba!");
         assertTrue("Result has no Is [" + res + "]", res.equals("l ws I r I sw l"));
 
 
         // 区分大小写
-        res = StringArrUtils.deleteAny(inString, "A!");
+        res = StringUtils.deleteAny(inString, "A!");
         assertTrue("Result has no Is [" + res + "]", res.equals("ble was I ere I saw Elba"));
 
-        String mismatch = StringArrUtils.deleteAny(inString, "#@$#$^");
+        String mismatch = StringUtils.deleteAny(inString, "#@$#$^");
         assertTrue("Result is unchanged", mismatch.equals(inString));
 
         //  测试 特殊字符
@@ -38,7 +38,7 @@ public class StringArrUtilsTest {
         assertTrue("Has CR", whitespace.contains("\n"));
         assertTrue("Has tab", whitespace.contains("\t"));
         assertTrue("Has  sp", whitespace.contains(" "));
-        String cleaned = StringArrUtils.deleteAny(whitespace, "\n\t ");
+        String cleaned = StringUtils.deleteAny(whitespace, "\n\t ");
         assertTrue("Has no CR", !cleaned.contains("\n"));
         assertTrue("Has no tab", !cleaned.contains("\t"));
         assertTrue("Has no sp", !cleaned.contains(" "));

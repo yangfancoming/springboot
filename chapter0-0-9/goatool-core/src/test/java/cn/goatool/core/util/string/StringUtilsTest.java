@@ -23,7 +23,7 @@ public class StringUtilsTest {
 
     @Test
     public void StrSplit(){
-        String[] arr = StringUtils.StrSplit("1234567890",3);
+        String[] arr = StringArrUtils.StrSplit("1234567890",3);
         Assert.assertEquals("[123, 456, 789]", Arrays.toString(arr));
     }
 

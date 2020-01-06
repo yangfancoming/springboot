@@ -1,8 +1,11 @@
 package cn.goatool.core.util.string;
 
 import cn.goatool.core.util.ByteArrayUtils;
+import com.sun.istack.internal.Nullable;
 
 import java.nio.charset.StandardCharsets;
+
+import static cn.goatool.core.util.string.StringCheckUtils.hasLength;
 
 /**
  * 字符串工具类
@@ -11,22 +14,26 @@ import java.nio.charset.StandardCharsets;
 public class StringUtils {
 
     /**
-     * @Description: 将字符串按照指定长度进行分割
-     * @param str 待转换的字符串
-     * 输入示例：   MyStringTool.StrSplit("1234567890",3);
-     * 输出结果：   123,456,789
-     * @author goat
-     * @date 2018/7/11
+     * 删除字符串中指定的字符
+     * @param inString 待操作的字符串
+     * @param charsToDelete 要删除的字符集合
+     * eg:	StringUtils.deleteAny("Able was I ere I saw Elba", "I") ===> "Able was  ere  saw Elba"
      */
-    public static String[] StrSplit(String str, int len){
-        int length = str.length() / len;
-        String[] shcuy = new String[length];
-        for (int i = 0; i < length; i++){
-            shcuy[i] = str.substring(0,len);
-            str = str.substring(len);
+    public static String deleteAny(String inString, @Nullable String charsToDelete) {
+        if (!hasLength(inString) || !hasLength(charsToDelete)) {
+            return inString;
         }
-        return shcuy;
+        StringBuilder sb = new StringBuilder(inString.length());
+        for (int i = 0; i < inString.length(); i++) {
+            char c = inString.charAt(i);
+            if (charsToDelete.indexOf(c) == -1) {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
     }
+
+
 
     /**
      * @Description: 4 字节(8位)字符串     每n个字节倒序 （输入n长度必须能被 输入字符串的长度整除 否则数据丢失）
