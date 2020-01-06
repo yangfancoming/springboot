@@ -5,6 +5,9 @@ import com.sun.istack.internal.Nullable;
 
 import java.util.*;
 
+import static cn.goatool.core.util.string.StringCheckUtils.hasLength;
+import static cn.goatool.core.util.string.StringUtils.deleteAny;
+
 
 /**
  * Created by Administrator on 2020/1/6.
@@ -15,6 +18,89 @@ import java.util.*;
  */
 public class StringArrUtils {
 
+
+    public static String[] tokenizeToStringArray(@Nullable String str, String delimiters) {
+        return tokenizeToStringArray(str, delimiters, true, true);
+    }
+
+    /**
+     * 通过jdk StringTokenizer 对象将 给定字符串 标记化成字符串数组
+     * 给定的分隔符字符串可以由任意数量的分隔符字符组成。
+     * 每个字符都可以用来做分隔符
+     * 分隔符始终是单个字符；对于多字符分隔符，使用多个字符可以使用 {@link #delimitedListToStringArray}.
+     * @param str 待标记化的字符串
+     * @param delimiters 分隔符 （每个字符都被单独视为分隔符）
+     * @param trimTokens trim the tokens via {@link String#trim()}
+     * @param ignoreEmptyTokens 从结果数组中省略空标记
+     */
+    public static String[] tokenizeToStringArray(@Nullable String str, String delimiters, boolean trimTokens, boolean ignoreEmptyTokens) {
+        if (str == null) {
+            return new String[0];
+        }
+        StringTokenizer st = new StringTokenizer(str, delimiters);
+        List<String> tokens = new ArrayList<>();
+        while (st.hasMoreTokens()) {
+            String token = st.nextToken();
+            if (trimTokens) {
+                token = token.trim();
+            }
+            if (!ignoreEmptyTokens || token.length() > 0) {
+                tokens.add(token);
+            }
+        }
+        return toStringArray(tokens);
+    }
+
+    @Nullable
+    public static Properties splitArrayElementsIntoProperties(String[] array, String delimiter) {
+        return splitArrayElementsIntoProperties(array, delimiter, null);
+    }
+
+    /**
+     * 将一个字符串数组 按照指定分隔符 进行分隔 并将分隔符左右两侧的内容分别作为key和value 保存到 Properties 对象中
+     * @param array 待处理的字符串数组
+     * @param delimiter  指定分隔符
+     * @param charsToDelete 需要删除的字符
+     */
+    @Nullable
+    public static Properties splitArrayElementsIntoProperties(String[] array, String delimiter, @Nullable String charsToDelete) {
+        if (ObjectUtils.isEmpty(array)) {
+            return null;
+        }
+        Properties result = new Properties();
+        for (String element : array) {
+            if (charsToDelete != null) {
+                element = deleteAny(element, charsToDelete);
+            }
+            String[] splittedElement = split(element, delimiter);
+            if (splittedElement == null) {
+                continue;
+            }
+            result.setProperty(splittedElement[0].trim(), splittedElement[1].trim());
+        }
+        return result;
+    }
+
+    /**
+     * 在分隔符第一次出现时拆分字符串，分隔结果不包含分隔符
+     * @param toSplit  待分隔的字符串
+     * @param delimiter 指定分隔符
+     * @return 返回一个包含2个元素的字符串数组  元素1 为分隔符之前的内容  元素2为分隔符之后的内容
+     * 如果没有匹配到分隔符 则返回 null
+     */
+    @Nullable
+    public static String[] split(@Nullable String toSplit, @Nullable String delimiter) {
+        if (!hasLength(toSplit) || !hasLength(delimiter)) {
+            return null;
+        }
+        int offset = toSplit.indexOf(delimiter);
+        if (offset < 0) {
+            return null;
+        }
+        String beforeDelimiter = toSplit.substring(0, offset);
+        String afterDelimiter = toSplit.substring(offset + delimiter.length());
+        return new String[] {beforeDelimiter, afterDelimiter};
+    }
 
     /**
      * @Description: 将字符串按照指定长度进行分割
