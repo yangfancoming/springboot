@@ -165,7 +165,6 @@ public class StringArrUtils {
         if (ObjectUtils.isEmpty(array2)) {
             return array1;
         }
-
         String[] newArr = new String[array1.length + array2.length];
         System.arraycopy(array1, 0, newArr, 0, array1.length);
         System.arraycopy(array2, 0, newArr, array1.length, array2.length);
@@ -187,7 +186,6 @@ public class StringArrUtils {
         if (ObjectUtils.isEmpty(array2)) {
             return array1;
         }
-
         List<String> result = new ArrayList<>();
         result.addAll(Arrays.asList(array1));
         for (String str : array2) {

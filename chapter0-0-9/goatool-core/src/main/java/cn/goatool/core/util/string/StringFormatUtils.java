@@ -2,6 +2,8 @@ package cn.goatool.core.util.string;
 
 import com.sun.istack.internal.Nullable;
 
+import java.text.DecimalFormat;
+
 import static cn.goatool.core.util.string.StringCheckUtils.hasLength;
 
 /**
@@ -16,6 +18,23 @@ public class StringFormatUtils {
     private static final String FOLDER_SEPARATOR = "/";
 
     private static final char EXTENSION_SEPARATOR = '.';
+
+
+    /**
+     * @Description: 功能描述： 格式填充（左侧）
+     * @author: Goat
+     * @param mark  填充标记   (使用什么内容填充)
+     * @param count 填充后的总长度
+     * @param num 待填充内容
+     * @Date:   2019年6月12日16:19:19
+     */
+    public static String fill(String mark,Integer count,Integer num){
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < count; i++) {
+            sb.append(mark);
+        }
+        return new DecimalFormat(sb.toString()).format(num);
+    }
 
     /**
      * 从给定的Java资源路径中删除文件后缀名

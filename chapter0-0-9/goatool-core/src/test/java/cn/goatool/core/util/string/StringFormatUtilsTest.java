@@ -2,6 +2,7 @@ package cn.goatool.core.util.string;
 
 import org.junit.Test;
 
+import static cn.goatool.core.util.string.StringFormatUtils.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
@@ -14,75 +15,84 @@ import static org.junit.Assert.assertNull;
  */
 public class StringFormatUtilsTest {
 
+
+    @Test
+    public void test(){
+        // 用 0 填充  填充后总长度为4位  待填充内容  ==
+        String haha = fill("1", 6, 9);
+        assertEquals("1111119", haha);
+    }
+
+    
     @Test
     public void testStripFilenameExtension() {
-        assertEquals("", StringFormatUtils.stripFilenameExtension(""));
-        assertEquals("myfile", StringFormatUtils.stripFilenameExtension("myfile"));
-        assertEquals("myfile", StringFormatUtils.stripFilenameExtension("myfile."));
-        assertEquals("myfile", StringFormatUtils.stripFilenameExtension("myfile.txt"));
-        assertEquals("mypath/myfile", StringFormatUtils.stripFilenameExtension("mypath/myfile"));
-        assertEquals("mypath/myfile", StringFormatUtils.stripFilenameExtension("mypath/myfile."));
-        assertEquals("mypath/myfile", StringFormatUtils.stripFilenameExtension("mypath/myfile.txt"));
-        assertEquals("/home/user/.m2/settings/myfile", StringFormatUtils.stripFilenameExtension("/home/user/.m2/settings/myfile"));
-        assertEquals("/home/user/.m2/settings/myfile", StringFormatUtils.stripFilenameExtension("/home/user/.m2/settings/myfile."));
-        assertEquals("/home/user/.m2/settings/myfile", StringFormatUtils.stripFilenameExtension("/home/user/.m2/settings/myfile.txt"));
+        assertEquals("", stripFilenameExtension(""));
+        assertEquals("myfile", stripFilenameExtension("myfile"));
+        assertEquals("myfile", stripFilenameExtension("myfile."));
+        assertEquals("myfile", stripFilenameExtension("myfile.txt"));
+        assertEquals("mypath/myfile", stripFilenameExtension("mypath/myfile"));
+        assertEquals("mypath/myfile", stripFilenameExtension("mypath/myfile."));
+        assertEquals("mypath/myfile", stripFilenameExtension("mypath/myfile.txt"));
+        assertEquals("/home/user/.m2/settings/myfile", stripFilenameExtension("/home/user/.m2/settings/myfile"));
+        assertEquals("/home/user/.m2/settings/myfile", stripFilenameExtension("/home/user/.m2/settings/myfile."));
+        assertEquals("/home/user/.m2/settings/myfile", stripFilenameExtension("/home/user/.m2/settings/myfile.txt"));
     }
     
     @Test
     public void testGetFilenameExtension() {
-        assertEquals(null, StringFormatUtils.getFilenameExtension(null));
-        assertEquals(null, StringFormatUtils.getFilenameExtension(""));
-        assertEquals(null, StringFormatUtils.getFilenameExtension("myfile"));
-        assertEquals(null, StringFormatUtils.getFilenameExtension("myPath/myfile"));
-        assertEquals(null, StringFormatUtils.getFilenameExtension("/home/user/.m2/settings/myfile"));
-        assertEquals("", StringFormatUtils.getFilenameExtension("myfile."));
-        assertEquals("", StringFormatUtils.getFilenameExtension("myPath/myfile."));
-        assertEquals("txt", StringFormatUtils.getFilenameExtension("myfile.txt"));
-        assertEquals("txt", StringFormatUtils.getFilenameExtension("mypath/myfile.txt"));
-        assertEquals("txt", StringFormatUtils.getFilenameExtension("/home/user/.m2/settings/myfile.txt"));
+        assertEquals(null, getFilenameExtension(null));
+        assertEquals(null, getFilenameExtension(""));
+        assertEquals(null, getFilenameExtension("myfile"));
+        assertEquals(null, getFilenameExtension("myPath/myfile"));
+        assertEquals(null, getFilenameExtension("/home/user/.m2/settings/myfile"));
+        assertEquals("", getFilenameExtension("myfile."));
+        assertEquals("", getFilenameExtension("myPath/myfile."));
+        assertEquals("txt", getFilenameExtension("myfile.txt"));
+        assertEquals("txt", getFilenameExtension("mypath/myfile.txt"));
+        assertEquals("txt", getFilenameExtension("/home/user/.m2/settings/myfile.txt"));
     }
     
     @Test
     public void testGetFilename() {
-        assertEquals(null, StringFormatUtils.getFilename(null));
-        assertEquals("", StringFormatUtils.getFilename(""));
-        assertEquals("myfile", StringFormatUtils.getFilename("myfile"));
-        assertEquals("myfile", StringFormatUtils.getFilename("mypath/myfile"));
-        assertEquals("myfile.", StringFormatUtils.getFilename("myfile."));
-        assertEquals("myfile.", StringFormatUtils.getFilename("mypath/myfile."));
-        assertEquals("myfile.txt", StringFormatUtils.getFilename("myfile.txt"));
-        assertEquals("myfile.txt", StringFormatUtils.getFilename("mypath/myfile.txt"));
+        assertEquals(null, getFilename(null));
+        assertEquals("", getFilename(""));
+        assertEquals("myfile", getFilename("myfile"));
+        assertEquals("myfile", getFilename("mypath/myfile"));
+        assertEquals("myfile.", getFilename("myfile."));
+        assertEquals("myfile.", getFilename("mypath/myfile."));
+        assertEquals("myfile.txt", getFilename("myfile.txt"));
+        assertEquals("myfile.txt", getFilename("mypath/myfile.txt"));
     }
     
     @Test
     public void testCapitalize() {
-        assertEquals("I am not capitalized", StringFormatUtils.capitalize("i am not capitalized"));
+        assertEquals("I am not capitalized", capitalize("i am not capitalized"));
     }
 
     @Test
     public void testUncapitalize() {
-        assertEquals("i am capitalized", StringFormatUtils.uncapitalize("I am capitalized"));
+        assertEquals("i am capitalized", uncapitalize("I am capitalized"));
     }
 
     @Test
     public void testUnqualify() {
-        assertEquals("unqualified", StringFormatUtils.unqualify("i.am.not.unqualified"));
-        assertEquals("qualified", StringFormatUtils.unqualify("this:name:is:qualified" ,':'));
+        assertEquals("unqualified", unqualify("i.am.not.unqualified"));
+        assertEquals("qualified", unqualify("this:name:is:qualified" ,':'));
     }
 
     @Test
     public void testQuote() {
-        assertEquals("'goat'", StringFormatUtils.quote("goat"));
-        assertEquals("''", StringFormatUtils.quote(""));
-        assertNull(StringFormatUtils.quote(null));
+        assertEquals("'goat'", quote("goat"));
+        assertEquals("''", quote(""));
+        assertNull(quote(null));
     }
 
 
     @Test
     public void testQuoteIfString() {
-        assertEquals("'myString'", StringFormatUtils.quoteIfString("myString"));
-        assertEquals("''", StringFormatUtils.quoteIfString(""));
-        assertNull(StringFormatUtils.quoteIfString(null));
-        assertEquals(5, StringFormatUtils.quoteIfString(5));
+        assertEquals("'myString'", quoteIfString("myString"));
+        assertEquals("''", quoteIfString(""));
+        assertNull(quoteIfString(null));
+        assertEquals(5, quoteIfString(5));
     }
 }
