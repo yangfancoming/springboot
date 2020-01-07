@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?> <!-- XML的标志,少了这个就不是XML -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- XML的标志,少了这个就不是XML -->
 <!--  引入DTD： <!DOCTYPE 根节点 SYSTEM  "dtd的地址">-->
 <!DOCTYPE persons  SYSTEM "person.dtd">
 
@@ -6,9 +7,10 @@
 
     <person pid="p1" sex="男" qq="aaa" parent="p2">
         <name>张小明</name>
-        <name>123</name>
         <age>10</age>
-        <age>10</age>
+        <girl>
+            <color></color>
+        </girl>
         <contact>
             <phone>1234567</phone>
         </contact>
@@ -17,22 +19,15 @@
 
     <person pid="p2">
         <name>张大明</name>
-        <age>35</age>
-        <contact>
-            <email>123@qq.com</email>
-        </contact>
+        <age>10</age>
+        <girl>
+            <color></color>
+        </girl>
         <contact>
             <email>123@qq.com</email>
         </contact>
     </person>
 
-    <person pid="">
-        <girl>
-            <color></color>
-            <color></color>
-            <color></color>
-        </girl>
-    </person>
 
 
 </persons>

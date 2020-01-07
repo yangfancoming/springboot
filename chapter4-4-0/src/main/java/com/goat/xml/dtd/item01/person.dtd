@@ -28,27 +28,27 @@
 <!ELEMENT contact (phone|email)> 表示两个子标签必须有一个要出现， 不能同时出现
  -->
 
-<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
        <!-- DTD的声明必须放在XML标志性代码下面    persons是当前声明的根源处 -->
-        <!DOCTYPE persons [
-        <!ELEMENT persons (person*)>
+<!--<!DOCTYPE persons [ ]> -->
+<!ELEMENT persons (person*)>
 
-        <!--   person 标签下可以出现的子标签名称 -->
-        <!ELEMENT person (name,age,girl,contact,br?)>
-        <!ELEMENT name (#PCDATA)>
-        <!ELEMENT age (#PCDATA)>
-        <!ELEMENT girl (color?)>
-        <!ELEMENT color (#PCDATA)>
-        <!ELEMENT contact (phone|email)>
-        <!ELEMENT phone (#PCDATA)>
-        <!ELEMENT br EMPTY>
-        <!ELEMENT email (#PCDATA)>
-        <!ATTLIST person
-                pid ID #REQUIRED
-                sex (男|女)  '男'
-                qq CDATA #IMPLIED
-                parent IDREF #IMPLIED
-                >
-        ]>
+<!--   person 标签下可以出现的子标签名称 -->
+<!ELEMENT person (name,age,girl,contact,br?)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT girl (color+)>
+<!ELEMENT color (#PCDATA)>
+<!ELEMENT contact (phone|email)>
+<!ELEMENT phone (#PCDATA)>
+<!ELEMENT br EMPTY>
+<!ELEMENT email (#PCDATA)>
+<!ATTLIST person
+        pid ID #REQUIRED
+        sex (男|女)  '男'
+        qq CDATA #IMPLIED
+        parent IDREF #IMPLIED
+        >
+<!--]>-->
 
 
