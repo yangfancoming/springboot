@@ -10,6 +10,7 @@ target
 /chapter9-1-2/*
 /chapter6-2-1/src/main/resources/application.properties
 /chapter2-6-4/src/main/resources/application.properties
+/chapter9-6-1/src/main/resources/application.properties
 aliyun-oss.properties
 security.properties
 banner.txt
