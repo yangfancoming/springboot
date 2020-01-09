@@ -39,7 +39,6 @@ public class ConcreteCompany extends Company {
     //履行职责
     @Override
     public void lineOfDuty() {
-        // TODO Auto-generated method stub
         for(Company component:children){
             component.lineOfDuty();
         }
