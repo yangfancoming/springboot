@@ -25,3 +25,11 @@
      传输的 json 最终都要转成实体类 就涉及到 实体类主键id问题
      如果 是 接收的 json 转实体类中 的主键 id    与  数据库接收方 数据库 表中 对应的记录主键id 相同 
      那么 接收的该条实体类 则  update 本库表中 对应的记录   而不是  insert ！
+     
+     
+# IDEA restClient 工具使用 注意事项：
+    测试 POST 请求时候 要注意  再工具左侧的 Headers 中添加  Content-Type  ：  application/json
+    
+    如果后台是   public AjaxJson login(@RequestBody String jsonBody)  接收  
+    那么 在工具右侧  TEXT 选项打钩 输入参入参数内容  json格式
+    

@@ -1,5 +1,7 @@
 package com.goat.B.B06.item05;
 
+import org.junit.Test;
+
 /**
  * Created by 64274 on 2019/7/17.
  *
@@ -19,7 +21,8 @@ package com.goat.B.B06.item05;
  */
 public class App {
 
-    public static void main(String[] args) {
+    @Test
+    public void test(){
         //定义所有的组合对象
         Node root = new Node("服装");
         Node c1 = new Node("男装");
@@ -42,4 +45,5 @@ public class App {
         //调用根对象的输出功能来输出整棵树
         root.printStruct("");
     }
+
 }

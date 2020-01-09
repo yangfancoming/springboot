@@ -97,7 +97,7 @@ Web开发
 网络请求
 
 - ==chapter2-7-1 springboot  集成 HttpClient ==
-- ==chapter2-7-3 springboot  集成 RestTemplate==
+- ==chapter2-7-3 springboot  集成 RestTemplate + IDEA RestClient工具使用 ==
 - ==chapter2-8-0 springboot  集成  JSP 中使用 Echarts==
 - ==chapter2-8-1 springboot  集成  JSP 中使用 JQuery==
 - ==chapter2-8-2 springboot  集成  JSP 中使用 百度地图==
