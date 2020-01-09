@@ -36,7 +36,7 @@ public class Composite {
      * @param c 被它包含的其它组合对象
      */
     public void addComposite(Composite c){
-        this.childComposite.add(c);
+        childComposite.add(c);
     }
 
     /**
@@ -44,7 +44,7 @@ public class Composite {
      * @param leaf 被它包含的叶子对象
      */
     public void addLeaf(Leaf leaf){
-        this.childLeaf.add(leaf);
+        childLeaf.add(leaf);
     }
 
     /**

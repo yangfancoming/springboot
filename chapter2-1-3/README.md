@@ -8,3 +8,7 @@
     
     
     
+# IDEA 运行js  program path no specified
+    1. 需要安装 node.js 插件
+    2. 需要安装 node.js  客户端
+    3. 在IDEA settings 界面 node.js  and NPM  选项 配置 C:\Program Files\nodejs\node.exe
