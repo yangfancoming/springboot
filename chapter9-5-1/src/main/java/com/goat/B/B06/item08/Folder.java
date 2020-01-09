@@ -46,9 +46,8 @@ public class Folder extends AbstractFiles {
     public void killVirus() {
         System.out.println("对文件夹"+name+"进行杀毒");
         //递归调用
-        for(Object o:list) {
-            ((AbstractFiles)o).killVirus();
-
+        for(AbstractFiles o:list) {
+            o.killVirus();
         }
     }
 

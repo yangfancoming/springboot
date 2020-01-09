@@ -10,17 +10,17 @@ import java.util.List;
  * @ author  山羊来了
  * @ date 2019/7/15---20:53
  */
-public class Composite extends Component {
+public class Node extends Component {
 
     private List<Component> components = new ArrayList<>();
 
-    public Composite(String name) {
+    public Node(String name) {
         super(name);
     }
 
     @Override
     public void operation() {
-        System.out.println("组合节点"+name+"的操作");
+        System.out.println("Node - "+name+" - 的操作");
         //调用所有子节点的操作
         for (Component component : components) {
             component.operation();

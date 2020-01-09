@@ -12,10 +12,10 @@ import java.util.Collection;
  * @ author  山羊来了
  * @ date 2019/7/17---10:13
  */
-public class Composite {
+public class Node {
 
     /*** 用来记录包含的其它组合对象*/
-    private Collection<Composite> childComposite = new ArrayList<>();
+    private Collection<Node> childComposite = new ArrayList<>();
 
     /*** 用来记录包含的其它叶子对象*/
     private Collection<Leaf> childLeaf = new ArrayList<>();
@@ -27,7 +27,7 @@ public class Composite {
      * 构造方法，传入组合对象的名字
      * @param name 组合对象的名字
      */
-    public Composite(String name){
+    public Node(String name){
         this.name = name;
     }
 
@@ -35,7 +35,7 @@ public class Composite {
      * 向组合对象加入被它包含的其它组合对象
      * @param c 被它包含的其它组合对象
      */
-    public void addComposite(Composite c){
+    public void addComposite(Node c){
         childComposite.add(c);
     }
 
@@ -55,12 +55,12 @@ public class Composite {
         //先把自己输出去
         System.out.println(preStr+"+"+this.name);
         //然后添加一个空格，表示向后缩进一个空格，输出自己包含的叶子对象
-        preStr+=" ";
+        preStr+="\t";
         for(Leaf leaf : childLeaf){
             leaf.printStruct(preStr);
         }
         //输出当前对象的子对象了
-        for(Composite c : childComposite){
+        for(Node c : childComposite){
             //递归输出每个子对象
             c.printStruct(preStr);
         }
