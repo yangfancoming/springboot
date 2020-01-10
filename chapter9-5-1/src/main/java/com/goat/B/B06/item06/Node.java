@@ -10,7 +10,7 @@ import java.util.List;
 public class Node extends Component {
 
     /**
-     * 用来存储组合对象中包含的子组件对象
+     * 用来存储当前
      */
     private List<Component> childComponents = new ArrayList<>();
 
