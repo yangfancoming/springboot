@@ -282,6 +282,7 @@ work  相关操作
 文件上传/下载
 
 - ==chapter8-2-0：springboot 集成 FastDFS==
+- ==chapter8-2-1：springboot 集成 ftp ==
 - ==chapter8-2-2：springboot 集成 MinIO==
 - ==chapter8-2-3：springboot 实现 图片上传(加水印)==
 
