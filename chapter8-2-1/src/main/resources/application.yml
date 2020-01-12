@@ -1,0 +1,15 @@
+
+# 配置ftp服务器信息
+ftp: 
+  # ftp服务器的IP地址
+  url: 192.168.211.128
+  # 默认端口是21
+  port: 21
+  username: test
+  password: test
+  # ftp服务器存放文件的路径
+  remotePath: /data/ftp
+  # 本地需要上传的文件的路径
+  localDir: D:/123
+  # ftp上文件下载到本地存放的路径
+  downDir: D:/123
