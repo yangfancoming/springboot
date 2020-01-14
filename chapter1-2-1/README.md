@@ -61,3 +61,12 @@
     修改为：
     java.util.logging.ConsoleHandler.encoding = GBK
     再一次启动就正常了。 
+
+
+# One or more listeners failed to start.
+    due to previous errors
+    See server log for details
+    项目启动后出现以上 三种报错的话   是需要去 C盘目录下
+    C:\Users\64274.IntelliJIdea2018.3\system\tomcat 
+    C:\Users\Administrator\.IntelliJIdea2019.1\system\tomcat
+    目录下  查看日志信息的 
