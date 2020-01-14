@@ -1,4 +1,4 @@
-package com.goat.model;
+package com.goat.entity;
 
 /**
  * Created by Administrator on 2020/1/14.
@@ -14,6 +14,14 @@ public class Product {
     private Integer price;
     private String category;
 
+    public Product() {
+    }
+
+    public Product(String name, Integer price, String category) {
+        this.name = name;
+        this.price = price;
+        this.category = category;
+    }
 
     public String getId() {
         return id;

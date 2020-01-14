@@ -123,26 +123,5 @@ public class RequestParameterController {
         return inputStr;
     }
 
-    // =================== @RequestBody =============================
-    /**
-     * @RequestBody: 请求内容为JSON  字符串
-     *	  测试方法在：查找 public void requestBodyString() throws Exception
-     * @param body
-     */
-    @RequestMapping("/requestBodyString")
-    public Object requestBodyString(@RequestBody String body){
-        return body;
-    }
-
-
-    /**
-     * @RequestBody: 请求内容为JSON  javaBean  sos 该注解会自动将 Json串 封装到JavaBean中
-     *	  测试方法在：查找 public void requestBodyBean() throws Exception
-     * @param user
-     */
-    @RequestMapping("/requestBodyBean")
-    public User requestBodyBean(@RequestBody User user){
-        return user;
-    }
 
 }
