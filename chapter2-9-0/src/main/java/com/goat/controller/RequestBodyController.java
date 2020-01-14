@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/test")
 public class RequestBodyController {
 
-    // =================== @RequestBody =============================
     /**
      * @RequestBody: 请求内容为JSON  字符串
      *	  测试方法在：查找 public void requestBodyString() throws Exception

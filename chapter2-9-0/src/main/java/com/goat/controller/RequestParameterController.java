@@ -32,40 +32,6 @@ maven的install可以将项目本身编译并打包到本地仓库，这样其�
 public class RequestParameterController {
 
 
-    // =================== @PathVariable =============================
-    /**
-     * 单个 @PathVariable值
-     * http://localhost:8290/request/path/1
-     * @param ownerId
-     */
-    @RequestMapping(value="/path/{ownerId}")
-    public String  pathVariable(@PathVariable String ownerId){
-        return ownerId;
-    }
-
-    /**
-     * 单个 @PathVariable值  正则校检 只能接受一个 纯数字的参数
-     * http://localhost:8290/request/path/1
-     * @param ownerId
-     */
-    @RequestMapping(value="/path/{ownerId:\\d+}")
-    public String  pathVariable1(@PathVariable String ownerId){
-        return ownerId;
-    }
-    /**
-     * 多个@PathVariable值
-     * http://localhost:8290/request/path/1/pet/1234
-     * @param ownerId
-     * @param petId
-     */
-    @RequestMapping(value="/path/{ownerId}/pet/{petId}")
-    public Object pathVariable2(@PathVariable String ownerId, @PathVariable String petId){
-        Map<String,Object> map = new HashMap<>(16);
-        map.put("ownerId", ownerId);
-        map.put("petId", petId);
-        return map;
-    }
-
     // =================== @RequestParam =============================
 
     /**
