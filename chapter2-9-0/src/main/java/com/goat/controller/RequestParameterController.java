@@ -90,13 +90,14 @@ public class RequestParameterController {
     }
 
     /**
-     * 多个请求参数填入到 map  spring会自动封装
+     * 多个请求参数填入到 map  spring会自动封装   使用map接收参数
      * http://localhost:8290/request/requestParam2?ownerId=223&a=4&c=5
      * @param map
      */
-    @GetMapping("/requestParam2")
+    @RequestMapping("/requestParam2")
     public Object requestParam2(@RequestParam Map<String,Object> map) {
-        return map;
+        System.out.println(map);
+        return "wahaha";
     }
 
 
