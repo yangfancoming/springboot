@@ -18,6 +18,12 @@ import java.util.List;
  * @ Description: TODO
  * @ author  山羊来了
  * @ date 2019/12/6---17:23
+ *
+ * 在应用服务中提供非常简单API访问资源文件。
+ * 不同的操作系统有不同的文件结构，有些特殊的需要进行适配，例如：JBoss6VFS。
+ * 主要是实现package这种目录式文件加载 <package name="org.apache.ibatis.builder.mapper"/>
+ *
+ * VFS 为抽象类，定义了模板方法 List<String> list(URL url, String forPath) 由子类实现， VFS是一个静态单例模式
  */
 public abstract class VFS {
 

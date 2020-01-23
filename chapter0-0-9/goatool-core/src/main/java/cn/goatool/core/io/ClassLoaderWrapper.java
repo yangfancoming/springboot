@@ -157,6 +157,7 @@ public class ClassLoaderWrapper {
     throw new ClassNotFoundException("Cannot find class: " + name);
   }
 
+  // 构造一个classLoader数组
   ClassLoader[] getClassLoaders(ClassLoader classLoader) {
     return new ClassLoader[]{
       classLoader,  //参数指定的类加载器

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.goat.tiny.spring.beans.AbstractBeanDefinitionReader</OriginalElement>
+  <nodes>
+    <node x="0.0" y="222.0">cn.goatool.core.util.string.StringUtils</node>
+    <node x="157.0" y="222.0">cn.goatool.core.util.ObjectUtils</node>
+    <node x="0.0" y="74.0">cn.goatool.core.util.string.StringCheckUtils</node>
+    <node x="0.0" y="148.0">cn.goatool.core.util.string.StringArrUtils</node>
+    <node x="0.0" y="0.0">cn.goatool.core.util.string.StringFormatUtils</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.0" x="754.0" y="428.0" />
+  <SelectedNodes>
+    <node>cn.goatool.core.util.ObjectUtils</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

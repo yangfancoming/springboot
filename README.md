@@ -67,8 +67,8 @@ Web开发
 - ==chapter2-1-6 springboot  中使用 Bootstrap + Select2 + 前后端ajax交互 ==
 - ==chapter2-1-7 springboot  中使用 Bootstrap + AdminLTE 模板==
 - ==chapter2-1-8 springboot  集成 Kaptcha 验证码==
-- ==chapter2-2-2 springboot  集成 fastjson  相关操作总结==
-- ==chapter2-2-3 springboot  集成 Jackson 相关操作总结==
+- ==chapter2-2-2 springboot  集成 fastjson 相关操作总结==
+- ==chapter2-2-3 springboot  集成 Jackson  相关操作总结==
 - ==chapter2-2-5 springboot  集成 Gson  相关操作总结==
 - ==chapter2-3-1 springboot  集成 WebSocket==
 - ==chapter2-3-2 springboot  集成 WebSocket2==
@@ -99,7 +99,7 @@ Web开发
 网络请求
 
 - ==chapter2-7-1 springboot  集成 HttpClient ==
-- ==chapter2-7-3 springboot  集成 RestTemplate==
+- ==chapter2-7-3 springboot  集成 RestTemplate + IDEA RestClient工具使用 ==
 - ==chapter2-8-0 springboot  集成  JSP 中使用 Echarts==
 - ==chapter2-8-1 springboot  集成  JSP 中使用 JQuery==
 - ==chapter2-8-2 springboot  集成  JSP 中使用 百度地图==
@@ -167,7 +167,6 @@ AOP
 - ==chapter4-3-0：springboot 集成   getResourceAsStream   == 
 - ==chapter4-3-5：springboot 集成   手写mybatis框架  == 
 - ==chapter4-3-7：springboot 集成   Mybatis框架 分解    == 
-- ==chapter4-3-8：springboot 集成   解析MXL W3C dom== 
 - ==chapter4-4-0：springboot 集成   解析 XML == 
 - ==chapter4-4-1：springboot 集成 mybatis   Dao接口 + sqlxml 实现== 
 - ==chapter4-4-2：springboot 集成 mybatis   Dao接口 +  注解 实现==
@@ -285,6 +284,8 @@ work  相关操作
 文件上传/下载
 
 - ==chapter8-2-0：springboot 集成 FastDFS==
+- ==chapter8-2-1：springboot 集成 ftp ==
+- ==chapter8-2-2：springboot 集成 MinIO==
 - ==chapter8-2-3：springboot 实现 图片上传(加水印)==
 
 

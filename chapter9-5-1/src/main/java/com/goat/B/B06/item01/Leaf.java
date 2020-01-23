@@ -15,6 +15,6 @@ public class Leaf extends Component {
 
     @Override
     public void operation() {
-        System.out.println("叶节点"+name+"的操作");
+        System.out.println("Leaf - "+name+" - 的操作");
     }
 }

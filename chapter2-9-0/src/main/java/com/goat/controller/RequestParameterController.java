@@ -32,40 +32,6 @@ maven的install可以将项目本身编译并打包到本地仓库，这样其�
 public class RequestParameterController {
 
 
-    // =================== @PathVariable =============================
-    /**
-     * 单个 @PathVariable值
-     * http://localhost:8290/request/path/1
-     * @param ownerId
-     */
-    @RequestMapping(value="/path/{ownerId}")
-    public String  pathVariable(@PathVariable String ownerId){
-        return ownerId;
-    }
-
-    /**
-     * 单个 @PathVariable值  正则校检 只能接受一个 纯数字的参数
-     * http://localhost:8290/request/path/1
-     * @param ownerId
-     */
-    @RequestMapping(value="/path/{ownerId:\\d+}")
-    public String  pathVariable1(@PathVariable String ownerId){
-        return ownerId;
-    }
-    /**
-     * 多个@PathVariable值
-     * http://localhost:8290/request/path/1/pet/1234
-     * @param ownerId
-     * @param petId
-     */
-    @RequestMapping(value="/path/{ownerId}/pet/{petId}")
-    public Object pathVariable2(@PathVariable String ownerId, @PathVariable String petId){
-        Map<String,Object> map = new HashMap<>(16);
-        map.put("ownerId", ownerId);
-        map.put("petId", petId);
-        return map;
-    }
-
     // =================== @RequestParam =============================
 
     /**
@@ -90,13 +56,14 @@ public class RequestParameterController {
     }
 
     /**
-     * 多个请求参数填入到 map  spring会自动封装
+     * 多个请求参数填入到 map  spring会自动封装   使用map接收参数
      * http://localhost:8290/request/requestParam2?ownerId=223&a=4&c=5
      * @param map
      */
-    @GetMapping("/requestParam2")
+    @RequestMapping("/requestParam2")
     public Object requestParam2(@RequestParam Map<String,Object> map) {
-        return map;
+        System.out.println(map);
+        return "wahaha";
     }
 
 
@@ -122,26 +89,5 @@ public class RequestParameterController {
         return inputStr;
     }
 
-    // =================== @RequestBody =============================
-    /**
-     * @RequestBody: 请求内容为JSON  字符串
-     *	  测试方法在：查找 public void requestBodyString() throws Exception
-     * @param body
-     */
-    @RequestMapping("/requestBodyString")
-    public Object requestBodyString(@RequestBody String body){
-        return body;
-    }
-
-
-    /**
-     * @RequestBody: 请求内容为JSON  javaBean  sos 该注解会自动将 Json串 封装到JavaBean中
-     *	  测试方法在：查找 public void requestBodyBean() throws Exception
-     * @param user
-     */
-    @RequestMapping("/requestBodyBean")
-    public User requestBodyBean(@RequestBody User user){
-        return user;
-    }
 
 }

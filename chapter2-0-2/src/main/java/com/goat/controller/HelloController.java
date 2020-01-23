@@ -25,9 +25,4 @@ public class HelloController {
         return "login";
     }
 
-    // 测试地址：    http://localhost:8202/success
-    @GetMapping("/success")
-    public String success() {
-        return "success";
-    }
 }

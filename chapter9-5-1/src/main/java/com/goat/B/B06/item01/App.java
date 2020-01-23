@@ -1,5 +1,7 @@
 package com.goat.B.B06.item01;
 
+import org.junit.Test;
+
 /**
  * Created by 64274 on 2019/7/15.
  *
@@ -15,40 +17,41 @@ package com.goat.B.B06.item01;
  */
 public class App {
 
-    public static void main(String[] args) {
 
+    @Test
+    public void test(){
         //创建根节点对象
-        Component component = new Composite("component");
+        Component root = new Node("root");
 
         //创建两个组合节点对象
-        Component composite1 = new Composite("composite1");
-        Component composite2 = new Composite("composite2");
+        Component node1 = new Node("node1");
+        Component node2 = new Node("node2");
 
         //将两个组合节点对象添加到根节点
-        component.add(composite1);
-        component.add(composite2);
+        root.add(node1);
+        root.add(node2);
 
         //给第一个组合节点对象添加两个叶子节点
         Component leaf1 = new Leaf("leaf1");
         Component leaf2 = new Leaf("leaf2");
-        composite1.add(leaf1);
-        composite1.add(leaf2);
+        root.add(leaf1);
+        root.add(leaf2);
 
         //给第二个组合节点对象添加一个叶子节点和一个组合节点
         Component leaf3 = new Leaf("leaf3");
-        Component composite3 = new Composite("composite3");
-        composite2.add(leaf3);
-        composite2.add(composite3);
+        Component node3 = new Node("node3");
+        node2.add(leaf3);
+        node2.add(node3);
 
         //给第二个组合节点下面的组合节点添加两个叶子节点
         Component leaf4 = new Leaf("leaf4");
         Component leaf5 = new Leaf("leaf5");
-        composite3.add(leaf4);
-        composite3.add(leaf5);
-
+        node3.add(leaf4);
+        node3.add(leaf5);
         //执行所有节点的操作
-        component.operation();
+        root.operation();
     }
+
 }
 /**
  上述代码中，在组合节点对象Composite的operation()方法中除了执行自身的操作外，

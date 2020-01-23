@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Configuration;
 public class HystrixDashboardConfiguration {
 
     @Bean
+    @SuppressWarnings("unchecked")
     public ServletRegistrationBean getServlet() {
         HystrixMetricsStreamServlet streamServlet = new HystrixMetricsStreamServlet();
         ServletRegistrationBean registrationBean = new ServletRegistrationBean(streamServlet);

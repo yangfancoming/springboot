@@ -33,7 +33,6 @@ public class Client {
         cFolder.add(cText);
         cFolder.add(new ImagerFile("c_1.jpg"));
         cFolder.add(new VideoFile("c_1.rmvb"));
-
         //遍历C文件夹
         cFolder.display();
         //将c_1.txt删除

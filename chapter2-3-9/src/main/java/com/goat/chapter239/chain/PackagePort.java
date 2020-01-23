@@ -1,6 +1,6 @@
 package com.goat.chapter239.chain;
 
-import cn.goatool.core.util.ByteArrayUtil;
+import cn.goatool.core.util.ByteArrayUtils;
 import com.goat.chapter239.model.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,9 +26,9 @@ public class PackagePort extends Chain {
         byte[] port = new byte[2];
         input.read(port);
         Message.packagePort = port;
-        Message.port = ByteArrayUtil.byteArrToShort(Message.packagePort);
+        Message.port = ByteArrayUtils.byteArrToShort(Message.packagePort);
         log.info("本地移动端口 解析结果： " + Message.port );
-        log.info("本地移动端口 解析结果（16进制）： "+ ByteArrayUtil.byteArrToHexString(port));
+        log.info("本地移动端口 解析结果（16进制）： "+ ByteArrayUtils.byteArrToHexString(port));
         return process(input);
     }
 }

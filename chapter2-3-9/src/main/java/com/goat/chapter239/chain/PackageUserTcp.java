@@ -1,7 +1,7 @@
 package com.goat.chapter239.chain;
 
 
-import cn.goatool.core.util.ByteArrayUtil;
+import cn.goatool.core.util.ByteArrayUtils;
 import com.goat.chapter239.observe.Starter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +34,7 @@ public class PackageUserTcp extends Chain {
         // 将  31 32 33 7B 中的 31 32 33 拷贝到目的数组
         System.arraycopy(user, 0, result, 0, user.length-1);
         log.info("TCP   用户数据 解析长度： " + result.length );
-        log.info("TCP   用户数据 解析结果（16进制）： " + ByteArrayUtil.byteArrToHexString(result));
+        log.info("TCP   用户数据 解析结果（16进制）： " + ByteArrayUtils.byteArrToHexString(result));
         starter.start(result);
         return process(input);
     }

@@ -40,60 +40,6 @@ public class SQLiteDialect extends Dialect {
         registerFunction( "substring", new StandardSQLFunction( "substr", StringType.INSTANCE) );
     }
 
-    public boolean supportsIdentityColumns() {
-        return true;
-    }
-
-  /*
-  public boolean supportsInsertSelectIdentity() {
-    return true; // As specify in NHibernate dialect
-  }
-  */
-
-    public boolean hasDataTypeInIdentityColumn() {
-        return false; // As specify in NHibernate dialect
-    }
-
-  /*
-  public String appendIdentitySelectToInsert(String insertString) {
-    return new StringBuffer(insertString.length()+30). // As specify in NHibernate dialect
-      append(insertString).
-      append("; ").append(getIdentitySelectString()).
-      toString();
-  }
-  */
-
-    public String getIdentityColumnString() {
-        // return "integer primary key autoincrement";
-        return "integer";
-    }
-
-    public String getIdentitySelectString() {
-        return "select last_insert_rowid()";
-    }
-
-    public boolean supportsLimit() {
-        return true;
-    }
-
-    protected String getLimitString(String query, boolean hasOffset) {
-        return new StringBuffer(query.length()+20).
-                append(query).
-                append(hasOffset ? " limit ? offset ?" : " limit ?").
-                toString();
-    }
-
-    public boolean supportsTemporaryTables() {
-        return true;
-    }
-
-    public String getCreateTemporaryTableString() {
-        return "create temporary table if not exists";
-    }
-
-    public boolean dropTemporaryTableAfterUse() {
-        return false;
-    }
 
     public boolean supportsCurrentTimestampSelection() {
         return true;

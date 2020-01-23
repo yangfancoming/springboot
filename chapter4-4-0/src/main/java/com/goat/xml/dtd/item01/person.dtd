@@ -1,0 +1,54 @@
+
+
+<!--
+
+   DTD（Document Type Definition），全称为文档类型定义。
+
+（1）DTD-定义元素
+在DTD文档中使用ELEMENT关键字来声明一个XML元素。
+语法：<!ELEMENT 元素名称  使用规则>
+使用规则：
+    <!ELEMENT 标签名 (#PCDATA)>   （#PCDATA）指示元素的主题内容只能是普通的文本。
+    <!ELEMENT 标签名 EMPTY>        EMPTY：用于指示元素的主体为空。比如<br/>
+    <!ELEMENT 标签名 (e1,e2)>（子元素）：指示元素中包含的子元素。（ 如果子元素用逗号隔开，必须按照声明顺序去编写XML文档）
+
+    ANY：用于指示元素的主题内容为任意类型。
+
+
+<!ELEMENT 标签名称>  定义xml文档中可以出现的 标签名称  （说白了就是用来定义标签名称的）
+<!ATTLIST 标签名称 属性名称>  定义当前标签名称中 可以出现的属性名称 （说白了就是用来定义标签属性的）
+
+<!ELEMENT 标签名称 (a,b*,c?,d+)> 表示
+    子标签a 必须要出现，且只能出现一次
+    子标签b 可以出现也可以不出现，出现的话 可以出现多次
+    子标签c 可以出现也可以不出现，出现的话 只能出现一次
+    子标签d 必须出现在父标签内部，并可以出现多次
+
+ doit 以上这些  为啥测试都不通过呢？？？
+<!ELEMENT contact (phone|email)> 表示两个子标签必须有一个要出现， 不能同时出现
+ -->
+
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+       <!-- DTD的声明必须放在XML标志性代码下面    persons是当前声明的根源处 -->
+<!--<!DOCTYPE persons [ ]> -->
+<!ELEMENT persons (person*)>
+
+<!--   person 标签下可以出现的子标签名称 -->
+<!ELEMENT person (name,age,girl,contact,br?)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT girl (color+)>
+<!ELEMENT color (#PCDATA)>
+<!ELEMENT contact (phone|email)>
+<!ELEMENT phone (#PCDATA)>
+<!ELEMENT br EMPTY>
+<!ELEMENT email (#PCDATA)>
+<!ATTLIST person
+        pid ID #REQUIRED
+        sex (男|女)  '男'
+        qq CDATA #IMPLIED
+        parent IDREF #IMPLIED
+        >
+<!--]>-->
+
+

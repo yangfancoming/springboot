@@ -39,7 +39,7 @@ public class ChainService {
         packageIp.clearSuccessor();
         packageIdentity.clearSuccessor();
         packageLength.clearSuccessor();
-        // 设置责任链 节点处理顺序
+        // 设置责任链 节点处理顺序*
         packageLength.setSuccessor(packageIdentity).setSuccessor(packageIp).setSuccessor(packagePort);
         return packageLength;
     }

@@ -1,19 +1,32 @@
 package com.goat.B.B06.item05;
 
+import org.junit.Test;
+
 /**
  * Created by 64274 on 2019/7/17.
  *
- * @ Description: TODO
+ * @ Description: 不用设计模式的解决方案
  * @ author  山羊来了
  * @ date 2019/7/17---10:14
+ *
+ * 需求： 实现输出如下商品类别树的结构
+ *
+ * - 服装
+ *     - 男装
+ *         - 衬衣
+ *         - 夹克
+ *     - 女装
+ *         - 裙子
+ *         - 套装
  */
 public class App {
 
-    public static void main(String[] args) {
+    @Test
+    public void test(){
         //定义所有的组合对象
-        Composite root = new Composite("服装");
-        Composite c1 = new Composite("男装");
-        Composite c2 = new Composite("女装");
+        Node root = new Node("服装");
+        Node c1 = new Node("男装");
+        Node c2 = new Node("女装");
 
         //定义所有的叶子对象
         Leaf leaf1 = new Leaf("衬衣");
@@ -32,4 +45,5 @@ public class App {
         //调用根对象的输出功能来输出整棵树
         root.printStruct("");
     }
+
 }
