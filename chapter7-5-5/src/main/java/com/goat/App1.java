@@ -6,7 +6,7 @@ import com.goat.util.ReadExcel;
 import org.junit.Test;
 
 
-public class TestNG  {
+public class App1 {
 
     // 生成 excel
     @Test

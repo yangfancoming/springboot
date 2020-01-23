@@ -18,7 +18,7 @@ public class JobScheduler {
     public static void main(String[] args) throws SchedulerException {
         JobDetail jobDetail = JobBuilder
                 .newJob(MyJob.class)
-                .withIdentity("jobName", "jobGroup")  //定义job的名字和组
+                .withIdentity("jobName", "jobGroup")  //P1=任务名称(唯一)  P2=任务所属分组
                 .usingJobData("name", "yanjun")  //传参数，key:name value:yanjun
                 .usingJobData("age", 18)  //传参数，key:age value:18
                 .build();
@@ -29,7 +29,7 @@ public class JobScheduler {
         Date endDate = new Date(startDate.getTime() + 10 * 1000);
         //触发器
         Trigger trigger = TriggerBuilder.newTrigger()
-                .withIdentity("triggerName", "triggerGroup")
+                .withIdentity("triggerName", "triggerGroup") //P1=触发器名称(唯一)  P2=触发器所属分组
                 .startNow()  //现在开始执行
                 .startAt(startDate)  //在指定的时间开始执行
                 .endAt(endDate)      //在指定的时间结束执行

@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Administrator on 2020/1/14.
  *
@@ -46,11 +49,21 @@ public class RequestBodyController {
         return "error1";
     }
 
+    List<Product> list = new ArrayList<>();
+
     // 测试地址：    http://localhost:8290/test/error2
     @RequestMapping("/error2")
     public String error2(@RequestBody Product product) {
         System.out.println(product.getName() + product.getPrice() + product.getCategory());
+        list.add(product);
         return "error2";
+    }
+
+    // 测试地址：    http://localhost:8290/test/get
+    @RequestMapping("/get")
+    public Product get(Integer id) {
+        System.out.println(id);
+        return list.get(id);
     }
 
 

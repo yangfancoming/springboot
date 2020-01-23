@@ -26,8 +26,7 @@ Create table testTable (id INTEGER PRIMARY KEY AUTOINCREMENT,...
     其中 数据库文件 mydb.db 是自动生成的 项目启动前是可以不存在的
 
     
-    
-    
+# IDEA  database 工具 连接 sqlite  字符串 ： E:\Code\C#_code\RiderLearning\GoatVS\chapter5-2-6\db\sqlite.db
     
     
     
