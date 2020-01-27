@@ -374,7 +374,7 @@ JavaSe 项目目录
 - ==chapter99-7-3：Java基础类库==
 - ==chapter99-14-3：Java Annotation 注解==
 - ==chapter99-15-3：Java  I/O  输入/输出==
-- ==chapter99-16-3：Java 多线程==
+- ==chapter99-16-3：Java 多线程 + 多线程调试==
 - ==chapter99-18-3：Java 类加载机制与反射==
 - ==chapter99-20-1：单机游戏==
 
