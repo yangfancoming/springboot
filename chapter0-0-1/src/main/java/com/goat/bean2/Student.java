@@ -20,8 +20,11 @@ public class Student {
     private Integer age;
     private Boolean sex;
     private Date bir;
+    // 地址
     private Map<String,Object> location;
+    // 爱好
     private String[] hobbies;
+    // 技能
     private List<String> skills;
     private Pet pet;
 

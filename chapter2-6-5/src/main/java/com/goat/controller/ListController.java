@@ -13,18 +13,21 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/stu")
-public class StudentController {
+public class ListController {
 
     // http://localhost:8265/stu/test2
     @RequestMapping("/test2")
     public String findList(Model model) {
+
         Student stu = new Student();
         stu.setAge(11);
         stu.setName("stuName");
 
+        // 爱好
         String[] haha = new String[]{"111","222","333"};
         stu.setHobbies(haha);
 
+        // 地址
         Map<String,Object> location = new HashMap<>(16);
         location.put("pro","辽宁");
         location.put("city","抚顺");
@@ -36,12 +39,14 @@ public class StudentController {
         pet.setNickName("petName");
         stu.setPet(pet);
 
+        // 技能
         List<String> skills = new ArrayList<>(16);
-        skills.add("aiya");
-        skills.add("shit");
+        skills.add("星期一");
+        skills.add("星期二");
+        skills.add("星期三");
         stu.setSkill(skills);
         model.addAttribute("student",stu);
-        return "test/student";
+        return "test/list";
     }
 
 

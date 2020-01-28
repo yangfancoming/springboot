@@ -22,11 +22,13 @@
     <#if num == 0>  1234 </#if>
     <#if num != 0>  4321 </#if>
 
-<#--if else  指令-->
+<#--if elseif  else  指令-->
     <#if num == 0>
         0000
-    <#else>
+    <#elseif num == 1>
         11111
+    <#else>
+        num==其他值
     </#if>
 
     <br/>
