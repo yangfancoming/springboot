@@ -31,4 +31,6 @@ public class Mytest {
         map.put("hello","Role_add");
         freemarkerUtils.common(map,"hello.ftl","myOut.txt");
     }
+
+
 }

@@ -99,4 +99,50 @@ public class DataBaseMetaDataTest {
         }
     }
 
+    /**
+     * 测试参数元数据（ParameterMetaData）
+     *      通过PreparedStatement获取
+     *      获取sql参数中的属性信息
+     */
+    @Test
+    public void test() throws Exception {
+        String sql = "select * from book where isbn=?";
+        PreparedStatement pstmt = connection.prepareStatement(sql);
+        pstmt.setString(1, "1");
+        //获取参数元数据
+        ParameterMetaData metaData = pstmt.getParameterMetaData();
+        int count = metaData.getParameterCount();
+        System.out.println(count);
+    }
+
+
+    /**
+     * 测试结果集元数据（ResultSetMetaData）
+     *      通过ResultSet获取
+     *      获取查询结果的信息
+     */
+    @Test
+    public void test11() throws Exception {
+        //sql
+        String sql = "select * from book where isbn=?";
+        //PreparedStatement
+        PreparedStatement pstmt = connection.prepareStatement(sql);
+        pstmt.setString(1, "1");
+        //查询
+        ResultSet rs = pstmt.executeQuery();
+        //获取结果集元数据
+        ResultSetMetaData metaData = rs.getMetaData();
+        //获取查询字段个数
+        int count = metaData.getColumnCount();
+        for(int i =1;i<=count ;i++) {
+            //获取列名
+            String columnName = metaData.getColumnName(i);
+            //获取字段类型 sql类型
+            String columnType = metaData.getColumnTypeName(i);
+            //获取java类型
+            String columnClassName = metaData.getColumnClassName(i);
+            System.out.println(columnName+"--"+columnType+"---"+columnClassName);
+        }
+    }
+
 }

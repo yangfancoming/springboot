@@ -1,5 +1,6 @@
 package com.goat;
 
+import com.goat.utils.PropertiesUtils;
 import freemarker.cache.StringTemplateLoader;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -37,6 +38,12 @@ public class MyTest02 {
         dataModel.put("username","张三");
         //5.处理模板
         template.process(dataModel,new PrintWriter(System.out));
+    }
+
+    public static void main(String[] args) {
+        PropertiesUtils.customMap.forEach((k, v)->{
+            System.out.println(k+"--"+v);
+        });
     }
 
 }

@@ -1,5 +1,6 @@
 package com.goat;
 
+import com.goat.utils.PropertiesUtils;
 import freemarker.cache.FileTemplateLoader;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -44,4 +45,5 @@ public class MyTest01 {
         //template.process(dataModel,new FileWriter(new File("C:\\Users\\ThinkPad\\Desktop\\ihrm\\day12\\test\\a.txt")));
         template.process(dataModel,new PrintWriter(System.out));
     }
+
 }
