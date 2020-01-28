@@ -24,11 +24,11 @@ public class Mytest {
 
     @Autowired
     private FreemarkerUtils freemarkerUtils; // sos 注意这里  必须通过注入使用
+
     @Test
     public void test1() throws Exception {
         Map map = new HashMap();
         map.put("hello","Role_add");
-        System.out.println(map);
         freemarkerUtils.common(map,"hello.ftl","myOut.txt");
     }
 }

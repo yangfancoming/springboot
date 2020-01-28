@@ -1,3 +1,9 @@
+#  分库分表：应运而生
+    分库分表 就是为了解决 由于数据量过大而导致数据库性能降低的问题
+    将原来独立的数据库拆分成若干数据库
+    将数据大表 拆分成若干数据表
+    使得单一数据库、单一数据表的数据库变小，从而达到提升数据库性能的目的！
+
 # 项目启动后报错：
     Description:
     Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
