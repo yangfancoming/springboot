@@ -21,7 +21,7 @@ public class MyTask2 extends MyTaskTemplate implements Runnable  {
                 if (tickets <= 0) {
                     break;
                 }
-                test(tickets);
+                sleep();
                 System.out.println(Thread.currentThread().getName() + "抢到了" + tickets--);
             }
         }

@@ -28,14 +28,17 @@ synchronized (object) 实现同步的关键就在于 这个 object 上， 这就
 public class App {
 
     public static class test1{
-        // 会出现  多线程问题
+
+        // 会出现  多线程问题 (会抢到 0、-1的票)
         public static void main(String[] args) {
+            // 一份资源多个代码  多线程共享   private int tickets = 50;
             MyTask1 myTask1 = new MyTask1();
             new Thread(myTask1,"线程1111").start();// 如果是单线程跑 (注释掉下面2行)  是没问题的  不会出现线程安全问题
             new Thread(myTask1,"线程2222").start(); // 多个线程跑 就出现线程安全问题
             new Thread(myTask1,"线程3333").start();
         }
     }
+
     public static class test2{
         //  同步锁  （代码块）
         public static void main(String[] args) {

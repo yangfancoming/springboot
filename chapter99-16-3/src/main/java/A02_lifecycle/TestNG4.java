@@ -1,8 +1,6 @@
 package A02_lifecycle;
 
 
-import org.junit.Test;
-
 /**
      * @Description: 功能描述：( 线程的各种状态 ) new 新建状态  Runnable 可运行状态  Running 运行状态  Blocked 阻塞状态  Dead 死亡状态
 新建线程：NEW

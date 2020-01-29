@@ -9,13 +9,12 @@ package A04_synchronize.example01;
  */
 public abstract class MyTaskTemplate {
 
-    public int test(int tickets){
+    public void sleep(){
         try {
             Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return tickets;
     }
 
     public void cacul(long startTime,long endTime){

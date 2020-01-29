@@ -50,12 +50,15 @@ public class A03 {
     // 多运行几遍 代码的执行是概率性的
     public static void main(String[] args) {
 
+        // 开启第一个线程   第一条路
         MyThread myThread1 = new MyThread();
         myThread1.start();
 
+        // 开启第二个线程   第二条路
         MyRunnable myThread2 = new MyRunnable();
         new Thread(myThread2).start();
 
+        // 主线   第三条路  sos 注意： 如果主线程代码 放在方法体的最前面那么就是 必须要循环10次之后 才会去开辟另外两条路！
         for (int i = 0; i < 10; i++) {
             System.out.println("一遍敲代码。。。。。");
         }
