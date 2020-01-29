@@ -77,7 +77,7 @@ public class DataBaseUtils {
             //iiii.主键
             ResultSet primaryKeys = metaData.getPrimaryKeys(null, null, tableName);
             String keys = "";
-            while (primaryKeys.next()) {
+            while (primaryKeys.next()) { // 处理有多个主键的情况
                 String keyname = primaryKeys.getString("COLUMN_NAME");
                 keys += keyname+",";
             }
