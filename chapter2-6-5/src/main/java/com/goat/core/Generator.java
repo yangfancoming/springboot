@@ -33,7 +33,7 @@ public class Generator {
         this.templatePath = templatePath;
         this.outPath = outPath;
         //实例化Configuration对象
-        cfg = new Configuration();
+        cfg = new Configuration(Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS);
         //指定模板加载器
         FileTemplateLoader ftl = new FileTemplateLoader(new File(templatePath));
         cfg.setTemplateLoader(ftl);
@@ -60,7 +60,7 @@ public class Generator {
      *            模板文件：c：com.ihrm.system.abc.java
      */
     private void executeGenertor(Map<String,Object> dataModel,File file) throws Exception {
-        //1.文件路径处理   (E:\模板\${path1}\${path2}\${path3}\${ClassName}.java)
+        //1.文件路径处理  file.getAbsolutePath()  (E:\模板\${path1}\${path2}\${path3}\${ClassName}.java)
         //templatePath : E:\模板\
         String templateFileName = file.getAbsolutePath().replace(this.templatePath,"");
         String outFileName = processTemplateString(templateFileName,dataModel);
@@ -83,9 +83,10 @@ public class Generator {
         return out.toString();
     }
 
+    // 运行后 发现 myout 目录下的 User.java文件内容
     public static void main(String[] args) throws Exception {
-        String templatePath = "C:\\Users\\ThinkPad\\Desktop\\ihrm\\day13\\资源\\测试\\模板";
-        String outPath = "C:\\Users\\ThinkPad\\Desktop\\ihrm\\day13\\资源\\测试\\生成代码路径";
+        String templatePath = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter2-6-5\\test\\pojo";
+        String outPath = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter2-6-5\\myout";
         Generator generator = new Generator(templatePath, outPath);
         Map <String,Object> dataModel = new HashMap<>();
         dataModel.put("username","张三");

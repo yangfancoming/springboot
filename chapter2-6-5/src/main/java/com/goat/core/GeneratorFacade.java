@@ -55,7 +55,7 @@ public class GeneratorFacade {
                 System.out.println(entry.getKey() + "--" + entry.getValue());
             }
             System.out.println("------------------------");
-//            generator.scanAndGenerator(dataModel);
+            generator.scanAndGenerator(dataModel);
         }
     }
 
@@ -80,8 +80,8 @@ public class GeneratorFacade {
         db.setUserName("root");
         db.setPassWord("12345");
         Settings settings = new Settings("wahaha","com.goat.freemaker","goattest","goat");
-        String templatePath = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter2-6-5\\test";
-        String outPath = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter2-6-5\\myout";
+        String templatePath = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter2-6-5\\test\\pojo";
+        String outPath = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter2-6-5\\myout\\pojo";
         GeneratorFacade generatorFacade = new GeneratorFacade(templatePath,outPath,settings,db);
         generatorFacade.generatorByDataBase();
     }
