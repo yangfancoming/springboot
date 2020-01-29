@@ -44,6 +44,7 @@ public class A01 {
         t1.run(); //  run() 方法相当于普通方法调用，并不创建新的线程
         System.out.println("ping");
     }
+
     @Test
     public void Runnable2(){
         Runnable t2 = ()-> System.out.println("pong");
