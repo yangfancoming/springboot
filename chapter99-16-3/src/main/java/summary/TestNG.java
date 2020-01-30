@@ -113,7 +113,7 @@ public class TestNG {
     /**
      * @Description: 功能描述：setPriority() 方法演示
      * 可以看到  1.设置 t 线程的优先级为最高   2.设置主线程的优先级为最低    然后测试 会明显的发现  t 线程 优先执行
-     *
+     * 所有线程优先级默认是5   Thread.NORM_PRIORITY
      * @author: Goat
      * @Date:   2018/8/29
      */
