@@ -1,4 +1,4 @@
-package A02_lifecycle;
+package A02_lifecycle.item01;
 
 /**
  * Created by 64274 on 2019/4/30.

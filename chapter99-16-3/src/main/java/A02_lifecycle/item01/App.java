@@ -1,4 +1,4 @@
-package A02_lifecycle;
+package A02_lifecycle.item01;
 
 
 /**
@@ -13,7 +13,7 @@ package A02_lifecycle;
      * @Date:   2018/8/29
 */
 
-public class TestNG4 {
+public class App {
 
     public static void main(String[] args) throws InterruptedException {
 
