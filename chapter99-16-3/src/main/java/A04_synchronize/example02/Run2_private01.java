@@ -1,8 +1,5 @@
 package A04_synchronize.example02;
 
-/**
- * Created by Brian on 2016/4/11.
- */
 
 /**
  * P55

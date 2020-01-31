@@ -1,9 +1,8 @@
 package A04_synchronize.example00;
 
-/**
- * Created by Brian on 2016/4/11.
- */
+
 public class ThreadB extends Thread {
+
     private HasLocalNum numRef;
 
     public ThreadB(HasLocalNum numRef) {

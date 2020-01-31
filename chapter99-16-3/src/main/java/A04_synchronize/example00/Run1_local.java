@@ -1,8 +1,5 @@
 package A04_synchronize.example00;
 
-/**
- * Created by Brian on 2016/4/11.
- */
 
 /**
  * P53例子
@@ -30,5 +27,4 @@ a set over
 b set over
 b num= 200
 a num= 100
-
  */

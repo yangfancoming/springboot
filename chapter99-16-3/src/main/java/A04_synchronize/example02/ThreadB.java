@@ -1,8 +1,6 @@
 package A04_synchronize.example02;
 
-/**
- * Created by Brian on 2016/4/11.
- */
+
 public class ThreadB extends Thread {
     private HasSelfPrivateNum numRef;
 
