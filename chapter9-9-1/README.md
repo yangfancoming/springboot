@@ -54,6 +54,7 @@
     1.全局方式  优先级低  ~/.gitconfig  很常用 对于没有使用局部方式指定特定项目的其他项目/新建项目 默认都是使用的全局方式显示 
     git config --global user.name 'goat'
     git config --global user.name 'fan.yang'
+    git config --global user.name 'yangfan'
     git config --global user.email '642744551@qq.com'
     
     2.局部方式  优先级高  .git/config  针对于特定的项目 
