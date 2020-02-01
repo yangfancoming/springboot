@@ -38,12 +38,17 @@ class UnsafeWeb12306 implements Runnable{
 
 	@Override
 	public void run() {
+        long startTime = System.currentTimeMillis();
 		while(flag) {
 			test();
 		}
+        long endTime = System.currentTimeMillis();
+        float excTime = (float)(endTime-startTime)/1000;
+        System.out.println(Thread.currentThread().getName()+ "------执行完成！   执行时间："+excTime+"s");
 	}
 
 	public void test() {
+//	public synchronized void test() { //  同步方法 锁的是this  即：UnsafeWeb12306 对象
         System.out.println(Thread.currentThread().getName()+"--> 进入test  ticketNums =" + ticketNums);
 		if(ticketNums<=0) {
             System.out.println(Thread.currentThread().getName()+"--> if 返回 ticketNums =" + ticketNums);

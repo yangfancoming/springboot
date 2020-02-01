@@ -59,7 +59,7 @@ public class App {
     }
 
     public static class test4{
-        // 使用 JDK 1.5 之后 Lock 机制 解决多线程问题
+        // 使用 JDK 1.5 之后 Lock 机制 解决多线程问题  ReentrantLock
         public static void main(String[] args) {
             MyTask4 myTask2 = new MyTask4();
             new Thread(myTask2,"线程1111").start();
