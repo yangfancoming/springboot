@@ -8,5 +8,7 @@ package com.goat.B.B03.item09;
  * @ date 2019/11/4---11:40
  */
 public interface MyIntf {
+
     void helloWorld();
+
 }

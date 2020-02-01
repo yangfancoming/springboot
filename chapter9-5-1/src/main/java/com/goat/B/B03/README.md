@@ -61,17 +61,17 @@
     
 # Cglib 动态代理
 
-        example01： 静态代理
-        example02： 静态代理 
-        example03： 静态代理
-        example04： 静态代理
-        example05： 使用Cglib代码对类做代理的通用写法
-        example06： 使用Cglib定义不同的拦截策略
-        example07： 静态代理
-        example08： JDK动态代理
-        example09： JDK动态代理
-        example10： JDK动态代理
-        example11： CGLIB动态代理
+        item01： 静态代理
+        item02： 静态代理 
+        item03： 静态代理
+        item04： 静态代理
+        item05： 使用Cglib代码对类做代理的通用写法
+        item06： 使用Cglib定义不同的拦截策略
+        item07： 静态代理
+        item08： JDK动态代理
+        item09： JDK动态代理
+        item10： JDK动态代理
+        item11： CGLIB动态代理
     
     
     Cglib 要点描述：
