@@ -59,6 +59,7 @@
     
     2.局部方式  优先级高  .git/config  针对于特定的项目 
     git config --local user.name 'fan.yang'
+    git config --local user.name 'yangfan'
     git config --local user.name 'test1'
     git config --local user.email '642744551@qq.com'
 

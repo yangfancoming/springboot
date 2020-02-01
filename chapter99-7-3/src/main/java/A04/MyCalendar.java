@@ -112,13 +112,13 @@ public class MyCalendar {
         String format5 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
         System.out.println("增加一天 \t"+ format5);
 
-        c.add(DAY_OF_MONTH , 1);
-        String format6 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
-        System.out.println("增加一天 \t"+ format6);
-
-        c.add(DAY_OF_WEEK , 1);
-        String format7 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
-        System.out.println("增加一天 \t"+ format7);
+//        c.add(DAY_OF_MONTH , 1);
+//        String format6 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
+//        System.out.println("增加一天 \t"+ format6);
+//
+//        c.add(DAY_OF_WEEK , 1);
+//        String format7 = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss").format(c.getTime());
+//        System.out.println("增加一天 \t"+ format7);
     }
 
     @Test
@@ -141,6 +141,7 @@ public class MyCalendar {
         System.out.println(temp1);
     }
 
+    // 日期比较  详解 日期比较.jpg
 
 }
 
