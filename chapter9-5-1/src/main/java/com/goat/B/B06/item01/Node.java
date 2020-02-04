@@ -19,11 +19,12 @@ public class Node extends Component {
     }
 
     @Override
-    public void operation() {
-        System.out.println("Node - "+name+" - 的操作");
+    public void operation(String str) {
+        System.out.println(str + "-"+ name +" - 的操作");
+        str+="\t";
         //调用所有子节点的操作
         for (Component component : components) {
-            component.operation();
+            component.operation(str);
         }
     }
 

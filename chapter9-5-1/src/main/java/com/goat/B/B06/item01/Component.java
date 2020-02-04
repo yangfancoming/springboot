@@ -17,7 +17,7 @@ public abstract class Component {
         this.name = name;
     }
 
-    public abstract void operation();
+    public abstract void operation(String str);
 
     public void add(Component c) {
         throw new UnsupportedOperationException();

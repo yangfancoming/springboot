@@ -34,8 +34,8 @@ public class App {
         //给第一个组合节点对象添加两个叶子节点
         Component leaf1 = new Leaf("leaf1");
         Component leaf2 = new Leaf("leaf2");
-        root.add(leaf1);
-        root.add(leaf2);
+        node1.add(leaf1);
+        node1.add(leaf2);
 
         //给第二个组合节点对象添加一个叶子节点和一个组合节点
         Component leaf3 = new Leaf("leaf3");
@@ -49,7 +49,7 @@ public class App {
         node3.add(leaf4);
         node3.add(leaf5);
         //执行所有节点的操作
-        root.operation();
+        root.operation("");
     }
 
 }

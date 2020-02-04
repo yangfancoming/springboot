@@ -14,7 +14,7 @@ public class Leaf extends Component {
     }
 
     @Override
-    public void operation() {
-        System.out.println("Leaf - "+name+" - 的操作");
+    public void operation(String str) {
+        System.out.println(str + "-"+ name +" - 的操作");
     }
 }
