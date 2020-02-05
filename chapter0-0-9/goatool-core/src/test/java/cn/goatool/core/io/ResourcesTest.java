@@ -1,5 +1,6 @@
 package cn.goatool.core.io;
 
+import cn.goatool.core.reflect.Student;
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -8,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
+import java.lang.reflect.Method;
 import java.util.Properties;
 
 /**
@@ -49,6 +51,14 @@ public class ResourcesTest {
         Class<?> clazz = Resources.classForName("cn.goatool.core.reflect.Student");
         log.info("Resources.classForName getSimpleName {}" ,clazz.getSimpleName());
         log.info("Resources.classForName {}" ,clazz);
+
+        Method[] declaredMethods = clazz.getDeclaredMethods();
+        log.info("declaredMethods {}" ,declaredMethods);
+        for (Method method: declaredMethods){
+            if (method.getName().equals("getTitle")){
+                method.invoke(clazz.newInstance()); // 执行 Student类中的getTitle()成员方法
+            }
+        }
     }
 
 

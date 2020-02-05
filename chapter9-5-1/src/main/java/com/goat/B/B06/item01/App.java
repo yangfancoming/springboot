@@ -20,35 +20,36 @@ public class App {
 
     @Test
     public void test(){
-        //创建根节点对象
+        // 创建root 根节点对象(也是容器节点)
         Component root = new Node("root");
 
-        //创建两个组合节点对象
+        //创建两个组合节点 node1 和 node2
         Component node1 = new Node("node1");
         Component node2 = new Node("node2");
 
-        //将两个组合节点对象添加到根节点
+        //给root 添加将 node1 和 node2 容器节点
         root.add(node1);
         root.add(node2);
 
-        //给第一个组合节点对象添加两个叶子节点
+        //给node1 添加 leaf1 和 leaf2  叶节点
         Component leaf1 = new Leaf("leaf1");
         Component leaf2 = new Leaf("leaf2");
         node1.add(leaf1);
         node1.add(leaf2);
 
-        //给第二个组合节点对象添加一个叶子节点和一个组合节点
+        //给 node2 添加 leaf3 叶节点和 node3 容器节点
         Component leaf3 = new Leaf("leaf3");
         Component node3 = new Node("node3");
         node2.add(leaf3);
         node2.add(node3);
 
-        //给第二个组合节点下面的组合节点添加两个叶子节点
+        //给node3 容器节点添加 leaf4 leaf5 叶节点
         Component leaf4 = new Leaf("leaf4");
         Component leaf5 = new Leaf("leaf5");
         node3.add(leaf4);
         node3.add(leaf5);
-        //执行所有节点的操作
+
+        // 只操作root根节点
         root.operation("");
     }
 

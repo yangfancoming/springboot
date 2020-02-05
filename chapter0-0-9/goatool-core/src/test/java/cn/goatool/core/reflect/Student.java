@@ -33,6 +33,7 @@ public class Student extends Human implements Ibird {
     public void isTitle(){
         System.out.println("Student isTitle......");
     }
+
     @Override
     public ArrayList<String> getIds() {
         ArrayList<String> strings = new ArrayList<>();
