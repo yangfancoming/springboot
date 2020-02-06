@@ -24,4 +24,6 @@ public class TypeParameterResolverTest {
         Type result = TypeParameterResolver.resolveReturnType(method, clazz);
         assertEquals(Double.class, result);
     }
+
+
 }

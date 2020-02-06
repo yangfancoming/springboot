@@ -16,9 +16,15 @@ public class TypeParameterResolver {
         super();
     }
 
-
+    /**
+     * 解析指定方法的返回值类型
+     * @param method 根据是否有泛型信息签名选择传入泛型类型或简单类型
+     * @param srcType 引用字段/方法的类（可能是子类，字段和方法在父类声明）
+     * @return
+     */
     public static Type resolveReturnType(Method method, Type srcType) {
         Type returnType = method.getGenericReturnType();
+        // 返回表示声明由该对象表示的可执行文件的类或接口的类对象
         Class<?> declaringClass = method.getDeclaringClass();
         return resolveType(returnType, srcType, declaringClass);
     }
