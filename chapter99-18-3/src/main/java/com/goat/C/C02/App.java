@@ -38,7 +38,7 @@ public class App {
             for(Type t1 : bounds) {
                 System.out.println(t1);
             }
-            // 获得声明这个类型变量的类型及名称  类中：class reflect.ConstructorTest
+            // 获得声明这个类型变量的类型及名称  类中：class com.goat.C.common.ConstructorTest
             System.out.println(m.getGenericDeclaration());
         }
     }

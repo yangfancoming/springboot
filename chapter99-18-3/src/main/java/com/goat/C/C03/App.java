@@ -11,6 +11,22 @@ import java.lang.reflect.Type;
  * Created by Administrator on 2020/2/6.
  *
  * @ Description: ParameterizedType 参数化类型 测试
+ * ParameterizedType接口类型的含义：
+ * 表示参数化类型。比如：Map这种参数化类型
+ *
+ * public static  E methodIV(   ArrayList<arraylist> al1,   ArrayList al2,   ArrayList al3,   ArrayList <? extends Number> al4,   ArrayList al5){}
+ * {1}. 对于ArrayList<arraylist>，通过getActualTypeArguments()返回之后，脱去最外层的<>之后，剩余的类型是ArrayList。因此对这个参数的返回类型是ParameterizedType
+ *
+ * {2}. 对于ArrayList，通过getActualTypeArguments()返回之后，脱去最外层的<>之后，剩余的类型是E。因此对这个参数的返回类型是TypeVariable
+ *
+ * {3}. 对于ArrayList，通过getActualTypeArguments()返回之后，脱去最外层的<>之后，剩余的类型是String。因此对这个参数的返回类型是Class
+ *
+ * {4}. 对于ArrayList <? extends Number>，通过getActualTypeArguments()返回之后，脱去最外层的<>之后，剩余的类型是? Extends Number。因此对这个参数的返回类型是WildcardType
+ *
+ * {5}. 对于ArrayList，通过getActualTypeArguments()返回之后，脱去最外层的<>之后，剩余的类型是E[]。因此对这个参数的返回类型是GenericArrayType。
+ *
+ * 所以，可能获得各种各样类型的实际参数，所以为了统一，采用直接父类数组Type[]进行接收。
+ *
  * @ author  山羊来了
  * @ date 2020/2/6---19:38
  */
@@ -28,7 +44,7 @@ public class App {
     }
 
     /**
-     *  从打印结果来看, getActualTypeArguments()返回Type[]，即“<>”里的参数，比如Map<String,Integer>
+     *  从打印结果来看, 获取参数化类型<>中的实际类型 ，getActualTypeArguments()返回Type[]，即“<>”里的参数，比如Map<String,Integer>
      *     List<String> list1; // 变量：java.util.List<java.lang.String>     	 类型：java.lang.String
      *     Map<String,Long> map1;  // 变量：java.util.Map<java.lang.String, java.lang.Long>     	 类型：java.lang.String	 类型：java.lang.Long
      *     Map.Entry<Long,Short> map3;  // 变量：java.util.Map.java.util.Map$Entry<java.lang.Long, java.lang.Short>     	 类型：java.lang.Long	 类型：java.lang.Short
