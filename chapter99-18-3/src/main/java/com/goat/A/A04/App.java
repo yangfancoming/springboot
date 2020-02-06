@@ -1,4 +1,4 @@
-package com.goat.A04;
+package com.goat.A.A04;
 
 
 import com.goat.model.Constructor0;
@@ -49,7 +49,6 @@ public class App {
         Constructor<?>[] consts = aClass2.getDeclaredConstructors();
         Arrays.stream(consts).forEach(x->System.out.println(x.getParameterTypes().length));
         Assert.assertEquals(4,consts.length);
-
     }
 
     @Test

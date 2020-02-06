@@ -1,4 +1,4 @@
-package com.goat.A05;
+package com.goat.A.A05;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

@@ -1,4 +1,4 @@
-package com.goat.A05;
+package com.goat.A.A05;
 
 /**
  * Created by 64274 on 2019/10/29.

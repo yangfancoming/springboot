@@ -1,4 +1,4 @@
-package com.goat.B00;
+package com.goat.B.B00;
 
 import com.goat.model.Car;
 import org.apache.commons.lang3.StringUtils;

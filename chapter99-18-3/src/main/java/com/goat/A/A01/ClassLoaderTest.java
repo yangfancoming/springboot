@@ -1,4 +1,4 @@
-package com.goat.A01;
+package com.goat.A.A01;
 
 import org.junit.Test;
 
@@ -16,7 +16,7 @@ public class ClassLoaderTest {
     public void test0(){ // 仅仅是加载Tester类
         ClassLoader classLoader = ClassLoader.getSystemClassLoader();
         try {
-            classLoader.loadClass("com.goat.A01.Tester");
+            classLoader.loadClass("com.goat.A.A01.Tester");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -25,7 +25,7 @@ public class ClassLoaderTest {
     @Test
     public void test(){ // 会初始化Tester类
         try{
-            Class.forName("com.goat.A01.Tester");
+            Class.forName("com.goat.A.A01.Tester");
         } catch (ClassNotFoundException e){
             e.printStackTrace();
         }

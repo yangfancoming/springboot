@@ -1,4 +1,4 @@
-package com.goat.A01;
+package com.goat.A.A01;
 
 import java.io.IOException;
 import java.net.URL;

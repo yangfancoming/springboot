@@ -1,4 +1,4 @@
-package com.goat.A03;
+package com.goat.A.A03;
 
 
 import org.junit.Test;
