@@ -48,6 +48,12 @@ public class FinalReferenceTest{
 //        t = new Gaga("99");//试着重新new一个test给t对象，
         //报错The final local variable i cannot be assigned.
         //说明变量的引用不可以改变
+
+        // 但是可以传递到另一个类中
+        System.out.println(t);
+        Foo foo = new Foo(t);
+        foo.print();
     }
+
 
 }
