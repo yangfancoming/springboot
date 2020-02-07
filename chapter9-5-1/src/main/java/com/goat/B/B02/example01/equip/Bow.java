@@ -1,7 +1,7 @@
 package com.goat.B.B02.example01.equip;
 
 import com.goat.B.B02.example01.base.Equip;
-import com.goat.B.B02.example01.base.IAttribute;
+import com.goat.B.B02.example01.base.IRole;
 
 /**
  * Created by 64274 on 2019/4/26.
@@ -16,22 +16,22 @@ public class Bow extends Equip {
     private float power = 50;
     private String describe = "弓箭";
 
-    public Bow(IAttribute attribute){
-        super.attribute = attribute;
+    public Bow(IRole attribute){
+        super.role = attribute;
     }
 
     @Override
     public float getDefense() {
-        return super.attribute.getDefense() + defense;
+        return super.role.getDefense() + defense;
     }
 
     @Override
     public float getPower() {
-        return super.attribute.getPower() + power;
+        return super.role.getPower() + power;
     }
 
     @Override
     public String getDescribe() {
-        return super.attribute.getDescribe() + describe +",";
+        return super.role.getDescribe() + "," + describe;
     }
 }

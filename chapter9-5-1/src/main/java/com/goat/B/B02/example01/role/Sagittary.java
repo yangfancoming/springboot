@@ -1,6 +1,6 @@
 package com.goat.B.B02.example01.role;
 
-import com.goat.B.B02.example01.base.IAttribute;
+import com.goat.B.B02.example01.base.IRole;
 
 /**
  * Created by 64274 on 2019/4/26.
@@ -9,7 +9,7 @@ import com.goat.B.B02.example01.base.IAttribute;
  * @ author  山羊来了
  * @ date 2019/4/26---15:05
  */
-public class Sagittary implements IAttribute {
+public class Sagittary implements IRole {
     //防御力
     private float defense = 10f;
     //攻击力

@@ -7,7 +7,7 @@ package com.goat.B.B02.example01.base;
  * @ author  山羊来了
  * @ date 2019/4/26---15:04
  */
-public interface IAttribute {
+public interface IRole {
 
     //获取防御力
     float getDefense();
