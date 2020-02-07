@@ -38,4 +38,16 @@ public class FinalReferenceTest{
 //         p = null;
     }
 
+    @Test
+    public void test2(){
+        //引用类型，引用test类
+        final Gaga t = new Gaga("66");
+        System.out.println(t.getStr());
+        t.setStr("77");//重新setStr的值，没问题,说明变量本身指向的对象的值可以改变
+        System.out.println(t.getStr());
+//        t = new Gaga("99");//试着重新new一个test给t对象，
+        //报错The final local variable i cannot be assigned.
+        //说明变量的引用不可以改变
+    }
+
 }

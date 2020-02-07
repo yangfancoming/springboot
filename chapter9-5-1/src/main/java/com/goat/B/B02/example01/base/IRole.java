@@ -3,7 +3,7 @@ package com.goat.B.B02.example01.base;
 /**
  * Created by 64274 on 2019/4/26.
  *
- * @ Description: 被装饰者  玩家属性接口
+ * @ Description: 被装饰者  游戏玩家接口
  * @ author  山羊来了
  * @ date 2019/4/26---15:04
  */

@@ -5,7 +5,6 @@ import org.junit.Test;
 
 public class FinalLocalVariableTest {
 
-
 	@Test
     public void test(){
         // 定义final局部变量时指定默认值，则str变量无法重新赋值

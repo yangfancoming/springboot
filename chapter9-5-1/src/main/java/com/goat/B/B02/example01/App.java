@@ -19,43 +19,37 @@ import org.junit.Test;
  */
 public class App {
 
-
-
-    @Test
-    public void testDecorator(){
-        //创建法师
-        IRole attribute = new Mage();
-        attribute = new Shoe(attribute);//鞋子
-        attribute = new Wand(attribute);//法杖
-        pringMsg(attribute);
-
-        //创建弓箭手
-        IRole attribute1 = new Sagittary();
-        attribute1 = new Shoe(attribute1);//鞋子
-        attribute1 = new Bow(attribute1);//弓
-        pringMsg(attribute1);
-
-        //创建战士
-        IRole attribute2 = new Warrior();
-        attribute2 = new Shoe(attribute2);//鞋子
-        attribute2 = new Sword(attribute2);//剑
-        pringMsg(attribute2);
-    }
-
-
     @Test
     public void test(){
         //创建法师
-        IRole attribute = new Mage();
-        attribute = new Shoe(attribute);//鞋子
-        attribute = new Bow(attribute);//弓
-        attribute = new Wand(attribute);//法杖
-        pringMsg(attribute);
+        IRole mage = new Mage();
+        mage = new Shoe(mage);//鞋子
+        mage = new Bow(mage);//弓
+        mage = new Wand(mage);//法杖
+        pringMsg(mage);
     }
 
-    private void pringMsg (IRole attribute){
-        System.out.println("角色描述：" + attribute.getDescribe());
-        System.out.println("防御力：" + attribute.getDefense());
-        System.out.println("攻击力：" + attribute.getPower());
+    @Test
+    public void test1(){
+        //创建弓箭手
+        IRole sagittary = new Sagittary();
+        sagittary = new Shoe(sagittary);//鞋子
+        sagittary = new Bow(sagittary);//弓
+        pringMsg(sagittary);
+    }
+
+    @Test
+    public void test2(){
+        //创建战士
+        IRole warrior = new Warrior();
+        warrior = new Shoe(warrior);//鞋子
+        warrior = new Sword(warrior);//剑
+        pringMsg(warrior);
+    }
+
+    private void pringMsg (IRole role){
+        System.out.println("角色描述：" + role.getDescribe());
+        System.out.println("防御力：" + role.getDefense());
+        System.out.println("攻击力：" + role.getPower());
     }
 }
