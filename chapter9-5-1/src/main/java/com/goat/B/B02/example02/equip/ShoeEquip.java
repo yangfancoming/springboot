@@ -5,7 +5,7 @@ import com.goat.B.B02.example02.IEquip;
 /**
  * Created by 64274 on 2019/4/29.
  *
- * @ Description: TODO
+ * @ Description: 鞋子
  * @ author  山羊来了
  * @ date 2019/4/29---9:39
  */

@@ -47,10 +47,10 @@ public class App {
         System.out.println("order  =" + order.cost());
         System.out.println("order " + order.getDes());
 
-        order = new Chocolate(order);
-
-        System.out.println("order" + order.cost());
-        System.out.println("order  = " + order.getDes());
+//        order = new Chocolate(order);
+//
+//        System.out.println("order" + order.cost());
+//        System.out.println("order  = " + order.getDes());
     }
 
 

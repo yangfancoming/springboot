@@ -13,8 +13,6 @@ public class App {
 
     Competitor competitor = new Competitor();
 
-
-
     @Test
     public void test1() {
         CompetitorMusic competitorMusic = new CompetitorMusic(competitor);
@@ -23,7 +21,9 @@ public class App {
 
     @Test
     public void test2() {
+        // 伴奏
         CompetitorMusic competitorMusic = new CompetitorMusic(competitor);
+        // 伴舞
         CompetitorDance competitorDance = new CompetitorDance(competitorMusic);
         competitorDance.sing();
     }

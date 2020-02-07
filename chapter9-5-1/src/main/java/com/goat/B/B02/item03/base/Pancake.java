@@ -3,7 +3,7 @@ package com.goat.B.B02.item03.base;
 /**
  * Created by 64274 on 2019/5/13.
  *
- * @ Description: 手抓饼 和 肉夹馍 的父类 被装饰者
+ * @ Description: 手抓饼 和 肉夹馍 的父类(煎饼抽象类) 被装饰者
  * @ author  山羊来了
  * @ date 2019/5/13---9:03
  */

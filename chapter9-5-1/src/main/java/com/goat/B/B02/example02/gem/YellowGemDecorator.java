@@ -3,6 +3,7 @@ package com.goat.B.B02.example02.gem;
 import com.goat.B.B02.example02.IEquip;
 import com.goat.B.B02.example02.IEquipDecorator;
 
+
 /**
  * 黄宝石装饰品 每颗攻击力+10
  */

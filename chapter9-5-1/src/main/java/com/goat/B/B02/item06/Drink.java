@@ -23,6 +23,8 @@ public abstract class Drink {
 		this.price = price;
 	}
 
+
+
 	public abstract float cost();
 	
 }
