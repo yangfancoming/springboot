@@ -21,7 +21,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class TypeParameterResolverTest {
 
-    Class<?> clazz = Level1Mapper.class;
+
     /**
      * 测试类型 子类/父类
      *  Double simpleSelect();
@@ -41,6 +41,7 @@ public class TypeParameterResolverTest {
      */
     @Test
     public void testReturn_SimpleVoid() throws Exception {
+        Class<?> clazz = Level1Mapper.class; // 迁移到方法外后 IDEA 就没有方法的自动提示/跳转功能了。。。
         Method method = clazz.getMethod("simpleSelectVoid", Integer.class);
         Type result = TypeParameterResolver.resolveReturnType(method, clazz);
         assertEquals(void.class, result);
@@ -52,6 +53,7 @@ public class TypeParameterResolverTest {
      */
     @Test
     public void testReturn_SimplePrimitive() throws Exception {
+        Class<?> clazz = Level1Mapper.class;
         Method method = clazz.getMethod("simpleSelectPrimitive", int.class);
         Type result = TypeParameterResolver.resolveReturnType(method, clazz);
         assertEquals(double.class, result);
@@ -63,6 +65,7 @@ public class TypeParameterResolverTest {
     */
     @Test
     public void testReturn_SimpleList() throws Exception {
+        Class<?> clazz = Level1Mapper.class;
         Method method = clazz.getMethod("simpleSelectList");
         Type result = TypeParameterResolver.resolveReturnType(method, clazz);
         assertTrue(result instanceof ParameterizedType);
@@ -77,7 +80,8 @@ public class TypeParameterResolverTest {
      * Map<Integer, Double> simpleSelectMap();
      */
     @Test
-    void testReturn_SimpleMap() throws Exception {
+    public void testReturn_SimpleMap() throws Exception {
+        Class<?> clazz = Level1Mapper.class;
         Method method = clazz.getMethod("simpleSelectMap");
         Type result = TypeParameterResolver.resolveReturnType(method, clazz);
         assertTrue(result instanceof ParameterizedType);
