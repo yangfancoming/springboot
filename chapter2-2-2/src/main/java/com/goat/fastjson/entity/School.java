@@ -1,6 +1,6 @@
 package com.goat.fastjson.entity;
 
-import com.goat.entity.User;
+import com.goat.chapter001.entity.User;
 
 import java.util.ArrayList;
 import java.util.List;

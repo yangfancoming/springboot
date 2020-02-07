@@ -1,6 +1,6 @@
 package com.goat.service.impl;
 
-import com.goat.entity.User;
+import com.goat.chapter001.entity.User;
 import com.goat.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;

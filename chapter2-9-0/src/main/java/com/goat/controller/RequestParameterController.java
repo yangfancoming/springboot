@@ -1,9 +1,8 @@
 package com.goat.controller;
 
-import com.goat.entity.User;
+import com.goat.chapter001.entity.User;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**

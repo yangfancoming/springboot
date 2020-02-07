@@ -1,7 +1,7 @@
 package com.goat.controller;
 
-import com.goat.entity.Product;
-import com.goat.entity.User;
+import com.goat.chapter001.entity.Product;
+import com.goat.chapter001.entity.User;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

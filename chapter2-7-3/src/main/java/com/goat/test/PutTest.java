@@ -1,6 +1,6 @@
 package com.goat.test;
 
-import com.goat.entity.User;
+import com.goat.chapter001.entity.User;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

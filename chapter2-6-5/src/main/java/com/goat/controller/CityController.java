@@ -1,6 +1,6 @@
 package com.goat.controller;
 
-import com.goat.entity.City;
+import com.goat.chapter001.entity.City;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

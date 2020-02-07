@@ -1,4 +1,4 @@
-package com.goat.entity;
+package com.goat.chapter001.entity;
 
 import java.util.Date;
 

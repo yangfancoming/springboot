@@ -1,7 +1,7 @@
 package com.goat.mylistener;
 
 import com.goat.constants.RabbitConstants;
-import com.goat.entity.Book;
+import com.goat.chapter001.entity.Book;
 import org.springframework.amqp.core.ExchangeTypes;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.Exchange;

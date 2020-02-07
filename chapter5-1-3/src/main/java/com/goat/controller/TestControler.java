@@ -1,7 +1,7 @@
 package com.goat.controller;
 
 
-import com.goat.entity.User;
+import com.goat.chapter001.entity.User;
 import com.goat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

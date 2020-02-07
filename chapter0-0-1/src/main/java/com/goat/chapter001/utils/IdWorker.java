@@ -1,4 +1,4 @@
-package com.goat.utils;
+package com.goat.chapter001.utils;
 
 import java.lang.management.ManagementFactory;
 import java.net.InetAddress;

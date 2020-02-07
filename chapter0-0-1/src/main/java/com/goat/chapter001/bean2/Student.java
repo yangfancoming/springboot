@@ -1,4 +1,4 @@
-package com.goat.bean2;
+package com.goat.chapter001.bean2;
 
 
 import java.util.Arrays;

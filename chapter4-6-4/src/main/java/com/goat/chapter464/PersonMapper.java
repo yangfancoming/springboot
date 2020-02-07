@@ -1,5 +1,6 @@
 package com.goat.chapter464;
 
+import com.goat.chapter001.entity.Person;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

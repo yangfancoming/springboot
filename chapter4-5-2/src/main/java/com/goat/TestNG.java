@@ -1,7 +1,7 @@
 package com.goat;
 
 
-import com.goat.entity.User;
+import com.goat.chapter001.entity.User;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;

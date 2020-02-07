@@ -1,4 +1,4 @@
-package com.goat.resultmodel;
+package com.goat.chapter001.resultmodel;
 
 /**
  * 统一封装API返回信息

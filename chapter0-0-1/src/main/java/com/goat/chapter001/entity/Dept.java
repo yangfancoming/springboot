@@ -1,4 +1,4 @@
-package com.goat.entity;
+package com.goat.chapter001.entity;
 
 /**
  * Created by 64274 on 2018/8/20.

@@ -3,8 +3,9 @@
 
 <mapper namespace="com.goat.chapter464.PersonMapper">
 
+      <cache/>
 
-    <select id="findAll" resultType="com.goat.chapter464.Person">
+    <select id="findAll" resultType="com.goat.chapter001.entity.Person">
         select * from person;
     </select>
 

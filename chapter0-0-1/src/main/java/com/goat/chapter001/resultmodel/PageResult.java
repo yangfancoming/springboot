@@ -1,4 +1,4 @@
-package com.goat.resultmodel;
+package com.goat.chapter001.resultmodel;
 
 import java.util.List;
 

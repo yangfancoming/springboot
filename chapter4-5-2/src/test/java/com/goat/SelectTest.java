@@ -2,7 +2,7 @@ package com.goat;
 
 
 import com.goat.entity.Student;
-import com.goat.entity.User;
+import com.goat.chapter001.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

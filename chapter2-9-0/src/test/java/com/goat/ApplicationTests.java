@@ -1,8 +1,8 @@
 package com.goat;
 
 import com.alibaba.fastjson.JSONObject;
-import com.goat.entity.Product;
-import com.goat.entity.User;
+import com.goat.chapter001.entity.Product;
+import com.goat.chapter001.entity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

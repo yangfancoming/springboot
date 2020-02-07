@@ -1,7 +1,7 @@
 package com.goat;
 
 
-import com.goat.entity.Book;
+import com.goat.chapter001.entity.Book;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.amqp.core.AmqpTemplate;

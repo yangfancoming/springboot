@@ -1,7 +1,7 @@
 package com.goat.dao;
 
 
-import com.goat.entity.Emp;
+import com.goat.chapter001.entity.Emp;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

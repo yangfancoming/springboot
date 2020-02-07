@@ -1,7 +1,7 @@
 package com.goat.controller;
 
-import com.goat.bean2.Pet;
-import com.goat.bean2.Student;
+import com.goat.chapter001.bean2.Pet;
+import com.goat.chapter001.bean2.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
