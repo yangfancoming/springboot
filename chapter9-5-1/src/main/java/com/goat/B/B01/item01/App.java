@@ -13,7 +13,7 @@ package com.goat.B.B01.item01;
 public class App {
 
     public static void main(String[] args) {
-        Adaptee adaptee = new Adaptee();
+        Source adaptee = new Source();
         Target target = new Adapter(adaptee);
         target.Request();
     }

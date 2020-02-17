@@ -3,7 +3,7 @@ package com.goat.B.B01.item03;
 /**
  * Created by 64274 on 2019/7/14.
  *
- * @ Description: TODO
+ * @ Description: 类适配器使用demo  组合注入方式
  * @ author  山羊来了
  * @ date 2019/7/14---11:49
  */
@@ -12,9 +12,6 @@ package com.goat.B.B01.item03;
 import com.goat.B.B01.item02.AC220;
 import com.goat.B.B01.item02.DC5;
 
-/**
- * 类适配器使用demo
- */
 public class PowerAdapter implements DC5 {
 
     private AC220 mAC220;

@@ -12,9 +12,9 @@ package com.goat.B.B01.item01;
 public class Adapter implements Target {
 
     //通过组合的方式实现注入
-    private Adaptee adaptee;
+    private Source adaptee;
 
-    public Adapter(Adaptee adaptee){
+    public Adapter(Source adaptee){
         this.adaptee=adaptee;
     }
 
