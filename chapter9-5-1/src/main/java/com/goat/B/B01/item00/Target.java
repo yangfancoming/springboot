@@ -8,5 +8,5 @@ package com.goat.B.B01.item00;
  * @ date 2019/7/14---11:33
  */
 public interface Target {
-    void Request();
+    void request();
 }

@@ -7,10 +7,10 @@ package com.goat.B.B01.item00;
  * @ author  山羊来了
  * @ date 2019/7/14---11:33
  */
-public class Adapter extends Adaptee implements Target {
+public class Adapter extends Source implements Target {
 
     @Override
-    public void Request() {
+    public void request() {
         SpecificRequest();
         System.out.println("被适配后的方法");
     }
