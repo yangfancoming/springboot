@@ -75,4 +75,10 @@ public class App {
         String objectName = "/pic/05e80193a7c745c59f5f37c23db95212.xml";
         minioClient.removeObject("test", objectName);
     }
+
+    @Test
+    public void test2()  {
+
+
+    }
 }

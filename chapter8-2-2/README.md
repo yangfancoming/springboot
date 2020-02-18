@@ -10,3 +10,15 @@
         sudo ntpdate cn.pool.ntp.org 
         
         
+#  AmazonS3Config  客户端配置示例
+    Java 示例：
+    
+    // setMaxErrorRetry(): retry count / setSocketTimeout(): socket timeout / setConnectionTimeout(): new connection timeout
+    
+    ClientConfiguration clientConfig = new ClientConfiguration(); 
+    
+    clientConfig.setSocketTimeout(60000); 
+    clientConfig.setConnectionTimeout(5000);
+    clientConfig.setMaxErrorRetry(2);
+    
+    AmazonDynamoDBClient ddb = new AmazonDynamoDBClient(credentialsProvider,clientConfig);
