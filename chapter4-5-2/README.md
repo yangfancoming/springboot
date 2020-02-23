@@ -13,3 +13,8 @@ use myNewDatabase
 db.myCollection.insert({x:1})
 
 ``myCollection``是集合的名称。
+
+
+# 再mongodb中 不需要手动创建 数据库和集合
+    当我们创建文档时，如果文档所在的集合和数据库不存在，则会自动创建数据库和集合。
+    当我们向集合中插入文档时，如果没有给文档指定 _id 属性，则会自动生成属性值赋值给 _id 属性。

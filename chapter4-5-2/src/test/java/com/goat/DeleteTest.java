@@ -18,9 +18,6 @@ import java.util.List;
 @SpringBootTest
 public class DeleteTest extends CommonTest {
 
-
-
-
     /**
      * @Description: 查询出符合条件的第一个结果，并将符合条件的数据删除,只会删除第一条
      * @author: Goat
