@@ -1,10 +1,9 @@
-package com.goat.entity;
+package com.goat.chapter453.entity;
 
 import org.springframework.data.annotation.Id;
 
 /**
  * Created by 64274 on 2018/8/23.
- *
  * @author 山羊来了
  * @Description: TODO
  * @date 2018/8/23---17:21

@@ -1,6 +1,6 @@
-package com.goat.controller;
+package com.goat.chapter453.controller;
 
-import com.goat.entity.User;
+import com.goat.chapter453.entity.User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

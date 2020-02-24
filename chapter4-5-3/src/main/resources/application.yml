@@ -1,8 +1,9 @@
 spring:
   data:
     mongodb:
-      host: 192.168.136.128
+      host: 192.168.211.128
       port: 27017
+      database: goat # mongodb 默认连接test数据库，通过database属性可以指定项目所要连接数据库
 #      database: haha   doit  mongodb  授权方式 登录 我是真的搞不定啊！！！！
 #      username: gaga
 #      password: 12345

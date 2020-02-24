@@ -1,6 +1,6 @@
-package com.goat.controller;
+package com.goat.chapter453.controller;
 
-import com.goat.repository.CustomerRepository;
+import com.goat.chapter453.repository.CustomerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class BaseController {
 
     protected final Logger logger = LoggerFactory.getLogger(getClass());
+
     @Autowired
     public CustomerRepository repository;
 

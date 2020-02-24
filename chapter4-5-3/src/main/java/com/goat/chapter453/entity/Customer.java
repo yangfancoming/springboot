@@ -1,4 +1,4 @@
-package com.goat.entity;
+package com.goat.chapter453.entity;
 
 import org.springframework.data.annotation.Id;
 

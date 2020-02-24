@@ -1,6 +1,6 @@
-package com.goat.repository;
+package com.goat.chapter453.repository;
 
-import com.goat.entity.User;
+import com.goat.chapter453.entity.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
@@ -16,6 +16,8 @@ import java.util.Optional;
 public interface CustomerRepository extends MongoRepository<User, String> {
 
      Optional<User> findById(String id);
+
      User findByName(String name);
+
      List<User> findByNameLike(String nam);
 }
