@@ -4,7 +4,16 @@ public class Address {
 	
 	private String aCode;
 	private String add;
-	public String getaCode() {
+
+    public Address() {
+    }
+
+    public Address(String aCode, String add) {
+        this.aCode = aCode;
+        this.add = add;
+    }
+
+    public String getaCode() {
 		return aCode;
 	}
 	public void setaCode(String aCode) {

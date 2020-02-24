@@ -6,7 +6,15 @@ public class Favorites {
 	private List<String> movies;
 	private List<String> cities;
 
-	public List<String> getMovies() {
+    public Favorites() {
+    }
+
+    public Favorites(List<String> movies, List<String> cities) {
+        this.movies = movies;
+        this.cities = cities;
+    }
+
+    public List<String> getMovies() {
 		return movies;
 	}
 

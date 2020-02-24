@@ -25,40 +25,21 @@ import java.util.regex.Pattern;
 public class ModelTest extends CommonTest {
 
     @Test
-    public void Before() { //
-        Person user1 = new Person();
-        user1.setUsername("tom");
-        user1.setAge(8);
-        user1.setCountry("Englan");
-        user1.setLenght(1.70f);
-        user1.setSalary(new BigDecimal(10000));
-        Address address1 = new Address();
-        address1.setaCode("0000");
-        address1.setAdd("XXXXXXXXX");
+    public void Before() {
+        Person user1 = new Person("tom","Englan",8,new BigDecimal(10000),1.70f);
+        Address address1 = new Address("0000","XXXXXXXXX");
         user1.setAddress(address1);
-        Favorites favorites1 = new Favorites();
-        favorites1.setCities(Arrays.asList("广州", "深圳"));
-        favorites1.setMovies(Arrays.asList("西游记", "水浒传"));
+        Favorites favorites1 = new Favorites(Arrays.asList("西游记", "水浒传"),Arrays.asList("广州", "深圳"));
         user1.setFavorites(favorites1);
 
-        Person user2 = new Person();
-        user2.setUsername("tom");
-        user2.setAge(38);
-        user2.setCountry("USA");
-        user2.setLenght(1.70f);
-        user2.setSalary(new BigDecimal(10000));
-        Address address2 = new Address();
-        address2.setaCode("1111");
-        address2.setAdd("YYYYYYYYYY");
+
+        Person user2 = new Person("tom2","USA",38,new BigDecimal(10000),1.70f);
+        Address address2 = new Address("1111","YYYYYYYYYY");
         user2.setAddress(address2);
-        Favorites favorites2 = new Favorites();
-        favorites2.setCities(Arrays.asList("南宁", "衡阳"));
-        favorites2.setMovies(Arrays.asList("红楼梦", "三国演义"));
+        Favorites favorites2 = new Favorites(Arrays.asList("红楼梦", "三国演义"),Arrays.asList("南宁", "衡阳"));
         user2.setFavorites(favorites2);
         mongoTemplate.insertAll(Arrays.asList(user1, user2));
     }
-
-
 
 
     @Test

@@ -24,7 +24,18 @@ public class Person {
 
 	private float lenght;
 
-	public String getUsername() {
+    public Person() {
+    }
+
+    public Person(String username, String country, int age, BigDecimal salary, float lenght) {
+        this.username = username;
+        this.country = country;
+        this.age = age;
+        this.salary = salary;
+        this.lenght = lenght;
+    }
+
+    public String getUsername() {
 		return username;
 	}
 
