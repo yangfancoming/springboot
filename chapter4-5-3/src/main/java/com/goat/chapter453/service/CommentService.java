@@ -5,6 +5,10 @@ import com.goat.chapter453.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,5 +49,19 @@ public class CommentService {
 
     public Page<Comment> findByParentid(String parentid, int page, int size){
         return commentRepository.findByParentid(parentid, PageRequest.of(page-1,size));
+    }
+
+    @Autowired
+    MongoTemplate mongoTemplate;
+
+    // 此种方式只打库一次，相对于先根据id查询出记录，点赞数+1后 再save来讲两次打库，效率高了很多
+    public void updateCommentLikeNum(String id){
+        // 查询条件
+        Query query = Query.query(Criteria.where("_id").is(id));
+        // 更新条件
+        Update update = new Update();
+        // 点赞数 增加步长为1
+        update.inc("likenum",1);
+        mongoTemplate.updateFirst(query,update,Comment.class);
     }
 }

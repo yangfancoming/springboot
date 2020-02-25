@@ -57,4 +57,10 @@ public class CommentController {
         System.out.println(temp.getContent().size());
     }
 
+    // 测试地址：    http://localhost:8453/comment4  ObjectId("5e5519a49502836b184d5fa7")
+    @GetMapping("/comment4")
+    public void updateCommentLikeNum() {
+         commentService.updateCommentLikeNum("5e5519a49502836b184d5fa7");
+    }
+
 }
