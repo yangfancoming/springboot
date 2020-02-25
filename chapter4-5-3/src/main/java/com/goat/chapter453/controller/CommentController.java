@@ -3,6 +3,7 @@ package com.goat.chapter453.controller;
 import com.goat.chapter453.entity.Comment;
 import com.goat.chapter453.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,6 +44,17 @@ public class CommentController {
         comment.setUserid("1");
         comment.setState("0");
         commentService.saveComment(comment);
+    }
+
+
+
+    // 测试地址：    http://localhost:8453/comment3
+    @GetMapping("/comment3")
+    public void findByParentid() {
+        Page<Comment> temp = commentService.findByParentid("0",1,5);
+        System.out.println(temp.getTotalPages());
+        System.out.println(temp.getTotalElements());
+        System.out.println(temp.getContent().size());
     }
 
 }

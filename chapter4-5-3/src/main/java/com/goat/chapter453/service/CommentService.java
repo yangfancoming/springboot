@@ -3,6 +3,8 @@ package com.goat.chapter453.service;
 import com.goat.chapter453.entity.Comment;
 import com.goat.chapter453.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,5 +41,9 @@ public class CommentService {
 
     public Comment findCommentList(String id){
         return commentRepository.findById(id).get();
+    }
+
+    public Page<Comment> findByParentid(String parentid, int page, int size){
+        return commentRepository.findByParentid(parentid, PageRequest.of(page-1,size));
     }
 }
