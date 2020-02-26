@@ -5,8 +5,7 @@ import java.util.Set;
 
 /**
  * Created by 64274 on 2019/10/23.
- *
- * @ Description: TODO
+ * @ Description: 部门对象
  * @ author  山羊来了
  * @ date 2019/10/23---17:46
  */
@@ -16,10 +15,12 @@ public class SlDept implements java.io.Serializable {
 
     private String name;
 
-    private Set<SlEmployee> slEmployees = new HashSet<>(0);
+    private Set<SlEmployee> slEmployees = new HashSet<>();
 
-    public SlDept() {
+    public SlDept() { }
 
+    public SlDept(String name) {
+        this.name = name;
     }
 
     public String getName() {

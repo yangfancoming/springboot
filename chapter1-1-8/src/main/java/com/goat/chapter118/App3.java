@@ -9,8 +9,6 @@ import org.junit.Test;
 
 /**
  * Created by 64274 on 2019/10/23.
- *
- * @ Description:
  * 1.获取普通对象的属性值方式
  * 2.获取根对象的属性值的方式，有两种
  * @ author  山羊来了
@@ -32,23 +30,19 @@ public class App3 {
     @Test
     public void test2() throws OgnlException {
         // 新建一个部门对象并设置部门名称
-        SlDept dept = new SlDept();
-        dept.setName("销售部");
+        SlDept dept = new SlDept("销售部");
         // 新建一个员工对象并设置员工姓名
-        SlEmployee emp = new SlEmployee();
-        emp.setName("张三");
-        emp.setSlDept(dept);
-        // 构建一个OgnlContext对象
+        SlEmployee emp = new SlEmployee(dept,"张三");
+        // 构建一个OgnlContext对象，并将上述部门和员工对象放入Ognl上下文环境中
         OgnlContext context = new OgnlContext();
-
-        // 将上述部门和员工对象放入Ognl上下文环境中
         context.put("dept", dept);
         context.put("emp", emp);
 
-        // 将员工设置为根对象
+        // 将员工设置为根节点
         context.setRoot(emp);
 
-        // 构建Ognl表达式的树状表示,用来获取  // 第一种 从普通对象中直接获取部门名称
+
+        // 第一种 从普通对象中直接获取部门名称
         Object expression1 = Ognl.parseExpression("#dept.name");
         // 解析树状表达式，返回结果
         System.out.println( Ognl.getValue(expression1, context, context.getRoot()));

@@ -2,8 +2,7 @@ package com.goat.chapter118.model;
 
 /**
  * Created by 64274 on 2019/10/23.
- *
- * @ Description: TODO
+ * @ Description: 员工对象
  * @ author  山羊来了
  * @ date 2019/10/23---17:47
  */
@@ -17,6 +16,12 @@ public class SlEmployee implements java.io.Serializable {
 
     private String age;
 
+    public SlEmployee() { }
+
+    public SlEmployee(SlDept slDept, String name) {
+        this.slDept = slDept;
+        this.name = name;
+    }
 
     public String getAge() {
         return age;
@@ -26,8 +31,6 @@ public class SlEmployee implements java.io.Serializable {
         this.age = age;
     }
 
-    public SlEmployee() {
-    }
 
     public SlDept getSlDept() {
         return slDept;
