@@ -10,21 +10,21 @@ SpringBoot
 
 工程配置
 
-- ==chapter0-0-0 springboot 空项目==
-- ==chapter0-0-1 springboot 共享model==
-- ==chapter0-0-5 springboot Helloworld==
-- ==chapter0-0-6 springboot 自定义jar包==
-- ==chapter0-0-7 springboot 引入自定义jar包并以可运行jar方式启动 + SpringMVC 扩展==
-- ==chapter0-0-8 springboot 引入自定义jar包并以war包方式启动==
-- ==chapter0-0-9 springboot goatool  (作为其他项目依赖) ==
-- ==chapter0-1-0 springboot Utils 积累常用工具类 (作为其他项目依赖)==  
-- ==chapter0-1-1springboot 集合 Hutool 框架源码==
-- ==chapter0-1-2 springboot 集合 Hutool 框架 演示使用==
-- ==chapter0-1-9 springboot 自定义banner==
-- ==chapter1-1-1 springboot 读取配置文件 +  获取bean的几种方式==
+- ==chapter0-0-0 springboot  空项目==
+- ==chapter0-0-1 springboot  共享model==
+- ==chapter0-0-5 springboot  Helloworld==
+- ==chapter0-0-6 springboot  自定义jar包==
+- ==chapter0-0-7 springboot  引入自定义jar包并以可运行jar方式启动 + SpringMVC 扩展==
+- ==chapter0-0-8 springboot  引入自定义jar包并以war包方式启动==
+- ==chapter0-0-9 springboot  goatool  (作为其他项目依赖) ==
+- ==chapter0-1-0 springboot  Utils 积累常用工具类 (作为其他项目依赖)==  
+- ==chapter0-1-1springboot   集合 Hutool 框架源码==
+- ==chapter0-1-2 springboot  集合 Hutool 框架 演示使用==
+- ==chapter0-1-9 springboot  自定义banner==
+- ==chapter1-1-1 springboot  读取配置文件 +  获取bean的几种方式==
 - ==chapter1-1-2 springboot  javaconfig配置集合(其他模块共享该配置)==
 - ==chapter1-1-4 springboot  国际化 i18n==
-- ==chapter1-1-6 springboot 多环境profile打包 ==
+- ==chapter1-1-6 springboot  多环境profile打包 ==
 - ==chapter1-1-8 springboot  集成OGNL ==
 
 日志相关
@@ -346,6 +346,7 @@ JVM
 - ==chapter9-8-3：springboot 架构 Layui ==
 - ==chapter9-8-4：springboot 架构 Easyui + Thymeleaf==
 - ==chapter9-8-5：springboot 架构 Easyui + JSP==
+- ==chapter9-8-5：springboot 架构 Bootstrap + Thymeleaf==
 - ==chapter9-9-0：springboot 架构 设计模式实战==
 
 
@@ -362,8 +363,6 @@ JVM
 
 
 JavaSe 项目目录
-
-
 
 - ==chapter99-3-3：数据类型和运算符==
 - ==chapter99-4-3：流程控制与数组==

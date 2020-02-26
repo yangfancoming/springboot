@@ -144,7 +144,6 @@ public class ShiroConfig {
         return formAuthenticationFilter;
     }
 
-
     /**
      * shiro缓存管理器;
      * 需要添加到securityManager中

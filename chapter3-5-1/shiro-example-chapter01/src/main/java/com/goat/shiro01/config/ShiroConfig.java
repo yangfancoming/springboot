@@ -31,9 +31,18 @@ role  ： 该资源必须得到角色权限才可以访问
 @Configuration
 public class ShiroConfig {
 
+    // 将该方法返回值 放入spring容器环境 其在容器中的名称为 securityManager（方法名）
+    @Bean
+    public SecurityManager securityManager(MyShiroRealm shiroRealm){
+        DefaultWebSecurityManager securityManager =  new DefaultWebSecurityManager(); // 1. 创建 DefaultWebSecurityManager 对象
+        securityManager.setRealm(shiroRealm);  // 2.securityManager 关联 自定义realm
+        securityManager.setRememberMeManager(rememberMeManager());  // 3. 设置记住我功能
+        return securityManager;
+    }
+
+    // 创建 ShiroFilterFactoryBean 并与 securityManager 进行关联
 	@Bean
 	public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
-        // 创建 ShiroFilterFactoryBean 并与 securityManager 进行关联
         ShiroFilterFactoryBean shiroBean = new ShiroFilterFactoryBean();
         shiroBean.setSecurityManager(securityManager); // 必须设置 SecurityManager
         //拦截成功后的跳转页面： 如果不设置默认会自动寻找Web工程根目录下(templates/)的"/login.jsp"页面
@@ -65,6 +74,7 @@ public class ShiroConfig {
         chainDefinition.addPathDefinition("/**", "user"); // user表示配置记住我或认证通过可以访问的地址
         return chainDefinition;
     }
+
 	/**
 	 * 凭证匹配器 （由于我们的密码校验交给Shiro的SimpleAuthenticationInfo进行处理了 ）
 	 */
@@ -74,14 +84,6 @@ public class ShiroConfig {
 		hashedCredentialsMatcher.setHashAlgorithmName("md5");//散列算法:这里使用MD5算法;
 		hashedCredentialsMatcher.setHashIterations(2);//散列的次数，比如散列两次，相当于 md5(md5(""));
 		return hashedCredentialsMatcher;
-	}
-
-	@Bean // 将该方法返回值 放入spring容器环境 其在容器中的名称为 securityManager
-	public SecurityManager securityManager(MyShiroRealm shiroRealm){
-		DefaultWebSecurityManager securityManager =  new DefaultWebSecurityManager(); // 1. 创建 DefaultWebSecurityManager 对象
-		securityManager.setRealm(shiroRealm);  // 2.securityManager 关联 自定义realm
-        securityManager.setRememberMeManager(rememberMeManager());  // 3. 设置记住我功能
-		return securityManager;
 	}
 
 	/**  用于  thymeleaf 和 shiro 标签配合使用 （为了在thymeleaf里使用shiro的标签的bean）  */
@@ -129,7 +131,6 @@ public class ShiroConfig {
 
     /**
      * FormAuthenticationFilter 过滤器 过滤记住我
-     * @return
      */
     @Bean
     public FormAuthenticationFilter formAuthenticationFilter(){
