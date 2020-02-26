@@ -12,7 +12,6 @@ import org.junit.Test;
  */
 public class MyLang3 {
 
-
     /**
      * @Description: 清除掉str首尾的空白字符, 如果仅str全由空白字符组成则返回null
      * @author: Goat

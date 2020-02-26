@@ -62,10 +62,4 @@ public class App6 {
 
     }
 
-
-    @Test
-    public void test2() throws OgnlException {
-
-
-    }
 }

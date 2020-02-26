@@ -14,19 +14,20 @@ import java.util.Map;
 
 /**
  * Created by 64274 on 2019/10/23.
- *
  * @ Description: TODO
  * @ author  山羊来了
  * @ date 2019/10/23---15:58
  */
 public class App {
+
+    Address address = new Address("666666", "天涯路海角街");
+    User user = new User("lucy", "123456", address);
+
     /**
      * 对Root对象的访问
      */
     @Test
     public void test0() throws OgnlException {
-        Address address = new Address("666666", "天涯路海角街");
-        User user = new User("lucy", "123456", address);
         System.out.println(Ognl.getValue("username", user));// lucy
         System.out.println(Ognl.getValue("address", user)); // com.goat.chapter118.model.Address@5c0369c4
         System.out.println(Ognl.getValue("address.location", user)); // 天涯路海角街
@@ -39,8 +40,6 @@ public class App {
      */
     @Test
     public void test1() throws OgnlException {
-        Address address = new Address("666666", "天涯路海角街");
-        User user = new User("lucy", "123456", address);
         Map<String, Object> context = new HashMap<>();
         context.put("init", "hello");
         context.put("user", user);
@@ -67,8 +66,6 @@ public class App {
      */
     @Test
     public void test3() throws OgnlException {
-        Address address = new Address("666666", "天涯路海角街");
-        User user = new User("lucy", "123456", address);
         Map<String, Object> context = new HashMap<>();
         context.put("username", "yyy");
         context.put("password", "654321");

@@ -8,7 +8,6 @@ import static cn.goatool.core.util.string.StringCheckUtils.hasLength;
 
 /**
  * Created by Administrator on 2020/1/6.
- *
  * @ Description: 格式化字符串 工具类
  * @ author  山羊来了
  * @ date 2020/1/6---13:57
@@ -18,7 +17,6 @@ public class StringFormatUtils {
     private static final String FOLDER_SEPARATOR = "/";
 
     private static final char EXTENSION_SEPARATOR = '.';
-
 
     /**
      * @Description: 功能描述： 格式填充（左侧）
@@ -74,8 +72,6 @@ public class StringFormatUtils {
         }
         return path.substring(extIndex + 1);
     }
-
-
 
     /**
      * 从给定的Java资源路径中提取文件名

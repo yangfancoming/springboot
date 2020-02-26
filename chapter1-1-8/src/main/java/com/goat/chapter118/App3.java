@@ -76,10 +76,4 @@ public class App3 {
         System.out.println(Ognl.getValue(expression3, context, context.getRoot()));
     }
 
-    @Test
-    public void test3() throws OgnlException {
-
-
-    }
-
 }
