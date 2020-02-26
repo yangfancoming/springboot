@@ -175,7 +175,7 @@ AOP
 - ==chapter4-5-2：springboot 集成 MongoDB  使用 MongoTemplate==
 - ==chapter4-5-3：springboot 集成 MongoDB  使用 MongoRepository==
 - ==chapter4-6-0：springboot 集成 Oracle==
-- ==chapter4-6-1：springboot 集成  JPA + Oracle==
+- ==chapter4-6-1：springboot 集成 JPA + Oracle==
 - ==chapter4-6-3：springboot 集成 H2 + mybatis==
 - ==chapter4-6-4：springboot 集成 sqlite + mybatis==
 - ==chapter4-6-5：springboot 集成 sqlite + JPA==
@@ -256,7 +256,7 @@ excel 相关操作
 - ==chapter7-5-6：springboot 集成 EasyPoi 操作Excel
 - chapter7-5-8：springboot 集成 Alibaba EasyExcel
 
-work  相关操作
+word  相关操作
 - chapter7-6-0：springboot 集成 docx4j 操作 word 
 
 其他语言
@@ -352,7 +352,6 @@ JVM
 版本控制
 
 - ==chapter9-9-1：springboot 集成Git 版本控制==
-- ​
 
 测试功能
 
