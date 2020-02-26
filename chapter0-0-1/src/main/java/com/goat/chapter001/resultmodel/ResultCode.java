@@ -2,7 +2,6 @@ package com.goat.chapter001.resultmodel;
 
 /**
  * 响应码枚举，参考HTTP状态码的语义
- * Created by bekey on 2017/12/10.
  */
 public enum ResultCode {
     SUCCESS(200),//成功

@@ -8,7 +8,6 @@ import org.springframework.web.filter.CorsFilter;
 
 /**
  * 设置允许跨域
- * @author bekey
  */
 @Configuration
 public class CorsConfig

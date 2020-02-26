@@ -3,7 +3,6 @@ package com.goat.chapter001.resultmodel;
 /**
  * 统一封装API返回信息
  * 千万别加@Entity 否则Hibernate会给你创建表
- * Created by bekey on 2017/12/10.
  */
 public class RestResult {
 

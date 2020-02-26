@@ -1,4 +1,4 @@
-package com.goat.controller;
+package com.goat.chapter005;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

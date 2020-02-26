@@ -1,10 +1,7 @@
 package com.goat.chapter001.resultmodel;
-
 import java.util.List;
 
-/**
 
- */
 public class PageResult<T> {
 
     private Long total;  // 总记录数

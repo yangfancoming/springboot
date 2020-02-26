@@ -6,10 +6,8 @@ package com.goat.chapter001.resultmodel;
  * 工厂模式
  * 接口信息生成工具
  * 。@Component 添加到Spring组件中
- * Created by bekey on 2017/12/10.
  */
 public class ResultGenerator {
-
 
     private static final String SUCCESS = "success";
     //成功
