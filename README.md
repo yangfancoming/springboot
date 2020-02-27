@@ -49,14 +49,13 @@ SpringBoot
 - ==chapter1-3-7 springboot  消费者 Consumer==
 - ==chapter1-3-8 springboot  全局 日期格式处理==
 
-
 Web开发
 
 - ==chapter2-0-0 springboot  中的SpringMVC  相关操作总结
 - ==chapter2-0-2 springboot  打jar包方式的静态资源映射规则(webjars)==
 - ==chapter2-0-3 springboot  集成  servlet、Filter、 Listener、interceptor 的两种方式==
 - ==chapter2-0-4 springboot  集成  HttpSession==
-- ==chapter2-0-5 
+- ==chapter2-0-5 springboot  集成 大数据
 - ==chapter2-0-7 
 - ==chapter2-0-8 springboot  集成 MockMvc和Swagger2 接收前台参数==
 - ==chapter2-1-0 springboot  中使用 ES6==
@@ -317,6 +316,7 @@ JVM
 书籍
 
 ==chapter8-7-0：springboot 集成 Effective Java 第二版==
+
 
 
 项目经验总结
