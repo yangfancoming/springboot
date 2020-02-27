@@ -13,7 +13,6 @@ import java.util.List;
  */
 public class BlockChainUtil {
 
-
     /**
      *
      * 目的是循环区块链中的所有区块并且比较hash值，这个方法用来检查hash值是否是于计算出来的hash值相等，
