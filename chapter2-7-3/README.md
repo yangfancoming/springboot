@@ -32,4 +32,7 @@
     
     如果后台是   public AjaxJson login(@RequestBody String jsonBody)  接收  
     那么 在工具右侧  TEXT 选项打钩 输入参入参数内容  json格式
-    
+
+
+# IntelliJ IDEA 项目结构旁边出现 0%classes,0% lines covered  测试 覆盖率
+    直接 Ctrl+Alt+F6 弹出窗中删掉本次覆盖率测试
