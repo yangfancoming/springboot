@@ -17,6 +17,7 @@
   </sql>
 
 
+    <!-- 批量插入-->
     <insert id="batchUserRole">
         insert into user_role(user_id,role_id) values
         <foreach item="item" index="index" collection="list" separator=",">

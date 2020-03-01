@@ -55,6 +55,7 @@ public class ShiroConfig {
         shiroBean.setFilterChainDefinitionMap(shiroFilterChainDefinition().getFilterChainMap());//  加载url拦截规则
 		return shiroBean;
 	}
+
     /**
      对于登录请求，Filter直接放过，进到controller里面。Controller会调用shiro做用户名和密码的校验，成功后返回token
      */

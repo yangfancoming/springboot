@@ -85,6 +85,8 @@
     </select>
 
 
+
+
     <!--<select id="finds" parameterType="java.lang.Integer">-->
         <!--SELECT a.id,a.username, a.password, a.salt, a.email, a.phone, a.sex, a.age, a.status,-->
                <!--a.create_time, a.update_time, a.last_login_time FROM user a INNER JOIN user_role b ON a.id = b.user_id WHERE b.role_id = #{roleId}-->

@@ -140,5 +140,13 @@ Preparing: select * from tbl_employee where id=2 and last_name=?
 		
 		
 		
+#  invalid comparison: java.util.Date and java.lang.String
+    今日Mybatis执行一个update命令时，报错 invalid comparison: java.util.Date and java.lang.String；字面意思是Data和String不匹配，但是我仔细查看了Pojo以及jdbcType的类型，都是时间类型，没有错误，但是清除class之后重新编译依旧报错，后经过查看mybatis标签，发现其中TimeStamp类型的变量出现以下标签：
+    
+    <if test="refundTime != null and refundTime != ''"></if>
+    
+    此标签中出现劣refundTime != '' 的表达式，这里就相当于date与string比较，故mybatis报错 invalid comparison: java.util.Date and java.lang.String；
+    
+    问题自此解决；出现此问题原因是编写mybatis映射文件时粗心导致。
 
 	

@@ -77,8 +77,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public ResponseVo addAssignRole(String userId, List<String> roleIds) {
         try{
-            List<UserRole> list = new ArrayList<>();
             userRoleMapper.deletes(Integer.valueOf(userId));// 删除 中间表中 所有与该用户关联的角色
+            List<UserRole> list = new ArrayList<>();
             for(String roleId :roleIds){
                 list.add(new UserRole(userId,roleId));
             }

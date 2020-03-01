@@ -87,7 +87,7 @@ Web开发
 
 模板引擎
 
-- ==chapter2-6-3 
+- ==chapter2-6-3 springboot  集成  Thymeleaf==
 - ==chapter2-6-4 springboot  集成  velocity==
 - ==chapter2-6-5 springboot  集成  freemarker + 日期类型处理==
 - ==chapter2-6-7 springboot  集成  vue+ elementUI==
