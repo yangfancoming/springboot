@@ -76,7 +76,7 @@ public class ShiroConfig {
     }
 
 	/**
-	 * 凭证匹配器 （由于我们的密码校验交给Shiro的SimpleAuthenticationInfo进行处理了 ）
+	 * 凭证匹配器 （由于我们的密码校验交给Shiro的SimpleAuthenticationInfo进行处理了 ）doit 为啥这里开启后 后会 执行两次 认证？？？ （会两次进入认证函数）
 	 */
 	@Bean
 	public HashedCredentialsMatcher hashedCredentialsMatcher(){
