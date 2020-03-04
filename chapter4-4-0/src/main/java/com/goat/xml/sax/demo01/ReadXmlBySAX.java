@@ -9,7 +9,6 @@ import java.util.List;
 
 /**
  * 用SAX方式读取xml文件
- * ^\s*\n  查找替换所有空白行  学习IDEA的正则表达式 匹配查询  doit
  */
 public class ReadXmlBySAX {
 

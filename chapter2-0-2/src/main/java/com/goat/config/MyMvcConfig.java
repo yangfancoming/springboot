@@ -12,7 +12,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
     @Autowired
     CustomInterceptor1 customInterceptor;
 
-    /** 视图跳转控制器  统一跳转 统一拦截
+    /** 视图跳转控制器  统一跳转 统一拦截  (sos 实现无业务逻辑跳转)
      * 自定义页面跳转 映射
      * 浏览器发送 /test 请求来到 success
      *  测试地址： http://localhost:8263/mytest  直接跳转到  success.html 页面
@@ -24,7 +24,6 @@ public class MyMvcConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/test").setViewName("success");
     }
-
 
     /**
      * 跨域CORS配置
