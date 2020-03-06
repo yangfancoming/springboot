@@ -20,6 +20,7 @@ public class App1 extends BaseCommon {
     String temp = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter2-0-7\\src\\main\\java\\com\\goat\\chapter207\\html\\app1.html";
 
     WebDriver driver = getDriver(temp);
+
     @Test
     public void test(){
         // 找到链接元素
