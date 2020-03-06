@@ -2,6 +2,7 @@ package com.goat.chapter207;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -38,6 +39,8 @@ public class App1 extends BaseCommon {
         // 清空输入框
         element.clear();
         element.sendKeys("test22");
+        // 模拟键盘按键
+        element.sendKeys(Keys.ENTER);
         // 获取输入框的内容
         System.out.println(element.getAttribute("value"));
     }

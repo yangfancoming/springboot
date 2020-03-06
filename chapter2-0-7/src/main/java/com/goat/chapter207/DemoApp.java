@@ -59,7 +59,11 @@ public class DemoApp extends BaseCommon {
         driver.close();
     }
 
-    // 通过ClassName 查找元素 By.className
+    /**
+     * 通过ClassName 查找元素 By.className
+     * 复合型className，完整的定位不到，需要用部分的名称才可以定位到，比如：ipt ipt-pwd js-pass-word
+     * 需要分串才可以定位到  .ipt .ipt-pwd .js-pass-word
+    */
     @Test
     public void test4() {
         WebDriver driver = getDriver("http://www.taobao.com");
@@ -76,8 +80,10 @@ public class DemoApp extends BaseCommon {
         WebElement temp = driver.findElement(By.id("J_SiteNavMytaobao"));
         //创建鼠标属性方法
         Actions action = new Actions(driver);
-        //  对定位到的元素执行悬停操作
-        action.moveToElement(temp).perform();
+        action.moveToElement(temp).perform(); // 鼠标悬停
+//        action.click();// 鼠标左击
+//        action.contextClick();// 鼠标右击
+//        action.doubleClick();// 鼠标双击
     }
 
     // 通过 xpath 查找元素  By.xpath("//*[@id=\"home-main-search\"]")
