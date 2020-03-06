@@ -1,4 +1,4 @@
-package com.goat.chapter207;
+package com.goat.chapter207.demo;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
