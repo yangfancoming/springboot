@@ -4,6 +4,7 @@ import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.metadata.BaseRowModel;
 
 public class BaseReadModel extends BaseRowModel {
+
     @ExcelProperty(index = 0)
     protected String str;
 

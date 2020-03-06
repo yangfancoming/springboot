@@ -31,6 +31,4 @@ public class TableApp extends BaseCommon {
         System.out.println(s);
     }
 
-
-
 }
