@@ -56,7 +56,7 @@ Web开发
 - ==chapter2-0-3 springboot  集成  servlet、Filter、 Listener、interceptor 的两种方式==
 - ==chapter2-0-4 springboot  集成  HttpSession==
 - ==chapter2-0-5 springboot  集成 大数据 （区块链）
-- ==chapter2-0-7 
+- ==chapter2-0-7 springboot  集成 selenium
 - ==chapter2-0-8 springboot  集成 MockMvc和Swagger2 接收前台参数==
 - ==chapter2-1-0 springboot  中使用 ES6==
 - ==chapter2-1-2 springboot  中使用 JavaScript  ==
@@ -68,6 +68,8 @@ Web开发
 - ==chapter2-2-2 springboot  集成 fastjson 相关操作总结==
 - ==chapter2-2-3 springboot  集成 Jackson  相关操作总结==
 - ==chapter2-2-5 springboot  集成 Gson  相关操作总结==
+
+
 - ==chapter2-3-1 springboot  集成 WebSocket==
 - ==chapter2-3-2 springboot  集成 WebSocket2==
 - ==chapter2-3-3 springboot  集成 WebSocket3==
