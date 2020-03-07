@@ -1,5 +1,6 @@
 package com.goat.chapter207.demo;
 
+import com.goat.chapter207.base.BaseCommon;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -84,6 +85,7 @@ public class DemoApp extends BaseCommon {
 //        action.click();// 鼠标左击
 //        action.contextClick();// 鼠标右击
 //        action.doubleClick();// 鼠标双击
+//        action.clickAndHold();// 鼠标左击并按住
     }
 
     // 通过 xpath 查找元素  By.xpath("//*[@id=\"home-main-search\"]")

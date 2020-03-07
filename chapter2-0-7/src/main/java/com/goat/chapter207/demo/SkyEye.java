@@ -1,5 +1,6 @@
 package com.goat.chapter207.demo;
 
+import com.goat.chapter207.base.BaseCommon;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;

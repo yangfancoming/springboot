@@ -1,4 +1,4 @@
-package com.goat.chapter207.demo;
+package com.goat.chapter207.base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,6 +17,16 @@ public class BaseCommon {
         System.setProperty("webdriver.chrome.driver", "F:\\Package\\Python_Environment\\chromedriver.exe");
         // 获取浏览器驱动实现类
         WebDriver driver  = new ChromeDriver();
+        driver.get(url);
+        return driver;
+    }
+
+
+    protected ChromeDriver getDriverForChrome(String url){
+        // 设置浏览器驱动
+        System.setProperty("webdriver.chrome.driver", "F:\\Package\\Python_Environment\\chromedriver.exe");
+        // 获取浏览器驱动实现类
+        ChromeDriver driver  = new ChromeDriver();
         driver.get(url);
         return driver;
     }
