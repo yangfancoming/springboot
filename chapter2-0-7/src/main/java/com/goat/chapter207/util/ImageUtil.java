@@ -43,13 +43,16 @@ public class ImageUtil {
             if (imageFullScreenSize == null){
                 imageFullScreenSize = new Point(fullImg.getWidth(), fullImg.getHeight());
             }
+            // html: width:1008, height:637  //html: width:414, height:288
             WebElement element = driver.findElement(By.cssSelector("div[class='geetest_panel geetest_wind']"));
             System.out.println("html: width:" + element.getSize().width + ", height:" + element.getSize().height);
-            if(htmlFullScreenSize == null){
-                htmlFullScreenSize = new Point(element.getSize().getWidth(), element.getSize().getHeight());
-            }
+//            if(htmlFullScreenSize == null){
+//                htmlFullScreenSize = new Point(element.getSize().getWidth(), element.getSize().getHeight());
+//            }
             Point point = ele.getLocation();
+            // 260    616
             int eleWidth = (int)(ele.getSize().getWidth() / (float)element.getSize().width * (float)fullImg.getWidth());
+            //  160   324
             int eleHeight = (int) (ele.getSize().getHeight() / (float)element.getSize().height * (float)fullImg.getHeight());
             BufferedImage eleScreenShot = fullImg.getSubimage((int)(point.getX() / (float)element.getSize().width * (float)fullImg.getWidth()), (int)(point.getY() / (float)element.getSize().height * (float)fullImg.getHeight()), eleWidth, eleHeight);
             return eleScreenShot;
@@ -62,7 +65,7 @@ public class ImageUtil {
     //开始遍历处距离左边的距离
     private static final int GEETEST_WIDTH_START_POSTION = 60;
     /**
-     * 根据original.png和slider.png计算需要移动的距离
+     * 根据original.png和slider.png 的像素差异 计算需要移动的距离
      * @return
      */
     public static int calcMoveDistance() {

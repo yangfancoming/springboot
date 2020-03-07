@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
  * @ author  山羊来了
  * @ date 2020/3/6---17:27
  */
-public class App extends BaseCommon {
+public class GeetestApp extends BaseCommon {
 
     ChromeDriver driver = getDriverForChrome("https://www.geetest.com/demo/slide-bind.html");
 
@@ -32,6 +32,7 @@ public class App extends BaseCommon {
     @Test
     public void test() throws Exception {
         driver.manage().window().setSize(new Dimension(1024, 768));
+//        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 
