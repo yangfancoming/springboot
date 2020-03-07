@@ -19,7 +19,7 @@ public class SkyEye extends BaseCommon {
     // 打开天眼查首页  并在搜索框输入内容
     @Test
     public void test1(){
-        WebDriver driver = getDriver("https://www.tianyancha.com/");
+        WebDriver driver = getDriver("https://www.tianyancha.com/login");
         // <input type="search" id="home-main-search" class="input -xl js-live-search-auto" wrap-class="-index" maxlength="50" click-selected="header.suggestToCompany" placeholder="请输入公司名称、老板姓名、品牌名称等" autocomplete="off">
         WebElement searchBox = driver.findElement(By.id("home-main-search"));
         searchBox.sendKeys("山羊公司");

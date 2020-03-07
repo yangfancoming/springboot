@@ -119,6 +119,24 @@ public class ImageUtil {
         throw new RuntimeException("计算移动距离失败");
     }
 
+    public static int calcMoveDistance(BufferedImage original,BufferedImage watermark) {
+        //小方块距离左边界距离
+        int START_DISTANCE = 6;
+        for (int i = 60; i < original.getWidth(); i++){
+            for(int j = 0; j < original.getHeight(); j++){
+                int[] fullRgb = test(original,i,j);
+                int[] bgRgb = test(watermark,i,j);
+                if(difference(fullRgb, bgRgb) > 255){
+//                        int moveDistance = (int)((i - START_DISTANCE) / ((imageFullScreenSize.x + 0.0f)/ htmlFullScreenSize.x));
+                    int fuck = i - START_DISTANCE;
+                    System.out.println("需要移动的距离:" + fuck);
+                    return fuck;
+                }
+            }
+        }
+        throw new RuntimeException("计算移动距离失败");
+    }
+
     private static int[] test(BufferedImage image,int i,int j){
         int[] test = new int[3];
         test[0] = (image.getRGB(i, j)  & 0xff0000) >> 16;
