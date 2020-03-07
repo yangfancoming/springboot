@@ -4,6 +4,7 @@ import com.goat.chapter207.model.MoveEntity;
 import org.apache.commons.lang3.RandomUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.internal.WrapsDriver;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -26,6 +27,31 @@ public class ImageUtil {
     private static Point imageFullScreenSize = null;
     //html 大小
     private static Point htmlFullScreenSize = null;
+
+
+
+    /**
+     * 部分截图（元素截图）
+     * 有时候需要元素的截图，不需要整个截图
+     * @throws Exception
+     */
+    public static File elementSnapshot(WebElement element) throws Exception {
+        //创建全屏截图
+        WrapsDriver wrapsDriver = (WrapsDriver)element;
+        File screen = ((TakesScreenshot)wrapsDriver.getWrappedDriver()).getScreenshotAs(OutputType.FILE);
+        BufferedImage image = ImageIO.read(screen);
+        //获取元素的高度、宽度
+        int width = element.getSize().getWidth();
+        int height = element.getSize().getHeight();
+        //创建一个矩形使用上面的高度，和宽度  100  36
+        Rectangle rect = new Rectangle(0,0,height, width);
+        //元素坐标
+        Point p = element.getLocation();
+        // 从全屏截图中裁剪出指定元素的截图
+        BufferedImage img = image.getSubimage(p.getX(), p.getY(), rect.width, rect.height);
+        ImageIO.write(img, "png", screen);
+        return screen;
+    }
 
     /**
      * 获取element的截图对应的BufferedImage对象
@@ -64,9 +90,9 @@ public class ImageUtil {
 
     //开始遍历处距离左边的距离
     private static final int GEETEST_WIDTH_START_POSTION = 60;
+
     /**
      * 根据original.png和slider.png 的像素差异 计算需要移动的距离
-     * @return
      */
     public static int calcMoveDistance() {
         //小方块距离左边界距离
