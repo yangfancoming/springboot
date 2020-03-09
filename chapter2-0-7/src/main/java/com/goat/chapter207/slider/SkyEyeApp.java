@@ -29,7 +29,8 @@ public class SkyEyeApp extends BaseCommon {
 
     @Test
     public void test() throws Exception {
-        driver.manage().window().setSize(new Dimension(1024, 768));
+//        driver.manage().window().setSize(new Dimension(1024, 768));
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         Thread.sleep(2 * 1000);
@@ -41,7 +42,7 @@ public class SkyEyeApp extends BaseCommon {
         System.out.println(element.getAttribute("onclick"));// loginObj.changeCurrent(2);
         // 点击 密码登录  tab页
         element.click();
-        Thread.sleep(30 * 1000);
+//        Thread.sleep(15 * 1000);
         driver.findElement(By.id("mobile")).sendKeys("151 0413 2033");
         driver.findElement(By.id("password")).sendKeys("8965236978");
         // 点击登录按钮 弹出滑块验证框
