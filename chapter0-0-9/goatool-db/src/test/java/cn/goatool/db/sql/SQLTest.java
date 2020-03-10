@@ -89,8 +89,6 @@ public class SQLTest {
         }}.toString();
     }
 
-
-
     // 测试 select语句的 可变长参数
     @Test
     public void variableLengthArgumentOnSelect() {
@@ -146,9 +144,6 @@ public class SQLTest {
         final String sql = new SQL() {{ SELECT().ORDER_BY("a", "b");}}.toString();
         assertEquals("ORDER BY a, b", sql);
     }
-
-
-
 
     @Test
     public void deleteUsingLimit() {

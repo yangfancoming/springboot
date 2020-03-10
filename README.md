@@ -56,6 +56,7 @@ Web开发
 - ==chapter2-0-3 springboot  集成  servlet、Filter、 Listener、interceptor 的两种方式==
 - ==chapter2-0-4 springboot  集成  HttpSession==
 - ==chapter2-0-5 springboot  集成 大数据 （区块链）
+- ==chapter2-0-6 springboot  集成 大数据 （Hadoop）
 - ==chapter2-0-7 springboot  集成 selenium
 - ==chapter2-0-8 springboot  集成 MockMvc和Swagger2 接收前台参数==
 - ==chapter2-1-0 springboot  中使用 ES6==
