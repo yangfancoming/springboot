@@ -27,6 +27,22 @@ public class DefaultVFS extends VFS {
     /** The magic header that indicates a JAR (ZIP) file. */
     private static final byte[] JAR_MAGIC = { 'P', 'K', 3, 4 };
 
+    /**
+     * 递归地列出所有资源的完整资源路径，这些资源是由URL标识的资源的子级。
+     * @param url   file:/E:/Code/J2EE_code/MySpringBoot/springboot/chapter0-0-9/goatool-core/target/classes/cn/goatool/core/reflect
+     * @param path  cn/goatool/core/reflect
+     * 输入示例： url + path
+     * 输出结果：
+     *              cn/goatool/core/reflect/factory
+     *              cn/goatool/core/reflect/factory/DefaultObjectFactory.class
+     *              cn/goatool/core/reflect/factory/ObjectFactory.class
+     *              cn/goatool/core/reflect/Reflector.class
+     *              cn/goatool/core/reflect/TypeParameterResolver.class
+     *              cn/goatool/core/reflect/TypeParameterResolver$GenericArrayTypeImpl.class
+     *              cn/goatool/core/reflect/TypeParameterResolver$ParameterizedTypeImpl.class
+     *              cn/goatool/core/reflect/TypeParameterResolver$WildcardTypeImpl.class
+     * @date  2020年3月11日16:34:11
+     */
     @Override
     public List<String> list(URL url, String path) throws IOException {
         InputStream is = null;
@@ -248,9 +264,6 @@ public class DefaultVFS extends VFS {
         }
         return false;
     }
-
-
-
 
     /**
      * List the names of the entries in the given {@link JarInputStream} that begin with the  specified {@code path}.

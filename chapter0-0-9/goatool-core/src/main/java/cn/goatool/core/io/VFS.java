@@ -41,7 +41,6 @@ public abstract class VFS {
         for (String child : children) {
             URL childUrl = new URL(prefix + child);
             childUrls.add(childUrl);
-
         }
         return childUrls;
     }
