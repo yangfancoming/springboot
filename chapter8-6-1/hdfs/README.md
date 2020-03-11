@@ -39,6 +39,9 @@
 
 # 操作 Hadoop 常用命令
          docker exec -it  7a1588213671  /bin/bash 
+         docker exec -it  hadoop-slave1  /bin/bash 
+         docker exec -it  hadoop-slave2  /bin/bash 
+         
          hdfs://192.168.211.128:9000
          find / -name "12.txt"
         
@@ -47,6 +50,7 @@
         find / -name "core-site.xml"
         find / -name "hdfs-site.xml"
         find / -name "stop-all.sh"
+        find / -name "0529"
         
          /usr/local/hadoop/sbin/start-dfs.sh
          /usr/local/hadoop/etc/hadoop/core-site.xml
@@ -68,7 +72,7 @@
     原因： 出现这个问题的原因是我们在windows上模拟开发环境，但并没有真正的搭建hadoop和spark
     解决办法：当然也并不需要我们真的去搭建hadoop
     
-    下载 winutils.exe  放到任意的目录下，F:\Package\Hadoop_Environment\winutils\bin
+    下载 winutils.exe  放到任意的目录下，F:\Package\Hadoop_Environment\winutils\bin （非中文路径且不能有空格）
     设置系统环境变量：新建  变量名  HADOOP_HOME  变量值 F:\Package\Hadoop_Environment\winutils
     
     新增 PATH 环境变量
