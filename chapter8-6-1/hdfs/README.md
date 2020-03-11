@@ -3,6 +3,7 @@
 
 # 报错：org.apache.hadoop.ipc.RemoteException: Access denied for user hadoop. Superuser privilege is required
     vim /usr/local/hadoop/etc/hadoop/core-site.xml
+    cat /usr/local/hadoop/etc/hadoop/core-site.xml
     添加以下内容
         <property>
             <name>hadoop.http.staticuser.user</name>
@@ -23,6 +24,7 @@
         </configuration>
 
     vi  /usr/local/hadoop/etc/hadoop/hdfs-site.xml
+    cat  /usr/local/hadoop/etc/hadoop/hdfs-site.xml
     添加以下内容
         <property>
             <name>dfs.permissions</name>
@@ -43,15 +45,18 @@
          docker exec -it  hadoop-slave2  /bin/bash 
          
          hdfs://192.168.211.128:9000
-         find / -name "12.txt"
+         find / -name "hadoop-daemon.sh"
         
          
+
         find / -name "start-dfs.sh"
         find / -name "core-site.xml"
         find / -name "hdfs-site.xml"
+        find / -name "start-container.sh"
         find / -name "stop-all.sh"
         find / -name "0529"
         
+         cat /usr/local/hadoop/sbin/hadoop-daemon.sh
          /usr/local/hadoop/sbin/start-dfs.sh
          /usr/local/hadoop/etc/hadoop/core-site.xml
          /usr/local/hadoop/etc/hadoop/hdfs-site.xml
