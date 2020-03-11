@@ -14,7 +14,6 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2019/12/6.
- *
  * @ Description: TODO
  * @ author  山羊来了
  * @ date 2019/12/6---17:23
@@ -46,7 +45,6 @@ public abstract class VFS {
         }
         return childUrls;
     }
-
 
     public List<String> getchilds(URL url,String path) throws IOException {
         InputStream is = url.openStream();
@@ -97,8 +95,6 @@ public abstract class VFS {
     public static String getPackagePath(String packageName) {
         return packageName == null ? null : packageName.replace('.', '/');
     }
-
-
 
     /**
      * Recursively list the full resource path of all the resources that are children of the resource identified by a URL.
