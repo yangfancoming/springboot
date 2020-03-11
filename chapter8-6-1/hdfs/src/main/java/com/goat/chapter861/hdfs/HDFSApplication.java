@@ -1,8 +1,7 @@
-package com.goat.chapter206;
+package com.goat.chapter861.hdfs;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 
 
 @SpringBootApplication

@@ -56,7 +56,7 @@ Web开发
 - ==chapter2-0-3 springboot  集成  servlet、Filter、 Listener、interceptor 的两种方式==
 - ==chapter2-0-4 springboot  集成  HttpSession==
 - ==chapter2-0-5 springboot  集成 大数据 （区块链）
-- ==chapter2-0-6 springboot  集成 大数据 （Hadoop）
+- ==chapter2-0-6 
 - ==chapter2-0-7 springboot  集成 selenium
 - ==chapter2-0-8 springboot  集成 MockMvc和Swagger2 接收前台参数==
 - ==chapter2-1-0 springboot  中使用 ES6==
@@ -307,12 +307,13 @@ word  相关操作
 JVM
 
 - ==chapter8-5-0：springboot 集成 JVM==
+- ==chapter8-5-3：springboot  集成 大数据 （Hadoop）==
 
 
 数据结构与算法
 
 - ==chapter8-6-0：springboot 集成 Leetcode==
-- ==chapter8-6-2：springboot 集成 数据结构==
+- ==chapter8-6-1：springboot 集成 大数据 （Hadoop）==
 
 
 书籍
