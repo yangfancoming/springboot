@@ -1,5 +1,6 @@
 package cn.goatool.core.io;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -14,23 +15,34 @@ import java.util.List;
  */
 public class DefaultVFSTest {
 
-    public DefaultVFSTest() throws IOException {}
 
     DefaultVFS defaultVFS = new DefaultVFS();
 
     String path =  "cn/goatool/core/exception";
     String path2 = "cn/goatool/core/reflect";
 
-    // doit 同样的方法为啥 再VFSTest测试类中 就是2个结果  这里运行就是1个结果呢？？？
+    @Test
+    public void getPackagePath(){
+        String packagePath = defaultVFS.getPackagePath("org.apache.goat.common");
+        Assert.assertEquals("org/apache/goat/common", packagePath);
+    }
+
     @Test
     public void getResources() throws IOException {
-        List<URL> list = VFS.getResources(path);
+        List<URL> list = defaultVFS.getResources(path);
+        list.forEach(x->System.out.println(x));
+    }
+
+    @Test
+    public void list2() throws IOException {
+        String packagePath = defaultVFS.getPackagePath(path);
+        List<String> list = defaultVFS.list(packagePath);
         list.forEach(x->System.out.println(x));
     }
 
     @Test
     public void list() throws IOException {
-        List<URL> urls = VFS.getResources(path2);
+        List<URL> urls = defaultVFS.getResources(path2);
         for (URL url : urls) {
             List<String> list = defaultVFS.list(url, path2);
             list.forEach(x->System.out.println(x));
@@ -39,7 +51,7 @@ public class DefaultVFSTest {
 
     @Test
     public void isJar() throws IOException {
-        List<URL> urls = VFS.getResources(path);
+        List<URL> urls = defaultVFS.getResources(path);
         for (URL url : urls) {
             List<URL> childUrls = defaultVFS.getChildUrls(url, path);
             childUrls.forEach(x->System.out.println(defaultVFS.isJar(x)));

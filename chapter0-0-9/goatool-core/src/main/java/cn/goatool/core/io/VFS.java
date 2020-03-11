@@ -105,4 +105,22 @@ public abstract class VFS {
      * D.获取资源list
      */
     protected abstract List<String> list(URL url, String forPath) throws IOException;
+
+    /**
+     * Recursively list the full resource path of all the resources that are children of all the resources found at the specified path.
+     * 递归地列出所有资源的完整资源路径，这些资源是在指定路径上找到的所有资源的子级。
+     * @param path The path of the resource(s) to list.  org/apache/goat/common
+     * @return A list containing the names of the child resources.
+     * @throws IOException If I/O errors occur
+     * D.递归列出所有的资源 org/apache/goat/common
+     */
+    public List<String> list(String path) throws IOException {
+        List<String> names = new ArrayList<>();
+        List<URL> resources = getResources(path);
+        for (URL url : resources) {
+            List<String> list = list(url, path);
+            names.addAll(list);
+        }
+        return names;
+    }
 }

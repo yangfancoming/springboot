@@ -111,7 +111,6 @@ public class DefaultVFS extends VFS {
                         throw e;
                     }
                 }
-
                 // The URL prefix to use when recursively listing child resources
                 String prefix = url.toExternalForm();
                 if (!prefix.endsWith("/")) {
