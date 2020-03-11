@@ -21,6 +21,7 @@ import java.net.URI;
 public class HdfsIoUtil {
 
     Configuration conf = new Configuration();
+
     // 把本地 D:\123\123.txt 文件上传到HDFS根目录
     @Test
     public void test() throws Exception{
