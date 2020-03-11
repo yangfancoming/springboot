@@ -64,8 +64,22 @@
         
         hadoop fs -chmod 777 / 
 
-
-
+#  报错 java.io.IOException: Could not locate executable null\bin\winutils.exe in the Hadoop binaries.
+    原因： 出现这个问题的原因是我们在windows上模拟开发环境，但并没有真正的搭建hadoop和spark
+    解决办法：当然也并不需要我们真的去搭建hadoop
+    
+    下载 winutils.exe  放到任意的目录下，F:\Package\Hadoop_Environment\winutils\bin
+    设置系统环境变量：新建  变量名  HADOOP_HOME  变量值 F:\Package\Hadoop_Environment\winutils
+    
+    新增 PATH 环境变量
+    %HADOOP_HOME%\bin
+    重启电脑后再次运行 则不再有报错提示
+    
+    
+    
+    
+    
+ 
 
 
 
