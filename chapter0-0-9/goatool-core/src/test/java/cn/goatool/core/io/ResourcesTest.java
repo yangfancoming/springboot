@@ -20,10 +20,10 @@ import java.util.Properties;
 public class ResourcesTest {
 
     private Logger log = LoggerFactory.getLogger(getClass());
+    String xmlPath = "mybatis-config.xml";
 
     @Test
     public void getResourceAsReader() throws IOException {
-        String xmlPath = "mybatis-config.xml";
         try (Reader reader = Resources.getResourceAsReader(xmlPath)) {
             Assert.assertNotNull(reader);
         }
@@ -31,7 +31,6 @@ public class ResourcesTest {
 
     @Test
     public void getResourceAsStream() throws IOException {
-        String xmlPath = "mybatis-config.xml";
         try (InputStream inputStream = Resources.getResourceAsStream(xmlPath)) {
             Assert.assertNotNull(inputStream);
         }
