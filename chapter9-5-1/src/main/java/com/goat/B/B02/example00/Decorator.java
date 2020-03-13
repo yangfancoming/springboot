@@ -6,6 +6,7 @@ package com.goat.B.B02.example00;
  */
 public abstract class Decorator extends Component {
 
+    // 装饰者 有一个被装饰对象的实例
     private Component component;
 
     public void setComponent(Component component) {
