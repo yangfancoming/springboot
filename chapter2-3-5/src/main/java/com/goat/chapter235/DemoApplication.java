@@ -20,9 +20,10 @@ public class DemoApplication {
     // CommandLineRunner是Spring BOOT项目启动时会执行的任务
     @Bean
     CommandLineRunner serverRunner(TcpDecoderHandler tcpDecoderHandler, UdpDecoderHandler udpDecoderHanlder, UdpEncoderHandler udpEncoderHandler, UdpHandler udpHandler) {
-        return strings ->{
+        return args ->{
             createUdpServer(udpDecoderHanlder, udpEncoderHandler, udpHandler);
-//            createTcpServer(tcpDecoderHandler);
+            createTcpServer(tcpDecoderHandler);
+            System.out.println(args);
         };
     }
 

@@ -7,7 +7,7 @@ package com.goat.model;
  * @ author  山羊来了
  * @ date 2019/12/5---15:43
  */
-public class Person implements eagle,whale{
+public class Person implements Eagle, Whale {
 
     private int id = 10001;
 

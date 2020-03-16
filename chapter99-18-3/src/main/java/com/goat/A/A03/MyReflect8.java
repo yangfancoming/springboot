@@ -38,8 +38,6 @@ public class MyReflect8 {
             Method[] methods = x.getMethods();
             Arrays.stream(methods).forEach(y->System.out.println(y.getName()));
         });
-
     }
-
 
 }
