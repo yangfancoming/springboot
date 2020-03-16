@@ -130,7 +130,6 @@
         <module>chapter3-8-0</module>
         <module>chapter8-2-0</module>
         <module>chapter5-1-4</module>
-        <module>chapter0-0-5</module>
         <module>chapter3-6-6</module>
         <module>chapter3-5-2</module>
         <module>chapter6-2-8</module>
@@ -246,7 +245,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.4.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 
 	<properties>
