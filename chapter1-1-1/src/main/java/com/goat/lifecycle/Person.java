@@ -3,8 +3,6 @@ package com.goat.lifecycle;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.*;
 
-import javax.annotation.PostConstruct;
-
 /**
  * Created by 64274 on 2019/4/22.
  *

@@ -9,9 +9,7 @@ import java.util.Map;
 
 /**
  * Created by 64274 on 2018/7/14.
- *
  * @author 山羊来了
- * @Description: TODO
  * @date 2018/7/14---19:19
     Spring @Configuration 和 @Component 区别
     一句话概括就是 @Configuration 中所有带 @Bean 注解的方法都会被动态代理，

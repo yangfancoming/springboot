@@ -8,11 +8,9 @@ import javax.validation.constraints.NotNull;
 
 /**
  * Created by 64274 on 2019/1/23.
- *
- * @ Description: TODO
  * @ author  山羊来了
  * @ date 2019/1/23---11:26
- * @ConfigurationProperties 注解就可以绑定属性了
+ * @ConfigurationProperties 告诉Springboot 将本类中的所有属性和配置文件中的相关配置记性绑定
  * ignoreUnknownFields = false告诉Spring Boot 在有属性不能匹配到声明的域的时候抛出异常
  * prefix 用来选择哪个属性的prefix名字来绑定
  */
