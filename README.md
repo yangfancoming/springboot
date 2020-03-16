@@ -1,18 +1,14 @@
 
-SpringBoot
+SpringBoot 项目目录
 
 两个项目 配置使用 
  
-
 ==chapter2-7-1 springboot  集成 HttpClient ==
 ==chapter2-0-8 springboot  集成 MockMvc和Swagger2==
 
-
 工程配置
-
 - ==chapter0-0-0 springboot  空项目==
 - ==chapter0-0-1 springboot  共享model==
-- ==chapter0-0-5 springboot  Helloworld==
 - ==chapter0-0-6 springboot  自定义jar包==
 - ==chapter0-0-7 springboot  引入自定义jar包并以可运行jar方式启动 + SpringMVC 扩展==
 - ==chapter0-0-8 springboot  引入自定义jar包并以war包方式启动==
@@ -28,7 +24,6 @@ SpringBoot
 - ==chapter1-1-8 springboot  集成OGNL ==
 
 日志相关
-
 - ==chapter1-2-1 springboot  与 日志==
 - ==chapter1-2-2 springboot  与 日志    默认日志框架  LogBack ==
 - ==chapter1-2-3 springboot  与 日志 log4j + AOP统一处理请求日志==
@@ -43,14 +38,12 @@ SpringBoot
 
 
 日期和时间处理  基于 restTemplate
-
 - ==chapter1-3-5 springboot  公共接口和model==
 - ==chapter1-3-6 springboot  生产者 Provider==
 - ==chapter1-3-7 springboot  消费者 Consumer==
 - ==chapter1-3-8 springboot  全局 日期格式处理==
 
 Web开发
-
 - ==chapter2-0-0 springboot  中的SpringMVC  相关操作总结
 - ==chapter2-0-2 springboot  打jar包方式的静态资源映射规则(webjars)==
 - ==chapter2-0-3 springboot  集成  servlet、Filter、 Listener、interceptor 的两种方式==
@@ -118,25 +111,21 @@ Spring基础
 
 
 异常管理
-
 - ==chapter3-1-1：springboot 统一捕获 全局异常==
 
 
 事务管理
-
 - ==chapter3-3-1：springboot  事务管理   基于@Transactional 注解+ jdbcTemplate实现==
 - ==chapter3-3-2：springboot  事务管理   基于@Transactional 注解+ JPA实现==
 
 
 AOP
-
 - ==chapter3-4-1：springboot  AOP拦截   基于@Aspect 注解==
 - ==chapter3-4-2：springboot  AOP拦截 系统日志   基于@Aspect 注解==
 
 
 
 安全管理
-
 - ==chapter3-4-8：springboot  集成 License 验证  生成和校检整合==
 - ==chapter3-4-9：springboot  集成 License 验证  生成和校检分开==
 - ==chapter3-5-0：springboot  集成 License 验证 待整理 ==
@@ -156,7 +145,6 @@ AOP
 
 
 持久层数据访问
-
 - ==chapter4-0-0：springboot 集成  Druid连接池及监控界面==
 - ==chapter4-0-4：springboot 使用  内置数据库连接池==
 - ==chapter4-1-1：springboot 中使用 JDBC  JdbcTemplate==   
@@ -205,7 +193,6 @@ AOP
 
 
 微服务
-
 - ==chapter5-3-0：springboot 集成 Dubbo consumer/ product ==
 - ==chapter5-3-1：springboot 集成 Dubbo api / consumer/ product==
 - ==chapter5-3-2：springboot 集成  Zookeeper 客户端 + Zookeeper集群==
@@ -232,7 +219,6 @@ AOP
 
 
 任务调度
-
 - ==chapter6-3-1：springboot 集成 Scheduled==
 - ==chapter6-4-1：springboot 集成 Quartz==
 - ==chapter6-5-1：springboot  异步任务 @Async==
@@ -252,7 +238,6 @@ AOP
 
 
 excel 相关操作
-
 - ==chapter7-5-5：springboot 集成 POI 操作Excel ==
 - ==chapter7-5-6：springboot 集成 EasyPoi 操作Excel
 - chapter7-5-8：springboot 集成 Alibaba EasyExcel
@@ -261,8 +246,6 @@ word  相关操作
 - chapter7-6-0：springboot 集成 docx4j 操作 word 
 
 其他语言
-
-
 - ==chapter7-6-1：springboot 集成 事件监听==
 - ==chapter7-6-5：springboot 集成 Tinypinyin==
 - ==chapter7-8-0：springboot 集成 Drools==
@@ -282,7 +265,6 @@ word  相关操作
 
 
 文件上传/下载
-
 - ==chapter8-2-0：springboot 集成 FastDFS==
 - ==chapter8-2-1：springboot 集成 ftp ==
 - ==chapter8-2-2：springboot 集成 MinIO==
@@ -290,7 +272,6 @@ word  相关操作
 
 
 消息中间件
-
 - ==chapter8-2-5：springboot  集成 EventBus ==
 - ==chapter8-3-0：springboot 集成 RabbitMQ==
 - ==chapter8-3-1：springboot 集成 RabbitMQ  精简版==
@@ -299,36 +280,30 @@ word  相关操作
 
 
 二维码相关
-
 - ==chapter8-4-0：springboot 集成 Qrcode==
 - ==chapter8-4-2：springboot 集成 Zxing==
 
 
 JVM
-
 - ==chapter8-5-0：springboot 集成 JVM==
 - ==chapter8-5-3：springboot  集成 大数据 （Hadoop）==
 
 
 数据结构与算法
-
 - ==chapter8-6-0：springboot 集成 Leetcode==
 - ==chapter8-6-1：springboot 集成 大数据 （Hadoop）==
 
 
 书籍
-
 ==chapter8-7-0：springboot 集成 Effective Java 第二版==
 ==chapter8-7-7：IDEA插件开发 基于 Gradle ==
 
 
 项目经验总结
-
 ==chapter8-8-8：springboot 集成 项目经验总结==
 ==chapter8-9-0：springboot 集成 Linux 系统 总结==
 
 高并发
-
 - ==chapter9-0-1：springboot 集成 高并发 ==
 
 
@@ -354,11 +329,9 @@ JVM
 
 
 版本控制
-
 - ==chapter9-9-1：springboot 集成Git 版本控制==
 
 测试功能
-
 - ==chapter9-9-2：springboot  Jacoco 测试覆盖率==
 - ==chapter9-9-5：springboot  Junit 读取 resources ==
 - ==chapter9-9-6：springboot 集成 TestNG==
@@ -366,7 +339,6 @@ JVM
 
 
 JavaSe 项目目录
-
 - ==chapter99-3-3：数据类型和运算符==
 - ==chapter99-4-3：流程控制与数组==
 - ==chapter99-5-3：面向对象 上==
@@ -378,22 +350,6 @@ JavaSe 项目目录
 - ==chapter99-18-3：Java 类加载机制与反射==
 - ==chapter99-20-1：单机游戏==
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-# 学习误区
-    为什么 我学完了之后  过段时间就都忘记了？？
-    因为. 有输入 没有输出   学习之后要做笔记或做视频给别人讲明白  
 
 
 
