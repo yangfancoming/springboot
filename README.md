@@ -76,7 +76,7 @@ Web开发
 - ==chapter2-5-5 springboot  集成 Netty Client==
 - ==chapter2-5-8 springboot  集成 protocol buf 谷歌==
 - ==chapter2-6-0 springboot  集成  JSP 内嵌Tomcat容器==
-- ==chapter2-6-1 springboot  集成  JSP 外置Tomcat容器 + 文件上传/下载==
+- ==chapter2-6-1 springboot  集成  JSP 外置Tomcat容器 + 文件上传/下载 + 远程调试==
 
 
 模板引擎

@@ -9,7 +9,7 @@
         //Tomcat的设置
         server.tomcat.xxx
     
-    // 该种配置方式  在Springboot 2.x 系列中 已经去除
+    // 以下配置方式  在Springboot 2.x 系列中 已经去除
     2、编写一个EmbeddedServletContainerCustomizer：嵌入式的Servlet容器的定制器；来修改内嵌Servlet容器的配置
     
         @Bean  //一定要将这个定制器加入到容器中

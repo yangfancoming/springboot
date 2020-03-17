@@ -17,9 +17,8 @@ import java.io.FileNotFoundException;
  */
 public class FileUtils {
 
-
-    //            String filename = UUID.randomUUID() + suffix;
-    //            String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));  //文件后缀名
+    //   String filename = UUID.randomUUID() + suffix;
+    //   String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));  //文件后缀名
 
     @Test
     public void test() throws FileNotFoundException {

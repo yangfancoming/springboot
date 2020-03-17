@@ -12,9 +12,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 /**
-     * @Description:  单个文件上传
-     * @author: Goat
-     * @Date:   2018/12/18
+ * @Description:  单个文件上传
+ * @author: Goat
+ * @Date:   2018/12/18
 */
 @RestController
 public class SingleUploadController {
@@ -23,7 +23,6 @@ public class SingleUploadController {
      * 上传文件方法
      * @param file 前台上传的文件对象
      *  测试地址：  http://localhost:8261/upload
-     * @return
      */
     @RequestMapping(value = "/upload",method = RequestMethod.POST)
     public @ResponseBody String upload(MultipartFile file) {
@@ -49,7 +48,6 @@ public class SingleUploadController {
 //    http://localhost:8261/read
     @RequestMapping(value = "/read",method = RequestMethod.GET)
     public void read(HttpServletRequest request) throws FileNotFoundException {
-
 //        File file = ResourceUtils.getFile("classpath:cer.cer");
         File file = ResourceUtils.getFile("/cer.cer");
         System.out.println(file);

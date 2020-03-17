@@ -9,12 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class JspController {
 
-    @RequestMapping("/hello")
-    public String hello() {
-        return "hello jsp ";
-    }
-
-
     //    http://localhost:8260/hello1
     @RequestMapping("/hello1")
     public String hello1(Model model)  {
