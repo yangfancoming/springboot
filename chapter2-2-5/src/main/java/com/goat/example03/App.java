@@ -1,15 +1,13 @@
 package com.goat.example03;
 
 
-import com.google.gson.Gson;
+import com.goat.BaseTest;
 import org.junit.Test;
 
 
-public class TestNG {
+public class App extends BaseTest {
 
-    private final Gson gson = new Gson();
-
-    //    json 中包含 jsonArray
+    // json 中包含 jsonArray
     @Test
     public void test1() {
         String str = "{\"name\":\"mrxi\",\"age\":\"24\",\"gender\":1,\"school\":\"bupt\",\"grade\":[{\"course\":\"English\",\"score\":100,\"level\":\"A\"},{\"course\":\"Math\",\"score\":90,\"level\":\"A\"}]}";

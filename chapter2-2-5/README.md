@@ -1,4 +1,5 @@
-#  在linux 系统部署后  遇到 日期时间 格式 解析错误
+#  在linux 系统部署后  遇到 日期时间 格式 解析错误 (linux日期报错)
+    
     数据采集项目 在windows上部署 wms 给其post推送数据 isdc 可以正常解析
     但是 isdc 在linux上部署 后 wms 给其post推送数据  isdc 系统 报错：java.text.ParseException: Unparseable date: "2019-03-13 17:42:54"
     

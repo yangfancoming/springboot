@@ -2,12 +2,12 @@ package com.goat.example02;
 
 /**
  * Created by 64274 on 2018/9/13.
- *
  * @author 山羊来了
  * @Description: TODO
  * @date 2018/9/13---19:27
  */
 class Student {
+
     private String name;
     private String age;
     private int gender;

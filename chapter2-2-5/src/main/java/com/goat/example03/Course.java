@@ -9,6 +9,7 @@ package com.goat.example03;
  */
 
 class Course {
+
     private String course;
     private String score;
     private String level;
