@@ -1,10 +1,8 @@
 package com.goat.model;
 
-/**
- * @author zhouyulong
- * @date 2018/10/28 下午2:46.
- */
+
 public class Index {
+
     private Integer id;
     private String name;
     private Integer num;

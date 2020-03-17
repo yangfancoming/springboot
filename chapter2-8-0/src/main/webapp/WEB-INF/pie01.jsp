@@ -1,5 +1,5 @@
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title>Title</title>
@@ -15,7 +15,7 @@
 </html>
 
 <script>
-    var myChart = echarts.init(document.getElementById('main'));
+    const myChart = echarts.init(document.getElementById('main'));
 
     // 指定图表的配置项和数据
     option = {

@@ -6,10 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author zhouyulong
- * @date 2018/10/28 下午2:46.
- */
+
 @Service
 public class IndexServiceImpl {
 
