@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class JumpController {
 
-   // http://localhost:8280/jump?page=index
-   // http://localhost:8280/jump?page=pie01
+   // http://localhost:8280/jump?page=index   首页 柱状图
+   // http://localhost:8280/jump?page=pie01   饼图
+   // http://localhost:8280/jump?page=jquery  jQuery学习
     @RequestMapping("/jump")
     public String hello1(String page)  {
         return page;

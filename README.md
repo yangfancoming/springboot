@@ -92,8 +92,7 @@ Web开发
 
 - ==chapter2-7-1 springboot  集成 HttpClient ==
 - ==chapter2-7-3 springboot  集成 RestTemplate + IDEA RestClient工具使用 ==
-- ==chapter2-8-0 springboot  集成  JSP 中使用 Echarts==
-- ==chapter2-8-1 springboot  集成  JSP 中使用 JQuery==
+- ==chapter2-8-0 springboot  集成  JSP 中使用 Echarts + JQuery ==
 - ==chapter2-8-2 springboot  集成  JSP 中使用 百度地图==
 - ==chapter2-9-0 springboot  集成  前后台交互  方式 总结==
 - ==chapter2-9-3 springboot  集成  跨域==

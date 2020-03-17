@@ -28,7 +28,6 @@ public class JspController {
         return "index";
     }
 
-
     @Autowired
     IndexServiceImpl indexService;
 
