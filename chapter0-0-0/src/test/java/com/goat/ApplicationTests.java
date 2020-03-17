@@ -18,11 +18,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 /**
-     * @Description:  MockMvc 基于SpringMVC进行测试
-     * @author: Goat
-     * @Param:
-     * @Return:
-     * @Date:   2018/11/8
+ * @Description:  MockMvc 基于SpringMVC进行测试
+ * @author: Goat
+ * @Date:   2018/11/8
 */
 @RunWith(SpringRunner.class)
 @SpringBootTest

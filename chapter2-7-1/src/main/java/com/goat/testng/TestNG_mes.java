@@ -3,7 +3,6 @@ package com.goat.testng;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.goat.HttpClientApplication;
 import com.goat.pojo.HttpClientResult;
 import com.goat.utils.HttpClientUtils;
 import org.junit.Test;

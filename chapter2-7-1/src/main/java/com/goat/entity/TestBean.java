@@ -8,6 +8,7 @@ package com.goat.entity;
  * @date 2018/10/16---15:39
  */
 public class TestBean {
+
     String upn;
     String stockCount;
 

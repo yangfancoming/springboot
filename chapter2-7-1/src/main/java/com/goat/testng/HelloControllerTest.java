@@ -1,22 +1,18 @@
 package com.goat.testng;
 
 
-import com.goat.HttpClientApplication;
 import com.goat.pojo.HttpClientResult;
 import com.goat.utils.HttpClientUtils;
 import org.junit.Test;
-//import org.springframework.test.context.ContextConfiguration;
 
 import java.util.HashMap;
 import java.util.Map;
 
 
 /**
-     * @Description:  需先启动 chapter0-0-0  项目  后 方可进行测试
-     * @author: Goat
-     * @Param:
-     * @Return:
-     * @Date:   2018/9/22
+ * @Description:  需先启动 chapter0-0-0  项目  后 方可进行测试
+ * @author: Goat
+ * @Date:   2018/9/22
 */
 //@ContextConfiguration(classes= HttpClientApplication.class)
 public class HelloControllerTest {
@@ -24,7 +20,6 @@ public class HelloControllerTest {
     private static final String url = "http://127.0.0.1:8208/8208";
     /**
      * Description: 测试get无参请求
-     * @throws Exception
      */
     @Test
     public void testGet() throws Exception {

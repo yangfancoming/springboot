@@ -25,9 +25,6 @@ import java.util.Map.Entry;
 
 /**
  * Description: httpClient工具类
- * 
- * @author JourWon
- * @date Created on 2018年4月19日
  */
 public class HttpClientUtils {
 
@@ -70,7 +67,6 @@ public class HttpClientUtils {
 	 * @throws Exception
 	 */
 	public static HttpClientResult doGet(String url, Map<String, String> headers, Map<String, String> params) throws Exception {
-
 		CloseableHttpClient httpClient = HttpClients.createDefault(); // 创建httpClient对象
 		URIBuilder uriBuilder = new URIBuilder(url); // 创建访问的地址
 		if (params != null) {
@@ -212,16 +208,6 @@ public class HttpClientUtils {
         }
         return response;
     }
-
-	/**
-	 * 发送put请求；不带请求参数
-	 * @param url 请求地址
-	 * @return httpClientResult
-	 * @throws Exception
-	 */
-	public static HttpClientResult doPut(String url)   {
-		return doPut(url);
-	}
 
 	/**
 	 * 发送put请求；带请求参数
