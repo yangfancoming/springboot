@@ -11,14 +11,10 @@ import java.util.Map;
 
 /**
  * Created by 64274 on 2018/8/24.
- *
  * @author 山羊来了
- * @Description: TODO
  * @date 2018/8/24---14:20
- *
-
  */
-@Component // 放入spring容器
+@Component
 //@PropertySource("classpath:student.yml")
 @PropertySource("classpath:student.properties") // fuck 这里不能读取 yml 文件  因为 @PropertySource 注解 只支持 properties 文件
 @ConfigurationProperties(prefix = "student")

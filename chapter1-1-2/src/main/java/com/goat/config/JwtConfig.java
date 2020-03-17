@@ -15,9 +15,7 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @ConfigurationProperties(prefix = "security")
 public class JwtConfig {
-    /**
-     * Token issuer.
-     */
+
     private Integer tokenExpirationTime;
     private String tokenIssuer;
     private String tokenSigningKey;

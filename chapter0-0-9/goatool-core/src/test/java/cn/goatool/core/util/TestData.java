@@ -3,7 +3,6 @@ package cn.goatool.core.util;
 /**
  * 测试数据
  * @ date 2019/12/4---16:40
- *
  * doit @output    @input
  */
 public class TestData {

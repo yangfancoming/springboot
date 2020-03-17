@@ -10,7 +10,6 @@
     <version>0.0.1-SNAPSHOT</version>
 
 
-
     <modules>
         <module>goatool-core</module>
         <module>goatool-poi</module>
@@ -18,11 +17,9 @@
     </modules>
 
 
-
     <properties>
         <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
-
         <!-- versions -->
         <compile.version>1.8</compile.version>
         <junit.version>4.12</junit.version>
