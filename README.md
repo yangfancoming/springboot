@@ -16,7 +16,6 @@ SpringBoot 项目目录
 - ==chapter0-1-0 springboot  Utils 积累常用工具类 (作为其他项目依赖)==  
 - ==chapter0-1-1springboot   集合 Hutool 框架源码==
 - ==chapter0-1-2 springboot  集合 Hutool 框架 演示使用==
-- ==chapter0-1-9 springboot  自定义banner==
 - ==chapter1-1-1 springboot  读取配置文件 +  获取bean的几种方式==
 - ==chapter1-1-2 springboot  javaconfig配置集合(其他模块共享该配置)==
 - ==chapter1-1-4 springboot  国际化 i18n==
@@ -49,7 +48,6 @@ Web开发
 - ==chapter2-0-3 springboot  集成  servlet、Filter、 Listener、interceptor 的两种方式==
 - ==chapter2-0-4 springboot  集成  HttpSession==
 - ==chapter2-0-5 springboot  集成 大数据 （区块链）
-- ==chapter2-0-6 
 - ==chapter2-0-7 springboot  集成 selenium
 - ==chapter2-0-8 springboot  集成 MockMvc和Swagger2 接收前台参数==
 - ==chapter2-1-0 springboot  中使用 ES6==

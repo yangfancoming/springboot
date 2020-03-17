@@ -4,17 +4,17 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.goat.model.User;
+import com.goat.model.Person;
 
 import java.io.IOException;
 
-public class UserDeserializer extends JsonDeserializer<User> {
+public class PersonDeserializer extends JsonDeserializer<Person> {
 
 	@Override
-	public User deserialize(JsonParser parser, DeserializationContext context)throws IOException {
+	public Person deserialize(JsonParser parser, DeserializationContext context)throws IOException {
 		JsonNode node = parser.getCodec().readTree(parser);
 		String userName = node.get("user-name").asText();
-		User user = new User();
+        Person user = new Person();
 		user.setUserName(userName);
 		return user;
 	}

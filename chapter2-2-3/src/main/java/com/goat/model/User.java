@@ -5,11 +5,9 @@ import com.fasterxml.jackson.annotation.*;
 import java.io.Serializable;
 import java.util.Date;
 
-//@JsonIgnoreProperties({ "password", "age" }) // @JsonIgnoreProperties 转换实体时忽略json中不存在的字段
+//@JsonIgnoreProperties({ "password", "age" }) //  转换实体时忽略json中不存在的字段
 //@JsonNaming(PropertyNamingStrategy.LowerCaseWithUnderscoresStrategy.class)
-//@JsonSerialize(using = UserSerializer.class)
-//@JsonDeserialize (using = UserDeserializer.class)
-@JsonInclude(JsonInclude.Include.NON_NULL) // 如果该字段为 null 则不会返回  也可以用在 属性上
+//@JsonInclude(JsonInclude.Include.NON_NULL) // 如果该字段为 null 则不会返回  也可以用在 属性上
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 6222176558369919436L;
@@ -45,8 +43,25 @@ public class User implements Serializable {
     @JsonIgnore // 作用：在json序列化时将java bean中的一些属性忽略掉，序列化和反序列化都受影响
     private String temp3;
 
+    public User() {
+    }
 
-	public String getUserName() {
+    public User(String userName, int age, String password, Date birthday) {
+        this.userName = userName;
+        this.age = age;
+        this.password = password;
+        this.birthday = birthday;
+    }
+
+    public User(String userName, int age, String password, Date birthday, String temp2) {
+        this.userName = userName;
+        this.age = age;
+        this.password = password;
+        this.birthday = birthday;
+        this.temp2 = temp2;
+    }
+
+    public String getUserName() {
 		return userName;
 	}
 

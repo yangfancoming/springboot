@@ -1,4 +1,4 @@
-package com.goat.fastjson;
+package com.goat.fastjson.test;
 
 
 import com.alibaba.fastjson.JSON;
@@ -11,7 +11,6 @@ import org.junit.Test;
 
 import java.util.*;
 
-
 /**
  * Created by 64274 on 2018/7/27.
  13         json2JsonObject();//将Json字符串转换为JSONObject对象
@@ -23,7 +22,7 @@ import java.util.*;
  19         json2ListInMap();//从Json字符串的Map中获取List对象
  20         list2JsonInMap();//将含list的Map对象转换为Json字符串
  */
-public class TestNG {
+public class App {
 
     @Test
     public void json2JsonObject() {
@@ -62,13 +61,13 @@ public class TestNG {
     }
 
     @Test
-    public static void javaBean2Json() {
+    public  void javaBean2Json() {
         User user = new User("17051801", "lucy");
         String string = JSON.toJSONString(user);
         System.out.println(string);
     }
     @Test
-    public static void javaBean2Json1() {
+    public  void javaBean2Json1() {
         Person person = new Person(1, "2", new Date(), "3", "4", "5", "6");
         String string = JSON.toJSONString(person);
         System.out.println(string);
@@ -76,13 +75,13 @@ public class TestNG {
 
 
     @Test
-    public static void javaBean2JsonObject() {
+    public  void javaBean2JsonObject() {
         User user = new User("17051801", "lucy");
         JSONObject json = (JSONObject) JSON.toJSON(user);
         System.out.println(json.get("id"));
     }
     @Test
-    public static void json2ListInMap() {
+    public  void json2ListInMap() {
         String s = "{json:[{id:\"17051801\",\"name\":\"lucy\"},{id:\"17051802\",\"name\":\"peter\"},{id:\"17051803\",\"name\":\"tom\"},{id:\"17051804\",\"name\":\"lily\"}]}";
         //将Json字符串转换为JSONObject对象,并取出list对象的值
         JSONObject object = JSON.parseObject(s);
@@ -103,7 +102,7 @@ public class TestNG {
     }
 
     @Test
-    public static void list2JsonInMap() {
+    public  void list2JsonInMap() {
         //方式1:构建一个带有list的JavaBean对象
         School school = new School();
         school.setId("1");
@@ -143,6 +142,7 @@ public class TestNG {
         String string2 = JSON.toJSONString(map);
         System.out.println(string2);
     }
+
     @Test
     public void test() {
         String temp = "{\"_name\":\"123\",\"_class\":\"123\",\"_sid\":\"123\",\"_sex\":\"1\",\"_age\":123}";
