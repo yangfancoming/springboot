@@ -24,9 +24,7 @@ public class LimiterController {
     @GetMapping("/test")
     public String luaLimiter() {
         RedisAtomicInteger entityIdCounter = new RedisAtomicInteger("entityIdCounter", redisTemplate.getConnectionFactory());
-
         String date = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss.SSS");
-
         return date + " 累计访问次数：" + entityIdCounter.getAndIncrement();
     }
 }

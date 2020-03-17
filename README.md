@@ -120,7 +120,6 @@ AOP
 - ==chapter3-4-2：springboot  AOP拦截 系统日志   基于@Aspect 注解==
 
 
-
 安全管理
 - ==chapter3-4-8：springboot  集成 License 验证  生成和校检整合==
 - ==chapter3-4-9：springboot  集成 License 验证  生成和校检分开==
@@ -282,7 +281,6 @@ word  相关操作
 
 JVM
 - ==chapter8-5-0：springboot 集成 JVM==
-- ==chapter8-5-3：springboot  集成 大数据 （Hadoop）==
 
 
 数据结构与算法
@@ -292,7 +290,6 @@ JVM
 
 书籍
 ==chapter8-7-0：springboot 集成 Effective Java 第二版==
-==chapter8-7-7：IDEA插件开发 基于 Gradle ==
 
 
 项目经验总结
