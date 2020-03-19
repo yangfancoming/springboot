@@ -96,12 +96,10 @@ public class RestTemplateConfig {
 
     @Bean
     public HttpClientConnectionManager poolingConnectionManager() {
-
         Registry<ConnectionSocketFactory> registry = RegistryBuilder.<ConnectionSocketFactory> create()
                 .register("http", PlainConnectionSocketFactory.getSocketFactory())
                 .register("https", SSLConnectionSocketFactory.getSocketFactory())
                 .build();
-
         PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager(registry);
         connectionManager.setMaxTotal(maxTotalConnect); // 连接池最大连接数
         connectionManager.setDefaultMaxPerRoute(maxConnectPerRoute); // 每个主机的并发

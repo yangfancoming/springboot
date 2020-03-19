@@ -2,6 +2,7 @@ package com.goat.test;
 
 import com.goat.chapter001.entity.User;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -56,5 +57,12 @@ public class PostTest extends BaseTest{
         User temp = restTemplate.postForObject("http://localhost/save", user, User.class);
         return temp;
     }
+
+    @GetMapping("test2")
+    public User test2(User user) {
+        User temp = restTemplate.postForObject("http://localhost/save", user, User.class);
+        return temp;
+    }
+
 
 }
