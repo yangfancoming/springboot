@@ -1,6 +1,7 @@
 package com.goat.chapter277.controller;
 
 import cn.goatool.core.util.DigestUtils;
+import com.goat.chapter277.model.MyResult;
 import com.goat.chapter277.model.TranslateProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -40,8 +41,7 @@ public class TestController {
 
     // {"from":"zh","to":"en","trans_result":[{"src":"\u5c71\u7f8a","dst":"Goat"}]}
     @GetMapping("test2")
-    public void test2() {
-
+    public MyResult test2() {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         MultiValueMap<String, String> requestBody = new LinkedMultiValueMap<>();
@@ -53,7 +53,8 @@ public class TestController {
         String src = props.getAppid() + props.getQ() + props.getSalt() + props.getSign();
         requestBody.add("sign", DigestUtils.md5DigestAsHex(src.getBytes(StandardCharsets.UTF_8)));
         HttpEntity<MultiValueMap> requestEntity = new HttpEntity<>(requestBody, headers);
-        ResponseEntity<Object> responseEntity = restTemplate.postForEntity(TRANS_API_HOST, requestEntity, Object.class);
-        System.out.println(responseEntity.getBody());
+        ResponseEntity<MyResult> responseEntity = restTemplate.postForEntity(TRANS_API_HOST, requestEntity, MyResult.class);
+        MyResult body = responseEntity.getBody();
+        return body;
     }
 }

@@ -12,11 +12,9 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ConfigurationProperties(ignoreUnknownFields = false,prefix = "baidu")
-public class TranslateProperties {
+public class TranslateProperties extends BaseResult {
 
     private String q;
-    private String from;
-    private String to;
     private String appid;
     private String salt;
     private String sign;
@@ -27,22 +25,6 @@ public class TranslateProperties {
 
     public void setQ(String q) {
         this.q = q;
-    }
-
-    public String getFrom() {
-        return from;
-    }
-
-    public void setFrom(String from) {
-        this.from = from;
-    }
-
-    public String getTo() {
-        return to;
-    }
-
-    public void setTo(String to) {
-        this.to = to;
     }
 
     public String getAppid() {

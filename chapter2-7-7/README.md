@@ -6,8 +6,12 @@
        代码：  ResponseEntity<String> responseEntity = restTemplate.postForEntity(TRANS_API_HOST, translate,String.class);
        原因： 由于post请求后的返回的类型 与 String 类型不符合  改成object 就可以了
        解决：  ResponseEntity<String> responseEntity = restTemplate.postForEntity(TRANS_API_HOST, translate,String.class);
-       
-       
+        
+# 报错：Cannot deserialize instance of `com.goat.chapter277.model.TranslateResult` out of START_ARRAY token
+        代码：  {"from":"zh","to":"en","trans_result":[{"src":"\u5c71\u7f8a","dst":"Goat"}]}   注意到 trans_result是数组 因为有 [] 要定义成list 
+        由于 MyResult 类中的 trans_result 应该为数组  而我却定义的单个对象。。。。
+        检查一下JSON数据和实体的字段结构是不是不一致导致的。比如JSON数据是数组，而实体字段为非数组。
+
        
        
 #  添加   <artifactId>goatool-core</artifactId> 依赖后 报错 ：LoggerFactory is not a Logback LoggerContext but Logback is on the classpath     

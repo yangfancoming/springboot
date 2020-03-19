@@ -1,7 +1,5 @@
 package com.goat.chapter277.config;
 
-
-import com.goat.chapter277.handler.CustomErrorHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -38,9 +36,8 @@ public class RestTemplateConfig {
     */
     @Bean  // 初始化RestTemplate,并加入spring的Bean工厂，由spring统一管理
     @ConditionalOnMissingBean({ RestOperations.class, RestTemplate.class })
-    public RestTemplate restTemplate(ClientHttpRequestFactory factory,CustomErrorHandler customErrorHandler) {
+    public RestTemplate restTemplate(ClientHttpRequestFactory factory) {
         RestTemplate restTemplate = new RestTemplate(factory);
-        restTemplate.setErrorHandler(customErrorHandler); // 自定义异常处理
         // 使用 utf-8 编码集的 conver 替换默认的 conver（默认的 string conver 的编码集为"ISO-8859-1"）
         List<HttpMessageConverter<?>> messageConverters = restTemplate.getMessageConverters();
         Iterator<HttpMessageConverter<?>> iterator = messageConverters.iterator();
@@ -63,7 +60,5 @@ public class RestTemplateConfig {
         factory.setReadTimeout(readTimeout);//单位为ms
         return factory;
     }
-
-
 
 }
