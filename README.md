@@ -93,6 +93,7 @@ Web开发
 - ==chapter2-7-1 springboot  集成 HttpClient ==
 - ==chapter2-7-3 springboot  集成 RestTemplate + IDEA RestClient工具使用 ==
 - ==chapter2-7-5 springboot  集成 GitHub for java REST API v3 ==
+- ==chapter2-7-7 springboot  集成 百度翻译API  ==
 - ==chapter2-8-0 springboot  集成  JSP 中使用 Echarts + JQuery + 百度地图 ==
 - ==chapter2-9-0 springboot  集成  前后台交互  方式 总结==
 - ==chapter2-9-3 springboot  集成  跨域==
