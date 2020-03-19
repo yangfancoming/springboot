@@ -1,5 +1,6 @@
 package com.goat.chapter277.controller;
 
+import cn.goatool.core.util.DigestUtils;
 import com.goat.chapter277.model.TranslateProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -11,6 +12,8 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import java.nio.charset.StandardCharsets;
 
 /**
  * Created by Administrator on 2020/3/19.
@@ -29,19 +32,26 @@ public class TestController {
     @Autowired
     private RestTemplate restTemplate;
 
+    @GetMapping("test1")
+    public void test1() {
+        String s = DigestUtils.md5DigestAsHex("123".getBytes(StandardCharsets.UTF_8));
+        System.out.println(s);
+    }
 
     // {"from":"zh","to":"en","trans_result":[{"src":"\u5c71\u7f8a","dst":"Goat"}]}
     @GetMapping("test2")
     public void test2() {
+
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         MultiValueMap<String, String> requestBody = new LinkedMultiValueMap<>();
-        requestBody.add("q", "goat");
-        requestBody.add("from", "EN");
-        requestBody.add("to", "ZH");
+        requestBody.add("q", props.getQ());
+        requestBody.add("from", props.getFrom());
+        requestBody.add("to", props.getTo());
         requestBody.add("appid", props.getAppid());
-        requestBody.add("salt", String.valueOf(System.currentTimeMillis()));
-        requestBody.add("sign", props.getSign());
+        requestBody.add("salt", props.getSalt());
+        String src = props.getAppid() + props.getQ() + props.getSalt() + props.getSign();
+        requestBody.add("sign", DigestUtils.md5DigestAsHex(src.getBytes(StandardCharsets.UTF_8)));
         HttpEntity<MultiValueMap> requestEntity = new HttpEntity<>(requestBody, headers);
         ResponseEntity<Object> responseEntity = restTemplate.postForEntity(TRANS_API_HOST, requestEntity, Object.class);
         System.out.println(responseEntity.getBody());
