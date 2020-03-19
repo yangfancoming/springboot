@@ -5,6 +5,7 @@ package cn.goatool.core.util;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -53,8 +54,8 @@ public abstract class DigestUtils {
      * @param string 给定字符串
      * @return  计算出的md值(16进制)
      */
-    public static String md5DigestAsHex(String string) throws UnsupportedEncodingException {
-        return digestAsHexString(MD5_ALGORITHM_NAME, string.getBytes("UTF-8"));
+    public static String md5DigestAsHex(String string) {
+        return digestAsHexString(MD5_ALGORITHM_NAME, string.getBytes(StandardCharsets.UTF_8));
     }
 
 	/**

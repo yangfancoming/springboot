@@ -23,7 +23,7 @@ public class DigestUtilsTests {
 	}
 
     @Test
-    public void test() throws UnsupportedEncodingException {
+    public void test() {
         String s = DigestUtils.md5DigestAsHex("123");
         System.out.println(s);
     }
