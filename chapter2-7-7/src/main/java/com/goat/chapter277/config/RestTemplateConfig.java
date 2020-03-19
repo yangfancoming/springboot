@@ -1,23 +1,7 @@
-package com.goat.config;
+package com.goat.chapter277.config;
 
-/**
- * Created by 64274 on 2019/1/30.
- *
- * @ Description: TODO
- * @ author  山羊来了
- * @ date 2019/1/30---10:36
- */
 
-import com.goat.handler.CustomErrorHandler;
-import org.apache.http.config.Registry;
-import org.apache.http.config.RegistryBuilder;
-import org.apache.http.conn.HttpClientConnectionManager;
-import org.apache.http.conn.socket.ConnectionSocketFactory;
-import org.apache.http.conn.socket.PlainConnectionSocketFactory;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.goat.chapter277.handler.CustomErrorHandler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
@@ -33,9 +17,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * HTTP 封装类
- */
+
 @Configuration
 public class RestTemplateConfig {
 
@@ -48,10 +30,7 @@ public class RestTemplateConfig {
     @Value("${remote.readTimeout:5000}")//读取超时默认30s
     private int readTimeout;
 
-    @Autowired CustomErrorHandler customErrorHandler;
-
     /**
-     *
      Spring Boot >= 1.4
      Spring Boot no longer automatically defines a RestTemplate but instead defines a RestTemplateBuilder allowing you more control over the RestTemplate that gets created.
      You can inject the RestTemplateBuilder as an argument in your @Bean method to create a RestTemplate:
@@ -59,7 +38,7 @@ public class RestTemplateConfig {
     */
     @Bean  // 初始化RestTemplate,并加入spring的Bean工厂，由spring统一管理
     @ConditionalOnMissingBean({ RestOperations.class, RestTemplate.class })
-    public RestTemplate restTemplate(ClientHttpRequestFactory factory) {
+    public RestTemplate restTemplate(ClientHttpRequestFactory factory,CustomErrorHandler customErrorHandler) {
         RestTemplate restTemplate = new RestTemplate(factory);
         restTemplate.setErrorHandler(customErrorHandler); // 自定义异常处理
         // 使用 utf-8 编码集的 conver 替换默认的 conver（默认的 string conver 的编码集为"ISO-8859-1"）
@@ -83,27 +62,6 @@ public class RestTemplateConfig {
         factory.setConnectTimeout(connectTimeout);//单位为ms
         factory.setReadTimeout(readTimeout);//单位为ms
         return factory;
-    }
-
-    /**配置http连接池*/
-
-    @Bean
-    public HttpClientBuilder httpClientBuilder() {
-        HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
-        httpClientBuilder.setConnectionManager(poolingConnectionManager());//设置HTTP连接管理器
-        return httpClientBuilder;
-    }
-
-    @Bean
-    public HttpClientConnectionManager poolingConnectionManager() {
-        Registry<ConnectionSocketFactory> registry = RegistryBuilder.<ConnectionSocketFactory> create()
-                .register("http", PlainConnectionSocketFactory.getSocketFactory())
-                .register("https", SSLConnectionSocketFactory.getSocketFactory())
-                .build();
-        PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager(registry);
-        connectionManager.setMaxTotal(maxTotalConnect); // 连接池最大连接数
-        connectionManager.setDefaultMaxPerRoute(maxConnectPerRoute); // 每个主机的并发
-        return connectionManager;
     }
 
 

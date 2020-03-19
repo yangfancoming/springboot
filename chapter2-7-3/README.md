@@ -36,3 +36,21 @@
 
 # IntelliJ IDEA 项目结构旁边出现 0%classes,0% lines covered  测试 覆盖率
     直接 Ctrl+Alt+F6 弹出窗中删掉本次覆盖率测试
+    
+    
+    
+#  postForEntity 请求报错 序列化问题  No serializer found for class org.springframework.context
+    由于 MailProperties 使用@ConfigurationProperties 交给容器管理  容器为其创建代理对象
+    该对象下 不仅仅有自己定义的需要的属性，还有容器代理生成的属性
+    因此，即使该类实现 implements Serializable   也增加了 getter setter 也同样会报错
+    因为代理生成的属性 我们没有办法给它加上 getter setter 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
