@@ -48,8 +48,9 @@
       
        
        
-       
-       
+#  返回信息  {"error_code":"52003","error_msg":"UNAUTHORIZED USER"}
+    未授权用户  请检查sign是否计算正确、appid、服务是否开通
+    干掉 HTTPClient 使用 restTemplate 请求
        
        
        
