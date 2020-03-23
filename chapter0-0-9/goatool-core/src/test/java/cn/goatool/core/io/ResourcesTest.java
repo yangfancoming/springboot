@@ -11,6 +11,8 @@ import java.io.Reader;
 import java.lang.reflect.Method;
 import java.util.Properties;
 
+import static junit.framework.TestCase.assertEquals;
+
 /**
  * Created by Administrator on 2019/12/4.
  * @ Description: TODO
@@ -39,7 +41,7 @@ public class ResourcesTest {
     @Test
     public void getResourceAsProperties() throws IOException {
         Properties properties = Resources.getResourceAsProperties("dbconfig.properties");
-        log.info("Resources.getResourceAsProperties {}" ,properties);
+        assertEquals("{jdbc.url=jdbc:hsqldb:mem:cache, jdbc.username=sa, jdbc.driver=org.hsqldb.jdbcDriver, jdbc.password=}", properties.toString());
     }
 
     @Test
