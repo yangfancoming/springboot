@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- XML的标志,少了这个就不是XML -->
 <!--  引入DTD： <!DOCTYPE 根节点 SYSTEM  "dtd的地址">-->
+<!--<!DOCTYPE persons  SYSTEM "person.dtd">-->
 <!DOCTYPE persons  SYSTEM "person.dtd">
 
 <persons>

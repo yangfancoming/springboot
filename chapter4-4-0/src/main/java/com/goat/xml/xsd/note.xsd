@@ -1,0 +1,60 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- <schema>元素是每个XML Schema文件的根元素。 -->
+<!--
+其中 xmlns:xs="http://www.w3.org/2001/XMLSchema"
+指明了在schema中使用的元素和数据种类来自  http://www.w3.org/2001/XMLSchema  名称空间（namespace）
+它也指定了来自namespace的元素和数据种类必须带前缀“xs:”
+
+其中 targetNamespace="http://www.w3schools.com"
+暗示了由这份schema(note, to, from, heading, body.)定义的元素来自"http://www.w3schools.com"名称空间（namespace）
+
+其中 xmlns="http://www.w3schools.com"
+指明了默认名称空间（namespace）是http://www.w3schools.com.
+
+其中 elementFormDefault="qualified"
+指明了由这份schema声明的XML实例文档里用到的任何元素，都必须是有效的名称空间（namespace qualified）。
+-->
+<xs:schema
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.w3schools.com"
+        xmlns="http://www.w3schools.com"
+        elementFormDefault="qualified">
+
+<!--    在这里， xxx是元素名称，yyy是元素的数据类型
+xs:string 字符
+xs:decimal 小数
+xs:integer 整数
+xs:boolean 逻辑值
+xs:date 日期
+xs:time 时间
+ -->
+    <xs:element name="note" >
+        <xs:complexType>
+            <xs:sequence>
+                <!--    <xs:element name="note" type="xs:string" default="defaultString">  为默认值 -->
+                <xs:element name="to" type="xs:string"/>
+                <xs:element name="from" type="xs:string"/>
+                <xs:element name="heading" type="xs:string"/>
+                <xs:element name="body" type="xs:string"/>
+
+                <xs:element name="nba">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="age" type="xs:integer"/>
+                            <xs:element name="dateborn" type="xs:date" />
+                        </xs:sequence>
+                        <xs:attribute name="goat" type="xs:int" use="required"></xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+
+
+            </xs:sequence>
+
+            <xs:attribute name="test" type="xs:int" use="required"></xs:attribute>
+        </xs:complexType>
+
+
+    </xs:element>
+</xs:schema>

@@ -12,5 +12,9 @@
         <!DOCTYPE persons [
          
          ]>
-         
       这是内部dtd用的
+      
+      
+      
+# <!DOCTYPE note SYSTEM "note.dtd"> 中SYSTEM 后的dtd 文件没有颜色提示？？？
+    解决： 删除 "note.dtd" 后 手动重新敲一遍 就可以了
