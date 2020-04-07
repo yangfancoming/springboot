@@ -12,20 +12,14 @@ import java.util.List;
 
 /**
  * Created by 64274 on 2019/10/23.
- *
  * @ Description: Ognl中的过滤和投影两个概念
  * @ author  山羊来了
  * @ date 2019/10/23---15:58
- *
  * 无论过滤还是投影都是针对于数组、集合和Map而言的；
- *
  * 过滤指的是将原集合中不符合条件的对象过滤掉，然后将满足条件的对象，构建一个新的集合对象返回，Ognl过滤表达式的写法是：collection.{?|^|$ expression}；
- *
  * 投影指的是将原集合中所有对象的某个属性抽取出来，单独构成一个新的集合对象返回，基础语法为 ：collection.{expression}；
-
  */
 public class App6 {
-
 
     @Test
     public void test1() throws OgnlException {
@@ -59,7 +53,6 @@ public class App6 {
         // 获取集合中的所有学生的姓名
         // 输出结果：[Tom, Jack, Tomas, Lucy]
         System.out.println(Ognl.getValue("#stus.{name}", context, context.getRoot()));
-
     }
 
 }

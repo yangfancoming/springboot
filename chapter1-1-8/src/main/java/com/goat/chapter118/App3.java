@@ -16,7 +16,6 @@ import org.junit.Test;
  */
 public class App3 {
 
-
     @Test
     public void test1() throws OgnlException {
         Object obj = Ognl.getValue("'helloworld'.length()", null);

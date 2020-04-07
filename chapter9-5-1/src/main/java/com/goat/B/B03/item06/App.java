@@ -33,7 +33,6 @@ public class App {
     public void testCglib() {
         DaoProxy daoProxy = new DaoProxy(); // 创建代理对象 1
         DaoAnotherProxy daoAnotherProxy = new DaoAnotherProxy(); // 创建代理对象 2
-
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(MyDao.class); // setSuperclass 表示设置要代理的类
         enhancer.setCallbacks(new Callback[]{daoProxy, daoAnotherProxy, NoOp.INSTANCE});
