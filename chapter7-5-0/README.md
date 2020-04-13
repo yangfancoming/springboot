@@ -73,3 +73,15 @@
         因为今晚第三方可能已经更新了它的snapshot库。
         你再次构建时，Maven会去远程repository下载snapshot的最新版本，
         你构建时用的库就是新的jar文件了，这时正确性就很难保证了。
+
+
+# 理解maven命令package、install、deploy的联系与区别
+    仔细查看上面的输出结果截图，可以发现，
+    mvn clean package依次执行了clean、resources、compile、testResources、testCompile、test、jar(打包)等７个阶段。
+    mvn clean install依次执行了clean、resources、compile、testResources、testCompile、test、jar(打包)、install等8个阶段。
+    mvn clean deploy依次执行了clean、resources、compile、testResources、testCompile、test、jar(打包)、install、deploy等９个阶段。
+    
+    由上面的分析可知主要区别如下，
+    package命令完成了项目编译、单元测试、打包功能，但没有把打好的可执行jar包（war包或其它形式的包）布署到本地maven仓库和远程maven私服仓库
+    install命令完成了项目编译、单元测试、打包功能，同时把打好的可执行jar包（war包或其它形式的包）布署到本地maven仓库，但没有布署到远程maven私服仓库
+    deploy命令完成了项目编译、单元测试、打包功能，同时把打好的可执行jar包（war包或其它形式的包）布署到本地maven仓库和远程maven私服仓库
