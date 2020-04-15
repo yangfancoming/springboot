@@ -16,7 +16,7 @@
     在工作区写代码 ---add--- 到暂存区临时存储 ----commit---  本地库 ----push---- 远程库
     
     git init   初始化 本地库 Initialized empty Git repository in E:/Git/mygit/.git/
-    使用 init命令后 自动生成一个默认分支为：master 分支
+    执行 init命令后 自动生成一个 .git的文件夹 包含默认：master 分支
     
     touch text.txt 新建文件  并 创建默认master分支 
     
@@ -130,7 +130,6 @@
         
         然后 VCS --- import into version Control --- Create Git Resiptory 
         然后 设置 远程分支 VCS ---  Git --- Remotes  输入 git url 
-        
         
         IDEA push 后报错
        报错： Push rejected: Push to origin/master was rejected 
