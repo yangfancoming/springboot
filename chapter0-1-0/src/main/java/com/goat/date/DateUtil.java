@@ -58,12 +58,12 @@ public class DateUtil {
 
 
     /**
-         * @Description: 赵博排班计算函数   白班  夜班  下夜  正休 0,1,2,3  20181209  休
-         * @author: Goat
-         * @Param:  start  起始日期设定
-         * @Param:  end    查询日期
-         * @Return:
-         * @Date:   2018/12/9
+     * @Description: 赵博排班计算函数   白班  夜班  下夜  正休 0,1,2,3  20181209  休
+     * @author: Goat
+     * @Param:  start  起始日期设定
+     * @Param:  end    查询日期
+     * @Return:
+     * @Date:   2018/12/9
     */
     public static String scheduling(String start,String end) throws ParseException {
         String[] haha = {"正休","白班","夜班","下夜"};

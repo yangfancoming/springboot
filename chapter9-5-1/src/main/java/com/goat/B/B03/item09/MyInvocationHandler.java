@@ -22,7 +22,7 @@ public class MyInvocationHandler implements InvocationHandler {
      */
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) {
-        System.out.println("进入JDK动态代理拦截方法---" + method);
+        System.out.println("进入JDK动态代理拦截方法---" + method.getName());
         return null;
     }
 }

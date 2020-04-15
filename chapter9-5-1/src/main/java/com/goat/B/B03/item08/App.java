@@ -3,9 +3,7 @@ package com.goat.B.B03.item08;
 
 import org.junit.Test;
 import sun.misc.ProxyGenerator;
-
 import java.io.FileOutputStream;
-
 
 /**
  * JDK动态代理
