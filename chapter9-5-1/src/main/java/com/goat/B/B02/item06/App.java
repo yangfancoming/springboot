@@ -20,16 +20,16 @@ public class App {
 
         Drink order = new LongBlack();
         System.out.println(order.cost());
-        System.out.println(order.getDes());
+        System.out.println(order.des);
 
         order = new Milk(order);
         System.out.println("order  =" + order.cost());
-        System.out.println("order " + order.getDes());
+        System.out.println("order " + order.des);
 
         order = new Chocolate(order);
 
         System.out.println("order" + order.cost());
-        System.out.println("order  = " + order.getDes());
+        System.out.println("order  = " + order.des);
 
     }
 
@@ -37,15 +37,15 @@ public class App {
     public void test2(){
         Drink order = new DeCaf();
         System.out.println(order.cost());
-        System.out.println(order.getDes());
+        System.out.println(order.des);
 
         order = new Milk(order);
         System.out.println("order  =" + order.cost());
-        System.out.println("order " + order.getDes());
+        System.out.println("order " + order.des);
 
         order = new Milk(order);
         System.out.println("order  =" + order.cost());
-        System.out.println("order " + order.getDes());
+        System.out.println("order " + order.des);
 
 //        order = new Chocolate(order);
 //
