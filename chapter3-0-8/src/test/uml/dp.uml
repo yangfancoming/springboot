@@ -3,30 +3,28 @@
   <ID>JAVA</ID>
   <OriginalElement>com.goat.tiny.spring.beans.AbstractBeanDefinitionReader</OriginalElement>
   <nodes>
-    <node x="41.5" y="0.0">com.goat.tiny.spring.beans.BeanDefinitionReader</node>
-    <node x="0.0" y="227.0">com.goat.tiny.spring.beans.xml.XmlBeanDefinitionReader</node>
-    <node x="11.0" y="102.0">com.goat.tiny.spring.beans.AbstractBeanDefinitionReader</node>
+    <node x="24.0" y="0.0">com.goat.tiny.spring.beans.BeanDefinitionReader</node>
+    <node x="15.0" y="158.0">com.goat.tiny.spring.beans.xml.XmlBeanDefinitionReader</node>
+    <node x="0.0" y="79.0">com.goat.tiny.spring.beans.AbstractBeanDefinitionReader</node>
   </nodes>
   <notes />
   <edges>
     <edge source="com.goat.tiny.spring.beans.xml.XmlBeanDefinitionReader" target="com.goat.tiny.spring.beans.AbstractBeanDefinitionReader">
-      <point x="0.0" y="-83.5" />
-      <point x="0.0" y="37.5" />
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
     </edge>
     <edge source="com.goat.tiny.spring.beans.AbstractBeanDefinitionReader" target="com.goat.tiny.spring.beans.BeanDefinitionReader">
-      <point x="0.0" y="-37.5" />
-      <point x="0.0" y="26.0" />
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="768.5" y="428.0" />
+  <settings layout="Hierarchic Group" zoom="1.0" x="769.0" y="406.5" />
   <SelectedNodes>
     <node>com.goat.tiny.spring.beans.BeanDefinitionReader</node>
     <node>com.goat.tiny.spring.beans.xml.XmlBeanDefinitionReader</node>
     <node>com.goat.tiny.spring.beans.AbstractBeanDefinitionReader</node>
   </SelectedNodes>
-  <Categories>
-    <Category>Methods</Category>
-  </Categories>
+  <Categories />
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
 </Diagram>
