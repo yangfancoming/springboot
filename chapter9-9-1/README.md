@@ -157,7 +157,7 @@
         usermod -G goat goat
         
         
-      第二步：  创建git仓库
+    第二步：  创建git仓库
         切换/新建 仓库目录 srv
         再 srv目录下  继续创建   mkdir goat-test.git 
         继续进入 cd goat-test.git/  后 
@@ -173,5 +173,8 @@
          
 #  GitHub 强制删除 某一次提交历史 
     git reset --hard 6dc42554076ec85655109bd45b136fec5af0cd8c
+    git push origin HEAD --force    
+    
+    git reset --hard 70c590d7e5e181fe5728827f2782eab292592077
     git push origin HEAD --force
         
