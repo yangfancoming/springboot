@@ -14,6 +14,9 @@ import java.io.FileOutputStream;
 */
 public class App {
 
+    BookFacadeImpl bookFacadeImpl = new BookFacadeImpl(); // 业务实现类对象 (被代理)
+    BookFacadeProxy proxy = new BookFacadeProxy(); // 代理类对象
+
     /**
      在使用时，首先创建一个业务实现类对象和一个代理类对象，
      然后定义接口引用（这里使用向上转型）并用代理对象.bind(业务实现类对象)的返回值进行赋值。
@@ -21,10 +24,15 @@ public class App {
     */
     @Test
     public void testJDK() {
-        BookFacadeImpl bookFacadeImpl = new BookFacadeImpl(); // 业务实现类对象 (被代理)
-        BookFacadeProxy proxy = new BookFacadeProxy(); // 代理类对象
         BookFacade bookfacade = (BookFacade) proxy.bind(bookFacadeImpl);
         bookfacade.addBook();
+    }
+
+    @Test
+    public void testJDK1() {
+        BookFacade bookfacade = (BookFacade) proxy.bind(bookFacadeImpl);
+        System.out.println(bookfacade.toString());
+        System.out.println(bookfacade.hashCode());
     }
 
     /**
