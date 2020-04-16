@@ -1,3 +1,14 @@
+# 目录  CGLIB 示例已迁移至spring源码中
+        item01： 静态代理
+        item02： 静态代理 
+        item03： 静态代理
+        item04： 静态代理
+        item07： 静态代理
+        item08： JDK动态代理
+        item09： JDK动态代理
+        item10： JDK动态代理
+        
+
 # 代理模式  的 应运而生
     不使用代理开发的话  代码有两个致命的问题。
     
@@ -33,7 +44,7 @@
 
 
     
-    基于JDK实现动态代理，通过jdk提供的工具方法Proxy.newProxyInstance动态构建全新的代理类(继承Proxy类，并持有InvocationHandler接口引用 )字节码文件并实例化对象返回。
+    基于JDK实现动态代理，通过jdk提供的工具方法Proxy.newProxyInstance动态构建全新的代理类(继承Proxy类，实现xxx被代理接口，并持有InvocationHandler接口引用 )字节码文件并实例化对象返回。
                             (jdk动态代理是由java内部的反射机制来实例化代理对象，并代理的调用委托类方法)
     
     基于CGlib动态代理模式 基于继承被代理类生成代理子类，不用实现接口。只需要被代理类是非final 类即可。(cglib动态代理底层是借助asm字节码技术
@@ -61,17 +72,6 @@
     
 # Cglib 动态代理
 
-        item01： 静态代理
-        item02： 静态代理 
-        item03： 静态代理
-        item04： 静态代理
-        item05： 使用Cglib代码对类做代理的通用写法
-        item06： 使用Cglib定义不同的拦截策略
-        item07： 静态代理
-        item08： JDK动态代理
-        item09： JDK动态代理
-        item10： JDK动态代理
-        item11： CGLIB动态代理
     
     
     Cglib 要点描述：
