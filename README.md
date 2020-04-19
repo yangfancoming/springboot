@@ -143,6 +143,7 @@ AOP
 
 持久层数据访问
 - ==chapter4-0-0：springboot 集成  Druid连接池及监控界面==
+- ==chapter4-0-1：springboot 集成  access ==
 - ==chapter4-0-4：springboot 使用  内置数据库连接池==
 - ==chapter4-1-1：springboot 中使用 JDBC  JdbcTemplate==   
 - ==chapter4-2-0：springboot 集成 JPA 乐观锁==  

@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    driver-class-name: sun.jdbc.odbc.JdbcOdbcDriver
+    url: jdbc:odbc:land
+    tomcat:
+      connection-properties: charSet=gbk
+  main:
+    banner-mode: off

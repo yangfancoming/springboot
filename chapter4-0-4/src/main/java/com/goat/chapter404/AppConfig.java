@@ -30,7 +30,8 @@ public class AppConfig {
     public DataSource dataSource() {
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("com.mysql.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://192.168.136.128:3306/test2?Unicode=true&characterEncoding=utf8");
+//        ds.setUrl("jdbc:mysql://192.168.136.128:3306/test2?Unicode=true&characterEncoding=utf8");
+        ds.setUrl("jdbc:mysql://47.98.148.84:3306/test2?Unicode=true&characterEncoding=utf8");
         ds.setUsername("root");
         ds.setPassword("12345");
         return ds;

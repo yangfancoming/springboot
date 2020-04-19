@@ -10,15 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-/**
- * ========================
- * Created with IntelliJ IDEA.
- * User：恒宇少年
- * Date：2017/4/4
- * Time：15:36
- * 码云：http://git.oschina.net/jnyqy
- * ========================
- */
 @RestController
 @RequestMapping(value = "/user")
 public class UserController {
@@ -28,7 +19,6 @@ public class UserController {
 
     /**
      * 查询用户列表方法
-     * @return
      */
     @RequestMapping(value ="/list" ,method = RequestMethod.GET)
     public List<UserEntity> list(){
@@ -38,22 +28,18 @@ public class UserController {
     /**
      * 添加、更新用户方法
      * @param entity
-     * @return
      */
     @RequestMapping(value = "/save",method = RequestMethod.GET)
-    public UserEntity save(UserEntity entity)
-    {
+    public UserEntity save(UserEntity entity) {
         return userJPA.save(entity);
     }
 
     /**
      * 删除用户方法
      * @param id 用户编号
-     * @return
      */
     @RequestMapping(value = "/delete",method = RequestMethod.GET)
-    public List<UserEntity> delete(Long id)
-    {
+    public List<UserEntity> delete(Long id) {
         userJPA.deleteById(id);
         return userJPA.findAll();
     }
