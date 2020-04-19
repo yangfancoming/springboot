@@ -1,3 +1,5 @@
+
+#  （land 是系统数据源的名称）
 spring:
   datasource:
     driver-class-name: sun.jdbc.odbc.JdbcOdbcDriver
