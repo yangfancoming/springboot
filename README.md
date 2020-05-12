@@ -194,7 +194,7 @@ AOP
 - ==chapter5-3-0：springboot 集成 Dubbo consumer/ product ==
 - ==chapter5-3-1：springboot 集成 Dubbo api / consumer/ product==
 - ==chapter5-3-2：springboot 集成  Zookeeper 客户端 + Zookeeper集群==
-- ==chapter5-3-5： ==
+- ==chapter5-3-5： springboot 集成 Nginx 
 - ==chapter5-3-6：springboot 集成 Dubbo api==
 - ==chapter5-3-7：springboot 集成 Dubbo consumer==
 - ==chapter5-3-8：springboot 集成 Dubbo Provider 使用 mybatisplus 实现==
