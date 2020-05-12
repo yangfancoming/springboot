@@ -199,7 +199,7 @@ AOP
 - ==chapter5-3-7：springboot 集成 Dubbo consumer==
 - ==chapter5-3-8：springboot 集成 Dubbo Provider 使用 mybatisplus 实现==
 - ==chapter5-3-9：springboot 集成 Dubbo Provider 使用 JPA实现 ==
-- ==chapter5-4-0：springboot 集成 Dubbo  单点登录SSO  ==
+- ==chapter5-4-0： ==
 - ==chapter5-4-2：springboot 集成  SpringCloud eureka、Ribbon、feign、zuul 等全家桶==
 - ==chapter5-5-0：springboot 集成  SpringCloud  Alibaba==
 - ==chapter5-6-0：springboot 集成  Alibaba fescar==
