@@ -31,3 +31,17 @@
     docker run --name ng -p 8888:80  -v /home/goat/nginx/conf/nginx.conf:/etc/nginx/nginx.conf  -d e81eb098537d
      http://192.168.211.128:8888/ 
     
+
+
+        server {
+          listen 2222;
+          server_name 192.168.211.128;
+          location / {
+            proxy_pass https://etax.liaoning.chinatax.gov.cn/sword?ctrl=LoginCtrlTmp_logout;
+              index index.jsp index.html index.htm;
+          }
+          # 解决 无法加载静态资源问题
+         location ~ .*\.(js|css|jpg|png)$ {
+              proxy_pass https://etax.liaoning.chinatax.gov.cn;
+         }
+        }

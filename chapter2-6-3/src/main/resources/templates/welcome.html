@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<h1 align="center">Nginx 跨域名反向代理测试 </h1>
+
+<script th:src="@{/jquery.js}"></script>
+
+<div class="tab-pane" id="tab2">
+    <button class="form-submit" id="otherLogin">
+        <div>
+            电子税务局登录
+        </div>
+    </button>
+</div>
+</body>
+</html>
+
+
+<script>
+    $(function () {
+        // 电子税务局登录
+        $("#otherLogin").on("click", function () {
+            console.log(1111)
+            window.location.href='http://192.168.211.128:2222/';
+        });
+    });
+</script>
