@@ -81,7 +81,6 @@ public class FirstServletApplication extends SpringBootServletInitializer {
         return servletListenerRegistrationBean;
     }
 
-
     @Bean
     public InternalResourceViewResolver setupViewResolver(){
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
@@ -89,5 +88,4 @@ public class FirstServletApplication extends SpringBootServletInitializer {
         resolver.setSuffix(".jsp");
         return resolver;
     }
-
 }

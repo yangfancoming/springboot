@@ -7,8 +7,9 @@ SpringBoot 项目目录
 ==chapter2-0-8 springboot  集成 MockMvc和Swagger2==
 
 工程配置
-- ==chapter0-0-0 springboot  空项目==
+- ==chapter0-0-0 springboot  demo==
 - ==chapter0-0-1 springboot  共享model==
+- ==chapter0-0-2 springboot  weblogic ==
 - ==chapter0-0-6 springboot  自定义jar包==
 - ==chapter0-0-7 springboot  引入自定义jar包并以可运行jar方式启动 + SpringMVC 扩展==
 - ==chapter0-0-8 springboot  引入自定义jar包并以war包方式启动==
