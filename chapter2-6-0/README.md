@@ -24,3 +24,11 @@
             };
         }
     
+#  内嵌Tomcat + 低版本jdk (7一下) 报错问题
+    报错：
+        No global web.xml found
+        java.lang.NoSuchMethodError: javax.servlet.ServletContext.getSessionCookieConfig()Ljavax/servlet/SessionCookieConfig
+        
+     解决：
+        把tomcat目录下的lib/servlet-api.jar文件拷贝到$JAVA_HOME/jre/lib/ext目录下，再启动tomcat问题解决
+        注意： 以上说的Tomcat和jdk版本 都是对应你项目启动使用的Tomcat和jdk的版本 我的都是对应的7 
