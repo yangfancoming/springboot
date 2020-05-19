@@ -9,7 +9,6 @@ import org.springframework.remoting.caucho.HessianProxyFactoryBean;
 @SpringBootApplication
 public class HessianClientApplication {
 
-
 //    注解配置远程接口信息
 	@Bean
 	public HessianProxyFactoryBean helloClient() {
@@ -18,7 +17,6 @@ public class HessianClientApplication {
 		factory.setServiceInterface(HelloWorldService.class);
 		return factory;
 	}
-
 
 	public static void main(String[] args) {
 		SpringApplication.run(HessianClientApplication.class, args);
