@@ -13,11 +13,12 @@ import java.util.List;
 public class DataUtil {
 
     public static List<List<Object>> createTestListObject() {
+        // 将 List<List<Object>>  理解为一个二维数组或是表格 其中里面的 List<Object> 为表格中的一行   外面的 List 表示表格中的多条记录
         List<List<Object>> object = new ArrayList<>();
         for (int i = 0; i < 1000; i++) {
-            List<Object> da = new ArrayList<>();
+            List<Object> da = new ArrayList<>();// 一行数据
             da.add("字符串"+i);
-            da.add(Long.valueOf(187837834l+i));
+            da.add(Long.valueOf(187837834l+i)); // 每行中的列
             da.add(Integer.valueOf(2233+i));
             da.add(Double.valueOf(2233.00+i));
             da.add(Float.valueOf(2233.0f+i));
@@ -51,6 +52,7 @@ public class DataUtil {
     }
 
     public static List<WriteModel> createTestListJavaMode(){
+        // 将 WriteModel 对象 理解为表格中的一行， 外面的 List<> 理解为表格中多行数据
         List<WriteModel> model1s = new ArrayList<>();
         for (int i = 0; i <10000 ; i++) {
             WriteModel model1 = new WriteModel();

@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.goat.easyexcel.util.DataUtil.*;
@@ -29,8 +32,7 @@ import static com.goat.easyexcel.util.DataUtil.*;
 @RequestMapping("w03")
 public class Write03Controller extends BaseController {
 
-    /**   http://localhost:8758/w03/test1
-     */
+    //  http://localhost:8758/w03/test1
     @GetMapping("test1")
     public void simpleReadListStringV2003() throws IOException {
         OutputStream out = new FileOutputStream("E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter7-5-8\\src\\main\\resources\\2003w.xls");
@@ -46,25 +48,25 @@ public class Write03Controller extends BaseController {
         sheet1.setHead(createTestListStringHead());
         //or 设置自适应宽度
         //sheet1.setAutoWidth(Boolean.TRUE);
-        writer.write1(createTestListObject(), sheet1);
+        writer.write1(createTestListObject(), sheet1); // 表格填充数据
 
         //写第二个sheet sheet2  模型上打有表头的注解，合并单元格
         Sheet sheet2 = new Sheet(2, 3, WriteModel.class, "第二个sheet", null);
         sheet2.setTableStyle(createTableStyle());
-        writer.write(createTestListJavaMode(), sheet2);
+        writer.write(createTestListJavaMode(), sheet2);  // 表格填充数据
 
         //写第三个sheet包含多个table情况
         Sheet sheet3 = new Sheet(3, 0);
         sheet3.setSheetName("第三个sheet");
         Table table1 = new Table(1);
         table1.setHead(createTestListStringHead());
-        writer.write1(createTestListObject(), sheet3, table1);
+        writer.write1(createTestListObject(), sheet3, table1);  // 表格填充数据
 
         //写sheet2  模型上打有表头的注解
         Table table2 = new Table(2);
         table2.setTableStyle(createTableStyle());
         table2.setClazz(WriteModel.class);
-        writer.write(createTestListJavaMode(), sheet3, table2);
+        writer.write(createTestListJavaMode(), sheet3, table2);  // 表格填充数据
 
         writer.finish();
         out.close();

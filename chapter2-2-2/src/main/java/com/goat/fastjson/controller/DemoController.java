@@ -1,11 +1,21 @@
 package com.goat.fastjson.controller;
 
+import com.alibaba.excel.EasyExcelFactory;
+import com.alibaba.excel.ExcelWriter;
+import com.alibaba.excel.metadata.Sheet;
+import com.alibaba.excel.support.ExcelTypeEnum;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.goat.fastjson.utils.JsonUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -22,11 +32,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/demo")
 public class DemoController {
 
-    //   http://localhost:8222/demo/test4
-    @GetMapping("/test4")
-    public void test4() throws Exception  {
+    List<List<Object>> object = new ArrayList<>();     // excle 数据 准备
 
-        JSONObject log = JsonUtils.readJsonFromClassPath("ningxia.json", JSONObject.class);
+    //   http://localhost:8222/demo/test4?josnFileName=ningxia.json
+    //   http://localhost:8222/demo/test4?josnFileName=liaoning.json
+    @GetMapping("/test4")
+    public void test4(String josnFileName) throws Exception  {
+        object.clear();
+        JSONObject log = JsonUtils.readJsonFromClassPath(josnFileName, JSONObject.class);
         System.out.println(log);
         // 获取log 根节点
         JSONObject log1 = (JSONObject) log.get("log");
@@ -40,16 +53,33 @@ public class DemoController {
             // 解析request节点
             JSONObject jsonObject = (JSONObject)((JSONObject) entries.get(i)).get("request");
             // 获取request节点下的 url属性
-            System.out.println("解析url属性：" + jsonObject.get("url"));
+            Object url = jsonObject.get("url");
+            System.out.println("解析url属性：" + url);
             JSONArray queryStringArr = (JSONArray) jsonObject.get("queryString");
-            if ( queryStringArr.size()<= 0) continue;
-            // 解析请求参数
-            String name = (String) ((JSONObject) queryStringArr.get(i)).get("name");
-            System.out.println("解析name属性：" + name);
-            String value = (String) ((JSONObject) queryStringArr.get(i)).get("value");
-            System.out.println("解析value属性：" + value);
+            String result = "";
+            if ( queryStringArr.size() > 1) {
+                System.out.println("有问题。。。。。。。。。。");
+                break;
+            }
+            if ( queryStringArr.size() > 0) {
+                // 解析请求参数
+                result = queryStringArr.toString();
+            }
+            List<Object> record = new ArrayList<>();
+            record.add(time);
+            record.add(url);
+            record.add(result);
+            object.add(record);
         }
+        doSaveExcel("D:\\temp\\宁夏.xls"); // "D:\\辽宁.xls" "D:\\宁夏.xls"
     }
 
-
+    public void doSaveExcel(String excelPath) throws IOException {
+        OutputStream out = new FileOutputStream(excelPath);
+        ExcelWriter writer = EasyExcelFactory.getWriter(out, ExcelTypeEnum.XLS,true);
+        Sheet sheet1 = new Sheet(1, 3);
+        writer.write1(object, sheet1);
+        writer.finish();
+        out.close();
+    }
 }

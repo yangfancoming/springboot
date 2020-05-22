@@ -25,5 +25,12 @@
             <artifactId>chapter0-0-1</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <version>1.1.2-beta5</version>
+        </dependency>
     </dependencies>
 </project>

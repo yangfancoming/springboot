@@ -4,6 +4,7 @@ import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.metadata.BaseRowModel;
 
 public class BaseWriteModel extends BaseRowModel {
+
     @ExcelProperty(value = {"表头1","表头1","表头31"},index = 0)
     protected String p1;
 

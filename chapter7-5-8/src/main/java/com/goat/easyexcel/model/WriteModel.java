@@ -7,8 +7,6 @@ import java.util.Date;
 
 public class WriteModel extends BaseWriteModel {
 
-
-
     @ExcelProperty(value = {"表头3","表头3","表头3"},index = 2)
     private int p3;
 
