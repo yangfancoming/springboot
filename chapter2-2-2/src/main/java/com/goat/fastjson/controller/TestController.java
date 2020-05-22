@@ -1,6 +1,7 @@
 package com.goat.fastjson.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.goat.fastjson.demo.Entity;
 import com.goat.fastjson.entity.Person;
 import com.goat.fastjson.entity.TestUser;
 import com.goat.fastjson.utils.JsonUtils;
@@ -70,5 +71,11 @@ public class TestController {
     }
 
 
+    // http://localhost:8222/test/test4
+    @GetMapping("/test4")
+    public void test4() throws IOException {
+        Entity entity = JsonUtils.readJsonFromClassPath("ningxia.json", Entity.class);
+        System.out.println(entity);
+    }
 
 }
