@@ -1,6 +1,7 @@
 package com.goat.date;
 
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.sql.Timestamp;
@@ -9,6 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class DateUtil {
 
@@ -105,11 +107,11 @@ public class DateUtil {
     /**  Date -> Timestamp  */
     @Test
     public void test2()  {
-
         Date date = new Date();
         Timestamp ts = new Timestamp(date.getTime());
         System.out.println(ts);
     }
+
     /**  Timestamp -> Date  */
     @Test
     public void test3() {
@@ -183,9 +185,61 @@ public class DateUtil {
 
     @Test
     public void test8(){
-
         SimpleDateFormat aDate = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
         Date date = getDateByWeek(2019, 5, 2);
-        System.out.println(aDate.format(date));
+        System.out.println(aDate.format(date)); // 2019-01-28  16:33:21
+    }
+
+    // 英文日期格式
+
+    @Test
+    public void test9() throws Exception{
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM d HH:mm:ss 'CST' yyyy", Locale.ENGLISH);
+//        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = dateFormat.parse("Fri Aug 28 18:08:30 CST 2015");
+        System.out.println(date);
+    }
+    @Test
+    public void test10() throws Exception{
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMM d, yyyy h:m:s aa", Locale.ENGLISH);
+        Date date = dateFormat.parse("Aug 28, 2015 6:8:30 PM");
+        System.out.println(date);
+    }
+    @Test
+    public void gaga() throws Exception{
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.ENGLISH);
+        Date date = dateFormat.parse("Aug 28, 2015 6:8:30 PM");
+        System.out.println(date);
+    }
+
+
+    // 日期格式化 "November 27 2018" to "Thu Jan 24 00:00:00 CST 2019"
+    @Test
+    public void gaga1() throws Exception{
+        String date4string = "November 27 2018";
+        SimpleDateFormat format = new SimpleDateFormat("MMMM dd yyyy", Locale.ENGLISH);
+        Date time = format.parse(date4string);
+        System.out.println("将字符串的 November 27 2018 格式化为日期为："+ time);
+    }
+
+    // 将 "05-Mar-2019" 转换成 2019-03-05
+    @Test
+    public void gaga2() throws Exception{
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMMM-yyyy", Locale.ENGLISH);
+        System.out.println( sdf.format(new Date())); // 25-May-2020
+        // 1. 解析出原格式date
+        Date date2 = sdf.parse("05-Mar-2019");
+        // 2.创建目标格式
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println(simpleDateFormat.format(date2)); // 2019-03-05
+    }
+
+    // 将英文日期格式 转成中文日期格式
+    @Test
+    public void test11() throws Exception{
+        SimpleDateFormat target = new SimpleDateFormat("MMM d, yyyy h:m:s aa", Locale.ENGLISH);
+        Date origin = target.parse("Aug 28, 2015 6:8:30 PM");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Assert.assertEquals("2015/08/28 18:08:30",dateFormat.format(origin));
     }
 }
