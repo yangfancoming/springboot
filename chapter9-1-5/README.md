@@ -31,6 +31,8 @@
     1. 查询数据文件位置：
     select t1.name,t2.name from v$tablespace t1,v$datafile t2 where t1.ts# = t2.ts#;
     
+    
+    最终解决方案：
     2. 查询数据文件位置：
     select name from v$datafile where name like'%ts_hx_sqy_data%';
     
