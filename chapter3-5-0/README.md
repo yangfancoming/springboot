@@ -86,3 +86,4 @@
      切换到%JDK_Home%\jre\lib\security目录下，对应覆盖local_policy.jar和US_export_policy.jar两个文件。同时，你可能有必要在%JRE_Home%\lib\security目录下，也需要对应覆盖这两个文件。
     
     我的路径： C:\Program Files\Java\jdk1.7.0_80\jre\lib\security 目录下的  local_policy.jar 和 US_export_policy.jar 文件需要被覆盖掉
+    我的路径： C:\Program Files\Java\jdk1.6.0_45\jre\lib\security 目录下的  local_policy.jar 和 US_export_policy.jar 文件需要被覆盖掉
