@@ -21,7 +21,6 @@ public class EmpServiceImpl implements IEmpService {
     @Autowired
     EmpDao empDao;
 
-
     @Override
     public Map findMapById(Integer id) {
         Map map = empDao.findMapById(id);

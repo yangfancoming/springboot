@@ -11,8 +11,6 @@ import java.util.Map;
  * @author 山羊来了
  * @Description: TODO
  * @date 2018/8/26---1:39
- *
- *
  */
 public interface Test2Dao {
 
