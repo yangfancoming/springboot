@@ -21,12 +21,11 @@ public class HelloController {
     //    http://localhost:8443/hello/test1
     @GetMapping("/test1")
     public void test1() throws Exception {
-        Connection conn =getMySqlConnection();
+        Connection conn = getMySqlConnection();
         ScriptRunner runner = new ScriptRunner(conn);
         Resources.setCharset(Charset.forName("UTF-8")); //设置字符集,不然中文乱码插入错误
         runner.setLogWriter(null);//设置是否输出日志
         // 绝对路径读取  sos  Reader read = new FileReader(new File("f:\\test.sql"));
-        //
         // 从class目录下直接读取
         Reader read = Resources.getResourceAsReader("test.sql");
         runner.runScript(read);

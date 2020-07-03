@@ -25,7 +25,7 @@ public class HelloController {
     private JdbcTemplate jdbcTemplate;
 
     // 测试地址： http://localhost:8404/hello/test1
-    @RequestMapping("/test1")
+    @GetMapping("/test1")
     public void hellola(){
         List<Map<String, Object>> maps1 = jdbcTemplate.queryForList("select * from book ");
         System.out.println(maps1);
@@ -33,6 +33,7 @@ public class HelloController {
 
     @Resource
     private DataSource dataSource;
+
     // 测试地址： http://localhost:8404/hello/query
     @GetMapping("/query")
     public void query(){

@@ -13,9 +13,6 @@ import java.util.Optional;
 
 /**
  * 用户信息控制器
-
-* @author 菜头君  
-
 * @date 2018年5月19日
  */
 @RestController

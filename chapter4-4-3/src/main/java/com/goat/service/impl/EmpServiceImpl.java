@@ -11,7 +11,6 @@ import java.util.Map;
 
 /**
  * Created by 64274 on 2018/8/20.
- *
  * @author 山羊来了
  * @Description: TODO
  * @date 2018/8/20---17:48
@@ -46,5 +45,4 @@ public class EmpServiceImpl implements IEmpService {
         Map<Integer, Emp> list = empDao.findListLastNameLike2(name);
         return list;
     }
-
 }

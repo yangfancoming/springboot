@@ -12,6 +12,7 @@ import java.util.Map;
 
 @Controller
 public class RenderController {
+
 	private static final String STR_SESSION_KEY = "name";
 
 	@GetMapping("/")
@@ -20,8 +21,7 @@ public class RenderController {
 	}
 
 	@PostMapping("/setSession")
-	public @ResponseBody
-    Map<String, Object> setSession(String value, HttpServletRequest request) {
+	public @ResponseBody Map<String, Object> setSession(String value, HttpServletRequest request) {
 		Map<String, Object> map = new HashMap<>();
         HttpSession session = request.getSession();
         session.setAttribute(STR_SESSION_KEY, value);  // 设置 session
@@ -30,8 +30,7 @@ public class RenderController {
 	}
 
 	@PostMapping("/getSession")
-	public @ResponseBody
-    Map<String, Object> getSession(HttpServletRequest request) {
+	public @ResponseBody Map<String, Object> getSession(HttpServletRequest request) {
 		Map<String, Object> map = new HashMap<>();
 		HttpSession session = request.getSession();
 		Object value = session.getAttribute(STR_SESSION_KEY); // 获取 session
