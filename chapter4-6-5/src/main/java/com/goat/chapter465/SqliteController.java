@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 import java.util.Optional;
 
 
@@ -19,7 +18,6 @@ public class SqliteController {
 
 
     // 测试地址：  http://localhost:8465/test/test1
-
     @GetMapping("/test1")
 	public UserLogin test1() {
         UserLogin temp = userLoginDao.findUserLoginByUserNameAndPassword("bharat0126","dbase123");

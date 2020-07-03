@@ -153,7 +153,6 @@ AOP
 - ==chapter4-2-4：springboot 集成  JPA 分页查询 JSP + DataTable==  
 - ==chapter4-3-0：springboot 集成   getResourceAsStream   == 
 - ==chapter4-3-5：springboot 集成   手写mybatis框架  == 
-- ==chapter4-3-7：springboot 集成   Mybatis框架 分解    == 
 - ==chapter4-4-0：springboot 集成   解析 XML + dtd +  xsd （Xml Schemas Definition ） 约束 == 
 - ==chapter4-4-1：springboot 集成 mybatis   Dao接口 + sqlxml 实现== 
 - ==chapter4-4-2：springboot 集成 mybatis   Dao接口 +  注解 实现==
