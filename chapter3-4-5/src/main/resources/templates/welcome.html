@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<h1 align="center">加密解密  加签验签 便捷工具</h1>
+
+
+<hr>
+
+<h4 >请选择加密/解密方式：
+    <select id="area1">
+        <option value="aes256">AES256</option>
+        <option value="aes128">AES128</option>
+        <option value="DES">DES</option>
+    </select>
+</h4><br>
+
+<h4 >请输入 密钥： <input type="text"  value="" >
+</h4><br>
+
+
+
+<div >
+    <textarea id="src1" rows="6" cols="500"> </textarea>
+</div>
+
+<hr>
+
+<button type="button" class="btn btn-primary" onclick="encode()">加密</button>
+<button type="button" class="btn btn-primary" onclick="decode()">解密</button>
+
+<hr>
+
+<div >
+    <textarea id="des1" rows="6" cols="500"> </textarea>
+</div>
+
+
+<br><br><br><br>
+
+
+<h4 >请选择加签/验签方式：
+    <select id="area2">
+        <option value="aes256">AES256</option>
+        <option value="aes128">AES128</option>
+        <option value="DES">DES</option>
+    </select>
+</h4><br>
+
+<h4 >请输入 密钥： <input id="key1" type="text"  value="" >
+</h4><br>
+
+
+<div >
+    <textarea rows="6" cols="500"> </textarea>
+</div>
+
+<hr>
+
+
+<input type="submit" value="加密"/>
+<input type="submit" value="解密"/>
+
+<hr>
+<div >
+    <textarea rows="6" cols="500"> </textarea>
+</div>
+
+
+
+<button type="button" class="btn btn-success" onclick="test3()">获取选中值</button>
+<button type="button" class="btn btn-info" onclick="test4()">获取选中文本</button>
+<button type="button" class="btn btn-warning" onclick="test5()">获取选中索引</button>
+
+
+<script th:src="@{/plugins/jquery-3.3.1.min.js}"></script>
+</body>
+
+</html>
+
+<script type="text/javascript">
+
+    encode = () => {
+        $.ajax({
+            type:"post", dataType:"json", url: "/api/xx/encode",
+            data: {"param1": 111,"param2": 222,"param3": 222},
+            success:(data) =>{ console.log(data)},
+            error:(data)=>{ }
+        });
+    }
+
+    decode = () => {
+        // alert( $("#prov").val())//  ok
+        alert( $('#prov option:selected').val())//  获取选中值
+    }
+
+    test4 = () => {
+        // alert( $("#prov").text())//  error
+        alert( $('#prov option:selected').text())//  获取选中文本
+    }
+
+    test5 = () => {
+        alert($("#prov").get(0).selectedIndex); // 索引
+    }
+
+</script>

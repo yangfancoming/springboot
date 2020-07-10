@@ -1,0 +1,12 @@
+
+server:
+  port: 8345
+
+
+
+spring:
+  thymeleaf:
+    cache: false #关闭缓存
+
+
+

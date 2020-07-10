@@ -124,6 +124,7 @@ AOP
 
 
 安全管理
+- ==chapter3-4-5：springboot  集成 AES 加密解密  RSA加签验签
 - ==chapter3-4-8：springboot  集成 License 验证  生成和校检整合==
 - ==chapter3-4-9：springboot  集成 License 验证  生成和校检分开==
 - ==chapter3-5-0：springboot  集成 License 验证 待整理 ==
@@ -316,7 +317,7 @@ JVM
 - ==chapter9-6-1：springboot 集成 微信订阅号==
 - ==chapter9-8-0：springboot  dubbo 生产者 为 Rbac 提供服务 ==
 - ==chapter9-8-1：springboot  dubbo    API    为 Rbac 提供服务 ==
-- ==chapter9-8-2：springboot 架构  AdminLTE ==
+- ==chapter9-8-2：springboot 架构  AdminLTE + Thymeleaf ==
 - ==chapter9-8-3：springboot 架构 Layui ==
 - ==chapter9-8-4：springboot 架构 Easyui + Thymeleaf==
 - ==chapter9-8-5：springboot 架构 Easyui + JSP==
