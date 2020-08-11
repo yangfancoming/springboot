@@ -127,7 +127,7 @@ AOP
 - ==chapter3-4-5：springboot  集成 AES 加密解密  RSA加签验签
 - ==chapter3-4-8：springboot  集成 License 验证  生成和校检整合==
 - ==chapter3-4-9：springboot  集成 License 验证  生成和校检分开==
-- ==chapter3-5-0：springboot  集成 License 验证 待整理 ==
+- ==chapter3-5-0：springboot  集成 License 验证 待整理  DES RSA==
 - ==chapter3-5-1：springboot  集成  Shiro 基于内存用户 ==
 - ==chapter3-5-2：springboot  集成  Shiro + jwt==
 - ==chapter3-5-3：springboot  集成  Shiro + jwt Plus==

@@ -13,3 +13,41 @@
     官方推荐直接实现 WebMvcConfigurer 或者直接继承 WebMvcConfigurationSupport，
     方式一实现 WebMvcConfigurer 接口（推荐），
     方式二继承 WebMvcConfigurationSupport 类
+    
+    
+    
+# springboot打出的jar   替换其中的class或是 子jar  报错问题
+    报错：
+    Caused by: java.lang.IllegalStateException: Unable to open nested entry 'BOOT-INF/lib/**.jar'. 
+    It has been compressed and nested jar files must be stored without compression. (嵌套的jar必须直接存储, 而不能压缩)
+    Please check the mechanism used to create your executable jar file
+    
+    解决方法1: jar命令解压, 替换后进行压缩(参考: https://www.cnblogs.com/zhjh256/p/10986920.html)
+    jar -xvf ./*.jar
+    jar -cfM0 *.jar ./
+    
+    
+    解决方法2: winrar或7zip添加文件的时候,选择要添加的jar或class后，
+     再将选择压缩方式由"标准"改为存储(Store) (参考: https://www.jianshu.com/p/9df4a0bb46be)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

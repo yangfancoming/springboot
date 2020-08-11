@@ -9,13 +9,9 @@ import redis.clients.jedis.Transaction;
 
 /**
  * Created by 64274 on 2018/8/23.
- *
  * @author 山羊来了
  * @Description: TODO
  * @date 2018/8/23---22:18
- *
-
- *
  */
 public class Redis_Transaction {
 
@@ -25,7 +21,6 @@ public class Redis_Transaction {
     public void test(){
          jedis = new Jedis("192.168.136.128",6379); // 连接 redis 服务器
     }
-
 
     // 正常情况
     @Test
