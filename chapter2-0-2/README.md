@@ -26,7 +26,6 @@
     jar -xvf ./*.jar
     jar -cfM0 *.jar ./
     
-    
     解决方法2: winrar或7zip添加文件的时候,选择要添加的jar或class后，
      再将选择压缩方式由"标准"改为存储(Store) (参考: https://www.jianshu.com/p/9df4a0bb46be)
     
