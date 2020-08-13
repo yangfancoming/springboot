@@ -55,20 +55,9 @@ public class DemoController {
             // 获取request节点下的 url属性
             Object url = jsonObject.get("url");
             System.out.println("解析url属性：" + url);
-            JSONArray queryStringArr = (JSONArray) jsonObject.get("queryString");
-            String result = "";
-            if ( queryStringArr.size() > 1) {
-                System.out.println("有问题。。。。。。。。。。");
-                break;
-            }
-            if ( queryStringArr.size() > 0) {
-                // 解析请求参数
-                result = queryStringArr.toString();
-            }
             List<Object> record = new ArrayList<>();
             record.add(time);
             record.add(url);
-            record.add(result);
             object.add(record);
         }
         doSaveExcel("D:\\temp\\宁夏.xls"); // "D:\\辽宁.xls" "D:\\宁夏.xls"
