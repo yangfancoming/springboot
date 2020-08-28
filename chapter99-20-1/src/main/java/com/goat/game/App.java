@@ -32,6 +32,9 @@ public class App {
         for (Suit s: values){
             System.out.println(s.name() + "-------" + s.value);
         }
+
+        Suit suit = Suit.valueOf("红桃");
+        System.out.println(suit.value);
     }
 
     @Test

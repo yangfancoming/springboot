@@ -67,6 +67,4 @@ public class StringUtils {
         return ByteArrayUtils.byteArrToHexString(gaga);
     }
 
-
-
 }
