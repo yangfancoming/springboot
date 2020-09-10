@@ -1,0 +1,42 @@
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--        status：用于设置log4j2自身内部日志的信息输出级别，默认是OFF。 多数为 warn ，否则配置级别太低的话 会看到很多log4j2内部日志打印 -->
+<!--        monitorinterval：用于指定 log4j 自动检测配置文件的变更和重新配置本身，单位是秒(s)，最小的间隔时间是5s。-->
+
+<Configuration name="baseConf" status="warn" monitorInterval="30">
+
+<!--全局参数 自定义一些常量，之后使用${变量名}引用-->
+<Properties>
+    <Property name="pattern">%d{yyyy-MM-dd HH:mm:ss,SSS} %5p %c{1}:%L - %m%n</Property>
+    <Property name="logDir">/data/logs/dust-server</Property>
+</Properties>
+
+
+<Appenders>
+    <!--
+Console：用于定义输出到控制台的 Appender
+name：指定 Appender 的名字
+target：SYSTEM_OUT 或 SYSTEM_ERR,一般只设置默认:SYSTEM_OUT
+PatternLayout：输出格式，不设置默认为 %m%n
+     -->
+    <Console name="Console" target="SYSTEM_OUT" follow="true">
+        <!--level="info" :日志级别,onMatch="ACCEPT" :级别在info之上则接受,onMismatch="DENY" :级别在info之下则拒绝-->
+        <ThresholdFilter level="info" onMatch="accept" onMismatch="deny"/>
+        <PatternLayout>
+            <Pattern>${pattern}</Pattern>
+        </PatternLayout>
+    </Console>
+
+</Appenders>
+
+
+
+     <Loggers>
+         <Root level="INFO">
+             <AppenderRef ref="console"/>
+         </Root>
+     </Loggers>
+
+ </Configuration>

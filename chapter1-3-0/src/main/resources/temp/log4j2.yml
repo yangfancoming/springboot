@@ -1,0 +1,33 @@
+
+
+
+Appenders:
+  Console:  #输出到控制台
+    name: CONSOLE #Appender命名
+    target: SYSTEM_OUT
+    PatternLayout:
+      pattern: "%d{yyyy-MM-dd HH:mm:ss,SSS}:%4p %t (%F:%L) - %m%n"
+  RollingFile: # 输出到文件，超过256MB归档
+    - name: ROLLING_FILE
+      ignoreExceptions: false
+      fileName: D://logs/goat.log
+      filePattern: "D://logs/$${date:yyyy-MM}/goat-%d{yyyy-MM-dd}-%i.log"
+      PatternLayout:
+        pattern: "%d{yyyy-MM-dd HH:mm:ss,SSS}:%4p %t (%F:%L) - %m%n"
+      Policies:
+        SizeBasedTriggeringPolicy:
+          size: "1024 KB"
+      DefaultRolloverStrategy:
+        max: 1000
+Loggers:
+  Root:
+    level: info
+    AppenderRef:
+      - ref: CONSOLE
+  Logger: #单独设置某些包的输出级别
+    - name: com.goat.chapter130 #复数加上-（这里我设置的是包的根路径的包名）
+      additivity: false #去除重复的log
+      level: info
+      AppenderRef:
+        - ref: CONSOLE #复数加上-
+        - ref: ROLLING_FILE #复数加上-

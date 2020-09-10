@@ -24,7 +24,7 @@ SpringBoot 项目目录
 - ==chapter1-1-8 springboot  集成OGNL ==
 
 日志相关
-- ==chapter1-2-1 springboot  与 日志==
+- ==chapter1-2-1 springboot  与 日志== log4j / log4j2
 - ==chapter1-2-2 springboot  与 日志    默认日志框架  LogBack ==
 - ==chapter1-2-3 springboot  与 日志 log4j + AOP统一处理请求日志==
 - ==chapter1-2-4 springboot  日志输出至Logstash xml方式==
