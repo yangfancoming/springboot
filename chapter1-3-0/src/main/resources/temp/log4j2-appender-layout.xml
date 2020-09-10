@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 
-<Configuration name="baseConf" status="warn" monitorInterval="30">
+<Configuration name="baseConf" status="warn" monitorInterval="5">
 
 <Properties>
 <!--    2020-09-10 17:34:51,164  INFO Log4j2Controller:34 - *show log*-->
-    <Property name="pattern">%d{yyyy-MM-dd HH:mm:ss,SSS} %5p %c{1}:%L - %m%n</Property>
+<!--    <Property name="pattern">%d{yyyy-MM-dd HH:mm:ss,SSS} %5p %c{1}:%L - %m%n</Property>-->
+
+<!--    20:25:23.591 [http-nio-8130-exec-1] INFO  com.goat.chapter130.Log4j2Controller - *show log*-->
+    <Property name="pattern">%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
 </Properties>
 
 

@@ -2,8 +2,12 @@
 
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--        status：用于设置log4j2自身内部日志的信息输出级别，默认是OFF。 多数为 warn ，否则配置级别太低的话 会看到很多log4j2内部日志打印 -->
-<!--        monitorinterval：用于指定 log4j 自动检测配置文件的变更和重新配置本身，单位是秒(s)，最小的间隔时间是5s。-->
+
+<!--
+  status：用于设置log4j2自身内部日志的信息输出级别，默认是OFF。 多数为 warn ，否则配置级别太低的话 会看到很多log4j2内部日志打印
+ monitorinterval：用于指定 log4j 自动检测配置文件的变更和重新配置本身，单位是秒(s)，最小的间隔时间是5s
+ eg：更改layout样式后，再项目启动状态下，再次build一下，过30秒，再打印日志，日志样式就会改变，证明日志配置文件已经重新加载
+-->
 
 <Configuration name="baseConf" status="warn" monitorInterval="30">
 

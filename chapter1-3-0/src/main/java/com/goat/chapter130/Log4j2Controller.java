@@ -24,7 +24,10 @@ public class Log4j2Controller {
     @GetMapping("test1")
     public void test1(){
         for (int i = 0; i < 100*1000; i++) {
-            log.info("Something else is wrong here -- " + i);
+            log.error("我是error"+ i);
+            log.warn("我是warn"+ i);
+            log.info("我是info"+ i);
+            log.debug("我是debug"+ i);
         }
     }
 

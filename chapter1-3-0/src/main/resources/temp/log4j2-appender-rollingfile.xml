@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<Configuration name="baseConf" status="warn" monitorInterval="5">
+
+<Properties>
+    <Property name="pattern">%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+</Properties>
+
+
+<Appenders>
+
+<!--
+RollingFile：定义指定方式触发新的 Appender
+name：Appender 名字。
+fileName：输出日志文件的名字（带全路径）。
+filePattern：归档日志文件的文件名模式。
+PatternLayout：输出格式，不设置默认为：%m%n。
+Policies：指定滚动日志的策略。
+TimeBasedTriggeringPolicy：Policies 子节点，基于时间的滚动策略。interval 属性根据日期模式中最具体的时间单位进行翻转的频率，默认为1。
+SizeBasedTriggeringPolicy：Policies 子节点，基于文件大小的滚动策略。size属性用来定义每个日志文件的大小。大小可以以字节为单位指定，后缀为KB，MB或GB，例如20MB。
+DefaultRolloverStrategy：用来指定同一文件夹最多有几个日志文件时开始删除最旧的，创建新的(通过max属性)。
+-->
+
+    <!-- ${sys:user.home} :项目路径 -->
+<!--    <RollingFile name="RollingFileInfo" fileName="${sys:user.home}/logs/info.log"  filePattern="${sys:user.home}/logs/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">-->
+    <RollingFile name="RollingFileInfo" fileName="D://logs/info.log"  filePattern="D://logs/$${date:yyyy-MM-dd}/info-%d{yyyy-MM-dd}-%i.log">
+        <!--ThresholdFilter :日志输出过滤-->
+        <!--level="info" :日志级别,onMatch="ACCEPT" :级别在info之上则接受,onMismatch="DENY" :级别在info之下则拒绝
+        例如：以下日志打印 不会打印debug级别的日志
+            log.error("我是error"+ i);
+            log.warn("我是warn"+ i);
+            log.info("我是info"+ i);
+            log.debug("我是debug"+ i);
+        -->
+        <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+        <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
+        <!-- Policies :日志滚动策略-->
+        <Policies>
+            <!-- TimeBasedTriggeringPolicy :时间滚动策略,默认0点小时产生新的文件,
+            interval="6" : 自定义文件滚动时间间隔,每隔6小时产生新文件,
+            modulate="true" : 产生文件是否以0点偏移时间,即6点,12点,18点,0点-->
+            <TimeBasedTriggeringPolicy interval="6" modulate="true"/>
+            <!-- SizeBasedTriggeringPolicy :文件大小滚动策略-->
+            <SizeBasedTriggeringPolicy size="10 KB"/>
+        </Policies>
+        <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
+        <DefaultRolloverStrategy max="20"/>
+    </RollingFile>
+
+</Appenders>
+
+
+
+     <Loggers>
+         <Root level="info">
+             <AppenderRef ref="RollingFileInfo"/>
+         </Root>
+     </Loggers>
+
+ </Configuration>
