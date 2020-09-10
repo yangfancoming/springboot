@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<Configuration status="warn" name="MyApp" >
+    <Appenders>
+
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+        <!--<RollingFile name="RollingFile" fileName="logs/app.log"-->
+        <!--filePattern="logs/app-%d{yyyy-MM-dd HH}-%i.log">-->
+        <RollingFile name="RollingFile" fileName="D://logs/app.log" filePattern="D://logs/app-%d{yyyy-MM-dd HH-mm-ss}.log">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <!--
+                当经过了interval时间后，将根据filePattern对文件进行重命名，并生成新的文件用于日志写入
+                filePattern最小时间粒度为秒，将每5秒触发一次rollover
+                可以看到日志打印规律： 几乎是每隔5秒 生成一日志文件
+                app-2020-09-10 21-01-32
+                app-2020-09-10 21-01-37
+                app-2020-09-10 21-02-45
+                app-2020-09-10 21-02-57
+                app-2020-09-10 21-03-20
+                app-2020-09-10 21-03-25
+                app-2020-09-10 21-03-30
+                -->
+<!--                <TimeBasedTriggeringPolicy interval="5"/>-->
+                <!--当日志文件大小大于size时，将根据filepattern对文件进行重命名，并生成新的文件用于日志写入-->
+
+                <SizeBasedTriggeringPolicy size="30KB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="3"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+    </Loggers>
+</Configuration>
