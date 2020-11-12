@@ -34,7 +34,11 @@ public class Log4j2Controller {
     // http://localhost:8130/log4j2/test2
     @GetMapping("test2")
     public void test2(){
-        log.info("*show log*");
+        log.trace("trace level");
+        log.debug("debug level");
+        log.info("info level");
+        log.warn("warn level");
+        log.error("error level");
     }
 
 }

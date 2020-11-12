@@ -2,6 +2,7 @@
 
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--日志级别以及优先级排序: OFF > FATAL > ERROR > WARN > INFO > DEBUG > TRACE > ALL -->
 
 <!--
   status：用于设置log4j2自身内部日志的信息输出级别，默认是OFF。 多数为 warn ，否则配置级别太低的话 会看到很多log4j2内部日志打印
@@ -20,8 +21,11 @@
     <Property name="logFileName">test.log</Property>
 </Properties>
 
-
+    <!--Appenders:定义输出内容,输出格式,输出方式,日志保存策略等,常用其下三种标签[Console,File,RollingFile]-->
+    <!--Appender 可以理解为日志的输出目的地-->
 <Appenders>
+
+
     <!--
 Console：用于定义输出到控制台的 Appender
 name：指定 Appender 的名字

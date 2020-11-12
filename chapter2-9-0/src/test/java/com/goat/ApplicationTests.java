@@ -76,8 +76,10 @@ public class ApplicationTests {
     public void error2() throws Exception {
         Product product = new Product("111",100,"2222");
         String requestJson = JSONObject.toJSONString(product);
+        System.out.println(requestJson);
+        String temp = "{\"category\":\"2222\",\"name\":\"111\",\"price\":100,\"fuck\":100}";
         //请求方式： post   请求url： /request/requestBody    contentType需要设置成MediaType.APPLICATION_JSON，即声明是发送“application/json”格式的数据
-        String responseString = mockMvc.perform(post("/test/error2").contentType(MediaType.APPLICATION_JSON).content(requestJson))
+        String responseString = mockMvc.perform(post("/test/error2").contentType(MediaType.APPLICATION_JSON).content(temp))
                 .andDo(print()) //打印效果
                 .andExpect(status().isOk())  //预期状态
                 .andReturn().getResponse().getContentAsString();

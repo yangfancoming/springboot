@@ -1,4 +1,4 @@
-#
+# Oracle 扩容文件满了，无法扩容
     问题： ORA-01691: unable to extend lob segment SJJH.SYS_LOB0000081598C00004$$ by 8192 in tablespace SJJH
     描述：现场突然反馈回来说系统运行好好的出故障了，没有日志，也不报错，就是进不了系统。
     搜集最近的一次日志发现，有ora-01691的错误问题。查看错误信息发现原因是表空间无法分配新的空间给表。所以报错。
@@ -25,8 +25,6 @@
     alter tablespace IFAMEX_BLOB add datafile 'C:/DATA/HJCBFW01/BLOB02.DBF' size 200m autoextend on next 10m maxsize 2000m
 
     
-              
-
     辅助：
     1. 查询数据文件位置：
     select t1.name,t2.name from v$tablespace t1,v$datafile t2 where t1.ts# = t2.ts#;
