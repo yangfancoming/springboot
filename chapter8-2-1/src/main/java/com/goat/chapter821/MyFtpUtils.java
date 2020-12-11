@@ -1,8 +1,8 @@
 package com.goat.chapter821;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
+import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 
@@ -35,7 +35,7 @@ public class MyFtpUtils {
             ftpClient.connect(addr, port);
             /**登录 FTP 服务器
              * 1）如果传入的账号为空，则使用匿名登录，此时账号使用 "Anonymous"，密码为空即可*/
-            if (StringUtils.isBlank(username)) {
+            if (StringUtils.isEmpty(username)) {
                 ftpClient.login("Anonymous", "");
             } else {
                 ftpClient.login(username, password);

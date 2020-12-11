@@ -35,7 +35,7 @@ public class TestController {
         return "Hello World! This is a protected api";
     }
 
-    // http://localhost:8370/  前天 login 登录按钮 请求方法
+    // http://localhost:8370/  前台 login 登录按钮 请求方法
     @PostMapping("/login")
     public Object login(@RequestBody final Account account) {
 

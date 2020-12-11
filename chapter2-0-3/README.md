@@ -73,4 +73,4 @@
 
 # Filter 多个过滤器 拦截顺序
     Spring boot关于WebFilter过滤器不支持Order排序的解决办法： 修改filter目录中对应过滤器的文件名按首字母顺序调整自己想要的顺序即可！！！ 
-    可以通过class类名来达到排序效果。但这种方案要限制类名，还是使用FilterRegistrationBean之类的来设置吧。    
+    可以通过class类名来达到排序效果。但这种方案要限制类名，还是使用 FilterRegistrationBean 之类的来设置吧。    

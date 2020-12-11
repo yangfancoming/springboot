@@ -1,8 +1,8 @@
 package com.goat.chapter821;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
+import org.springframework.util.StringUtils;
 
 import java.io.*;
 import java.util.List;
@@ -74,7 +74,7 @@ public class MyFtpOperUtils {
             System.out.println(">>>>>FTP服务器连接已经关闭或者连接无效*********");
             return;
         }
-        if (StringUtils.isBlank(absoluteLocalDirectory) || StringUtils.isBlank(relativeRemotePath)) {
+        if (StringUtils.isEmpty(absoluteLocalDirectory) || StringUtils.isEmpty(relativeRemotePath)) {
             System.out.println(">>>>>下载时遇到本地存储路径或者ftp服务器文件路径为空，放弃...*********");
             return;
         }
@@ -97,7 +97,7 @@ public class MyFtpOperUtils {
                 }
                 OutputStream outputStream = new FileOutputStream(localFile);
                 String workDir = relativeRemotePath.substring(0, relativeRemotePath.lastIndexOf("\\"));
-                if (StringUtils.isBlank(workDir)) {
+                if (StringUtils.isEmpty(workDir)) {
                     workDir = "/";
                 }
                 /**文件下载前，FTPClient工作目录必须切换到文件所在的目录，否则下载失败
