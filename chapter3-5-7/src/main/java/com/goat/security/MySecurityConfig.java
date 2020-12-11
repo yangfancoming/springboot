@@ -3,6 +3,7 @@ package com.goat.security;
 import com.goat.jwt.JWTAuthenticationFilter;
 import com.goat.jwt.JWTLoginFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -11,6 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * Created by 64274 on 2018/7/27.
@@ -57,11 +59,12 @@ public class MySecurityConfig  extends WebSecurityConfigurerAdapter {
         http.rememberMe();
     }
 
-
     @Override
-    public void configure(AuthenticationManagerBuilder auth) {
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
         // 使用自定义身份验证组件
         auth.authenticationProvider(new CustomAuthenticationProvider(userDetailsService,bCryptPasswordEncoder));
+        // sos 报错 java.lang.IllegalStateException: UserDetailsService is required. 是因为没有加上 下面这行代码。。。
+        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
     }
 
 }

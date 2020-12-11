@@ -18,8 +18,6 @@ import java.util.Date;
 
 /**
  * token校验
- *
- * @author itguang
  * @create 2018-01-02 15:16
  **/
 public class JWTAuthenticationFilter extends BasicAuthenticationFilter {

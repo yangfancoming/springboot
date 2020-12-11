@@ -24,7 +24,7 @@ public class User implements UserDetails {
 
     private Integer age;
 
-    List<String> roles;
+//    List<String> roles;
 
     public User(){}
 
@@ -36,7 +36,7 @@ public class User implements UserDetails {
     public User(String username, String password, List<String> roles) {
         this.username = username;
         this.password = password;
-        this.roles = roles;
+//        this.roles = roles;
     }
 
     public String getUsername() {
@@ -104,13 +104,13 @@ public class User implements UserDetails {
         this.age = age;
     }
 
-    public List<String> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
-    }
+//    public List<String> getRoles() {
+//        return roles;
+//    }
+//
+//    public void setRoles(List<String> roles) {
+//        this.roles = roles;
+//    }
 
     @Override
     public String toString() {
