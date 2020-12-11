@@ -2,11 +2,9 @@ package com.goat.security;
 
 import org.springframework.security.core.GrantedAuthority;
 
-/**
- * @author itguang
- * @create 2018-01-02 11:08
- **/
+
 public class GrantedAuthorityImpl implements GrantedAuthority {
+
     private String authority;
 
     public GrantedAuthorityImpl(String authority) {

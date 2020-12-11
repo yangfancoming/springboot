@@ -16,8 +16,6 @@ import java.util.ArrayList;
 
 /**
  * AuthenticationProvider(身份验证提供者) 顾名思义,可以提供一个 Authentication 供Spring Security的上下文使用,
- *
- * @author itguang
  * @create 2018-01-02 16:23
  **/
 public class CustomAuthenticationProvider implements AuthenticationProvider {
@@ -31,17 +29,12 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
-
     /**
      * 是否可以提供输入类型的认证服务
-     * <p>
      * 如果这个AuthenticationProvider支持指定的身份验证对象，那么返回true。
      * 返回true并不能保证身份验证提供者能够对身份验证类的实例进行身份验证。
      * 它只是表明它可以支持对它进行更深入的评估。身份验证提供者仍然可以从身份验证(身份验证)方法返回null，
      * 以表明应该尝试另一个身份验证提供者。在运行时管理器的运行时，可以选择具有执行身份验证的身份验证提供者。
-     *
-     * @param authentication
-     * @return
      */
     @Override
     public boolean supports(Class<?> authentication) {

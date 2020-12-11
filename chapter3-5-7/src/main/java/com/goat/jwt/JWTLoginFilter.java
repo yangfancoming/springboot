@@ -42,9 +42,8 @@ public class JWTLoginFilter extends UsernamePasswordAuthenticationFilter {
         String password = request.getParameter("password");
         if (username == null) username = "";
         if (password == null) password = "";
-        username = username.trim();
         ArrayList<GrantedAuthorityImpl> authorities = new ArrayList<>();
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password, authorities);
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username.trim(), password, authorities);
         //authenticate()接受一个token参数,返回一个完全经过身份验证的对象，包括证书.
         // 这里并没有对用户名密码进行验证,而是
 //        Authentication authenticate = authenticationManager.authenticate(authenticationToken);
@@ -53,10 +52,6 @@ public class JWTLoginFilter extends UsernamePasswordAuthenticationFilter {
 
     /**
      * 登陆成功后,此方法会被调用,因此我们可以在次方法中生成token,并返回给客户端
-     * @param request
-     * @param response
-     * @param chain
-     * @param authResult
      */
     @Override
     protected void successfulAuthentication(HttpServletRequest request,HttpServletResponse response,FilterChain chain, Authentication authResult) {

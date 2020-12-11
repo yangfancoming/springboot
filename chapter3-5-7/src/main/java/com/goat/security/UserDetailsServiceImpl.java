@@ -10,13 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-
 import static java.util.Collections.emptyList;
 
-/**
- * @author itguang
- * @create 2018-01-02 16:07
- **/
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
