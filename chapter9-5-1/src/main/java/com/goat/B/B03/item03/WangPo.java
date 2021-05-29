@@ -19,6 +19,7 @@ public class WangPo implements KindWomen {
     public WangPo(KindWomen kindWomen){
         this.kindWomen = kindWomen;
     }
+
     @Override
     public void makeEyesWithMan(){
         this.kindWomen.makeEyesWithMan(); //王婆这么大年龄了，谁看她抛媚眼？！
