@@ -24,6 +24,7 @@ public class BookFacadeProxy implements InvocationHandler {
         this.target = target;
         //通过反射机制，创建一个代理类对象实例并返回。用户进行方法调用时使用
         //创建代理对象时，需要传递该业务类的类加载器（用来获取业务实现类的元数据，在包装方法是调用真正的业务方法）、接口、handler实现类
+        // P2 = interface com.goat.B.B03.item08.BookFacade  被代理的方法 就是该接口中定义的方法！
         Object o = Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), this);
         return o;
     }
