@@ -1,3 +1,9 @@
+# Maven的作用
+    1. 方便快捷的管理项目所依赖的jar包
+    2. 预定大于配置，统一了开发项目结构
+    3. 提供标准的、跨平台的自动化构建方式
+
+
 #  配置 maven 仓库 路径  
     如果不设置 则maven会默把jar包 下载到 C:\Users\64274\.m2\repository 路径下。。。。
     设置方法： F:\Package\Java Environment\apache-maven-3.3.9\conf 目录下的 settings.xml 文件

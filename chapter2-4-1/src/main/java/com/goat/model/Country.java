@@ -37,10 +37,13 @@ public class Country {
 
     @XmlElement(namespace = "http://www.yourcompany.com/webservice", required = true,name = "NAME")
     protected String name;
+
     @XmlElement(namespace = "http://www.yourcompany.com/webservice",name = "POPULATION")
     protected int population;
+
     @XmlElement(namespace = "http://www.yourcompany.com/webservice", required = true)
     protected String capital;
+
     @XmlElement(namespace = "http://www.yourcompany.com/webservice", required = true)
     @XmlSchemaType(name = "string")
     protected Currency currency;

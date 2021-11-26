@@ -39,14 +39,30 @@
      flushall  清空所有数据库
      select x  切换当前数据库
      
+     ###字符串型命令：
      set key value   设置一个key value
      get key    返回一个value
+     
+     incr/decr          key 给指定key的value +1/-1
+     incrby/decrby n   key 给指定key的value +n/-n
+
+     append key xxx   给指定key的value 追加xxx (如果指定key不存在，则直接新增key value)
+     getrange fuck 1 3
+     
      exists key  判断某个key是否存在  1 true  0 false
      move key  db   将key剪切到指定db中 
+     strlen key  获取指定key的长度
+     expire key  seconds   设置指定key过期时间  单位为秒。过期后 key-value将被删除
+     ttl key 查看指定key剩余过期时间
+     type key 查看指定key的类型
+     
+     
+     ###字符串型命令：
+     
      
      
      支持的数据类型
-         字符串  String
+         字符串  string
          哈希	hash
          列表	list
          集合	set
