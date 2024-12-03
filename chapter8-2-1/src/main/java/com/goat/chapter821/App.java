@@ -12,18 +12,26 @@ import static com.goat.chapter821.MyFtpUtils.closeFTPConnect;
 
 /**
  * Created by Administrator on 2020/1/10.
- *
+ * ftp://10.23.11.201:21
  * @ Description: TODO
  * @ author  山羊来了
  * @ date 2020/1/10---17:33
  */
 public class App {
 
-    FTPClient ftpClient = MyFtpUtils.connectFtpServer("192.168.211.128", 21, "test", "test", "UTF-8");
+//    public String ip = "192.168.211.128";
+    public String ip = "10.23.11.201";
+
+    FTPClient ftpClient = MyFtpUtils.connectFtpServer(ip, 21, "ftpuser", "jwfl724168", "UTF-8");
+//    FTPClient ftpClient = MyFtpUtils.connectFtpServer(ip, 21, "games", "jwfl724168", "UTF-8");
+//    FTPClient ftpClient = MyFtpUtils.connectFtpServer(ip, 21, "", "", "UTF-8");
+//    FTPClient ftpClient = MyFtpUtils.connectFtpServer(ip, 21, "ftpuser", "jwfl7241681", "UTF-8");
 
     @Test
     public void connectFtpServer(){
         System.out.println("-----------------------应用启动------------------------");
+        ftpClient.setActivePortRange(4000, 4100);
+
         System.out.println("FTP 连接是否成功：" + ftpClient.isConnected());
         System.out.println("FTP 连接是否有效：" + ftpClient.isAvailable());
         closeFTPConnect(ftpClient);
@@ -54,7 +62,7 @@ public class App {
     @Test
     public void upload(){
         System.out.println("-----------------------应用启动------------------------");
-        uploadFiles(ftpClient, new File("D:\\123\\12.txt"));
+        uploadFiles(ftpClient, new File("D:\\temp\\111.txt"));
         closeFTPConnect(ftpClient);
         System.out.println("-----------------------应用关闭------------------------");
     }
@@ -62,7 +70,7 @@ public class App {
     @Test
     public void upload2(){
         System.out.println("-----------------------应用启动------------------------");
-        uploadFiles(ftpClient, new File("D:\\123\\"));
+        uploadFiles(ftpClient, new File("D:\\temp\\")); // 如果服务器没有temp目录，则直接创建
         closeFTPConnect(ftpClient);
         System.out.println("-----------------------应用关闭------------------------");
     }
@@ -70,7 +78,8 @@ public class App {
     @Test
     public void delete(){
         System.out.println("-----------------------应用启动------------------------");
-        deleteServerFiles(ftpClient,"/");
+//        deleteServerFiles(ftpClient,"/");
+        deleteServerFiles(ftpClient,"/home/ftpuser/temp"); //直接删除temp目录
         closeFTPConnect(ftpClient);
         System.out.println("-----------------------应用关闭------------------------");
     }
