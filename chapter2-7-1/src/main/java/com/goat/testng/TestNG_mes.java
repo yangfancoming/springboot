@@ -4,9 +4,9 @@ package com.goat.testng;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.goat.pojo.HttpClientResult;
+import com.goat.utils.DesUtils;
 import com.goat.utils.HttpClientUtils;
 import org.junit.Test;
-//import org.springframework.test.context.ContextConfiguration;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -46,6 +46,29 @@ public class TestNG_mes {
         HttpClientResult result2 = HttpClientUtils.doPost("http://192.168.1.115:8081/wms/warehouseSplit/updateWarehouseSplit",map);
         System.out.println(result2);
     }
+
+    public static final String url = "https://etax.jiangsu.chinatax.gov.cn/portal/queryapi/query.do";
+
+    @Test
+    public void test111() throws Exception { // HttpClient doPost请求 发送 map 对象
+        Map<String, String> requestMap = new HashMap<String, String>();
+        requestMap.put("action", "authYshdSms");
+        Map<String, String> bodyMap = new HashMap<String, String>();
+        bodyMap.put("shxydm", "92320303MA24CECG5P");
+        bodyMap.put("sqrydm", "30");
+        bodyMap.put("sqry_sfzjhm", "320311198310244665");
+        bodyMap.put("sqry_sjhm", "13913912316");
+        String jsonBody = JSON.toJSONString(bodyMap);
+//        String jsonBody = toJsonStr(bodyMap);
+        requestMap.put("body", DesUtils.encrypt(jsonBody, "a4b715ab59d911eaab039c37f480e5a7"));
+        Map<String, String> paramMap = new HashMap<String, String>();
+        paramMap.put("request", JSON.toJSONString(requestMap));
+
+
+        HttpClientResult result2 = HttpClientUtils.doPost(url,paramMap);
+        System.out.println(result2);
+    }
+
 
     @Test
     public void test5() throws Exception { // HttpClient doPost请求 发送 JSONObject 对象

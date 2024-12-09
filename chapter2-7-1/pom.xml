@@ -23,6 +23,31 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.49</version>
         </dependency>
+
+
+
+<!--        &lt;!&ndash; json-lib 依赖 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>net.sf.json-lib</groupId>-->
+<!--            <artifactId>json-lib</artifactId>-->
+<!--            <version>2.4</version>-->
+<!--            <classifier>jdk15</classifier>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; ezmorph 依赖，json-lib 的一个依赖 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>net.sf.ezmorph</groupId>-->
+<!--            <artifactId>ezmorph</artifactId>-->
+<!--            <version>1.0.6</version>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash; commons-lang 依赖，可能被 json-lib 或 ezmorph 依赖 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>commons-lang</groupId>-->
+<!--            <artifactId>commons-lang</artifactId>-->
+<!--            <version>2.6</version>-->
+<!--        </dependency>-->
+
     </dependencies>
 
 </project>

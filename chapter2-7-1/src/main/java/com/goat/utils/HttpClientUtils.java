@@ -10,12 +10,16 @@ import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.*;
 import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.ssl.SSLContextBuilder;
+import org.apache.http.ssl.SSLContexts;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
@@ -116,8 +120,18 @@ public class HttpClientUtils {
 	 * @throws Exception
 	 */
 	public static HttpClientResult doPost(String url, Map<String, String> headers, Map<String, String> params) throws Exception {
+
+        // 解决https 请求没有证书报错问题：unable to find valid certification path to requested target
+        SSLContextBuilder sslContextBuilder = SSLContexts.custom().loadTrustMaterial((chain, authType) -> true);
+        SSLConnectionSocketFactory sslSocketFactory = new SSLConnectionSocketFactory(sslContextBuilder.build(), NoopHostnameVerifier.INSTANCE);
+
+        // 创建 CloseableHttpClient 对象
+        CloseableHttpClient httpClient = HttpClients.custom()
+                .setSSLSocketFactory(sslSocketFactory)
+                .build();
+
 		// 创建httpClient对象
-		CloseableHttpClient httpClient = HttpClients.createDefault();
+//		CloseableHttpClient httpClient = HttpClients.createDefault();
 		// 创建http对象
 		HttpPost httpPost = new HttpPost(url);
 		/**

@@ -77,7 +77,7 @@ public class MyDateController {
     //    http://localhost:8136/mydate/test3
     protected static final String HOST = "http://127.0.0.1:8137";
     @Autowired
-    RestTemplate restTemplate;
+     RestTemplate restTemplate;
 
     @RequestMapping("test3")
     public void test3() {

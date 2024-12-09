@@ -1,3 +1,9 @@
+# 报错：unable to find valid certification path to requested target
+      在Java项目中请求HTTPS时，可能会遇到 "unable to find valid certification path to requested target" 错误。这个错误通常是由于SSL证书问题引起的。要解决此问题，可以尝试以下方法
+        详见 本项目中的  ignoreSSL() 方法
+
+
+
 # Spring的 RestTemplate访问使用了模版方法的设计模式.
 
     模版方法将过程中与特定实现相关的部分委托给接口,而这个接口的不同实现定义了接口的不同行为.
