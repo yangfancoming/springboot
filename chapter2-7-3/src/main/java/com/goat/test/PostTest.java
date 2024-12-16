@@ -97,6 +97,7 @@ public class PostTest extends BaseTest{
     }
 
 
+    // RestTemplate  方式调用 htts 地址时忽略证书校验问题
     public static void ignoreSSL() throws NoSuchAlgorithmException, KeyManagementException {
         SSLContext sslContext = SSLContext.getInstance("TLS");
         TrustManager[] trustManagers = new TrustManager[]{new X509TrustManager() {

@@ -19,5 +19,12 @@ public class AddStudent extends MyBase {
         System.out.println("写入 students.xml  成功！");
     }
 
-
+    @Test
+    public void create() throws IOException {
+        Student student = new Student(321,"11","22","33",321);
+        Element root = document.getRootElement();
+        add(student, root);
+        save();
+        System.out.println("写入 students.xml  成功！");
+    }
 }

@@ -1,5 +1,39 @@
-docker run -d -p 80:80 httpd
-docker run --name hello -p 8941:8941  b719b9a8835e
+
+查看安装过的包：yum list installed | grep docker
+删除安装的Docker相关的软件包： yum -y remove docker-ce-cli.x86_64
+查看内核版本【Docker要求Centos系统的内核版本高于3.10】  uname -r        【本机的内核版本：3.10.0-327.el7.x86_64】
+把yum包更新到最新（时间可能有点长，慢慢等待......）  yum update
+
+安装需要的软件包。【yum-util提供yum-config-manager功能，另外两个是devicemapper驱动所需依赖】
+
+            yum install -y yum -utils device-mapper-persistent-data lvm2
+
+
+# 遇到yum源报错  Cannot find a valid baseurl for repo: base/7/x86_64
+
+    使用一下  替换  etc/yum.repos.d/ 目录下 CentOS-Base.repo 文件
+    
+    [base]
+    name=CentOS-$releasever - Base
+    baseurl=http://mirrors.aliyun.com/centos/$releasever/os/$basearch/
+    gpgcheck=1
+    gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7
+    
+    [updates]
+    name=CentOS-$releasever - Updates
+    baseurl=http://mirrors.aliyun.com/centos/$releasever/updates/$basearch/
+    gpgcheck=1
+    gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7
+    
+    [extras]
+    name=CentOS-$releasever - Extras
+    baseurl=http://mirrors.aliyun.com/centos/$releasever/extras/$basearch/
+    gpgcheck=1
+    gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7
+    
+    
+    docker run -d -p 80:80 httpd
+    docker run --name hello -p 8941:8941  b719b9a8835e
 
 
 #FROM

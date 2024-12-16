@@ -22,7 +22,8 @@ import java.io.IOException;
 public class MyBase {
 
 //    public static String path = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter4-4-0\\src\\main\\java\\com\\goat\\xml\\xmldemo\\students.xml";
-    public static String path = "E:\\Code\\J2EE_code\\MySpringBoot\\springboot\\chapter4-4-0\\src\\main\\java\\com\\goat\\xml\\xpath\\example03.xml";
+    public static String path = "D:\\code\\springboot\\chapter4-4-0\\src\\main\\java\\com\\goat\\xml\\xml\\test.xml";
+//    public static String path = "goat.xml";
 
     protected File file ;
     protected Document document ;
@@ -53,5 +54,6 @@ public class MyBase {
         OutputFormat format = OutputFormat.createPrettyPrint();
         XMLWriter writer = new XMLWriter(fos, format);
         writer.write(document);
+        writer.close();
     }
 }
