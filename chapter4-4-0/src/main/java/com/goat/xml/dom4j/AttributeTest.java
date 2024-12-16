@@ -20,7 +20,7 @@ public class AttributeTest extends MyBase {
     public void test() throws IOException {
         boolean result = addAttribute(document, 1,"goat","luck");
         if (result){
-            save();
+            save(file);
         }
     }
 
@@ -31,7 +31,7 @@ public class AttributeTest extends MyBase {
     public void deleteAttribute() throws IOException {
         boolean result = deleteAttribute(document, 1,"goat");
         if (result){
-            save();
+            save(file);
         }
     }
 
@@ -42,7 +42,7 @@ public class AttributeTest extends MyBase {
     public void updateAttribute() throws IOException {
         boolean result = updateAttribute(document, 1,"goat","what");
         if (result){
-            save();
+            save(file);
         }
     }
 

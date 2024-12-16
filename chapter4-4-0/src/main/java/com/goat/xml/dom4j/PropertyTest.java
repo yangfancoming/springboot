@@ -18,7 +18,7 @@ public class PropertyTest extends MyBase {
     public void addProperty() throws IOException {
         boolean result = addProperty(document, 1,"goat1","luck1");
         if (result){
-            save();
+            save(file);
         }
     }
 
@@ -29,7 +29,7 @@ public class PropertyTest extends MyBase {
     public void deleteProperty() throws IOException {
         boolean result = deleteProperty(document, 1,"goat1");
         if (result){
-            save();
+            save(file);
         }
     }
 
@@ -40,7 +40,7 @@ public class PropertyTest extends MyBase {
     public void updateProperty() throws IOException {
         boolean result = updateProperty(document, 1,"goat1","what");
         if (result){
-            save();
+            save(file);
         }
     }
 

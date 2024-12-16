@@ -8,9 +8,7 @@ import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Created by 64274 on 2019/7/5.
@@ -49,11 +47,36 @@ public class MyBase {
         student.addElement("marks").addText(String.valueOf(st.getMarks()));
     }
 
-    protected void save() throws IOException {
+    protected void save(File file) throws IOException {
         FileOutputStream fos = new FileOutputStream(file);
         OutputFormat format = OutputFormat.createPrettyPrint();
         XMLWriter writer = new XMLWriter(fos, format);
         writer.write(document);
         writer.close();
+    }
+
+
+    protected StringBuffer see(File file){
+        BufferedReader reader = null;
+        StringBuffer sbf = new StringBuffer();
+        try {
+            reader = new BufferedReader(new FileReader(file));
+            String tempStr;
+            while ((tempStr = reader.readLine()) != null) {
+                sbf.append(tempStr);
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+        return sbf;
     }
 }

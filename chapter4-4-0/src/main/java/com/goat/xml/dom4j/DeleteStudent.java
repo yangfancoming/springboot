@@ -18,7 +18,7 @@ public class DeleteStudent extends MyBase {
     public void test() throws IOException {
         boolean result = deleteStudent(document, 321);
         if (result) {
-            save();
+            save(file);
         }
     }
 

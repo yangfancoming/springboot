@@ -53,8 +53,8 @@ public class WriteXML extends MyBase {
 
 
             // 6、生成xml文件
-//            File file = new File("rss.xml");
-            File file = new File("src/rss.xml");
+            File file = new File("rss.xml");
+//            File file = new File("src/rss.xml");
             XMLWriter writer = new XMLWriter(new FileOutputStream(file), format);
             // 设置是否转义，默认使用转义字符
             writer.setEscapeText(false);
