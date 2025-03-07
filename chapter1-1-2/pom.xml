@@ -44,7 +44,7 @@
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
-            <version>2.2.3</version>
+            <version>2.3.2</version>
         </dependency>
 
         <!--Spring 项目整合 Quartz 主要依靠添加 SchedulerFactoryBean 这个 FactoryBean ，所以在maven 依赖中添加 spring-context-support -->
