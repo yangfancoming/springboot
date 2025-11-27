@@ -1,4 +1,4 @@
-package com.goat.examples.fly;
+package com.goat.mytest.fly;
 
 import java.time.LocalDate;
 

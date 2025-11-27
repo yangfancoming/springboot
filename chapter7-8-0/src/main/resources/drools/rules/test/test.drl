@@ -1,7 +1,7 @@
 package drools.rules.test;
 dialect  "java"
 //import com.goat.entity.Person               // 导入类
-import com.goat.examples.test.Person        // 导入类
+import com.goat.mytest.test.Person        // 导入类
 
 
 

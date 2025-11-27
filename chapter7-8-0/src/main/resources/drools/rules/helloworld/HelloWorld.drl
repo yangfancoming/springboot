@@ -1,7 +1,7 @@
 package drools.rules.helloworld;
 
 
-import  com.goat.examples.helloworld.HelloWorldExample.Message;
+import  com.goat.mytest.helloworld.HelloWorldExample.Message;
 global java.util.List list
 
 rule "Hello World"

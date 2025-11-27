@@ -2,7 +2,7 @@ package drools.rules.goat;
 dialect  "java"
 //import com.goat.entity.Person               // 导入类
 //import com.goat.examples.test.Person        // 导入类
-import com.goat.examples.goat.Person        // 导入类
+import com.goat.mytest.goat.Person        // 导入类
 
 
 
@@ -25,7 +25,7 @@ rule "222"
 end
 
 
-rule "333"
+rule "333"  // 字段约束
    when
     // 匹配年龄小于18岁的客户
     Person( age < 18 )
@@ -45,6 +45,34 @@ rule "333"
          System.out.println("触发规则 333");
          System.out.println("Found a Person: " + $name);
 end
+
+
+rule "Nested Object Access"
+when
+    // 对象嵌套访问
+    $dept : Person( age < 18, dept.name == "开发部" )
+then
+      System.out.println("触发规则 4444");
+      System.out.println("VIP大额订单: " + $dept.getName());
+end
+
+
+
+rule "集合操作 "
+when
+    // 匹配有超过5个订单的客户
+    $customer : Person( orders.size() > 1 )
+
+    // 匹配至少有一个订单金额超过5000的客户
+//    $customer : Person( orders contains (id > 1) )
+
+    // 使用from遍历集合
+//    $order : Order( amount > 1000 ) from $customer.getOrders()
+then
+      System.out.println("触发规则 5555");
+    System.out.println("活跃客户: " + $customer.getName());
+end
+
 
 function String test(String str){
     String temp1 = "1111";

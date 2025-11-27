@@ -1,4 +1,4 @@
-package com.goat.examples.test;
+package com.goat.mytest.test;
 
 
 import org.junit.Test;

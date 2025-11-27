@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.goat.examples.helloworld;
+package com.goat.mytest.helloworld;
 
 import org.kie.api.KieServices;
 import org.kie.api.event.rule.DebugAgendaEventListener;
@@ -31,7 +31,7 @@ import java.util.List;
 public class HelloWorldExample {
 
     public static void main(final String[] args) {
-        // KieServices is the factory for all KIE services 
+        // KieServices is the factory for all KIE services
         KieServices ks = KieServices.Factory.get();
         // From the kie services, a container is created from the classpath
         KieContainer kc = ks.getKieClasspathContainer();
