@@ -1,7 +1,6 @@
 package com.goat.examples.test;
 
 
-import com.goat.chapter001.entity.Person;
 import org.junit.Test;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
@@ -24,7 +23,7 @@ public class TestNG  {
         KieServices kieServices = KieServices.Factory.get(); //  从工厂中获得KieServices实例
         KieContainer kieContainer = kieServices.newKieClasspathContainer(); //从KieServices中获得KieContainer实例，其会加载kmodule.xml文件并load规则文件
         //建立KieSession到规则文件的通信管道
-        KieSession kieSession = kieContainer.newKieSession("test"); // 参数对应   <ksession name="helloWorldSession"/>
+        KieSession kieSession = kieContainer.newKieSession("test1"); // 参数对应   <ksession name="helloWorldSession"/>
 
 //        Person person = new Person("duval yang",12);
         Person person = new Person("duval yang",17);

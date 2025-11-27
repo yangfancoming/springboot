@@ -8,9 +8,18 @@ spring:
   thymeleaf:
     cache: false #关闭缓存
 
-
-
-
-
-
-
+#spring:
+#  web:
+#    resources:
+#      encoding:
+#        charset: UTF-8
+#        force: true
+#
+#  thymeleaf:
+#    cache: false #关闭缓存
+#    encoding: UTF-8
+#    force-encoding: true
+#
+#  messages:
+#    encoding: UTF-8
+#    always-use-message-format: true

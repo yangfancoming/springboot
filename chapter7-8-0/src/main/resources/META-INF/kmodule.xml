@@ -2,14 +2,20 @@
 <kmodule  xmlns="http://www.drools.org/xsd/kmodule">
 
 
-    <!-- 这里的 packages 属性就是规则文件的文件路径 -->
-    <kbase name="drools.rule" packages="drools.rules.test">
-        <!-- 对应 Java 代码  KieSession kieSession = kieContainer.newKieSession("helloWorldSession");-->
-        <ksession name="test"/>
-    </kbase>
+<!--    &lt;!&ndash; 这里的 packages 属性就是规则文件的文件路径 &ndash;&gt;-->
+<!--    <kbase name="drools.rule" packages="drools.rules.test">-->
+<!--        &lt;!&ndash; 对应 Java 代码  KieSession kieSession = kieContainer.newKieSession("helloWorldSession");&ndash;&gt;-->
+<!--        <ksession name="test1"/>-->
+<!--    </kbase>-->
 
-    <kbase name="drools.ru1le" packages="drools.rules.helloworld">
-        <ksession name="HelloWorldKS"/>
-    </kbase>
+<!--    <kbase name="drools.ru1le" packages="drools.rules.helloworld">-->
+<!--        <ksession name="HelloWorldKS"/>-->
+<!--    </kbase>-->
 
+
+<!-- name 属性可以任意写，但是必须唯一 -->
+    <kbase name="goat" packages="drools.rules.goat">
+        <!-- name 属性可以任意写，但是必须唯一 -->
+        <ksession name="goat2"/>
+    </kbase>
 </kmodule>
