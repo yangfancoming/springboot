@@ -6,10 +6,19 @@ public class Person implements Serializable {
 
 	private Integer id;
 	private String name;
-	private Integer age;
+	private String city;
+
+    private Integer age;
 
     public Person(String name, Integer age) {
         this.name = name;
+        this.age = age;
+    }
+
+    public Person(Integer id, String name, String city, Integer age) {
+        this.id = id;
+        this.name = name;
+        this.city = city;
         this.age = age;
     }
 
@@ -37,6 +46,13 @@ public class Person implements Serializable {
 		this.age = age;
 	}
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
     @Override
     public String toString() {
         return "Person{" + "id=" + id + ", name='" + name + '\'' + ", age=" + age + '}';

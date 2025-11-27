@@ -6,14 +6,15 @@
     name 属性可以任意写，但是必须唯一
     packages 属性就是规则文件的文件路径
     -->
-<!--    <kbase name="base1" packages="drools.rules.test">-->
-<!--        &lt;!&ndash; 对应 Java 代码  KieSession kieSession = kieContainer.newKieSession("helloWorldSession");&ndash;&gt;-->
-<!--        <ksession name="test1"/>-->
-<!--    </kbase>-->
 
-<!--    <kbase name="base2" packages="drools.rules.helloworld">-->
-<!--        <ksession name="HelloWorldKS"/>-->
-<!--    </kbase>-->
+    <kbase name="base1" packages="drools.rules.test">
+        <!-- 对应 Java 代码  KieSession kieSession = kieContainer.newKieSession("helloWorldSession");-->
+        <ksession name="test1"/>
+    </kbase>
+
+    <kbase name="base2" packages="drools.rules.helloworld">
+        <ksession name="HelloWorldKS"/>
+    </kbase>
 
 
 

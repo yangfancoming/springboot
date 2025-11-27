@@ -6,17 +6,47 @@ import com.goat.examples.goat.Person        // 导入类
 
 
 
-rule "goat1"    // 规则名，唯一
+rule "111"    // 规则名，唯一
    when
         $person : Person(age<16 || age>50)     //规则的条件部分
     then
+        System.out.println("触发规则 111");
         String test = test($person.getAge().toString());
         System.out.println(test);
 end
 
 
-function String test(String str){
+rule "222"
+   when
+    $c : Person() // 匹配工作内存中存在一个 Person 对象
+    then
+         System.out.println("触发规则 222");
+         System.out.println("Found a Person: " + $c.getName());
+end
 
+
+rule "333"
+   when
+    // 匹配年龄小于18岁的客户
+    Person( age < 18 )
+
+    // 匹配名字为"John"的客户，并将引用绑定到变量 $name
+    Person( $name : name == "杨帆" )
+
+    // 多重条件：年龄在18到65之间，且城市是"北京"或"上海"
+    Person( age < 18 && age > 10, city in ("北京", "上海") )
+
+    // 匹配包含特定字符串的名字
+    Person( name contains "帆" )
+
+    // 正则表达式匹配
+    Person( name matches "杨.*" )
+    then
+         System.out.println("触发规则 333");
+         System.out.println("Found a Person: " + $name);
+end
+
+function String test(String str){
     String temp1 = "1111";
     String temp2 = "2222";
     StringBuilder sb = new StringBuilder();
